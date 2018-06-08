@@ -6,10 +6,10 @@ OSS 403指OSS返回的HTTP状态码是403，可以简单的理解为没有权限
 
 |错误|错误码错误信息|错误原因|解决办法|
 |:-|:------|:---|:---|
-|SignatureDoesNotMatch|ErrorCode: SignatureDoesNotMatchErrorMessage: The request signature we calculated does not match the signature you provided. Check your key and signing method.|客户端和服务计算的签名不符|[OSS 403错误及排查](cn.zh-CN/常见错误排除/OSS 403错误及排查.md#)|
-|PostObject|ErrorCode: AccessDeniedErrorMessage: Invalid according to Policy: Policy expired.ErrorCode: AccessDenied ErrorMessage: Invalid according to Policy: Policy Condition failed: …|PostObject中Policy无效|[PostObject](../cn.zh-CN/API 参考/关于Object操作/PostObject.md#)|
-|Cors|ErrorCode: AccessForbiddenErrorMessage: CORSResponse: This CORS request is not allowed. This is usually because the evalution of Origin, request method / Access-Control-Request-Method or Access-Control-Requet-Headers are not whitelisted by the resource’s CORS spec.|CORS没有配置或配置不对|[OSS设置跨域访问](../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)|
-|Refers|ErrorCode: AccessDeniedErrorMessage: You are denied by bucket referer policy.|请检查Bucket的Referer配置|[OSS防盗链](../cn.zh-CN/控制台用户指南/管理存储空间/设置防盗链.md#)|
+|SignatureDoesNotMatch|ErrorCode: SignatureDoesNotMatchErrorMessage: The request signature we calculated does not match the signature you provided. Check your key and signing method.|客户端和服务计算的签名不符|[OSS 403错误及排查](intl.zh-CN/常见错误排除/OSS 403错误及排查.md#)|
+|PostObject|ErrorCode: AccessDeniedErrorMessage: Invalid according to Policy: Policy expired.ErrorCode: AccessDenied ErrorMessage: Invalid according to Policy: Policy Condition failed: …|PostObject中Policy无效|[PostObject](../intl.zh-CN/API 参考/关于Object操作/PostObject.md#)|
+|Cors|ErrorCode: AccessForbiddenErrorMessage: CORSResponse: This CORS request is not allowed. This is usually because the evalution of Origin, request method / Access-Control-Request-Method or Access-Control-Requet-Headers are not whitelisted by the resource’s CORS spec.|CORS没有配置或配置不对|[OSS设置跨域访问](../intl.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)|
+|Refers|ErrorCode: AccessDeniedErrorMessage: You are denied by bucket referer policy.|请检查Bucket的Referer配置|[OSS防盗链](../intl.zh-CN/控制台用户指南/管理存储空间/设置防盗链.md#)|
 |AccessDenied|见以下权限常见错误|无权限|下面详细讲述|
 
 其中，权限问题是403错误的一部分。权限问题的错误是`AccessDenied`。以下将详细讲述这类错误。
@@ -51,8 +51,6 @@ OSS 403指OSS返回的HTTP状态码是403，可以简单的理解为没有权限
 
 
 访问权限错误流程如下图：
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4908/3008_zh-CN.png)
 
 权限检查流程如下：
 

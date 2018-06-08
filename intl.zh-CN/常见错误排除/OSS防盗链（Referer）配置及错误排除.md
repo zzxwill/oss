@@ -24,7 +24,7 @@
 
 ## OSS防盗链 {#section_sb2_h3j_wdb .section}
 
-OSS防盗链是通过`Referer`来实现的，所以也简称为`Refer`或`refer`，详细说明请参见[OSS防盗链](../cn.zh-CN/最佳实践/存储空间管理/防盗链.md#)。
+OSS防盗链是通过`Referer`来实现的，所以也简称为`Refer`或`refer`，详细说明请参见[OSS防盗链](../intl.zh-CN/最佳实践/存储空间管理/防盗链.md#)。
 
 -   OSS防盗链配置
 
@@ -32,7 +32,7 @@ OSS防盗链是通过`Referer`来实现的，所以也简称为`Refer`或`refer`
 
     -   是否允许Referer字段为空的请求访问
     -   Referer字段白名单
-    OSS防盗链通过在控制台或 [SDK](https://help.aliyun.com/document_detail/32021.html) 设置bucket属性来配置
+    OSS防盗链通过在控制台或[SDK](https://www.alibabacloud.com/help/doc-detail/32021.htm)设置bucket属性来配置。
 
 -   OSS防盗链注意点
 
@@ -93,7 +93,7 @@ OSS防盗链是通过`Referer`来实现的，所以也简称为`Refer`或`refer`
 -   调试时请清空浏览器缓存。
 -   OSS的Refer只支持白名单， 暂时不支持黑名单。
 
-其它错误的排除请参看[OSS 403错误及排除](cn.zh-CN/常见错误排除/OSS 403错误及排查.md#)。
+其它错误的排除请参看[OSS 403错误及排除](intl.zh-CN/常见错误排除/OSS 403错误及排查.md#)。
 
 ## 其它问题 {#section_y3c_cjj_wdb .section}
 
@@ -101,5 +101,5 @@ OSS防盗链是通过`Referer`来实现的，所以也简称为`Refer`或`refer`
 
 检查是否开启了CDN、CDN的Refer设置不为空、CDN的防盗链名单与OSS一致。调试OSS的Referer时，请先排除CDN的影响。先调好OSS的Referer，再调CDN的Referer。
 
-Referer更详细的介绍及配置请参见[防盗链](../cn.zh-CN/最佳实践/存储空间管理/防盗链.md#)。
+Referer更详细的介绍及配置请参见[防盗链](../intl.zh-CN/最佳实践/存储空间管理/防盗链.md#)。
 

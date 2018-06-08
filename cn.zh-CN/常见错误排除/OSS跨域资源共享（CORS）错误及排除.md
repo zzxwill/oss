@@ -1,6 +1,6 @@
 # OSS跨域资源共享（CORS）错误及排除 {#concept_ry5_l1j_wdb .concept}
 
-跨域资源共享（Cross Origin Resource Sharing，简称 CORS）的介绍及配置请参看[跨域资源共享最佳实践](../cn.zh-CN/最佳实践/存储空间管理/跨域资源共享（CORS）.md#)。
+跨域资源共享（Cross Origin Resource Sharing，简称 CORS）的介绍及配置请参看[跨域资源共享最佳实践](../intl.zh-CN/最佳实践/存储空间管理/跨域资源共享（CORS）.md#)。
 
 ## 配置项 {#section_a4y_n1j_wdb .section}
 
@@ -56,7 +56,7 @@ CORS配置错误会报如下错误：
 -   OSS返回的错误可以通过抓包获取。如使用Wireshark，筛选器可以指定为 `host bucket-name.oss-cn-beijing.aliyuncs.com` 。
 -   OSS返回的错误也可以通过CORS的调试程序 [oss-h5-upload-js-direct](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/sample/oss-h5-upload-js-direct.zip) 界面提示获取。
 
-其它错误请参看[OSS 403错误及排除](cn.zh-CN/常见错误排除/OSS 403错误及排查.md#)。
+其它错误请参看[OSS 403错误及排除](intl.zh-CN/常见错误排除/OSS 403错误及排查.md#)。
 
 排错
 

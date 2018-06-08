@@ -35,36 +35,36 @@ The API interfaces provided by OSS are as follows:
 
 |API|Description|
 |:--|:----------|
-|[Put Object](intl.en-US//PutObject.md#)|Upload an object.|
-|[Copy Object](intl.en-US//CopyObject.md#)|Copy an object to make it another object.|
-|[Get Object](intl.en-US//GetObject.md#)|Get an object.|
-|[Delete Object](intl.en-US//DeleteObject.md#)|Delete an object.|
-|[Delete Multiple Objects](intl.en-US//DeleteMultipleObjects.md#)|Delete multiple objects.|
-|[Head Object](intl.en-US//HeadObject.md#)|Get the object meta information.|
-|[Post Object](intl.en-US//PostObject.md#)|Upload an object in the Post mode.|
-|[Append Object](intl.en-US//AppendObject.md#)|Append the upload data at the end of the object.|
-|[Put Object ACL](intl.en-US//Put Object ACL.md#)|Set the object ACL.|
-|[Get Object ACL](intl.en-US//GetObjectACL.md#)|Get the object ACL information.|
-|[Callback](intl.en-US//Callback.md#)| Upload callback.|
+|[Put Object](intl.en-US/API Reference/Object operations/PutObject.md#)|Upload an object.|
+|[Copy Object](intl.en-US/API Reference/Object operations/CopyObject.md#)|Copy an object to make it another object.|
+|[Get Object](intl.en-US/API Reference/Object operations/GetObject.md#)|Get an object.|
+|[Delete Object](intl.en-US/API Reference/Object operations/DeleteObject.md#)|Delete an object.|
+|[Delete Multiple Objects](intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#)|Delete multiple objects.|
+|[Head Object](intl.en-US/API Reference/Object operations/HeadObject.md#)|Get the object meta information.|
+|[Post Object](intl.en-US/API Reference/Object operations/PostObject.md#)|Upload an object in the Post mode.|
+|[Append Object](intl.en-US/API Reference/Object operations/AppendObject.md#)|Append the upload data at the end of the object.|
+|[Put Object ACL](intl.en-US/API Reference/Object operations/Put Object ACL.md#)|Set the object ACL.|
+|[Get Object ACL](intl.en-US/API Reference/Object operations/GetObjectACL.md#)|Get the object ACL information.|
+|[Callback](intl.en-US/API Reference/Object operations/Callback.md#)| Upload callback.|
 
 ## Multipart upload operations {#section_my2_rb2_xdb .section}
 
 |API|Description|
 |:--|:----------|
-|[Initiate Multipart upload](intl.en-US//InitiateMultipartUpload.md#)|Initialize a multipart upload event.|
-|[Upload Part](intl.en-US//UploadPart.md#)|Upload files in multiple parts.|
-|[Upload Part Copy](intl.en-US//UploadPartCopy.md#)|Copy and upload files in multiple parts.|
-|[Complete Multipart upload](intl.en-US//CompleteMultipartUpload.md#)|Complete the multipart upload of the entire file.|
-|[Abort Multipart upload](intl.en-US//AbortMultipartUpload.md#)|Cancel a multipart upload event.|
-|[List Multipart Uploads](intl.en-US//ListMultipartUploads.md#)|List all the ongoing multipart upload events.|
-|[List Parts](intl.en-US//ListParts.md#)|List all successfully uploaded parts mapped to a specific upload ID.|
+|[Initiate Multipart upload](intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)|Initialize a multipart upload event.|
+|[Upload Part](intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)|Upload files in multiple parts.|
+|[Upload Part Copy](intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#)|Copy and upload files in multiple parts.|
+|[Complete Multipart upload](intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)|Complete the multipart upload of the entire file.|
+|[Abort Multipart upload](intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#)|Cancel a multipart upload event.|
+|[List Multipart Uploads](intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#)|List all the ongoing multipart upload events.|
+|[List Parts](intl.en-US/API Reference/Multipart upload operations/ListParts.md#)|List all successfully uploaded parts mapped to a specific upload ID.|
 
 ## Cross-Origin Resource Sharing \(CORS\) {#section_xhx_sb2_xdb .section}
 
 |API|Description|
 |:--|:----------|
-|[Put Bucket cors](intl.en-US//PutBucketcors.md#)|Configure a CORS rule for a specified bucket.|
-|[Get Bucket cors](intl.en-US//GetBucketcors.md#)|Get the current CORS rules of a specified bucket.|
-|[Delete Bucket cors](intl.en-US//DeleteBucketcors.md#)|Disable the CORS function for a specified bucket and clear all the rules.|
-|[Option Object](intl.en-US//OptionObject.md#)|Preflight request for cross-region access.|
+|[Put Bucket cors](intl.en-US/API Reference/Cross-Origin Resource Sharing/PutBucketcors.md#)|Configure a CORS rule for a specified bucket.|
+|[Get Bucket cors](intl.en-US/API Reference/Cross-Origin Resource Sharing/GetBucketcors.md#)|Get the current CORS rules of a specified bucket.|
+|[Delete Bucket cors](intl.en-US/API Reference/Cross-Origin Resource Sharing/DeleteBucketcors.md#)|Disable the CORS function for a specified bucket and clear all the rules.|
+|[Option Object](intl.en-US/API Reference/Cross-Origin Resource Sharing/OptionObject.md#)|Preflight request for cross-region access.|
 

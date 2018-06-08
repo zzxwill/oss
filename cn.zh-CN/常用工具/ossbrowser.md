@@ -29,7 +29,7 @@ ossbrowser主要功能包括：支持AK登录、临时授权码登录，管理Bu
 
             ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6122_zh-CN.png)
 
-            **说明：** 您可以为子帐号授予更小的权限，具体设置请参考[权限管理](../cn.zh-CN//权限管理概述.md#)。
+            **说明：** 您可以为子帐号授予更小的权限，具体设置请参考[权限管理](../cn.zh-CN/最佳实践/权限管理/权限管理概述.md#)。
 
         -   小权限子账号（即只拥有部分Bucket或子目录的权限）。初级用户推荐使用[简化Policy授权](#section_zyx_1k3_wdb)功能完成授权。
     2.  使用子帐号登录ossbrowser。
@@ -111,9 +111,9 @@ ossbrowser提供的文件管理功能包括：
 ## 相关文档 {#section_m3r_4l3_wdb .section}
 
 -   [创建AccessKey](https://help.aliyun.com/document_detail/53045.html)
--   [权限管理](../cn.zh-CN//权限管理概述.md#)
--   [STS临时授权](../cn.zh-CN//STS临时授权访问.md#)
--   [控制台-管理bucket](../cn.zh-CN//创建存储空间.md#)
+-   [权限管理](../cn.zh-CN/最佳实践/权限管理/权限管理概述.md#)
+-   [STS临时授权](../cn.zh-CN/最佳实践/权限管理/STS临时授权访问.md#)
+-   [控制台-管理bucket](../cn.zh-CN/控制台用户指南/管理存储空间/创建存储空间.md#)
 -   [Java SDK-管理bucket](https://help.aliyun.com/document_detail/32012.html)
 -   [API-创建bucket](../cn.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)
 

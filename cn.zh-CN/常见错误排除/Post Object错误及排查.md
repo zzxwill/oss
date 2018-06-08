@@ -305,7 +305,7 @@ Post Object常见错误见下表：
 
 -   [C\# Post Demo](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs?spm=a2c4g.11186623.2.21.ogoRhr&file=PostPolicySample.cs)
 -   [Java Post Demo](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java?spm=a2c4g.11186623.2.22.ogoRhr&file=PostObjectSample.java)
--   [JavaScript Post Demo](../cn.zh-CN//JavaScript客户端签名直传.md#)
+-   [JavaScript Post Demo](../cn.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)
 
 ## 常用链接 {#section_tfy_5hj_wdb .section}
 

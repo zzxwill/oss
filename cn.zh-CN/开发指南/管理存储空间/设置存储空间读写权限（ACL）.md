@@ -14,7 +14,7 @@
 
 设置存储空间 ACL
 
--   控制台: [设置访问权限](../cn.zh-CN//修改存储空间读写权限.md#)
+-   控制台: [设置访问权限](../cn.zh-CN/控制台用户指南/管理存储空间/修改存储空间读写权限.md#)
 -   SDK：Java SDK-[Bucket](https://help.aliyun.com/document_detail/32012.html) 中 设置Bucket ACL
 -   API：[Put BucketACL](../cn.zh-CN/API 参考/关于Bucket的操作/PutBucketACL.md#)
 

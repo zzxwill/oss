@@ -17,12 +17,7 @@
 测试所用Discuz版本为Discuz! X3.1，以下是详细的设置流程：
 
 1.  登录Discuz站点，进入管理界面后，先点击**全局**，再点击**上传设置**，如下图所示。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4865/2805_zh-CN.png)
-
 2.  选择**远程附件**，然后开始设置。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4865/2806_zh-CN.png)
 
     **说明：** 
 
@@ -33,8 +28,6 @@
     -   FTP登录用户名，格式为 AccessKeyID/BukcetName。注意这里的 / 不是或的意思。
     -   FTP的登录密码，为 AceessKeySecrete。
     -   被动模式连接，选择默认的是即可。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4865/2808_zh-CN.png)
-
     **说明：** 
 
     -   远程附件目录，填 . 表示在Bucket的根目录下创建上传目录。
@@ -44,18 +37,11 @@
 
     -   超时时间，设置为0即可，表示服务默认。
     -   完成设置后，可以点击测试远程附件，如果成功则会出现如下画面。
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4865/2809_zh-CN.png)
-
 3.  发帖验证
 
     发贴时上传图片附件如下所示。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4865/2810_zh-CN.png)
-
     在图片上右键点击，选择在“新建标签页中打开图片”，如下所示。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4865/2811_zh-CN.png)
 
     这就表示图片已经上传到了OSS的test-hz-jh-002中。
 

@@ -21,7 +21,7 @@
 5.  [删除文件](cn.zh-CN/快速入门/删除文件.md#)
 6.  [删除存储空间](cn.zh-CN/快速入门/删除存储空间.md#)
 
--   阿里云OSS功能和定价的相关信息，请参见[阿里云 OSS 产品页](https://www.alibabacloud.com/product/oss)。
+-   阿里云OSS功能和定价的相关信息，请参见 [阿里云 OSS 产品页](https://www.aliyun.com/product/oss)。
 -   有关阿里云OSS服务的购买流程，请参见[购买OSS服务](cn.zh-CN/快速入门/购买OSS服务.md#)。
 -   更多高级操作，请参见[阿里云OSS开发指南](../cn.zh-CN/开发指南/基本概念介绍.md#)。
 

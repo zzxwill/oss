@@ -12,7 +12,7 @@
 
 获取你的account ID。具体参考下图步骤。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/2833_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6264_zh-CN.png)
 
 ## 开通RAM {#section_ijs_rkb_wdb .section}
 
@@ -20,7 +20,7 @@
 
 RAM的位置请参考下图。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/2834_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6265_zh-CN.png)
 
 ## 新建授权策略 {#section_g5t_xkb_wdb .section}
 
@@ -28,7 +28,7 @@ RAM的位置请参考下图。
 
 填写授权策略时，如下图所示。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/2836_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6266_zh-CN.png)
 
 其中第1步和第2步自定义填写即可，第3步的策略内容才是最关键的地方。
 
@@ -76,7 +76,7 @@ RAM的位置请参考下图。
 
 上面的授权策略生命了一种只读策略，下面新建一个用户并给予他这种策略。先是创建用户，步骤如下：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/2837_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6267_zh-CN.png)
 
 **说明：** 注意保存新用户的access\_key。
 
@@ -84,7 +84,7 @@ RAM的位置请参考下图。
 
 下面将之前创建的策略授权给该用户。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/2838_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6268_zh-CN.png)
 
 ## 用子账户登录 {#section_prc_5lb_wdb .section}
 

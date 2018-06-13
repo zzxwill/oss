@@ -13,7 +13,7 @@ OSS can temporarily perform authorized access through the Alibaba Cloud STS \(Se
 
 Using an app as an example, the interaction process is shown as follows:
 
-![](images/3535_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4670/3535_en-US.png)
 
 The solution is described in detail as follows:
 

@@ -27,9 +27,9 @@ ossbrowser主要功能包括：支持AK登录、临时授权码登录，管理Bu
 
         -   大权限子账号（即拥有所有Bucket权限，且可以管理RAM配置的子账号）。初级用户推荐如下配置：
 
-            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6122_zh-CN.png)
+            ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6324_zh-CN.png)
 
-            **说明：** 您可以为子帐号授予更小的权限，具体设置请参考[权限管理](../intl.zh-CN/最佳实践/权限管理/权限管理概述.md#)。
+            **说明：** 您可以为子帐号授予更小的权限，具体设置请参考[权限管理](../../../../intl.zh-CN/最佳实践/权限管理/权限管理概述.md#)。
 
         -   小权限子账号（即只拥有部分Bucket或子目录的权限）。初级用户推荐使用[简化Policy授权](#section_zyx_1k3_wdb)功能完成授权。
     2.  使用子帐号登录ossbrowser。
@@ -46,13 +46,13 @@ ossbrowser主要功能包括：支持AK登录、临时授权码登录，管理Bu
 
         您作为管理员，先使用AK登录OSSBrowser，并在管理界面，选择需要临时授权的文件或目录，生成临时授权码。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/3006_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6326_zh-CN.png)
 
     -   登录时使用授权码
 
         临时授权码可在过期前，可用来登录OSSBrowser。如下图所示：
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/3007_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6327_zh-CN.png)
 
 
 ## 管理Bucket {#section_idm_xj3_wdb .section}
@@ -83,10 +83,12 @@ ossbrowser提供的文件管理功能包括：
 
 1.  勾选一个或多个需要授权的文件或目录，并单击**简化Policy授权**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/2998_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6328_zh-CN.png)
 
 2.  在简化Policy授权窗口，选择权限。
 3.  您可以查看生成的Policy文本，将其复制到您需要的地方使用，如RAM子账号、Role等Policy编辑等。
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6329_zh-CN.png)
 
     您也在该窗口中将权限授权给子账号（当前登录的AK必须有RAM的配置操作权限）。
 
@@ -95,19 +97,19 @@ ossbrowser提供的文件管理功能包括：
 
 1.  勾选文件夹，并选择生成授权码。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/3004_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6331_zh-CN.png)
 
 2.  在弹出的窗口中，设置参数并单击**重新生成**，将会生成授权码，如下图所示。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/3005_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4906/6333_zh-CN.png)
 
 
 ## 相关文档 {#section_m3r_4l3_wdb .section}
 
 -   [创建AccessKey](https://www.alibabacloud.com/help/doc-detail/53045.htm)
--   [权限管理](../intl.zh-CN/最佳实践/权限管理/权限管理概述.md#)
--   [STS临时授权](../intl.zh-CN/最佳实践/权限管理/STS临时授权访问.md#)
--   [控制台-管理bucket](../intl.zh-CN/控制台用户指南/管理存储空间/创建存储空间.md#)
+-   [权限管理](../../../../intl.zh-CN/最佳实践/权限管理/权限管理概述.md#)
+-   [STS临时授权](../../../../intl.zh-CN/最佳实践/权限管理/STS临时授权访问.md#)
+-   [控制台-管理bucket](../../../../intl.zh-CN/控制台用户指南/管理存储空间/创建存储空间.md#)
 -   [Java SDK-管理bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
--   [API-创建bucket](../intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)
+-   [API-创建bucket](../../../../intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)
 

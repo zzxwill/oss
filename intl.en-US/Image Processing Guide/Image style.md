@@ -41,11 +41,11 @@ Example:
 1.  In the left-side bucket list of the [OSS console](https://oss.console.aliyun.com/overview), click the bucket to which you want to set separators.
 2.  Click the **Image Processing** tab, and then click **Access Settings** . As shown in the following figure:
 
-    ![](images/2882_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4792/2882_en-US.png)
 
 3.  In the **Access Settings** dialog box, set  
 
-    ![](images/2883_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4792/2883_en-US.png)
 
     the following parameters:
 

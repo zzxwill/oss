@@ -75,10 +75,10 @@ OSS provides the following permission control to access its stored objects:
 
     Reference:
 
-    -   API: [Put BucketACL](../intl.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)
+    -   API: [Put BucketACL](../../../../intl.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)
     -   SDK: Java SDK - [Manage a bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
-    -   Console: [Create a bucket](../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#)
-    -   API: [Get BucketACL](../intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
+    -   Console: [Create a bucket](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#)
+    -   API: [Get BucketACL](../../../../intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
     -   SDK: Java SDK - [Manage a bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
 
 ## Object-level permissions {#section_af3_cjv_tdb .section}
@@ -102,9 +102,9 @@ OSS provides the following permission control to access its stored objects:
 
     Reference:
 
-    -   API: [Put Object ACL](../intl.en-US/API Reference/Object operations/Put Object ACL.md#)
+    -   API: [Put Object ACL](../../../../intl.en-US/API Reference/Object operations/Put Object ACL.md#)
     -   SDK: [Set the object ACL](https://www.alibabacloud.com/help/doc-detail/32015.htm) in Java SDK
-    -   API: [Get Object ACL](../intl.en-US/API Reference/Object operations/GetObjectACL.md#)
+    -   API: [Get Object ACL](../../../../intl.en-US/API Reference/Object operations/GetObjectACL.md#)
     -   SDK: [Get the object ACL](https://www.alibabacloud.com/help/doc-detail/32015.htm) in Java SDK
 
 ## Account-level permissions \(RAM\) {#section_mjv_sjv_tdb .section}
@@ -147,7 +147,7 @@ A mobile app is used as an example. Assume that you are a mobile app developer. 
 
 -   Mode 1: Using AppServer for data transit and data isolation
 
-    ![](images/982_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/982_en-US.png)
 
     As shown in the preceding figure, you must develop an AppServer. Only the AppServer can access ECS. The ClientApp can read or write data only through the AppServer. The AppServer makes sure the isolated access to different user data.
 
@@ -157,7 +157,7 @@ A mobile app is used as an example. Assume that you are a mobile app developer. 
 
     The STS solution diagram:
 
-    ![](images/983_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/983_en-US.png)
 
     Procedure
 
@@ -356,5 +356,5 @@ For the online policy graphical configuration tool, click [here](http://gosspubl
 
 ## Best practices {#section_dlf_bqv_tdb .section}
 
--   [RAM and STS User Guide](../intl.en-US/Best Practices/Access control/Overview.md#)
+-   [RAM and STS User Guide](../../../../intl.en-US/Best Practices/Access control/Overview.md#)
 

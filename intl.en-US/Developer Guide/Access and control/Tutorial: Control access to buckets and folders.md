@@ -15,7 +15,7 @@ OSS is a distributed object storage service that uses a key-value pair format. 
 
     In the key, `Development` is the prefix and `/`  is the delimiter.   You can retrieve a list of all objects with a specific prefix and delimiter from a bucket.  In the console, you click the **Development**  folder, and the console lists the objects in the folder, as shown in the following figure.
 
-    ![](images/1187_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1187_en-US.png)
 
     **Note:** When the console lists the **Development** folder in the **example-company** bucket, it sends OSS a request which specifies the prefix  `Development` and the delimiter `/`  .  The console responds with a folder list the same as that in the file system.   The preceding example shows that the bucket **example-company**  has two objects with the key  `Development/Alibaba Cloud.pdf`,  `Development/ProjectA.docx` and `Development/ProjectB.docx`.
 
@@ -35,13 +35,13 @@ Before going into the tutorial, you also need to know the concept: root-level bu
 
 These object keys resemble a logical hierarchy with Development, Marketing, and Private as root-level folders and oss-dg.pdf as a root-level object.  When you click the bucket name in the OSS console,  the console shows the top-level prefixes and a delimiter \( Development/、Marketing/ and Private/\) as root-level folders.  The object key oss-dg.pdf  does not have a prefix, so it appears as a root-level item.
 
-![](images/1188_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1188_en-US.png)
 
 ## Request and response of OSS {#section_isl_bc3_5db .section}
 
 Before granting permissions, we need to understand what request the console sends to OSS when a user clicks a bucket name, the response OSS returns, and how the console interprets the response.
 
-When a user clicks a bucket name, the console sends the [GetBucket](../intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#) request to   OSS.  This request includes the following parameters:
+When a user clicks a bucket name, the console sends the [GetBucket](../../../../intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#) request to   OSS.  This request includes the following parameters:
 
 -   `prefix` with an empty string as its value.
 -   `delimiter` with `/` as its value.
@@ -93,9 +93,9 @@ The key oss-dg.pdf does not contain the `/`  delimiter, so OSS returns the key 
 
 The console interprets this result and displays the root-level items as follows:
 
-![](images/1189_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1189_en-US.png)
 
-Now, if a user clicks the **Development** folder, the console sends the [GetBucket](../intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#) request to  OSS.  This request includes the following parameters:
+Now, if a user clicks the **Development** folder, the console sends the [GetBucket](../../../../intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#) request to  OSS.  This request includes the following parameters:
 
 -   `prefix` with `Development/` as its value.
 -   `delimiter` with `/` as its value.
@@ -140,7 +140,7 @@ Server: AliyunOSS
 
 The console interprets this result and displays the object keys as follows:
 
-![](images/1190_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1190_en-US.png)
 
 ## Tutorial example {#section_zr5_fd3_5db .section}
 
@@ -176,17 +176,17 @@ In this step, you log on to the   OSS console with your primary account creden
 1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
 2.  Create a bucket named **example-company** .
 
-    For detailed procedures, see [Create a bucket](../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the OSS Console User Guide.
+    For detailed procedures, see [../../../../dita-oss-bucket/SP\_21/DNOSS11848834/EN-US\_TP\_4740.md\#](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the OSS Console User Guide.
 
 3.  Upload one file to the bucket.
 
     This example assumes that you upload the file oss-dg.pdf at the root level of the bucket.  You can upload your own file with a different file name.
 
-    For detailed procedures, see   [Upload files](../intl.en-US/Console User Guide/Manage objects/Upload objects.md#) in the OSS Console User Guide.
+    For detailed procedures, see   [Upload files](../../../../intl.en-US/Console User Guide/Manage objects/Upload objects.md#) in the OSS Console User Guide.
 
 4.  Create three folders named Development, Marketing, and Private.
 
-    For detailed procedures, see [Create a folder](../intl.en-US/Console User Guide/Manage objects/Create a folder.md#)in the OSS Console User Guide.
+    For detailed procedures, see [Create a folder](../../../../intl.en-US/Console User Guide/Manage objects/Create a folder.md#)in the OSS Console User Guide.
 
 5.  Upload one or two files to each folder.
 
@@ -280,7 +280,7 @@ In this step, you create a policy that grants users minimum permissions.  With 
 
         A message box is displayed, indicating that you have no corresponding access rights.
 
-        ![](images/1193_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1193_en-US.png)
 
 
 Step 4.2:  Grant permissions to list root-level content of a bucket

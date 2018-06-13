@@ -17,12 +17,12 @@ This table provides the description and values for parameters when applying the 
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/blur,r\_3,s\_2](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/blur,r_3,s_2)
 
-    ![](images/2526_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4779/2526_en-US.jpg)
 
 -   Scale down an image to 200 in width, and blur it with the radius being 3 and standard deviation being 2. To see this example, follow the following link:
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w\_200/blur,r\_3,s\_2](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_200/blur,r_3,s_2)
 
-    ![](images/2527_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4779/2527_en-US.jpg)
 
 

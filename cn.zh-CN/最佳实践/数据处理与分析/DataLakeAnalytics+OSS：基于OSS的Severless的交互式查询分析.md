@@ -33,6 +33,8 @@ Data Lake Analytics是无服务器（Serverless）化的云上交互式查询分
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/14737/6242_zh-CN.png)
 
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/14737/6314_zh-CN.png)
+
 [下载模拟数据](http://testdatasample.oss-cn-hangzhou.aliyuncs.com/workshop_sh/workshop_sh.zip?spm=a2c4g.11186623.2.6.krrnZY&file=workshop_sh.zip)（该数据为以下实验中使用的模拟数据。）
 
 ## 登录Data Lake Analytics控制台 {#section_eqy_mqs_c2b .section}

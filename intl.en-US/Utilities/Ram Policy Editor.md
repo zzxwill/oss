@@ -57,7 +57,7 @@ In the RAM policy editor, you must set these fields for each rule: Effect, Actio
 
 To grant all permissions for `my-bucket` and its files:
 
-![](images/2440_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4904/2440_en-US.PNG)
 
 For more examples, see [RAM Policy Editor README](https://github.com/aliyun/ram-policy-editor/blob/master/README-CN.md).
 

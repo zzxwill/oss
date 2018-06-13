@@ -2,9 +2,9 @@
 
 ## Introduction {#section_ntf_h2t_vdb .section}
 
-The OSS FTP is a special FTP server that maps the operations on files and folders into your OSS instance upon receiving a common FTP request. This utility allows you to use the FTP protocol to manage files stored on your OSS instance.
+The OSS FTP is a special FTP server  that maps the operations on files and folders into your OSS instance upon receiving a common FTP request. This utility allows you to use the FTP protocol to manage files stored on your OSS instance.
 
-**Note:** Note that OSS SDK is designed for the production environment, and OSS FTP is mainly for individual users.
+**Note:** OSS SDK is designed for the production environment, and OSS FTP is mainly for individual users.
 
 -   Key features
     -   Cross-Platform: This utility can run on Windows, Linux, and Mac operating systems, either 32 or 64 bit, either on a graphic or command-line interface.
@@ -18,7 +18,7 @@ The OSS FTP is a special FTP server that maps the operations on files and folder
     -   Supports most FTP commands and can satisfy daily needs
     **Note:** 
 
-    -   1.  Currently, for the ease of installation and deployment, OSS FTP V1.0 does not support TLS encryption. The FTP protocol implements plaintext transmission. To prevent password leaks, we recommend that you run the FTP server and client on the same machine and access using 127.0.0.1:port.
+    -   1.  Currently, for the ease of installation and deployment, OSS  FTP V1.0 does not support TLS encryption. The FTP protocol implements plaintext transmission. To prevent password leaks, we recommend that you run the  FTP server and client on the same machine and access using 127.0.0.1:port.
 2.  The utility does not support rename and move operations.
 3.  Do not include any Chinese characters in the extract-to path of the installation package.
 4.  The FTP server’s management control page may fail to be opened on early IE browsers.
@@ -32,7 +32,7 @@ The OSS FTP is a special FTP server that maps the operations on files and folder
 
 -   Linux/Mac: [ossftp-1.0.3-linux-mac.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32190/cn_zh/1523340041580/ossftp-1.0.3-linux-mac.zip?spm=a2c4g.11186623.2.5.bqHidZ&file=ossftp-1.0.3-linux-mac.zip)
 
-    Because Python 2.7 or 2.6 is installed on Linux and Mac systems by default, the installation packages for Linux and Mac do not contain an executable Python program, but only relevant dependent libraries.
+    Because Python 2.7 or Python 2.6 is installed on Linux and Mac systems by default, the installation packages for Linux and Mac do not contain an executable Python program, but only relevant dependent libraries.
 
 
 ## Running {#section_brg_bqt_vdb .section}
@@ -53,15 +53,13 @@ First, extract the downloaded file. Then, select an appropriate running mode bas
     ```
 
 
-The preceding process starts an FTP server, which listens to port 2048 at 127.0.0.1 by default. In addition, for ease of control over the status of the FTP server, the program also activates a web server, which listens to port 8192 at 127.0.0.1. If your system has a graphic interface, the control page is automatically opened.
-
-![](images/2519_en-US.jpg)
+The preceding process starts an FTP server, which listens to port 2048 at 127.0.0.1 by default.  In addition, for ease of control over the status of the FTP  server, the program also activates a web server, which listens to port 8192 at 127.0.0.1.  If your system has a graphic interface, the control page is automatically opened.
 
 **Note:** In most situations, you do not need to configure any settings before running the FTP server. If you make any configuration, remember to restart it to make the changes take effect.
 
 ## Connecting to the FTP Server {#section_uwr_rqt_vdb .section}
 
-We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c4g.11186623.2.6.bqHidZ) to connect to the FTP server. After download and installation, connect to the FTP server as follows:
+We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c4g.11186623.2.6.bqHidZ) to connect to the FTP  server. After download and installation, connect to the FTP server as follows:
 
 -   Host: 127.0.0.1
 -   Logon type: normal
@@ -70,10 +68,8 @@ We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c
 
     **Note:** 
 
-    -   The slash sign \(/\) means that both, not either items are required. For example, the user could be ‘tSxyiUM3NKswPMEp/test-hz-jh-002’.
-    -   For more information about access\_key\_id and **access\_key\_secret**, see[OSS Access Control](../intl.en-US/Developer Guide/Access and control/Access control.md#).
-    ![](images/2520_en-US.png)
-
+    -   The slash sign \(/\) means that both, not either items are required. For example, the user could be `tSxyiUM3NKswPMEp/test-hz-jh-002`.
+    -   For more information about access\_key\_id and **access\_key\_secret**, see [OSS Access Control](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#).
 
 ## Advanced use {#section_xdq_krt_vdb .section}
 
@@ -81,7 +77,7 @@ We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c
 
     -   Modify the Listener Address
 
-        If you want to access the ftpserver over a network, you must modify the listener address because the default address, 127.0.0.1, only allows local access. You can change it to an intranet IP or Internet IP.
+        If you want to access the ftpserver over a network,  you must modify the listener address because the default address, 127.0.0.1, only allows local access.  You can change it to an intranet IP or Internet IP.
 
     -   Modify the Listening Port 
 
@@ -89,11 +85,11 @@ We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c
 
     -   Modify the Log Level
 
-        Set the ftpserver’s log level. The FTP server’s log is output to the `data/ossftp/` directory.  You can view it only by pressing the Log button on the console page. The default log level is INFO  and little information is printed in the log. If you need more detailed log information, you can change the level to DEBUG. If you want the log to output less information, you can set the level to WARNING or ERROR.
+        Set the ftpserver’s log level.  The FTP  server’s log is output to the `data/ossftp/` directory.  You can view it only by pressing the Log button on the console page.  The default log level is INFO  and little information is printed in the log. If you need more detailed log information, you can change the level to DEBUG.  If you want to reduce log output, you can set the log level to WARNING or ERROR.
 
     -   Set Bucket Endpoints
 
-        By default, the ftpserver searches for the bucket’s location information, so it can send subsequent requests to the corresponding \(such as`oss-cn-hangzhou.aliyuncs.com` or `oss-cn-beijing.aliyuncs.com`\). The ftpserver first tries to access the OSS instance over the intranet. If you set bucket endpoints,  for example, `test-bucket-a.oss-cn-hangzhou.aliyuncs.com`,  when you access test-bucket-a, you go to the`oss-cn-hangzhou.aliyuncs.com` domain name.
+        By default,  the ftpserver searches for the bucket’s location information, so it can send subsequent requests to the corresponding \(such as`oss-cn-hangzhou.aliyuncs.com` or `oss-cn-beijing.aliyuncs.com`\).  The ftpserver first tries to access the OSS instance over the intranet.  If you set bucket endpoints,  for example, `test-bucket-a.oss-cn-hangzhou.aliyuncs.com`,  when you access test-bucket-a, you go to the`oss-cn-hangzhou.aliyuncs.com` domain name.
 
     -   Set Display Language 
 
@@ -118,8 +114,6 @@ We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c
 
 -   If you encounter an error when connecting to the FTP server.
 
-    ![](images/2521_en-US.png)
-
     The error may be caused by two possible causes:
 
     -   There may be an error in the entered access\_key\_id or access\_key\_secret.
@@ -128,27 +122,27 @@ We recommend using the [FileZilla Client](https://filezilla-project.org/?spm=a2c
 
     -   The used access\_key information may be a RAM sub-account access\_key for a sub-account without list buckets permission.
 
-        Solution: When using a sub-account, specify bucket endpoints on the console page to tell the ftpserver which endpoint must be used to access a certain bucket. Also, the sub-account must have the required permissions. For information on implementing access control by using RAM to access OSS, see [RAM](../intl.en-US/Developer Guide/Access and control/Access control.md#). The details about permissions are as follow:
+        Solution: When using a sub-account, specify bucket endpoints on the console page to tell the ftpserver which endpoint must be used to access a certain bucket.  Also, the sub-account must have the required permissions. For information on implementing access control by using RAM to access OSS, see [RAM](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#).  The details about permissions are as follow:
 
         -   Read-only: 
 
-            The OSS-FTP must have these permissions: \[‘ListObjects’, ‘GetObject’, ‘HeadObject’\]. For information on creating a RAM sub-account with Read-only permission, see the graphic tutorial [How to Integrate RAM for File Sharing](intl.en-US/Utilities/ossftp/How to integrate RAM for file sharing.md#).
+            The OSS-FTP must have these permissions: \[‘ListObjects’, ‘GetObject’, ‘HeadObject’\].  For information on creating a RAM sub-account with Read-only permission, see the graphic tutorial [How to Integrate RAM for File Sharing](intl.en-US/Utilities/ossftp/How to integrate RAM for file sharing.md#).
 
         -   Upload files: 
 
             If you want to allow a RAM sub-account to upload files, assign \[‘PutObject’\] permission.
 
-        -   Delete files: 
+        -   Delete files
 
             If you want to allow a RAM sub-account to delete files, assign \[‘DeleteObject’\] permission.
 
--   If you are running the FTP server on Linux,   you may encounter the following error when using FileZilla to connect to the server:
+-   If you are running the FTP server on Linux,  you may encounter the following error when using FileZilla to connect to the server:
 
     ```
     501 can't decode path (server filesystem encoding is ANSI_X3.4-1968)
     ```
 
-    This is usually generated when errors occur in local Chinese code. Input the following command in the terminal where you want to run start.sh. Then, restart the program.
+    This is usually generated when errors occur in local Chinese code.  Input the following command in the terminal where you want to run start.sh. Then, restart the program.
 
     ```
     $ export LC_ALL=en_US.UTF-8; export LANG="en_US.UTF-8"; locale

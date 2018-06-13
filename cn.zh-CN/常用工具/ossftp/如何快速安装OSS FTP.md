@@ -55,8 +55,6 @@ OSS FTP工具是一个特殊FTP server, 它接收普通FTP请求后，将对文�
 
 上述步骤会启动一个FTP server, 默认监听在127.0.0.1的2048端口。同时，为了方便您对FTP server的状态进行管控，还会启动一个web服务器，监听在127.0.0.1的8192端口。如果您的系统有图形界面，还会自动打开控制页面，如下所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/2519_zh-CN.jpg)
-
 **说明：** 大部分情况不要任何配置，就可以运行一个FTP server了，如果想对FTP server进行配置, 请注意需要重启才能生效。
 
 ## 连接到FTP server {#section_uwr_rqt_vdb .section}
@@ -71,9 +69,7 @@ OSS FTP工具是一个特殊FTP server, 它接收普通FTP请求后，将对文�
     **说明：** 
 
     -   用户中，/是必须的，如用户`tSxyiUM3NKswPMEp/test-hz-jh-002`。
-    -   access\_key\_id和**access\_key\_secret**的获取，请参见 [OSS访问控制](../cn.zh-CN//访问控制.md#)。
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/2520_zh-CN.png)
-
+    -   access\_key\_id和**access\_key\_secret**的获取，请参见 [OSS访问控制](../../../../intl.zh-CN/开发指南/访问与控制/访问控制.md#)。
 
 ## 高级使用 {#section_xdq_krt_vdb .section}
 
@@ -118,8 +114,6 @@ OSS FTP工具是一个特殊FTP server, 它接收普通FTP请求后，将对文�
 
 -   如果连接FTP server时，遇到以下错误：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/2521_zh-CN.png)
-
     有两种可能：
 
     -   输入的 access\_key\_id 和 access\_key\_secret有误。
@@ -128,11 +122,11 @@ OSS FTP工具是一个特殊FTP server, 它接收普通FTP请求后，将对文�
 
     -   所用的access\_key信息为ram 子账户的access\_key，而子账户不具有List buckets权限。
 
-        解决：当使用子账户访问时，请在控制页面中指定bucket endpoints， 即告诉FTP server某个bucket应该用什么endpoint来访问。同时，子账户也需要一些必须的权限，关于使用ram访问oss时的访问控制，请参考文档[访问控制](../cn.zh-CN//访问控制.md#)。具体如下。
+        解决：当使用子账户访问时，请在控制页面中指定bucket endpoints， 即告诉FTP server某个bucket应该用什么endpoint来访问。同时，子账户也需要一些必须的权限，关于使用ram访问oss时的访问控制，请参考文档[访问控制](../../../../intl.zh-CN/开发指南/访问与控制/访问控制.md#)。具体如下。
 
         -   只读访问
 
-            OSS FTP工具需要的权限列表为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的ram子账户，请参考图文教程[如何结合ram实现文件共享](cn.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
+            OSS FTP工具需要的权限列表为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的ram子账户，请参考图文教程[如何结合ram实现文件共享](intl.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
 
         -   上传文件
 

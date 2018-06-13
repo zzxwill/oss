@@ -45,7 +45,7 @@ Version: 1.0.0
 
 -   Example
 
-    To check whether URL-based download is normal \([How to obtain a URL](../intl.en-US/Quick Start/Share an object.md#)\), run the following commands:
+    To check whether URL-based download is normal \([How to obtain a URL](../../../../intl.en-US/Quick Start/Share an object.md#)\), run the following commands:
 
     |Method|Command|
     |:-----|:------|
@@ -154,7 +154,7 @@ ossprobe --upload -i AccessKeyId -k AccessKeySecret -p EndPoint -b BucketName -a
 
 -   For Windows, press Win+R to bring up the “Run” dialog box, enter cmd, and press Enter. On the command-line interface \(CLI\), enter the path to the tool and enter related detection parameters to run the tool.
 
-    ![](images/2981_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4879/2981_en-US.jpg)
 
 -   For Linux and Mac, open the terminal. On the displayed interface, enter the path to the tool and enter related detection parameters to run the tool. 
 
@@ -186,5 +186,5 @@ Different from console display, log files contain network detection details. Pin
 ## References {#section_dmw_4zg_wdb .section}
 
 -   [OSS error codes](https://www.alibabacloud.com/help/doc-detail/32157.htm)
--   [How to obtain a URL](../intl.en-US/Quick Start/Share an object.md#)
+-   [How to obtain a URL](../../../../intl.en-US/Quick Start/Share an object.md#)
 

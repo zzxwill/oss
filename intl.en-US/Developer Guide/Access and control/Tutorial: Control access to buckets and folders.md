@@ -176,7 +176,7 @@ In this step, you log on to the   OSS console with your primary account creden
 1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
 2.  Create a bucket named **example-company** .
 
-    For detailed procedures, see [../../../../dita-oss-bucket/SP\_21/DNOSS11848834/EN-US\_TP\_4740.md\#](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the OSS Console User Guide.
+    For detailed procedures, see [Create a bucket](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the OSS Console User Guide.
 
 3.  Upload one file to the bucket.
 

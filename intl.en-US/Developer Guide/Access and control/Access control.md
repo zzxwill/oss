@@ -2,9 +2,9 @@
 
 ## Send an OSS access request {#section_p4c_phv_tdb .section}
 
-You can access OSS directly by calling a RESTful API provided by OSS or using an API-encapsulated SDK.  Each request to access OSS requires identity verification or direct anonymous access based on the current bucket permission and operation. According to the role of the visitors,
+You can access OSS directly by calling a RESTful API provided by OSS or using an API-encapsulated SDK.  Each request to access OSS requires identity verification or direct anonymous access based on the current bucket permission and operation.
 
--   the access to OSS resources is classified into owner access and third-party access. Here, the owner refers to the bucket owner, also known as "developer". Third-party users are the users who access resources in a bucket.
+-   According to the role of the visitors, the access to OSS resources is classified into owner access and third-party access. Here, the owner refers to the bucket owner, also known as the "developer". Third-party users are any users who access resources in a bucket.
 -   According to the identity of visitors, the access to OSS resources is classified into anonymous access and signature-based access. In the OSS, a request that does not contain any identification information is considered anonymous access. According to the rules in the OSS API documentation, signature-based access refers to the requests that contain signature information in the request header or URL.
 
 ## Types of AccessKeys {#section_en5_23v_tdb .section}
@@ -13,19 +13,21 @@ Currently, the three types of [AccessKey](intl.en-US/Developer Guide/Basic conce
 
 -   Alibaba Cloud account AccessKeys
 
-    These are the AccessKeys of the bucket owners. The AccessKey provided by each Alibaba Cloud account has full access to its own resources. Each Alibaba Cloud account can simultaneously have 0 to 5 active or inactive AccessKey pairs \(AccessKeyID and AccessKeySecret\).
+    These are the AccessKeys of the bucket owners. The AccessKey provided by each Alibaba Cloud account has full access to its own resources. Each Alibaba Cloud account can simultaneously have zero to five active or inactive AccessKey pairs \(AccessKeyID and AccessKeySecret\).
 
     You can add or delete AccessKey pairs on [AccessKey console](https://ak-console.aliyun.com).
 
-    Each AccessKey pair may be in two states: active and inactive.
+    Each AccessKey pair is either active or inactive.
 
     -   Active indicates that the user's AccessKey is in the active state and can be used for identity authentication.
     -   Inactive indicates that the user's AccessKey is in the inactive state and cannot be used for identity authentication.
-    **Note:** The AccessKey of the Alibaba Cloud account must not be used directly unless it is required.
+    Warning:
+
+    The AccessKey of the Alibaba Cloud account must not be used directly unless it is required.
 
 -   RAM account AccessKeys
 
-    Resource Access Management \(RAM\) is a resource access control service provided by Alibaba Cloud. RAM account AKs are the AccessKeys granted by RAM. These AKs only allow access to resources in a bucket according to the rules defined by RAM. RAM helps you to collectively manage your users \(such as employees, systems, or applications\) and controls which resources your users can access. For example, you can allow your users to have only the read permission on a bucket. Sub-accounts are subordinate to normal accounts and cannot own any actual resources. All resources belong to the primary accounts.
+    Resource Access Management \(RAM\) is a resource access control service provided by Alibaba Cloud. RAM account AKs are the AccessKeys granted by RAM. These AKs only allow access to resources in a bucket according to the rules defined by RAM. RAM helps you to collectively manage your users \(such as employees, systems, or applications\) and controls which resources your users can access. For example, you can grant limited permissions to RAM users so that they have only the read permission on a bucket. RAM accounts are subordinate to the Alibaba Cloud account and cannot own any actual resources. All resources belong to the Alibaba Cloud account.
 
 -   STS account AccessKeys
 
@@ -40,13 +42,9 @@ The three methods of authentication are:
 -   RAM authentication
 -   STS authentication
 
-Before sending a request to OSS as an individual identity,
+Before sending a request to OSS as an individual identity, a user must generate a signature string for the request according to the format specified by OSS, and then encrypt the signature string using the AccessKeySecret to generate a verification code.
 
-1.  a user must generate a signature string for the request according to the format specified by OSS
-2.  and then encrypt the signature string using the AccessKeySecret to generate a verification code.
-3.  After receiving the request, OSS finds the corresponding AccessKeySecret based on the AccessKeyID, and obtains the signature string and verification code in the same way.
-    -   If the obtained verification code is similar to the verification code provided, the request is assumed valid.
-    -   If not, OSS rejects the request and returns an HTTP 403 error.
+After receiving the request, OSS finds the corresponding AccessKeySecret based on the AccessKeyID, and obtains the signature string and verification code in the same way. If the obtained verification code is similar to the verification code provided, the request is assumed valid. If not, OSS rejects the request and returns an HTTP 403 error.
 
 Users can directly use the SDKs provided by OSS with different AccessKeys for different types of identity authentication.
 
@@ -65,20 +63,17 @@ OSS provides the following permission control to access its stored objects:
 
     OSS provides an Access Control List \(ACL\) for permission control. The OSS ACL provides bucket-level access control. Currently, three access permissions are provided for a bucket: public-read-write, public-read, and private. They are described as follows:
 
-    |Permission|Permission|Access Restriction|
-    |:---------|:---------|:-----------------|
-    |public-read-write|Public read and write|Anyone \(including anonymous users\) can read, write, and delete the objects in the bucket. The fees incurred by such operations must be borne by the owner of the bucket. Use this permission with caution.|
-    |public-read|Public read, private write|Only the owner of the bucket can write or delete the objects in the bucket. Anyone \(including anonymous users\) can read the objects in the bucket.|
-    |private|Private read and write|Only the owner of the bucket can read, write, and delete the objects in the bucket. Others cannot access the objects in the bucket without authorization.|
+    |Permission|Access restriction|
+    |:---------|:-----------------|
+    |public-read-write|Anyone \(including anonymous users\) can read, write, and delete the objects in the bucket. The fees incurred by such operations must be borne by the owner of the bucket. Use this permission with caution.|
+    |public-read|Only the owner of the bucket can write or delete the objects in the bucket. Anyone \(including anonymous users\) can read the objects in the bucket.|
+    |private|Only the owner of the bucket can read, write, and delete the objects in the bucket. Other people cannot access the objects in the bucket without authorization.|
 
--   Bucket permission settings and read methods
-
-    Reference:
-
-    -   API: [Put BucketACL](../../../../intl.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)
+-   Set and get bucket ACL
+    -   API: [PutBucketACL](../../../../intl.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)
     -   SDK: Java SDK - [Manage a bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
     -   Console: [Create a bucket](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#)
-    -   API: [Get BucketACL](../../../../intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
+    -   API: [GetBucketACL](../../../../intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
     -   SDK: Java SDK - [Manage a bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
 
 ## Object-level permissions {#section_af3_cjv_tdb .section}
@@ -87,24 +82,21 @@ OSS provides the following permission control to access its stored objects:
 
     OSS ACL provides object-level permission access control. Currently, four access permissions are available for an object, including private, public-read, public-read-write and default. You can use the "x-oss-object-acl" header in the Put Object ACL request to set the access permission. Only the bucket owner has the permission to perform this operation.
 
-    |Permission|Permission|Access restriction|
-    |:---------|:---------|:-----------------|
-    |public-read-write|Public read and write|Indicates that the object can be read and written by the public. That is, all users have the permission to read and write the object.|
-    |public-read|Public read, private write|Indicates that the object can be read by the public. Only the owner of the object has the permission to read and write the object. Other users only have the permission to read the object.|
-    |private|Private read and write|Indicates that the object is a private resource. Only the owner of the object has the permission to read and write the object. Other users have no permission to operate the object.|
-    |default|Default permissions|Indicates that the object inherits the permission of the bucket.|
+    |Permission|Access restriction|
+    |:---------|:-----------------|
+    |public-read-write|Anyone can read and write the object.|
+    |public-read|Anyone can read the object, but only the object owner can write the object.|
+    |private|Only the object owner can read and write the object. Other people have no permission to operate the object.|
+    |default|The object inherits the permission of the bucket.|
 
     **Note:** 
 
     -   If no ACL is configured for an object, the object uses the default ACL, indicating that the object has the same ACL as the bucket where the object is stored.
     -   If an ACL is configured for an object, the object ACL has higher-level permission than the bucket ACL. For example, an object with the public-read permission can be accessed by authenticated users and anonymous users, regardless of the bucket permission.
--   Object permission settings and read methods
-
-    Reference:
-
-    -   API: [Put Object ACL](../../../../intl.en-US/API Reference/Object operations/Put Object ACL.md#)
+-   Set and get object ACL
+    -   API: [PutObjectACL](../../../../intl.en-US/API Reference/Object operations/Put Object ACL.md#)
     -   SDK: [Set the object ACL](https://www.alibabacloud.com/help/doc-detail/32015.htm) in Java SDK
-    -   API: [Get Object ACL](../../../../intl.en-US/API Reference/Object operations/GetObjectACL.md#)
+    -   API: [GetObjectACL](../../../../intl.en-US/API Reference/Object operations/GetObjectACL.md#)
     -   SDK: [Get the object ACL](https://www.alibabacloud.com/help/doc-detail/32015.htm) in Java SDK
 
 ## Account-level permissions \(RAM\) {#section_mjv_sjv_tdb .section}
@@ -114,14 +106,14 @@ OSS provides the following permission control to access its stored objects:
     If you have purchased cloud resources and multiple users in your organization use them, these users have to share the AccessKey of your Alibaba Cloud account. However, the following issues may occur:
 
     -   If the key is shared by many people, a high risk of data leakage is involved.
-    -   You cannot determine which resources \(e.g. buckets\) can be accessed by the users.
-    Solution: Under your Alibaba Cloud account, you can use RAM to create subusers with their own AccessKeys. In this case, your Alibaba Cloud account is the primary account and the created accounts are the subaccounts. Subaccounts can only use their AccessKeys for the operations and resources authorized by the primary account.
+    -   You cannot determine which resources can be accessed by the users.
+    To address these issues, you can create RAM users with their own AccessKeys for your Alibaba Cloud account. In this case, your Alibaba Cloud account is the primary account and the RAM user accounts are the subaccounts. Subaccounts can only use their AccessKeys for the operations and resources authorized by the primary account.
 
--   Specific implementation
+-   Configuration
 
-    For more information, see [Overview](https://www.alibabacloud.com/help/doc-detail/28645.htm).
+    For more information about how to create a RAM user, how to grant permissions, and group access management, see the [RAM User Guide](https://www.alibabacloud.com/help/doc-detail/28645.htm).
 
-    The overview section provides the relevant links to Identity management section, Authorization management section and Typical application scenarios. For more information on how to configure policies required for authorization, see the final section Configuration Rules of this document.
+    For more information on how to configure policies required for authorization, see the **RAM and STS authorization policy configuration** section of this document.
 
 
 ## Temporary account permissions \(STS\) {#section_mjv_skv_tdb .section}
@@ -130,36 +122,36 @@ OSS provides the following permission control to access its stored objects:
 
     Users managed by your local identity system, such as your app users, your local corporate account, or third-party apps, may also directly access OSS resources called as the federated users. Additionally, users can also be the applications you create that have access to your Alibaba Cloud resources.
 
-    Considering the federated users, short-term access permission management is provided to the Alibaba Cloud account \(or RAM users\) through the Security Token Service  \(STS\) of Alibaba Cloud. You do not need to reveal the long-term key \(such as the logon password and AccessKey\) of your Alibaba Cloud account \(or RAM users\), but must create a short-term access credential for a federated user. The access permission and validity of this credential is limited to you. You must not care about permission revocation. The access credentials automatically becomes invalid when it expires.
+    Considering the federated users, short-term access permission management is provided to the Alibaba Cloud account \(or RAM users\) through the Security Token Service \(STS\) of Alibaba Cloud. You do not need to reveal the long-term key \(such as the logon password and AccessKey\) of your Alibaba Cloud account \(or RAM users\), but must create a short-term access credential for a federated user. The access permission and validity of this credential is limited to you. You must not care about permission revocation. The access credentials automatically becomes invalid when it expires.
 
     STS-based access credentials include the security token \(SecurityToken\) and the temporary AccessKey \(AccessKeyId and AccessKeySecret\). The AccessKey method is same as the method of using the AccessKey of the Alibaba Cloud account or RAM user. It is required for each OSS access request to carry a security token.
 
--   Specific implementation
+-   Configuration
 
-    For more information on STS, see [Roles](https://www.alibabacloud.com/help/doc-detail/28649.htm) in the RAM User Guide. The key is to call [AssumeRole](https://www.alibabacloud.com/help/doc-detail/28763.htm) of the STS interface to obtain valid access credential. You can directly use STS SDK to call the access credential.
+    For more information on STS, see [Roles](https://www.alibabacloud.com/help/doc-detail/28649.htm) in the *RAM User Guide*. You can call [AssumeRole](https://www.alibabacloud.com/help/doc-detail/28763.htm) of the STS interface or directly use the STS SDK to obtain valid access credentials.
 
 
 ## RAM and STS scenario practices {#section_scy_dlv_tdb .section}
 
-In different scenarios, how the access identity is verified may change. The following are two methods described to access identity verification in typical scenarios.
+How the access identity is verified may vary with scenarios. This sections describes two methods of identity verification in typical scenarios.
 
-A mobile app is used as an example. Assume that you are a mobile app developer. You attempt to use the Alibaba Cloud OSS to store end user data for that app. Make sure that the data is isolated between app users to prevent an app user from obtaining data of other app users.
+A mobile app is used as an example. Suppose that you are a mobile app developer. You attempt to use the Alibaba Cloud OSS to store end user data for that app. Make sure that the data is isolated between app users.
 
 -   Mode 1: Using AppServer for data transit and data isolation
 
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/982_en-US.png)
 
-    As shown in the preceding figure, you must develop an AppServer. Only the AppServer can access ECS. The ClientApp can read or write data only through the AppServer. The AppServer makes sure the isolated access to different user data.
+    As shown in the preceding figure, you develop an AppServer. Only the AppServer can access cloud data. The ClientApp can read or write data only through the AppServer. The AppServer guarantees the data isolation of different users.
 
-    In this method, you can use the key provided by your Alibaba Cloud account or RAM account for signature verification. In case of any security issues, do not directly use the key of your Alibaba Cloud account \(root account\) to access OSS.
+    In this method, you can use the AccessKey provided by your Alibaba Cloud account or RAM account for signature verification. In case of any security issues, do not directly use the AccessKey of your Alibaba Cloud account to access OSS.
 
 -   Mode 2: Using STS for direct access to OSS
 
-    The STS solution diagram:
+    The STS solution is shown as follows:
 
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/983_en-US.png)
 
-    Procedure
+    **Procedure**
 
     1.  Log on as the app user. The app user is irrelative to the Alibaba Cloud account but is an end user of the app. The AppServer allows the app user to log on. For each valid app user, the AppServer must define the minimum access permission.
     2.  The AppServer requests a security token \(SecurityToken\) from the STS.  Before calling STS, the AppServer needs to determine the minimum access permission \(described in policy syntax\) of app users and the expiration time of the authorization. Then, the AppServer uses AssumeRole to obtain a security token indicating a role. For more information, see Roles in the RAM User Guide.
@@ -173,54 +165,52 @@ Following is the example of the RAM or STS authorization policy configuration:
 
 -   Example
 
-    Policy example
-
     ```
-    
+    {
         "Version": "1",
         "Statement": [
-            
+            {
                 "Action": [
                     "oss:GetBucketAcl",
                     "oss:ListObjects"
-                
+                ],
                 "Resource": [
                     "acs:oss:*:1775305056529849:mybucket"
-                
+                ],
                 "Effect": "Allow",
                 "Condition": {
                     "StringEquals": {
                         "acs:UserAgent": "java-sdk",
                         "oss:Prefix": "foo"
-                    
+                    },
                     "IpAddress": {
                         "acs:SourceIp": "192.168.0.1"
                     }
-                
-            
-            
+                }
+            },
+            {
                 "Action": [
                     "oss:PutObject",
                     "oss:GetObject",
                     "oss:DeleteObject"
-                
+                ],
                 "Resource": [
                     "acs:oss:*:1775305056529849:mybucket/file*"
-                
+                ],
                 "Effect": "Allow",
                 "Condition": {
                     "IpAddress": {
                         "acs:SourceIp": "192.168.0.1"
-                    
-                
-            
-        
-    
+                    }
+                }
+            }
+        ]
+    }
     ```
 
     This is the authorization policy and it can be used to grant permissions for users through RAM or STS. The policy has a Statement \(one policy can have multiple Statements\). In this Statement, Action, Resource, Effect, and Condition are specified.
 
-    This policy authorizes your `mybucket` and `mybucket/file*` resources to corresponding users and supports GetBucketAcl, GetBucket, PutObject, GetObject, and DeleteObject actions. The Condition indicates that authentication is successful and authorized users can access related resources only when UserAgent is java-sdk and the source IP address is 192.168.0.1. The Prefix and Delimiter conditions apply during the GetBucket \(ListObjects\) action. For more information about the two fields, see OSS API Documentation.
+    This policy authorizes your `mybucket` and `mybucket/file*` resources to corresponding users and supports GetBucketAcl, GetBucket, PutObject, GetObject, and DeleteObject actions. The Condition indicates that authentication is successful and authorized users can access related resources only when UserAgent is java-sdk and the source IP address is 192.168.0.1. The Prefix and Delimiter conditions apply during the GetBucket \(ListObjects\) action.
 
 -   Configuration rules
     -   Version
@@ -233,8 +223,9 @@ Following is the example of the RAM or STS authorization policy configuration:
 
     -   Action
 
-        Actions fall into three categories. Service-level action is GetService used to list all buckets belongs to the user.
+        Actions fall into three categories.
 
+        -   Service-level action is GetService, which is used to list all buckets belongs to the user.
         -   Bucket-level actions include oss:PutBucketAcl and oss:GetBucketLocation. The action objects are buckets and the action names correspond to the involved interfaces in a one-to-one manner.
         -   Object-level actions include oss:GetObject, oss:PutObject, oss:DeleteObject, oss:DeleteObject, and oss:AbortMultipartUpload.
         To authorize actions for a type of object, you can select one or more of the preceding actions. Additionally, all action names must be prefixed with "oss:", as mentioned in the preceding example. Action is a list and there can be multiple Actions. The mapping between Actions and APIs is as follows:
@@ -299,7 +290,7 @@ Following is the example of the RAM or STS authorization policy configuration:
 
 -   Resource
 
-    Resource stands for a specific resource or resources on OSS \(the wildcard is supported\). Resources are named in the format of `acs:oss:{region}:{bucket_owner}:{bucket_name}/{object_name}`. For all bucket-level actions, the final part "/object\_name" is not required. You can render it as `acs:oss:{region}:{bucket_owner}:{bucket_name}`. Resource is a list and there can be multiple Resources. Here, the region field is currently not supported and set as "\*".
+    Resource stands for a specific resource or resources on OSS \(the wildcard is supported\). Resources are named in the format of `acs:oss:{region}:{bucket_owner}:{bucket_name}/{object_name}`. For all bucket-level actions, the final part "/object\_name" is not required. You can render it as `acs:oss:{region}:{bucket_owner}:{bucket_name}`. Resource is a list and multiple resources are allowed. Here, the region field is currently not supported and set to "\*".
 
 -   Effect
 
@@ -308,29 +299,29 @@ Following is the example of the RAM or STS authorization policy configuration:
     For example, deny the deletion of a certain directory, but allow all operations for other files:
 
     ```
-    
+    {
       "Version": "1",
       "Statement": [
-        
+        {
           "Effect": "Allow",
           "Action": [
             "oss:*"
-          
+          ],
           "Resource": [
             "acs:oss:*:*:bucketname"
-          
-        
-        
+          ]
+        },
+        {
           "Effect": "Deny",
           "Action": [
             "oss:DeleteObject"
-          
+          ],
           "Resource": [
             "acs:oss:*:*:bucketname/index/*",
-          
-        
-      
-    
+          ]
+        }
+      ]
+    }
     ```
 
 -   Condition
@@ -350,9 +341,9 @@ Following is the example of the RAM or STS authorization policy configuration:
 
 ## More examples {#section_ocz_zpv_tdb .section}
 
-For more scenarios-specific authorization policy configuration examples, see [Tutorial: control access to buckets and folders](intl.en-US/Developer Guide/Access and control/Tutorial: Control access to buckets and folders.md#) and [OSS FAQ](https://www.alibabacloud.com/help/faq-list/39711.htm).
+For more examples of authorization policy configuration, see [Tutorial: control access to buckets and folders](intl.en-US/Developer Guide/Access and control/Tutorial: Control access to buckets and folders.md#) and [OSS FAQ](https://www.alibabacloud.com/help/faq-list/39711.htm).
 
-For the online policy graphical configuration tool, click [here](http://gosspublic.alicdn.com/ram-policy-editor/index.html?spm=a2c4g.11186623.2.23.VMkTIw).
+For the online policy graphical configuration tool, click [here](http://gosspublic.alicdn.com/ram-policy-editor/english.html).
 
 ## Best practices {#section_dlf_bqv_tdb .section}
 

@@ -36,7 +36,7 @@ You can access OSS through the Internet by using either of the following methods
 
 -   Method 2: Configure the Internet access domain name through OSS SDKs.
 
-    OSS The SDK will help users access the domain name for each operation mosaic. OSS SDKs construct the access domain name for each of your operation. However, you must set the endpoint for the region.
+    OSS The SDK will help users access the domain name for each operation mosaic. However, you must set different endpoints when operating buckets of different regions.
 
     For example, before configuring buckets in the region China East 1, you must set the endpoint during class instantiation.
 
@@ -50,14 +50,14 @@ You can access OSS through the Internet by using either of the following methods
 
 ## Access OSS through an intranet {#section_r14_5vv_tdb .section}
 
-Intranet refers to the internal communication networks among Alibaba Cloud products. For example, you access OSS through ECS or configure the origin fetch function through Alibaba Cloud CDN. In an intranet, the inbound and outbound traffic is free. If the ECS instance and the OSS bucket are in the same region, we recommend that you use an intranet to access OSS.
+Intranet refers to the internal communication networks among Alibaba Cloud products. For example, you access OSS through ECS.  In an intranet, the inbound and outbound traffic is free. If the ECS instance and the OSS bucket are in the same region, we recommend that you use an intranet to access OSS.
 
 You can access OSS through an intranet by using either of the following methods:
 
 -   Method 1: Use the URL to access OSS resource. The URL is constructed as follows:
 
     ```
-    <Schema>://<Bucket>.<Intranet Endpoint>/<Object> , where:
+    <Schema>://<Bucket>.<IntranetEndpoint>/<Object>, where: 
       Schema is HTTP or HTTPS.
       Bucket is your OSS storage space.
       Endpoint is the access domain name for the region of a bucket. Enter the intranet endpoint here.
@@ -67,7 +67,7 @@ You can access OSS through an intranet by using either of the following methods:
     For example, in the region China East 1, the object named myfile/aaa.txt is stored in the bucket abc. The intranet access address of the object is:
 
     ```
-    abc.oss-cn-hangzhou-internal.aliyuncs.com/myfile/aaa.txt
+    abc.oss-cn-hangzhou-internal.aliyuncs.com/myfile/aaa.txt 
     ```
 
 -   Method 2: Configure the intranet access domain name using OSS SDKs on ECS.

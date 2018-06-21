@@ -5,8 +5,8 @@ If you do not need a bucket, delete it to avoid further charges. To delete a buc
 Procedure
 
 1.   Log on to the [OSS console](https://oss.console.aliyun.com/). 
-2.   In the bucket list on the left, click the name of the target bucket, and then click**Delete Bucket** in the upper-right corner, as shown in the following figure: 
-3.   In the dialog box that appears, click **OK**, as shown in the following figure: 
+2.   In the bucket name list, click the name of the bucket that you want to delete, and then click**Delete Bucket**. 
+3.   In the dialog box that appears, click **OK**. 
 
     **Note:** A deleted bucket cannot be recovered. Therefore, delete buckets with caution.
 

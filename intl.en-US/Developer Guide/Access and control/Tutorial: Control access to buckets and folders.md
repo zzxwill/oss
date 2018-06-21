@@ -65,8 +65,8 @@ Content-Type: application/xml
 Content-Length: 712
 Connection: keep-alive
 Server: AliyunOSS
-<? xml version="1.0" encoding="UTF-8"? >
-<ListBucketResult xmlns=¡±http://doc.oss-cn-hangzhou.aliyuncs.com¡±>
+<?xml version="1.0" encoding="UTF-8"?>
+<ListBucketResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
 <Name>example-company</Name>
 <Prefix></Prefix>
 <Marker></Marker>
@@ -75,7 +75,7 @@ Server: AliyunOSS
     <IsTruncated>false</IsTruncated>
     <Contents>
         <Key>oss-dg.pdf</Key>
-        
+        ...
     </Contents>
    <CommonPrefixes>
         <Prefix>Development</Prefix>
@@ -119,8 +119,8 @@ Content-Type: application/xml
 Content-Length: 712
 Connection: keep-alive
 Server: AliyunOSS
-<? xml version="1.0" encoding="UTF-8"? >
-<ListBucketResult xmlns=¡±http://doc.oss-cn-hangzhou.aliyuncs.com¡±>
+<?xml version="1.0" encoding="UTF-8"?>
+<ListBucketResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
 <Name>example-company</Name>
 <Prefix>Development/</Prefix>
 <Marker></Marker>
@@ -129,11 +129,11 @@ Server: AliyunOSS
     <IsTruncated>false</IsTruncated>
     <Contents>
         <Key>ProjectA.docx</Key>
-        
+        ...
     </Contents>
     <Contents>
         <Key>ProjectB.docx</Key>
-        
+        ...
     </Contents>
 </ListBucketResult>
 ```
@@ -176,7 +176,7 @@ In this step, you log on to the   OSS console with your primary account creden
 1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
 2.  Create a bucket named **example-company** .
 
-    For detailed procedures, see [../../../../dita-oss-bucket/SP\_21/DNOSS11848834/EN-US\_TP\_4740.md\#](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the OSS Console User Guide.
+    For detailed procedures, see [Create a bucket](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the OSS Console User Guide.
 
 3.  Upload one file to the bucket.
 
@@ -246,20 +246,20 @@ In this step, you create a policy that grants users minimum permissions.  With 
     4.  In the Policy Content field, copy and paste the following policy.
 
         ```
-        
+        {
         "Version": "1",
         "Statement": [
-         
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListBuckets"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:*"
-           
-         
-        
-        
+           ]
+         }
+        ]
+        }
         ```
 
         **Note:** A policy is a  JSON document.  In the policy, the Statement attribute is an array of objects, and each object describes a permission using a collection of name value pairs.  The preceding policy describes one specific permission.  The Effect  attribute value determines whether a specific permission is allowed or denied.  The Action attribute specifies the type of access.  In the policy, the oss:ListBuckets is a predefined OSS  action, which returns a list of all buckets owned by the authenticated sender.
@@ -295,41 +295,41 @@ In this step, you grant permissions to allow all users to list all the items in 
     For detailed procedures, see the  [Modify a custom authorization policy](https://www.alibabacloud.com/help/doc-detail/28652.htm) section of **Authorization policies** in the RAM User Guide.  Note that you can modify a   RAM policy a maximum of five times.  If this is exceeded, you must delete the policy, created a new one, and then attach the policy to the Staff group again.
 
     ```
-    
+     {
        "Version": "1",
        "Statement": [
-         
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListBuckets",
              "oss:GetBucketAcl"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:*"
-           
+           ],
            "Condition": {}
-         
-         
+         },
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListObjects"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:example-company"
-           
+           ],
            "Condition": {
              "StringLike": {
                "oss:Prefix": [
-                 
-               
+                 ""
+               ],
                "oss:Delimiter": [
-                 
-               
-             
-           
-         
-       
-     
+                 "/"
+               ]
+             }
+           }
+         }
+       ]
+     }
     ```
 
     **Note:** 
@@ -383,27 +383,27 @@ For Anne to list the  Development folder content,  you must attach a policy to
     4.  In the Policy Content field, copy and paste the following policy.
 
         ```
-        
+        {
         "Version": "1",
         "Statement": [
-         
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListObjects"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:example-company"
-           
+           ],
            "Condition": {
              "StringLike": {
                "oss:Prefix": [
                  "Development/*"
-               
-             
-           
-         
-        
-        
+               ]
+             }
+           }
+         }
+        ]
+        }
         ```
 
 3.  Attach the policy to the RAM user Anne. 
@@ -426,39 +426,39 @@ For Anne to get and put objects in the Development  folder, you must grant her 
     For detailed procedures, see  the [Modify a custom authorization policy](https://www.alibabacloud.com/help/doc-detail/28652.htm) section of **Authorization policies** in the RAM User Guide.  Note that you can modify a RAM  policy a maximum of five times.  If this is exceeded, you must delete the policy, created a new one, and then attach the policy to the  user again.
 
     ```
-    
+     {
        "Version": "1",
        "Statement": [
-         
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListObjects"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:example-company"
-           
+           ],
            "Condition": {
              "StringLike": {
                "oss:Prefix": [
                  "Development/*"
-               
-             
-           
-         
-         
+               ]
+             }
+           }
+         },
+         {
            "Effect": "Allow",
            "Action": [
              "oss:GetObject",
              "oss:PutObject",
              "oss:GetObjectAcl"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:example-company/Development/*"
-           
+           ],
            "Condition": {}
-         
-       
-     
+         }
+       ]
+     }
     ```
 
     **Note:** When a user logs on to the  OSS console, the console checks the user’s identities for access to the OSS service.  To support bucket operations in the console, we also need to add the oss:GetObjectAcl  action.
@@ -478,78 +478,78 @@ RAM user Anne can now list the root-level content in the example-company  bucke
 You can add the following statement to the RAM user Anne’s policy  **AllowListBucketsIfSpecificPrefixIsIncluded**. The following statement requires all requests that Anne sends to OSS to include the prefix parameter, and the parameter value can be either  Development/\*  or an empty string.
 
 ```
-
+    {
       "Effect": "Deny",
       "Action": [
         "oss:ListObjects"
-      
+      ],
       "Resource": [
         "acs:oss:*:*:example-company"
-      
+      ],
       "Condition": {
         "StringNotLike": {
           "oss:Prefix": [
             "Development/*",
-            
-          
-        
-      
-    
+            ""
+          ]
+        }
+      }
+    }
 ```
 
 Follow the preceding step to  update the policy  **AllowListBucketsIfSpecificPrefixIsIncluded** that you created for RAM user Anne.  Copy and paste the following policy to replace the existing one.
 
 ```
-
+{
   "Version": "1",
   "Statement": [
-    
+    {
       "Effect": "Allow",
       "Action": [
         "oss:ListObjects"
-      
+      ],
       "Resource": [
         "acs:oss:*:*:example-company"
-      
+      ],
       "Condition": {
         "StringLike": {
           "oss:Prefix": [
-            "Development /*"
-          
-        
-      
-    
-    
+            "Development/*"
+          ]
+        }
+      }
+    },
+    {
       "Effect": "Allow",
       "Action": [
         "oss:GetObject",
         "oss:PutObject",
         "oss:GetObjectAcl"
-      
+      ],
       "Resource": [
         "acs:oss:*:*:example-company/Development/*"
-      
+      ],
       "Condition": {}
-    
-    
+    },
+    {
       "Effect": "Deny",
       "Action": [
         "oss:ListObjects"
-      
+      ],
       "Resource": [
         "acs:oss:*:*:example-company"
-      
+      ],
       "Condition": {
         "StringNotLike": {
           "oss:Prefix": [
-            "Development /*",
-            
-          
-        
-      
-    
-  
-
+            "Development/*",
+            ""
+          ]
+        }
+      }
+    }
+  ]
+}
 ```
 
 ## Step 6:  Grant RAM user Leo specific permissions {#section_sfj_hh3_5db .section}
@@ -563,37 +563,37 @@ In this example, you have only two users.  You have granted all the minimum req
 -   Add the following statement to explicitly deny any action on resources in the Private folder \(example-company/Private/\*\) .
 
     ```
-    
+    {
         "Effect": "Deny",
         "Action": [
           "oss:*"
-        
+        ],
         "Resource": [
           "acs:oss:*:*:example-company/Private/*"
-        
+        ],
         "Condition": {}
-      
+      }
     ```
 
 -   You also deny permission for the ListObjects action when the request specifies the Private/ prefix.  In the console, if Anne or Leo clicks the Private  folder, this policy causes OSS  to return an error response.
 
     ```
-    
+      {
         "Effect": "Deny",
         "Action": [
           "oss:ListObjects"
-        
+        ],
         "Resource": [
           "acs:oss:*:*:*"
-        
+        ],
         "Condition": {
           "StringLike": {
             "oss:Prefix": [
               "Private/"
-            
-          
-        
-      
+            ]
+          }
+        }
+      }
     ```
 
 -   Replace the Staff group policy  **AllowGroupToSeeBucketListInConsole** with an updated policy that includes the preceding deny statements.  After the updated policy is applied, none of the users in the group can access the Private folder in your bucket.
@@ -602,67 +602,67 @@ In this example, you have only two users.  You have granted all the minimum req
     2.  Replace the existing policy **AllowGroupToSeeBucketListInConsole** that is attached to the Staff group with the following policy.  Remember to replace  example-company in the policy Resource with the name of your bucket.
 
         ```
-        
+        {
         "Version": "1",
         "Statement": [
-         
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListBuckets",
              "oss:GetBucketAcl"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:*"
-           
+           ],
            "Condition": {}
-         
-         
+         },
+         {
            "Effect": "Allow",
            "Action": [
              "oss:ListObjects"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:example-company"
-           
+           ],
            "Condition": {
              "StringLike": {
                "oss:Prefix": [
-                  
-                
+                  ""
+                ],
                "oss:Delimiter": [
-                 
-               
-             
-           
-         
-         
+                 "/"
+               ]
+             }
+           }
+         },
+         {
            "Effect": "Deny",
            "Action": [
              "oss:*"
-           
+           ],
            "Resource": [
              "acs:oss:*:*:example-company/Private/*"
-           
+           ],
            "Condition": {}
-         
-         
+         },
+         {
            "Effect": "Deny",
            "Action": [
-             "Oss: Loud"
-           
+             "oss:ListObjects"
+           ],
            "Resource": [
              "acs:oss:*:*:*"
-           
+           ],
            "Condition": {
              "StringLike": {
                "oss:Prefix": [
                  "Private/"
-               
-             
-           
-         
-        
-        
+               ]
+             }
+           }
+         }
+        ]
+        }
         ```
 
 

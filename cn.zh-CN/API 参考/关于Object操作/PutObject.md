@@ -51,7 +51,7 @@ Authorization: SignatureValue
 -   如果请求头中的“Content-Length”值小于实际请求体（body）中传输的数据长度，OSS仍将成功创建文件；但Object大小只等于“Content-Length”中定义的大小，其他数据将被丢弃。
 -   如果试图添加的Object的同名文件已经存在，并且有访问权限。新添加的文件将覆盖原来的文件，成功返回200 OK。
 -   如果在PutObject的时候，携带以x-oss-meta-为前缀的参数，则视为user meta，比如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的user meta总大小不能超过8k。
--   如果Head中没有加入Content length参数，会返回411 Length Required错误。错误码：MissingContentLength。
+-   如果Header不是[chunked encoding](https://tools.ietf.org/html/rfc2616#section-3.6.1)编码方式，且没有加入Content length参数，会返回411 Length Required错误。错误码：MissingContentLength。
 -   如果设定了长度，但是没有发送消息Body，或者发送的body大小小于给定大小，服务器会一直等待，直到time out，返回400 Bad Request消息。错误码：RequestTimeout。
 -   如果试图添加的Object所在的Bucket不存在，返回404 Not Found错误。错误码：NoSuchBucket。
 -   如果试图添加的Object所在的Bucket没有访问权限，返回403 Forbidden错误。错误码：AccessDenied。

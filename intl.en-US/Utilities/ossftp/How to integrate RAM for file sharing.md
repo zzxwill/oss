@@ -5,7 +5,7 @@
 This document instructs you on integrating the RAM service to share files and folders in user buckets. Other users have read-only permission, while the bucket owner can edit the objects.
 
 ```
-Process: Activate RAM -> Create a read-only authorization policy  -> Create sub-accounts -> Grant permissions to the sub-accounts -> Verify FTP logon
+Process: Activate RAM -> Create a read-only authorization policy -> Create sub-accounts -> Grant permissions to the sub-accounts -> Verify FTP logon
 ```
 
 ## Retrieve account ID {#section_cpb_jkb_wdb .section}
@@ -16,9 +16,7 @@ Retrieve your account ID,  as shown in the following figure:
 
 ## Activate RAM {#section_ijs_rkb_wdb .section}
 
-Resource Access Management \(RAM\)  is an Alibaba Cloud service designed for controlling resource access.  By creating a policy, you can create a shared read account. Users can use this account to log on to the FTP  tool 
-
-and read your files.
+Resource Access Management \(RAM\)  is an Alibaba Cloud service designed for controlling resource access. By creating a policy, you can create a shared read account. Users can use this account to log on to the FTP tool and read your files
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6265_en-US.png)
 
@@ -74,7 +72,7 @@ In the preceding example, replace `****************` with your own account ID an
 
 ## Create an account {#section_a3y_hlb_wdb .section}
 
-The preceding authorization policy produces a read-only policy. Then, we create an account and grant this policy to the account.  Follow these steps to create an account:
+The preceding authorization policy produces a read-only policy. Then, we create an account and grant this policy to the account. Follow these steps to create an account:
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4868/6267_en-US.png)
 

@@ -14,7 +14,7 @@ Authorization: SignatureValue
 ## Detail analysis {#section_anj_n3w_bz .section}
 
 -   If the bucket does not exist, Error 404 No Content with the error code "NoSuchBucket" is returned.
--   Only the bucket owner can disable the access logging function for the bucket.  If you try to operate a bucket which does not belong to you, OSS returns the error 403  Forbidden with the error code: AccessDenied.
+-   Only the bucket owner can disable the access logging function for the bucket. If you try to operate a bucket which does not belong to you, OSS returns the error 403  Forbidden with the error code: AccessDenied.
 -   If the access logging function is not enabled for the target bucket, HTTP status code 204 is returned.
 
 ## Example {#section_isc_43w_bz .section}

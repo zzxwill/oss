@@ -4,19 +4,19 @@ In the previous documents, we used only the RAM user functions. These user accou
 
 In the previous example, assume that our developer’s app allows users to upload data to the OSS bucket am-test-app and currently, the number of app users is large. In this case, how can the app securely grant data upload permissions to many users and how can it be certain of storage isolation among multiple users?
 
-In such scenarios, we need to grant users temporary access using STS.  STS can be used to specify a complex policy that restricts specified users by only granting them the minimum necessary permissions.
+In such scenarios, we need to grant users temporary access using STS. STS can be used to specify a complex policy that restricts specified users by only granting them the minimum necessary permissions.
 
 ## Create a role {#section_csx_hvf_vdb .section}
 
-Based on the example in the previous document, the app user has a bucket, ram-test-app, to store personal data.  A role can be created as follows:
+Based on the example in the previous document, the app user has a bucket, ram-test-app, to store personal data. A role can be created as follows:
 
 1.  Create a RAM user account named ram\_test\_app using the process illustrated in the previous documents. Do not grant this account any permissions, because it inherits the permissions of a role which it assumes.
-2.  Create roles.  Here you must create two roles for users to perform read operations and to upload files respectively.
+2.  Create roles. Here you must create two roles for users to perform read operations and to upload files respectively.
     -   Log on to the RAM console and select **Roles** \> **New Role**.
-    -   Select a role type. Here you must select User role.![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4419/6283_en-US.png)
-    -   Enter the role type information.  Because this role has been used by its own Alibaba Cloud account. Use the default setting.
+    -   Select a role type. Here you must select **User role**.![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4419/6283_en-US.png)
+    -   Enter the role type information. Because this role has been used by its own Alibaba Cloud account. Use the default setting.
     -   Configure basic role information.![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4419/6284_en-US.png)
-3.  When the role was created, it did not have any permissions. Therefore, we must create a custom authorization policy using the process described earlier.  The following is the authorization policy:
+3.  When the role was created, it did not have any permissions. Therefore, we must create a custom authorization policy using the process described earlier. The following is the authorization policy:
 
     ```
     {
@@ -79,7 +79,7 @@ After creating roles, we can use them to grant temporary access to OSS.
 
 Preparation
 
-Authorization is required for assuming roles.  Otherwise, any RAM user could assume these roles, which can lead to unpredictable risks. Therefore, to assume corresponding roles, a RAM user needs to have explicitly configured permissions.
+Authorization is required for assuming roles. Otherwise, any RAM user could assume these roles, which can lead to unpredictable risks. Therefore, to assume corresponding roles, a RAM user needs to have explicitly configured permissions.
 
 1.  Create two custom authorization policies in authorization policy management.![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4419/6289_en-US.png)
 
@@ -119,7 +119,7 @@ Use STS to grant access permissions
 
 Now, we are ready with the platform to officially use STS to grant access permissions.
 
-Here we use a simple STS Python command line tool [sts.py](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/tool/sts.py?spm=a2c4g.11186623.2.4.RUB3Bg&file=sts.py).  The calling method is as follows:
+Here we use a simple STS Python command line tool [sts.py](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/tool/sts.py?spm=a2c4g.11186623.2.4.RUB3Bg&file=sts.py). The calling method is as follows:
 
 ```
 $python ./sts.py AssumeRole RoleArn=acs:ram::1894189769722283:role/ramtestappreadonly RoleSessionName=usr001 Policy='{"Version":"1","Statement":[{"Effect":"Allow","Action":["oss:ListObjects","oss:GetObject"],"Resource":["acs:oss:*:*:ram-test-app","acs:oss:*:*:ram-test-app/*"]}]}' DurationSeconds=1000 --id=id --secret=secret
@@ -131,13 +131,13 @@ $python ./sts.py AssumeRole RoleArn=acs:ram::1894189769722283:role/ramtestapprea
 -   DurationSeconds: indicate the validity time of the temporary credentials in seconds. The minimum value is 900, and the maximum value is 3600.
 -   id and secret: indicate the AccessKey of the RAM user to assume a role.
 
-Here, we need to explain what is meant by “Policy”. The policy mentioned here is used to restrict the temporary credential permissions after a role is assumed.  Ultimately, the permissions obtained by means of temporary credentials are overlapping permissions of the role and the policy passed in.
+Here, we need to explain what is meant by “Policy”. The policy mentioned here is used to restrict the temporary credential permissions after a role is assumed. Ultimately, the permissions obtained by means of temporary credentials are overlapping permissions of the role and the policy passed in.
 
 When a role is assumed, a policy can be entered to increase the flexibility. For example, when uploading the files, we can add different upload path restrictions for different users. This is shown in the following example.
 
 Now, let's test the STS function. To test the bucket, first use the console to put the file test.txt in ram-test-app, with the content ststest.
 
-Firstly, use the RAM user account ram\_test\_app to directly access the file.  Next, replace AccessKey with your own access key used in the test.
+Firstly, use the RAM user account ram\_test\_app to directly access the file. Next, replace AccessKey with your own access key used in the test.
 
 ```
 [admin@NGIS-CWWF344M01C /home/admin/oss_test]
@@ -176,7 +176,7 @@ Without access permission, access attempts using the RAM user account ram\_test\
 
 Use temporary authorization for downloads
 
-Now, we use STS to download files. To make it simple to understand, the entered policy and the role policy are the same. The expiration time is set to 3600s, and the app user here is usr001.  The steps are as follows:
+Now, we use STS to download files. To make it simple to understand, the entered policy and the role policy are the same. The expiration time is set to 3600s, and the app user here is usr001. The steps are as follows:
 
 1.  Use STS to obtain a temporary credential.
 
@@ -233,7 +233,7 @@ Now, we use STS to download files. To make it simple to understand, the entered 
 
 Use temporary authorization for uploads
 
-Now, we will try to use STS to upload a file.  The steps are as follows:
+Now, we will try to use STS to upload a file. The steps are as follows:
 
 1.  Obtain an STS temporary credential. The app user is usr001.
 
@@ -291,7 +291,7 @@ Now, we will try to use STS to upload a file.  The steps are as follows:
      put Failed!
     ```
 
-    The test.txt upload fails.   We have formatted the entered policy discussed at the beginning of this document, which is as follows:
+    The test.txt upload fails. We have formatted the entered policy discussed at the beginning of this document, which is as follows:
 
     ```
     {
@@ -329,5 +329,5 @@ Now, we will try to use STS to upload a file.  The steps are as follows:
 
 ## Summary {#section_zf1_3dg_vdb .section}
 
-This section describes how to grant users temporary access authorization for OSS using STS.  In typical mobile development scenarios, STS can be used to grant temporary authorizations to access OSS when different app users need to access the app.  The temporary authorization can be configured with expiration time to greatly reduce the hazards caused by leaks.  When obtaining temporary authorization, we can enter different authorization policies for different app users to restrict their access permissions. For example, to restrict the object paths accessible to users. This isolates the storage space of different app users.
+This section describes how to grant users temporary access authorization for OSS using STS. In typical mobile development scenarios, STS can be used to grant temporary authorizations to access OSS when different app users need to access the app.  The temporary authorization can be configured with expiration time to greatly reduce the hazards caused by leaks. When obtaining temporary authorization, we can enter different authorization policies for different app users to restrict their access permissions. For example, to restrict the object paths accessible to users. This isolates the storage space of different app users.
 

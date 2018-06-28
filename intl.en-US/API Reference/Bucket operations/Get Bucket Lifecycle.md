@@ -1,6 +1,8 @@
-# Get Bucket Lifecycle {#reference_zq5_grw_tdb .reference}
+# GetBucketLifecycle {#reference_zq5_grw_tdb .reference}
 
 GetBucketLifecycle is used to view the lifecycle configuration of a bucket.
+
+## Request syntax {#section_kn3_zhw_bz .section}
 
 ```
 GET /? lifecycle HTTP/1.1

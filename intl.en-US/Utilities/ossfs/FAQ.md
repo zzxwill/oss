@@ -33,7 +33,7 @@
         -   Use the ls -f command, which eliminates n HTTP requests with OSS.
         -   See [issue 13](https://github.com/aliyun/ossfs/issues/13) for details.
 -   Q: How do I set permissions during ossfs mounting?
-    -   If you want to allow other users to access mounted folders, specify the `allow_other` parameter as follows when running ossfs:
+    -   If you want to allow other users to access mounted folders, specify the allow\_other parameter as follows when running ossfs:
         -   ```
 ossfs your_bucket your_mount_point -ourl=your_endpoint -o
                   allow_other

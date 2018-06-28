@@ -14,7 +14,7 @@ Authorization: SignatureValue
 ## Detail analysis {#section_wlr_xzc_xdb .section}
 
 -   If the bucket does not exist, OSS returns the 404 no content error, error code: NoSuchBucket.
--   Only the owner of the bucket can delete the CORS rules corresponding to the bucket.  If you try to operate a bucket which does not belong to you, OSS returns the 403  Forbidden error, error code: accessdenied.
+-   Only the owner of the bucket can delete the CORS rules corresponding to the bucket. If you try to operate a bucket which does not belong to you, OSS returns the 403  Forbidden error, error code: accessdenied.
 
 ## Examples {#section_i1t_zzc_xdb .section}
 

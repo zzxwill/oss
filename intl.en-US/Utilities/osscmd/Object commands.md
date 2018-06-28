@@ -18,10 +18,7 @@ Example:
 
 Command instructions:
 
-```
-ls(list) oss://bucket/[prefix] --marker=xxx --delimiter=xxx --maxkeys=xxx
-        --encoding_type=url
-```
+`ls(list) oss://bucket/[prefix] --marker=xxx --delimiter=xxx --maxkeys=xxx`
 
 List object in the bucket. Where name\_type specifies the encoding used in the transmission. when the URL encoding is specified, the display of objects with control characters is supported.
 
@@ -73,26 +70,15 @@ Example:
 
 Command instructions:
 
-```
-downloadallobject oss://bucket/[prefix] localdir --replace=false
-      --thread_num=5
-```
+`downloadallobject oss://bucket/[prefix] localdir --replace=false --thread_num=5`
 
 Download the objects in the bucket to a local directory, with the directory structure unchanged. The prefix can be specified for downloading. —replace=false indicates that if a local file already exists with the same name, it is not replaced during the download.  —replace=true indicates that the local file with the same name is replaced. You can also configure the download thread with thread\_num.
 
 Example:
 
 -   `python osscmd downloadallobject oss://mybucket /tmp/folder`
--   ```
-python osscmd downloadallobject oss://mybucket /tmp/folder
-        –-replace=false
-```
-
--   ```
-python osscmd downloadallobject oss://mybucket /tmp/folder –-replace=true
-          --thread_num=5
-```
-
+-   `python osscmd downloadallobject oss://mybucket /tmp/folder –-replace=false`
+-   `python osscmd downloadallobject oss://mybucket /tmp/folder –-replace=true --thread_num=5`
 
 ## downloadtodir {#section_xt5_wgc_wdb .section}
 
@@ -106,20 +92,13 @@ Example:
 
 -   `python osscmd downloadtodir oss://mybucket /tmp/folder`
 -   `python osscmd downloadtodir oss://mybucket /tmp/folder –-replace=false`
--   ```
-python osscmd downloadtodir oss://mybucket /tmp/folder
-      –-replace=true
-```
-
+-   `python osscmd downloadtodir oss://mybucket /tmp/folder –-replace=true`
 
 ## uploadfromdir {#section_zt5_wgc_wdb .section}
 
 Command instructions:
 
-```
-uploadfromdir localdir oss://bucket/[prefix] --check_point=check_point_file --replace=false
-        --check_md5=false --thread_num=5
-```
+`uploadfromdir localdir oss://bucket/[prefix] --check_point=check_point_file --replace=false --check_md5=false --thread_num=5`
 
 Upload local files into the bucket. For example, the localdir is `/tmp/`.
 
@@ -127,30 +106,19 @@ If the following three files need to be uploaded: `a/b`, `a/c`, and `a`, they be
 
 `--check_point=check_point_file` is the specified file. After the files are specified, osscmd puts the uploaded local files into check\_point\_file as time stamps, and the uploadfromdir command compares the time stamps of the files being uploaded with that recorded in check\_point\_file. If the files change, they are re-uploaded. Otherwise the file is skipped. The check\_point\_file does not exist by default. `--replace=false` indicates that if a local file already exists with the same name, it is not replaced during the download. —replace=true indicates that the local file with the same name is replaced. `--check_md5=false` indicates that when the files are being uploaded, the Content-MD5 request header does not undergo verification. True indicates that the Content-MD5 request header undergoes verification.
 
-> Note: The logs in the check\_point\_file involve all the uploaded files. When too many files are uploaded, the check\_point\_file is sizable.
+**Note:** The logs in the check\_point\_file involve all the uploaded files. When too many files are uploaded, the check\_point\_file is sizable.
 
 Example:
 
 -   `python osscmd uploadfromdir /mytemp/folder oss://mybucket`
--   ```
-python osscmd uploadfromdir /mytemp/folder oss://mybucket
-          --check_point_file=/tmp/mytemp_record.txt
-```
-
--   ```
-python osscmd uploadfromdir C:\Documents and Settings\User\My Documents\Downloads
-          oss://mybucket --check_point_file=C:\cp.txt
-```
-
+-   `python osscmd uploadfromdir /mytemp/folder oss://mybucket --check_point_file=/tmp/mytemp_record.txt`
+-   `python osscmd uploadfromdir C:\Documents and Settings\User\My Documents\Downloads oss://mybucket --check_point_file=C:\cp.txt`
 
 ## put {#section_b55_wgc_wdb .section}
 
 Command instructions:
 
-```
-put localfile oss://bucket/object --content-type=[content_type]
-        --headers="key1:value1#key2:value2" --check_md5=false
-```
+`put localfile oss://bucket/object --content-type=[content_type] --headers="key1:value1#key2:value2" --check_md5=false`
 
 When uploading a local file into the bucket, you can specify the object content-type, or specify customized headers. `--check_md5=false` indicates that when the files are being uploaded, the Content-MD5 request header does not undergo verification. True indicates that the Content-MD5 request header undergoes verification.
 
@@ -158,35 +126,20 @@ Example:
 
 -   `python osscmd put myfile.txt oss://mybucket`
 -   `python osscmd put myfile.txt oss://mybucket/myobject.txt`
--   ```
-python osscmd put myfile.txt oss://mybucket/test.txt --content-type=plain/text
-          --headers=“x-oss-meta-des:test#x-oss-meta-location:CN”
-```
-
--   ```
-python osscmd put myfile.txt oss://mybucket/test.txt
-        --content-type=plain/text
-```
-
+-   `python osscmd put myfile.txt oss://mybucket/test.txt --content-type=plain/text --headers=“x-oss-meta-des:test#x-oss-meta-location:CN”`
+-   `python osscmd put myfile.txt oss://mybucket/test.txt --content-type=plain/text`
 
 ## Upload {#section_d55_wgc_wdb .section}
 
 Command instructions:
 
-```
-upload localfile oss://bucket/object --content-type=[content_type]
-      --check_md5=false
-```
+`upload localfile oss://bucket/object --content-type=[content_type] --check_md5=false`
 
 Upload local files in object group. Not recommended. `--check_md5=false` indicates that when the files are being uploaded, the Content-MD5 request header does not undergo verification. True indicates that the Content-MD5 request header undergoes verification.
 
 Example:
 
--   ```
-python osscmd upload myfile.txt oss://mybucket/test.txt
-        --content-type=plain/text
-```
-
+-   `python osscmd upload myfile.txt oss://mybucket/test.txt --content-type=plain/text`
 
 ## get {#section_f55_wgc_wdb .section}
 
@@ -241,10 +194,7 @@ Example:
 
 Command instructions:
 
-```
-copy oss://source_bucket/source_object oss://target_bucket/target_object
-        --headers="key1:value1#key2:value2"
-```
+`copy oss://source_bucket/source_object oss://target_bucket/target_object --headers="key1:value1#key2:value2"`
 
 Copy the source object of the source bucket to the destination object in the destination bucket.
 

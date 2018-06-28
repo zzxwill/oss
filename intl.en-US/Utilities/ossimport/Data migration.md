@@ -1,6 +1,6 @@
 # Data migration {#concept_ydb_yjh_wdb .concept}
 
-This article mainly introduces the general application of OssImport and implementation of typical requirements.This article introduces ossimport's implementation of data migration requirements in a typical scenario.
+This article mainly introduces the general application of OssImport and implementation of typical requirements.
 
 ## Introduction to OssImport {#section_skm_zjh_wdb .section}
 
@@ -29,7 +29,7 @@ The OssImport supports data validation without migration. In the job configurati
 
 Incremental mode of data migration
 
-The incremental mode of data migration refers to the process of performing a full migration first after a data migration job is started and then performing incremental migration operations at set intervals automatically. The first data migration job is a full migration. The job is started immediately after it is submitted. The subsequent data migration jobs are initiated once every set interval.  The incremental mode of data migration applies to data backup and data synchronization.
+The incremental mode of data migration refers to the process of performing a full migration first after a data migration job is started and then performing incremental migration operations at set intervals automatically. The first data migration job is a full migration. The job is started immediately after it is submitted. The subsequent data migration jobs are initiated once every set interval. The incremental mode of data migration applies to data backup and data synchronization.
 
 The incremental mode has two configuration items:
 
@@ -54,7 +54,7 @@ Seamlessly switch from a third-party storage service to the OSS
 Follow these steps, you can switch from other storage services to the OSS seamlessly:
 
 1.  Full migration. At this point, the business is still running on the third-party storage service. Mark down the start time of the data migration T1. Note that the time must be in the Unix timestamp format, that is, the number of seconds since 00:00 UTC on January 1, 1970. You can get the value through the `date +%s` command.
-2.  Open the OSS image origin retrieval feature. After the data migration is complete, set the [image origin retrieval](../intl.en-US/Developer Guide/Managing Objects/Manage origin retrieval settings.md#) feature for the bucket in the OSS console, and the origin retrieval address is the third-party storage.
+2.  Open the OSS image origin retrieval feature. After the data migration is complete, set the [image origin retrieval](../../../../intl.en-US/Developer Guide/Manage files/Manage origin retrieval settings.md#) feature for the bucket in the OSS console, and the origin retrieval address is the third-party storage.
 3.  Switch reading/writing to the OSS. At this point, the data earlier than T1 is read from the OSS, while the data later than T1 is read from the third-party service using the image origin retrieval, and new data is fully written to the OSS.
 4.  Incremental data migration. In the configuration file \(`job.cfg`  or `local_job.cfg`\),  the configuration item for an incremental migration job is `importSince=T1`. The incremental migration is completed at T2.
 
@@ -84,7 +84,7 @@ Data migration between OSS
     -   If you did not use a domain name with `internal`, traffic charges may be incurred.
 -   Not recommended use cases:
     -   Data migration between regions with the Cross-Region Replication service activated.
-    -   When you synchronize modifications to objects between OSS in incremental mode, the OssImport only supports synchronization of object modifications \(put/append/multipart\) and does not support synchronizing reading and deleting operations. The data synchronization is not guaranteed to be timely by a specific SLA. Exert caution when selecting this option. We recommend that you use [Upload callback](../intl.en-US/Developer Guide/Upload files/Upload callback.md#).
+    -   When you synchronize modifications to objects between OSS in incremental mode, the OssImport only supports synchronization of object modifications \(put/append/multipart\) and does not support synchronizing reading and deleting operations. The data synchronization is not guaranteed to be timely by a specific SLA. Exert caution when selecting this option. We recommend that you use [Upload callback](../../../../intl.en-US/Developer Guide/Upload files/Upload callback.md#).
 
 ## Migration instructions {#section_f15_1kh_wdb .section}
 
@@ -106,14 +106,14 @@ Parameters to be configured for an HTTP data migration job:
 -   In `httpListFilePath` of job.cfg, use absolute paths to specify the HTTP address list file, such as `c:/example/http.list`、`/root/example/http.list` . A full HTTP link is `127.0.0.1/aa/bb.jpg`. Different splitting methods may lead to different object paths on the OSS after the upload:
 
     ```
-    http://127.0.0.1/aa/ bb.jpg # The first line
-      http://127.0.0.1/ aa/bb.jpg # The second line
+    http://127.0.0.1/aa/   bb.jpg      #  The first line
+      http://127.0.0.1/      aa/bb.jpg   # The second line
     ```
 
     The object name after the first line is imported to the OSS is `destPrefix + bb.jpg` and the object name of the second line is `destPrefix + aa/bb.jpg`. The httpPrefixColumn parameter specifies the domain name column. The first column applies by default, such as the aforementioned `127.0.0.1/aa/`  or `127.0.0.1/`. The relativePathColumn specifies the object name in the OSS, such as the aforementioned `bb.jpg` or `aa/bb.jpg`. If the object has multiple columns, as follows:
 
     ```
-    http://127.0.0.1/aa/ bb/cc dd/ee ff.jpg
+    http://127.0.0.1/aa/   bb/cc dd/ee  ff.jpg
     ```
 
     The configuration must be: httpPrefixColumn=1 , relativePathColumn=4

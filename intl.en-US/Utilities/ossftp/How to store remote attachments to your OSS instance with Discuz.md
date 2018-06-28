@@ -10,7 +10,7 @@ This document instructs you on storing remote attachments from a Discuz-based fo
 
 ## Preparation {#section_v4b_jz1_wdb .section}
 
-Apply for an OSS account and create a public-read bucket.  You must set the permission to public-read because it must allow anonymous access.
+Apply for an OSS account and create a public-read bucket. You must set the permission to public-read because it must allow anonymous access.
 
 ## Procedures {#section_zwg_kz1_wdb .section}
 

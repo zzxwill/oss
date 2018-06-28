@@ -1,6 +1,6 @@
 # GetBucket \(List Object\) {#reference_iwr_xlv_tdb .reference}
 
-The Get Bucket operation can be used to list all of the object information in a bucket.
+The GetBucket operation can be used to list all of the object information in a bucket.
 
 ## Request syntax {#section_kmy_mdw_bz .section}
 
@@ -13,11 +13,11 @@ Authorization: SignatureValue
 
 ## Request parameters {#section_bqw_ndw_bz .section}
 
-When you initiate a GetBucket \(ListObject\) request, you can use prefix, marker, delimiter, and max-keys to prescribe a limit to the list to return partial results.  Besides, encoding-type can be used to encode the following elements in the returned results: delimiter, marker, prefix, NextMarker, and key.
+When you initiate a GetBucket \(ListObject\) request, you can use prefix, marker, delimiter, and max-keys to prescribe a limit to the list to return partial results. Besides, encoding-type can be used to encode the following elements in the returned results: delimiter, marker, prefix, NextMarker, and key.
 
 |Name|Data type|Required|Description|
 |----|---------|--------|-----------|
-|delimiter|string|No|A character used to group object names.  All the names of the objects that contain a specified prefix and after which the delimiter occurs for the first time, act as a group of elements - CommonPrefixes.Default value: None
+|delimiter|string|No|A character used to group object names. All the names of the objects that contain a specified prefix and after which the delimiter occurs for the first time, act as a group of elements - CommonPrefixes.Default value: None
 
 |
 |marker|string|No|Sets the returned results to begin from the first entry after the marker in alphabetical order.Default value: None
@@ -26,10 +26,10 @@ When you initiate a GetBucket \(ListObject\) request, you can use prefix, marker
 |max-keys|string|No|Limits the maximum number of objects returned for one request. If not specified, the default value is 100. The max-keys value cannot exceed 1000.Default value: 100
 
 |
-|prefix|string|No|Limits that the returned object  key must be prefixed accordingly.  Note that the keys returned from queries using a prefix still contain the prefix.Default value: None
+|prefix|string|No|Limits that the returned object  key must be prefixed accordingly. Note that the keys returned from queries using a prefix still contain the prefix.Default value: None
 
 |
-|encoding-type|string|No|Specifies the encoding of the returned content and the encoding type.  Parameters delimiter, marker, prefix, NextMarker, and key use UTF-8 characters, but the XML  1.0 Standard does not support parsing certain control characters, such as characters with ASCII values ranging from 0 to 10. If some elements in the returned results contain  characters that are not supported by the XML 1.0 Standard, encoding-type can be specified to encode these elements, such as delimiter, marker, prefix, NextMarker, and key.Default value: None;
+|encoding-type|string|No|Specifies the encoding of the returned content and the encoding type. Parameters delimiter, marker, prefix, NextMarker, and key use UTF-8 characters, but the XML  1.0 Standard does not support parsing certain control characters, such as characters with ASCII values ranging from 0 to 10. If some elements in the returned results contain characters that are not supported by the XML 1.0 Standard, encoding-type can be specified to encode these elements, such as delimiter, marker, prefix, NextMarker, and key.Default value: None;
 
 Optional value: URL
 
@@ -45,16 +45,16 @@ Optional value: URL
 |CommonPrefixes|string|If the delimiter parameter is specified in the request, the response returned by OSS contains the CommonPrefixes element. This element indicates the set of objects which ends with a delimiter and have a common prefix.Parent node: ListBucketResult
 
 |
-|Delimiter|string|A character used to group object names.  All those objects whose names contain the specified prefix and after which the delimiter occurs for the first time, act as a group of elements - CommonPrefixes.Parent node: ListBucketResult
+|Delimiter|string|A character used to group object names. All those objects whose names contain the specified prefix and after which the delimiter occurs for the first time, act as a group of elements - CommonPrefixes.Parent node: ListBucketResult
 
 |
-|EncodingType|string|Encoding type for the returned results.  If encoding-type is specified in a request, the following elements in the returned results are encoded: delimiter, marker, prefix, NextMarker, and key.Parent node: ListBucketResult
+|EncodingType|string|Encoding type for the returned results. If encoding-type is specified in a request, the following elements in the returned results are encoded: delimiter, marker, prefix, NextMarker, and key.Parent node: ListBucketResult
 
 |
-|DisplayName|string|Object Name of the object owner.Parent node: ListBucketResult.Contents.Owner
+|DisplayName|string|Name of the object owner.Parent node: ListBucketResult.Contents.Owner
 
 |
-|ETag|string|The ETag \(entity tag\) is created when an object is generated and is used to indicate the content of the object. For an object created by a Put  Object request, the value of ETag is the value of MD5 in the content of the object. For an object created in other way, the value of ETag is the UUID in the content of the object.  The value of ETag can be used to check whether the content of the object is changed. Do not use ETag to perform the MD5 checksum for the object content.Parent node: ListBucketResult.Contents
+|ETag|string|The ETag \(entity tag\) is created when an object is generated and is used to indicate the content of the object. For an object created by a Put  Object request, the value of ETag is the value of MD5 in the content of the object. For an object created in other way, the value of ETag is the UUID in the content of the object. The value of ETag can be used to check whether the content of the object is changed. We recommend that the ETag be used as the MD5 value of the object content to verify data integrity.Parent node: ListBucketResult.Contents
 
 |
 |ID|string|User ID of the bucket owner.Parent node: ListBucketResult.Contents.Owner
@@ -105,11 +105,11 @@ Parent node: ListBucketResult
 -   The custom meta in the object is not returned during the GetBucket request.
 -   If the bucket to be accessed does not exist, or if you attempt to access a bucket which cannot be created because of standard naming rules are not followed when naming a bucket, Error 404 Not Found with the error code “NoSuchBucket” is returned.
 -   If you have no permission to access the bucket, the system returns Error 403 Forbidden with the error code “AccessDenied”.
--   If listing cannot be completed at one time because of the max-keys setting, a `<NextMarker>` is appended to the returned result, prompting that this can be taken as a marker for continued listing.  The value in NextMarker is still in the list result.
--   During a condition query, even if the marker does not exist in the list actually, what is returned is printed starting from the next to what conforms to the marker letter sorting.  If the max-keys value is less than 0 or greater than 1000, error 400 Bad Request is returned.  The error code is “InvalidArgument”.
--   If the prefix, marker, or delimiter parameters do not meet the length requirement, 400 Bad Request is returned.  The error code is “InvalidArgument”.
+-   If listing cannot be completed at one time because of the max-keys setting, a `<NextMarker>` is appended to the returned result, prompting that this can be taken as a marker for continued listing. The value in NextMarker is still in the list result.
+-   During a condition query, even if the marker does not exist in the list actually, what is returned is printed starting from the next to what conforms to the marker letter sorting. If the max-keys value is less than 0 or greater than 1000, error 400 Bad Request is returned. The error code is “InvalidArgument”.
+-   If the prefix, marker, or delimiter parameters do not meet the length requirement, 400 Bad Request is returned. The error code is “InvalidArgument”.
 -   The prefix and marker parameters are used to achieve display by pages, and the parameter length must be less than 1024 bytes.
--   Setting a prefix as the name of a folder lists the files starting with this prefix, recursively returning all files and subfolders in this folder.  Additionally, if we set the Delimiter as “/“,  the returned values lists the files in the folder and the subfolders are returned in the CommonPrefixes section. Recursive files and folders in the subfolders are not displayed.  For example, a bucket has the following three objects:  fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi.  If the prefix is set to “fun/“,  three objects are returned. If the delimiter is set to “/“ additionally, file “fun/test.jpg” and prefix “fun/movie/“ are returned. That is, the folder logic is achieved.
+-   Setting a prefix as the name of a folder lists the files starting with this prefix, recursively returning all files and subfolders in this folder. Additionally, if we set the Delimiter as “/“,  the returned values lists the files in the folder and the subfolders are returned in the CommonPrefixes section. Recursive files and folders in the subfolders are not displayed. For example, a bucket has the following three objects:  fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. If the prefix is set to “fun/“,  three objects are returned. If the delimiter is set to “/“ additionally, file “fun/test.jpg” and prefix “fun/movie/“ are returned. That is, the folder logic is achieved.
 
 ## Scenario example {#section_b5f_j2w_bz .section}
 

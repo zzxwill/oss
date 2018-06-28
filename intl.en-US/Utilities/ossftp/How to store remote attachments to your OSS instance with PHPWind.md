@@ -10,7 +10,7 @@ This document instructs you on storing remote attachments from a PHPWind-based f
 
 ## Preparation {#section_cqh_52b_wdb .section}
 
-Apply for an OSS account and create a public-read bucket.  You must set the permission to public-read because it must allow anonymous access.
+Apply for an OSS account and create a public-read bucket. You must set the permission to public-read because it must allow anonymous access.
 
 ## Procedures {#section_smk_v2b_wdb .section}
 
@@ -25,7 +25,7 @@ The PHPWind we use is PHPWind 8.7 and the configuration process is as follows.
     **Note:** 
 
     -   Set “Enable FTP uploads“ to Yes.
-    -   Set “Website Attachment Address“ to [http://bucket-name.endpoint](http://bucket-name.endpoint/)*Here, we want to test the bucket test-hz-jh-002  from the Hangzhou region. Therefore, we enter*[http://test-hz-jh-002.oss-cn-hangzhou.aliyuncs.com](http://test-hz-jh-002.oss-cn-hangzhou.aliyuncs.com/), where the BucketName must match the endpoint.
+    -   Set “Website Attachment Address“ to [http://bucket-name.endpoint](http://bucket-name.endpoint/) Here, we want to test the bucket test-hz-jh-002  from the Hangzhou region. Therefore, we enter [http://test-hz-jh-002.oss-cn-hangzhou.aliyuncs.com](http://test-hz-jh-002.oss-cn-hangzhou.aliyuncs.com/), where the BucketName must match the endpoint.
     -   Set the FTP server address, that is, the address that runs the OSS-FTP. Generally, this is 127.0.0.1.
     -   Set “FTP service port No.” to the default “2048“.
     -   Set “Remote attachment directory” to “.“,  that is, to create a directory for upload under the root directory of the bucket.

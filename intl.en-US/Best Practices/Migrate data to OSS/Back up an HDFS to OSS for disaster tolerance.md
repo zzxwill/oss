@@ -4,7 +4,7 @@
 
 Currently, many data centers are constructed using Hadoop, and in turn an increasing number of enterprises want to smoothly migrate their services to the cloud.
 
-Object Storage Service \(OSS\) is the most widely-used storage service on Alibaba Cloud.  The OSS data migration tool, ossimport2, allows you to sync files from your local devices or a third-party cloud storage service to OSS. However, ossimport2 cannot read data from Hadoop file systems. As a result, it becomes impossible to make full use of the distributed structure of Hadoop.  In addition, this tool only supports local files. Therefore, you must first download files from your Hadoop file system \(HDFS\) to your local device and then upload them using the tool. This process consumes a great deal of time and energy.
+Object Storage Service \(OSS\) is the most widely-used storage service on Alibaba Cloud. The OSS data migration tool, ossimport2, allows you to sync files from your local devices or a third-party cloud storage service to OSS. However, ossimport2 cannot read data from Hadoop file systems. As a result, it becomes impossible to make full use of the distributed structure of Hadoop. In addition, this tool only supports local files. Therefore, you must first download files from your Hadoop file system \(HDFS\) to your local device and then upload them using the tool. This process consumes a great deal of time and energy.
 
 To solve this problem, Alibaba Cloud’s E-MapReduce team developed a Hadoop data migration tool **emr-tools**. This tool allows you to migrate data from Hadoop directly to OSS.
 
@@ -49,7 +49,7 @@ hadoop fs -ls /
 
     The system enables a Hadoop MapReduce task \(DistCp\).
 
-4.  After the task is completed, local data migration information is displayed.  This information is similar to the following sample.
+4.  After the task is completed, local data migration information is displayed. This information is similar to the following sample.
 
     ```
     17/05/04 22:35:08 INFO mapreduce.Job: Job job_1493800598643_0009 completed successfully
@@ -120,11 +120,11 @@ If you have already created a Hadoop cluster on Alibaba Cloud, you can use the f
 
 In addition to offline clusters, you can also use emr-tools for Hadoop clusters constructed on ECS. This allows you to quickly migrate a self-built cluster to the [E-MapReduce](https://www.aliyun.com/product/emapreduce?) service.
 
-If your cluster is already on ECS, but in a classic network, it will not provide good interoperability with services in Virtual Private Cloud \(VPC\). In this case, migrate the cluster to a VPC instance.  Follow these steps to migrate the cluster:
+If your cluster is already on ECS, but in a classic network, it will not provide good interoperability with services in Virtual Private Cloud \(VPC\). In this case, migrate the cluster to a VPC instance. Follow these steps to migrate the cluster:
 
 1.  Use emr-tools to migrate data to OSS.
 2.  Create a new cluster \(create it yourself or use E-MapReduce\) in the VPC environment.
 3.  Migrate data from OSS to the new HDFS cluster.
 
-If you use E-MapReduce, on the Hadoop cluster, you can directly access OSS using [Spark](https://www.alibabacloud.com/help/zh/doc-detail/28118.htm), [MapReduce](https://www.alibabacloud.com/help/doc-detail/28128.htm) and [Hive](https://www.alibabacloud.com/help/doc-detail/28129.htm). This not only avoids one data copy operation \(from OSS to HDFS\), but also greatly reduces storage costs.  For more information about cost reduction, see [EMR+OSS: Separated storage and computing](intl.en-US/Best Practices/Data processing and analysis/EMR+OSS: Separated storage and computing for offline computing.md#).
+If you use E-MapReduce, on the Hadoop cluster, you can directly access OSS using [Spark](https://www.alibabacloud.com/help/zh/doc-detail/28118.htm), [MapReduce](https://www.alibabacloud.com/help/doc-detail/28128.htm) and [Hive](https://www.alibabacloud.com/help/doc-detail/28129.htm). This not only avoids one data copy operation \(from OSS to HDFS\), but also greatly reduces storage costs. For more information about cost reduction, see [EMR+OSS: Separated storage and computing](intl.en-US/Best Practices/Data processing and analysis/EMR+OSS: Separated storage and computing for offline computing.md#).
 

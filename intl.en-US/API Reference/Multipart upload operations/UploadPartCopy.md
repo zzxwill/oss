@@ -2,7 +2,7 @@
 
 UploadPartCopy uploads a part by copying data from an existing object.
 
-You can add an x-oss-copy-source header in the Upload Part request to call the Upload Part Copy interface. When copying a file larger than 1 GB, you must use the Upload Part  Copy method.  For the Upload Part Copy operation,  the source bucket and the target bucket must be in the same region. If you want to copy a file that is less than 1 GB by a single operation, you can refer to Copy Object.
+You can add an x-oss-copy-source header in the Upload Part request to call the Upload Part Copy interface. When copying a file larger than 1 GB, you must use the Upload Part Copy method. For the Upload Part Copy operation,  the source bucket and the target bucket must be in the same region. If you want to copy a file that is less than 1 GB by a single operation, you can refer to Copy Object.
 
 ## Request syntax  {#section_gqh_crx_wdb .section}
 
@@ -33,16 +33,16 @@ The following request header is used for the source objects specified by x-oss-c
 
 |Name|Type|Description|
 |:---|:---|:----------|
-|x-oss-copy-source-if-match|String|If the ETag value of the source object is equal to the ETag value provided by the user, the system performs the Copy Object operation; otherwise, the system returns the 412  Precondition Failed error. Default: None
+|x-oss-copy-source-if-match|String|If the ETag value of the source object is equal to the ETag value provided by the user, the system performs the Copy Object operation; otherwise, the system returns the 412 Precondition Failed error. Default: None
 
 |
-|x-oss-copy-source-if-none-match|String|If the source object has not been modified since the time specified by the user, the system performs the Copy Object operation; otherwise, the system returns the 412  Precondition Failed error.Default: None
+|x-oss-copy-source-if-none-match|String|If the source object has not been modified since the time specified by the user, the system performs the Copy Object operation; otherwise, the system returns the 412 Precondition Failed error.Default: None
 
 |
 |x-oss-copy-source-if-unmodified-since|String|If the time specified by the received parameter is the same as or later than the modification time of the file, the system transfers the file normally, and returns 200 OK; otherwise, the system returns the 412 Precondition Failed error. Default: None
 
 |
-|x-oss-copy-source-if-modified-since|String|If the source object has been modified since the time specified by the user, the system performs the Copy Object operation; otherwise, the system returns the 412  Precondition Failed error. Default: None
+|x-oss-copy-source-if-modified-since|String|If the source object has been modified since the time specified by the user, the system performs the Copy Object operation; otherwise, the system returns the 412 Precondition Failed error. Default: None
 
 |
 
@@ -66,7 +66,7 @@ The following request header is used for the source objects specified by x-oss-c
 ## Detail analysis {#section_nbb_dsx_wdb .section}
 
 -   Before calling the InitiateMultipartUpload interface to upload a part of data, you must call this interface to obtain an Upload ID issued by the OSS server.
--   In the Multipart Upload mode, besides the last part, all other parts must be larger than 100 KB.  However, the Upload Part interface does not immediately verify the size of the uploaded part \(because it cannot immediately determine which part is the last one\). It verifies the size of the uploaded part only when Multipart Upload is completed.
+-   In the Multipart Upload mode, besides the last part, all other parts must be larger than 100 KB. However, the Upload Part interface does not immediately verify the size of the uploaded part \(because it cannot immediately determine which part is the last one\). It verifies the size of the uploaded part only when Multipart Upload is completed.
 -   If the x-oss-copy-source-range request header is not specified, the entire source object is copied. If the request header is specified, the returned message includes the length of the entire file and the COPY range. For example, if the returned message is Content-Range: bytes 0-9/44, which means that the length of the entire file is 44, and the COPY range is 0 to 9.  If the specified range does not conform to the range rules, OSS copies the entire file and does not contain Content-Range in the result.
 -   If the x-oss-server-side-encryption request header is specified when the InitiateMultipartUpload interface is called,  OSS encrypts the uploaded part and return the x-oss-server-side-encryption header in the Upload Part response header. The value of x-oss-server-side-encryption indicates the server-side encryption algorithm used for this part. For more information, see the InitiateMultipartUpload API.
 -   This operation cannot be used to copy objects created by Append Object.

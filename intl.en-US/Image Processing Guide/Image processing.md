@@ -4,7 +4,7 @@ Alibaba Cloud OSS Image Processing \(IMG\) is an image processing service that f
 
 **Note:** 
 
-[../DNOSS11894847/EN-US\_TP\_4331.md\#](../intl.en-US/Quick Start/Sign up for OSS.md#)IMG is activated automatically when you activate OSS.
+IMG is activated automatically when you activate OSS.
 
 ## Basic features {#section_jky_lcn_vdb .section}
 
@@ -36,7 +36,7 @@ IMG now has two API versions.
 
     -   **Style Name**: Name of the image style to create. We recommend you give the style a meaningful name so that you can remember it easily, such as XX watermark image rotation.
         -   The length of the name must be within 1-64 characters.
-        -   A name can only include numbers, letters, underscores \(\_\), short crosslines \(-\), and the decimal point \(.\).
+        -   A name can only include numbers, letters, underscores \( \_ \), short crosslines \(-\), and the decimal point \(.\).
     -   **Editing Type**: You can select "Basic editing" to edit the image style with graphical operations. You can also select "Advanced editing" to edit the image style using an SDK or parameters.
     -   **Resize Mode**: Set the scaling mode for the image.
 
@@ -60,7 +60,7 @@ After creating the new image style, you can apply it to your images through OSS.
 2.  Click your bucket name to go to the **Overview** page of the bucket.
 3.  On the Overview page, click **Files** to select an existing image or upload a new image to open the Preview page.
 
-    For new image uploading, see [Upload objects](../intl.en-US/Console User Guide/Manage objects/Upload objects.md#). 
+    For new image uploading, see [Upload objects](../../../../intl.en-US/Console User Guide/Manage objects/Upload objects.md#). 
 
 4.  Select a picture style from the **Image Style** drop-down list.
 

@@ -8,7 +8,7 @@
 
 ## CORS 介绍 {#section_gz5_gvd_vdb .section}
 
-跨域资源共享（Cross-Origin Resource Sharing，简称 CORS），是 HTML5 提供的标准跨域解决方案，具体的CORS规则可以参考 [W3C CORS规范](http://www.w3.org/TR/cors/)。
+跨域资源共享（Cross-Origin Resource Sharing，简称 CORS），是 HTML5 提供的标准跨域解决方案，具体的CORS规则可以参考[W3C CORS规范](http://www.w3.org/TR/cors/)。
 
 CORS 是一个由浏览器共同遵循的一套控制策略，通过HTTP的Header来进行交互。浏览器在识别到发起的请求是跨域请求的时候，会将Origin的Header加入HTTP请求发送给服务器，比如上面那个例子，Origin的Header就是www.a.com。服务器端接收到这个请求之后，会根据一定的规则判断是否允许该来源域的请求，如果允许的话，服务器在返回的响应中会附带上Access-Control-Allow-Origin这个Header，内容为www.a.com来表示允许该次跨域访问。如果服务器允许所有的跨域请求的话，将Access-Control-Allow-Origin的Header设置为\*即可，浏览器根据是否返回了对应的Header来决定该跨域请求是否成功，如果没有附加对应的Header，浏览器将会拦截该请求。
 
@@ -42,7 +42,7 @@ CORS 是一个由浏览器共同遵循的一套控制策略，通过HTTP的Heade
 -   Access-Control-Allow-Methods：允许跨域的方法列表
 -   Access-Control-Allow-Headers：允许跨域的Header列表
 -   Access-Control-Expose-Headers：允许暴露给JavaScript代码的Header列表
--   Access-Control-Max-Age：最大的浏览器缓存时间，单位s。
+-   Access-Control-Max-Age：最大的浏览器缓存时间，单位为s
 
 浏览器会根据以上的返回信息综合判断是否继续发送实际请求。当然，如果没有这些Header浏览器会直接阻止接下来的请求。
 
@@ -56,7 +56,7 @@ CORS使用一定是在使用浏览器的情况下，因为控制访问权限的�
 
 ## OSS对CORS的支持 {#section_b32_nvd_vdb .section}
 
-OSS提供了CORS规则的配置从而根据需求允许或者拒绝相应的跨域请求。该规则是配置在Bucket级别的。详情可以参考[PutBucketCORS](../intl.zh-CN/API 参考/跨域资源共享/PutBucketcors.md#)。
+OSS提供了CORS规则的配置从而根据需求允许或者拒绝相应的跨域请求。该规则是配置在Bucket级别的。详情可以参考[PutBucketCORS](../../../../intl.zh-CN/API 参考/跨域资源共享/PutBucketcors.md#)。
 
 CORS请求的通过与否和OSS的身份验证等是完全独立的，即OSS的CORS规则仅仅是用来决定是否附加CORS相关的Header的一个规则。是否拦截该请求完全由浏览器决定。
 
@@ -139,23 +139,33 @@ function makeCorsRequest() {
 </html>
 ```
 
-打开之后点击链接（这里以Chrome为例），当然，肯定会失败：
+打开文件后点击链接（以Chrome为例），提示该链接无法访问。
 
 利用Chrome的开发者工具来查看错误原因。
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6351_zh-CN.png)
 
 这里告诉我们是因为没有找到Access-Control-Allow-Origin这个头。显然，这就是因为服务器没有配置CORS。
 
 再进入Header界面，可见浏览器发送了带Origin的Request，因此是一个跨域请求，在Chrome上因为是本地文件所以Origin是null。
 
-设置 Bucket CORS
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6353_zh-CN.png)
 
-知道了上文的问题，那么现在可以设置Bucket相关的CORS来使上文的例子能够执行成功。为了直观起见，这里使用控制台来完成CORS的设置。如果用户的CORS设置不是很复杂，也建议使用控制台来完成CORS设置。CORS设置的界面如下：
+设置 Bucket CORS知道了上文的问题，那么现在可以设置Bucket相关的CORS来使上文的例子能够执行成功。为了直观起见，这里使用控制台来完成CORS的设置。如果用户的CORS设置不是很复杂，也建议使用控制台来完成CORS设置。CORS设置的界面如下：
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6354_zh-CN.png)
 
 CORS设置是由一条一条规则组成的，真正匹配的时候会从第一条开始逐条匹配，以最早匹配上的规则为准。现在添加第一条规则，使用最宽松的配置：
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6355_zh-CN.png)
 
 这里表示的意思就是所有的Origin都允许访问，所有的请求类型都允许访问，所有的Header都允许，最大的缓存时间为1s。
 
 配置完成之后重新测试，结果如下：
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6367_zh-CN.png)
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6356_zh-CN.png)
 
 可见现在已经可以正常访问请求了。
 
@@ -163,31 +173,41 @@ CORS设置是由一条一条规则组成的，真正匹配的时候会从第一�
 
 除了最宽松的配置之外，还可以配置更精细的控制机制来实现针对性的控制。比如对于这个场景可以使用如下最小的配置匹配成功：
 
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6357_zh-CN.png)
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6358_zh-CN.png)
+
 因此对于大部分场景来说，用户最好根据自己的使用场景来使用最小的配置以保证安全性。
 
 ## 利用跨域实现POST上传 {#section_md4_kzd_vdb .section}
 
-这里提供一个更复杂的例子，这里使用了带签名的POST请求，而且需要发送预检请求。
-
-[PostObjectSample](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/sample/postobject.tar.gz)
+这里提供一个更复杂的例子，这里使用了带签名的POST请求，而且需要发送预检请求。详情请参见[PostObjectSample](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/sample/postobject.tar.gz)。
 
 **说明：** 将上面的代码下载下来之后，将以下对应的部分全部修改成自己对应的内容，然后使用自己的服务器运行起来。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/1670_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6359_zh-CN.png)
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6360_zh-CN.png)
 
 这里继续使用上文oss-cors-test这个Bucket来进行测试，在测试之前先删除所有的CORS相关的规则，恢复初始状态。
 
-访问这个网页，选择一个文件上传，结果如下：
+访问这个网页，选择一个文件上传。
 
 同样打开开发者工具，可以看到以下内容，根据上面的Get的例子，很容易明白同样发生了跨域的错误。不过这里与Get请求的区别在于这是一个带预检的请求，所以可以从图中看到是OPTIONS的Response没有携带CORS相关的Header然后失败了。
 
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6362_zh-CN.png)
+
 那么我们根据对应的信息修改Bucket的CORS配置：
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6363_zh-CN.png)
 
 再重新运行，可见已经成功了，从控制台中也可以看到新上传的文件。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/1675_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6364_zh-CN.png)
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/1676_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6365_zh-CN.png)
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4409/6366_zh-CN.png)
 
 测试一下内容：
 

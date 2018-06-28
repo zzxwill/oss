@@ -72,7 +72,7 @@ Compared with a local file system, the functions and performance provided by oss
 
     Example
 
-    Mount the bucket `my-bucket` to the `/tmp/ossfs` directory. The AccessKeyId is `faint`, the AccessKeySecret is `123`, and the OSS endpoint is `http://oss-cn-hangzhou.aliyuncs.com`
+    Mount the bucket `my-bucket` to the `/tmp/ossfs` directory. The AccessKeyId is `faint`, the AccessKeySecret is `123`, and the OSS endpoint is `http://oss-cn-hangzhou.aliyuncs.com`.
 
     ```
     echo my-bucket:faint:123 > /etc/passwd-ossfs
@@ -81,7 +81,7 @@ Compared with a local file system, the functions and performance provided by oss
     ossfs my-bucket /tmp/ossfs -ourl=http://oss-cn-hangzhou.aliyuncs.com
     ```
 
-    **Note:** If you use an Alibaba Cloud ECS instance to provide ossfs services, you can use the intranet endpoints. In this example, you can replace the OSS endpoint with `oss-cn-hangzhou-internal.aliyuncs.com` to save bandwidth costs. For more information about intranet endpoints, see [Regions and endpoints](../intl.en-US/Developer Guide/Regions and endpoints.md#)
+    **Note:** If you use an Alibaba Cloud ECS instance to provide ossfs services, you can use the intranet endpoints. In this example, you can replace the OSS endpoint with `oss-cn-hangzhou-internal.aliyuncs.com` to save bandwidth costs. For more information about intranet endpoints, see [Regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#)
 
     Unmount the bucket:
 

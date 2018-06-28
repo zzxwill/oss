@@ -31,7 +31,7 @@ Details:
 
 1.  Request for a temporary upload credential from the app server.
 
-    The Android/iOS app cannot store AccessKeyID/AccessKeySecret directly, which may cause the risk of information leakage.  Therefore, the app must request a temporary upload credential \(a token\) from the app server.  The token is only valid for a certain period. For example, if a token is set to be valid for 30 minutes \(editable by the app server\), then the Android/iOS app can use this token to upload/download data to/from the OSS within the next 30 minutes.  30 minutes later, the app must request a new token to upload/download data.
+    The Android/iOS app cannot store AccessKeyID/AccessKeySecret directly, which may cause the risk of information leakage. Therefore, the app must request a temporary upload credential \(a token\) from the app server. The token is only valid for a certain period. For example, if a token is set to be valid for 30 minutes \(editable by the app server\), then the Android/iOS app can use this token to upload/download data to/from the OSS within the next 30 minutes. 30 minutes later, the app must request a new token to upload/download data.
 
 2.  The app server checks the validity of the preceding request and then returns a token to the app.
 3.  After the cell phone receives this token, it can upload or download data from the OSS.
@@ -43,48 +43,24 @@ This article mainly describes the content in the red circle and blue circle of t
 -   The blue circle shows how the app server generates a token.
 -   The red circle shows how the Android/iOS app receives the token.
 
-Effect:
-
-You can scan the QR code to install the sample app, as shown in the following figure. This tool is developed on Android. The app server in this document can also be used on iOS.
-
-The interface for connecting the sample app to the OSS is shown in the following figure:
-
-**Note:** The address displayed in the app server is a sample address. You can deploy the app server on your own by referring to the STS app server code at the end of the article.
-
--   App Server: the background server corresponding to this mobile app.
-
--   Upload Bucket: the bucket to which the mobile app will upload data.
-
--   Region: the region in which a bucket is uploaded.
-
-
-Steps for using the sample app:
-
--   Click**Select image** and upload an object to the OSS.
-
--   You can choose normal upload or resumable upload.
-
-    **Note:** Resumable upload is recommended in poor network environments. You can use Image Service to scale down and add a watermark to the image to be uploaded. Do not modify the server URL and bucket name in initial use.
-
-
 ## Prerequisites for setting up direct data transfer service {#section_x15_j5w_5db .section}
 
 Preparations for setting up direct data transfer service:
 
-1.  [Activate the OSS service](../intl.en-US/Quick Start/Sign up for OSS.md#) and [create a bucket](../intl.en-US/Developer Guide/Bucket Management/Create a bucket.md#).
+1.  [Activate the OSS service](../../../../intl.en-US/Quick Start/Sign up for OSS.md#) and [create a bucket](../../../../intl.en-US/Developer Guide/Manage buckets/Create a bucket.md#).
 2.  Activate the STS service.
     1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
-    2.  On the OSS **Overview** page, find the Basic Settings area,  and click **Security Token**, as shown in the following figure.
+    2.  On the OSS **Overview** page, find the Basic Settings area, and click **Security Token**, as shown in the following figure.
 
         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4399/6271_en-US.png)
 
     3.  Enter the Quick Security Token Configuration page.
 
-        **Note:** If RAM has not yet been activated, a prompt box to activate RAM appears.  Click **Activate** and perform real-name verification.  After the verification is finished, the following page appears. Click  **Start Authorization**.
+        **Note:** If RAM has not yet been activated, a prompt box to activate RAM appears. Click **Activate** and perform real-name verification. After the verification is finished, the following page appears. Click **Start Authorization**.
 
         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4399/6272_en-US.png)
 
-    4.  The system performs authorization automatically. Be sure to save the parameters in the three red boxesoxes in the following figures.  Click **Save Access Key Information** to close the dialog box and complete STS activation.
+    4.  The system performs authorization automatically. Be sure to save the parameters in the three red boxesoxes in the following figures. Click **Save Access Key Information** to close the dialog box and complete STS activation.
 
         ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4399/6273_en-US.png)
 
@@ -138,7 +114,7 @@ The downloaded package in each language contains a configuration file named conf
 4.  TokenExpireTime: indicates the expiration time of the token obtained by the Android/iOS app. The minimum value is 900s. The default value can be retained.
 5.  PolicyFile: indicates the file that lists the permissions the token grants. The default value can be retained.
 
-This document has provided three token files defining the most common permissions in the policy directory.  They are:
+This document has provided three token files defining the most common permissions in the policy directory. They are:
 
 -   all\_policy.txt: specifying a token that grants permissions to create or delete a bucket, or upload, download, or delete a file for this account .
 -   bucket\_read\_policy.txt: specifying a token that grants permission to read the specified bucket for this account.
@@ -171,7 +147,7 @@ If you want to create a token to grant read and write permissions for the specif
     -   AccessKeyId: indicates the AccessKeyId the Android/iOS app obtains when initializing the OSS client.
     -   AccessKeySecret: indicates the AccessKeySecret the Android/iOS app obtains when initializing the OSS client.
     -   SecurityToken: indicates the token the Android/iOS app initializes.
-    -   Expiration: indicates the time when the token expires.  The Android SDK automatically determines the validity of the token and then retrieves a new one as needed.
+    -   Expiration: indicates the time when the token expires. The Android SDK automatically determines the validity of the token and then retrieves a new one as needed.
     Explanation of wrong result returned:
 
     -   StatusCode: The status indicates the result that the app retrieves the token. The app returns 500 for unsuccessful retrieval of the token.
@@ -183,45 +159,144 @@ If you want to create a token to grant read and write permissions for the specif
 
     -   For Java \(based on Java 1.7\), after downloading and unzipping a pack, 
 
-        Run this command: java -jar oss-token-server.jar \(port\).  If you run java  –jar oss-token-server.jar without specifying a port, the program listens to Port 7080.  To change the listening port to 9000, run java –jar  app-token-server.jar 9000. Specify the port number as needed.
+        Run this commandjava -jar oss-token-server.jar \(port\). If you run java  –jar oss-token-server.jar without specifying a port, the program listens to Port 7080. To change the listening port to 9000, run java –jar  app-token-server.jar 9000. Specify the port number as needed.
 
 
 ## How to upload files from your app to oss {#section_ttc_33x_5db .section}
 
-1.  After setting up the app server, write down the server address, which is `http://abc.com:8080`.  Then, replace the app server address in the sample project with this address.
+1.  After setting up the app server, write down the server address, which is `http://abc.com:8080`. Then, replace the app server address in the sample project with this address.
 2.  Specify the bucket and region for the upload in the sample apps.
 3.  Click **Set** to load the configuration.
-4.  Select an image file, set the object name to upload to OSS, and select Upload.  Now you can experience the OSS service on Android. Data from the Android app can be uploaded directly to OSS.
+4.  Select an image file, set the object name to upload to OSS, and select Upload. Now you can experience the OSS service on Android. Data from the Android app can be uploaded directly to OSS.
 5.  After the upload is complete, check that the data is on OSS.
 
 ## Explanation of core code {#section_lsy_k3x_5db .section}
 
 OSS initialization
 
+The following explains how to use the Android/iOS SDK to request a token from your app server.
+
 -   Android versions
 
     ```
-    // We recommend you use OSSAuthCredentialsProvider because it automatically updates expired tokens.
-    String stsServer = "http://abc.com:8080 is an example of an application server address."
-    OSSCredentialProvider credentialProvider = new OSSAuthCredentialsProvider(stsServer);
-    //config
-    ClientConfiguration conf = new ClientConfiguration();
-    conf.setConnectionTimeout(15 * 1000); // Connection time-out. The default value is 15 seconds.
-    conf.setSocketTimeout(15 * 1000); // Socket time-out. The default value is 15 seconds.
-    conf.setMaxConcurrentRequest(5); // The maximum number of concurrent requests. The default value is 5.
-    conf.setMaxErrorRetry(2); // The maximum number of retry attempts after each failed attempt. The default value is 2.
-    OSS oss = new OSSClient(getApplicationContext(), endpoint, credentialProvider, conf);
+    //Initialize an OssService for upload and download.
+    public OssService initOSS(String endpoint, String bucket, UIDisplayer displayer) {
+        OSSCredentialProvider credentialProvider;
+        //Use your own class to retrieve an STSToken.
+    //Read the server address from app server controls.
+        String stsServer = ((EditText) findViewById(R.id.stsserver)).getText().toString();
+        //STSGetter class, encapsulating the way of retrieving data from the app server, must be inherited from the class OSSFederationCredentialProvider. The way that your app retrieves tokens depends on the protocol between the app and the app server.
+        if (stsServer .equals("")) {
+            credentialProvider = new STSGetter();
+        }else {
+            credentialProvider = new STSGetter(stsServer);
+        }
+    //Retrieve the bucket name from the controls.
+        bucket = ((EditText) findViewById(R.id.bucketname)).getText().toString();
+    //Initialize an OSSClient. 
+        ClientConfiguration conf = new ClientConfiguration();
+        conf.setConnectionTimeout(15 * 1000); // Connection time-out. The default value is 15 seconds.
+        conf.setSocketTimeout(15 * 1000); // Socket time-out. The default value is 15 seconds.
+        conf.setMaxConcurrentRequest(5); // The maximum number of concurrent requests. The default value is 5.
+        conf.setMaxErrorRetry(2); // The maximum number of retry attempts after each failed attempt. The default value is 2.
+        OSS oss = new OSSClient(getApplicationContext(), endpoint, credentialProvider, conf);
+        return new OssService(oss, bucket, displayer);
+    }
     ```
 
 
 -   iOS version
 
     ```
-    OSSClient * client;
-    ...
-    // We recommend you use OSSAuthCredentialProvider because it automatically updates expired tokens.
-    id<OSSCredentialProvider> credential = [[OSSAuthCredentialProvider alloc] initWithAuthServerUrl:@"application server address, such as http://abc.com:8080"];
-    client = [[OSSClient alloc] initWithEndpoint:endPoint credentialProvider:credential];
+    //Initialize an OSSClient instance.
+    - (void)ossInit {
+        //Construct a credential provider for retrieving STSTokens.
+        id<OSSCredentialProvider> credential = [[OSSFederationCredentialProvider alloc] initWithFederationTokenGetter:^OSSFederationToken * {
+            //Implement a function to synchronize the STSToken retrieved from the server.
+            return [self getFederationToken];
+        }];
+        //Use endpoint and the credential provider to initialize an OSSClient.
+        client = [[OSSClient alloc] initWithEndpoint:endPoint credentialProvider:credential];
+    }
+    ```
+
+
+## Retrieve tokens from app server for mobile app {#section_lk1_vbq_g2b .section}
+
+The specific method by which the app gets tokens from the app server must be written into the function `public OSSFederationToken getFederationToken() { }`.
+
+**Note:** you can define the logic for this function; however, the return message must contain this variable: return new OSSFederationToken\(ak, sk, token, expiration\).Here, ak, sk, token, and expiration must be taken from the body of the message returned by the server.
+
+In this example, you can specify the protocol linking the app and app server.
+
+-   Android version
+
+    ```
+    public OSSFederationToken getFederationToken() {
+        String stsJson;
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(stsServer).build();
+        try {
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                stsJson = response.body().string();
+            } else {
+                throw new IOException("Unexpected code " + response);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            Log.e("GetSTSTokenFail", e.toString());
+            return null;
+        }
+        try {
+            JSONObject jsonObjs = new JSONObject(stsJson);
+            String ak = jsonObjs.getString("AccessKeyId");
+            String sk = jsonObjs.getString("AccessKeySecret");
+            String token = jsonObjs.getString("SecurityToken");
+            String expiration = jsonObjs.getString("Expiration");
+            return new OSSFederationToken(ak, sk, token, expiration);
+        }
+        catch (JSONException e) {
+            Log.e("GetSTSTokenFail", e.toString());
+            e.printStackTrace();
+            return null;
+        }}
+    ```
+
+-   iOS version
+
+    ```
+    NSURL * url = [NSURL URLWithString:STSServer];
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+    OSSTaskCompletionSource * tcs = [OSSTaskCompletionSource taskCompletionSource];
+    NSURLSession * session = [NSURLSession sharedSession];
+    NSURLSessionTask * sessionTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        [tcs setError:error];
+                                                        return;
+                                                    }
+                                                    [tcs setResult:data];
+                                                }];
+    [sessionTask resume];
+    // Implementation of this callback must be synchronized with the returned token, so the task waitUntilFinished is necessary.
+    [tcs.task waitUntilFinished];
+    if (tcs.task.error) {
+        // If the network request fails, the return of nil indicates the token cannot be retrieved. In this case, this OSS request fails.
+        return nil;
+    } else {
+        // Parse the JSON string returned to the network request to get each token field and return an STSToken.
+        NSDictionary * object = [NSJSONSerialization JSONObjectWithData:tcs.task.result
+                                                                options:kNilOptions
+                                                                  error:nil];
+        OSSFederationToken * token = [OSSFederationToken new];ni
+        token.tAccessKey = [object objectForKey:@"AccessKeyId"];
+        token.tSecretKey = [object objectForKey:@"AccessKeySecret"];
+        token.tToken = [object objectForKey:@"SecurityToken"];
+        token.expirationTimeInGMTFormat = [object objectForKey:@"Expiration"];
+        return token;
+    }
     ```
 
 

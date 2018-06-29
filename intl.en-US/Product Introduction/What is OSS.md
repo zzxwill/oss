@@ -4,3 +4,5 @@ Alibaba Cloud Object Storage Service \(OSS\) is a storage service that enables y
 
 You can use API and SDK interfaces provided by Alibaba Cloud or OSS migration tools to transfer massive amounts of data into or out of Alibaba Cloud OSS. You can use the Standard storage class of OSS to store image, audio, and video files for apps and large websites. You can use the  Infrequent Access \(IA\) or Archive storage class as a low-cost solution for backup and archiving of infrequently accessed data.
 
+Use the [Learning Path](https://www.alibabacloud.com/getting-started/learningpath/oss) as a mentor to become an OSS expert!
+

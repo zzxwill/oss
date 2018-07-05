@@ -59,7 +59,7 @@ HTTP/1.1 200 OK
 x-oss-request-id: 534B371674E88A4D8906008B
 Date: Fri, 24 Feb 2012 04:11:23 GMT 
 Content-Length: 253
-Content-Tupe: application/xml
+Content-Type: application/xml
 Connection: keep-alive
 Server: AliyunOSS
 

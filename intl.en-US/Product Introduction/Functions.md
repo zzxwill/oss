@@ -2,7 +2,7 @@
 
 Before you start to use OSS, we recommend that you have basic familiarity with some important OSS concepts, including buckets, objects, regions, endpoints, and AccessKey.
 
-For more information about these concepts, see [../../../../dita-oss-bucket/SP\_21/DNOSS11827291/EN-US\_TP\_4339.md\#](../../../../intl.en-US/Developer Guide/Basic concepts.md#).
+For more information about these concepts, see [Basic concepts](../../../../intl.en-US/Developer Guide/Basic concepts.md#).
 
 OSS provides the following functions to address your business needs in different scenarios.
 

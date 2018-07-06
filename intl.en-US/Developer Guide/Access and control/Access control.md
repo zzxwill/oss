@@ -2,7 +2,7 @@
 
 ## Send an OSS access request {#section_p4c_phv_tdb .section}
 
-You can access OSS directly by calling a RESTful API provided by OSS or using an API-encapsulated SDK.  Each request to access OSS requires identity verification or direct anonymous access based on the current bucket permission and operation.
+You can access OSS directly by calling a RESTful API provided by OSS or using an API-encapsulated SDK. Each request to access OSS requires identity verification or direct anonymous access based on the current bucket permission and operation.
 
 -   According to the role of the visitors, the access to OSS resources is classified into owner access and third-party access. Here, the owner refers to the bucket owner, also known as the "developer". Third-party users are any users who access resources in a bucket.
 -   According to the identity of visitors, the access to OSS resources is classified into anonymous access and signature-based access. In the OSS, a request that does not contain any identification information is considered anonymous access. According to the rules in the OSS API documentation, signature-based access refers to the requests that contain signature information in the request header or URL.

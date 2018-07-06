@@ -15,15 +15,13 @@ Currently, the three types of [AccessKey](intl.en-US/Developer Guide/Basic conce
 
     These are the AccessKeys of the bucket owners. The AccessKey provided by each Alibaba Cloud account has full access to its own resources. Each Alibaba Cloud account can simultaneously have zero to five active or inactive AccessKey pairs \(AccessKeyID and AccessKeySecret\).
 
-    You can add or delete AccessKey pairs on [AccessKey console](https://ak-console.aliyun.com).
+    You can add or delete AccessKey pairs in the [AccessKey console](https://ak-console.aliyun.com).
 
     Each AccessKey pair is either active or inactive.
 
     -   Active indicates that the user's AccessKey is in the active state and can be used for identity authentication.
     -   Inactive indicates that the user's AccessKey is in the inactive state and cannot be used for identity authentication.
-    Warning:
-
-    The AccessKey of the Alibaba Cloud account must not be used directly unless it is required.
+    **Note:** The AccessKey of the Alibaba Cloud account must not be used directly unless it is required.
 
 -   RAM account AccessKeys
 
@@ -290,7 +288,7 @@ Following is the example of the RAM or STS authorization policy configuration:
 
 -   Resource
 
-    Resource stands for a specific resource or resources on OSS \(the wildcard is supported\). Resources are named in the format of `acs:oss:{region}:{bucket_owner}:{bucket_name}/{object_name}`. For all bucket-level actions, the final part "/object\_name" is not required. You can render it as `acs:oss:{region}:{bucket_owner}:{bucket_name}`. Resource is a list and multiple resources are allowed. Here, the region field is currently not supported and set to "\*".
+    Resource stands for a specific resource or resources on OSS \(the wildcard is supported\). Resources are named in the format of `acs:oss:{region}:{bucket_owner}:{bucket_name}/{object_name}`. For all bucket-level actions, the final part `/object_name` is not required. You can render it as `acs:oss:{region}:{bucket_owner}:{bucket_name}`. Resource is a list and multiple resources are allowed. Here, the region field is currently not supported and set to `*`.
 
 -   Effect
 
@@ -335,7 +333,7 @@ Following is the example of the RAM or STS authorization policy configuration:
     |acs:SourceIp|Specifying the IP address segment|Common IP address, wildcard \(\*\) supported|
     |acs:UserAgent|Specifying the http useragent header|String|
     |acs:CurrentTime|Specifying valid access time|ISO8601 format|
-    |acs:SecureTransport|Whether HTTPS is used|"true" or "false"|
+    |acs:SecureTransport|Whether HTTPS is used|true or false|
     |oss:Prefix|Used as the prefix for ListObjects|Valid object name|
 
 

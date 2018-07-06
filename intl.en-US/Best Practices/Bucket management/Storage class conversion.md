@@ -2,7 +2,7 @@
 
 ## Lifecycle Object Transition {#section_oyb_bnz_5db .section}
 
-OSS supports three [storage classes](../intl.en-US/Developer Guide/Storage classes/Introduction to storage classes.md#): Standard, Infrequent Access, and Archive.
+OSS supports three [storage classes](../../../../intl.en-US/Developer Guide/Storage classes/Introduction to storage classes.md#): Standard, Infrequent Access, and Archive.
 
 The Object Transition mechanism is now available in OSS Lifecycle Management function in all regions across China. The following storage classes are supported for automatic conversion:
 
@@ -12,27 +12,29 @@ The Object Transition mechanism is now available in OSS Lifecycle Management fun
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/1620_en-US.png)
 
-For example, 
+**Examples**
 
-you can configure the Lifecycle policy of a Bucket, under which the Object with a given prefix 
+You can configure lifecycle policies for objects with a given prefix in one bucket as follows:
 
--   is converted to Infrequent Access type after being stored for 30 days and 
--   Archive type after 180 days, 
--   and would be deleted after 360 days. 
+-   They are converted to Infrequent Access class after being stored for 30 days.
+-   They are converted to Archive class after being stored for 180 days.
+-   They are deleted automatically after being stored for 360 days.
 
-You can complete the configuration of the preceding lifecycle policies in the console.  For more information, see [Set lifecycle](../intl.en-US/Console User Guide/Manage buckets/Set lifecycle.md#).
+You can complete the configuration of the preceding lifecycle policies in the console. For more information, see [Set lifecycle](../../../../intl.en-US/Console User Guide/Manage buckets/Set lifecycle.md#).
 
 ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/1622_en-US.png)
 
-**Note:** 
+**Note:** If the following three parameters are configured:
 
-If the following three parameters are configured: Transition to IA After、Transition to Archive After and Delete All Objects After Specified Days, then the number of days set for each parameter must meet the following criteria:
+Transition to IA After, Transition to Archive After, and Delete All Objects After Specified Days, then the number of days set for each parameter must meet the following criteria:
 
 Days for converting to Infrequent Access  < Days for converting to Archive < Specified days for deleting
 
-Notes
+**Notes**
 
-After the Object type conversion, the storage cost is calculated based on the unit price of converted storage class.  Notes for Infrequent Access and Archive storage types:
+After the Object type conversion, the storage cost is calculated based on the unit price of converted storage class.
+
+Notes for Infrequent Access and Archive storage types:
 
 -   Minimum billable size: 
 
@@ -57,7 +59,7 @@ For conversions from Archive type to Standard class or Infrequent Access class, 
 
 For example, for the conversion of Infrequent Access Object in the Bucket of Standard type to Standard Object, you can read and rewrite the Object. Based on the type of the Bucket, the newly-written Object is of Standard storage class.
 
-For the Object that has been converted to Archive class, you can only read it after performing Restore operation and   restore it to a readable state.
+For the Object that has been converted to Archive class, you can only read it after performing Restore operation and restore it to a readable state.
 
-[Create and use the Archive bucket](../intl.en-US/Developer Guide/Storage classes/Create and use the Archive bucket.md#)
+For mor einformation, see [Create and use the Archive bucket](../../../../intl.en-US/Developer Guide/Storage classes/Create and use the Archive bucket.md#).
 

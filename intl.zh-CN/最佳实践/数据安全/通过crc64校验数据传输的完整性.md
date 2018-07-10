@@ -4,7 +4,7 @@
 
 数据在客户端和服务器之间传输时有可能会出错。OSS现在支持对各种方式上传的Object返回其crc64值，客户端可以和本地计算的crc64值做对比，从而完成数据完整性的验证。
 
--   OSS对新上传的Object进行crc64的计算，并将结果存储为Object的元信息存储，随后在返回的response header中增加`x-oss-hash-crc64ecma`头部，表示其crc64值，该64位CRC根据 [ECMA-182标准](http://www.ecma-international.org/publications/standards/Ecma-182.htm) 计算得出。
+-   OSS对新上传的Object进行crc64的计算，并将结果存储为Object的元信息存储，随后在返回的response header中增加`x-oss-hash-crc64ecma`头部，表示其crc64值，该64位CRC根据[ECMA-182标准](http://www.ecma-international.org/publications/standards/Ecma-182.htm)计算得出。
 -   对于crc64上线之前就已经存在于OSS上的Object，OSS不会对其计算crc64值，所以获取此类Object时不会返回其crc64值。
 
 ## 操作说明 {#section_m14_43f_vdb .section}
@@ -108,6 +108,6 @@
 |JavaScript SDK|否|无|
 |Go SDK|是|[crc\_test.go](https://github.com/aliyun/aliyun-oss-go-sdk/blob/master/oss/crc_test.go)|
 |Ruby SDK|否|无|
-|iOS SDK|否|无|
-|Android SDK|否|无　|
+|iOS SDK|否|[OSSCrc64Tests.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSiOSTests/OSSCrc64Tests.m)|
+|Android SDK|否|[CRC64Test.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/androidTest/java/com/alibaba/sdk/android/CRC64Test.java)|
 

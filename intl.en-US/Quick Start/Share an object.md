@@ -1,6 +1,8 @@
 # Share an object {#task_wlr_lr4_tdb .task}
 
-After an object is uploaded to a bucket, the object can be shared and downloaded by others.
+After you upload an object to a bucket, you can view it, download it, and share it with others.
+
+The object is uploaded to a bucket. For more information, see [Upload an object](intl.en-US/Quick Start/Upload an object.md#).
 
 1.   Log on to the [OSS console](https://oss.console.aliyun.com/). 
 2.   In the bucket name list, click the name of the bucket that you created. 

@@ -12,7 +12,7 @@ After activating Alibaba Cloud OSS, you create a bucket in the OSS console to st
     -   The bucket name cannot be changed after being created.
 4.   In the Region drop-down box, select the data center of the bucket.  
 
-    The region cannot be changed after the bucket is created. To access OSS through the ECS intranet, select the same region as your ECS.
+    The region of a bucket cannot be changed after the bucket is created. To access OSS through the ECS intranet, select the same region as that of your ECS.
 
 5.   In the Storage Class drop-down box, select a storage class for the bucket. 
     -   Standard Storage: provides highly reliable, highly available, and high-performance object storage services that support frequent data accesses.
@@ -23,7 +23,7 @@ After activating Alibaba Cloud OSS, you create a bucket in the OSS console to st
     -   Public Read: Only the owner of the bucket and the authorized users can perform write and delete operations on the objects in the bucket. Anyone \(including anonymous access\) can read the objects in the bucket.
     -   Public Read/Write: Anyone \(including anonymous access\) can read, write, and delete the objects in the bucket.
 
-        **Note:** The fees incurred by such operations are borne by the owner of the bucket. Use this permission with caution.
+        **Note:** The fees incurred by the bucket operations are borne by the bucket owner. Therefore, use Public Read and Public Read/Write permissions with caution.
 
 7.   Click **OK**. 
 

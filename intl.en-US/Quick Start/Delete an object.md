@@ -1,12 +1,14 @@
 # Delete an object {#task_pgg_qt4_tdb .task}
 
-If you do not need to store uploaded files any longer, delete them to avoid further fees. You can delete a single file or multiple files on the OSS console. The deleted file cannot be recovered. Perform this operation with caution.
+If you no longer need to store an object in OSS, delete it to avoid further charges.
 
-**Note:** You can delete up to 1,000 files at a time on the console. If you want to delete only the selected files or perform batch deletion in a larger volume, follow the procedures in API or SDK documents.[ For more information, see the relevant sections of the](../intl.en-US/Developer Guide/Managing Objects/Delete an object.md#).
+You can delete a single object or multiple objects in the OSS console. The deleted object cannot be recovered. Perform this operation with caution.
+
+**Note:** You can delete up to 1,000 objects at a time in the console. If you want to delete only the selected objects or delete more than 1,000 objects, see [Delete objects](../../../../intl.en-US/Developer Guide/Manage files/Delete an object.md#) in the *OSS Developer Guide*.
 
 1.   Log on to the [OSS console](https://oss.console.aliyun.com/). 
-2.   Click to open the target bucket. 
+2.   In the bucket name list, select the name of the bucket that you want to delete an object from. 
 3.   Click Files. 
-4.   Select one or multiple files, and then click **Delete** to open the Delete File dialog box. 
+4.  Select one or multiple objects, and then click **Delete** to open the Delete File dialog box. 
 5.   Click **OK**. 
 

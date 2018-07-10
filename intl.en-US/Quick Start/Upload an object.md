@@ -2,7 +2,7 @@
 
 After a bucket is created, you can upload any type of objects to it.
 
-A bucket is created. For more information, see [EN-US\_TP\_4333.md\#](intl.en-US/Quick Start/Create a bucket.md#).
+A bucket is created. For more information, see [Create a bucket](intl.en-US/Quick Start/Create a bucket.md#).
 
 You can upload objects in any of the following ways:
 

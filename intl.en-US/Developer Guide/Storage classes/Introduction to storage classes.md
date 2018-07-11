@@ -60,33 +60,33 @@ OSS Archive storage has the following features:
 
 |API|Standard|Infrequent Access|Archive|
 |:--|:-------|:----------------|:------|
-|Bucket creation, deletion, and query| |
+|Bucket creation, deletion, and query|
 |PutBucket|Supported|Supported|Supported|
 |GetBucket|Supported|Supported|Supported|
 |DeleteBucket|Supported|Supported|Supported|
-|Bucket ACL| |
+|Bucket ACL|
 |PutBucketAcl|Supported|Supported|Supported|
 |GetBucketAcl|Supported|Supported|Supported|
-|Bucket logging| |
+|Bucket logging|
 |PutBucketLogging|Supported|Supported|Supported|
 |GetBucketLogging|Supported|Supported|Supported|
-|Bucket default static page| |
+|Bucket default static page|
 |PutBucketWebsite|Supported|Supported|Not supported|
 |GetBucketWebsite|Supported|Supported|Not supported|
-|Bucket anti-leech protection| |
+|Bucket anti-leech protection|
 |PutBucketReferer|Supported|Supported|Supported|
 |GetBucketReferer|Supported|Supported|Supported|
-|Bucket lifecycle| |
+|Bucket lifecycle|
 |PutBucketLifecycle|Supported|Supported|Supported, data deletion only|
 |GetBucketLifecycle|Supported|Supported|Supported|
 |DeleteBucketLifecycle|Supported|Supported|Supported|
 |Bucket Cross-Origin Replication| | | |
 |PutBucketReplication|Supported|Supported|Supported|
-|Bucket Cross-Origin Resource Sharing| |
+|Bucket Cross-Origin Resource Sharing|
 |PutBucketcors|Supported|Supported|Supported|
 |GetBucketcors|Supported|Supported|Supported|
 |DeleteBucketcors|Supported|Supported|Supported|
-|Object operations| |
+|Object operations|
 |PutObject|Supported|Supported|Supported|
 |PutObjectACL|Supported|Supported|Supported|
 |GetObject|Supported|Supported|Supported, but data needs to be restored first|
@@ -101,7 +101,7 @@ OSS Archive storage has the following features:
 |PutSymlink|Supported|Supported|Supported|
 |GetSymlink|Supported|Supported|Supported|
 |RestoreObject|Not supported|Not supported|Supported|
-|Multipart operations| |
+|Multipart operations|
 |InitiateMultipartUpload|Supported|Supported|Supported|
 |UploadPart|Supported|Supported|Supported|
 |UploadPartCopy|Supported|Supported|Supported|

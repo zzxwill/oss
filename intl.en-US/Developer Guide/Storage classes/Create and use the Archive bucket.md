@@ -35,16 +35,14 @@ You can choose to create an Archive bucket by using the console, APIs/SDKs, or c
     ./ossutil mb oss://[bucket name] --storage-class=Archive
     ```
 
-    `Replace [bucket name]` with your own bucket. Set `--storage-class` to `Archive`.
+    Replace `[bucket name]` with your own bucket. Set `--storage-class` to `Archive`.
 
 
 ## Use an Archive bucket {#section_omm_n1w_tdb .section}
 
 -   Upload data to an Archive bucket
 
-    Archive buckets support Put Object and Multipart Upload, but do not support Append Object.
-
-    The objects uploaded by Put Object and Multipart Upload can be directly stored in Archive buckets.
+    Archive buckets support PutObject and MultipartUpload, but do not support AppendObject. The objects uploaded by PutObject and MultipartUpload can be directly stored in Archive buckets.
 
 -   Download data from an Archive bucket
 
@@ -63,7 +61,7 @@ You can choose to restore an archived object by using the console, APIs/SDKs, or
 
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4342/1024_en-US.png)
 
-    To restore an archived object in the console, enter the Preview page of the object, and then click Restore. It takes one minute to restore the object. During this process, the object is in the restoring state.
+    To restore an archived object in the console, enter the Preview page of the object, and then click **Restore**. It takes one minute to restore the object. During this process, the object is in the restoring state.
 
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4342/1025_en-US.png)
 
@@ -97,6 +95,6 @@ You can choose to restore an archived object by using the console, APIs/SDKs, or
     ./ossutil restore oss://[Bucket name]/[Object name]
     ```
 
-    `Replace [Bucket name]` and `[Object name]` with your own bucket and object.
+    Replace `[Bucket name]` and `[Object name]` with your own bucket and object.
 
 

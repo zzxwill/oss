@@ -27,14 +27,10 @@ The Internet and intranet endpoints in each region for a classic network are as 
 
 **Note:** 
 
--   We recommend that you use third-level domain names, that is, `bucket name`  + `endpoint` format to share links or bind domain names \(CNAME\). For example, the third-level domain name for the bucket \`oss-sample\` in the region China East 2 \(Shanghai\) is \`oss-sample.oss-cn-shanghai.aliyuncs.com\`.
-
--   For SDKs, use `http://` or `https://` + `endpoint` as the initialization parameters. For example,  we recommend use `http://oss-cn-shanghai.aliyuncs.com` or `https://oss-cn-shanghai.aliyuncs.com` as the initialization parameter. Do not use a third-level domain name, that is, `http://bucket.oss-cn-shanghai.aliyuncs.com` as the initialization parameter.
-
--   By default, the Internet address \`oss.aliyuncs.com\` is directed to the Internet address of the region China East 1 \(Hangzhou\).
-
--   The intranet address \`oss-internal.aliyuncs.com\` is directed to the intranet address of the region China East 1 \(Hangzhou\).
-
+-   We recommend that you use third-level domain names, that is, `bucket name` + `endpoint` format to share links or bind domain names \(CNAME\). For example, the third-level domain name for the bucket oss-sample in the region China East 2 \(Shanghai\) is oss-sample.oss-cn-shanghai.aliyuncs.com.
+-   For SDKs, use `http://` or `https://` + `endpoint` as the initialization parameters. For example,  we recommend that you use `http://oss-cn-shanghai.aliyuncs.com` or `https://oss-cn-shanghai.aliyuncs.com` as the initialization parameter. Do not use a third-level domain name, that is, `http://bucket.oss-cn-shanghai.aliyuncs.com` as the initialization parameter.
+-   By default, the Internet address oss.aliyuncs.com is directed to the Internet address of the region China East 1 \(Hangzhou\).
+-   The intranet address oss-internal.aliyuncs.com is directed to the intranet address of the region China East 1 \(Hangzhou\).
 
 ## Regions and endpoints in a VPC network {#section_m14_zvy_5db .section}
 
@@ -60,14 +56,4 @@ To access OSS, ECS of a VPC network can use the following endpoints:
 |Asia Pacific SOU 1 \(Mumbai\)|oss-ap-south-1|oss-ap-south-1-internal.aliyuncs.com|HTTP and HTTPS|
 |EU Central 1 \(Frankfurt\)|oss-eu-central-1|oss-eu-central-1-internal.aliyuncs.com|HTTP and HTTPS|
 |Middle East 1 \(Dubai\)|oss-me-east-1|oss-me-east-1-internal.aliyuncs.com|HTTP and HTTPS|
-
-## Region and Endpoint in the financial cloud {#section_zjm_2wy_5db .section}
-
-Only the following endpoints can be used in the financial cloud for ECS to access OSS:
-
-|Region name|OSS region|Intranet endpoint for ECS access|Protocol|
-|:----------|:---------|:-------------------------------|:-------|
-|China East 1 \(Hangzhou\)|oss-cn-hzfinance|oss-cn-hzfinance-internal.aliyuncs.com|HTTP|
-|China South 1 \(Shenzhen\)|oss-cn-shenzhen-finance-1|oss-cn-shenzhen-finance-1-internal.aliyuncs.com|HTTP|
-|China East 2 \(Shanghai\)|oss-cn-shanghai-finance-1|oss-cn-shanghai-finance-1-internal.aliyuncs.com|HTTP|
 

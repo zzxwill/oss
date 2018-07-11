@@ -5,7 +5,7 @@
 Based on whether the identity authentication information is included or not, HTTP requests sent to OSS are divided into two types: requests with identity authentication information and anonymous requests without identity authentication information. The identity authentication information in requests comes in two forms:
 
 -   Authorization contained in the request header, in the format of OSS + AccessKeyId + signature string
--   OSS AccessKeyId and Signature fields contained in the request URL.
+-   OSS AccessKeyId and a signature contained in the request URL.
 
 ## OSS access process {#section_f4l_3f5_tdb .section}
 

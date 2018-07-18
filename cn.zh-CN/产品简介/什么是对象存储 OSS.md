@@ -50,7 +50,7 @@
 
 对象存储OSS仅按照您的实际使用容量收费，您无需预先购买存储和流量容量，随着您业务的发展，您将享受到更多的基础设施成本优势。
 
-关于对象存储OSS的价格，请参见[OSS详细价格信息](https://www.alibabacloud.com/product/oss#pricing)。关于OSS的计量计费方式，请参见[OSS计量项和计费项](../../../../intl.zh-CN/产品定价/计量项和计费项.md#)。
+关于对象存储OSS的价格，请参见[OSS详细价格信息](https://www.alibabacloud.com/product/oss#pricing)。
 
 ## 学习路径图 {#section_bxq_qdc_n2b .section}
 

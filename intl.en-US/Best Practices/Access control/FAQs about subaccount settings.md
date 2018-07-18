@@ -18,7 +18,7 @@ See [OSS directory authorization](https://www.alibabacloud.com/help/doc-detail/3
 
 ## How to authorize a sub-account with the read-only permission for a bucket {#section_chl_qtz_5db .section}
 
-See [Authorize a sub-user to list and read resources in a bucket](https://www.alibabacloud.com/help/doc-detail/39715.htm).
+See [Authorize a sub-user to list and read resources in a bucket](https://www.alibabacloud.com/help/doc-detail/58905.htm#concept-ohn-ypx-ydb-section-jpq-1px-ydb).
 
 ## Error upon an OSS SDK call: InvalidAccessKeyId {#section_y12_rtz_5db .section}
 

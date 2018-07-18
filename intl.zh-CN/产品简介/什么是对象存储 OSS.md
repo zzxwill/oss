@@ -6,11 +6,26 @@
 
 ## 相关概念 {#section_h4j_rlb_n2b .section}
 
--   存储空间（Bucket）：存储空间是您用于存储对象（Object）的容器，所有的对象都必须隶属于某个存储空间。您可以设置和修改存储空间属性用来控制地域、访问权限、生命周期等，这些属性设置直接作用于该存储空间内所有对象，因此您可以通过灵活创建不同的存储空间来完成不同的管理功能。
--   对象/文件（Object）：对象是 OSS 存储数据的基本单元，也被称为 OSS 的文件。对象由元信息（Object Meta），用户数据（Data）和文件名（Key）组成。对象由存储空间内部唯一的 Key 来标识。对象元信息是一个键值对，表示了对象的一些属性，比如最后修改时间、大小等信息，同时您也可以在元信息中存储一些自定义的信息。
--   Region（地域）：Region 表示 OSS 的数据中心所在物理位置。您可以根据费用、请求来源等综合选择数据存储的 Region。详情请查看[OSS已经开通的Region](../../../../intl.zh-CN/开发指南/访问域名和数据中心.md#)。
--   Endpoint（访问域名）：Endpoint 表示 OSS 对外服务的访问域名。OSS 以 HTTP RESTful API 的形式对外提供服务，当访问不同的 Region 的时候，需要不同的域名。通过内网和外网访问同一个 Region 所需要的 Endpoint 也是不同的。具体的内容请参见[各个Region对应的Endpoint](../../../../intl.zh-CN/开发指南/访问域名和数据中心.md#)。
--   AccessKey（访问密钥）：AccessKey，简称 AK，指的是访问身份验证中用到的 AccessKeyId 和AccessKeySecret。OSS 通过使用 AccessKeyId 和 AccessKeySecret 对称加密的方法来验证某个请求的发送者身份。AccessKeyId 用于标识用户，AccessKeySecret 是用户用于加密签名字符串和 OSS 用来验证签名字符串的密钥，其中 AccessKeySecret 必须保密。
+-   存储空间（Bucket）
+
+    存储空间是您用于存储对象（Object）的容器，所有的对象都必须隶属于某个存储空间。您可以设置和修改存储空间属性用来控制地域、访问权限、生命周期等，这些属性设置直接作用于该存储空间内所有对象，因此您可以通过灵活创建不同的存储空间来完成不同的管理功能。
+
+-   对象/文件（Object）
+
+    对象是 OSS 存储数据的基本单元，也被称为OSS的文件。对象由元信息（Object Meta），用户数据（Data）和文件名（Key）组成。对象由存储空间内部唯一的Key来标识。对象元信息是一个键值对，表示了对象的一些属性，比如最后修改时间、大小等信息，同时您也可以在元信息中存储一些自定义的信息。
+
+-   Region（地域）
+
+    Region 表示 OSS 的数据中心所在物理位置。您可以根据费用、请求来源等综合选择数据存储的Region。详情请查看[OSS已经开通的Region](../../../../intl.zh-CN/开发指南/访问域名和数据中心.md#)。
+
+-   Endpoint（访问域名）
+
+    Endpoint 表示OSS对外服务的访问域名。OSS以HTTP RESTful API的形式对外提供服务，当访问不同的 Region 的时候，需要不同的域名。通过内网和外网访问同一个 Region 所需要的 Endpoint 也是不同的。具体的内容请参见[各个Region对应的Endpoint](../../../../intl.zh-CN/开发指南/访问域名和数据中心.md#)。
+
+-   AccessKey（访问密钥）
+
+    AccessKey，简称 AK，指的是访问身份验证中用到的AccessKeyId 和AccessKeySecret。OSS通过使用AccessKeyId 和AccessKeySecret对称加密的方法来验证某个请求的发送者身份。AccessKeyId用于标识用户，AccessKeySecret是用户用于加密签名字符串和OSS用来验证签名字符串的密钥，其中AccessKeySecret 必须保密。
+
 
 ## 相关服务 {#section_jcv_xlb_n2b .section}
 

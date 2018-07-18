@@ -6,11 +6,26 @@ You can use API and SDK interfaces provided by Alibaba Cloud or OSS migration to
 
 ## Concepts {#section_h4j_rlb_n2b .section}
 
--   Bucket: A bucket is a container for objects stored in OSS. Every object is contained in a bucket. The data model structure of Alibaba Cloud OSS is flat instead of hierarchical.
--   Objects: Objects, also known as files, are the fundamental entities stored in OSS. An object is composed of metadata, data, and key. The key is the unique object name in a bucket. Metadata defines the attributes of an object, such as the time last modified and the object size. You can also specify custom metadata of an object.
--   Region: A region represents the physical location of an OSS data center. You can choose the region where OSS will store the buckets you create. You may choose a region to optimize latency, minimize costs, or address regulatory requirements. Generally, the closer the user is in proximity to a region, the faster the access speed is. For more information, see [OSS regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#).
--   An endpoint is the domain name used to access the OSS. OSS provides external services through HTTP RESTful APIs. Different regions use different endpoints. For the same region, access through an intranet or through the Internet also uses different endpoints. For more information, see [OSS regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#).
--   AccessKey: An AccessKey \(AK\) is composed of an AccessKeyId and an AccessKeySecret.  They work in pairs to perform access identity verification. OSS verifies the identity of a request sender by using the AccessKeyId/AccessKeySecret symmetric encryption method. The AccessKeyId is used to identify a user. The AccessKeySecret is used for the user to encrypt the signature and for OSS to verify the signature. The AccessKeySecret must be kept confidential.
+-   Bucket
+
+    A bucket is a container for objects stored in OSS. Every object is contained in a bucket. The data model structure of Alibaba Cloud OSS is flat instead of hierarchical.
+
+-   Objects
+
+    Objects, also known as files, are the fundamental entities stored in OSS. An object is composed of metadata, data, and key. The key is the unique object name in a bucket. Metadata defines the attributes of an object, such as the time last modified and the object size. You can also specify custom metadata of an object.
+
+-   Region
+
+    A region represents the physical location of an OSS data center. You can choose the region where OSS will store the buckets you create. You may choose a region to optimize latency, minimize costs, or address regulatory requirements. Generally, the closer the user is in proximity to a region, the faster the access speed is. For more information, see [OSS regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#).
+
+-   Endpoint
+
+    An endpoint is the domain name used to access the OSS. OSS provides external services through HTTP RESTful APIs. Different regions use different endpoints. For the same region, access through an intranet or through the Internet also uses different endpoints. For more information, see [OSS regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#).
+
+-   AccessKey
+
+    An AccessKey \(AK\) is composed of an AccessKeyId and an AccessKeySecret.  They work in pairs to perform access identity verification. OSS verifies the identity of a request sender by using the AccessKeyId/AccessKeySecret symmetric encryption method. The AccessKeyId is used to identify a user. The AccessKeySecret is used for the user to encrypt the signature and for OSS to verify the signature. The AccessKeySecret must be kept confidential.
+
 
 ## Related services {#section_jcv_xlb_n2b .section}
 
@@ -18,10 +33,22 @@ After you load your data to OSS, you  can use it with other Alibaba Cloud produ
 
 You may frequently use the following services:
 
--   Elastic Compute Service \(ECS\): An online computing service that offers elastic and secure virtual cloud servers to cater all your cloud hosting needs. See the [ECS product details page](https:/www.aliyun.com/product/ecs).
--   Alibaba Cloud CDN: A scalable and high-performance content delivery service for accelerated distribution of content to users across the globe.  See the [CDN product details page](https:/www.aliyun.com/product/cdn).
--   E-MapReduce: A Big Data service that uses Apache Hadoop and Spark to process and analyze data. See the [E-MapReduce product details page](https:/www.aliyun.com/product/emapreduce).
--   ApsaraVideo for Media Processing: A cloud service for transcoding multimedia data into various output resolutions, bit rates, and formats for unhindered playback. See the [ApsaraVideo for Media Processing product details page](https:/www.aliyun.com/product/mts) .
+-   Elastic Compute Service \(ECS\)
+
+    An online computing service that offers elastic and secure virtual cloud servers to cater all your cloud hosting needs. See the [ECS product details page](https:/www.aliyun.com/product/ecs).
+
+-   Alibaba Cloud CDN
+
+    A scalable and high-performance content delivery service for accelerated distribution of content to users across the globe.  See the [CDN product details page](https:/www.aliyun.com/product/cdn).
+
+-   E-MapReduce
+
+    A Big Data service that uses Apache Hadoop and Spark to process and analyze data. See the [E-MapReduce product details page](https:/www.aliyun.com/product/emapreduce).
+
+-   ApsaraVideo for Media Processing
+
+    A cloud service for transcoding multimedia data into various output resolutions, bit rates, and formats for unhindered playback. See the [ApsaraVideo for Media Processing product details page](https:/www.aliyun.com/product/mts).
+
 
 ## Use OSS {#section_o5k_1mb_n2b .section}
 

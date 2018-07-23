@@ -4,11 +4,11 @@
 
 Object Storage Service \(OSS\) built on Alibaba Cloud’s Apsara distributed system is a massive, secure, and highly reliable cloud storage solution that offers low cost storage accessible anywhere in the world. OSS possesses excellent scaling abilities for storage capacity and processes, and supports RESTful APIs.  Not only can OSS store media files, but it can also be utilized as a data warehouse for massive data file storage. OSS can seamlessly integrate with Hadoop 3.0, and services that are run on EMR \(such as Spark/Hive/Presto, MaxCompute, HybridDB and the newly-released Data Lake Analytics\) support data processing and retrieval directly from OSS.
 
-However, the current GetObject interface provided by OSS determines that the big data platform can only download all OSSS data locally and then for analysis and filter, A lot of bandwidth and client resources are wasted in a lot of querying scenarios.
+However, the current GetObject interface provided by OSS determines that the big data platform can only download all OSS data locally and then for analysis and filter. A lot of bandwidth and client resources are wasted in querying scenarios.
 
-To address this problem, the SelectObject interface is provided. This method allows big data platforms to access OSS to perform basic filtering on data through conditions and Projection, and return useful data only to the big data platform. In this way, the bandwidth and the amount of data processed at the client-side is greatly reduced,  making OSS-based data warehousing and data analysis a highly attractive option.
+To address this problem, the SelectObject interface is provided. This method allows big data platforms to access OSS to perform basic filtering on data through conditions and Projection, and return useful data only to the big data platform. In this way, the bandwidth and the amount of data processed at the client-side is greatly reduced, making OSS-based data warehousing and data analysis a highly attractive option.
 
-SelectObject is now in beta phase, and provides Java and Python SDKs. SelectObject supports CSV files of RFC 4180 standard to be encoded as UTF-8 \(including Class CSV files such as TSV, row and column separators of the file and customizable Quote characters\);  files in standard and low frequency access storage types, and encrypted files, which are fully managed by OSS \(or CMK managed by KMS\).
+SelectObject is now in beta phase, and provides Java and Python SDKs. SelectObject supports CSV files of RFC 4180 standard to be encoded as UTF-8 \(including Class CSV files such as TSV, row and column separators of the file and customizable Quote characters\). SelectObject supports files in standard and low frequency access storage types, and encrypted files, which are fully managed by OSS \(or CMK managed by KMS\).
 
 The supported SQL syntax is as follows:
 
@@ -16,7 +16,7 @@ The supported SQL syntax is as follows:
 -   Data Type: String, Int \(64bit\), float \(64bit\), Timestamp, and Boolean
 -   Operation: Logical condition \(AND, OR, NOT\), Arithmetic Expression（+-\*/%\), Comparison operation \(\>,=, <, \>=, <=, ! =\), and String operation \(LIKE, || \)
 
-The sharding mechanism of SelectObject is similar to the shard download mechanism of GetObject, and includes two sharding methods: sharding by row and sharding by Split.  Sharding by row is a common method, but it results in uneven load balancing of sparse data. Sharding by Split is more efficient than sharding by row as a Split contains multiple rows of data, and the data size of each Split is roughly equal, which enables better load balancing peformance. Additionally, byte-based sharding \(provided by GetObject\) may corrupt data. Therefore, sharding by Split is recommended for CSV data.
+The sharding mechanism of SelectObject is similar to the shard download mechanism of GetObject, and includes two sharding methods: sharding by row and sharding by Split. Sharding by row is a common method, but it results in uneven load balancing of sparse data. Sharding by Split is more efficient than sharding by row as a Split contains multiple rows of data, and the data size of each Split is roughly equal, which enables better load balancing performance. Additionally, byte-based sharding \(provided by GetObject\) may corrupt data. Therefore, sharding by Split is recommended for CSV data.
 
 CSV data in OSS is String type by default. Users can use CAST function to convert data. For example, the following SQL query converts \_1 and \_2 into Int and compares them.
 
@@ -321,7 +321,7 @@ Mixing of aggregations and limit
 
 `Select avg(cast(_1 as int)) from ossobject limit 100`
 
-In the preceding statement, the AVG value of the first column in the first 100 rows is calculated. This statement is different from what MYSQL outputs, as aggregation in SelectObject always returns only one row of data, so there is no need to limit its output volumes. Therefore, the limit in SelectObject  will be executed before the Aggregate function.
+In the preceding statement, the AVG value of the first column in the first 100 rows is calculated. This statement is different from what MYSQL outputs, as aggregation in SelectObject always returns only one row of data, so there is no need to limit its output volumes. Therefore, the limit in SelectObject will be executed before the Aggregate function.
 
 SQL statement restrictions are as follows:
 
@@ -356,7 +356,7 @@ Create Select Object Meta API is used to obtain information about the target CSV
  Parent Node: CsvMetaRequest
 
  |
-|OverwriteIfExists|bool| Recalculates SelectMeta to overwrite existing data \( optional, the default value is false. If  Select Meta already exists, then Select Meta is returned.\)
+|OverwriteIfExists|bool| Recalculates SelectMeta to overwrite existing data \( optional, the default value is false. If Select Meta already exists, then Select Meta is returned.\)
 
  Child Node: None
 

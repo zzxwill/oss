@@ -334,9 +334,9 @@ SQL statement restrictions are as follows:
 -   The Projection after Select can be a column name, a column index \(\_1, \_2, etc.\), an aggregate function, or a CAST function. Other expressions are not supported Like select \_ 1 + \_2 from ossobject is not allowed.
 -   The length of maximum row and column are both 256 KB.
 
-## CREATE SELECT OBJECT META {#section_pbq_vfy_b2b .section}
+## CreateSelectObjectMeta {#section_pbq_vfy_b2b .section}
 
-Create Select Object Meta API is used to obtain information about the target CSV file, such as the total number of rows, the total number of columns, and the number of Splits. If the information does not exist in the file, the whole CSV file is scanned for the preceding information. If the API executes correctly, a 200 response is returned. If the target CSV file is illegal or the specified delimiter does not match the target CSV file, a 400 error response is returned.
+CreateSelectObjectMeta API is used to obtain information about the target CSV file, such as the total number of rows, the total number of columns, and the number of Splits. If the information does not exist in the file, the whole CSV file is scanned for the preceding information. If the API executes correctly, a 200 response is returned. If the target CSV file is illegal or the specified delimiter does not match the target CSV file, a 400 error response is returned.
 
 **Request elements**
 

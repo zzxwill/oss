@@ -25,8 +25,8 @@ In the preceding example, "MyLog-" is the Object prefix specified by the user; "
 |Name|Example|Description|
 |:---|:------|:----------|
 |Remote IP|119.140.142.11|IP address from which the request is initiated \(the proxy or user firewall may block this field\)|
-|Reserved|None|Reserved field|
-|Reserved|None|Reserved field|
+|Reserved|-|Reserved field|
+|Reserved|-|Reserved field|
 |Time|\[02/May/2012:00:00:04 +0800\]|Time when the OSS receives the request|
 |Request-URI|GET /aliyun-logo.png HTTP/1.1|User-Requested URI \(including query-string\)|
 |HTTP Status|200|HTTP status code returned by the OSS|

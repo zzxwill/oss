@@ -22,91 +22,87 @@ The OssImport has two deployment modes available: standalone mode and distribute
 -   The standalone mode is sufficient for small-scale data migration which smaller than 30 TB. [Download](http://gosspublic.alicdn.com/ossimport/standalone/ossimport-2.3.1.zip?spm=a2c4g.11186623.2.4.tg6Ory&file=ossimport-2.3.1.zip)
 -   Distributed mode is recommended for larger data migrations. [Download](http://gosspublic.alicdn.com/ossimport/distributed/ossimport-2.3.1.tar.gz?spm=a2c4g.11186623.2.4.maVna1&file=ossimport-2.3.1.tar.gz)
 
-Standalone
+-   Standalone
 
-The master, worker, tracker, and console run on the same machine. There is only one worker in the system. We have encapsulated and optimized the deployment and execution of the standalone mode and the standalone deployment and execution are both easy. In standalone mode, the master, worker, tasktracker, and console modules are packaged into `ossimport2.jar`.
+    The master, worker, tracker, and console run on the same machine. There is only one worker in the system. We have encapsulated and optimized the deployment and execution of the standalone mode and the standalone deployment and execution are both easy. In standalone mode, the master, worker, tasktracker, and console modules are packaged into `ossimport2.jar`.
 
-The file structure in standalone mode is as follows:
+    The file structure in standalone mode is as follows:
 
-```
-ossimport
-├── bin
-│ └── ossimport2.jar # The JAR including master, worker, tracker, and console modules
-├── conf
-│ ├── local_job.cfg # Standalone job configuration file
-│ └── sys.properties # Configuration file for the system running
-├── console.bat # Windows command line, which can run distributed call-in tasks
-├── console.sh # Linux command line, which can run distributed call-in tasks
-├── import.bat # The configuration file for one-click import and execution in Windows is the data migration job configured in conf/local_job.cfg, including start, migration, validation, and retry
-├── import.sh # The configuration file of one-click import and execution in Linux is the data migration job configured in conf/local_job.cfg, including start, migration, validation, and retry
-├── logs # Log directory
-└── README.md # Description documentation. We recommend that you carefully read the documentation before using this feature
-```
+    ```
+    ossimport
+    ├── bin
+    │ └── ossimport2.jar  # The JAR including master, worker, tracker, and console modules
+    ├── conf
+    │ ├── local_job.cfg   # Standalone job configuration file
+    │ └── sys.properties  # Configuration file for the system running
+    ├── console.bat         # Windows command line, which can run distributed call-in tasks
+    ├── console.sh          # Linux command line, which can run distributed call-in tasks
+    ├── import.bat          # The configuration file for one-click import and execution in Windows is the data migration job configured in conf/local_job.cfg, including start, migration, validation, and retry
+    ├── import.sh           # The configuration file of one-click import and execution in Linux is the data migration job configured in conf/local_job.cfg, including start, migration, validation, and retry
+    ├── logs                # Log directory
+    └── README.md           # Description documentation. We recommend that you carefully read the documentation before using this feature
+    ```
 
-Note:
+    Note:
 
--   The import.bat or import.sh file is a one-click import script and can be run directly after you complete modification to `local_job.cfg`.
--   The console.bat or console.sh is the command line tool and can be used for distributed execution of commands.
--   Run scripts or commands in the `ossimport` directory, that is, the directory at the same level as the `*.bat/*.sh` file.
+    -   The import.bat or import.sh file is a one-click import script and can be run directly after you complete modification to `local_job.cfg`.
+    -   The console.bat or console.sh is the command line tool and can be used for distributed execution of commands.
+    -   Run scripts or commands in the `ossimport` directory, that is, the directory at the same level as the `*.bat/*.sh` file.
+-   Distributed
 
-Distributed
+    The OssImport is based on the master-worker distributed architecture, as shown in the following figure:
 
-The OssImport is based on the master-worker distributed architecture, as shown in the following figure:
+    ```
+    Master --------- Job --------- Console
+        |
+        |
+       TaskTracker
+        |_____________________
+        |Task     | Task      | Task
+        |         |           |
+    Worker      Worker      Worker
+    ```
 
-```
-Master --------- Job --------- Console
-    
-    
-   TaskTracker
-    |_____________________
-    |Task | Task | Task
-    
-Worker Worker Worker
-```
+    In the figure:
 
-In the figure:
+    -   Job: The data migration jobs submitted by users. For users, one job corresponds to one configuration file `job.cfg`.
+    -   Task: A job can be divided into multiple tasks by data size and number of files. Each task migrates a portion of files. The minimal unit for dividing a job into tasks is a file. One file cannot be split into multiple tasks.
+    The OssImport tool modules are listed in the following table:
 
--   Job: The data migration jobs submitted by users. For users, one job corresponds to one configuration file `job.cfg`.
--   Task: A job can be divided into multiple tasks by data size and number of files. Each task migrates a portion of files. The minimal unit for dividing a job into tasks is a file. One file cannot be split into multiple tasks.
-
-The OssImport tool modules are listed in the following table:
-
-|Role|Description|
-|:---|:----------|
-|Master|The master is responsible for splitting a job into multiple tasks by data size and number of files. The data size and number of files can be configured in sys.properties. The detailed process for splitting a job into multiple tasks is as follows:1.  The master node scans the full list of files to be migrated from the local/other cloud storage devices.
-2.  The master splits the full file list into tasks by data size and the number of files and each task is responsible for the migration or validation for a part of files.
-
+    |Role|Description|
+    |:---|:----------|
+    |Master|The master is responsible for splitting a job into multiple tasks by data size and number of files. The data size and number of files can be configured in sys.properties. The detailed process for splitting a job into multiple tasks is as follows:    1.  The master node scans the full list of files to be migrated from the local/other cloud storage devices.
+    2.  The master splits the full file list into tasks by data size and the number of files and each task is responsible for the migration or validation for a part of files.
  |
-|Worker| -   The worker is responsible for file migration and data validation of tasks. It pulls the specific file from the data source and uploads the file to the specified directory to the OSS. You can specify the data source to be migrated and the OSS configuration in job.cfg or local\_job.cfg.
--   Worker data migration supports limiting traffic and specifying the number of concurrent tasks. You can configure the settings in sys.properties.
-
+    |Worker|     -   The worker is responsible for file migration and data validation of tasks. It pulls the specific file from the data source and uploads the file to the specified directory to the OSS. You can specify the data source to be migrated and the OSS configuration in job.cfg or local\_job.cfg.
+    -   Worker data migration supports limiting traffic and specifying the number of concurrent tasks. You can configure the settings in sys.properties.
  |
-|TaskTracker|TaskTracker is abbreviated to Tracker. It is responsible for distributing tasks and tracking task statuses.|
-|Console|The console is responsible for interacting with users and receiving command display results. It supports system management commands such as deploy, start, and stop, and job management commands such as submit, retry, and clean.|
+    |TaskTracker|TaskTracker is abbreviated to Tracker. It is responsible for distributing tasks and tracking task statuses.|
+    |Console|The console is responsible for interacting with users and receiving command display results. It supports system management commands such as deploy, start, and stop, and job management commands such as submit, retry, and clean.|
 
-In distributed mode, you can start multiple worker nodes for data migration. Tasks are evenly allocated to the worker nodes and one worker node can run multiple tasks. One machine can only start one worker node. The master is started at the same time as the first worker node configured in `workers`, and the tasktracker and console also run on the machine.
+    In distributed mode, you can start multiple worker nodes for data migration. Tasks are evenly allocated to the worker nodes and one worker node can run multiple tasks. One machine can only start one worker node. The master is started at the same time as the first worker node configured in `workers`, and the tasktracker and console also run on the machine.
 
-The file structure in distributed mode is as follows:
+    The file structure in distributed mode is as follows:
 
-```
-ossimport
-Miss -- Bin
-│ ├── console.jar # The JAR package of the console module
-│ ├── master.jar # The JAR package of the master module
-│ ├── tracker.jar # The JAR package of the tracker module
-│ └── worker.jar # The JAR package of the worker module
-├── conf
-│ ├── job.cfg # The template of the job configuration file
-│ ├── sys.properties # Configuration file for the system running parameters
-│ └── workers # Worker list
-├── console.sh # The command line tool. Currently it only supports Linux
-├── logs # Log directory
-└── README.md # Description documentation. We recommend that you carefully read the documentation before using the feature
-```
+    ```
+    ossimport
+    Miss -- Bin
+    │ ├── console.jar     # The JAR package of the console module
+    │ ├── master.jar      # The JAR package of the master module
+    │ ├── tracker.jar     # The JAR package of the tracker module
+    │ └── worker.jar      # The JAR package of the worker module
+    ├── conf
+    │ ├── job.cfg         # The template of the job configuration file
+    │ ├── sys.properties  # Configuration file for the system running parameters
+    │ └── workers         # Worker list
+    ├── console.sh          # The command line tool. Currently it only supports Linux
+    ├── logs                # Log directory
+    └── README.md           # Description documentation. We recommend that you carefully read the documentation before using the feature
+    ```
 
-Note:
+    Note:
 
--   The distributed command line tool console.sh currently only supports Linux and does not support Windows.
+    -   The distributed command line tool console.sh currently only supports Linux and does not support Windows.
 
 ## Configuration files {#section_c2z_ldh_wdb .section}
 
@@ -127,7 +123,7 @@ In standalone mode, two configuration files are used: `sys.properties` and `loca
     -   Do not modify this option in standalone mode.
  |
     |workerPassword|The worker machine SSH user password.|Do not modify this option in standalone mode.|
-    |privateKeyFile|The file path of the public key.|     -   If you have established an SSH channel, you can specify the public key file path. Otherwise, leave it empty. 
+    |privateKeyFile|The file path of the private key.|     -   If you have established an SSH channel, you can specify the public key file path. Otherwise, leave it empty. 
     -   If you have configured privateKeyFile, the privateKeyFile is given priority.
     -   If privateKeyFile is not configured, the workerUser/workerPassword is used.
     -   Do not modify this option in the standalone mode.
@@ -223,9 +219,9 @@ In standalone mode, two configuration files are used: `sys.properties` and `loca
     The workers is exclusive to the distributed mode and every IP address is a row,  such as:
 
     ```
-    
-    
-    
+    192.168.1.6
+    192.168.1.7
+    192.168.1.8
     ```
 
     Note:

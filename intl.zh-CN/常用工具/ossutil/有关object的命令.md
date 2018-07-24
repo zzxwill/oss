@@ -18,35 +18,32 @@ ossutil提供了上传/下载/拷贝文件、设置object的acl、设置object�
 
     ossutil从1.0.0.Beta1版本开始，上传文件默认打开crc64。
 
-    （1）上传单个文件：
-
-    ```
-    $./ossutil cp a oss://ossutil-test
-    Succeed: Total num: 1, size: 230. OK num: 1(upload 1 files).
-    0.699795(s) elapsed
-    ```
-
-    （2）上传文件夹：
-
-    ```
-    $./ossutil cp -r dir oss://ossutil-test
-    Succeed: Total num: 35, size: 464,606. OK num: 35(upload 34 files, 1 directories).
-    0.896320(s) elapsed
-    ```
-
-    -   上传/下载/拷贝文件的性能调优
-
-        在cp命令中，通过`jobs`项和`-parallel`项控制并发数。`-jobs`项控制多个文件上传/下载/拷贝时，文件间启动的并发数。`-parallel`制分片上传/下载/拷贝一个大文件时，每一个大文件启动的并发数。
-
-        默认情况下，ossutil会根据文件大小来计算parallel个数（该选项对于小文件不起作用，进行分片上传/下载/拷贝的大文件文件阈值可由—bigfile-threshold选项来控制），当进行批量大文件的上传/下载/拷贝时，实际的并发数为jobs个数乘以parallel个数。该两个选项可由用户调整，当ossutil自行设置的默认并发达不到用户的性能需求时，用户可以自行调 整该两个选项来升降性能。
-
-        注意：
+    -   上传单个文件：
 
         ```
-        如果并发数调得太大，由于线程间资源切换及抢夺等，ossutil上传/下载/拷贝性能可能会下降，所以请根据实际的机器情况调整这两个选项的数值，如果要进行压测，可以一开始将两个数值调低，慢慢调大寻找最优值。
-        如果--jobs选项和--parallel选项值太大，在机器资源有限的情况下，可能会因为网络传输太慢，产生EOF错误，这个时候请适当降低--jobs选项和--parallel选项值。
+        $./ossutil cp a oss://ossutil-test
+        Succeed: Total num: 1, size: 230. OK num: 1(upload 1 files).
+        0.699795(s) elapsed
         ```
 
+    -   上传文件夹：
+
+        ```
+        $./ossutil cp -r dir oss://ossutil-test
+        Succeed: Total num: 35, size: 464,606. OK num: 35(upload 34 files, 1 directories).
+        0.896320(s) elapsed
+        ```
+
+-   上传/下载/拷贝文件的性能调优
+
+    在cp命令中，通过`jobs`项和`-parallel`项控制并发数。`-jobs`项控制多个文件上传/下载/拷贝时，文件间启动的并发数。`-parallel`制分片上传/下载/拷贝一个大文件时，每一个大文件启动的并发数。
+
+    默认情况下，ossutil会根据文件大小来计算parallel个数（该选项对于小文件不起作用，进行分片上传/下载/拷贝的大文件文件阈值可由—bigfile-threshold选项来控制），当进行批量大文件的上传/下载/拷贝时，实际的并发数为jobs个数乘以parallel个数。该两个选项可由用户调整，当ossutil自行设置的默认并发达不到用户的性能需求时，用户可以自行调 整该两个选项来升降性能。
+
+    **说明：** 
+
+    -   如果并发数调得太大，由于线程间资源切换及抢夺等，ossutil上传/下载/拷贝性能可能会下降，所以请根据实际的机器情况调整这两个选项的数值，如果要进行压测，可以一开始将两个数值调低，慢慢调大寻找最优值。
+    -   如果--jobs选项和--parallel选项值太大，在机器资源有限的情况下，可能会因为网络传输太慢，产生EOF错误，这个时候请适当降低--jobs选项和--parallel选项值。
 -   设置object的acl
 
     ossutil使用set-acl命令设置object的acl，使用-r选项可以批量设置object的acl。

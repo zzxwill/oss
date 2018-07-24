@@ -74,6 +74,8 @@ ossutil提供了上传/下载/拷贝文件、设置object的acl、设置object�
     ./ossutil set-meta oss://dest/a x-oss-object-acl:private -u
     ```
 
+    **说明：** 您可以在上传文件的同时设置object的meta信息，详情请参见[ossutil的过滤参数include/exclude](https://yq.aliyun.com/articles/600175)。
+
 -   查看object描述信息（meta）
 
     ossutil使用stat命令查看object的描述（meta）信息。

@@ -12,7 +12,7 @@ This table provides the description and values of the parameters for the `crop`o
 |h|Height of the cropped area|\[0-image height\]|
 |x|X-axis of the crop starting point \(the origin is located in the upper-left corner by default\)|\[0-image border\]|
 |y|Y-axis of the crop starting point \(the origin is located in the upper-left corner by default\)|\[0-image border\]|
-|g|Location of the origin for cropping. The origin is located in the upper-left corner of any of nine fixed cells.|\[nw,north,ne,west,center,east,ne\]|
+|g|Location of the origin for cropping. The origin is located in the upper-left corner of any of nine fixed cells.|\[nw, north, ne, west, center, east, sw, south, se\]|
 
 Schematic view of the g parameter indicating the origin for cropping:
 
@@ -20,7 +20,7 @@ Schematic view of the g parameter indicating the origin for cropping:
 
 ## Caveats {#section_bhy_2ps_vdb .section}
 
--   If the specified starting X-axis and Y-axis values exceed the source image, a BadRequest error is returned.  You must specify different values to crop the image.
+-   If the specified starting X-axis and Y-axis values exceed the source image, a BadRequest error is returned. You must specify different values to crop the image.
 -   If the width and height specified from the starting point exceed the source image size, the source image is cropped to its edges.
 
 ## Example {#section_fst_gps_vdb .section}

@@ -1,6 +1,6 @@
 # Adaptive orientation {#concept_ugq_tvs_vdb .concept}
 
-The photos taken by some mobile phones may contain rotation parameters \(saved as EXIF data of the photos\).  You can configure whether to rotate such photos.   By default, adaptive orientation is configured.
+The photos taken by some mobile phones may contain rotation parameters \(saved as EXIF data of the photos\). You can configure whether to rotate such photos. By default, adaptive orientation is configured.
 
 ## Parameters {#section_y3b_vvs_vdb .section}
 
@@ -14,7 +14,7 @@ Operation name: `auto-orient`
 
  1 indicates rotating and then scaling down the image.
 
- |\[0, 1\]|
+ |0 and 1|
 
 ## Caveats {#section_c2t_cws_vdb .section}
 
@@ -35,6 +35,6 @@ Operation name: `auto-orient`
 
     ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4776/2508_en-US.jpg)
 
-    The target image size is  100x127 \(WxH\).
+    The target image size is 100x127 \(WxH\).
 
 

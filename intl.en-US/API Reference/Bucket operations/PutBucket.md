@@ -24,7 +24,7 @@ Authorization: SignatureValue
 -   If the requested bucket already exists, 409 Conflict is returned. Error code: BucketAlreadyExists.
 -   If the bucket to be created does not conform to the naming conventions, the message of 400 Bad Request is returned. Error code: InvalidBucketName.
 -   If the information for user authentication is not introduced when you initiate a Put Bucket request, the message of 403 Forbidden is returned. Error code: AccessDenied.
--   If the maximum number of buckets allowed to be created \(30 by default\) exceeds when you initiate a PutBucket request, the message of 400 Bad Request is returned. Error code: TooManyBuckets.
+-   You can create a maximum of 30 buckets in a region. If the number is exceeded, the message of 400 Bad Request is returned. Error code: TooManyBuckets.
 -   If no access permission is specified for the created bucket, the `Private` permission applies by default.
 -   The storage type of a new bucket can be specified. Standard, IA, and Archive are available.
 

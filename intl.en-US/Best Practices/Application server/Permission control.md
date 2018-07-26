@@ -20,167 +20,156 @@ This document elaborates how to configure different policies to implement differ
     **Note:** This policy is neither secured nor recommended to use for mobile apps.
 
     ```
-    ```json
-      
+    {
         "Statement": [
-          
+          {
             "Action": [
               "oss:*"
-            
+            ],
             "Effect": "Allow",
             "Resource": ["acs:oss:*:*:*"]
-          
-        
+          }
+        ],
         "Version": "1"
-      
-      
+      }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Successful|
-    |Upload objects without a prefix, test.txt.|Successful|
-    |Download objects without a prefix, test.txt.|Successful|
-    |Upload objects with a prefix, user1/test.txt.|Successful|
-    |Download objects with a prefix, user1/test.txt.|Successful|
-    |List all objects, test.txt.|Successful|
-    |List objects with a prefix, user1/test.txt.|Successful|
+    |Upload the object without a prefix, test.txt.|Successful|
+    |Download the object without a prefix, test.txt.|Successful|
+    |Upload the object with a prefix, user1/test.txt.|Successful|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Successful|
+    |List the object with a prefix, user1/test.txt.|Successful|
 
 -   Read-only policies with or without any prefixes
 
     This policy indicates the app can list and download all objects in the bucket app-base-oss.
 
     ```
-    ```json
-      
-        "Statement": [
-          
-            "Action": [
-              "oss:GetObject",
-              "oss:ListObjects"
-            
-            "Effect": "Allow",
-            "Resource": ["acs:oss:*:*:app-base-oss/*", "acs:oss:*:*:app-base-oss"]
-          
-        
-        "Version": "1"
-      
-      
+    {
+          "Statement": [
+            {
+              "Action": [
+                "oss:GetObject",
+                "oss:ListObjects"
+              ],
+              "Effect": "Allow",
+              "Resource": ["acs:oss:*:*:app-base-oss/*", "acs:oss:*:*:app-base-oss"]
+            }
+          ],
+          "Version": "1"
+        }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Failed|
-    |Upload objects without a prefix, test.txt.|Failed|
-    |Download objects without a prefix, test.txt.|Failed|
-    |Upload objects with a prefix, user1/test.txt.|Failed|
-    |Download objects with a prefix, user1/test.txt.|Failed|
-    |List all objects, test.txt.|Failed|
-    |List objects with a prefix, user1/test.txt.|Failed|
+    |Upload the object without a prefix, test.txt.|Failed|
+    |Download the object without a prefix, test.txt.|Successful|
+    |Upload the object with a prefix, user1/test.txt.|Failed|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Successful|
+    |List the object with a prefix, user1/test.txt.|Successful|
 
 -   Read-only policies with a specified prefix
 
     This policy indicates the app can list and download all objects with the prefix of \*\*user1/\*\* in the bucket \*\*app-base-oss\*\*. However, the policy does not specify to download any objects with another prefix. By this way, different apps corresponding to different prefixes are spatially isolated in the bucket.
 
     ```
-    ```json
-      
+    {
         "Statement": [
-          
+          {
             "Action": [
               "oss:GetObject",
               "oss:ListObjects"
-            
+            ],
             "Effect": "Allow",
             "Resource": ["acs:oss:*:*:app-base-oss/user1/*", "acs:oss:*:*:app-base-oss"]
-          
-        
+          }
+        ],
         "Version": "1"
-      
-      
+      }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Failed|
-    |Upload objects without a prefix, test.txt.|Failed|
-    |Download objects without a prefix, test.txt.|Failed|
-    |Upload objects with a prefix, user1/test.txt.|Failed|
-    |Download objects with a prefix, user1/test.txt.|Successful|
-    |List all objects, test.txt.|Successful|
-    |List objects with a prefix, user1/test.txt.|Successful|
+    |Upload the object without a prefix, test.txt.|Failed|
+    |Download the object without a prefix, test.txt.|Failed|
+    |Upload the object with a prefix, user1/test.txt.|Failed|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Successful|
+    |List the object with a prefix, user1/test.txt.|Successful|
 
 -   Write-only policies with no specified prefixes
 
     This policy indicates that the app can upload all objects in the bucket app-base-oss.
 
     ```
-    ```json
-      
+    {
         "Statement": [
-          
+          {
             "Action": [
               "oss:PutObject"
-            
+            ],
             "Effect": "Allow",
             "Resource": ["acs:oss:*:*:app-base-oss/*", "acs:oss:*:*:app-base-oss"]
-          
-        
+          }
+        ],
         "Version": "1"
-      
-      
+      }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Failed|
-    |Upload objects without a prefix, test.txt.|Successful|
-    |Download objects without a prefix, test.txt.|Failed|
-    |Upload objects with a prefix, user1/test.txt.|Successful|
-    |Download objects with a prefix, user1/test.txt.|Successful|
-    |List all objects, test.txt.|Successful|
-    |List objects with a prefix, user1/test.txt.|Successful|
+    |Upload the object without a prefix, test.txt.|Successful|
+    |Download the object without a prefix, test.txt.|Failed|
+    |Upload the object with a prefix, user1/test.txt.|Successful|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Successful|
+    |List the object with a prefix, user1/test.txt.|Successful|
 
 -   Write-only policies with a specified prefix
 
     This policy indicates the app can upload all objects with the user1/ prefix in the bucket app-base-oss. The app cannot upload any object with another prefix. In this way, different apps corresponding to different prefixes are spatially isolated in the bucket.
 
     ```
-    ```json
-      
+    {
         "Statement": [
-          
+          {
             "Action": [
               "oss:PutObject"
-            
+            ],
             "Effect": "Allow",
             "Resource": ["acs:oss:*:*:app-base-oss/user1/*", "acs:oss:*:*:app-base-oss"]
-          
-        
+          }
+        ],
         "Version": "1"
-      
-      
+      }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Failed|
-    |Upload objects without a prefix, test.txt.|Failed|
-    |Download objects without a prefix, test.txt.|Failed|
-    |Upload objects with a prefix, user1/test.txt.|Failed|
-    |Download objects with a prefix, user1/test.txt.|Successful|
-    |List all objects, test.txt.|Failed|
-    |List objects with a prefix, user1/test.txt.|Failed|
+    |Upload the object without a prefix, test.txt.|Failed|
+    |Download the object without a prefix, test.txt.|Failed|
+    |Upload the object with a prefix, user1/test.txt.|Failed|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Failed|
+    |List the object with a prefix, user1/test.txt.|Failed|
 
 -   Read/write policies with or without any prefixes
 
     This policy indicates that the app can list, download, upload, and delete all objects in the bucket `app-base-oss`.
 
     ```
-    ```json
-      
+    {
         "Statement": [
-          
+          {
             "Action": [
               "oss:GetObject",
               "oss:PutObject",
@@ -188,34 +177,33 @@ This document elaborates how to configure different policies to implement differ
               "oss:ListParts",
               "oss:AbortMultipartUpload",
               "oss:ListObjects"
-            
+            ],
             "Effect": "Allow",
             "Resource": ["acs:oss:*:*:app-base-oss/*", "acs:oss:*:*:app-base-oss"]
-          
-        
+          }
+        ],
         "Version": "1"
-      
-      
+      }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Failed|
-    |Upload objects without a prefix, test.txt.|Successful|
-    |Download objects without a prefix, test.txt.|Successful|
-    |Upload objects with a prefix, user1/test.txt.|Successful|
-    |Download objects with a prefix, user1/test.txt.|Successful|
-    |List all objects, test.txt.|Successful|
-    |List objects with a prefix, user1/test.txt.|Successful|
+    |Upload the object without a prefix, test.txt.|Successful|
+    |Download the object without a prefix, test.txt.|Successful|
+    |Upload the object with a prefix, user1/test.txt.|Successful|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Successful|
+    |List the object with a prefix, user1/test.txt.|Successful|
 
 -   Read/write policies with a specified prefix
 
     This policy indicates the app can list, download, upload, and delete all objects with a prefix of `user1/` in the bucket `app-base-oss`. The policy does not specify to read or write any objects with another prefix. In this way, different apps corresponding to different prefixes are spatially isolated in the bucket.
 
     ```
-    
+    {
         "Statement": [
-          
+          {
             "Action": [
               "oss:GetObject",
               "oss:PutObject",
@@ -223,24 +211,24 @@ This document elaborates how to configure different policies to implement differ
               "oss:ListParts",
               "oss:AbortMultipartUpload",
               "oss:ListObjects"
-            
+            ],
             "Effect": "Allow",
             "Resource": ["acs:oss:*:*:app-base-oss/user1/*", "acs:oss:*:*:app-base-oss"]
-          
-        
+          }
+        ],
         "Version": "1"
-      
+      }
     ```
 
     |Operations on OSS upon retrieving STS token|Result|
     |:------------------------------------------|:-----|
     |List all created buckets.|Failed|
-    |Upload objects without a prefix, test.txt.|Failed|
-    |Download objects without a prefix, test.txt.|Failed|
-    |Upload objects with a prefix, user1/test.txt.|Successful|
-    |Download objects with a prefix, user1/test.txt.|Successful|
-    |List all objects, test.txt.|Successful|
-    |List objects with a prefix, user1/test.txt.|Successful|
+    |Upload the object without a prefix, test.txt.|Failed|
+    |Download the object without a prefix, test.txt.|Failed|
+    |Upload the object with a prefix, user1/test.txt.|Successful|
+    |Download the object with a prefix, user1/test.txt.|Successful|
+    |List the object without a prefix, test.txt.|Successful|
+    |List the object with a prefix, user1/test.txt.|Successful|
 
 
 ## Summary {#section_mnb_gyx_5db .section}

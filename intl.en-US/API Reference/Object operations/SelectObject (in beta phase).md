@@ -71,56 +71,56 @@ Authorization: Signature
 |:---|-----|:----------|
 |SelectRequest|Container| The container for storing Select requests
 
- Child Node: Expression, InputSerialization, OutputSerialization
+ Child node: Expression, InputSerialization, OutputSerialization
 
  Parent node: None
 
  |
 |Expression|String| The SQL statement encoded in Base64
 
- Child Nodes: None
+ Child nodes: None
 
  Parent node: SelectRequest
 
  |
 |InputSerialization|Container| Input serialized parameters \(optional\)
 
- Child Node: CompressionType, CSV
+ Child node: CompressionType, CSV
 
  Parent node: SelectRequest
 
  |
 |OutputSerialization|Container| Output serialized parameters \(optional\)
 
- Child Node: CSV, OutputRawData
+ Child node: CSV, OutputRawData
 
  Parent node: SelectRequest
 
  |
 |CSV（InputSerialization）|Container| Input CSV-formatted parameters \(optional\)
 
- Child Node: FileHeaderInfo, RecordDelimiter, FieldDelimiter, QuoteCharacter, CommentCharacter, Range
+ Child node: FileHeaderInfo, RecordDelimiter, FieldDelimiter, QuoteCharacter, CommentCharacter, Range
 
  Parent node: InputSerialization
 
  |
 |CSV\(OutputSerialization\)|Container| Output CSV-formatted parameters \(optional\)
 
- Child Node: RecordDelimiter, FieldDelimiter, KeepAllColumns
+ Child node: RecordDelimiter, FieldDelimiter, KeepAllColumns
 
  Parent node: OutputSerialization
 
  |
 |OutputRawData|bool，default: false| Specifies output data as raw data, not Frame-based data \(optional\)
 
- Child Node: None
+ Child node: None
 
  Parent node: OutputSerialization
 
  |
 |CompressionType|Enumeration| Specifies file compression types. It can only be None as file compression is currently not supported
 
- Child Node: None
+ Child node: None
 
  Parent node: InputSerialization
 
@@ -133,14 +133,14 @@ Authorization: Signature
 -   Ignore: The CSV file contains header information, but the CSV column name can not be used as the column name in the Select.
 -   None: The CSV file contains no header information, and the value can be default.
 
- Child Node: None
+ Child node: None
 
  Parent node: CSV\(input\)
 
  |
 |RecordDelimiter|String| Specifies line breaks for a CSV, encoded in Base64.  The default value is\\n \(optional\). The value before decoding is at most two characters, expressed as an ANSI character. \\n used in Java indicates a line break.
 
- Child Node: None
+ Child node: None
 
  Parent node: CSV \(input, output\)
 
@@ -156,9 +156,9 @@ Authorization: Signature
  |
 |QuoteCharacter|String| Specifies the quote character of the CSV, encoded in Base64. The default value is \\” \(optional\). Inside the CSV quotes, the column separator is treated as a normal character. The value before encoding must be expressed as an ANSI character, such as \\”in Java indicates quotation marks.
 
- Child Node: None
+ Child node: None
 
- Parent Node: CSV \(input\)
+ Parent node: CSV \(input\)
 
  |
 |CommentCharacter|String|Specifies the CSV comment character, encoded in Base464. The default value is \# \(optional\)|
@@ -169,22 +169,22 @@ Authorization: Signature
 
  Both start and end are inclusive. The format is the same as the range parameter in range get.
 
- Child Node: None
+ Child node: None
 
- Parent Node: CSV \(input\)
+ Parent node: CSV \(input\)
 
  |
-|KeepAllColumns|bool| Specifies the location in the response result that contains all of the CSV columns \(optional, and default value is false\). However, only the columns in the select statement contain values, otherwise they are empty. The data of each row in the response result will be sorted in ascending order of CSV columns. Take the following statement as example:
+|KeepAllColumns|Bool| Specifies the location in the response result that contains all of the CSV columns \(optional, and default value is false\). However, only the columns in the select statement contain values, otherwise they are empty. The data of each row in the response result will be sorted in ascending order of CSV columns. Take the following statement as example:
 
  `select _5, _1 from ossobject.`
 
  If the value of KeepAllColumn is true, with six columns of data in total, the returned data is as follows:
 
- Value of 1st column,,,,Value of 5th column,\\n
+ Value of 1st column ...Value of 5th column,\\n
 
- Child Node: None
+ Child node: None
 
- Parent Node: CSV\(output\)
+ Parent node: CSV\(output\)
 
  |
 
@@ -329,8 +329,8 @@ SQL statement restrictions are as follows:
 -   Only single file queries are supported, not JOIN, ORDER BY, GROUP BY, and HAVING
 -    Not contains aggregation conditions in WHERE statement. For example, where max\(cast\(age as int\)\) \> 100 is not allowed.
 -   Up to 1000 columns are supported and the maximum column name is 1024.
--    Up to 5% wildcards are supported in the LIKE statement. \* and % are equivalent, representing 0 or multiple arbitrary characters.
--    Up to 1024 constant items are supported in the IN statement.
+-   Up to 5% wildcards are supported in the LIKE statement. \* and % are equivalent, representing 0 or multiple arbitrary characters.
+-   Up to 1024 constant items are supported in the IN statement.
 -   The Projection after Select can be a column name, a column index \(\_1, \_2, etc.\), an aggregate function, or a CAST function. Other expressions are not supported Like select \_ 1 + \_2 from ossobject is not allowed.
 -   The length of maximum row and column are both 256 KB.
 
@@ -344,60 +344,60 @@ CreateSelectObjectMeta API is used to obtain information about the target CSV fi
 |:---|-----|:----------|
 |CsvMetaRequest|Container| Saves the container that created Select Meta requests
 
- Child Node: Expression, InputSerialization, OutputSerialization
+ Child node: Expression, InputSerialization, OutputSerialization
 
  Parent node: None
 
  |
 |InputSerialization|Container| Inputs serialized parameters \(optional\)
 
- Child Node: CompressionType, CSV
+ Child node: CompressionType, CSV
 
- Parent Node: CsvMetaRequest
+ Parent node: CsvMetaRequest
 
  |
-|OverwriteIfExists|bool| Recalculates SelectMeta to overwrite existing data \( optional, the default value is false. If Select Meta already exists, then Select Meta is returned.\)
+|OverwriteIfExists|Bool| Recalculates SelectMeta to overwrite existing data \( optional, the default value is false. If Select Meta already exists, then Select Meta is returned.\)
 
- Child Node: None
+ Child node: None
 
- Parent Node: CsvMetaRequest
+ Parent node: CsvMetaRequest
 
  |
 |CompressionType|Enumeration| Specifies file compression types. It can only be None as file compression is currently not supported.
 
- Child Node: None
+ Child node: None
 
  Parent node: InputSerialization
 
  |
 |RecordDelimiter|String| Specifies line breaks for a CSV, encoded in Base64.  The default value is \\n \(optional\).  The value before decoding is at most two characters, expressed as an ANSI character. \\n used in Java indicates a line break.
 
- Child Node: None
+ Child node: None
 
  Parent node: CSV
 
  |
-|FieldDelimiter|String| Specifies the CSV column separator, encoded in Base64.  The default value is ， \(optional\).
+|FieldDelimiter|String| Specifies the CSV column separator, encoded in Base64. The default value is ， \(optional\).
 
  The value before decoding must be expressed as an ANSI character. ， used in Java indicates a comma.
 
- Child Node: None
+ Child node: None
 
- Parent Node: CSV \(input and output\)
+ Parent node: CSV \(input and output\)
 
  |
 |QuoteCharacter|String| Specifies the CSV quote character, encoded in Base64. The default value is \\” \(optional\).  Line breaks in quotation marks in CSV, column separators will be treated as normal characters. The value before decoding must be expressed as an ANSI character. \\” used in Java indicates a comma.
 
- Child Node: None
+ Child node: None
 
- Parent Node: CSV \(input\)
+ Parent node: CSV \(input\)
 
  |
 |CSV|Container| Specifies CSV input format
 
- Child Node: RecordDelimiter，FieldDelimiter，QuoteCharacter
+ Child node: RecordDelimiter，FieldDelimiter，QuoteCharacter
 
- Parent Node: InputSerialization
+ Parent node: InputSerialization
 
  |
 

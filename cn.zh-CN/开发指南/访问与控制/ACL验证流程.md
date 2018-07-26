@@ -11,7 +11,7 @@
 
 **匿名请求的访问流程**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/959_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1532589668959_zh-CN.png)
 
 1.  用户的请求被发送到OSS的HTTP服务器上。
 2.  OSS根据URL解析出Bucket和Object。
@@ -27,7 +27,7 @@
 
 **带身份验证请求的访问流程**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1026_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/15325896681026_zh-CN.png)
 
 1.  用户的请求被发送到OSS的HTTP服务器上。
 2.  OSS根据URL解析出Bucket和Object。

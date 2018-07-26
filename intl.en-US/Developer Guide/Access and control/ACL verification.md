@@ -11,7 +11,7 @@ Based on whether the identity authentication information is included or not, HTT
 
 **Access process for anonymous requests**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/959_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1532589672959_en-US.png)
 
 1.  The user’s request is sent to the HTTP server of OSS.
 2.  OSS parses the URL to get the bucket and object information.
@@ -27,7 +27,7 @@ Based on whether the identity authentication information is included or not, HTT
 
 **Access process for requests with identity authentication information**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1026_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/15325896721026_en-US.png)
 
 1.  The user’s request is sent to the HTTP server of OSS.
 2.  OSS parses the URL to get the bucket and object information.

@@ -41,7 +41,7 @@ HTML表单直接上传到OSS会产生跨域请求。为了浏览安全，需要�
 
 具体操作步骤请参见[设置跨域访问](../../../../intl.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。设置如下图所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4404/15329411317868_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4404/15329600207868_zh-CN.png)
 
 **说明：** 在低版本IE浏览器，Plupload会以flash方式执行。您需要设置crossdomain.xml ，设置方法请参见[OSS Web直传—使用Flash上传](https://yq.aliyun.com/articles/3198)。
 

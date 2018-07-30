@@ -18,15 +18,39 @@ Plupload是一款简单易用且功能强大的文件上传工具， 支持多�
 
 [下载地址](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/sample/oss-h5-upload-js-direct.zip)
 
-## 步骤 3：设置CORS {#section_jgc_3mk_p2b .section}
+## 步骤 3：修改配置文件 {#section_jty_1tm_q2b .section}
+
+将下载包解压后，修改upload.js文件：
+
+```
+accessid= '<yourAccessKeyId>';
+accesskey= <yourAccessKeySecrety';
+host = 'http://post-test.oss-cn-hangzhou.aliyuncs.com';
+```
+
+-   $id：您的AccessKeyId
+-   $key：您的AessKeySecret
+-   $host：格式为`BucketName.Endpoint`，例如`post-test.oss-cn-hangzhou.aliyuncs.com`
+
+    **说明：** 关于Endpoint的介绍，请参见[Endpoint（访问域名）](../../../../intl.zh-CN/开发指南/基本概念介绍.md#section_s3j_nmt_tdb)。
+
+
+## 步骤 4：设置CORS {#section_jgc_3mk_p2b .section}
 
 HTML表单直接上传到OSS会产生跨域请求。为了浏览安全，需要为Bucket设置跨域规则（CORS），支持Post方法。
 
 具体操作步骤请参见[设置跨域访问](../../../../intl.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。设置如下图所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4404/15326840627868_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4404/15329411317868_zh-CN.png)
 
 **说明：** 在低版本IE浏览器，Plupload会以flash方式执行。您需要设置crossdomain.xml ，设置方法请参见[OSS Web直传—使用Flash上传](https://yq.aliyun.com/articles/3198)。
+
+## 步骤 5：体验JavaScript客户端签名直传 {#section_ypv_ytm_q2b .section}
+
+1.  将应用服务器代码zip包解压到Web根目录下。
+2.  在Web浏览器中输入`<Web应用服务器地址>/oss-h5-upload-js-direct/index.html`，例如`http://abc.com:8080/oss-h5-upload-js-direct/index.html`。
+3.  选择一个或多个文件进行上传。
+4.  上传成功后，通过控制台查看上传结果。
 
 ## 核心代码解析 {#section_vyn_czq_p2b .section}
 
@@ -111,5 +135,7 @@ multipart_params: {
     ```
 
 
-**说明：** 把AccesssKeyID 和AccessKeySecret写在代码里面有泄露的风险，建议采用[服务端签名后直传](intl.zh-CN/最佳实践/Web端直传实践/服务端签名后直传.md#)。
+## 总结 {#section_gzz_dnm_q2b .section}
+
+在客户端通过JavaScript代码完成签名，无需过多配置，即可实现直传，非常方便。但是客户端通过JavaScript把AccesssKeyID 和AccessKeySecret写在代码里面有泄露的风险，建议采用[服务端签名后直传](intl.zh-CN/最佳实践/Web端直传实践/服务端签名后直传.md#)。
 

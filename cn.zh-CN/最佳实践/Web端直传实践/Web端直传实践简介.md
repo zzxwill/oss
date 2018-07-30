@@ -6,7 +6,7 @@
 
 每个OSS的用户都会用到上传服务。Web端常见的上传方法是用户在浏览器或app端上传文件到应用服务器，然后应用服务器再把文件上传到OSS。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4403/1459_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4403/15329159901459_zh-CN.png)
 
 和数据直传到OSS相比，以上方法有三个缺点：
 
@@ -20,5 +20,5 @@
 
 -   [JavaScript客户端签名直传](intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)讲解在客户端通过JavaScript代码完成签名，然后通过表单直传数据到OSS。
 -   [服务端签名后直传](intl.zh-CN/最佳实践/Web端直传实践/服务端签名后直传.md#)讲解在服务端通过PHP代码完成签名，然后通过表单直传数据到OSS。
--   [服务端签名直传并设置上传回调](intl.zh-CN/最佳实践/Web端直传实践/服务端签名直传并设置上传回调.md#)讲解在服务端通过PHP代码完成签名，并且服务端设置了上传后回调，然后通过表单直传数据到OSS。OSS回调完成后，应用服务器再返回结果给用户。
+-   [服务端签名直传并设置上传回调](intl.zh-CN/最佳实践/Web端直传实践/服务端签名直传并设置上传回调.md#)讲解在服务端通过PHP代码完成签名，并且服务端设置了上传后回调，然后通过表单直传数据到OSS。OSS回调完成后，应用服务器再返回结果给客户端。
 

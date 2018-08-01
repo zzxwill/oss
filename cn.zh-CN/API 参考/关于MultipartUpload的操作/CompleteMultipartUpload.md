@@ -1,8 +1,8 @@
 # CompleteMultipartUpload {#reference_lq1_dtx_wdb .reference}
 
-在将所有数据Part都上传完成后，必须调用Complete Multipart Upload API来完成整个文件的Multipart Upload
+在将所有数据Part都上传完成后，必须调用Complete Multipart Upload API来完成整个文件的Multipart Upload。
 
-在执行该操作时，用户必须提供所有有效的数据Part的列表（包括part号码和ETAG）；OSS收到用户提交的Part列表后，会逐一验证每个数据Part的有效性。当所有的数据Part验证通过后，OSS将把这些数据part组合成一个完整的Object。
+在执行该操作时，用户必须提供所有有效的数据Part的列表（包括part号码和ETAG）。OSS收到用户提交的Part列表后，会逐一验证每个数据Part的有效性。当所有的数据Part验证通过后，OSS将把这些数据part组合成一个完整的Object。
 
 ## 请求语法 {#section_xfs_ftx_wdb .section}
 
@@ -84,15 +84,15 @@ Complete Multipart Upload时，可以通过encoding-type对返回结果中的Key
 
 -   Complete Multipart Upload时，会确认除最后一块以外所有块的大小都大于100KB，并检查用户提交的Partlist中的每一个Part号码和Etag。所以在上传Part时，客户端除了需要记录Part号码外，还需要记录每次上传Part成功后，服务器返回的ETag值。
 -   OSS处理Complete Multipart Upload请求时，会持续一定的时间。在这段时间内，如果客户端和OSS之间的链接断掉，OSS仍会继续将请求做完。
--   用户提交的Part List中,Part号码可以是不连续的。例如第一块的Part号码是1；第二块的Part号码是5。
+-   用户提交的Part List中，Part号码可以是不连续的。例如第一块的Part号码是1，第二块的Part号码是5。
 -   OSS处理Complete Multipart Upload请求成功后，该Upload ID就会变成无效。
 -   同一个Object可以同时拥有不同的Upload Id，当Complete一个Upload ID后，该Object的其他Upload ID不受影响。
--   若调用Initiate Multipart Upload接口时，指定了x-oss-server-side-encryption请求头，则在Complete Multipart Upload的响应头中，会返回x-oss-server-side-encryption，其值表明该Object的服务器端加密算法。
--   如果用户上传了Content-MD5请求头，OSS会计算body的Content-MD5并检查一致性，如果不一致，将返回InvalidDigest错误码。
+-   若调用Initiate Multipart Upload接口时，指定了x-oss-server-side-encryption请求头，则在Complete Multipart Upload的响应头中返回x-oss-server-side-encryption，其值表明该Object的服务器端加密算法。
+-   如果用户上传了Content-MD5请求头，OSS会计算body的Content-MD5并检查一致性。如果不一致，将返回InvalidDigest错误码。
 
 ## 示例 {#section_ddv_t5x_wdb .section}
 
-**请求示例:**
+**请求示例：**
 
 ```
 POST /multipart.data? uploadId=0004B9B2D2F7815C432C9057C03134D4  HTTP/1.1
@@ -117,7 +117,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:8VwFhFUWmVecK6jQlHlXMK/zMT0=
 </CompleteMultipartUpload>
 ```
 
-**返回示例:**
+**返回示例：**
 
 ```
 HTTP/1.1 200 OK

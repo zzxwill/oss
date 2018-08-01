@@ -8,7 +8,7 @@
 
 RAM授权策略由若干条规则组成，使用RAM策略编辑器，可以在界面上逐条添加/删除规则，并自动生成策略的JSON文本。用户添加完所有规则后，只需要将JSON文本拷贝，然后粘贴到访问控制（RAM）控制台的创建授权策略内容框内。
 
-具体操作请参见 [创建自定义授权策略](https://www.alibabacloud.com/help/doc-detail/28640.htm)。
+具体操作请参见[创建自定义授权策略](https://help.aliyun.com/document_detail/28640.html)。
 
 RAM策略编辑器中，每条规则需要设置其Effect、Actions、Resources和Conditions：
 
@@ -23,16 +23,16 @@ RAM策略编辑器中，每条规则需要设置其Effect、Actions、Resources�
     -   `oss:*`表示允许所有动作。
     -   `oss:Get*`表示允许所有的读动作。
     -   `oss:Put*`表示允许所有的写动作。
-    更多信息请参见 [RAM Policy Editor README](https://github.com/aliyun/ram-policy-editor/blob/master/README-CN.md)。
+    更多信息请参见[RAM Policy Editor README](https://github.com/aliyun/ram-policy-editor/blob/master/README-CN.md)。
 
 -   Resources
 
     指定授权访问的OSS的资源，可以指定多个，每个是以下形式：
 
-    -   表示某个bucket: `my-bucket` （此时对bucket下的文件没有权限）
-    -   表示某个bucket下面所有文件: `my-bucket/*` （此时对bucket本身没有权限，例如ListObjects）
-    -   表示某个bucket下某个目录: `my-bucket/dir` （此时对dir/下面的文件没有权限）
-    -   表示某个bucket下某个目录下面所有文件: `my-bucket/dir/*` （此时对dir没有权限，例如ListObjects）
+    -   表示某个bucket：`my-bucket` （此时对bucket下的文件没有权限）
+    -   表示某个bucket下面所有文件：`my-bucket/*` （此时对bucket本身没有权限，例如ListObjects）
+    -   表示某个bucket下某个目录：`my-bucket/dir` （此时对dir/下面的文件没有权限）
+    -   表示某个bucket下某个目录下面所有文件：`my-bucket/dir/*` （此时对dir没有权限，例如ListObjects）
     -   填写完整的资源路径：`acs:oss:*:1234:my-bucket/dir`，其中`1234`为用户的User ID（在控制台查看）
     EnablePath
 
@@ -50,14 +50,12 @@ RAM策略编辑器中，每条规则需要设置其Effect、Actions、Resources�
 
     指定授权访问时应该满足的条件，可以指定多个。
 
-    更多信息请参见 [RAM Policy Editor README](https://github.com/aliyun/ram-policy-editor/blob/master/README-CN.md)。
-
 
 ## 例子 {#section_lpb_xc4_vdb .section}
 
 授权对`my-bucket`及其文件全部的权限：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4904/2440_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4904/15330877522440_zh-CN.png)
 
-更多例子请参见 [RAM Policy Editor README](https://github.com/aliyun/ram-policy-editor/blob/master/README-CN.md)。
+更多例子请参见[RAM Policy Editor](https://github.com/aliyun/ram-policy-editor/blob/master/README-CN.md)。
 

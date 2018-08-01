@@ -18,7 +18,7 @@ wordpress本身是不支持远程附件功能的，但是可以通过第三方�
 
 1.  登录wordpress站点，选择安装插件，搜关键词FTP，选择Hacklog Remote Attachment安装。
 2.  设置。
-    -   FTP服务器地址, 即运行ossftp工具的地址，一般填127.0.0.1即可。
+    -   FTP服务器地址，即运行ossftp工具的地址，一般填127.0.0.1即可。
     -   FTP服务的端口号，默认为2048。
     -   FTP登录用户名，格式为AccessKeyID/BukcetName，注意这里的/不是或的意思。
     -   FTP的登录密码为AceessKeySecrete。

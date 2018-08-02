@@ -11,7 +11,7 @@
 
 **匿名请求的访问流程**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1532589668959_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1533191162959_zh-CN.png)
 
 1.  用户的请求被发送到OSS的HTTP服务器上。
 2.  OSS根据URL解析出Bucket和Object。
@@ -27,7 +27,7 @@
 
 **带身份验证请求的访问流程**
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/15325896681026_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/15331911621026_zh-CN.png)
 
 1.  用户的请求被发送到OSS的HTTP服务器上。
 2.  OSS根据URL解析出Bucket和Object。
@@ -49,11 +49,8 @@
 ## 带身份验证访问OSS的三种方法 {#section_bpf_5qg_l2b .section}
 
 -   使用控制台访问OSS：控制台中对用户隐藏了身份验证的细节，使用控制台访问OSS的用户无需关注细节。
+-   使用SDK访问OSS：OSS提供了多种开发语言的SDK，SDK中实现了签名算法，只需要将AccessKey信息作为参数输入即可。
+-   使用API访问OSS：如果您想用自己喜欢的语言来封装调用RESTful API接口，您需要实现签名算法来计算签名。具体请参见API手册中的[在Header中包含签名](../../../../intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)和[在URL中包含签名](../../../../intl.zh-CN/API 参考/访问控制/在URL中包含签名.md#)。
 
--   使用SDK访问OSS：OSS提供了多种开发语言的SDK，SDK中实现了签名算法，只需要将AK信息作为参数输入即可。
-
--   根据API访问OSS：如果您想用自己喜欢的语言来封装调用RESTful API接口，您需要实现签名算法来计算签名。具体的签名算法可以参考API手册中的[在Header中包含签名](../../../../intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)和[在URL中包含签名](../../../../intl.zh-CN/API 参考/访问控制/在URL中包含签名.md#)。
-
-
-关于AccessKey相关的解释及更详细的身份验证的操作请参见[访问控制](intl.zh-CN/开发指南/访问与控制/访问控制.md#)。
+关于AccessKey和身份验证的更多信息请参见[访问控制](intl.zh-CN/开发指南/访问与控制/访问控制.md#)。
 

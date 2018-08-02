@@ -32,7 +32,7 @@ After uploading objects to OSS, you may want to:
 ## Reference {#section_nvr_ybb_5db .section}
 
 -   API: [PutObject](../../../../intl.en-US/API Reference/Object operations/PutObject.md#)
--   SDK: [Java SDK PutObject](https://www.alibabacloud.com/help/doc-detail/84781.htm)
+-   Java SDK: [Simple upload](https://www.alibabacloud.com/help/doc-detail/84781.htm)
 -   Console: [Upload objects](../../../../intl.en-US/Console User Guide/Manage objects/Upload objects.md#)
 
 ## Best practices {#section_fsv_zbb_5db .section}

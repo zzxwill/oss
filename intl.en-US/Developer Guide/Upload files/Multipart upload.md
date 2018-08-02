@@ -1,8 +1,6 @@
 # Multipart upload {#concept_wzs_2gb_5db .concept}
 
-## Use cases {#section_y4d_tgb_5db .section}
-
-For the object larger than 5 GB, you can use the multipart upload to split it into multiple data blocks \(called parts in OSS\) and upload them separately. When you have uploaded all parts,  OSS constructs the object from the uploaded parts.
+For the object larger than 5 GB, you can use the multipart upload to split it into multiple data blocks \(called parts in OSS\) and upload them separately. When you have uploaded all parts, OSS constructs the object from the uploaded parts.
 
 We recommend that you use the multipart upload in the following scenarios:
 
@@ -15,24 +13,26 @@ We recommend that you use the multipart upload in the following scenarios:
 
 The workflow of the multipart upload is shown as follows:
 
-1.  You split the object into multiple parts.
-2.  You initiate a multipart upload task. For more information, see \([InitiateMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)\).
-3.  You upload the parts one by one or concurrently. For more information, see \([UploadPart](../intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)\).
-4.  After all the parts are uploaded, OSS combines them into the original object. For more information, see \([CompleteMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)\).
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4363/15332033911058_en-US.png)
 
-![](images/1058_en-US.png)
+The description of the workflow is as follows:
+
+1.  You split the object into multiple parts.
+2.  You initiate a multipart upload task. For more information, see \([InitiateMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)\).
+3.  You upload the parts one by one or concurrently. For more information, see \([UploadPart](../../../../intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)\).
+4.  After all the parts are uploaded, OSS combines them into the original object. For more information, see \([CompleteMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)\).
 
 When you use the multipart upload, take the following into consideration:
 
--   All the parts, except the last one, must not be smaller than 100 KB. Otherwise, the call to the [CompleteMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#) interface fails.
+-   All the parts, except the last one, must not be smaller than 100 KB. Otherwise, the call to the [CompleteMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#) interface fails.
 -   After the object is split into parts, the parts are ordered by the partNumbers specified during the upload.  The upload speed does not correlate to the number of parts uploaded concurrently, because both the network conditions and the device load must be considered.
--   By default, when the upload is complete but the call to the [CompleteMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#) interface fails, the uploaded parts will not be deleted automatically. You can call the [AbortMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#) interface to terminate the upload and save the storage space. To automatically delete the uploaded parts, see [Manage object lifecycle](intl.en-US/Developer Guide/Managing Objects/Manage object lifecycle.md#).
+-   By default, when the upload is complete but the call to the [CompleteMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#) interface fails, the uploaded parts will not be deleted automatically. You can call the [AbortMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#) interface to terminate the upload and save the storage space. To automatically delete the uploaded parts, see [Manage object lifecycle](intl.en-US/Developer Guide/Manage files/Manage object lifecycle.md#).
 
 ## Resumable upload {#section_p5x_khb_5db .section}
 
 The uploaded parts will not disappear unless you delete them. Therefore, the multipart upload can be considered as the resumable upload.
 
-If the system crashes during a multipart upload, you can resume the upload by using the [ListMultipartUploads](../intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#) and the [ListParts](../intl.en-US/API Reference/Multipart upload operations/ListParts.md#)interface to list the uploaded parts in each task. This allows uploads to be resumed from the last uploaded part.  The same logic applies to pausing and resuming uploads.
+If the system crashes during a multipart upload, you can resume the upload by using the [ListMultipartUploads](../../../../intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#) and the [ListParts](../../../../intl.en-US/API Reference/Multipart upload operations/ListParts.md#)interface to list the uploaded parts in each task. This allows uploads to be resumed from the last uploaded part.  The same logic applies to pausing and resuming uploads.
 
 The multipart upload is particularly well suited for the data transfer between mobile devices and the large file upload.
 
@@ -46,40 +46,32 @@ The multipart upload is particularly well suited for the data transfer between m
 
 ## Security and authorization {#section_bt3_4hb_5db .section}
 
-To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level. For more information, see [Access control](intl.en-US/Developer Guide/Access and control/Access control.md#). OSS also provides account-level authorization for third-party uploads. For more information, see [Authorized third-party uploads](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
+To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level. For more information, see [Access control](intl.en-US/Developer Guide/Access and control/Access control.md#).
+
+OSS also provides account-level authorization for third-party uploads. For more information, see [Authorized third-party uploads](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
 
 ## Further operations {#section_un3_phb_5db .section}
 
+After uploading objects to OSS, you may want to:
+
 -   Initiate a callback request to a specified application server. For more information, see [Upload callback](intl.en-US/Developer Guide/Upload files/Upload callback.md#).
--   Process the uploaded data. 
--   For more information, see [Cloud data processing](intl.en-US/Developer Guide/Cloud data processing.md#).
+-   Process the uploaded data. For more information, see [Cloud data processing](intl.en-US/Developer Guide/Cloud data processing.md#).
 
 ## Usage {#section_p4k_qhb_5db .section}
 
--   API：
-    -   [MultipartUpload](../intl.en-US/API Reference/Multipart upload operations/Introduction.md#)
-    -   [InitiateMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)
-    -   [UploadPart](../intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)
-    -   [UploadPartCopy](../intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#)
-    -   [CompleteMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)
-    -   [AbortMultipartUpload](../intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#)
-    -   [ListMultipartUploads](../intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#)
-    -   [ListParts](../intl.en-US/API Reference/Multipart upload operations/ListParts.md#)
--   SDK：Java SDK-[MultipartUpload](https://help.aliyun.com/document_detail/32013.html) in Upload objects
+-   API:
+    -   [MultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/Introduction.md#)
+    -   [InitiateMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)
+    -   [UploadPart](../../../../intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)
+    -   [UploadPartCopy](../../../../intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#)
+    -   [CompleteMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)
+    -   [AbortMultipartUpload](../../../../intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#)
+    -   [ListMultipartUploads](../../../../intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#)
+    -   [ListParts](../../../../intl.en-US/API Reference/Multipart upload operations/ListParts.md#)
+-   SDK: Java SDK- MultipartUpload in [Upload objects](https://www.alibabacloud.com/help/doc-detail/32013.htm)
 
 ## Best practices {#section_gn4_shb_5db .section}
 
--   [RAM and STS best practices](../intl.en-US/Best Practices/Access control/Overview.md#)
--   [Web client direct upload](../intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
-
-## Reference links: {#section_apy_thb_5db .section}
-
--   [Upload callback](intl.en-US/Developer Guide/Upload files/Upload callback.md#)
--   [Introduction to mobile-side development upload scenario](intl.en-US/Developer Guide/Access OSS/OSS-based app development.md#)
--   [Download after upload](intl.en-US/Developer Guide/Download Files/Simple download.md#)
--   [Cloud Processing after uploading images](intl.en-US/Developer Guide/Image Processing.md#)
--   [Cloud Processing after uploading audio and video files](intl.en-US/Developer Guide/Cloud data processing.md#)
--   [Upload Secure Access Control](intl.en-US/Developer Guide/Access and control/Access control.md#)
--   [Authorized third-party uploads](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#)
--   [Copy and delete files after upload](intl.en-US/Developer Guide/Managing Objects/Object Meta.md#)
+-   [RAM and STS best practices](../../../../intl.en-US/Best Practices/Access control/Overview.md#)
+-   [Web client direct upload](../../../../intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
 

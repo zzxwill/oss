@@ -1,12 +1,12 @@
 # Form upload {#concept_uln_lcb_5db .concept}
 
-## Use cases {#section_gdr_mcb_5db .section}
+Form upload refers to the upload of an object by using the Post Object method in the OSS API. The object to be uploaded cannot be larger than 5 GB. This method can be used in HTML web pages to upload objects. A typical scenario is web applications.
 
-Form upload refers to the upload of an object by using the Post Object method in the OSS API. The object to be uploaded cannot be larger than 5 GB. This method can be used in HTML web pages to upload objects. A typical scenario is web applications. Take a job-search website as an example. The comparison between the process with and without using form upload is as follows:
+Take a job-search website as an example. The comparison between the process with and without using form upload is as follows:
 
-| |Process without using form upload|Process using form upload|
-|:-|:--------------------------------|:------------------------|
-|Process comparison| 1.  A website user uploads a resume.
+|Process without using form upload|Process using form upload|
+|:--------------------------------|:------------------------|
+| 1.  A website user uploads a resume.
 2.  The website server responds to the upload page.
 3.  The resume is uploaded to the server.
 4.  The server uploads the resume to OSS.
@@ -27,24 +27,24 @@ Form upload refers to the upload of an object by using the Post Object method in
 
 ## Advantages of form upload {#section_g4q_c2b_5db .section}
 
--   If the form upload is not used, files are uploaded to the web server first, and then the web server forwards the files to OSS.
--   In case of huge uploads, the web server becomes the bottleneck and needs to be scaled up. If the form upload is used, files are uploaded directly from the client to OSS without the forwarding of the web server. OSS handles all upload requests and guarantees the service quality.
+If the form upload is not used, files are uploaded to the web server first, and then the web server forwards the files to OSS. In case of huge uploads, the web server becomes the bottleneck and needs to be scaled up. If the form upload is used, files are uploaded directly from the client to OSS without the forwarding of the web server. OSS handles all upload requests and guarantees the service quality.
 
 ## Security and authorization {#section_bxs_d2b_5db .section}
 
--   To grant upload permissions to a third party, you can use the PostObject interface. For more information, see [PostObject](../intl.en-US/API Reference/Object operations/PostObject.md#).
+To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level. For more information, see [Access control](https://help.aliyun.com/knowledge_detail/57754.html).
 
+To grant upload permissions to a third party, you can use the PostObject interface. For more information, see [PostObject](../../../../intl.en-US/API Reference/Object operations/PostObject.md#).
 
 ## Procedures for form upload {#section_bzp_22b_5db .section}
 
 1.  Construct a Post policy.
 
-    The policy form field of the Post request is used to verify the validity of the request. For example, the policy can specify the size and name of objects to be uploaded, the redirect URL of the client, and the status code the client receives after a successful upload.  For more information, see [Post Policy](../intl.en-US/API Reference/Object operations/PostObject.md#section_d5z_1ww_wdb).
+    The policy form field of the Post request is used to verify the validity of the request. For example, the policy can specify the size and name of objects to be uploaded, the redirect URL of the client, and the status code the client receives after a successful upload.  For more information, see [Post Policy](../../../../intl.en-US/API Reference/Object operations/PostObject.md#section_d5z_1ww_wdb).
 
     In the following example of policy, the expiration time for uploads by website users is 2115-01-27T10:56:19Z \(a long expiration period is set for tests only and is not recommended in actual use\) and the maximum file size is 104857600 bytes.
 
     ```
-    This example uses the Python code and the policy is a string in JSON format.
+     This example uses the Python code and the policy is a string in JSON format.
      policy="{\"expiration\":\"2115-01-27T10:56:19Z\",\"conditions\":[[\"content-length-range\", 0, 104857600]]}"
     ```
 
@@ -81,7 +81,7 @@ def get_form(bucket, endpoint, access_key_id, access_key_secret, out):
         <meta http-equiv=content-type content="text/html; charset=UTF-8">
         <head><title>OSS form upload (PostObject)</title></head>
         <body>
-            <form action="http://%s.%s" method="post" enctype="multipart/form-data">
+            <form  action="http://%s.%s" method="post" enctype="multipart/form-data">
                 <input type="text" name="OSSAccessKeyId" value="%s">
                 <input type="text" name="policy" value="%s">
                 <input type="text" name="Signature" value="%s">
@@ -121,29 +121,20 @@ Example:
 python post_object.py --bucket=oss-sample --endpoint=oss-cn-hangzhou.aliyuncs.com --id=tphpxp --key=ZQNJzf4QJRkrH4 --out=post.html
 ```
 
-**Note:** 
+**Note:** In the constructed form,
 
--   In the constructed form, `success_action_redirect value=http://oss.aliyun.com` indicates the redirect URL after a successful upload.  You can replace it with your own page.
+-   `success_action_redirect value=http://oss.aliyun.com` indicates the redirect URL after a successful upload.  You can replace it with your own page.
 -   `success_action_status value=201` indicates that Status Code 201 is returned after a successful upload. This value can be replaced.
--   If the specified HTML file is post.html, open post.html and select the file to be uploaded. In this example, the client redirects to the OSS homepage \`http://oss.aliyun.com\` after a successful upload.
+
+If the specified HTML file is post.html, open post.html and select the file to be uploaded. In this example, the client redirects to the OSS homepage \`http://oss.aliyun.com\` after a successful upload.
 
 ## Usage {#section_txy_hfb_5db .section}
 
--   API: [PostObject](../intl.en-US/API Reference/Object operations/PostObject.md#)
+-   API: [PostObject](../../../../intl.en-US/API Reference/Object operations/PostObject.md#)
+-   Java SDK: [Form upload](https://www.alibabacloud.com/help/doc-detail/84788.htm)
 
 ## Best practices {#section_wgy_3fb_5db .section}
 
--   [Web client direct upload](../intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
--   [Cross-origin Resource Sharing \(CORS\)](../intl.en-US/Best Practices/Bucket management/Cross-origin resource sharing (CORS).md#)
-
-## Related links {#section_j4d_kfb_5db .section}
-
--   [Upload callback](intl.en-US/Developer Guide/Upload files/Upload callback.md#)
--   [OSS-based app development](intl.en-US/Developer Guide/Access OSS/OSS-based app development.md#)
--   [Simple download](intl.en-US/Developer Guide/Download Files/Simple download.md#)
--   [Image processing](intl.en-US/Developer Guide/Image Processing.md#)
--   [Cloud data processing](intl.en-US/Developer Guide/Cloud data processing.md#)
--   [Access Control](intl.en-US/Developer Guide/Access and control/Access control.md#)
--   [Authorized third-party upload](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#)
--   [Object Meta](intl.en-US/Developer Guide/Managing Objects/Object Meta.md#)
+-   [Web client direct upload](../../../../intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
+-   [Cross-origin Resource Sharing \(CORS\)](../../../../intl.en-US/Best Practices/Bucket management/Cross-origin resource sharing (CORS).md#)
 

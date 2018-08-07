@@ -35,7 +35,7 @@ The following services are frequently used with OSS:
 
 -   Elastic Compute Service \(ECS\)
 
-    An online computing service that offers elastic and secure virtual cloud servers to cater for all your cloud hosting needs. See the [ECS product details page](https:/www.aliyun.com/product/ecs).
+    An online computing service that offers elastic and secure virtual cloud servers to cater for all your cloud hosting needs. See the [ECS product details page](https://www.alibabacloud.com/product/ecs).
 
 -   Alibaba Cloud CDN
 

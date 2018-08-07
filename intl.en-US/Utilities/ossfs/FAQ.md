@@ -169,7 +169,7 @@ ossfs#your_bucket_name your_mount_point fuse _netdev,url=your_url,allow_other 0
 
     This occurs because of the libfuse version that ossfs uses at compile time Higher than the libfuse version linked to at run time. This is often due to the user's own installation of libfuse. Install ossfs with the RPM package we provide, without having to install libfuse again.
 
-    The RPM bag that we provide on the box and the box contains the box, if there is a chain in the running environment and ossfs is linked to an older version of fuse, the above warning will appear.
+    The RPM bag that we provide on the box and the box contains the box, if there is a chain in the running environment and ossfs is linked to an older version of fuse, the preceding warning will appear.
 
 
 1.  How do I confirm the fuse version of The ossfs runtime link?

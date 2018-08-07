@@ -584,7 +584,7 @@ public class SelectObjectSample {
 
 If you want to perform Shard-Query on a massive file, we recommend that you:
 
-1.  Call the Create Select Object Meta API to get the total number of Splits for the file. If the file needs to call the SelectObject API, this API should make asynchronous calls before the query, which reduces scan time.
+1.  Call the Create Select Object Meta API to get the total number of Splits for the file. If the file needs to call the SelectObject API, this API makes asynchronous calls before the query, which reduces scan time.
 2.  Select the appropriate concurrency n based on client-side resources, and divide the total number of Splits by the concurrency n to get the number of Splits that each shard query should contain.
 3.  Perform the Shard-Query in a form of split-range=1-20 in request body.
 4.  Merge the results if required.

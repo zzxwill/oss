@@ -39,15 +39,15 @@ The following services are frequently used with OSS:
 
 -   Alibaba Cloud CDN
 
-    A scalable and high-performance content delivery service for accelerated distribution of content to users across the globe. See the [CDN product details page](https:/www.aliyun.com/product/cdn).
+    A scalable and high-performance content delivery service for accelerated distribution of content to users across the globe. See the [CDN product details page](https://www.alibabacloud.com/product/cdn).
 
 -   E-MapReduce
 
-    A Big Data service that uses Apache Hadoop and Spark to process and analyze data. See the [E-MapReduce product details page](https:/www.aliyun.com/product/emapreduce).
+    A Big Data service that uses Apache Hadoop and Spark to process and analyze data. See the [E-MapReduce product details page.](https://www.alibabacloud.com/product/e-mapreduce)
 
 -   ApsaraVideo for Media Processing
 
-    A cloud service for transcoding multimedia data into various output resolutions, bit rates, and formats for unhindered playback. See the [ApsaraVideo for Media Processing product details page](https:/www.aliyun.com/product/mts).
+    A cloud service for transcoding multimedia data into various output resolutions, bit rates, and formats for unhindered playback. See the [ApsaraVideo for Media Processing product details page](https://www.alibabacloud.com/product/mts).
 
 
 ## Use OSS {#section_o5k_1mb_n2b .section}

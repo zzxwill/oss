@@ -4,30 +4,30 @@ Another scenario is introduced in this section. If another user is using the dev
 
 1.  Because the system has no default bucket-level policy, we must create a custom policy.
 
-    The bucket access policy is shown as follows. For more information, see [RAM Policy Description](../intl.en-US/Developer Guide/Access and control/Access control.md#) and [OSS Authorization FAQs](https://www.alibabacloud.com/help/doc-detail/39712.htm) .
+    The bucket access policy is shown as follows. For more information, see [RAM Policy Description](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#) and [OSS Authorization FAQs](../../../../intl.en-US/FAQ/Authorization for OSS instances.md#) .
 
     ```
     {
-       "Version": "1",
-       "Statement": [
-         {
-           "Effect": "Allow",
-           "Action": [
-             "oss:ListObjects",
-             "oss:GetObject"
-           ],
-           "Resource": [
-             "acs:oss:*:*:ram-test-dev",
-             "ACS: OSS: *: Ram-test-dev /*"
-           ]
-         }
+    "Version": "1",
+    "Statement": [
+     {
+       "Effect": "Allow",
+       "Action": [
+         "oss:ListObjects",
+         "oss:GetObject"
+       ],
+       "Resource": [
+         "acs:oss:*:*:ram-test-dev",
+         "acs:oss:*:*:ram-test-dev/*"
        ]
      }
+    ]
+    }
     ```
 
     After setting, we can see the policy in the custom authorization policy list.
 
-2.  In user authorization management, add this policy to the selected authorization policy list. Also in**Users** \> **Management** \> **Authorization policy,**all previously granted OSS read permissions can be revoked.
+2.  In user authorization management, add this policy to the selected authorization policy list. Also in **Users** \> **Management** \> **Authorization policy**, all previously granted OSS read permissions can be revoked.
 3.  Test the validity of permission configured.
 
     -   The object in ram-test-dev can be accessed:

@@ -73,7 +73,7 @@ Upload to OSS
 |file|字符串|文件或文本内容，必须是表单中的最后一个域。浏览器会自动根据文件类型来设置Content-Type，会覆盖用户的设置。 OSS一次只能上传一个文件。默认值：无
 
 |必须|
-|key|字符串|上传文件的object名称。 如果需要使用用户上传的文件名称作为object名，使用$\{filename\}变量。例如：如果用户上传了文件b.jpg，而key域的值设置为/user/a/$\{filename\}，最终的object名为/user/a/b.jpg。 如果文件名包含路径，则去除文件名中的路径，例如用户上传了文件a/b/c/b.jpg，则取文件名为b.jpg，若key域的值设置为/user/a/$\{filename\}，最终的object名为/user/a/b.jpg 默认值：无
+|key|字符串|上传文件的object名称。 如果名称包含路径，如a/b/c/b.jpg， 则OSS会自动创建相应的文件夹。 默认值：无
 
  |必须|
 |success\_action\_redirect|字符串|上传成功后客户端跳转到的URL，如果未指定该表单域，返回结果由success\_action\_status表单域指定。如果上传失败，OSS返回错误码，并不进行跳转。默认值：无
@@ -145,7 +145,7 @@ Upload to OSS
     Content-Type: multipart/form-data; boundary=9431149156168
     --9431149156168
     Content-Disposition: form-data; name="key"
-    /user/a/${filename}
+    /user/a/objectName.txt
     --9431149156168
     Content-Disposition: form-data; name="success_action_status"
     200

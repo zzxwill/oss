@@ -395,7 +395,7 @@ CreateSelectObjectMeta API is used to obtain information about the target CSV fi
  |
 |CSV|Container| Specifies CSV input format
 
- Child node: RecordDelimiter，FieldDelimiter，QuoteCharacter
+ Child node: RecordDelimiter, FieldDelimiter, QuoteCharacter
 
  Parent node: InputSerialization
 

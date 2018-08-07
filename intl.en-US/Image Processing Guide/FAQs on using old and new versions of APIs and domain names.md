@@ -2,11 +2,11 @@
 
 ## There are major differences between new and old versions of APIs: {#section_ir2_3xc_wdb .section}
 
--   New version API：`http://bucket.<endpoint>/object?x-oss-process=image/action,parame_value`
+-   New version API: `http://bucket.<endpoint>/object?x-oss-process=image/action,parame_value`
 
     All image manipulation operations are passed via `x-oss-process`. Each action is executed sequentially without any need for channel management.
 
--   Old versionAPI：`http://channel.<endpoint>/object@action.format`
+-   Old versionAPI: `http://channel.<endpoint>/object@action.format`
 
     It can be processed as a separator by`@`.
 
@@ -16,7 +16,7 @@
 |Item|Use IMG domain access|Direct use of OSS domain name access|
 |----|---------------------|------------------------------------|
 |Use|Store and process two Domain Name Systems|One-stop processing for upload, management, process, distribution.|
-|Is new version of API supported ?|Supported|Supported|
+|Is new version of API supported?|Supported|Supported|
 |Is old version of API supported?|Supported|Not supported by default|
 |Is https supported?|Not supported.|Supported|
 |Is VPC Network supported?|Not supported|Supported|

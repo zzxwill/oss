@@ -62,7 +62,7 @@ Traditional storage providers require you to purchase a predetermined amount of 
 
 OSS charges you only for what you actually use, without excess fees. As your business grows, you can enjoy the cost advantages of the flexible infrastructure from Alibaba Cloud, which adapts to meet your ever-changing requirements.
 
-For more information about OSS pricing, see the [OSS Pricing page](https://www.aliyun.com/price/product).
+For more information about OSS pricing, see the [OSS Pricing page](https://www.alibabacloud.com/product/oss/pricing).
 
 ## Learning path {#section_lnc_tdc_n2b .section}
 

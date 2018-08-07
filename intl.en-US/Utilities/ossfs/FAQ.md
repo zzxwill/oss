@@ -14,7 +14,7 @@
 -   Q: Can ossfs simultaneously mount multiple OSS buckets?
     -   Yes, write multiple OSS configuration information entries in the passwd-ossfs file. Buckets from different OSS accounts are supported.
 -   Q: I installed ossfs at yum/apt-get and has an error: conflicts with file from package fuse-devel.
-    -   There is an older version of fuse on your system. Please use the relevant package manager to uninstall and then reinstall ossfs.
+    -   There is an earlier version of fuse on your system. Please use the relevant package manager to uninstall and then reinstall ossfs.
 -   Q: ossfs is not working properly, how do I debug?
     -   You can use the -d -o f2 parameter when mounting. ossfs will write log content into the system logs. On the centos system, in/var/log/messages.
     -   You can also use the -f -d -o f2 parameter when mounting, and ossfs prints the logs to the screen.

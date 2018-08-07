@@ -2,9 +2,9 @@
 
 ## Background {#section_zkn_rd2_vdb .section}
 
-For example, A is the webmaster of a website. Webpages on the website contain links to images and audio/video files. These static resources are stored on [Alibaba Cloud OSS](https://www.alibabacloud.com/product/oss).  For example, A may save an image file on OSS with the URL `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. 
+For example, A is the webmaster of a website. Webpages on the website contain links to images and audio/video files. These static resources are stored on [Alibaba Cloud OSS](https://www.alibabacloud.com/product/oss). For example, A may save an image file on OSS with the URL `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. 
 
-For OSS external resource url, see [OSS address](../intl.en-US/Developer Guide/Access and control/ACL verification.md#) such a URL \(without signing\) requires the user's bucket permission to read publicly.
+For OSS external resource url, see [OSS address](../../../../intl.en-US/Developer Guide/Access and control/ACL verification.md#) such a URL \(without signing\) requires the user's bucket permission to read publicly.
 
 B is the webmaster of another website, B use the image resources of the website without permission, use this method to steal space and traffic by placing it in a web page on your website. In this case, the third-party web site user sees the B web site, but it's not clear the source of the pictures on the website. Since OSS charges by usage, so that user A does not get any benefit, instead, the cost of resource use is borne.
 
@@ -14,8 +14,8 @@ This article applies to users who use OSS resources as outer chains in a Web pag
 
 At present, the methods of anti-theft chain provided by OSS mainly include the following two types:
 
--   Set Referer The operation is available through the console and the SDK, and the user can choose according to their needs.
--   The signature URL, which is suitable for users who are used to developing.
+-   Set Referer : The operation is available through the console and the SDK, and the user can choose according to their needs.
+-   Use signature URL: This is suitable for users who are used to developing.
 
 The following two examples are provided in this article:
 
@@ -28,7 +28,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
 -   What is Referer?
 
-    Referer is HTTP Part of the header that usually comes with a referer when the browser sends a request to the web server, tell the server the source of the link for this request. In the example above, if the web site for user B is userdomain-steal, want to steal a picture link `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. A's Web site domain name is `userdomain`.
+    Referer is HTTP Part of the header that usually comes with a referer when the browser sends a request to the web server, tell the server the source of the link for this request. In the example above, if the web site for user B is userdomain-steal, want to steal a picture link `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. A's website domain name is `userdomain`.
 
     Suppose the web page of the chain web site userdomain-steal is as follows:
 
@@ -48,7 +48,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
     </html>
     ```
 
-    -   When an Internet user uses a browser to access the Web page of B's Web site `http://userdomain-steal/index.html`, the link in the web page is a picture of the site A. Because a request from one domain name \(userdomain-steal\) jumped to another domain name \(maid \), the browser takes the Referer with it in the header of the HTTP request, as shown:
+    -   When an Internet user uses a browser to access the Web page of B's website `http://userdomain-steal/index.html`, the link in the web page is a picture of the site A. Because a request from one domain name \(userdomain-steal\) jumped to another domain name \(maid \), the browser takes the Referer with it in the header of the HTTP request, as shown:
 
         You can see that the browser Referer in the HTTP request is`http://userdomain-steal/index.html`. This article mainly uses Chrome's developer mode to view web page requests, as follows:
 
@@ -63,7 +63,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
     For both cases, the OSS Referer feature offers two options:
 
-    -   Sets whether empty Referer access is allowed. Cannot be set separately and needs to be used in conjunction with the Referer whitelist.
+    -   Sets whether empty Referer access is allowed. It cannot be set separately and needs to be used in conjunction with the Referer whitelist.
     -   Sets the Referer white list.
     The details are analyzed as follows:
 
@@ -77,17 +77,15 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
     -   Three permissions of bucket \(private, public-read, public-read-write\) the Referer field is checked.
     Wildcard character explanation:
 
-    -   Asterisks '\*': You can use an asterisks instead of 0 or more characters. If you are looking for a file name that starts with “AEW”, you can enter AEW*to search for all types of files with the names starting with “AEW”, for example, AEWT.txt, AEWU.EXE, and AEWI.dll.  If you want to narrow down the search scope, you can enter AEW*.txt to search for all .txt files with names starting with AEW, such as AEWIP.txt and AEWDF.txt.
+    -   Asterisks '\*': You can use an asterisks instead of 0 or more characters. If you are looking for a file name that starts with “AEW”, you can enter AEW to search for all types of files with the names starting with “AEW”, for example, AEWT.txt, AEWU.EXE, and AEWI.dll.  If you want to narrow down the search scope, you can enter AEW.txt to search for all .txt files with names starting with AEW, such as AEWIP.txt and AEWDF.txt.
     -   Question mark \(?\): represents one character.  If you enter love?, all types of files with names starting with “love” and ending with a character are displayed, such as lovey and lovei. If you want to narrow the search scope, you can enter love?.doc to search for all .doc files with names starting with “love” and ending with a character, such as lovey.doc and lovei.doc.
 -   Anti-leech effects of different Referer settings
 
     The following describes the effects of Referer settings:
 
-    -   Disable Allow Empty Referer, 
+    -   Disable Allow Empty Referer, as shown in the following figure:
 
-        as shown in the following figure:
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/1701_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336293251701_en-US.png)
 
         Direct access: The resources are accessible even when anti-leech protection takes effect. The reason is, if the whitelist is blank, the system does not check whether the Referer field is blank. The Referer setting does not take effect when the whitelist is blank. Therefore, the Referer whitelist must be configured.
 
@@ -101,7 +99,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
         -   To allow access to other domain names such as `http://img.userdomain/index.html`, add `http://*.userdomain/` to the Referer whitelist.
         Both entries are configured as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/1702_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336293261702_en-US.png)
 
         After testing, the following results are obtained:
 
@@ -118,11 +116,9 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
         -   If the Referer whitelist only contains `http://userdomain/`, and the browser attempts to access the resources through the simulated third-level domain name `http://img.userdomain/error.html`, the third-level domain name fails to match any of the entries in the Referer whitelist, and OSS returns 403.
     -   Enable Allow Empty Referer and configure a Referer whitelist.
 
-        The Referer whitelist contains `http://*.userdomain/` and `http://userdomain`, 
+        The Referer whitelist contains `http://*.userdomain/` and `http://userdomain`, as shown in the following figure:
 
-        as shown in the following figure:
-
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/1709_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336293261709_en-US.png)
 
         After testing, the following results are obtained:
 
@@ -137,8 +133,8 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
     Functional use reference:
 
-    -   API：[Put Bucket Referer](../intl.en-US/API Reference/Bucket operations/Put Bucket Referer.md#)
-    -   Console: [Anti-leech settings](../intl.en-US/Console User Guide/Manage buckets/Set anti-leech.md#)
+    -   API: [Put Bucket Referer](../../../../intl.en-US/API Reference/Bucket operations/Put Bucket Referer.md#)
+    -   Console: [Anti-leech settings](../../../../intl.en-US/Console User Guide/Manage buckets/Set anti-leech.md#)
 -   Pros and cons of Referer anti-leech protection
 
     Referer anti-leech protection can be easily configured on the console. The main drawback of the Referer anti-leech protection is that it cannot prevent access attempts by the malicious spoofing Referers. If a leecher uses an application to simulate HTTP requests with a spoofing Referer, the Referer can bypass anti-leech protection settings. If you have higher anti-leech protection requirements, consider using signed URL anti-leech protection.
@@ -146,7 +142,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
 Signed URLs
 
-For the principles and implementation methods for signed URLs, see [Authorizing third-Party download](../intl.en-US/Developer Guide/Download Files/Authorized third-party download.md#). A signed URL is implemented as follows:
+For the principles and implementation methods for signed URLs, see [Authorizing third-Party download](../../../../intl.en-US/Developer Guide/Download files/Authorized third-party download.md#). A signed URL is implemented as follows:
 
 1.  Set the bucket permission to private-read.
 2.  Generate a signature based on the expected expiration time \(the time when the signed URL expires\).
@@ -186,7 +182,7 @@ Specific implementation
      ? >
     ```
 
-3.  If the browser requests the resource multiple times, different signed URLs may be displayed. This is a normal phenomenon because the signed URL changes once it expires. After expiration time the link is no longer valid. It is displayed in Unix time format,  for example, Expires=1448991693. The time can be converted to the local time.  In Linux, the command for converting the time is `date -d@1448991693`. You can also find a conversion tool on the Internet.
+3.  If the browser requests the resource multiple times, different signed URLs may be displayed. This is a normal phenomenon because the signed URL changes once it expires. After expiration time the link is no longer valid. It is displayed in Unix time format,  for example, Expires=1448991693. The time can be converted to the local time. In Linux, the command for converting the time is `date -d@1448991693`. You can also find a conversion tool on the Internet.
 
 Special instructions
 
@@ -199,17 +195,17 @@ If the expiration time of signed URLs is limited to minutes, even when a leecher
 Best practices of OSS-based anti-leech protection:
 
 -   Use third-level domain name URLs, such as `referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`, as they are more secure than bound second-level domain names. The third-level domain name access method provides bucket-level cleaning and isolation, enabling you to respond to a burst in leeching traffic while preventing different buckets from affecting each other, thereby increasing service availability.
--   If you use custom domain names as links, bind the CNAME to a third-level domain name, with the rule bucket + endpoint.  For example, your bucket is named “test” and the third-level domain name is `test.oss-cn-hangzhou.aliyuncs.com`.
--   Set the strictest possible permission for the bucket. For example, set a bucket that provides Internet services to public-read or private. Do not set it to public-read-write. For bucket permission information, see [Access control](../intl.en-US/Developer Guide/Access and control/Access control.md#).
+-   If you use custom domain names as links, bind the CNAME to a third-level domain name, with the rule bucket + endpoint. For example, your bucket is named “test” and the third-level domain name is `test.oss-cn-hangzhou.aliyuncs.com`.
+-   Set the strictest possible permission for the bucket. For example, set a bucket that provides Internet services to public-read or private. Do not set it to public-read-write. For bucket permission information, see [Access control](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#).
 -   Verify access sources and set a Referer whitelist based on your requirement.
 -   If you need a more rigorous anti-leeching solution, consider using signed URLs.
--   Record access logs of the bucket, so that you can promptly discover leeching and verify the effectiveness of your anti-leeching solution. For access log information, see [Access logging configuration](../intl.en-US/Developer Guide/Access and control/Access control.md#).
+-   Record access logs of the bucket, so that you can promptly discover leeching and verify the effectiveness of your anti-leeching solution. For access log information, see [Access logging configuration](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#).
 
 ## FAQ {#section_htv_jl2_vdb .section}
 
 -   I have configured anti-leech protection on the OSS Console, but the configuration does not take effect. Access to webpages is blocked, whereas access to players is not. Why? How can this problem be fixed?
 
-    Currently, anti-leech protection fails to take effect for audio and video files. When a media player, such as Windows Media Player or Flash Player,  is used to request OSS resources, a blank Referer request is sent. This causes anti-leech protection ineffective. To resolve this issue, you can see the preceding signed URL anti-leech protection method.
+    Currently, anti-leech protection fails to take effect for audio and video files. When a media player, such as Windows Media Player or Flash Player, is used to request OSS resources, a blank Referer request is sent. This causes anti-leech protection ineffective. To resolve this issue, you can see the preceding signed URL anti-leech protection method.
 
 -   What is a Referer?  How is it sent? How to deal with HTTPS websites? Does anything else need to be added, like commas?
 
@@ -217,7 +213,7 @@ Best practices of OSS-based anti-leech protection:
 
 -   How are signed URLs generated?  Is storing the AccessKeySecret on the client secure?
 
-    See the individual SDK documentation for the method of signing the URL. It is not recommended that the AccessKeySecret be directly stored on the client. RAM provides the [STS service](../intl.en-US/Developer Guide/Access and control/Access control.md#section_mjv_skv_tdb) to solve this problem. Also, see [RAM and STS Guide](intl.en-US/Best Practices/Access control/Overview.md#).
+    See the individual SDK documentation for the method of signing the URL. It is not recommended that the AccessKeySecret be directly stored on the client. RAM provides the [STS service](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#section_mjv_skv_tdb) to solve this problem. Also, see [RAM and STS Guide](intl.en-US/Best Practices/Access control/Overview.md#).
 
 -   How do I use wildcard characters \(\*, ?\) to write `a.baidu.com` and `b.baidu.com` ?
 

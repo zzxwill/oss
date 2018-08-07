@@ -97,7 +97,7 @@ Authorization: Signature
  Parent node: SelectRequest
 
  |
-|CSV（InputSerialization）|Container| Input CSV-formatted parameters \(optional\)
+|CSV\(InputSerialization\)|Container| Input CSV-formatted parameters \(optional\)
 
  Child node: FileHeaderInfo, RecordDelimiter, FieldDelimiter, QuoteCharacter, CommentCharacter, Range
 
@@ -111,7 +111,7 @@ Authorization: Signature
  Parent node: OutputSerialization
 
  |
-|OutputRawData|bool，default: false| Specifies output data as raw data, not Frame-based data \(optional\)
+|OutputRawData|bool, default: false| Specifies output data as raw data, not Frame-based data \(optional\)
 
  Child node: None
 

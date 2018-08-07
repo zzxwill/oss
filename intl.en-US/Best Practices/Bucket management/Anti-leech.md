@@ -28,9 +28,9 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
 -   What is Referer?
 
-    Referer is HTTP Part of the header that usually comes with a referer when the browser sends a request to the web server, tell the server the source of the link for this request. In the example above, if the web site for user B is userdomain-steal, want to steal a picture link `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. A's website domain name is `userdomain`.
+    Referer is HTTP Part of the header that usually comes with a referer when the browser sends a request to the web server, tell the server the source of the link for this request. In the example above, if the web site for user B is userd omain-steal, want to steal a picture link `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. A's website domain name is `userdomain`.
 
-    Suppose the web page of the chain web site userdomain-steal is as follows:
+    Suppose the web page of the chain website user domain-steal is as follows:
 
     ```
     <html>
@@ -39,7 +39,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
     </html>
     ```
 
-    Assume the web page with the source station userdomain is as follows:
+    Assume the web page with the source station user domain is as follows:
 
     ```
     <html>
@@ -48,7 +48,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
     </html>
     ```
 
-    -   When an Internet user uses a browser to access the Web page of B's website `http://userdomain-steal/index.html`, the link in the web page is a picture of the site A. Because a request from one domain name \(userdomain-steal\) jumped to another domain name \(maid \), the browser takes the Referer with it in the header of the HTTP request, as shown:
+    -   When an Internet user uses a browser to access the Web page of B's website `http://userdomain-steal/index.html`, the link in the web page is a picture of the site A. Because a request from one domain name \(user domain-steal\) jumped to another domain name \(maid \), the browser takes the Referer with it in the header of the HTTP request, as shown:
 
         You can see that the browser Referer in the HTTP request is`http://userdomain-steal/index.html`. This article mainly uses Chrome's developer mode to view web page requests, as follows:
 
@@ -85,7 +85,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
     -   Disable Allow Empty Referer, as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336293251701_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336322051701_en-US.png)
 
         Direct access: The resources are accessible even when anti-leech protection takes effect. The reason is, if the whitelist is blank, the system does not check whether the Referer field is blank. The Referer setting does not take effect when the whitelist is blank. Therefore, the Referer whitelist must be configured.
 
@@ -99,7 +99,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
         -   To allow access to other domain names such as `http://img.userdomain/index.html`, add `http://*.userdomain/` to the Referer whitelist.
         Both entries are configured as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336293261702_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336322051702_en-US.png)
 
         After testing, the following results are obtained:
 
@@ -118,7 +118,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
         The Referer whitelist contains `http://*.userdomain/` and `http://userdomain`, as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336293261709_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336322051709_en-US.png)
 
         After testing, the following results are obtained:
 

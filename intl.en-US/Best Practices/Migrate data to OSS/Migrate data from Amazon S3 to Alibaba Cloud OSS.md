@@ -55,7 +55,7 @@ Take note of the following when you use S3 APIs to access OSS after the migratio
 
 -   Bucket operations:
     -   Delete Bucket
-    -   Get Bucket （list objects）
+    -   Get Bucket \(list objects\)
     -   Get Bucket ACL
     -   Get Bucket lifecycle
     -   Get Bucket location

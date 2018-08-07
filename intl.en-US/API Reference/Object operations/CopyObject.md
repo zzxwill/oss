@@ -4,9 +4,9 @@ CopyObject is used to copy an existing object in OSS into another object.
 
 You can send a PUT request to OSS, and add the element “x-oss-copy-source” to the PUT request header to specify the copy source. OSS automatically determines that this is a Copy Object operation, and directly performs this operation on the server side. If the Copy Object operation is successful, the system returns new object information.
 
-This operation is applicable to a file smaller than 1 GB. To copy a file greater than 1 GB, you must use the Multipart Upload operation. For more information about this operation, see UploadPartCopy.
+This operation is applicable to a file smaller than 1 GB. To copy a file greater than 1 GB, you must use the Multipart Upload operation. For more information about this operation, see [UploadPartCopy](intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#).
 
-For the Copy Object operation, the source bucket and the target bucket must be in the same region.
+**Note:** For the Copy Object operation, the source bucket and the target bucket must be in the same region.
 
 ## Request syntax {#section_jzf_fmr_xdb .section}
 
@@ -37,18 +37,17 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 |x-oss-copy-source-if-modified-since|String|If the source object has been modified after the time specified by the user, the system performs a COPY operation. Otherwise, the system returns the 304 HTTP error code \(preprocessing failed\).  Default: None
 
 |
-|x-oss-metadata-directive|String|Valid values include COPY and REPLACE. If this parameter is set to COPY, the system copies meta for the new object from the source object. If this parameter is set to REPLACE, the system ignores all meta values of the source object, and uses the meta value specified in this request. If this parameter is set to a value other than COPY and REPLACE, the system returns the 400 Bad Request message. Note that when the value is COPY, the source object’s x-oss-server-side-encryption meta value cannot be copied.Valid values:
+|x-oss-metadata-directive|String|Valid values include COPY and REPLACE. If this parameter is set to COPY, the system copies meta for the new object from the source object. If this parameter is set to REPLACE, the system ignores all meta values of the source object, and uses the meta value specified in this request. If this parameter is set to a value other than COPY and REPLACE, the system returns the 400 Bad Request message. Note that when the value is COPY, the source object’s x-oss-server-side-encryption meta value cannot be copied.Default value: COPY
 
--   COPY  \(default\)
--   REPLACE
+Valid values:COPY and REPLACE
 
 |
-|x-oss-server-side-encryption|String|Specifies the server-side entropy encryption algorithm when OSS creates the target object. Valid values: AES256 and KMS
+|x-oss-server-side-encryption|String|Specifies the server-side entropy encryption algorithm when OSS creates the target object. Valid values: AES256 or KMS
 
 **Note:** You must enable the KMS \(Key Management Service\) on the console to use the KMS encryption algorithm. Otherwise, a KmsServiceNotenabled error code is reported.
 
 |
-|x-oss-object-acl|String|Specifies the access permission when OSS creates an object. Valid values: public-read，private，public-read-write
+|x-oss-object-acl|String|Specifies the access permission when OSS creates an object. Valid values: public-read, private, public-read-write
 
 |
 

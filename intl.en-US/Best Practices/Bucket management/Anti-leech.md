@@ -64,16 +64,16 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
     For both cases, the OSS Referer feature offers two options:
 
     -   Sets whether empty Referer access is allowed. It cannot be set separately and needs to be used in conjunction with the Referer whitelist.
-    -   Sets the Referer white list.
+    -   Sets the Referer whitelist.
     The details are analyzed as follows:
 
     -   Anti-theft chain authentication is performed only if the user is accessing the object through a signed URL or an anonymous access. If the requested header has an "Authorization" field, it does not do anti-theft chain validation.
     -   A bucket can support multiple Referer parameters.
     -   The Referer parameter supports wildcard characters '\*' and '?'.
     -   Users can set up to allow request access for empty referer.
-    -   When the White List is empty, the Referer field is not checked for empty \(otherwise all requests will be rejected, because empty Referer will be rejected, for non-empty Referer OSS is also not found on the Referer White List \).
-    -   The White List is not empty, and a rule is set that does not allow Referer fields to be empty. Only Referer's white list of requests is allowed, other requests, including those whose Referer is empty, are rejected.
-    -   The White List is not empty, but the rule "allow Referer field to be empty" is set. An empty request with Referer and a whitelist-compliant request are permitted, other requests are rejected.
+    -   When the whitelist is empty, the Referer field is not checked for empty \(otherwise all requests will be rejected, because empty Referer will be rejected, for non-empty Referer OSS is also not found on the Referer whitelist \).
+    -   The whitelist is not empty, and a rule is set that does not allow Referer fields to be empty. Only Referer's whitelist of requests is allowed, other requests, including those whose Referer is empty, are rejected.
+    -   The whitelist is not empty, but the rule "allow Referer field to be empty" is set. An empty request with Referer and a whitelist-compliant request are permitted, other requests are rejected.
     -   Three permissions of bucket \(private, public-read, public-read-write\) the Referer field is checked.
     Wildcard character explanation:
 
@@ -85,7 +85,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
     -   Disable Allow Empty Referer, as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336322051701_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15338662991701_en-US.png)
 
         Direct access: The resources are accessible even when anti-leech protection takes effect. The reason is, if the whitelist is blank, the system does not check whether the Referer field is blank. The Referer setting does not take effect when the whitelist is blank. Therefore, the Referer whitelist must be configured.
 
@@ -99,7 +99,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
         -   To allow access to other domain names such as `http://img.userdomain/index.html`, add `http://*.userdomain/` to the Referer whitelist.
         Both entries are configured as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336322051702_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15338662991702_en-US.png)
 
         After testing, the following results are obtained:
 
@@ -118,7 +118,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
         The Referer whitelist contains `http://*.userdomain/` and `http://userdomain`, as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15336322051709_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15338662991709_en-US.png)
 
         After testing, the following results are obtained:
 

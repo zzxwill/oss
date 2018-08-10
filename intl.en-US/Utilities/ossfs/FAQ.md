@@ -31,7 +31,7 @@
     -   You can optimize in two ways:
         -   Increase stat cache size with the -omax\_stat\_cache\_size=xxx parameter, so that the first time ls will be slow, but the subsequent ls will be fast, because the metadata of the file is in the local cache. The default is 1000, which costs about 4 MB of memory, please adjust to the appropriate value according to the size of your machine's memory.
         -   Use the ls -f command, which eliminates n HTTP requests with OSS.
-        -   See [issue 13](https://github.com/aliyun/ossfs/issues/13) for details.
+        -   For more information, see [issue 13](https://github.com/aliyun/ossfs/issues/13).
 -   Q: How do I set permissions during ossfs mounting?
     -   If you want to allow other users to access mounted folders, specify the allow\_other parameter as follows when running ossfs:
         -   ```
@@ -111,7 +111,7 @@ ossfs#your_bucket_name your_mount_point fuse _netdev,url=your_url,allow_other 0
         4.  In the auditorium log, you can see which processes have accessed this directory: ausearch -i | grep /mnt/ossfs
 -   Q: what is the content-type file that uses ossfs to upload to OSS all "application/ocdet-stream? what happened?
     -   ossfs queries /etc/mime.types content to determine the Content-Type of the file, please check that the file exists, if it does not exist, you need to add:
-        1.  For ubuntu, you can add it via udo apt-get install mime-support.
+        1.  For ubuntu, you can add it with udo apt-get install mime-support.
         2.  For centos can be added via sudo Yum install mailcap
         3.  You can also manually add one row per format, each in the form of: Application/JavaScript JS
 -   Q: How do I start ossfs using the supervisor?

@@ -2,7 +2,7 @@
 
 UploadPartCopy uploads a part by copying data from an existing object.
 
-You can add an x-oss-copy-source header in the Upload Part request to call the Upload Part Copy interface. When copying a file larger than 1 GB, you must use the Upload Part Copy method. For the Upload Part Copy operation,  the source bucket and the target bucket must be in the same region. If you want to copy a file that is less than 1 GB by a single operation, you can refer to Copy Object.
+You can add an x-oss-copy-source header in the Upload Part request to call the Upload Part Copy interface. When copying a file larger than 1 GB, you must use the Upload Part Copy method. For the Upload Part Copy operation,  the source bucket and the target bucket must be in the same region. If you want to copy a file that is less than 1 GB by a single operation, you can use the Copy Object method.
 
 ## Request syntax  {#section_gqh_crx_wdb .section}
 

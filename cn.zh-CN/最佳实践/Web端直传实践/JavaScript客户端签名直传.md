@@ -24,7 +24,12 @@ Plupload是一款简单易用且功能强大的文件上传工具， 支持多�
 
 ```
 accessid= '<yourAccessKeyId>';
-accesskey= <yourAccessKeySecrety';
+accesskey= <yourAccessKeySecrety>';
+//如果是STS方式====
+accessid = 'STS.ACCESSKEYID';
+accesskey = 'STS.ACCESSSECRET';
+token = 'STS.token';
+//===========
 host = 'http://post-test.oss-cn-hangzhou.aliyuncs.com';
 ```
 
@@ -41,7 +46,7 @@ HTML表单直接上传到OSS会产生跨域请求。为了浏览安全，需要�
 
 具体操作步骤请参见[设置跨域访问](../../../../intl.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。设置如下图所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4404/15329600207868_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4404/15350416397868_zh-CN.png)
 
 **说明：** 在低版本IE浏览器，Plupload会以flash方式执行。您需要设置crossdomain.xml ，设置方法请参见[OSS Web直传—使用Flash上传](https://yq.aliyun.com/articles/3198)。
 
@@ -72,6 +77,7 @@ var uploader = new plupload.Uploader({
         'OSSAccessKeyId': accessid,
         'success_action_status' : '200', //让服务端返回200，不设置则默认返回204
         'signature': signature,
+        'x-oss-security-token':token
     },
 　....
 }

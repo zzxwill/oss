@@ -20,7 +20,7 @@ You can set back-to-origin rules to define whether to retrieve origin data by mi
 
     The configuration example is as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4750/15350917219983_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4750/15350991939983_en-US.png)
 
     If the HTTP header in a request that sent to OSS is as follows:
 
@@ -48,7 +48,7 @@ You can set back-to-origin rules to define whether to retrieve origin data by mi
         -   x-oss-
         -   oss-
         -   x-drs-
-    -   The following standard headers:
+    -   All the standard HTTP headers, such as:
         -   content-length
         -   authorization2
         -   authorization

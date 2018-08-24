@@ -15,12 +15,12 @@ You can set back-to-origin rules to define whether to retrieve origin data by mi
 5.  Select **Mirroring** or **Redirection**.
     -   If you choose **Mirroring** and a requested file cannot be found on OSS, OSS will automatically fetch the file from the origin, save it locally, and return the content to the requester.
     -   If you choose **Redirection**, OSS redirects requests that meet the prerequisites to the origin URL over HTTP, and then a browser or client returns the content from the origin to the requester.
-6.  Set **Prerequisite** and **Origin URL**. In the Mirroring mode, you can choose to enable **Transfer queryString**or not. In the Redirection mode, you can set **Redirection Code**.
+6.  Set **Prerequisite** and **Origin URL**. In the Mirroring mode, you can choose to enable **Transfer queryString** or not. In the Redirection mode, you can set **Redirection Code**.
 7.  In the Mirroring mode, you can set the transmission rule of HTTP header.
 
     The configuration example is as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4750/15350330659983_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4750/15350917219983_en-US.png)
 
     If the HTTP header in a request that sent to OSS is as follows:
 
@@ -42,6 +42,18 @@ You can set back-to-origin rules to define whether to retrieve origin data by mi
     
     ```
 
+    **Note:** The following HTTP headers do not support transmission rules:
+
+    -   The headers with the following prefixes:
+        -   x-oss-
+        -   oss-
+        -   x-drs-
+    -   The following standard headers:
+        -   content-length
+        -   authorization2
+        -   authorization
+        -   range
+        -   date
 8.  Click **OK**.
 
 **Note:** After the rule is saved, you can view the configured rule in the rule list and perform corresponding Edit or Clear operations.

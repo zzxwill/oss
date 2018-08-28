@@ -14,14 +14,14 @@ The callback parameter is composed of a JSON string encoded in Base64. It is cri
 -   This function allows users to set up to 5 URLs, separated by “;”. OSS sends requests one by one until the first successful response is returned.
 -   If no URL is configured or the value is null, it is regarded that callback is not configured.
 -   HTTPS addresses are supported.
--   To make sure that Chinese characters are correctly processed, the callbackUrl must be encoded. For example, `http://example.com/中文.php?key=value&http://example.com/Chinese.php?key=value&Chinese Name=Chinese Value` needs to be encoded into  `http://example.com/%E4%B8%AD%E6%96%87.php?key=value&%E4%B8%AD%E6%96%87%E5%90%8D%E7%A7%B0=%E4%B8%AD%E6%96%87%E5%80%BC.`
+-   To make sure that Chinese characters are correctly processed, the callbackUrl must be encoded. For example, `http://example.com/Chinese.php?key=value&Chinese Name=Chinese Value` needs to be encoded into  `http://example.com/%E4%B8%AD%E6%96%87.php?key=value&%E4%B8%AD%E6%96%87%E5%90%8D%E7%A7%B0=%E4%B8%AD%E6%96%87%E5%80%BC.`
 
  |Yes|
-|callbackHost| -   The host header value for initiating callback requests. It is valid only when the callbackUrl is set. 
+|callbackHost| -   The host header value for initiating callback requests. It is valid only when the callbackUrl is set.
 -   If no callbackHost is set, the URL in callbackUrl is resolved and the host generated after resolving is entered in callbackHost.
 
  |No|
-|callbackBody| -   The value of the request body when a callback is initiated, for example, key=$\(key\)&etag=$\(etag\)&my\_var=$\(x:my\_var\). 
+|callbackBody| -   The value of the request body when a callback is initiated, for example, key=$\(key\)&etag=$\(etag\)&my\_var=$\(x:my\_var\).
 -   It supports OSS system variables, custom variables, and constants. The supported system variables are described in the following table. Custom variables are supported by transmission through callback-var in PutObject and CompleteMultipart. In Post Object operations, each variable is transmitted through a form field.
 
  |Yes|
@@ -33,19 +33,19 @@ The callback parameter is composed of a JSON string encoded in Base64. It is cri
 JSON string examples are as follows:
 
 ```
-
+{
 "callbackUrl":"121.101.166.30/test.php",
 "callbackHost":"oss-cn-hangzhou.aliyuncs.com",
 "callbackBody":"{\"mimeType\":${mimeType},\"size\":${size}}",
 "callbackBodyType":"application/json"
-
+}
 ```
 
 ```
-
+{
 "callbackUrl":"121.43.113.8:23456/index.html",
 "callbackBody":"bucket=${bucket}&object=${object}&etag=${etag}&size=${size}&mimeType=${mimeType}&imageInfo.height=${imageInfo.height}&imageInfo.width=${imageInfo.width}&imageInfo.format=${imageInfo.format}&my_var=${x:my_var}"
-
+}
 ```
 
 Here, the system variables that can be set for callbackBody include the following. In specific, the imageInfo is for the image format. It must be left empty for a non-image format:
@@ -75,9 +75,10 @@ Assume that you must set two custom parameters x:var1 and x:var2, and the values
 
 ```
 
+{
 "x:var1":"value1",
-"x:var2":"value2"
-
+"x:var2":"Value2"
+}
 ```
 
 ## Construct callback requests {#section_a45_yfx_wdb .section}
@@ -95,8 +96,8 @@ The three methods are alternative; otherwise, OSS returns an InvalidArgument err
 
 To include a parameter in OSS request, first you must use Base64 to encode the preceding constructed JSON string, and include the string in OSS request using the methods described as follows:
 
--   To include parameters in the URL, use `callback=[CallBack]` or `callback-var=[CallBackVar]` as a URL parameter to send it with the request. When CanonicalizedResource of the signature is calculated, callback or callback-var is taken into consideration as a sub-resource.
--   To include parameters in the header, use `x-oss-callback=[CallBack]` or `x-oss-callback-var=[CallBackVar]` as a head to send it with the request. When CanonicalizedOSSHeaders of the signature is calculated, x-oss-callback-var and x-oss-callback are taken into consideration. An example is provided as follows:
+-   To include parameters in the URL, use 'callback=\[CallBack\]' or 'callback-var=\[CallBackVar\]' as a URL parameter to send it with the request. When CanonicalizedResource of the signature is calculated, callback, or callback-var is taken into consideration as a sub-resource.
+-   To include parameters in the header, use 'x-oss-callback=\[CallBack\]' or 'x-oss-callback-var=\[CallBackVar\]' as a head to send it with the request. When CanonicalizedOSSHeaders of the signature is calculated, x-oss-callback-var and x-oss-callback are taken into consideration. An example is provided as follows:
 
     ```
     PUT /test.txt HTTP/1.1
@@ -126,9 +127,10 @@ To include a parameter in OSS request, first you must use Base64 to encode the p
 
     ```
     
+    {
     "x:var1":"value1",
     "x:var2":"value2"
-    
+    }
     ```
 
     The form field of the POST request are as follows:
@@ -153,8 +155,8 @@ To include a parameter in OSS request, first you must use Base64 to encode the p
         {"bucket": "johnsmith" },
         {"callback": "eyJjYWxsYmFja1VybCI6IjEwLjEwMS4xNjYuMzA6ODA4My9jYWxsYmFjay5waHAiLCJjYWxsYmFja0hvc3QiOiIxMC4xMDEuMTY2LjMwIiwiY2FsbGJhY2tCb2R5IjoiZmlsZW5hbWU9JChmaWxlbmFtZSkiLCJjYWxsYmFja0JvZHlUeXBlIjoiYXBwbGljYXRpb24veC13d3ctZm9ybS11cmxlbmNvZGVkIn0="},
         ["starts-with", "$key", "user/eric/"],
-      
-    
+      ]
+    }
     ```
 
 
@@ -182,7 +184,7 @@ Server: BaseHTTP/0.3 Python/2.7.6
 Date: Mon, 14 Sep 2015 12:37:27 GMT
 Content-Type: application/json
 Content-Length: 9
-
+{"a":"b"}
 ```
 
 ## Return upload results {#section_rhz_jhx_wdb .section}
@@ -199,10 +201,10 @@ ETag: "D8E8FCA2DC0F896FD7CB4CB0031BA249"
 Server: AliyunOSS
 x-oss-bucket-version: 1442231779
 x-oss-request-id: 55F6BF87207FB30F2640C548
-
+{"a":"b"}
 ```
 
-It must be noted that, in the case of requests such as CompleteMultipartUpload, the returned request body includes content \(for example, information in XMl format\). After using the upload callback function, the original body content is overwritten, such as ‘“a”:”b”‘. Take this into consideration for judgment and processing.
+It must be noted that, in the case of requests such as CompleteMultipartUpload, the returned request body includes content \(for example, information in XMl format\). After using the upload callback function, the original body content is overwritten, such as '"a":"b"'. Take this into consideration for judgment and processing.
 
 ## Callback signature {#section_btz_phx_wdb .section}
 
@@ -216,7 +218,7 @@ When the callback parameter is set, OSS sends the POST callback request to the u
     authorization = base64_encode(rsa_sign(private_key, url_decode(path) + query_string + ‘\n’ + body, md5))
     ```
 
-    **Note:** Instructions: The private\_key indicates a private key which is only known to OSS. The path indicates the resource path of the callback request. The query\_string indicates a query string. The body indicates the message body of the callback. The signature thus consists of the following steps:
+    Instructions: The private\_key indicates a private key which is only known to OSS. The path indicates the resource path of the callback request. The query\_string indicates a query string. The body indicates the message body of the callback. The signature thus consists of the following steps:
 
     -   Obtain the string to be signed: The resource path URL is decoded, added by the initial query string, a carriage return and the callback message body.
     -   RSA signature: Use a private key to sign the expected string. The hashing function for signature is MD5.
@@ -235,7 +237,7 @@ When the callback parameter is set, OSS sends the POST callback request to the u
     bucket=yonghu-test
     ```
 
-    The path is `/index.php`, query\_string is `? id=1&index=2`，body is `bucket=yonghu-test`, and the final signature result is `kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2txA==`
+    The path is `/index.php`, query\_string is `? id=1&index=2`, the body is `bucket=yonghu-test`, and the final signature result is `kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2txA==`.
 
 -   Verify signature
 
@@ -258,7 +260,7 @@ When the callback parameter is set, OSS sends the POST callback request to the u
     2.  Obtain the Base64-decoded signature
 
         ```
-        signature = base64_decode(authorization header)
+        signature = base64_decode(Value of the authorization header)
         ```
 
     3.  Obtain the string to be signed the same way as described in the signature process.
@@ -277,8 +279,8 @@ When the callback parameter is set, OSS sends the POST callback request to the u
 
     1.  Obtain the URL of the public key, that is, with Base64 decoding the `aHR0cDovL2dvc3NwdWJsaWMuYWxpY2RuLmNvbS9jYWxsYmFja19wdWJfa2V5X3YxLnBlbQ==` to `http://gosspublic.alicdn.com/callback_pub_key_v1.pem`.
     2.  The signature header `kKQeGTRccDKyHB3H9vF+xYMSrmhMZjzzl2/kdD1ktNVgbWEfYTQG0G2SU/RaHBovRCE8OkQDjC3uG33esH2txA==` is decoded with Base64 \(The decoded result cannot be displayed because it is a nonprintable string\).
-    3.  Obtain the string to be singed, that is,  url\_decode\(“index.php”\) + “?id=1&index=2” + “\\n” + “bucket=yonghu-test” Then perform the
-    4.   MD5 check.
+    3.  Obtain the string to be singed, that is,  url\_decode\(“index.php”\) + “?id=1&index=2” + “\\n” + “bucket=yonghu-test” . Then perform the MD5 check.
+    4.  Verify the signature
 -   Application server example
 
     Python is used as an example to demonstrate how an application server verifies a signature. In this example, the M2Crypto library must be installed.
@@ -389,7 +391,7 @@ When the callback parameter is set, OSS sends the POST callback request to the u
 
     -   Download address: [click here](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/31989/cn_zh/1501048926621/callback-server-dotnet.zip)
     -   Running method: Extract the package and see `README.md`.
-    Go version:
+    .NET version:
 
     -   Download address: [click here](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/31989/cn_zh/1501048926621/callback-server-dotnet.zip)
     -   Running method: Extract the package and see `README.md`.
@@ -409,17 +411,15 @@ When the callback parameter is set, OSS sends the POST callback request to the u
     -   The callback or callback-var parameter is too long \(over 5KB\). PostObject\(\) is not subject to this restriction because callback-var parameter is not used, and this is true for the following as well.
     -   Callback or callback-var is not Base64 encoded.
     -   After Base64 decoding, the callback or callback-var parameter is not in a valid JSON format.
-    -   After callback parameter resolution, the callbackUrl field contains more than 5 URLs, or the input port in the URL is invalid,
-
-        ```
-        such as
-            {"callbackUrl":"10.101.166.30:test", "callbackBody":"test"}.
-        ```
-
+    -   After callback parameter resolution, the callbackUrl field contains more than 5 URLs, or the input port in the URL is invalid, such as `{"callbackUrl":"10.101.166.30:test", "callbackBody":"test"}`
     -   After callback parameter resolution, the callbackBody field is blank.
     -   After callback parameter resolution, the callbackBodyType field value is not “application/x-www-form-urlencoded” or “application/json”.
-    -   After callback parameter resolution, the callbackBody field contains invalid formats of variables. The valid format is $\{var\}.
+    -   After callback parameter resolution, the callbackBody field contains invalid formats of variables. The valid format is `${var}`
     -   After callback-var parameter resolution, the format is not the expected JSON format. The expected format is:`{"x:var1":"value1","x:var2":"value2"...}`
 -   If a callback fails, the system returns a 203 error, with the error code “CallbackFailed”. A callback failure only indicates that OSS did not receive the expected callback response \(for example, the response from the application server was not in the JSON format\), not that the application server did not receive the callback request. In addition, by this time, the file has been successfully uploaded to OSS.
 -   The response returned by the application server to OSS must contain the Content-Length header, and the size of the body cannot exceed 1 MB.
+
+## Regions used in Callback {#section_d3r_lky_22b .section}
+
+Currently, callback only supports the following regions: China North 2 \(Beijing\), China East 1 \(Hangzhou\), China North 1 \(Qingdao\), China East 2 \(Shanghai\), Shanghai Financial Cloud, China South 1 \(Shenzhen\), Hong Kong, China North 5 \(huhehaote\), China North 3 \(zhangjiakou\), Middle East 1 \(Dubai\), Asia Pacific NE 1 \(Tokyo\), EU Central 1 \(Frankfurt\), Asia Pacific SE 1 \(Singapore\), US East 1 \(Virginia\), US West 1 \(Silicon Valley\), Asia Pacific SE 2 \(Sydney\) and Asia Pacific SE 3 \(Kuala Lumpur\).
 

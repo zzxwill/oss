@@ -18,7 +18,7 @@
 
 为确保子账号登录控制台后能正常使用OSS控制台的功能，除授予OSS相应的访问权限外，还需要MNS、CloudMonitor、CDN的访问权限，如下图所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15360761451495_zh-CN.PNG)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15361371041495_zh-CN.PNG)
 
 ## 使用子账号登录控制台 {#section_c2h_bmy_5db .section}
 
@@ -28,6 +28,9 @@
 2.  选择对应的RAM用户，单击**管理**，配置相关信息。
 3.  打开**启用控制台登录**，设置RAM用户登录控制台的密码。
 4.  在概览页面查看您的**RAM用户登录链接**，打开该链接，使用RAM用户名和密码进行登录。
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/153613710411370_zh-CN.png)
+
 
 详情请参见[RAM用户操作手册](https://help.aliyun.com/document_detail/28647.html?spm=a2c4g.11186623.2.7.77WgjY)。
 

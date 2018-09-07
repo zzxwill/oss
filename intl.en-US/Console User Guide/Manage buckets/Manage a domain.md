@@ -19,36 +19,38 @@ Custom domain names can be bound to OSS domain names through the console to impl
 1.  Go to the [OSS console](https://oss.console.aliyun.com/).
 2.  On the left-side navigation pane, select a bucket from the bucket list to open the bucket overview page.
 3.  Click the **Domain Names** tab.
-4.  Click **Bind User Domain** to open the Bind User Domain dialog box.
+4.  Click **Bind Self-Hosted Domain Name** to open the Bind Self-Hosted Domain Name dialog box.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4746/1703_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4746/15363317481703_en-US.png)
 
 5.  Bind your domain.
-    1.  In the **User Domain** textbox, enter your domain name.
-    2.  If you need CDN acceleration, open the **Alibaba Cloud CDN** switch.
+    1.  In the **Self-Hosted Domain Name** text box, enter your domain name.
+    2.  If you need CDN acceleration, open the **Enable Alibaba Cloud CDN** switch.
 
-        **Note:** For more information about CDN acceleration, see the best practice [../DNOSS11828897/EN-US\_TP\_4408.md\#](../intl.en-US/Best Practice Guide/Bucket management/CDN-based OSS acceleration.md#).
+        **Note:** For more information about CDN acceleration, see the best practice [CDN-based OSS acceleration](../../../../intl.en-US/Best Practices/Bucket management/CDN-based OSS acceleration.md#).
 
     3.  If you want to add a CNAME record automatically, open the **Add CNAME Record Automatically** switch.
 
-        **Note:** If the domain name has completed cloud resolution under another Alibaba Cloud account, then a CNAME record cannot be automatically added for this domain name under your account. In this case, you must add a CNAME record manually. For more information, see the [Procedure for domain name resolution](#section_kn4_gr2_vdb) section.
+        **Note:** If the domain name has completed cloud resolution under another Alibaba Cloud account, then a CNAME record cannot be automatically added for this domain name under your account. In this case, you must add a CNAME record manually. For more information, see the [\#section\_kn4\_gr2\_vdb](#section_kn4_gr2_vdb) section.
 
 6.  Click **Submit**.
 
     **Note:** If the domain name you want to bind has been maliciously bound by another user, the system message **Domain name conflict** is displayed. You can verify the ownership of the domain name **by adding a TXT record.** In this way, the domain name can be forcibly bound to the correct bucket and its binding to the previous bucket is released. For detailed procedure, see the Procedure for verifying domain name ownership section.
 
+    If you need to unbind the domain name, click **Binding Configuration**, and then click **Unbind**.
+
 
 ## Upload an HTTPS certificate {#section_dbh_l42_vdb .section}
 
-If you want your domain to access OSS through HTTPS, you must purchase an HTTPS certificate. You can purchase an HTTPS certificate from any certificate provider or from Alibaba Cloud Certificates Service \(see [Certificate Service Quick Start](https://www.alibabacloud.com/help/zh/doc-detail/28547.htm)\), and upload your certificate on the OSS console.
+If you want your domain to access OSS through HTTPS, you must purchase an HTTPS certificate. You can purchase an HTTPS certificate from any certificate provider or from Alibaba Cloud Certificates Service \(see [Certificates Service Quick Start](https://www.alibabacloud.com/help/zh/doc-detail/28547.htm)\), and upload your certificate in the OSS console.
 
--   If Alibaba Cloud CDN is not enabled for OSS, you can upload your certificate on the OSS console:
-    1.  On the **Domain Names** tab page, click **Upload Cert** under **Action**.
-    2.  On the Upload Cert page, enter your public key and private key, and then click **Upload**.
+-   If Alibaba Cloud CDN is not enabled for OSS, you can upload your certificate in the OSS console:
+    1.  On the **Domain Names** tab page, click **Upload Certificate** under **Action**.
+    2.  On the Upload Certificate page, enter your public key and private key, and then click **Upload**.
 
         **Note:** For certificate format requirements, see [Certificate format description](https://www.alibabacloud.com/help/zh/doc-detail/66710.htm).
 
--   If Alibaba Cloud CDN is enabled for OSS, you must upload your certificate on the CDN console. For more information, see [HTTPS Security Acceleration](https://www.alibabacloud.com/help/zh/doc-detail/27118.htm).
+-   If Alibaba Cloud CDN is enabled for OSS, you must upload your certificate in the CDN console. For more information, see [HTTPS Security Acceleration](https://www.alibabacloud.com/help/zh/doc-detail/27118.htm).
 
 ## Procedure for verifying domain name ownership {#section_q5m_2q2_vdb .section}
 
@@ -61,6 +63,6 @@ If you want your domain to access OSS through HTTPS, you must purchase an HTTPS 
 1.  Go to the [Alibaba Cloud console](https://netcn.console.aliyun.com/core/domain/tclist?spm=a2c4g.11186623.2.11.uhGQXh). From the left-side navigation pane, click Alibaba Cloud DNS to enter the domain name resolution list page.
 2.  Click the **Configure** link corresponding to the target domain name.
 3.  Click **Add Record**.
-4.  In the Add Record dialog box, select **CNAME**  from the **Type** drop-down box, and enter the Internet domain name of the bucket in the **Value** text box.
+4.  In the Add Record dialog box, select **CNAME** from the **Type** drop-down box, and enter the Internet domain name of the bucket in the **Value** text box.
 5.  Click **Confirm**.
 

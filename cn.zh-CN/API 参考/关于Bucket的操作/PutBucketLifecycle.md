@@ -35,7 +35,7 @@ Host: BucketName.oss.aliyuncs.com
 
 |名称|类型|是否必需|描述|
 |--|--|----|--|
-|CreatedBeforeDate|字符串|Days和CreatedBeforeDate二选一|指定哪天之前的数据被执行Lifecycle规则。日期必需服从ISO8601的格式，并且总是UTC的零点。 例如：2002-10-11T00:00:00.000Z，表示将最后更新时间早于 2002-10-11T00:00:00.000Z 的Object删除或转换成其他存储类型，晚于这个时间的Object不会被删除或转储。父节点：Expiration或者AbortMultipartUpload
+|CreatedBeforeDate|字符串|Days和CreatedBeforeDate二选一|指定哪天之前的数据被执行Lifecycle规则。日期必需服从ISO8601的格式，并且总是UTC的零点。 例如：2002-10-11T00:00:00.000Z，表示将最后更新时间早于 2002-10-11T00:00:00.000Z 的Object删除或转换成其他存储类型，等于或晚于这个时间的Object不会被删除或转储。父节点：Expiration或者AbortMultipartUpload
 
 |
 |Days|正整数|Days和CreatedBeforeDate二选一|指定规则在对象最后更新时间过后多少天生效。 父节点：Expiration

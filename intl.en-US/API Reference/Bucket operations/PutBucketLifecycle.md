@@ -31,7 +31,7 @@ Host: BucketName.oss.aliyuncs.com
 
 |Name|Type|Required?|Description|
 |----|----|---------|-----------|
-|CreatedBeforeDate|string |One from the two: Days and CreatedBeforeDate|Specify the time before which the rules go into effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z, which means the objects with a last update time before 2002-10-11T00:00:00.000Z are deleted or transitioned to another storage class, and the objects updated after this time are not deleted or transitioned. Parent node: Expiration or AbortMultipartUpload
+|CreatedBeforeDate|string |One from the two: Days and CreatedBeforeDate|Specify the time before which the rules go into effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z, which means the objects with a last update time before 2002-10-11T00:00:00.000Z are deleted or transitioned to another storage class, and the objects updated after this time \(including this time\) are not deleted or transitioned. Parent node: Expiration or AbortMultipartUpload
 
 |
 |Days|positive integer |One from the two: Days and CreatedBeforeDate|Specify how many days after the last object update until the rules take effect.  Parent node: Expiration

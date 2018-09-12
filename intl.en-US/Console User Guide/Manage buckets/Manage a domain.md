@@ -21,7 +21,7 @@ Custom domain names can be bound to OSS domain names through the console to impl
 3.  Click the **Domain Names** tab.
 4.  Click **Bind Self-Hosted Domain Name** to open the Bind Self-Hosted Domain Name dialog box.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4746/15363317481703_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4746/15367439761703_en-US.png)
 
 5.  Bind your domain.
     1.  In the **Self-Hosted Domain Name** text box, enter your domain name.
@@ -31,7 +31,7 @@ Custom domain names can be bound to OSS domain names through the console to impl
 
     3.  If you want to add a CNAME record automatically, open the **Add CNAME Record Automatically** switch.
 
-        **Note:** If the domain name has completed cloud resolution under another Alibaba Cloud account, then a CNAME record cannot be automatically added for this domain name under your account. In this case, you must add a CNAME record manually. For more information, see the [\#section\_kn4\_gr2\_vdb](#section_kn4_gr2_vdb) section.
+        **Note:** If the domain name has completed cloud resolution under another Alibaba Cloud account, then a CNAME record cannot be automatically added for this domain name under your account. In this case, you must add a CNAME record manually. For more information, see the **Procedure for domain name resolution** section.
 
 6.  Click **Submit**.
 

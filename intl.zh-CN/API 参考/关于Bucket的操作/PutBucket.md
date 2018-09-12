@@ -27,6 +27,7 @@ Authorization: SignatureValue
 -    同一用户在同一地域内最多可创建30个bucket。如果超过30个，则返回400 Bad Request消息。错误码：TooManyBuckets。
 -   创建的Bucket，如果没有指定访问权限，则默认使用 Private 权限。
 -   创建的Bucket，可以指定Bucket的存储类型，可选值为Standard、IA和Archive。
+-   创建Bucket，可以指定Bucket的数据容灾类型（DataRedundancyType），取值为LRS（本地容灾类型，默认值）、ZRS（同城容灾类型）。
 
 ## 示例 {#section_axr_rmr_bz .section}
 

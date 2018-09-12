@@ -10,11 +10,11 @@ When the OSS sends a POST callback request to the application server, the POST r
 
 Appropriate use of the upload callback can decrease the complexity of the client’s logic and reduce the consumption of network resources. The process is as follows:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4366/1064_en-US.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4366/15367433051064_en-US.jpg)
 
 **Note:** 
 
--   Supported regions include Mainland China regions \(excluding China East 3 and China East 5\), Hong Kong region, Asia Pacific South 1, Asia Pacific SE 2, US East, US West, Asia Pacific Northeast 1, Middle Europe 1 and Middle East 1.
+-   Supported regions include Mainland China regions, Hong Kong region, Asia Pacific South 1, Asia Pacific SE 2, US East, US West, Asia Pacific Northeast 1, Middle Europe 1 and Middle East 1.
 -   Currently only simple uploads \(PutObject\), form uploads \(PostObject\) and multipart uploads \(Complete Multipart  Upload\) operations support upload callback.
 
 ## Reference {#section_mb4_llb_5db .section}

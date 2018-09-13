@@ -36,13 +36,12 @@ Authorization: SignatureValue
 -   If the file does not exist, the system returns Error 404 Not Found.
 -   If this object is entropy encrypted on the server, the system returns x-oss-server-side-encryption in the header of the response to the Head Object request. The value of x-oss-server-side-encryption indicates the server-side encryption algorithm of the object.
 -   If the file type is symbolic link, in the response header, `Content-Length`, `ETag`, and `Content-Md5` are metadata of the target file, `Last-Modified` is the maximum value of the target file and symbolic link, and others are metadata of symbolic links.
--   If the file type is symbolic link and the target file does not exist, the system returns Error 404 Not Found.  The error code is “SymlinkTargetNotExist”.
+-   If the file type is symbolic link and the target file does not exist, the system returns Error 404 Not Found. The error code is “SymlinkTargetNotExist”.
 -   If the file type is symbolic link and the target file type is symbolic link, the system returns Error 400 Bad request. The error code is “InvalidTargetType”.
--   x-oss-storage-class shows the type of storage for object: Standard, IA, archive.
 -   If the bucket type is Archive and the Restore request has been submitted, the Restore state of Object is indicated by x-oss-restore in the response header.
     -   If the Restore request is not submitted or times out, the field is not returned.
     -   If the Restore request has been submitted and does not time out, the value of x-oss-restore returned is ongoing-request=”true”.
-    -   If the Restore request has been submitted and completed, the value of x-oss-restore returned is ongoing-request=”false”, expiry-date=”Sun, 16 Apr 2017 08:12:33 GMT”.
+    -   If the Restore request has been submitted and completed, the value of x-oss-restore returned is ongoing-request=”false”, expiry-date=”Sun, 16 Apr 2017 08:12:33 GMT”. Where the expiry-date refers to the expiry date of the readable state of the restored file.
 
 ## Example {#section_fml_4dw_wdb .section}
 

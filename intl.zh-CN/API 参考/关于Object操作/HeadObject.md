@@ -42,7 +42,7 @@ Authorization: SignatureValue
 -   如果Bucket类型为Archive，且用户已经提交Restore请求，则响应头中会以x-oss-restore返回该Object的Restore状态，分如下几种情况：
     -   如果没有提交Restore或者Restore已经超时，则不返回该字段。
     -   如果已经提交Restore，且Restore没有时完成，则返回的x-oss-restore值为: ongoing-request=”true”。
-    -   如果已经提交Restore，且Restore已经完成，则返回的x-oss-restore值为: ongoing-request=”false”, expiry-date=”Sun, 16 Apr 2017 08:12:33 GMT”。
+    -   如果已经提交Restore，且Restore已经完成，则返回的x-oss-restore值为: ongoing-request=”false”, expiry-date=”Sun, 16 Apr 2017 08:12:33 GMT”，其中expiry-date是Restore完成后文件进入可读状态的过期时间。
 
 ## 示例 {#section_fml_4dw_wdb .section}
 

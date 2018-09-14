@@ -27,6 +27,7 @@ Authorization: SignatureValue
 -   You can create a maximum of 30 buckets in a region. If the number is exceeded, the message of 400 Bad Request is returned. Error code: TooManyBuckets.
 -   If no access permission is specified for the created bucket, the `Private` permission applies by default.
 -   The storage type of a new bucket can be specified. Standard, IA, and Archive are available.
+-   When creating a bucket, you can specify the data redundancy type for the bucket. The values can be LRS \(Locally Redundant Storage\) and ZRS \(Zone Redundant Storage\), in which the LRS is the default value.
 
 ## Example {#section_axr_rmr_bz .section}
 

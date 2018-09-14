@@ -19,7 +19,7 @@ Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## Response {#section_bkn_mfw_bz .section}
+## Response elements {#section_bkn_mfw_bz .section}
 
 |Name|Type|Description|
 |----|----|-----------|
@@ -58,11 +58,16 @@ Parent node: none
 |AccessControlList|container|Container used for storing the ACL information Parent node: BucketInfo.Bucket
 
 |
-|Grant|enumerative string|ACL permissions of the bucket. Valid values: private、public-read、public-read-write
+|Grant|enumerative string|ACL permissions of the bucket. Valid values: private, public-read, and public-read-write
 
 Parent node: BucketInfo.Bucket.AccessControlList
 
 |
+|DataRedundancyType|enumerative string|The data redundancy type of the bucket.Valid values: LRSand ZRS
+
+Parent node: BucketInfo.Bucket
+
+ |
 
 ## Detail analysis {#section_cgv_sfw_bz .section}
 

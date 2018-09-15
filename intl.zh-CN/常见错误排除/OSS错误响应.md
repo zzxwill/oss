@@ -146,7 +146,7 @@ Allow: GET DELETE HEAD PUT POST OPTIONS
 
 ## OSS操作支持但参数不支持的操作 {#section_hrc_fs3_wdb .section}
 
-如果在OSS合法的操作中，添加了OSS不支持的参数（例如在PUT的时候，加入If-Modified-Since参数），OSS会返回400 Bad Request错误
+如果在OSS合法的操作中，添加了OSS不支持的参数（例如在PUT的时候，加入If-Modified-Since参数），OSS会返回400 Bad Request错误。
 
 错误请求示例：
 

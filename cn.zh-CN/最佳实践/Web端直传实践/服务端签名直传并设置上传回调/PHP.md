@@ -23,7 +23,7 @@
 
 -   下载部署应用服务器源码
 
-    下载应用服务器源码\(PHP版本\)：[aliyun-oss-appserver-php-master.zip](https://yuque.antfin-inc.com/attachments/lark/0/2018/zip/27853/1537841134102-8c50535e-2679-4827-99fc-67d2b2b704ab.zip)
+    下载应用服务器源码\(PHP版本\)：[aliyun-oss-appserver-php-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537972873858/aliyun-oss-appserver-php-master.zip)
 
     下载应用服务器源码后，将其部署到应用服务器的相应目录。本文示例中需要部署到`Ubuntu16.04`的`/var/www/html/aliyun-oss-appserver-php`目录下。
 
@@ -74,7 +74,7 @@
 
     -   $id ： 设置您的AccessKeyId。
     -   $key ： 设置您的AessKeySecret。
-    -   $host： 格式为`BucketName.Endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](https://help.aliyun.com/document_detail/31827.html?spm=a2c4g.11186623.2.26.63f561e4APLM8H#concept_izx_fmt_tdb__section_s3j_nmt_tdb)。
+    -   $host： 格式为`BucketName.Endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](../../../../cn.zh-CN/开发指南/基本概念介绍.md#section_t3j_nmt_tdb)。
     -   $callbackUrl：设置上传回调URL，即回调服务器地址，用于处理应用服务器与OSS之前的通信。OSS会在文件上传完成后，把文件上传信息通过此回调URL发送给应用服务器。本例中修改为：
 
         ```
@@ -109,19 +109,19 @@
 
 即客户端进行表单直接上传到OSS会产生跨域请求，需要为Bucket设置跨域规则（CORS），支持Post方法。
 
-具体操作步骤请参见[设置跨域访问](https://help.aliyun.com/document_detail/31903.html?spm=a2c4g.11186623.2.27.63f561e4APLM8H#concept_pbw_4df_vdb)。
+具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153786568612308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797307012308_zh-CN.png)
 
 ## 步骤五：体验上传回调 {#section_fxb_5ft_2fb .section}
 
 在PC侧的Web浏览器中输入`http://11.22.33.44:8080/aliyun-oss-appserver-php/index.html`。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153786568612306_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797307012306_zh-CN.png)
 
 单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153786568712309_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797307012309_zh-CN.png)
 
 ## 应用服务器核心代码解析 {#section_apl_gsj_gfb .section}
 

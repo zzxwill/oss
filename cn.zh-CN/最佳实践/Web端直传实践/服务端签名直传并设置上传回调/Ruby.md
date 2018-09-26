@@ -10,7 +10,7 @@
 
 ## 步骤一：配置应用服务器 {#section_xcf_l2k_gfb .section}
 
-下载应用服务器源码\(Ruby版本\)：[aliyun-oss-appserver-ruby-master.zip](https://yuque.antfin-inc.com/attachments/lark/0/2018/zip/27853/1537841245202-34edac5d-c7b4-49b5-a7fd-2d0a0733cb22.zip)
+下载应用服务器源码\(Ruby版本\)：[aliyun-oss-appserver-ruby-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537974391908/aliyun-oss-appserver-ruby-master.zip)
 
 将源码下载到应用服务器的硬盘，本示例中以`Ubuntu 16.04`为例，放置到`/home/aliyun/aliyun-oss-appserver-ruby`目录下。进入该目录，打开源码文件`appserver.rb`，修改如下代码片段：
 
@@ -33,7 +33,7 @@ $upload_dir = 'user-dir-prefix/'
 
 -   $access\_key\_id ： 设置您的AccessKeyId。
 -   $access\_key\_secret ： 设置您的AessKeySecret。
--   $host ： 格式为`bucketname.endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](https://help.aliyun.com/document_detail/31827.html?spm=a2c4g.11186623.2.26.63f561e4APLM8H#concept_izx_fmt_tdb__section_s3j_nmt_tdb)。
+-   $host ： 格式为`bucketname.endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](../../../../cn.zh-CN/开发指南/基本概念介绍.md#section_t3j_nmt_tdb)。
 -   $callback\_url ： 设置上传回调URL，即回调服务器地址，用于处理应用服务器与OSS之前的通信。OSS会在文件上传完成后，把文件上传信息通过此回调URL发送给应用服务器。本例中修改为：
 
     ```
@@ -44,7 +44,7 @@ $upload_dir = 'user-dir-prefix/'
 
 ## 步骤二：配置客户端 {#section_gcw_s2k_gfb .section}
 
-下载客户端源码：[aliyun-oss-appserver-js-master.zip](https://yuque.antfin-inc.com/attachments/lark/0/2018/zip/27853/1537841256702-e65e2fe6-68ce-4794-a716-0cd9ab5405d8.zip)
+下载客户端源码：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip)
 
 下载客户端源码到PC侧的本地硬盘。本例中以`D:\aliyun\aliyun-oss-appserver-js`目录为例。
 
@@ -68,9 +68,9 @@ serverUrl = 'http://11.22.33.44:1234'
 
 即客户端进行表单直接上传到OSS会产生跨域请求，需要为Bucket设置跨域规则（CORS），支持Post方法。
 
-具体操作步骤请参见[设置跨域访问](https://help.aliyun.com/document_detail/31903.html?spm=a2c4g.11186623.2.27.63f561e4APLM8H#concept_pbw_4df_vdb)。
+具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153786572712308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797454412308_zh-CN.png)
 
 ## 步骤四：体验上传回调 {#section_epk_vkz_2fb .section}
 
@@ -86,11 +86,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153786572712306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797454412306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153786572712309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797454412309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_vr5_r4j_gfb .section}

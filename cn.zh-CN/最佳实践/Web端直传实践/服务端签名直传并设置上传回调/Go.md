@@ -10,7 +10,7 @@
 
 ## 步骤一：配置应用服务器 {#section_a5z_3mj_gfb .section}
 
-下载应用服务器源码\(Go版本\)：[aliyun-oss-appserver-go-master.zip](https://yuque.antfin-inc.com/attachments/lark/0/2018/zip/27853/1537840921270-c4fedf91-8c09-451c-9357-b19341432372.zip) 。
+下载应用服务器源码\(Go版本\)：[aliyun-oss-appserver-go-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971566812/aliyun-oss-appserver-go-master.zip) 。
 
 将源码下载到应用服务器的硬盘，本示例以`Ubuntu 16.04`为例，放置到`/home/aliyun/aliyun-oss-appserver-go`目录下。进入该目录，打开源码文件`appserver.go`，修改以下代码片段：
 
@@ -44,7 +44,7 @@ var upload_dir string = "user-dir-prefix/"
 
 ## 步骤二：配置客户端 {#section_nrb_mnj_gfb .section}
 
-下载客户端源码：[aliyun-oss-appserver-js-master.zip](https://yuque.antfin-inc.com/attachments/lark/0/2018/zip/27853/1537840946252-b57c99f0-df01-41bd-8893-95de8bfba95d.zip) 。
+下载客户端源码：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip) 。
 
 下载客户端源码到PC侧的本地硬盘。本例中以`D:\aliyun\aliyun-oss-appserver-js`目录为例。
 
@@ -70,7 +70,7 @@ serverUrl ='http://11.22.33.44:1234'
 
 具体操作步骤请参见。[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797185812308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797227412308_zh-CN.png)
 
 ## 步骤四：体验上传回调 {#section_upf_cf5_2fb .section}
 
@@ -86,11 +86,11 @@ serverUrl ='http://11.22.33.44:1234'
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797185912306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797227412306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件之后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797185912309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797227412309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_vr5_r4j_gfb .section}

@@ -1,10 +1,10 @@
 # CopyObject {#reference_mvx_xxc_5db .reference}
 
-CopyObject is used to copy an existing object in OSS into another object.
+CopyObject is used to copy an object within a bucket or between buckets in the same region.
 
 You can send a PUT request to OSS, and add the element “x-oss-copy-source” to the PUT request header to specify the copy source. OSS automatically determines that this is a Copy Object operation, and directly performs this operation on the server side. If the Copy Object operation is successful, the system returns new object information.
 
-This operation is applicable to a file smaller than 1 GB. To copy a file greater than 1 GB, you must use the Multipart Upload operation. For more information about this operation, see [UploadPartCopy](intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#).
+This operation is applicable to a file smaller than 1 GB. To copy a file greater than 1 GB, you must use the Multipart Upload operation. For more information about this operation, see [UploadPartCopy](reseller.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#).
 
 **Note:** For the Copy Object operation, the source bucket and the target bucket must be in the same region.
 

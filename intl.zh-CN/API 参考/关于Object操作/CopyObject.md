@@ -1,6 +1,6 @@
 # CopyObject {#reference_mvx_xxc_5db .reference}
 
-CopyObject接口用于在同一个地域内将一个Object（源Object）拷贝到另外一个Object（目标Object）。
+CopyObject接口用于在Bucket内或同地域的Bucket之间拷贝文件。
 
 该接口可以发送一个Put请求给OSS，并在Put请求Header中添加元素`x-oss-copy-source`来指定源Object。OSS会自动判断出这是一个拷贝操作，并直接在服务器端执行该操作。如果拷贝成功，则返回目标Object信息给用户。
 

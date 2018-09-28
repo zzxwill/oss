@@ -22,7 +22,7 @@ String bucket = "bucket-name";                    // 请填写您的 bucketname 
 String host = "http://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
 
 // callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-String callbackUrl = "http://88.88.88.88.:8888";
+String callbackUrl = "http://88.88.88.88:8888";
 String dir = "user-dir-prefix/"; // 用户上传文件时指定的前缀。
 ```
 
@@ -65,13 +65,13 @@ serverUrl = 'http://11.22.33.44:1234'
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797404212308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812775612308_zh-CN.png)
 
 ## 步骤四：体验上传回调 {#section_hsr_jhz_2fb .section}
 
 -   启动应用服务器
 
-    在`/home/aliyun/aliyun-oss-appserver-java`目录下，执行`mvn install`命令编译打包，然后执行命令启动应用服务器：
+    在`/home/aliyun/aliyun-oss-appserver-java`目录下，执行`mvn package`命令编译打包，然后执行命令启动应用服务器：
 
     ```
     `java -jar target/appservermaven-1.0.0.jar 1234`
@@ -83,11 +83,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797404212306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812775612306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797404212309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812775612309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_hjf_v5j_gfb .section}
@@ -108,7 +108,7 @@ serverUrl = 'http://11.22.33.44:1234'
     		String bucket = "bucket-name"; // 请填写您的 bucketname 。
     		String host = "http://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
     		// callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-    		String callbackUrl = "http://88.88.88.88.:8888";
+    		String callbackUrl = "http://88.88.88.88:8888";
     		String dir = "user-dir-prefix/"; // 用户上传文件时指定的前缀。
     
     		OSSClient client = new OSSClient(endpoint, accessId, accessKey);

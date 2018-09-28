@@ -10,9 +10,9 @@
 
 ## 步骤一：配置应用服务器 {#section_a5z_3mj_gfb .section}
 
-下载应用服务器源码（Go版本）： [aliyun-oss-appserver-go-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1538029675267/aliyun-oss-appserver-go-master.zip)
-
-将源码下载到应用服务器的硬盘。本示例以`Ubuntu 16.04`为例，放置到`/home/aliyun/aliyun-oss-appserver-go`目录下。进入该目录，打开源码文件`appserver.go`，修改以下代码片段：
+1.  下载应用服务器源码（Go版本）到应用服务器的目录下。下载地址： [aliyun-oss-appserver-go-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1538029675267/aliyun-oss-appserver-go-master.zip)
+2.  以Ubuntu 16.04为例，将源码放置到`/home/aliyun/aliyun-oss-appserver-go`目录下。
+3.  进入该目录，打开源码文件`appserver.go`，修改以下代码片段：
 
 ```
 // 请填写您的AccessKeyId。
@@ -29,6 +29,9 @@ var callbackUrl string = "http://88.88.88.88:8888";
 
 // 上传文件时指定的前缀。
 var upload_dir string = "user-dir-prefix/"
+
+// 上传策略Policy的失效时间，单位为秒。
+var expire_time int64 = 30
 ```
 
 -   accessKeyId：设置您的AccessKeyId。
@@ -41,24 +44,24 @@ var upload_dir string = "user-dir-prefix/"
     ```
 
 -   upload\_dir：指定上传文件的前缀，以免与其他文件发生冲突，您也可以填写空值。
-
+-   
 ## 步骤二：配置客户端 {#section_nrb_mnj_gfb .section}
 
-下载客户端源码：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip) 
+1.  下载客户端源码到PC侧的本地目录。下载地址：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip)
+2.  以`D:\aliyun\aliyun-oss-appserver-js`目录为例。进入该目录，打开`upload.js`文件，找到下面的代码语句：
 
-将客户端源码下载到PC侧的本地硬盘。本例中以`D:\aliyun\aliyun-oss-appserver-js`目录为例。进入该目录，打开`upload.js`文件，找到下面的代码语句：
+    ```
+    // serverUrl是用户获取 '签名和Policy' 等信息的应用服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
+    serverUrl ='http://88.88.88.88:8888'
+    ```
 
-```
-// serverUrl是用户获取 '签名和Policy' 等信息的应用服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-serverUrl ='http://88.88.88.88:8888'
-```
+3.  将变量`severUrl`修改为应用服务器的地址。如本例中修改为：
 
-将变量`severUrl`改成应用服务器的地址，客户端可以通过此地址来获取签名直传Policy等信息。如本例中可修改为：
+    ```
+    // serverUrl是用户获取 '签名和Policy' 等信息的应用服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
+    serverUrl ='http://11.22.33.44:1234'
+    ```
 
-```
-// serverUrl是用户获取 '签名和Policy' 等信息的应用服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-serverUrl ='http://11.22.33.44:1234'
-```
 
 ## 步骤三： 修改CORS {#section_wtf_df5_2fb .section}
 
@@ -66,27 +69,24 @@ serverUrl ='http://11.22.33.44:1234'
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153811350612308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812772112308_zh-CN.png)
 
 ## 步骤四：体验上传回调 {#section_upf_cf5_2fb .section}
 
--   启动应用服务器
+1.  启动应用服务器。
 
-    在`/home/aliyun/aliyun-oss-appserver-go`目录下，执行Go命令启动应用服务器：
+    在`/home/aliyun/aliyun-oss-appserver-go`目录下，执行Go命令：
 
-    ```
-    `go run appserver.go 11.22.33.44 1234`
-    ```
+    go run appserver.go 11.22.33.44 1234
 
--   启动客户端
+2.  启动客户端。
+    1.  在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    在PC侧的客户端源码目录中，打开`index.html` 文件。
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812772112306_zh-CN.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153811350612306_zh-CN.png)
+    2.  单击**选择文件**，选择指定类型的文件之后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    单击**选择文件**，选择指定类型的文件之后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153811350612309_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812772112309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_vr5_r4j_gfb .section}

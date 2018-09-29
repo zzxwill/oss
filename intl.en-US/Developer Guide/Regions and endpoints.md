@@ -23,6 +23,7 @@ The Internet and intranet endpoints in each region for a classic network are as 
 |Asia Pacific NE 1 \(Tokyo\)|oss-ap-northeast-1|oss-ap-northeast-1.aliyuncs.com|HTTP and HTTPS|oss-ap-northeast-1-internal.aliyuncs.com|HTTP and HTTPS|
 |Asia Pacific SOU 1 \(Mumbai\)|oss-ap-south-1|oss-ap-south-1.aliyuncs.com|HTTP and HTTPS|oss-ap-south-1-internal.aliyuncs.com|HTTP and HTTPS|
 |EU Central 1 \(Frankfurt\)|oss-eu-central-1|oss-eu-central-1.aliyuncs.com|HTTP and HTTPS|oss-eu-central-1-internal.aliyuncs.com|HTTP and HTTPS|
+|UK \(London\)|oss-eu-west-1|oss-eu-west-1.aliyuncs.com|HTTP and HTTPS|oss-eu-west-1-internal.aliyuncs.com|HTTP and HTTPS|
 |Middle East 1 \(Dubai\)|oss-me-east-1|oss-me-east-1.aliyuncs.com|HTTP and HTTPS|oss-me-east-1-internal.aliyuncs.com|HTTP and HTTPS|
 
 **Note:** 
@@ -55,5 +56,6 @@ To access OSS, ECS of a VPC network can use the following endpoints:
 |Asia Pacific NE 1 \(Tokyo\)|oss-ap-northeast-1|oss-ap-northeast-1-internal.aliyuncs.com|HTTP and HTTPS|
 |Asia Pacific SOU 1 \(Mumbai\)|oss-ap-south-1|oss-ap-south-1-internal.aliyuncs.com|HTTP and HTTPS|
 |EU Central 1 \(Frankfurt\)|oss-eu-central-1|oss-eu-central-1-internal.aliyuncs.com|HTTP and HTTPS|
+|UK \(London\)|oss-eu-west-1|oss-eu-west-1-internal.aliyuncs.com|HTTP and HTTPS|
 |Middle East 1 \(Dubai\)|oss-me-east-1|oss-me-east-1-internal.aliyuncs.com|HTTP and HTTPS|
 

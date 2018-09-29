@@ -44,7 +44,7 @@ var expire_time int64 = 30
     ```
 
 -   upload\_dir：指定上传文件的前缀，以免与其他文件发生冲突，您也可以填写空值。
--   
+
 ## 步骤二：配置客户端 {#section_nrb_mnj_gfb .section}
 
 1.  下载客户端源码到PC侧的本地目录。下载地址：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip)
@@ -69,7 +69,7 @@ var expire_time int64 = 30
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812772112308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153820832612308_zh-CN.png)
 
 ## 步骤四：体验上传回调 {#section_upf_cf5_2fb .section}
 
@@ -82,11 +82,11 @@ var expire_time int64 = 30
 2.  启动客户端。
     1.  在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812772112306_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153820832712306_zh-CN.png)
 
     2.  单击**选择文件**，选择指定类型的文件之后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812772112309_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153820832712309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_vr5_r4j_gfb .section}

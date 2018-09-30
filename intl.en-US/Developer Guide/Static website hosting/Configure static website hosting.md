@@ -44,7 +44,7 @@ Then:
 
 -   API: [PutBucketWebsite](../../../../reseller.en-US/API Reference/Bucket operations/Putbucketwebsite.md#)
 
--   Console: [Static Website Hosting](../../../../reseller.en-US/Console User Guide/Manage buckets/Host a static website.md#)
+-   Console: [Static website hosting](../../../../reseller.en-US/Console User Guide/Manage buckets/Host a static website.md#)
 
--   Java SDK：[Static website hosting](https://partners-intl.aliyun.com/help/doc-detail/32020.htm)
+-   Java SDK: [Static website hosting](https://partners-intl.aliyun.com/help/doc-detail/32020.htm)
 

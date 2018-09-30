@@ -8,7 +8,7 @@
 
 ## 通过外网访问OSS服务 {#section_sgf_k5v_tdb .section}
 
-这里的外网指的是互联网。通过外网访问产生的流入流量（写）是免费的，流出流量（读）是收费的。详情请阅读[OSS服务价格页](https://www.alibabacloud.com/product/oss#pricing)
+这里的外网指的是互联网。通过外网访问产生的流入流量（写）是免费的，流出流量（读）是收费的。详情请阅读[OSS服务价格页](https://www.alibabacloud.com/product/oss#pricing)。
 
 外网访问OSS有如下两种方式：
 

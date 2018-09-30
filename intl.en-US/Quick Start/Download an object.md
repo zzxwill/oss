@@ -2,9 +2,9 @@
 
 After uploading an object to a bucket, you can download the object or share it with others.
 
-The object is uploaded to a bucket. For more information, see [Upload an object](intl.en-US/Quick Start/Upload an object.md#).
+The object is uploaded to a bucket. For more information, see [Upload an object](reseller.en-US/Quick Start/Upload an object.md#).
 
-1.  Log on to the [OSS console](https://oss.console.aliyun.com/). 
+1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss). 
 2.  In the bucket name list, click the name of the bucket that you created. 
 3.  Click the Files tab. 
 4.  Click the name of the file that you uploaded, or click **Configure** to open the Preview page. You can see the following options: 
@@ -19,6 +19,6 @@ The object is uploaded to a bucket. For more information, see [Upload an object]
     -   Select one or more files, and then select **Batch operation** \> **Download**.
 5.  If your bucket ACL is Private, you must set **Validity Period** when getting a file URL. 
 
-    **Note:** The validity period of a signed URL is calculated based on NTP. You can give the URL to anyone who can then use it to access the file within the validity period. If the bucket ACL is set as Private, a signature will be added to the URL. For more information, see [Add a signature to a URL](https://www.alibabacloud.com/help/doc-detail/31952.htm).
+    **Note:** The validity period of a signed URL is calculated based on NTP. You can give the URL to anyone who can then use it to access the file within the validity period. If the bucket ACL is set as Private, a signature will be added to the URL. For more information, see [Add a signature to a URL](../../../../reseller.en-US/API Reference/Access control/Add a signature to a URL.md#).
 
 

@@ -6,7 +6,7 @@ This tutorial explains how to grant and control user access to OSS buckets and f
 
 The data model structure of Alibaba Cloud OSS is flat instead of hierarchical. All objects \(files\) are directly related to their corresponding buckets.  Therefore, OSS lacks the hierarchical structure of directories and subfolders as in a file system.  However, you can emulate a folder hierarchy in the OSS console, where you can arrange and manage files by folders, as shown in the following figure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/3896_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775143896_en-US.png)
 
 OSS is a distributed object storage service that uses a key-value pair format. Users retrieve the content of an object based on its unique key \(object name\). For example, the bucket named **example-company**  has three folders: **Development**, **Marketing** and **Private**. This bucket also has one object **oss-dg.pdf**.
 
@@ -15,7 +15,7 @@ OSS is a distributed object storage service that uses a key-value pair format. 
 
     In the key, `Development` is the prefix and `/` is the delimiter. You can retrieve a list of all objects with a specific prefix and delimiter from a bucket. In the console, you click the **Development** folder, and the console lists the objects in the folder, as shown in the following figure.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1187_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141187_en-US.png)
 
     **Note:** When the console lists the **Development** folder in the **example-company** bucket, it sends OSS a request which specifies the prefix  `Development` and the delimiter `/`. The console responds with a folder list the same as that in the file system.   The preceding example shows that the bucket **example-company** has two objects with the key  `Development/Alibaba Cloud.pdf`, `Development/ProjectA.docx`, and `Development/ProjectB.docx`.
 
@@ -35,13 +35,13 @@ Before going into the tutorial, you also need to know the concept: root-level bu
 
 These object keys resemble a logical hierarchy with Development, Marketing, and Private as root-level folders and oss-dg.pdf as a root-level object. When you click the bucket name in the OSS console, the console shows the top-level prefixes and a delimiter \( Development/, Marketing/, and Private/\) as root-level folders. The object key oss-dg.pdf  does not have a prefix, so it appears as a root-level item.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1188_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141188_en-US.png)
 
 ## Request and response of OSS {#section_isl_bc3_5db .section}
 
 Before granting permissions, we need to understand what request the console sends to OSS when a user clicks a bucket name, the response OSS returns, and how the console interprets the response.
 
-When a user clicks a bucket name, the console sends the [GetBucket](../../../../intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#) request to OSS. This request includes the following parameters:
+When a user clicks a bucket name, the console sends the [GetBucket](../../../../reseller.en-US/API Reference/Bucket operations/GetBucket(List Object).md#) request to OSS. This request includes the following parameters:
 
 -   `prefix` with an empty string as its value.
 -   `delimiter` with `/` as its value.
@@ -93,9 +93,9 @@ The key oss-dg.pdf does not contain the `/`  delimiter, so OSS returns the key 
 
 The console interprets this result and displays the root-level items as follows:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1189_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141189_en-US.png)
 
-Now, if a user clicks the **Development** folder, the console sends the [GetBucket](../../../../intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#) request to OSS. This request includes the following parameters:
+Now, if a user clicks the **Development** folder, the console sends the [GetBucket](../../../../reseller.en-US/API Reference/Bucket operations/GetBucket(List Object).md#) request to OSS. This request includes the following parameters:
 
 -   `prefix` with `Development/` as its value.
 -   `delimiter` with `/` as its value.
@@ -140,7 +140,7 @@ Server: AliyunOSS
 
 The console interprets this result and displays the object keys as follows:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1190_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141190_en-US.png)
 
 ## Tutorial example {#section_zr5_fd3_5db .section}
 
@@ -159,11 +159,11 @@ In this example, you use your primary account credentials to create RAM users. 
 
 To log on to the Alibaba Cloud console with your primary account credentials, go to https://account.alibabacloud.com/login/login.htm.  RAM users cannot log on by using the same link. They must use the RAM user logon link. As the primary account owner, you can provide this logon link to your users.
 
-**Note:** For more information about RAM, see [Log on with a RAM user account](https://www.alibabacloud.com/help/doc-detail/43640.htm).
+**Note:** For more information about RAM, see [Log on with a RAM user account](../../../../reseller.en-US/Quick Start/Log on with a RAM user account.md#).
 
 Provide a logon link for RAM users
 
-1.  Log on to the [RAM console](https://ram.console.aliyun.com) with your primary account credentials.
+1.  Log on to the [RAM console](https://partners-intl.aliyun.com/#/ram) with your primary account credentials.
 2.  In the left-side navigation pane, click **Dashboard**.
 3.  Find the URL after RAM User Logon Link: You will provide this URL to RAM users to log on to the console with their RAM user name and password.
 
@@ -171,20 +171,20 @@ Provide a logon link for RAM users
 
 In this step, you log on to the OSS console with your primary account credentials, create a bucket, add folders \(Development, Marketing, Private\) to the bucket, and upload one or two sample documents in each folder.
 
-1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
+1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
 2.  Create a bucket named **example-company** .
 
-    For detailed procedures, see [Create a bucket](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the *OSS Console User Guide*.
+    For detailed procedures, see [Create a bucket](../../../../reseller.en-US/Console User Guide/Manage buckets/Create a bucket.md#) in the *OSS Console User Guide*.
 
 3.  Upload one file to the bucket.
 
     This example assumes that you upload the file oss-dg.pdf at the root level of the bucket. You can upload your own file with a different file name.
 
-    For detailed procedures, see  [Upload files](../../../../intl.en-US/Console User Guide/Manage objects/Upload objects.md#) in the *OSS Console User Guide*.
+    For detailed procedures, see  [Upload files](../../../../reseller.en-US/Console User Guide/Manage objects/Upload objects.md#) in the *OSS Console User Guide*.
 
 4.  Create three folders named Development, Marketing, and Private.
 
-    For detailed procedures, see [Create a folder](../../../../intl.en-US/Console User Guide/Manage objects/Create a folder.md#)in the *OSS Console User Guide*.
+    For detailed procedures, see [Create a folder](../../../../reseller.en-US/Console User Guide/Manage objects/Create a folder.md#)in the *OSS Console User Guide*.
 
 5.  Upload one or two files to each folder.
 
@@ -205,9 +205,9 @@ In this step, you use the RAM console to add two RAM users, Anne and Leo, to you
 
 **Note:** In this step, do not attach any policies that grant permissions to these users. In the following steps, you will incrementally grant permissions.
 
-For detailed procedures on creating a RAM user, see [Create a RAM user](https://www.alibabacloud.com/help/doc-detail/28637.htm) in the RAM Quick Start.  Remember to create a logon password for each RAM user.
+For detailed procedures on creating a RAM user, see [Create a RAM user](../../../../reseller.en-US/Quick Start/Create a RAM user.md#) in the RAM Quick Start.  Remember to create a logon password for each RAM user.
 
-For detailed procedures on creating a group, see the Create a group section of [Groups](https://www.alibabacloud.com/help/doc-detail/28648.htm) in the RAM User Guide.
+For detailed procedures on creating a group, see the Create a group section of [Groups](../../../../reseller.en-US/User Guide/Identities/Group.md#) in the RAM User Guide.
 
 ## Step 3:  Verify that RAM users have no permissions {#section_izl_b23_5db .section}
 
@@ -236,7 +236,7 @@ Step 4.1:  Grant permissions to list all buckets
 
 In this step, you create a policy that grants users minimum permissions. With the minimum permissions, users can list all buckets owned by the primary account. You also attach the policy to the  Staff group, so you grant the group permission to get a list of buckets owned by the primary account.
 
-1.  Log on to the [RAM console](https://ram.console.aliyun.com) with your primary account credentials.
+1.  Log on to the [RAM console](https://partners-intl.aliyun.com/#/ram) with your primary account credentials.
 2.  Create a policy **AllowGroupToSeeBucketListInConsole**.
     1.  From the left-side navigation pane, click **Policies**, and then click**Create Authorization Policy**.
     2.  Click **Blank Template**.
@@ -264,7 +264,7 @@ In this step, you create a policy that grants users minimum permissions. With t
 
 3.  Attach the **AllowGroupToSeeBucketListInConsole** policy to the Staff group. 
 
-    For detailed procedures on attaching a policy, see the [Attach policies to a RAM group](https://www.alibabacloud.com/help/doc-detail/28639.htm) section of **Attach policies to a RAM user** in the RAM Quick Start. 
+    For detailed procedures on attaching a policy, see the [Attach policies to a RAM group](../../../../reseller.en-US/Quick Start/Attach policies to a RAM user.md#) section of **Attach policies to a RAM user** in the RAM Quick Start. 
 
     You can attach policies to RAM users and groups in the RAM console. In this example, we attach the policy to the group, because we want both Anne and Leo to be able to list the buckets.
 
@@ -278,19 +278,19 @@ In this step, you create a policy that grants users minimum permissions. With t
 
         A message box is displayed, indicating that you have no corresponding access rights.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1193_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141193_en-US.png)
 
 
 Step 4.2:  Grant permissions to list root-level content of a bucket
 
 In this step, you grant permissions to allow all users to list all the items in the bucket example-company. When users click the example-company in the OSS console, they can see the root-level items in the bucket.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1195_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141195_en-US.png)
 
-1.  Log on to the [RAM console](https://ram.console.aliyun.com) with your primary account credentials.
+1.  Log on to the [RAM console](https://partners-intl.aliyun.com/#/ram) with your primary account credentials.
 2.  Replace the existing policy **AllowGroupToSeeBucketListInConsole** that is attached to the Staff group with the following policy. The following policy also allows the oss:ListObjects action. Remember to replace example-company in the policy Resource with the name of your bucket.
 
-    For detailed procedures, see the  [Modify a custom authorization policy](https://www.alibabacloud.com/help/doc-detail/28652.htm) section of **Authorization policies** in the *RAM User Guide*. Note that you can modify a RAM policy a maximum of five times. If this is exceeded, you must delete the policy, created a new one, and then attach the policy to the Staff group again.
+    For detailed procedures, see the  [Modify a custom authorization policy](../../../../reseller.en-US/User Guide/Authorization/Authorization Policy Management.md#) section of **Authorization policies** in the *RAM User Guide*. Note that you can modify a RAM policy a maximum of five times. If this is exceeded, you must delete the policy, created a new one, and then attach the policy to the Staff group again.
 
     ```
      {
@@ -344,7 +344,7 @@ In this step, you grant permissions to allow all users to list all the items in 
 
         The console lists all the root-level items.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/1196_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4349/15382775141196_en-US.png)
 
     4.  Click any of the folders or the object **oss-dg.pdf**.
 
@@ -373,7 +373,7 @@ Step 5.1:  Grant RAM user Anne permission to list the Development folder conten
 
 For Anne to list the  Development folder content, you must attach a policy to her that grants permission for the oss:ListObjects action on the example-company bucket, and includes the condition that user must specify the prefix  `Development/`  in the request.
 
-1.  Log on to the [RAM console](https://ram.console.aliyun.com) with your primary account credentials.
+1.  Log on to the [RAM console](https://partners-intl.aliyun.com/#/ram) with your primary account credentials.
 2.  Create a policy **AllowListBucketsIfSpecificPrefixIsIncluded** that grants the RAM user Anne permission to list the Development folder content.
     1.  From the left-side navigation pane, click **Policies**, and then click **Create Authorization Policy**.
     2.  Click **Blank Template**.
@@ -406,7 +406,7 @@ For Anne to list the  Development folder content, you must attach a policy to 
 
 3.  Attach the policy to the RAM user Anne. 
 
-    For detailed procedures on attaching a policy, see  [Attach policies to a RAM user](https://www.alibabacloud.com/help/doc-detail/28639.htm) in the RAM Quick Start.
+    For detailed procedures on attaching a policy, see  [Attach policies to a RAM user](../../../../reseller.en-US/Quick Start/Attach policies to a RAM user.md#) in the RAM Quick Start.
 
 4.  Test Anne’s permissions.
     1.  Open the RAM user logon page, and log on to the RAM console with Anne’s credentials.
@@ -418,10 +418,10 @@ Step 5.2 Grant RAM User Anne permissions to get and put objects in the Developme
 
 For Anne to get and put objects in the Development  folder, you must grant her permission to call the oss:GetObject and oss:PutObject actions, and includes the condition that user must specify the prefix Development/  in the request.
 
-1.  Log on to the [RAM console](https://ram.console.aliyun.com) with your primary account credentials.
+1.  Log on to the [RAM console](https://partners-intl.aliyun.com/#/ram) with your primary account credentials.
 2.  Replace the policy **AllowListBucketsIfSpecificPrefixIsIncluded** you created in the previous step with the following policy.
 
-    For detailed procedures, see  the [Modify a custom authorization policy](https://www.alibabacloud.com/help/doc-detail/28652.htm) section of **Authorization policies** in the RAM User Guide.  Note that you can modify a RAM  policy a maximum of five times.  If this is exceeded, you must delete the policy, created a new one, and then attach the policy to the  user again.
+    For detailed procedures, see  the [Modify a custom authorization policy](../../../../reseller.en-US/User Guide/Authorization/Authorization Policy Management.md#) section of **Authorization policies** in the RAM User Guide.  Note that you can modify a RAM  policy a maximum of five times.  If this is exceeded, you must delete the policy, created a new one, and then attach the policy to the  user again.
 
     ```
      {
@@ -596,7 +596,7 @@ In this example, you have only two users. You have granted all the minimum requ
 
 -   Replace the Staff group policy **AllowGroupToSeeBucketListInConsole** with an updated policy that includes the preceding deny statements. After the updated policy is applied, none of the users in the group can access the Private folder in your bucket.
 
-    1.  Log on to the [RAM console](https://ram.console.aliyun.com) with your primary account credentials.
+    1.  Log on to the [RAM console](https://partners-intl.aliyun.com/#/ram) with your primary account credentials.
     2.  Replace the existing policy **AllowGroupToSeeBucketListInConsole** that is attached to the Staff group with the following policy. Remember to replace example-company in the policy Resource with the name of your bucket.
 
         ```
@@ -668,7 +668,7 @@ In this example, you have only two users. You have granted all the minimum requ
 
 After you finish the tutorial, remove the users Anne and Leo in the RAM console. 
 
-For detailed procedures, see [Delete a RAM user](https://www.alibabacloud.com/help/doc-detail/28647.htm) section of **Users** in the *RAM User Guide*.
+For detailed procedures, see [Delete a RAM user](../../../../reseller.en-US/User Guide/Identities/Users.md#) section of **Users** in the *RAM User Guide*.
 
 To avoid any unnecessary charges, delete the objects and the bucket that you created for this tutorial.
 

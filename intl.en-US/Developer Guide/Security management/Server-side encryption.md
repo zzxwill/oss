@@ -2,10 +2,10 @@
 
 This article describes how to use the server-side encryption feature of OSS to encrypt and protect the persistent data in OSS:
 
--    [Server-side encryption options](#section_jhs_zld_5db)
--    [Fully managed by OSS](#section_x5x_cmd_5db)
--    [CMK managed by KMS](#section_awd_2md_5db)
--   [Server-side encryption API usage](#section_mbf_hmd_5db)
+-    [Server-side encryption options](#)
+-    [Fully managed by OSS](#)
+-    [CMK managed by KMS](#)
+-   [Server-side encryption API usage](#)
 
 OSS supports server-side encryption for the data uploaded by users: When a user uploads data, OSS encrypts the user data and permanently stores the data with encryption; when the user downloads the data, OSS automatically decrypts the encrypted data, returns the original data to the user, and declares in the header of the returned HTTP request that the data has been encrypted on the server.
 

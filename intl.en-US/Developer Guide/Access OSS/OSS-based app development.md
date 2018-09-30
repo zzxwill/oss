@@ -11,9 +11,9 @@ Typical OSS-based app development involves the following four components:
 
 ## Best practices {#section_ahj_bv1_5db .section}
 
--   [Set up direct data transfer for mobile apps](../../../../intl.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
--   [Set up data callback for mobile apps](../../../../intl.en-US/Best Practices/Application server/Set up data callback for mobile apps.md#)
--   [Permission control](../../../../intl.en-US/Best Practices/Application server/Permission control.md#)
+-   [Set up direct data transfer for mobile apps](../../../../reseller.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
+-   [Set up data callback for mobile apps](../../../../reseller.en-US/Best Practices/Application server/Set up data callback for mobile apps.md#)
+-   [Permission control](../../../../reseller.en-US/Best Practices/Application server/Permission control.md#)
 
 ## Service development process {#section_ims_dv1_5db .section}
 
@@ -21,7 +21,7 @@ Typical OSS-based app development involves the following four components:
 
     The following figure shows the process of data upload with temporary credential authorization:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/1027_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15382784781027_en-US.png)
 
     The description of the process is as follows:
 
@@ -34,13 +34,13 @@ Typical OSS-based app development involves the following four components:
 
     -   The client does not have to request authorization from the application server for each upload attempt. Each time the authorization is obtained, the client caches temporary credentials returned by STS until it expires.
     -   STS provides fine-grained access control for upload, which restricts client access permissions at the object level. This completely isolates the objects uploaded to OSS by different clients, and thus greatly enhances application security.
-    For more information, see [Authorized third-party upload](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
+    For more information, see [Authorized third-party upload](reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
 
 -   Data upload with signed URL or form authorization
 
     The following figure shows the process of data upload with signed URL or form authorization:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/1030_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15382784781030_en-US.png)
 
     The description of the process is as follows:
 
@@ -48,7 +48,7 @@ Typical OSS-based app development involves the following four components:
     2.  The application server returns credentials \(signed URL or form\) to the client.
     3.  The client obtains authorization \(signed URL or form\) and calls the mobile client SDK to upload data or uses form upload to directly upload data to OSS.
     4.  The client successfully uploads data to OSS. If callback is not set, the process is complete. If callback is set, OSS calls the relevant interface.
-    For more information, see [Authorized third-party upload](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
+    For more information, see [Authorized third-party upload](reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
 
 -   Data download with temporary credential authorization
 
@@ -76,10 +76,10 @@ Typical OSS-based app development involves the following four components:
 
 ## Best practices {#section_sjx_ww1_5db .section}
 
--   [What is RAM and STS](../../../../intl.en-US/Best Practices/Access control/Overview.md#)
+-   [What is RAM and STS](../../../../reseller.en-US/Best Practices/Access control/Overview.md#)
 
 ## Reference {#section_ip1_zw1_5db .section}
 
--   Android SDK: [Upload objects](https://www.alibabacloud.com/help/doc-detail/32047.htm)
--   iOS SDK: [Upload objects](https://www.alibabacloud.com/help/doc-detail/32060.htm)
+-   Android SDK: [Upload objects](https://partners-intl.aliyun.com/help/doc-detail/32047.htm)
+-   iOS SDK: [Upload objects](https://partners-intl.aliyun.com/help/doc-detail/32060.htm)
 

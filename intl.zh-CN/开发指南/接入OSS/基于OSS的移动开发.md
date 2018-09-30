@@ -15,7 +15,7 @@
 
     如图所示：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15331923641027_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15382784711027_zh-CN.png)
 
     具体步骤如下：
 
@@ -34,7 +34,7 @@
 
     如图所示：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15331923641030_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15382784711030_zh-CN.png)
 
     具体步骤如下：
 

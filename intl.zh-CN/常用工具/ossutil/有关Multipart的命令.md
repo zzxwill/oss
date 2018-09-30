@@ -1,16 +1,14 @@
-# Multipart-related  {#concept_drn_rzs_vdb .concept}
+# 有关Multipart的命令 {#concept_drn_rzs_vdb .concept}
 
-## commands {#section_spb_xzs_vdb .section}
+ossutil提供了列举UploadID、删除指定Object的所有UploadID的功能。
 
-Ossutil allows you to list an UploadID and delete all UploadIDs of the specified object.
+关于Multipart的更多介绍，请参见[断点续传](../../../../intl.zh-CN/开发指南/上传文件/分片上传和断点续传.md#)。
 
-For more information about the multipart, see [Multipart upload](../../../../reseller.en-US/Developer Guide/Upload files/Multipart upload.md#).
+**说明：** ossutil在上传/拷贝文件时，对于大文件自动进行分片断点续传，而不提供UploadPart命令。
 
-**Note:** When uploading/copying a large file, ossutil automatically implements multipart upload and resumable data transfer, without running the UploadPart command.
+-   列举UploadID
 
--   List an UploadID
-
-    Use the -m option to list all incomplete UploadIDs of the specified object, and use the -a option to list objects and UploadIDs.
+    使用-m选项来列举指定Object下的所有未完成UploadID，使用-a选项来列举Object和UploadID。
 
     ```
     $ ossutil ls oss://bucket1/obj1 -m
@@ -21,11 +19,11 @@ For more information about the multipart, see [Multipart upload](../../../../res
     0.070070(s) elapsed
     ```
 
--   Delete all UploadIDs of the specified object
+-   删除指定Object的所有UploadID
 
-    Use the -m option to delete all incomplete UploadIDs of the specified object. If the -r option is specified simultaneously, incomplete UploadIDs of all objects that use the specified object as the prefix are deleted.
+    使用-m选项删除指定Object下的所有未完成UploadID。当同时指定-r选项时，会删除以指定object为前缀的所有Object中未完成UploadID。
 
-    Assume that bucket1 contains the following objects:
+    假设bucket1下有如下文件：
 
     ```
     $ ossutil ls oss://bucket1 -a
@@ -43,7 +41,7 @@ For more information about the multipart, see [Multipart upload](../../../../res
     0.191289(s) elapsed
     ```
 
-    Delete the two UploadIDs of obj1:
+    删除obj1的2个UploadID：
 
     ```
     $./ossutil rm -m oss://bucket1/obj1
@@ -51,7 +49,7 @@ For more information about the multipart, see [Multipart upload](../../../../res
     1.922915(s) elapsed
     ```
 
-    Delete the four UploadIDs of obj1 and obj2:
+    删除obj1和obj2的4个UploadID：
 
     ```
     $./ossutil rm -m oss://bucket1/ob
@@ -59,7 +57,7 @@ For more information about the multipart, see [Multipart upload](../../../../res
     1.922915(s) elapsed
     ```
 
-    Delete obj1 and the three UploadIDs of obj1 and obj2 simultaneously:
+    同时删除obj1，obj1和obj2的3个UploadID：
 
     ```
     $./ossutil rm  oss://dest1/.a  -a -r -f

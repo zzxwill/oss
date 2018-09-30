@@ -1,9 +1,8 @@
 # Quick start {#concept_c31_lx1_5db .concept}
 
 1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
-2.  Log on to the [OSS console](https://partners-intl.aliyun.com/#/oss).
-3.  Create a bucket.
-4.  Upload and download files.
+2.  Create a bucket.
+3.  Upload and download files.
 
 For more information, see [Get started with Alibaba Cloud OSS](../../../../reseller.en-US/Quick Start/Get started with Object Storage Service.md#).
 

@@ -45,17 +45,17 @@ You can use the log analysis function on the OSS console to analyze massive logs
             -   A log store name must start and end with a lower-case letter or a number.
             -   The length of a log store name can be 3 to 63 characters.
         -   **Data storage period**: Number of days that data is stored.
-        -   **Partition \(shard\) number**: For detailed information, see .
+        -   **Partition \(shard\) number**: For detailed information, see [Partition](https://partners-intl.aliyun.com/help/doc-detail/28976.htm).
     5.  In Step 3, select **Bucket to associate with** and click **Submit**.
 4.  Configure index information.
     1.  Click **Go to log service console to configure index information**.
     2.  If you do not have special requirements, you can keep the basic and default configuration and click **Next**.
 
-        **Note:** If you want to configure index information separately, see .
+        **Note:** If you want to configure index information separately, see [Index and query](https://partners-intl.aliyun.com/help/doc-detail/43772.htm).
 
     3.  Configure the log data delivery and ETL functions. If you do not need to deliver log data, click **OK**. If you want to deliver log data, click **Enable delivery** on the required delivery method and ETL function, and then click **OK**.
-        -   For methods of how to delivery log data to OSS, see .
-        -   For methods of how to configure ETL function, see .
+        -   For methods of how to delivery log data to OSS, see [Ship logs to OSS](https://partners-intl.aliyun.com/help/doc-detail/29002.htm).
+        -   For methods of how to configure ETL function, see [Configure Function Compute log consumption](https://partners-intl.aliyun.com/help/doc-detail/60291.htm).
 5.  Analyze logs.
     1.  On the OSS console, move the mouse cursor to the **Log Analysis** icon, click **Manage Log Service**, as shown in the following figure:
     2.  On the **Log Analysis** page, click **Analyze logs**.

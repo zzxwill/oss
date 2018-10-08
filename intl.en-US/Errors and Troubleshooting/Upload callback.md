@@ -2,7 +2,7 @@
 
 ## About upload callback {#section_jpf_dv3_wdb .section}
 
-When a file is uploaded, the OSS can provide a [Callback](../../../../dita-oss-bucket/SP_21/DNOSS11827291/EN-US_TP_4366.md#) to your callback server.  You can carry the relevant callback parameters in the upload request to implement the upload callback.  The APIs that support upload callback are [PutObject](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4695.md#), [PostObject](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4705.md#), and [CompleteMultipartUpload](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4715.md#). For more information, see [Developer Guide](../../../../dita-oss-bucket/SP_21/DNOSS11827291/EN-US_TP_4366.md#) and [API Reference](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4706.md#).
+When a file is uploaded, the OSS can provide a [Callback](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) to your callback server.  You can carry the relevant callback parameters in the upload request to implement the upload callback.  The APIs that support upload callback are [PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#), [PostObject](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#), and [CompleteMultipartUpload](../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#). For more information, see [Developer Guide](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) and [API Reference](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
 
 **Note:** A callback server is also called a service server.
 
@@ -27,7 +27,7 @@ The following table describes the definitions of the preceding data streams.
 
 |Data stream|Meaning|Description|
 |:----------|:------|:----------|
-|1|The client uploads a file and carries a callback parameter.\[1\]|The upload is implemented by SDK \([PutObject](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4695.md#) and [CompleteMultipartUpload](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4715.md#), and the callback by the [PostObject](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4705.md#) API.|
+|1|The client uploads a file and carries a callback parameter.\[1\]|The upload is implemented by SDK \([PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#) and [CompleteMultipartUpload](../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#), and the callback by the [PostObject](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#) API.|
 |2|The OSS instance stores the file and initiates a callback.|The OSS instance sends a `POST` \[2\] request to the specified  `CallbackUrl` in the upload request. The callback time-out period is five seconds \[3\].|
 |3| The callback server returns the processing result.|-   The message body returned by the callback server must be in JSON format. 
 -   The OSS determines that the callback fails if the returned result is not 200.\[4\]
@@ -41,7 +41,7 @@ The following table describes the definitions of the preceding data streams.
 **Note:** 
 
 -   \[1\] For more information about the format, see `SDK/PostObject`.
--   \[2\] For more information about the format of the callback request POST, see [Initiate a callback request](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4706.md#).
+-   \[2\] For more information about the format of the callback request POST, see [Initiate a callback request](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
 -   \[3\] The time-out time is fixed and cannot be configured.
 -   \[4\] `40x` is returned for parameter invalidation or authentication failure, while `50x` is returned for time-out or connection failure.
 
@@ -158,10 +158,10 @@ Some SDKs, such as JAVA and JS, encapsulate the preceding steps. Some SDKs, such
 |JS|[object.test.js](https://github.com/ali-sdk/ali-oss/blob/master/test/node/object.test.js)|-|
 |C|[oss\_callback\_sample.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk_sample/oss_callback_sample.c)|-|
 |Ruby|[callback.rb](https://github.com/aliyun/aliyun-oss-ruby-sdk/blob/master/examples/aliyun/oss/callback.rb)|-|
-|iOS| [Callback notification after upload](https://www.alibabacloud.com/help/doc-detail/32060.htm)
+|iOS| [Callback notification after upload](https://partners-intl.aliyun.com/help/doc-detail/32060.htm)
 
  |Make sure that `<var1>` the format of`var1` is x:var1.|
-|Andriod| [Callback notification after upload](https://www.alibabacloud.com/help/doc-detail/32060.htm)
+|Andriod| [Callback notification after upload](https://partners-intl.aliyun.com/help/doc-detail/32047.htm)
 
  |Note the escape characters in `CallbackBody`.|
 
@@ -169,7 +169,7 @@ Some SDKs, such as JAVA and JS, encapsulate the preceding steps. Some SDKs, such
 
 ## PostObject usage example {#section_sd1_bx3_wdb .section}
 
-PostObject supports the upload callback, whose callback parameters are carried by the form field `callback` and custom variables are carried by an independent form field. For more information, see[PostObjet](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4705.md#).
+PostObject supports the upload callback, whose callback parameters are carried by the form field `callback` and custom variables are carried by an independent form field. For more information, see[PostObjet](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
 
 The following table lists PostObject usage examples.
 
@@ -177,7 +177,7 @@ The following table lists PostObject usage examples.
 |:--|:----------------------|
 |Java|[PostObjectSample.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)|
 |Python|[object\_post.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/object_post.py)|
-|JS|[Javascript client signature pass-through](../../../../dita-oss-bucket/SP_21/DNOSS11828897/EN-US_TP_4404.md#)|
+|JS|[Javascript client signature pass-through](../../../../reseller.en-US/Best Practices/Direct upload to OSS from Web/Javascript client signature pass-through.md#)|
 |C\#|[PostPolicySample.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)|
 
 ## Callback server {#section_jgd_dx3_wdb .section}
@@ -186,7 +186,7 @@ The callback server is an HTTP server that processes callback requests and POST 
 
 Callback signature
 
-The callback server needs to verify the signature of a POST request to make sure that the POST request is from the OSS upload callback.  The callback server also can directly process the message without verifying the signature. To enhance the security of the callback server, we recommend that the callback server verify the message signature. For more information about the callback signature rules, see [Callback signature](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4706.md#).
+The callback server needs to verify the signature of a POST request to make sure that the POST request is from the OSS upload callback.  The callback server also can directly process the message without verifying the signature. To enhance the security of the callback server, we recommend that the callback server verify the message signature. For more information about the callback signature rules, see [Callback signature](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
 
 **Note:** The OSS callback server example describes how to implement signature verification. We recommend that you directly use the code.
 
@@ -216,7 +216,7 @@ The upload callback debugging includes debugging of the client that uploads a fi
 
 -   Client debugging
 
-    You can use the callback server [http://callback.oss-demo.com:23450](http://callback.oss-demo.com:23450/) provided by the OSS, that is, the callback parameter `callbackUrl` to debug the client. The callback server only verifies the callback request signature, and does not process the callback request. For callback requests whose signatures are successfully verified, the callback server returns  `{"Status":"OK"}`. For callback requests whose signatures fail to be verified, the callback server returns `400 Bad Request`. For non-POST requests, the callback server returns `501 Unsupported method`. For more information about the code of the callback server example, see [callback\_app\_server.py.zip](https://gosspublic.alicdn.com/images/callback_app_server.py.zip).
+    You can use the callback server `http://oss-demo.aliyuncs.com:23450` provided by the OSS, that is, the callback parameter `callbackUrl` to debug the client. The callback server only verifies the callback request signature, and does not process the callback request. For callback requests whose signatures are successfully verified, the callback server returns  `{"Status":"OK"}`. For callback requests whose signatures fail to be verified, the callback server returns `400 Bad Request`. For non-POST requests, the callback server returns `501 Unsupported method`. For more information about the code of the callback server example, see [callback\_app\_server.py.zip](https://gosspublic.alicdn.com/images/callback_app_server.py.zip).
 
 -   Callback server debugging
 
@@ -235,11 +235,11 @@ The upload callback debugging includes debugging of the client that uploads a fi
 
     ```
     # Run the following command to send a `POST` request whose message body is `object=test_obj` to the callback server:  
-    curl -d "object=test_obj" http://callback.oss-demo.com:23450 -v
+    curl -d "object=test_obj" http://oss-demo.aliyuncs.com:23450 -v
     # Run the following command to send a `POST` request whose message body is `post.txt` to the callback server:  
-    curl -d @post.txt http://callback.oss-demo.com:23450 -v
+    curl -d @post.txt http://oss-demo.aliyuncs.com:23450 -v
     # Run the following command to send a `POST` request whose message body is `post.txt` and which carries the specified message header `Content-Type` to the callback server:
-    curl -d @post.txt -H "Content-Type: application/json" http://callback.oss-demo.com:23450 -v
+    curl -d @post.txt -H "Content-Type: application/json" http://oss-demo.aliyuncs.com:23450 -v
     ```
 
     **Note:** 
@@ -349,6 +349,6 @@ The upload callback debugging includes debugging of the client that uploads a fi
 
 ## Common links {#section_q4w_nz3_wdb .section}
 
--   [Callback Guide](../../../../dita-oss-bucket/SP_21/DNOSS11827291/EN-US_TP_4366.md#)
--   [Callback API](../../../../dita-oss-bucket/SP_21/DNOSS11835551/EN-US_TP_4706.md#)
+-   [Callback Guide](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#)
+-   [Callback API](../../../../reseller.en-US/API Reference/Object operations/Callback.md#)
 

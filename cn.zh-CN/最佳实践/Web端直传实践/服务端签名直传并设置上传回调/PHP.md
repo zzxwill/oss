@@ -9,27 +9,27 @@
 -   Web服务器能够解析PHP（执行命令`php -v`进行查看）。
 -   PC端浏览器支持JavaScript。
 
-## 步骤一：配置Web服务器 {#section_rcg_mpj_gfb .section}
+## 步骤 1：配置Web服务器 {#section_rcg_mpj_gfb .section}
 
-本文档以`Ubuntu16.04`和`Apache2.4.18`为例。本示例中的环境配置如下：
+本文档以Ubuntu16.04和Apache2.4.18为例。本示例中的环境配置如下：
 
 -   Web服务器外网IP地址为`11.22.33.44`。您可以在配置文件`/etc/apache2/apache2.conf`中增加`ServerName 11.22.33.44`来进行修改。
 -   Web服务器的监听端口为`8080`。您可以在配置文件`/etc/apache2/ports.conf`中进行修改相关内容`Listen 8080`。
 -   确保Apache能够解析PHP文件：`sudo apt-get install libapache2-mod-php5`（其他平台请根据实际情况进行安装配置）。
 
-您可以根据自己的实际环境修改IP地址和监听端口。更新配置后，需要重启Apache服务器，重启命令为`/etc/init.d/apache2 restart`。
+您可以根据自己的实际环境修改IP地址和监听端口。更新配置后，需要重启Apache服务器，重启命令为/etc/init.d/apache2 restart。
 
-## 步骤二：配置应用服务器 {#section_hgm_52t_2fb .section}
+## 步骤 2：配置应用服务器 {#section_hgm_52t_2fb .section}
 
 -   下载部署应用服务器源码
 
-    下载应用服务器源码\(PHP版本\)：[aliyun-oss-appserver-php-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537972873858/aliyun-oss-appserver-php-master.zip)
+    下载应用服务器源码（PHP版本）：[aliyun-oss-appserver-php-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537972873858/aliyun-oss-appserver-php-master.zip)
 
-    下载应用服务器源码后，将其部署到应用服务器的相应目录。本文示例中需要部署到`Ubuntu16.04`的`/var/www/html/aliyun-oss-appserver-php`目录下。
+    下载应用服务器源码后，将其部署到应用服务器的相应目录。本文示例中需要部署到Ubuntu16.04的`/var/www/html/aliyun-oss-appserver-php`目录下。
 
     在PC侧浏览器中访问应用服务器URL `http://11.22.33.44:8080/aliyun-oss-appserver-php/index.html`， 显示的页面内容与[测试样例主页](http://oss-demo.aliyuncs.com/oss-h5-upload-js-php-callback/index.html?spm=a2c4g.11186623.2.19.63f561e4APLM8H)相同则验证通过。
 
--   开启Apache捕获HTTP头部Authorization字段的功能。
+-   开启Apache捕获HTTP头部Authorization字段的功能
 
     您的应用服务器收到的回调请求有可能没有Authotization头，这是因为有些Web应用服务器会将Authorization头自行解析掉。比如Apache2，需要设置成不解析头部。
 
@@ -83,7 +83,7 @@
 
     -   $dir： 设置上传到OSS文件的前缀，以便区别于其他文件从而避免冲突，您也可以填写空值。
 
-## 步骤三：配置客户端 {#section_jhc_yrj_gfb .section}
+## 步骤 3：配置客户端 {#section_jhc_yrj_gfb .section}
 
 在应用服务器的`/var/www/html/aliyun-oss-appserver-php`目录下修改文件`upload.js`：
 
@@ -103,7 +103,7 @@
 `serverUrl ='http://11.22.33.44:8080/aliyun-oss-appserver-php/php/get.php'`
 ```
 
-## 步骤四：修改CORS {#section_qqv_1sj_gfb .section}
+## 步骤 4：修改CORS {#section_qqv_1sj_gfb .section}
 
 从浏览器向OSS发出的请求消息带有`Origin`的消息头，OSS对带有`Origin`头的请求消息会首先进行`跨域规则`的验证。
 
@@ -111,17 +111,17 @@
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797307012308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913932312308_zh-CN.png)
 
-## 步骤五：体验上传回调 {#section_fxb_5ft_2fb .section}
+## 步骤 5：体验上传回调 {#section_fxb_5ft_2fb .section}
 
 在PC侧的Web浏览器中输入`http://11.22.33.44:8080/aliyun-oss-appserver-php/index.html`。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797307012306_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913932312306_zh-CN.png)
 
 单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797307012309_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913932312309_zh-CN.png)
 
 ## 应用服务器核心代码解析 {#section_apl_gsj_gfb .section}
 
@@ -159,5 +159,7 @@
         echo json_encode($data);
     }
     ```
+
+    详情请参见API文档[Callback–回调签名](../../../../cn.zh-CN/API 参考/关于Object操作/Callback.md#section_btz_phx_wdb)。
 
 

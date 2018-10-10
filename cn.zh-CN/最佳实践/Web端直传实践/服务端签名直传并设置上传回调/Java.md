@@ -65,7 +65,7 @@ serverUrl = 'http://11.22.33.44:1234'
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812775612308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913847512308_zh-CN.png)
 
 ## 步骤四：体验上传回调 {#section_hsr_jhz_2fb .section}
 
@@ -83,11 +83,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812775612306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913847512306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153812775612309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913847512309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_hjf_v5j_gfb .section}
@@ -202,5 +202,7 @@ serverUrl = 'http://11.22.33.44:1234'
     		}
     	}
     ```
+
+    详情请参见API文档[Callback–回调签名](../../../../cn.zh-CN/API 参考/关于Object操作/Callback.md#section_btz_phx_wdb)。
 
 

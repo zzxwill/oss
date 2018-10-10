@@ -8,7 +8,7 @@
 -   应用服务器已经安装Golang 1.6以上版本（执行命令`go version`进行验证）。
 -   PC端浏览器支持JavaScript。
 
-## 步骤一：配置应用服务器 {#section_a5z_3mj_gfb .section}
+## 步骤 1：配置应用服务器 {#section_a5z_3mj_gfb .section}
 
 1.  下载应用服务器源码（Go版本）到应用服务器的目录下。下载地址： [aliyun-oss-appserver-go-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1538029675267/aliyun-oss-appserver-go-master.zip)
 2.  以Ubuntu 16.04为例，将源码放置到`/home/aliyun/aliyun-oss-appserver-go`目录下。
@@ -45,7 +45,7 @@ var expire_time int64 = 30
 
 -   upload\_dir：指定上传文件的前缀，以免与其他文件发生冲突，您也可以填写空值。
 
-## 步骤二：配置客户端 {#section_nrb_mnj_gfb .section}
+## 步骤 2：配置客户端 {#section_nrb_mnj_gfb .section}
 
 1.  下载客户端源码到PC侧的本地目录。下载地址：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip)
 2.  以`D:\aliyun\aliyun-oss-appserver-js`目录为例。进入该目录，打开`upload.js`文件，找到下面的代码语句：
@@ -63,15 +63,15 @@ var expire_time int64 = 30
     ```
 
 
-## 步骤三： 修改CORS {#section_wtf_df5_2fb .section}
+## 步骤 3： 修改CORS {#section_wtf_df5_2fb .section}
 
 客户端进行表单直传到OSS时，会从浏览器向OSS发送带有`Origin`的请求消息。OSS对带有`Origin`头的请求消息会进行跨域规则（CORS）的验证。因此需要为Bucket设置跨域规则以支持Post方法。
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153820832612308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913844612308_zh-CN.png)
 
-## 步骤四：体验上传回调 {#section_upf_cf5_2fb .section}
+## 步骤 4：体验上传回调 {#section_upf_cf5_2fb .section}
 
 1.  启动应用服务器。
 
@@ -82,11 +82,11 @@ var expire_time int64 = 30
 2.  启动客户端。
     1.  在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153820832712306_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913844612306_zh-CN.png)
 
     2.  单击**选择文件**，选择指定类型的文件之后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153820832712309_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913844612309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_vr5_r4j_gfb .section}
@@ -146,5 +146,7 @@ var expire_time int64 = 30
                     }
             }
     ```
+
+    详情请参见API文档[Callback–回调签名](../../../../cn.zh-CN/API 参考/关于Object操作/Callback.md#section_btz_phx_wdb)。
 
 

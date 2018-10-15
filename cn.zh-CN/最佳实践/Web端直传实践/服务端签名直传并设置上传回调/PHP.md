@@ -23,7 +23,7 @@
 
 -   下载部署应用服务器源码
 
-    下载应用服务器源码（PHP版本）：[aliyun-oss-appserver-php-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537972873858/aliyun-oss-appserver-php-master.zip)
+    下载应用服务器源码（PHP版本）：[aliyun-oss-appserver-php-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/92590/APP_zh/1539603337889/aliyun-oss-appserver-php-master.zip)
 
     下载应用服务器源码后，将其部署到应用服务器的相应目录。本文示例中需要部署到Ubuntu16.04的`/var/www/html/aliyun-oss-appserver-php`目录下。
 
@@ -60,8 +60,8 @@
     在`/var/www/html/aliyun-oss-appserver-php/php`目录下打开文件`get.php`， 修改如下代码片段：
 
     ```
-    $ id= '<yourAccessKeyId>';          // 请填写您的AccessKeyId。
-        $ key= '<yourAccessKeySecret>';     // 请填写您的AccessKeySecret。
+    $id= '<yourAccessKeyId>';          // 请填写您的AccessKeyId。
+        $key= '<yourAccessKeySecret>';     // 请填写您的AccessKeySecret。
     
         // $host的格式为 bucketname.endpointx， 请替换为您的真实信息。
         $host = 'http://bucket-name.oss-cn-hangzhou.aliyuncs.com';  
@@ -111,17 +111,17 @@
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913932312308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153960344112308_zh-CN.png)
 
 ## 步骤 5：体验上传回调 {#section_fxb_5ft_2fb .section}
 
 在PC侧的Web浏览器中输入`http://11.22.33.44:8080/aliyun-oss-appserver-php/index.html`。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913932312306_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153960344112306_zh-CN.png)
 
 单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913932312309_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153960344212309_zh-CN.png)
 
 ## 应用服务器核心代码解析 {#section_apl_gsj_gfb .section}
 

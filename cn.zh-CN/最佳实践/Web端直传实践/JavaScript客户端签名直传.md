@@ -21,10 +21,25 @@
 ```
 accessid= '<yourAccessKeyId>';
 accesskey= <yourAccessKeySecrety>';
+.....
+new_multipart_params = {
+        ....
+        'OSSAccessKeyId': accessid, 
+        ....
+    };
+
 //如果是STS方式====
 accessid = 'STS.ACCESSKEYID';
 accesskey = 'STS.ACCESSSECRET';
 token = 'STS.token';
+
+.....
+new_multipart_params = {
+        ....
+        'OSSAccessKeyId': accessid, 
+        'x-oss-security-token':token
+        ....
+    };
 //===========
 host = 'http://post-test.oss-cn-hangzhou.aliyuncs.com';
 ```
@@ -42,7 +57,7 @@ host = 'http://post-test.oss-cn-hangzhou.aliyuncs.com';
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153914952412308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153976862412308_zh-CN.png)
 
 ## 步骤 4：体验JavaScript客户端签名直传 {#section_ypv_ytm_q2b .section}
 

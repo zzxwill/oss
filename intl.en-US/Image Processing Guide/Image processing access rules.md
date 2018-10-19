@@ -12,7 +12,7 @@ If you want to have a source image processed and then returned, the following tw
 
     -   Bucket: your Image Service channel.
     -   endpoint: the access domain name for a Bucket’s data center.
-    -   Object: In Image Service, an Object is the basic data unit for operating images.  It is the same as the Object specified for the OSS instance. The maximum size of a single Object \(that is, each image\) is 20 MB.
+    -   Object: In Image Service, an Object is the basic data unit for operating images. It is the same as the Object specified for the OSS instance. The maximum size of a single Object \(that is, each image\) is 20 MB.
     -   action: the operation to be performed on the image.
     -   parame: the parameter which indicates the operation to be performed on the image.
 -   Combination of multiple actions
@@ -22,7 +22,7 @@ If you want to have a source image processed and then returned, the following tw
 
 **Example**
 
-Assume that the requested Bucket is image-demo and located in  China East 1 \(Hangzhou\), with the domain name oss-cn-hangzhou.aliyuncs.com, and the requested image is example.jpg. The URL format for scaling down the image to 200 in width is:
+Assume that the requested Bucket is image-demo and located in China East 1 \(Hangzhou\), with the domain name oss-cn-hangzhou.aliyuncs.com, and the requested image is example.jpg. The URL format for scaling down the image to 200 in width is:
 
 ```
 http://**image-demo**.oss-cn-hangzhou.aliyuncs.com/**example.jpg**?x-oss-process=**image**/resize,w_200
@@ -47,17 +47,17 @@ http://userdomain/object?x-oss-process=image/action,parame_value
 Image Service allows you to save image processing operations and parameters as an alias, that is, a style. With styles, a series of operations can be achieved through a very short URL.
 
 -   A Channel can have multiple styles. Currently, a Channel is allowed to have up to 50 styles.
--   A style can be applied to change all Objects in a Channel. For example, if style abc is in  Channel A and the style content is 100w.jpg \(scaled to 100 in width and saved as a .jpg file\),  style abc can be applied to all the Objects in Channel A to scale them to 100 in width and saved them as .jpg files.
+-   A style can be applied to change all Objects in a Channel. For example, if style abc is in Channel A and the style content is 100w.jpg \(scaled to 100 in width and saved as a .jpg file\), style abc can be applied to all the Objects in Channel A to scale them to 100 in width and saved them as .jpg files.
 -   A style is only effective within a Channel, that is, the Objects in Channel A cannot use any style in Channel B.
 
 Style naming conventions:
 
 -   A name can be 1 to 63 characters in length.
--   Only numbers, upper-case or lower-case letters, underscores \(\_\), hyphens \(-\), and periods \(.\) are permitted.
+-   Only numbers, upper-case or lower-case letters, underscores \( \_ \), hyphens \(-\), and periods \(.\) are permitted.
 
 **Channel**
 
-A channel is a namespace of image processing, and the management entity for billing, permission control, logging, and other advanced functions.  An image name is globally unique in Image Service and cannot be modified.  You can create up to 10 Channels, but the number of Objects in each Channel is not limited.
+A channel is a namespace of image processing, and the management entity for billing, permission control, logging, and other advanced functions. An image name is globally unique in Image Service and cannot be modified. You can create up to 10 Channels, but the number of Objects in each Channel is not limited.
 
 Image processing data centers correspond to the OSS data centers. If you create a Bucket in an OSS data center and then activate Image Service, the corresponding Channel belongs to this data center. **Currently, a Channel corresponds to a Bucket in the OSS instance, that is, you can only create a Channel of the same name as a Bucket that you have created on the OSS instance.**
 
@@ -73,7 +73,7 @@ http://userdomain/object?x-oss-process=style/name
 
 **Example**
 
-The preceding processing parameters can be saved as the style style-example. Assume that the requested Bucket is image-demo and located in China East 1 \(Hangzhou\), with the domain name  oss-cn-hangzhou.aliyuncs.com, the requested image is example.jpg, and the image access style is style-example, the URL format is constructed as follows:
+The preceding processing parameters can be saved as the style style-example. Assume that the requested Bucket is image-demo and located in China East 1 \(Hangzhou\), with the domain name oss-cn-hangzhou.aliyuncs.com, the requested image is example.jpg, and the image access style is style-example, the URL format is constructed as follows:
 
 \]
 
@@ -89,7 +89,7 @@ https://**image-demo**.oss-cn-hangzhou.aliyuncs.com/**example.jpg**?x-oss-proces
 
 ## Access through SDK {#section_kyw_kkn_vdb .section}
 
-Public buckets can be accessed using URLs, whereas private files are typically accessed using SDKs.  Because in Image Service, URLs are accessed with standard GET operations, only the process parameter needs to be added to the Get Object.
+Public buckets can be accessed using URLs, whereas private files are typically accessed using SDKs. Because in Image Service, URLs are accessed with standard GET operations, only the process parameter needs to be added to the Get Object.
 
 The Python SDK is used as an example:
 
@@ -105,18 +105,18 @@ For more information about Image Service used for OSS SDKs, see Image Processing
 
 |SDK|Image processing document|Example|
 |---|-------------------------|-------|
-|Java SDK|[Image processing](https://www.alibabacloud.com/help/zh/doc-detail/47505.htm)|[ImageSample.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/ImageSample.java)|
-|Python SDK|[Image processing](https://www.alibabacloud.com/help/zh/doc-detail/47660.htm)|[image.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/image.py)|
-|C\# SDK|[Image processing](https://www.alibabacloud.com/help/zh/doc-detail/48309.htm)|[ImageProcessSample.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/ImageProcessSample.cs)|
-|PHP SDK|[Image processing](https://www.alibabacloud.com/help/zh/doc-detail/47735.htm)|[Image.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/samples/Image.php)|
-|JS SDK|[Image processing](https://help.aliyun.com/document_detail/50039.html)|[object.test.js](https://github.com/ali-sdk/ali-oss/blob/master/test/node/object.test.js)|
-|C SDK|[Image processing](https://www.alibabacloud.com/help/zh/doc-detail/48113.htm)|[oss\_image\_sample.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk_sample/oss_image_sample.c)|
+|Java SDK| |[ImageSample.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/ImageSample.java)|
+|Python SDK| |[image.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/image.py)|
+|C\# SDK| |[ImageProcessSample.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/ImageProcessSample.cs)|
+|PHP SDK| |[Image.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/samples/Image.php)|
+|JS SDK| |[object.test.js](https://github.com/ali-sdk/ali-oss/blob/master/test/node/object.test.js)|
+|C SDK| |[oss\_image\_sample.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk_sample/oss_image_sample.c)|
 
 ## Image processing restrictions {#section_vsm_nln_vdb .section}
 
 -   The supported formats include JPG, PNG, BMP, GIF, WEBP, and TIFF.
--   When the width or height of a thumbnail is specified, the image is scaled by a single side by default in the case of proportional scaling.  With fixed width and height, the image is scaled down by assuming equal width and height.
+-   When the width or height of a thumbnail is specified, the image is scaled by a single side by default in the case of proportional scaling. With fixed width and height, the image is scaled down by assuming equal width and height.
 -   The scaled image size is restricted. The product of the width and height of the target thumbnail cannot exceed 4096 x 4096, and the length of a single side cannot exceed 4096 x 4.
--   When resize is called, the image cannot be enlarged by default. That is, if the requested image is larger than the source image, the source image is returned. If you want to enlarge the image, add the parameter `limit,0`.
+-   When resize is called, the image cannot be enlarged by default. That is, if the requested image is larger than the source image, the source image is returned. If you want to enlarge the image, add the parameter `limit_0`.
 -   Currently, GIF and WEBP images can be processed once at a time to reduce resource consumption. For example, you cannot crop a GIF or WEBP image immediately after resizing it.
 

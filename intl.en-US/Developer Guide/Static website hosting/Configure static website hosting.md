@@ -8,6 +8,8 @@ If your selected bucket is located in Hangzhou, after the configuration takes ef
 http://<Bucket>.oss-cn-hangzhou.aliyuncs.com/
 ```
 
+**Note:** When you use an OSS endpoint in Mainland China regions or the Hongkong region to access a web file through the Internet , the Content-Disposition: 'attachment=filename;' is automatically added to the Response Header, and the web file is downloaded as an attachment. If you access OSS with a user domain, the Content-Disposition: 'attachment=filename;' will not be added to the Response Header. For more information about using the user domain to access OSS, see [Bind a custom domain name](reseller.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
+
 For users to manage static websites hosted on the OSS more easily, the OSS provides two functions:
 
 -   Index Document Support

@@ -6,11 +6,13 @@ You can set your bucket to host a static website and access this static website 
 -   If static website hosting is enabled, we recommend that you use CNAME to bind your domain name.
 -   If you directly access the static website root domain or any URL ending with “/“ under this domain, the default homepage is returned.
 
-For more information, see [Static Website Hosting](../../../../intl.en-US/Developer Guide/Static website hosting/Configure static website hosting.md#).
+**Note:** When you use an OSS endpoint in Mainland China regions or the Hongkong region to access a web file through the Internet , the Content-Disposition: 'attachment=filename;' is automatically added to the Response Header, and the web file is downloaded as an attachment. If you access OSS with a user domain, the Content-Disposition: 'attachment=filename;' will not be added to the Response Header. For more information about using the user domain to access OSS, see [Bind a custom domain name](../../../../reseller.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
+
+For more information, see [Static Website Hosting](../../../../reseller.en-US/Developer Guide/Static website hosting/Configure static website hosting.md#).
 
 ## Procedure {#section_vlx_ghz_5db .section}
 
-1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
+1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
 2.  In the left bucket lists, click one target bucket name to open the bucket overview page.
 3.  In the **Basic Settings** tab, find the **Static Page** area.
 4.  Click **Settings** to set the following parameters:

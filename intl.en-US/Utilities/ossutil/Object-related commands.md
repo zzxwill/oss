@@ -36,15 +36,15 @@ Run the config command to configure the AccessKey pair before running these comm
 
     -   Performance tuning for uploading/downloading/copying a file
 
-        In the cp command, the `jobs` and `-parallel`options are used to control the number of concurrent operations. The `-jobs` option controls the number of concurrent operations enabled between files when multiple files are uploaded/downloaded/copied. The`-parallel` option controls the number of concurrent operations enabled for a large file when the large file is uploaded/downloaded/copied in multiparts.
+        In the cp command, the `--jobs` and `--parallel`options are used to control the number of concurrent operations. The `--jobs` option controls the number of concurrent operations enabled between files when multiple files are uploaded/downloaded/copied. The`--parallel` option controls the number of concurrent operations enabled for a large file when the large file is uploaded/downloaded/copied in multiparts.
 
-        Ossutil calculates the number of parallel operations based on the file size by default \(this option does not work for small files, and the threshold for large files to be uploaded/downloaded/copied in multiparts can be controlled by the —bigfile-threshold option\). When large files are uploaded/downloaded/copied in batches, the actual number of concurrent operations is calculated by multiplying the number of jobs by the number of parallel operations. If the default number of concurrent operations set by ossutil cannot meet your performance requirements, you can adjust these two options to improve or reduce the performance.
+        Ossutil calculates the number of parallel operations based on the file size by default \(this option does not work for small files, and the threshold for large files to be uploaded/downloaded/copied in multiparts can be controlled by the --bigfile-threshold option\). When large files are uploaded/downloaded/copied in batches, the actual number of concurrent operations is calculated by multiplying the number of jobs by the number of parallel operations. If the default number of concurrent operations set by ossutil cannot meet your performance requirements, you can adjust these two options to improve or reduce the performance.
 
         **Note:** 
 
         -   We recommend that you adjust the concurrent operations to a value smaller than100. If the network bandwidth, memory, and CPU are not fully occupied, you can set the concurrent operations to a bigger value.
-        -   If the number of concurrent operations is too large, the uploading/downloading/copying performance of ossutil may be reduced, or even an EOF error may occur due to inter-thread resource switching and snatching. Therefore, adjust the values of `-jobs`和`-parallel` based on the actual machine conditions.
-        To perform pressure testing, set the two options to small values first, and slowly adjust them to the optimal values. If the values of the —jobs and —parallel options are too large, an EOF error may occur due to the slow network transfer speed if machine resources are limited. In this case, appropriately reduce the values of the —jobs and —parallel options.
+        -   If the number of concurrent operations is too large, the uploading/downloading/copying performance of ossutil may be reduced, or even an EOF error may occur due to inter-thread resource switching and snatching. Therefore, adjust the values of `--jobs` and `--parallel` based on the actual machine conditions.
+        To perform pressure testing, set the two options to small values first, and slowly adjust them to the optimal values. If the values of the --jobs and --parallel options are too large, an EOF error may occur due to the slow network transfer speed if machine resources are limited. In this case, appropriately reduce the values of the --jobs and --parallel options.
 
 -   Configure the ACL of an object
 

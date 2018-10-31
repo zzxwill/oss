@@ -35,7 +35,7 @@ Compared with a local file system, the functions and performance provided by oss
     Due to the lower version of the Linux distribution, the kernel version is relatively lower. The ossfs is prone to disconnection or other problems during the running process. Therefore, users are advised to upgrade the operating system to CentOS 7.0 or Ubuntu 14.04 or later.
 
 -   Installation method
-    -   Run the following commands to install Ubuntu:
+    -   Run the following commands to install ossfs for Ubuntu:
 
         ```
         sudo apt-get update
@@ -43,13 +43,13 @@ Compared with a local file system, the functions and performance provided by oss
         sudo gdebi your_ossfs_package
         ```
 
-    -   Run the following command to install CentOS 6.5 or later:
+    -   Run the following command to install ossfs for CentOS 6.5 or later:
 
         ```
         sudo yum localinstall your_ossfs_package
         ```
 
-    -   Run the following command to install CentOS 5 or later:
+    -   Run the following command to install ossfs for CentOS 5:
 
         ```
         sudo yum localinstall your_ossfs_package --nogpgcheck
@@ -81,7 +81,7 @@ Compared with a local file system, the functions and performance provided by oss
     ossfs my-bucket /tmp/ossfs -ourl=http://oss-cn-hangzhou.aliyuncs.com
     ```
 
-    **Note:** If you use an Alibaba Cloud ECS instance to provide ossfs services, you can use the intranet endpoints. In this example, you can replace the OSS endpoint with `oss-cn-hangzhou-internal.aliyuncs.com` to save bandwidth costs. For more information about intranet endpoints, see [Regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#)
+    **Note:** If you use an Alibaba Cloud ECS instance to provide ossfs services, you can use the intranet endpoints. In this example, you can replace the OSS endpoint with `oss-cn-hangzhou-internal.aliyuncs.com` to save bandwidth costs. For more information about intranet endpoints, see [Regions and endpoints](../../../../reseller.en-US/Developer Guide/Regions and endpoints.md#)
 
     Unmount the bucket:
 

@@ -157,8 +157,8 @@ This document elaborates how to configure different policies to implement differ
     |List all created buckets.|Failed|
     |Upload the object without a prefix, test.txt.|Failed|
     |Download the object without a prefix, test.txt.|Failed|
-    |Upload the object with a prefix, user1/test.txt.|Failed|
-    |Download the object with a prefix, user1/test.txt.|Successful|
+    |Upload the object with a prefix, user1/test.txt.|Successful|
+    |Download the object with a prefix, user1/test.txt.|Failed|
     |List the object without a prefix, test.txt.|Failed|
     |List the object with a prefix, user1/test.txt.|Failed|
 

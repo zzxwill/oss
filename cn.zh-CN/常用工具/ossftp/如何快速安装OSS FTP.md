@@ -26,11 +26,11 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
 ## 下载 {#section_xj4_vpt_vdb .section}
 
--   Windows：[ossftp-1.0.3-win.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32190/cn_zh/1523339970008/ossftp-1.0.3-win.zip?spm=a2c4g.11186623.2.4.bqHidZ&file=ossftp-1.0.3-win.zip)
+-   Windows：[ossftp-1.0.3-win.zip](http://gosspublic.alicdn.com/ossftp/ossftp-1.0.3-win.zip)
 
     Windows默认不会安装Python2.7，所以安装包中包含了Python2.7，解压后即可使用。
 
--   Linux/Mac：[ossftp-1.0.3-linux-mac.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32190/cn_zh/1523340041580/ossftp-1.0.3-linux-mac.zip?spm=a2c4g.11186623.2.5.bqHidZ&file=ossftp-1.0.3-linux-mac.zip)
+-   Linux/Mac：[ossftp-1.0.3-linux-mac.zip](http://gosspublic.alicdn.com/ossftp/ossftp-1.0.3-linux-mac.zip)
 
     Linux/Mac系统默认安装Python2.7或Python2.6，所以安装包中不再包含可执行的Python,，只包含了相关依赖库。
 
@@ -45,8 +45,6 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
 上述步骤会启动一个FTP server，默认监听在127.0.0.1的2048端口。同时，为了方便您对FTP server的状态进行管控，还会启动一个web服务器，监听在127.0.0.1的8192端口。如果您的系统有图形界面，还会自动打开控制页面。在控制页面中允许修改监听地址、监听端口、日志类型、指定某个地域的存储空间（格式为bucket.enpoint）、页面语言。修改后需保存配置并在重启后生效。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/153804301710880_zh-CN.png)
-
 **说明：** 同一时间内只能存在一个服务器和一个连接。如果在一个服务器已连接的情况下新建连接，则之前连接会直接断开。
 
 ## 连接到FTP server {#section_uwr_rqt_vdb .section}
@@ -59,9 +57,7 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 -   密码：access\_key\_secret
 -   账号：使用默认值
 
-    **说明：** access\_key\_id和access\_key\_secret的获取，请参见[创建RAM用户](../../../../cn.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AK部分。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/153804301710881_zh-CN.png)
+    **说明：** access\_key\_id和access\_key\_secret的获取，请参见[创建RAM用户](../../../../intl.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AK部分。
 
 
 ## 高级使用 {#section_xdq_krt_vdb .section}
@@ -107,8 +103,6 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
 -   如果连接FTP server时，遇到以下错误：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15380430172521_zh-CN.png)
-
     有两种可能：
 
     -   输入的 access\_key\_id 和 access\_key\_secret有误。
@@ -117,11 +111,11 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
     -   所用的access\_key信息为ram 子账户的access\_key，而子账户不具有List buckets权限。
 
-        解决：当使用子账户访问时，请在控制页面中指定bucket endpoints， 即告诉FTP server某个bucket应该用哪个endpoint来访问。同时，子账户也需要一些必须的权限。关于使用ram访问oss时的访问控制，请参考文档[访问控制](../../../../cn.zh-CN/开发指南/访问与控制/访问控制.md#)。具体如下。
+        解决：当使用子账户访问时，请在控制页面中指定bucket endpoints， 即告诉FTP server某个bucket应该用哪个endpoint来访问。同时，子账户也需要一些必须的权限。关于使用ram访问oss时的访问控制，请参考文档[访问控制](../../../../intl.zh-CN/开发指南/访问与控制/访问控制.md#)。具体如下。
 
         -   只读访问
 
-            OSS FTP工具需要的权限为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的ram子账户，请参考图文教程[如何结合ram实现文件共享](cn.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
+            OSS FTP工具需要的权限为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的ram子账户，请参考图文教程[如何结合ram实现文件共享](intl.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
 
         -   上传文件
 

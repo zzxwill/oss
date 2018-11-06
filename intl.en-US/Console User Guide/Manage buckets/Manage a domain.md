@@ -21,7 +21,7 @@ Custom domain names can be bound to OSS domain names through the console to impl
 3.  Click the **Domain Names** tab.
 4.  Click **Bind Self-Hosted Domain Name** to open the Bind Self-Hosted Domain Name dialog box.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4746/15367439761703_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4746/15414952111703_en-US.png)
 
 5.  Bind your domain.
     1.  In the **Self-Hosted Domain Name** text box, enter your domain name.
@@ -42,15 +42,15 @@ Custom domain names can be bound to OSS domain names through the console to impl
 
 ## Upload an HTTPS certificate {#section_dbh_l42_vdb .section}
 
-If you want your domain to access OSS through HTTPS, you must purchase an HTTPS certificate. You can purchase an HTTPS certificate from any certificate provider or from Alibaba Cloud Certificates Service \(see [Certificates Service Quick Start](https://www.alibabacloud.com/help/zh/doc-detail/28547.htm)\), and upload your certificate in the OSS console.
+If you want your domain to access OSS through HTTPS, you must purchase an HTTPS certificate. You can purchase an HTTPS certificate from any certificate provider or from Alibaba Cloud Certificates Service \(see [Certificates Service Quick Start](https://www.alibabacloud.com/help/doc-detail/28547.htm)\), and upload your certificate in the OSS console.
 
 -   If Alibaba Cloud CDN is not enabled for OSS, you can upload your certificate in the OSS console:
     1.  On the **Domain Names** tab page, click **Upload Certificate** under **Action**.
     2.  On the Upload Certificate page, enter your public key and private key, and then click **Upload**.
 
-        **Note:** For certificate format requirements, see [Certificate format description](https://www.alibabacloud.com/help/zh/doc-detail/66710.htm).
+        **Note:** For certificate format requirements, see [Certificate format description](https://www.alibabacloud.com/help/doc-detail/66710.htm).
 
--   If Alibaba Cloud CDN is enabled for OSS, you must upload your certificate in the CDN console. For more information, see [HTTPS Security Acceleration](https://www.alibabacloud.com/help/zh/doc-detail/27118.htm).
+-   If Alibaba Cloud CDN is enabled for OSS, you must upload your certificate in the CDN console. For more information, see [HTTPS Security Acceleration](https://www.alibabacloud.com/help/doc-detail/27118.htm).
 
 ## Procedure for verifying domain name ownership {#section_q5m_2q2_vdb .section}
 

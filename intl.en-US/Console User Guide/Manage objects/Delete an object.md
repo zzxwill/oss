@@ -6,9 +6,9 @@ If you do not need to store uploaded files any longer, delete them to avoid furt
 
 -   The deleted file cannot be recovered. Perform this operation with caution.
 -   You can delete up to **1000** files at a time on the console.
--   If you want to delete only the selected files or perform batch deletion in a larger volume, follow the procedures in API or SDK documents. For more information, see the relevant sections of the [../DNOSS11827291/EN-US\_TP\_4376.md\#](../intl.en-US/Developer Guide/Managing Objects/Delete an object.md#).
--   API: See [DeleteObject](../intl.en-US/API Reference/Object operations/DeleteObject.md#) and [DeleteMultipleObjects](../intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#).
--   SDK: See Delete multiple objects in [Java SDK  - Manage objects](https://www.alibabacloud.com/help/zh/doc-detail/32015.htm).
+-   If you want to delete only the selected files or perform batch deletion in a larger volume, follow the procedures in API or SDK documents. For more information, see the relevant sections of the [Delete an object](../../../../intl.en-US/Developer Guide/Manage files/Delete an object.md#).
+-   API: See [../../../../dita-oss-bucket/SP\_21/DNOSS11835551/EN-US\_TP\_4699.md\#](../../../../intl.en-US/API Reference/Object operations/DeleteObject.md#) and [../../../../dita-oss-bucket/SP\_21/DNOSS11835551/EN-US\_TP\_4700.md\#](../../../../intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#).
+-   SDK: See Delete multiple objects in [Java SDK - Manage objects](../../../../intl.en-US/SDK Reference/Java/Manage objects/Delete objects.md#).
 
 ## Procedure {#section_y3c_xmm_vdb .section}
 

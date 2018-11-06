@@ -259,7 +259,3 @@ For a verified Post Object request, the HTML form must contain policy and signat
 2.  Encode the policy with Base64. The encoding result is the value of the policy form field, and this value is used as the string to be signed.
 3.  Use AccessKeySecret to sign the string. The signing method is the same as the computing method of the signature in the Header, that is, replacing the string to be signed with the policy form field.
 
-## Demo sample {#section_ipm_rww_wdb .section}
-
-Demo of passing parameters from the web form field to the OSS: [Click here](https://help.aliyun.com/document_detail/31925.html).
-

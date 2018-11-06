@@ -105,12 +105,12 @@ For more information about Image Service used for OSS SDKs, see Image Processing
 
 |SDK|Image processing document|Example|
 |---|-------------------------|-------|
-|Java SDK| |[ImageSample.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/ImageSample.java)|
-|Python SDK| |[image.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/image.py)|
-|C\# SDK| |[ImageProcessSample.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/ImageProcessSample.cs)|
-|PHP SDK| |[Image.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/samples/Image.php)|
-|JS SDK| |[object.test.js](https://github.com/ali-sdk/ali-oss/blob/master/test/node/object.test.js)|
-|C SDK| |[oss\_image\_sample.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk_sample/oss_image_sample.c)|
+|Java SDK|[Image processing](https://www.alibabacloud.com/help/doc-detail/47505.htm)|[ImageSample.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/ImageSample.java)|
+|Python SDK|[Image processing](https://www.alibabacloud.com/help/doc-detail/47660.htm)|[image.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/image.py)|
+|C\# SDK|[Image processing](https://www.alibabacloud.com/help/doc-detail/48309.htm)|[ImageProcessSample.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/ImageProcessSample.cs)|
+|PHP SDK|[Image processing](https://www.alibabacloud.com/help/doc-detail/47735.htm)|[Image.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/samples/Image.php)|
+|JS SDK|[Image processing](https://www.alibabacloud.com/help/doc-detail/50039.htm)|[object.test.js](https://github.com/ali-sdk/ali-oss/blob/master/test/node/object.test.js)|
+|C SDK|[Image processing](https://www.alibabacloud.com/help/doc-detail/48113.htm)|[oss\_image\_sample.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk_sample/oss_image_sample.c)|
 
 ## Image processing restrictions {#section_vsm_nln_vdb .section}
 

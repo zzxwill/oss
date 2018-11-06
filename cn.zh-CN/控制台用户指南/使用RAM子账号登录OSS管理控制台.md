@@ -10,15 +10,15 @@
 
 ## 创建RAM用户 {#section_tf2_lcy_5db .section}
 
-使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，选择**用户管理** \> **新建用户**来创建RAM用户。具体操作方法请参见[RAM用户操作手册](https://www.alibabacloud.com/help/zh/doc-detail/28647.htm)中的“创建RAM用户”章节。
+使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，选择**用户管理** \> **新建用户**来创建RAM用户。具体操作方法请参见[RAM用户操作手册](../../../../intl.zh-CN/用户指南/身份管理/用户.md#)中的“创建RAM用户”章节。
 
 ## 给子账号授权 {#section_gxr_gly_5db .section}
 
-使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，选择对应的RAM用户，单击**授权**，进行授权操作。具体操作方法请参见[RAM授权帮助文档](https://www.alibabacloud.com/help/zh/doc-detail/28651.htm)。
+使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，选择对应的RAM用户，单击**授权**，进行授权操作。具体操作方法请参见[RAM授权帮助](../../../../intl.zh-CN/用户指南/授权管理/权限与授权策略.md#)文档。
 
 为确保子账号登录控制台后能正常使用OSS控制台的功能，除授予OSS相应的访问权限外，还需要MNS、CloudMonitor、CDN的访问权限，如下图所示：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15414849951495_zh-CN.PNG)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15414878911495_zh-CN.PNG)
 
 ## 使用子账号登录控制台 {#section_c2h_bmy_5db .section}
 
@@ -29,5 +29,5 @@
 3.  打开**启用控制台登录**，设置RAM用户登录控制台的密码。
 4.  在概览页面查看您的**RAM用户登录链接**，打开该链接，使用RAM用户名和密码进行登录。
 
-详情请参见[RAM用户操作手册](https://www.alibabacloud.com/help/zh/doc-detail/28647.htm)。
+详情请参见[RAM用户操作手册](../../../../intl.zh-CN/用户指南/身份管理/用户.md#)。
 

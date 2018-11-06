@@ -87,7 +87,7 @@ You can directly run python osscmd to get instructions for use. Every command ha
     $ python osscmd put local_existed_file oss://mybucketname/test_object
     ```
 
-    **Note:** `The md5sum` command is used on Linux instead of Windows.
+    **Note:** The md5sumcommand is used on Linux instead of Windows.
 
 -   View object again
 
@@ -107,7 +107,7 @@ You can directly run python osscmd to get instructions for use. Every command ha
     7625e1adc3a4b129763d580ca0a78e44 download_file
     ```
 
-    **Note:** The `md5sum`  command is used on Linux instead of Windows.
+    **Note:** The md5sumcommand is used on Linux instead of Windows.
 
 -   Delete an object
 
@@ -139,7 +139,7 @@ You can directly run python osscmd to get instructions for use. Every command ha
     </LifecycleConfiguration>
     ```
 
-    This indicates deleting the objects of more than two days old to the current time and with the prefix of log\_backup/ in the bucket. For detailed rule configuration, see [API Reference](https://help.aliyun.com/document_detail/31964.html).
+    This indicates deleting the objects of more than two days old to the current time and with the prefix of log\_backup/ in the bucket. For detailed rule configuration, see [API Reference](../../../../intl.en-US/API Reference/Bucket operations/PutBucketLifecycle.md#).
 
 -   Write lifecycle
 

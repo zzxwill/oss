@@ -31,7 +31,7 @@ If the form upload is not used, files are uploaded to the web server first, and 
 
 ## Security and authorization {#section_bxs_d2b_5db .section}
 
-To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level. For more information, see [Access control](https://help.aliyun.com/knowledge_detail/57754.html).
+To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level.
 
 To grant upload permissions to a third party, you can use the PostObject interface. For more information, see [PostObject](../../../../intl.en-US/API Reference/Object operations/PostObject.md#).
 

@@ -9,6 +9,6 @@ You can delete objects that have been uploaded to OSS buckets using one of the f
 ## Reference {#section_dk3_2hd_5db .section}
 
 -   API: [Delete Object](../../../../intl.en-US/API Reference/Object operations/DeleteObject.md#) and [Delete Multiple Objects](../../../../intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#)
--   SDK: Java SDK [Delete Files](https://www.alibabacloud.com/help/doc-detail/32015.htm)
+-   SDK: Java SDK [Delete Files](https://www.alibabacloud.com/help/doc-detail/84842.htm)
 -   Console: [Delete Files](../../../../intl.en-US/Console User Guide/Manage objects/Delete an object.md#)
 

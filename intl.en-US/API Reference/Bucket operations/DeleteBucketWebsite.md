@@ -1,6 +1,6 @@
 # DeleteBucketWebsite {#reference_zrl_msw_tdb .reference}
 
-The  DeleteBucketWebsite is used to disable the static website hosting mode of a bucket.
+DeleteBucketWebsite is used to disable the static website hosting mode and the redirection rules for a bucket.
 
 ## Request syntax {#section_iw2_x3w_bz .section}
 
@@ -13,8 +13,8 @@ Authorization: SignatureValue
 
 ## Detail analysis {#section_dzz_x3w_bz .section}
 
--   If the bucket does not exist, the error 404 No Content with the error code: NoSuchBucket is returned.
--   Only the bucket owner can disable the bucket’s static website hosting mode.  If you try to operate a bucket which does not belong to you, OSS returns the error 403  Forbidden with the error code: AccessDenied.
+-   If the bucket does not exist, the error “404 no content” is returned. Error code: NoSuchBucket.
+-   Only the bucket owner can disable the static website hosting mode for a bucket. If you try to operate a bucket which is not owned by you, OSS returns the "403 Forbidden" error. Error code: AccessDenied.
 
 ## Example {#section_wgs_y3w_bz .section}
 
@@ -37,5 +37,22 @@ Date: Fri, 24 Feb 2012 05:45:34 GMT
 Connection: keep-alive
 Content-Length: 0  
 Server: AliyunOSS
+```
+
+**Complete code:**
+
+```
+DELETE /? website HTTP/1.1
+Date: Fri, 27 Jul 2018 09:10:52 GMT
+Host: test.oss-cn-hangzhou-internal.aliyuncs.com
+Authorization: OSS a1nBNgkzzxcQMf8u:qPrKwuMaarA4Tfk1pqTCylFs1jY=
+User-Agent: aliyun-sdk-python-test/0.4.0
+
+HTTP/1.1 204 No Content
+Server: AliyunOSS
+Date: Fri, 27 Jul 2018 09:10:52 GMT
+Content-Length: 0
+Connection: keep-alive
+x-oss-request-id: 5B5AE19C188DC1CE81DAD7C8
 ```
 

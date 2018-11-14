@@ -1,6 +1,6 @@
 # Set access logging {#concept_t3h_4hd_5db .concept}
 
-OSS provides automatic saving of server access logs. A bucket owner can log on to [OSS console](https://oss.console.aliyun.com/) to enable the server access logging feature for all the owner’s buckets.
+The OSS provides automatic saving of server access logs. A bucket owner can log on to [OSS console](https://partners-intl.console.aliyun.com/#/oss) to enable the server access logging feature for all the owner’s buckets.
 
 When access logging is activated for a bucket \(Source Bucket\), the OSS generates an object containing all access request logs of that bucket \(by hour\) and write the object into the user-designated bucket \(Target Bucket\) according to fixed naming rules.
 
@@ -52,7 +52,7 @@ In the preceding example, "MyLog-" is the Object prefix specified by the user; "
 
 ## Detail analysis {#section_igf_x3d_5db .section}
 
--   The source bucket and target bucket must belong to the same data center of the same user.
+-   The source bucket and target bucket must belong to the same region of the same user.
 -   TargetPrefix indicates the name prefix of the object used for storing access logs. The field can be left blank.
 -   The source bucket and target bucket can be the same or different buckets \(but must be both in the same region\). You can save logs from multiple source buckets to the same target bucket \(in this case, we recommend that you assign different values to TargetPrefix\).
 -   The OSS generates a bucket access log file every hour. However, all requests in the hour may not be recorded in the log file, but may be recorded in the previous or next log file.
@@ -71,6 +71,6 @@ In the preceding example, "MyLog-" is the Object prefix specified by the user; "
 
 ## Reference {#section_oh4_y3d_5db .section}
 
--   Console: [Set access logging](../../../../intl.en-US/Console User Guide/Manage buckets/Set logging.md#)
--   API: [PutBucketLogging](../../../../intl.en-US/API Reference/Bucket operations/PutBucketLogging.md#), [DeleteBucketLogging](../../../../intl.en-US/API Reference/Bucket operations/DeleteBucketLogging.md#), [GetBucketLogging](../../../../intl.en-US/API Reference/Bucket operations/GetBucketLogging.md#)
+-   Console: [Set access logging](../../../../reseller.en-US/Console User Guide/Manage buckets/Set logging.md#)
+-   API: [PutBucketLogging](../../../../reseller.en-US/API Reference/Bucket operations/PutBucketLogging.md#), [DeleteBucketLogging](../../../../reseller.en-US/API Reference/Bucket operations/DeleteBucketLogging.md#), [GetBucketLogging](../../../../reseller.en-US/API Reference/Bucket operations/GetBucketLogging.md#)
 

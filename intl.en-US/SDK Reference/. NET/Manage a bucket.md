@@ -169,6 +169,8 @@ public void GetBucketAcl(string bucketName)
 
 For the complete code of deleting a bucket, see [GitHub](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/DeleteBucketSample.cs).
 
+Before a bucket is deleted, ensure that all objects in the bucket and fragments that are generated from multipart upload are deleted.
+
 **Note:** To delete the fragments that are generated from multipart upload, use [Bucket.ListMultipartUploads](../../../../reseller.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#) to list all fragments, and then use [Bucket.AbortMultipartUpload](../../../../reseller.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#) to delete the fragments.
 
 You can run the following code to delete a bucket:

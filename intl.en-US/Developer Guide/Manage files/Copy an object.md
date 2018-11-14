@@ -27,5 +27,5 @@ The syntax of [UploadPartCopy](../../../../intl.en-US/API Reference/Multipart up
 Reference:
 
 -   API: [UploadPartCopy](../../../../intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#)
--   SDK: Java SDK-[Copy a large object](https://www.alibabacloud.com/help/doc-detail/32015.htm)
+-   SDK: Java SDK-[Copy a large object](https://www.alibabacloud.com/help/doc-detail/84843.htm)
 

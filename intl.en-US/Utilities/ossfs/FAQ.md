@@ -60,7 +60,7 @@ ossfs your_bucket your_mountpoint -ourl=your_url -ouid=your_uid
 -   Q: I am not the root user, how does umount ossfs mount the directory?
     -   fusermount -u your\_mountpoint
 -   Q: How can I mount ossfs automatically when the device starts up?
-    -   Step 1: Write the bucket name, access key id/secret, and other information into /etc/passwd-ossfs, and change the permissions for this file to 640.
+    -   Step 1: Write the bucket name, AccessKeyId/Secret, and other information into /etc/passwd-ossfs, and change the permissions for this file to 640.
         -   ```
 echo your_bucket_name:your_access_key_id:your_access_key_secret >
                     /etc/passwd-ossfs
@@ -158,7 +158,7 @@ ossfs#your_bucket_name your_mount_point fuse _netdev,url=your_url,allow_other 0
     ```
     ps aux | grep supervisor  # should be able to see the supervisor Process
     ps aux | grep ossfs #  should be able to see ossfs Process
-    kill -9 ossfs  # Kill ossfs process, the supervisor should restart it, do not use killall, because killall sends sigterm, the process Exits normally, and the Supervisor no longer reruns ossfs.
+    kill -9 ossfs  # Kill ossfs process, the supervisor must restart it, do not use killall, because killall sends sigterm, the process Exits normally, and the Supervisor no longer reruns ossfs.
     ps aux | grep ossfs # should be able to see ossfs Process
     ```
 
@@ -169,7 +169,7 @@ ossfs#your_bucket_name your_mount_point fuse _netdev,url=your_url,allow_other 0
 
     This occurs because of the libfuse version that ossfs uses at compile time Higher than the libfuse version linked to at run time. This is often due to the user's own installation of libfuse. Install ossfs with the RPM package we provide, without having to install libfuse again.
 
-    The RPM bag that we provide on the box and the box contains the box, if there is a chain in the running environment and ossfs is linked to an older version of fuse, the preceding warning will appear.
+    The RPM bag that we provide on the box and the box contains the box, if there is a chain in the running environment and ossfs is linked to an earlier version of fuse, the preceding warning will appear.
 
 
 1.  How do I confirm the fuse version of The ossfs runtime link?
@@ -177,7 +177,7 @@ ossfs#your_bucket_name your_mount_point fuse _netdev,url=your_url,allow_other 0
     -   For example, the result is "/lib64/libfuse. So. 2 ", then you can see the version of fuse through LS-L/lib64/libfuse.
 2.  How do I link ossfs to the correct version?
     -   First find the directory of libfuse with rpm-QL ossfs | grep fuse.
-    -   For example, the result is "/usr/lib/libfuse. So. 2 ", via fig =/usr/lib ossfs... Run ossfs
+    -   For example, the result is "/usr/lib/libfuse. So. 2 ", use fig =/usr/lib ossfs... Run ossfs
 3.  Can I ignore this warning?
     -   You better not see this bug.
 

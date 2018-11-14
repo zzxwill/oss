@@ -457,7 +457,7 @@ information, such as endpoint, access_key_id, acces_key_secret, is_cname, and cu
 
 ## Delete a bucket { .section}
 
-Before a bucket is deleted, ensure that all objects in the bucket, LiveChannel, and fragments that are generated from multipart upload are deleted.
+Before a bucket is deleted, ensure that all objects in the bucket and fragments that are generated from multipart upload are deleted.
 
 **Note:** To delete the fragments that are generated from multipart upload, use oss\_list\_upload\_part to list all fragments, and then use oss\_abort\_multipart\_upload to delete the fragments. For more information, see [Multipart upload](reseller.en-US/SDK Reference/C/Upload objects/Multipart upload.md#).
 

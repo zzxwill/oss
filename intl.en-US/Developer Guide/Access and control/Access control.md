@@ -137,7 +137,7 @@ A mobile app is used as an example. Suppose that you are a mobile app developer.
 
 -   Mode 1: Using AppServer for data transit and data isolation
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1542784038982_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1542784626982_en-US.png)
 
     As shown in the preceding figure, you develop an AppServer. Only the AppServer can access cloud data. The ClientApp can read or write data only through the AppServer. The AppServer guarantees the data isolation of different users.
 
@@ -147,7 +147,7 @@ A mobile app is used as an example. Suppose that you are a mobile app developer.
 
     The STS solution is shown as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1542784038983_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1542784626983_en-US.png)
 
     **Procedure**
 
@@ -343,7 +343,7 @@ For more examples of authorization policy configuration, see [Tutorial: control 
 
 For the online policy graphical configuration tool, click [here](http://gosspublic.alicdn.com/ram-policy-editor/english.html).
 
-You can use the Simple Policy function of ossbrowser to grant RAM users the access rights to specific buckets or directories. For more information, see [Grant permissions with a simple policy](http://icms.alibaba-inc.com/dita-oss-bucket/SP_21/DNOSS11869619/ZH-CN_TP_21830.html#concept_c3k_mvr_gfb__section_zyx_1k3_wdb).
+You can use the Simple Policy function of ossbrowser to grant RAM users the access rights to specific buckets or directories. For more information, see [Grant permissions with a simple policy](../../../../intl.en-US/Utilities/ossbrowser/Permission management.md#section_zyx_1k3_wdb).
 
 ## Best practices {#section_dlf_bqv_tdb .section}
 

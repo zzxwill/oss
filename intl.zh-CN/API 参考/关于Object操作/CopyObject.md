@@ -21,10 +21,10 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 |x-oss-copy-source|字符串|指定拷贝的源地址。 默认值：无
 
 |
-|x-oss-copy-source-if-match|字符串|如果源Object的ETag值和用户提供的ETag相等，则执行拷贝操作，并返回200；否则返回412 HTTP错误码（预处理失败）。 默认值：无
+|x-oss-copy-source-if-match|字符串|如果源Object的ETag值和用户提供的ETag相等，则执行拷贝操作，并返回200 OK；否则返回412 HTTP错误码（预处理失败）。 默认值：无
 
 |
-|x-oss-copy-source-if-none-match|字符串|如果源Object的ETag值和用户提供的ETag不相等，则执行拷贝操作，并返回200；否则返回304 HTTP错误码（预处理失败）。 默认值：无
+|x-oss-copy-source-if-none-match|字符串|如果源Object的ETag值和用户提供的ETag不相等，则执行拷贝操作，并返回200 OK；否则返回304 HTTP错误码（预处理失败）。 默认值：无
 
 |
 |x-oss-copy-source-if-unmodified-since|字符串|如果传入参数中的时间等于或者晚于文件实际修改时间，则正常传输文件，并返回200 OK；否则返回412 precondition failed错误。 默认值：无
@@ -59,6 +59,22 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 -   public-read-write
 
 |
+|x-oss-storage-class|字符串|指定Object的存储类型。取值：
+
+-   Standard
+-   IA
+-   Archive
+
+支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject。
+
+**说明：** 
+
+-   如果StorageClass的值不合法，返回400 错误。错误码：InvalidArgumet。
+-   PutObjectSymlink的存储类型建议不要指定为IA或Archive类型（因为IA与Archive类型的单个文件如不足64KB，会按64KB计量计费）。
+-   对于任意存储类型Bucket，若上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
+-   更改Object存储类型涉及到数据覆盖，如果IA或Archive类型Object分别在创建后30 和60 天内被覆盖，则它们会产生提前删除费用。比如，IA类型Object创建 10 天后，被覆盖成Archive或Standard，则会产生20 天的提前删除费用。
+
+|
 
 ## 响应元素\(Response Elements\) {#section_tvz_qlw_bz .section}
 
@@ -81,7 +97,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
     -   请求者必须对源Object有读权限。
     -   源Object和目标Object必须属于同一个地域（数据中心）。
     -   不能拷贝通过追加上传方式产生的Object。
-    -   如果源Object为符号链接，只拷贝符号链接，不拷贝符号链接指向的文件内容。
+    -   如果源Object为软链接，只拷贝软链接，不拷贝软链接指向的文件内容。
 -   计量计费
     -   对源Object所在的Bucket增加一次Get请求次数。
     -   对目标Object所在的Bucket增加一次Put请求次数。
@@ -92,17 +108,18 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 
 ## 示例 {#section_osk_5lw_bz .section}
 
-**请求示例：**
+请求示例：
 
 ```
-PUT /copy_oss.jpg HTTP/1.1
-Host: oss-example.oss-cn-hangzhou.aliyuncs.com
-Date: Fri, 24 Feb 2012 07:18:48 GMT
-x-oss-copy-source: /oss-example/oss.jpg
+PUT /copy_oss.jpg HTTP/1.1 
+Host: oss-example.oss-cn-hangzhou.aliyuncs.com 
+Date: Fri, 24 Feb 2012 07:18:48 GMT 
+x-oss-storage-class: Archive
+x-oss-copy-source: /oss-example/oss.jpg 
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:gmnwPKuu20LQEjd+iPkL259A+n0=
 ```
 
-**返回示例：**
+返回示例：
 
 ```
 HTTP/1.1 200 OK

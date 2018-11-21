@@ -1,6 +1,6 @@
 # DeleteBucketWebsite {#reference_zrl_msw_tdb .reference}
 
-DeleteBucketWebsite操作用于关闭bucket的静态网站托管模式。
+DeleteBucketWebsite操作用于关闭bucket的静态网站托管模式以及跳转规则。
 
 ## 请求语法 {#section_iw2_x3w_bz .section}
 
@@ -37,5 +37,22 @@ Date: Fri, 24 Feb 2012 05:45:34 GMT
 Connection: keep-alive
 Content-Length: 0  
 Server: AliyunOSS
+```
+
+**完整代码：**
+
+```
+DELETE /?website HTTP/1.1
+Date: Fri, 27 Jul 2018 09:10:52 GMT
+Host: test.oss-cn-hangzhou-internal.aliyuncs.com
+Authorization: OSS a1nBNgkzzxcQMf8u:qPrKwuMaarA4Tfk1pqTCylFs1jY=
+User-Agent: aliyun-sdk-python-test/0.4.0
+
+HTTP/1.1 204 No Content
+Server: AliyunOSS
+Date: Fri, 27 Jul 2018 09:10:52 GMT
+Content-Length: 0
+Connection: keep-alive
+x-oss-request-id: 5B5AE19C188DC1CE81DAD7C8
 ```
 

@@ -38,7 +38,7 @@
             ... 6 more
     ```
 
-    Reason: Check to see if the items in the configuration file are deleted or commented out, please fill in items that do not need to be configured after the equal sign and do not need to be deleted.
+    Reason: Check to see if the items in the configuration file are deleted or commented out, please enter items that do not need to be configured after the equal sign and do not need to be deleted.
 
 -   3. too many open files
 
@@ -146,7 +146,7 @@
     [HostId]: xxx.oss-cn-shanghai.aliyuncs.com
     ```
 
-    Reason: Check whether the `destAccessKey`和`destSecretKey` and the scanner are wrong. Please refer [Access control](../../../../intl.en-US/Developer Guide/Access and control/Access control.md#).
+    Reason: Check whether the `destAccessKey`和`destSecretKey` and the scanner are wrong. Please refer [Access control](../../../../reseller.en-US/Developer Guide/Access and control/Access control.md#).
 
 -   17. InvocationTargetException
 
@@ -175,7 +175,7 @@
 
 -   19. Why is it expensive for OSS to migrate to OSS?
 
-    Refer to  [endpoint](../../../../intl.en-US/Developer Guide/Access and control/Endpoints.md#) The domain name in the help, After configuring the internal network domain name, will not charge the traffic fee, but the cost of the number of visits is still charging.
+    Refer to  [endpoint](../../../../reseller.en-US/Developer Guide/Access and control/Endpoints.md#) The domain name in the help, After configuring the internal network domain name, will not charge the traffic fee, but the cost of the number of visits is still charging.
 
 -   20. The synchronization process shows that the source file does not exist
 
@@ -249,7 +249,7 @@
     [RequestId]: Unknown
     ```
 
-    Reason: Non-ECS machines cannot use the internl domain name.
+    Reason: Non-ECS machines cannot use the internal domain name.
 
 -   31. The specified bucket is not valid
 

@@ -79,7 +79,7 @@ Post Object常见错误见下表：
 
     -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)  
     -   [Java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)  
-    -   [JS](https://help.aliyun.com/document_detail/31925.html) 
+    -   [JS](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#) 
 -   Post Object的Policy格式
 
     Post Object请求的`policy`表单域用于验证请求的合法性，声明了Post Object请求必须满足的条件。限定条件为：
@@ -153,7 +153,7 @@ Post Object常见错误见下表：
 
     -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)  
     -   [Java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)  
-    -   [JS](https://help.aliyun.com/document_detail/31925.html) 
+    -   [JS](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#) 
 
 ## 常见问题 {#section_w3h_jgj_wdb .section}
 

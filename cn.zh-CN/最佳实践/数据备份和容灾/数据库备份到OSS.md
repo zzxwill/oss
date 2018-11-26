@@ -15,32 +15,32 @@
 
 ## 应用场景 {#section_zxt_54t_42b .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579037487_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755497487_zh-CN.png)
 
 数据库备份到OSS的方案应用场景如下：
 
 -   阿里云RDS或阿里云ECS自建数据库在OSS上备份或长期归档
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579037610_zh-CN.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755497610_zh-CN.jpg)
 
 -   自建IDC数据备份上云
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579037660_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755497660_zh-CN.png)
 
 -   其他云数据库在阿里云OSS上做多云备份
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579037661_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755497661_zh-CN.png)
 
 -   数据库做异地备份灾备
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579037663_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755497663_zh-CN.png)
 
 
 ## 方案优势 {#section_ivm_ppt_42b .section}
 
 -   支持全量或实时增量备份
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579047488_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755497488_zh-CN.png)
 
     -   秒级RPO：日志内存实时捕获，CDP实时备份，RPO达到秒级。
     -   无锁并发：全程无锁备份、并发备份、数据拉取自适应分片。
@@ -48,7 +48,7 @@
     -   灵活恢复：提供可恢复日历及时间轴选择，实现任意时间点恢复。
 -   数据强安全高可靠
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579047668_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755507668_zh-CN.png)
 
     -   异地灾备：利用OSS的跨区域复制功能，做备份数据的异地灾备，提升数据保护级别。
     -   数据传输加密：在传输过程中进行SSL加密，保障数据安全性。
@@ -56,14 +56,14 @@
     -   随时验证：随时验证数据库备份的有效性。
 -   低成本
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579047670_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755507670_zh-CN.png)
 
     -   按需付费：OSS存储空间按需付费，避免一次性投入大量资产。
     -   自动存储分级：OSS提供标准、低频、归档多种类型，全面优化存储成本。
     -   弹性扩展：OSS存储容量弹性扩展，无缝支撑企业在不同发展阶段的性能要求。
 -   支持多环境多数据源
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15409579047674_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16444/15432755507674_zh-CN.png)
 
     -   支持MySQL、Oracle、SQL Server、MongoDB多种数据库。
     -   支持IDC、第三方云数据库、阿里云RDS、阿里云ECS自建数据库。

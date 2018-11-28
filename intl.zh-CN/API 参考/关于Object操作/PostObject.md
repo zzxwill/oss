@@ -259,3 +259,7 @@ Conditions是一个列表，可以用于指定Post请求的表单域的合法值
 2.  将 policy 进行 base64 编码，其值即为 policy 表单域该填入的值，将该值作为将要签名的字符串。
 3.  使用 AccessKeySecret 对要签名的字符串进行签名，签名方法与Head中签名的计算方法相同（将要签名的字符串替换为 policy 即可），请参见在Header中包含签名。
 
+## 示例 Demo {#section_owq_2gt_xfb .section}
+
+Web 端表单直传 OSS 示例 Demo，请参见[JavaScript客户端签名直传](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)。
+

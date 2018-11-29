@@ -1,6 +1,6 @@
 # Configure static website hosting {#concept_ynd_phc_5db .concept}
 
-In the [OSS console](https://partners-intl.console.aliyun.com/#/oss), you can set up your buckets to work in static website hosting mode.
+In the [OSS console](https://oss.console.aliyun.com/), you can set up your buckets to work in static website hosting mode.
 
 If your selected bucket is located in Hangzhou, after the configuration takes effect, the endpoint of the static website is as follows:
 
@@ -8,7 +8,7 @@ If your selected bucket is located in Hangzhou, after the configuration takes ef
 http://<Bucket>.oss-cn-hangzhou.aliyuncs.com/
 ```
 
-**Note:** When you use an OSS endpoint in Mainland China regions or the Hongkong region to access a web file through the Internet , the Content-Disposition: 'attachment=filename;' is automatically added to the Response Header, and the web file is downloaded as an attachment. If you access OSS with a user domain, the Content-Disposition: 'attachment=filename;' will not be added to the Response Header. For more information about using the user domain to access OSS, see [Bind a custom domain name](reseller.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
+**Note:** When you use an OSS endpoint in Mainland China regions or the Hongkong region to access a web file through the Internet , the Content-Disposition: 'attachment=filename;' is automatically added to the Response Header, and the web file is downloaded as an attachment. If you access OSS with a user domain, the Content-Disposition: 'attachment=filename;' will not be added to the Response Header. For more information about using the user domain to access OSS, see [Bind a custom domain name](intl.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
 
 For users to manage static websites hosted on the OSS more easily, the OSS provides two functions:
 
@@ -35,8 +35,8 @@ Then:
 
 ## Detail analysis {#section_ond_vhc_5db .section}
 
--   Static websites are websites with web pages composed of static content, including scripts such as JavaScript executed on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and APS.NET content.
--   For access to a bucket-based static website through a user-defined domain name, see [Bind custom domain names](reseller.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
+-   Static websites are websites with web pages composed of static content, including scripts such as JavaScript executed on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and ASP.NET content.
+-   For access to a bucket-based static website through a user-defined domain name, see [Bind custom domain names](intl.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
 -   When you set a bucket to static website hosting mode, you must specify an index page, the error page is optional.
 -   When you set a bucket to static website hosting mode, the specified index page and error page must be an object in the bucket.
 -   After a bucket is set to static website hosting mode, the OSS returns the index page for anonymous access to the root domain name of the static website, and returns Get Bucket results for signed access to the root domain name of the static website.
@@ -44,9 +44,9 @@ Then:
 
 ## Reference {#section_ksm_xhc_5db .section}
 
--   API: [PutBucketWebsite](../../../../reseller.en-US/API Reference/Bucket operations/Putbucketwebsite.md#)
+-   API: [PutBucketWebsite](../../../../intl.en-US/API Reference/Bucket operations/PutBucketWebsite.md#)
 
--   Console: [Static website hosting](../../../../reseller.en-US/Console User Guide/Manage buckets/Host a static website.md#)
+-   Console: [Static website hosting](../../../../intl.en-US/Console User Guide/Manage buckets/Host a static website.md#)
 
--   Java SDK: [Static website hosting](https://partners-intl.aliyun.com/help/doc-detail/32020.htm)
+-   Java SDK: [Static website hosting](https://www.alibabacloud.com/help/doc-detail/32020.htm)
 

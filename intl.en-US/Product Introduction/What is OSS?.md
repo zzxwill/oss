@@ -6,6 +6,10 @@ You can use API and SDK interfaces provided by Alibaba Cloud or OSS migration to
 
 ## Concepts {#section_h4j_rlb_n2b .section}
 
+-   Storage Class
+
+    OSS provides three storage classes: Standard, Infrequent Access, and Archive. These storage classes cover various data storage scenarios from hot data to cold data. For more information, see [Introduction to storage classes](../../../../reseller.en-US/Developer Guide/Storage classes/Introduction to storage classes.md#).
+
 -   Bucket
 
     A bucket is a container for objects stored in OSS. Every object is contained in a bucket. The data model structure of Alibaba Cloud OSS is flat instead of hierarchical.

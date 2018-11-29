@@ -87,6 +87,7 @@ Authorization: SignatureValue
 -   由于并发的关系，即使用户把position的值设为了x-oss-next-append-position，该请求依然可能因为PositionNotEqualToLength而失败。
 -   Append Object产生的Object长度限制和Put Object一样。每次Append Object都会更新该Object的最后修改时间。
 -   在position值正确的情况下，对已存在的Appendable Object追加一个长度为0的内容，该操作不会改变Object的状态。
+-   处于WORM保护期的Object不支持Append Object操作。
 
 ## CRC64的计算方式 {#section_xb5_xpw_bz .section}
 

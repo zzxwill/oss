@@ -59,7 +59,7 @@ Initiate Multipart Upload时，可以通过encoding-type对返回结果中的Key
 
 **说明：** 
 
--   如果StorageClass的值不合法，返回400 错误。错误码：InvalidArgumet。
+-   如果StorageClass的值不合法，返回400 错误。错误码：InvalidArgument。
 -   对于任意存储类型Bucket，若上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
 
 |

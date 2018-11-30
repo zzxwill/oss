@@ -151,11 +151,7 @@ public void GetBucketAcl(string bucketName)
         string bucketName = "your-bucket";
         var acl = client.GetBucketAcl(bucketName);
 
-        Console.WriteLine("Get bucket ACL success");
-        foreach (var grant in acl.Grants)
-        {
-             Console.WriteLine ("The bucket ACL has been obtained successfully. Current ACL: {0}", grant.Permission.ToString());
-        }
+        Console.WriteLine("Get bucket ACL success"，acl.ACL.ToString());
     }
     catch (Exception ex)
     {

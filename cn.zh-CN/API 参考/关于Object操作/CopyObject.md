@@ -72,7 +72,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 
 **说明：** 
 
--   如果StorageClass的值不合法，返回400 错误。错误码：InvalidArgumet。
+-   如果StorageClass的值不合法，返回400 错误。错误码：InvalidArgument。
 -   PutObjectSymlink的存储类型建议不要指定为IA或Archive类型（因为IA与Archive类型的单个文件如不足64KB，会按64KB计量计费）。
 -   对于任意存储类型Bucket，若上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
 -   更改Object存储类型涉及到数据覆盖，如果IA或Archive类型Object分别在创建后30 和60 天内被覆盖，则它们会产生提前删除费用。比如，IA类型Object创建 10 天后，被覆盖成Archive或Standard，则会产生20 天的提前删除费用。

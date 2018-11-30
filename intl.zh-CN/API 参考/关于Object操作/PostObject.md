@@ -6,7 +6,7 @@ Post作为Put的替代品，使得基于浏览器上传文件到bucket成为可�
 
 ## Post object {#section_xwr_rsw_wdb .section}
 
-**请求语法**
+请求语法
 
 ```
 POST / HTTP/1.1 
@@ -48,7 +48,7 @@ Upload to OSS
 --9431149156168--
 ```
 
-**表单域**
+表单域
 
 |名称|类型|描述|必须|
 |:-|:-|:-|:-|
@@ -86,6 +86,9 @@ Upload to OSS
 
 |可选|
 |x-oss-server-side-encryption|字符串|指定OSS创建object时的服务器端加密编码算法。合法值：AES256
+
+|可选|
+|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption为KMS时有效。
 
 |可选|
 |x-oss-object-acl|字符串|指定oss创建object时的访问权限。合法值：public-read，private，public-read-write

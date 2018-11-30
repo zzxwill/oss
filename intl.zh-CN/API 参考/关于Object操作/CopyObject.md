@@ -52,6 +52,9 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 -   若拷贝操作中未指定x-oss-server-side-encryption，则无论源Object是否进行过服务器端加密编码，拷贝之后的目标Object都是未进行过服务器端加密编码的数据。
 
 |
+|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption为KMS时有效。
+
+|
 |x-oss-object-acl|字符串|指定OSS创建目标Object时的访问权限。 取值：
 
 -   public-read

@@ -46,6 +46,9 @@ Initiate Multipart Upload时，可以通过encoding-type对返回结果中的Key
 注意：用户需要在控制台开通KMS（密钥管理服务），才可使用KMS加密算法，否则会报KmsServiceNotEnabled错误码。
 
 |
+|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption为KMS时有效。
+
+|
 |x-oss-storage-class|字符串|指定Object的存储类型。取值：
 
 -   Standard

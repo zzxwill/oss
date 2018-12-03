@@ -15,7 +15,14 @@
 
 使用阿里云管理控制台来完成OSS基本操作的流程如下：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4330/154380897133568_zh-CN.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4330/1543809193919_zh-CN.jpg)
+
+1.  [开通OSS服务](cn.zh-CN/快速入门/开通OSS服务.md#)
+2.  [创建存储空间](cn.zh-CN/快速入门/创建存储空间.md#)
+3.  [上传文件](cn.zh-CN/快速入门/上传文件.md#)
+4.  [下载文件](cn.zh-CN/快速入门/下载文件.md#)
+5.  [删除文件](cn.zh-CN/快速入门/删除文件.md#)
+6.  [删除存储空间](cn.zh-CN/快速入门/删除存储空间.md#)
 
 观看以下视频快速了解如何通过OSS管理控制台上传下载文件：
 
@@ -36,8 +43,6 @@ OSS提供多种语言的API/SDK包，方便您快速进行二次开发。详情�
 -   [PHP SDK快速入门](../../../../cn.zh-CN/SDK 参考/PHP/快速入门.md#)
 -   [Go SDK快速入门](../../../../cn.zh-CN/SDK 参考/Go/快速入门.md#)
 -   [C SDK快速入门](../../../../cn.zh-CN/SDK 参考/C/快速入门.md#)
--   [Android SDK快速入门](../../../../cn.zh-CN/SDK 参考/Android/快速入门.md#)
--   [iOS SDK快速入门](../../../../cn.zh-CN/SDK 参考/IOS/快速入门.md#)
 
 更多语言的SDK示例请参见[OSS SDK文档](../../../../cn.zh-CN/SDK 参考/SDK 文档简介.md#)。OSS各接口的详细信息请参见[OSS API文档](../../../../cn.zh-CN/API 参考/简介.md#)。
 

@@ -66,18 +66,22 @@ Authorization: SignatureValue
 有效值：HLS
 
 |是|
-|FragDuration|字符串|当Type为HLS时，指定每个ts文件的时长（单位：秒），取值范围为\[1, 100\]的整数。子节点：无
+|FragDuration|字符串|当Type为HLS时，指定每个ts文件的时长（单位：秒）。子节点：无
 
 父节点: Target
 
 默认值：5
 
+取值范围：\[1, 100\]
+
 |否|
-|FragCount|字符串|当Type为HLS时，指定m3u8文件中包含ts文件的个数，取值范围为\[1, 100\]的整数。子节点：无
+|FragCount|字符串|当Type为HLS时，指定m3u8文件中包含ts文件的个数。子节点：无
 
 父节点：Target
 
 默认值: 3
+
+取值范围：\[1, 100\]
 
 |否|
 |PlaylistName|字符串|当Type为HLS时，指定生成的m3u8文件的名称，必须以”.m3u8”结尾，长度范围为\[6, 128\]。子节点：无
@@ -85,6 +89,8 @@ Authorization: SignatureValue
 父节点：Target
 
 默认值：playlist.m3u8
+
+取值范围：\[6, 128\]
 
 |否|
 |Snapshot|容器|保存高频截图操作Snapshot 选项的容器。子节点：RoleName，DestBucket，NotifyTopic，Interval，PornRec
@@ -107,9 +113,11 @@ Authorization: SignatureValue
 父节点：Snapshot
 
 |否|
-|Interval|数字|高频截图的间隔长度，单位为s，如果该段间隔时间内没有关键帧（I帧），那么该间隔时间不截图。子节点：无
+|Interval|数字|高频截图的间隔长度（单位：秒）。如果该段间隔时间内没有关键帧（I帧），那么该间隔时间不截图。子节点：无
 
 父节点：Snapshot
+
+取值范围：\[1, 100\]
 
 |否|
 
@@ -152,12 +160,12 @@ Authorization: SignatureValue
 
 ## 细节分析 {#section_fjs_jgd_xdb .section}
 
--   推流地址是未加签名的url，如果bucket acl非public-read-write，那么需要首先进行签名才能进行访问。
--   播放地址是未加签名的url，如果bucket acl为private，那么需要首先进行签名才能进行访问。
+-   推流地址是未加签名的Url，如果Bucket ACL非public-read-write，那么需要首先进行签名才能进行访问。
+-   播放地址是未加签名的Url，如果Bucket ACL为private，那么需要首先进行签名才能进行访问。
 
 ## 实例 {#section_qzp_ngd_xdb .section}
 
-**请求示例**
+请求示例
 
 ```
 PUT /test-channel?live HTTP/1.1
@@ -183,7 +191,7 @@ Authorization: OSS YJjHKOKWDWINLKXv:hvwOZJRh8toAj3DZvtsuPgf+agA=
 </LiveChannelConfiguration>
 ```
 
-**返回示例**
+返回示例
 
 ```
 HTTP/1.1 200

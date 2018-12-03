@@ -1,6 +1,6 @@
 # PutSymlink {#reference_qzz_qzw_wdb .reference}
 
-PutSymlink is used to create a symbolic link pointing to the TargetObject on OSS. Users can use the symbolic link to access the TargetObject.
+PutSymlink is used to create a symbolic link directing to the TargetObject on OSS. You can use the symbolic link to access the TargetObject.
 
 ## Request syntax {#section_ndm_5zw_wdb .section}
 
@@ -16,40 +16,54 @@ x-oss-symlink-target: TargetObjectName
 
 |Name|Type|Description|
 |:---|:---|:----------|
-|x-oss-symlink-target|String|Indicates the target file that a symbolic link directs to.Valid value: the naming rules are the same as that of objects.
+|x-oss-symlink-target|String|Indicates the target object that a symbolic link directs to.Valid value: The naming conventions are the same as those for objects.
+
+|
+|x-oss-storage-class|String|Specifies the storage class of the target object.Values:
+
+-   Standard
+-   IA
+-   Archive
+
+Supported interfaces: PutObject, InitMultipartUpload, AppendObject, PutObjectSymlink, and CopyObject
+
+**Note:** 
+
+-   If the value of StorageClass is invalid, a 400 error is returned. Error code: InvalidArgument
+-   We recommend that you do not set the storage class in PutObjectSymlink to IA or Archive because an IA or Archive object smaller than 64 KB is billed at 64 KB.
+-   If you specify the value of x-oss-storage-class when uploading an object to a bucket, the storage class of the uploaded object is the specified value of x-oss-storage-class regardless of the storage class of the bucket. For example, if you specify the value of x-oss-storage-class to Standard when uploading an object to a bucket of the IA storage class, the storage class of the object is Standard.
 
 |
 
 ## Detail analysis {#section_zn5_d1x_wdb .section}
 
--   As with ObjectName, TargetObjectName must be URL-encoded.
--   The target file type of a symbolic link cannot be the symbolic link.
--   When creating a symbolic link,
+-   Similar to ObjectName, TargetObjectName must be URL-encoded.
+-   The target object that a symbolic link directs to cannot be a symbolic link.
+-   When a symbolic link is created, the following checks are not performed:
 
-    -   The interface does not check whether the target file exists.
-    -   The interface does not check whether the target file type is valid.
-    -   The interface does not check access to the target file. 
-    The foregoing checks are deferred until GetObject must access the API of the target file.
+    -   Whether the target object exists.
+    -   Whether the storage class of the target object is valid.
+    -   Whether the user has permission to access the target object.
+    These checks are performed by APIs that access the target object, such as GetObject.
 
--   If a file to be added already exists and you have the file access permission, the newly-added file overwrites the existing file, and the system returns 200 OK.
--   If the PutSymlink request carries a parameter prefixed with x-oss-meta-, the parameter is treated as user meta, for example, x-oss-meta-location. A single object can have multiple similar parameters, but the total size of all user meta cannot exceed 8 KB.
--   If the bucket type is Archive, you cannot call this interface; otherwise, the system returns Error 400 with the error code “OperationNotSupported”.
+-   If the object that you want to add already exists and you can access the object, the existing object is overwritten by the added object and a 200 OK message is returned.
+-   If a PutSymlink request carries a parameter with the x-oss-meta- prefix, the parameter is considered as user meta, such as x-oss-meta-location. An object can have multiple parameters with the x-oss-meta- prefix. However, the total size of all user meta cannot exceed 8 KB.
 
 ## Example {#section_th3_m1x_wdb .section}
 
-**Request example:**
+Request example:
 
 ```
-PUT /link-to-oss.jpg? symlink HTTP/1.1
-Host: oss-example.oss-cn-hangzhou.aliyuncs.com
-Cache-control: no-cache
-Content-Disposition: attachment;filename=oss_download.jpg
-Date: Tue, 08 Nov 2016 02:00:25 GMT
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk=
-x-oss-symlink-target: oss.jpg
+PUT /link-to-oss.jpg? symlink HTTP/1.1 
+Host: oss-example.oss-cn-hangzhou.aliyuncs.com 
+Cache-control: no-cache 
+Content-Disposition: attachment;filename=oss_download.jpg 
+Date: Tue, 08 Nov 2016 02:00:25 GMT 
+Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk= x-oss-symlink-target: oss.jpg
+x-oss-storage-class: Standard
 ```
 
-**Return example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK

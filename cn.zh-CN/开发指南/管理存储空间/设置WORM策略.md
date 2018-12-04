@@ -31,9 +31,9 @@ WORM（一次写入，多次读取） 策略用于指定Bucket内文件的保护
     -   处于InProgress状态时，只能删除规则。
     -   处于Locked状态时，无法修改和删除规则，且只允许延长保护时间。
 -   删除规则
-
-    基于时间的WORM策略是Bucket的一种Metadata属性。当删除某个Bucket时，该Bucket对应的WORM策略以及访问策略也会被删除。
-
+    -   基于时间的WORM策略是Bucket的一种Metadata属性。当删除某个Bucket时，该Bucket对应的WORM策略以及访问策略也会被删除。因此当Bucket为空时，Bucket的所有者可以删除该Bucket，从而间接删除该Bucket的WORM策略。
+    -   启动WORM策略24小时内，若该WORM策略未提交锁定，则Bucket所有者以及授权用户可以修改或者删除该策略。
+    -   若Bucket内有文件处于保护周期内，那么您将无法删除WORM策略，同时也无法删除Bucket。
 
 ## 功能使用参考 {#section_gq3_zz5_cfb .section}
 

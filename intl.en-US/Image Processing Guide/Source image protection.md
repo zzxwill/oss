@@ -12,7 +12,7 @@ To avoid image piracy risks, the exposure to image URLs must be restricted so th
 **You can only access images in style mode:**
 
 -   Access through URL parameters`http://bucket.<endpoint>/object?x-oss-process=style/<StyleName>`
--   Access through separators`http://bucket.<endpoint>/object<分隔符><StyleName>`
+-   Access through separators`http://bucket.<endpoint>/object<separator><StyleName>`
 
 **Note:** 
 
@@ -26,13 +26,13 @@ You can configure the access rules in the **Image Processing** module of the buc
 1.  In the left-side bucket list of the [OSS console](https://oss.console.aliyun.com/overview), click the bucket for which you want to set the source image protection.
 2.  Click the **Image Processing** tab to locate the Access Settings button. See the following figure:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4793/2907_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4793/15439766502907_en-US.png)
 
-3.  Click  **Access Settings** to open the Access Settings dialog box, as shown in the following figure:
+3.  Click **Access Settings** to open the Access Settings dialog box, as shown in the following figure:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4793/2908_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4793/15439766502908_en-US.png)
 
-    In the Settings  dialog box, perform the following settings:
+    In the Settings dialog box, perform the following settings:
 
     -   Enable source image protection: After enabling the source image protection, you can only access the image file by passing in the stylename or using a signature-based method. Direct accesses to the OSS source file or accesses by passing in image parameters and modifying the image style are not allowed.
     -   Set the suffixes of the image files for source image protection.

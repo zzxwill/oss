@@ -1,12 +1,12 @@
 # PutObject {#reference_l5p_ftw_tdb .reference}
 
-The PutObject operation is used to upload files.
+PutObject is used to upload files.
 
 ## Request syntax {#section_ald_lkw_bz .section}
 
 ```
 PUT /ObjectName HTTP/1.1
-Content-Length：ContentLength
+Content-Length: ContentLength
 Content-Type: ContentType
 Host: BucketName.oss-cn-hangzhou.aliyuncs.com
 Date: GMT Date
@@ -17,57 +17,81 @@ Authorization: SignatureValue
 
 |Name|Type|Description|
 |----|----|-----------|
-|Cache-Control|String|Specifies the web page caching behavior when the object is downloaded. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt).  Default: None
+|Authorization|String|Indicates that the request is authorized. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt). Default value: None
 
 |
-|Content-Disposition|String|Specifies the name of the object when the object is downloaded. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt).  Default: None
+|Cache-control|String|Specifies the Web page caching behavior when the object is downloaded. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt). Default value: None
 
 |
-|Content-Encoding|String|Specifies the content encoding format when the object is downloaded. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt).  Default: None
+|Content-Disposition|String|Specifies the name of the object when the object is downloaded. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt). Default value: None
 
 |
-|Content-Md5|String|As defined in RFC 1864, the message content \(excluding the header\) is calculated to obtain an MD5 value, which is a 128-bit number. This number is encoded using Base64 into a Content-MD5 value. This request header can be used to check the validity of a message, that is, whether the message content is consistent with the sent content. This request header is optional. However, we recommend that you use this request header for an end-to-end check. Default: None
-
-Restrictions: None
+|Content-Encoding|String|Specifies the content encoding format when the object is downloaded. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt). Default value: None
 
 |
-|Expires|String|Specifies the expiration time. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt).  Default: None
+|Content-Md5|String|As defined in RFC 1864, an MD5 value, which is a 128-bit number, is calculated based on the message content \(excluding the header\). This number is then Base64-encoded into a Content-MD5 value. This request header can be used to check the validity of a message, that is, whether the message content is consistent with the sent content. Although this request header is optional, we recommend that you use this request header for end-to-end checks. Default value: None
 
-**Note:** OSS imposes no limits or verification on this value.
-
-|
-|x-oss-server-side-encryption|String|Specifies the server-side encryption algorithm when OSS creates an object. Valid values: AES256 and KMS
-
-**Note:** You must enable the KMS \(Key Management Service\) on the console to use the KMS encryption algorithm. Otherwise, a KmsServiceNotenabled error code is reported.
+Restriction: None
 
 |
-|x-oss-object-acl|String|Specifies the access permission when OSS creates an object.  Valid values: public-read, private, and public-read-write
+|Content-Length|String|If the value of Content-Length in the request header is smaller than the data length in the request body, OSS can still create the object successfully. However, the object size is the value of Content-Length, and the data that exceeds the value is discarded.|
+|ETag|String|An entity tag \(ETag\) is created to identify the content of an object when the object is created. For an object created with the PutObject request, its ETag is the MD5 value of the object content. For an object created by using other methods, its ETag is the UUID of the object content. The ETag value of an object can be used to check whether the object content has changed. However, we recommend that you not use the ETag of an object as the MD5 value of the object to verify data integrity.Default value: None
+
+|
+|Expires|String|Specify the expiration time. For more information, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt). Default value: None
+
+**Note:** OSS does not limit and verify this value.
+
+|
+|x-oss-server-side-encryption|String|Specifies the server-side encryption algorithm when OSS creates an object. Valid value: AES256 or KMS
+
+**Note:** You must enable KMS \(Key Management Service\) in the console before you can use the KMS encryption algorithm. Otherwise, a KmsServiceNotEnabled error code is reported.
+
+|
+|x-oss-object-acl|String|Specifies the access permission when OSS creates an object. Valid values: public-read, private, and public-read-write
+
+|
+|x-oss-storage-class|String|Specifies the storage class of the object.Valid values:
+
+-   Standard
+-   IA
+-   Archive
+
+Supported interfaces: PutObject, InitMultipartUpload, AppendObject, PutObjectSymlink, and CopyObject
+
+**Note:** 
+
+-   If the value of StorageClass is invalid, a 400 error is returned. Error code: InvalidArgument
+-   If you specify the value of x-oss-storage-class when uploading an object to a bucket, the storage class of the uploaded object is the specified value of x-oss-storage-class. For example, if you specify the value of x-oss-storage-class to Standard when uploading an object to a bucket of the IA storage class, the storage class of the object is Standard.
 
 |
 
 ## Detail analysis {#section_fcx_vkw_bz .section}
 
--   If you have uploaded the Content-MD5 request header, OSS calculates Content-MD5 of the body and checks if the two are consistent. If the two are different, the error code InvalidDigest is returned.
--   If the Content-Length value in the request header is smaller than the length of data transmitted in the actual request body, OSS still creates a file, but the object size is equal to the size defined by Content-Length, and the remaining data is dropped.
--   If a file of the same name with the object to be added already exists, and you are authorized to access this object, the newly-added file overwrites the existing file, and the system returns the 200 OK message.
--   If the PutObject request carries a parameter prefixed with x-oss-meta-, the parameter is treated as user meta, for example, x-oss-meta-location. A single object can have multiple similar parameters, but the total size of all user meta cannot exceed 8 KB.
--   If the Content length parameter is not added to the header, the system returns the 411 Length Required error. Error code: MissingContentLength.
--   If the length is set, but the message body is not sent, or the size of the sent body is smaller than the specified size, the server waits until time-out, and then returns the 400 Bad Request message. Error code: RequestTimeout.
--   If the bucket of the object to be added does not exist, the system returns the 404 Not Found error. Error code: NoSuchBucket.
--   If you have no permission to access the bucket of the object to be added, the system returns the 403 Forbidden error. Error code: AccessDenied.
--   If the length of the added file exceeds 5 GB, the system returns the 400 Bad Request message. Error code: InvalidArgument.
--   If the length of the input object key exceeds 1023 bytes, the system returns the 400 Bad Request message. Error code: InvalidObjectName.
--   When you put an object, OSS supports the following five header fields defined in [RFC2616](https://www.ietf.org/rfc/rfc2616.txt): Cache-Control, Expires, Content-Encoding, Content-Disposition, and Content-Type. If these headers are set when you upload an object, the corresponding header values are automatically set to the uploaded values next time when this object is downloaded.
--   If the x-oss-server-side-encryption header is specified when you upload an object, the value of this header must be set to AES256. Otherwise, the system returns the 400 error and the error code: InvalidEncryptionAlgorithmError. After this header is specified, the response header also contains this header, and OSS stores the encryption algorithm of the uploaded object. When this object is downloaded, the response header contains x-oss-server-side-encryption, the value of which is set to the encryption algorithm of this object.
+-   For the object that you want to upload:
+    -   A 403 Forbidden error is returned if you do not have access to the bucket. Error code: AccessDenied
+    -   If an object with the same name already exists and you have access to it, the existing object is overwritten by the uploaded object, and a 200 OK message is returned.
+    -   If the bucket does not exist, a 404 Not Found error is returned. Error code: NoSuchBucket
+-   If the length of the input object key exceeds 1023 bytes, a 400 Bad Request error is returned. Error code: InvalidObjectName
+-   Content-Length
+    -   If the value of Content-Length in the request header is smaller than the data length in the request body, OSS can still create the object successfully. However, the object size is the value of Content-Length, and the data that exceeds the value is discarded.
+    -   If the length of the uploaded object exceeds 5 GB, a 400 Bad Request message error is returned. Error code: InvalidArgument
+    -   If the length is set, but the message body is not sent, or the size of the sent body is smaller than the specified size, the server waits until timeout, and then returns a 400 Bad Request error. Error code: RequestTimeout
+-   HTTP header
+    -   OSS supports the following five header fields defined in HTTP: Cache-Control, Expires, Content-Encoding, Content-Disposition, and Content-Type. If these headers are set when you upload an object, the header values are automatically set to the values set in the upload when the object is downloaded. For more information about the header fields, see [RFC2616](https://www.ietf.org/rfc/rfc2616.txt).
+    -   If the header is not encoded in the [chunked encoding](https://tools.ietf.org/html/rfc2616#section-3.6.1) method and the Content-Length parameter is not added, a 411 Length Required error is returned. Error code: MissingContentLength
+    -   If you specify the x-oss-server-side-encryption header when you perform a PutObject operation, the value of this header must be set to AES256. Otherwise, a 400 Bad Request error is returned. Error code: InvalidEncryptionAlgorithmError After this header is specified, it is also included in the response header, and OSS encrypts the uploaded object by using the specified method. When this object is downloaded, x-oss-server-side-encryption is included in the response header, and the value of x-oss-server-side-encryption is set to the encryption algorithm of this object.
+    -   If the PutObject request carries a parameter with the x-oss-meta- prefix, the parameter is considered as user meta, for example, x-oss-meta-location. A single object can have multiple parameters with the x-oss-meta- prefix. However, the total size of all user meta cannot exceed 8 KB.
 
-## FAQ {#section_w35_wkw_bz .section}
+## Common problem {#section_w35_wkw_bz .section}
 
--   **Content-MD5 calculation method error**
+Content-MD5 calculation method error
 
-    The algorithm defined  in related standards
+According to the standard, the Content-MD5 value is calculated as follows: Calculate the MD5-encrypted 128-bit binary array, and then encode the binary array \(but not the 32-bit string\) with Base64.
 
+For example, if the content you want to upload is `0123456789`, the Content-MD5 value of the string can be calculated as follows:
 
-is used to calculate Content-MD5 in the following process: Calculate the upload Content-MD5, whose value is a 128-bit binary array, and then encode the binary array with Base64. Python is used as an example. The correct calculation code is as follows:
+The correct calculation method can be implemented in Python as follows:
 
 ```
 
@@ -78,29 +102,32 @@ is used to calculate Content-MD5 in the following process: Calculate the upload 
 'eB5eJF1ptWaXm4bijSPyxw=='
 ```
 
-The result of hash.digest\(\) is used as the input of Base64 encoding. `>>> hash.digest() 'x\x1e^$]i\xb5f\x97\x9b\x86\xe2\x8d#\xf2\xc7'`. A common mistake is to encode the calculated 32-byte MD5 string with Base64. Incorrect example: Encoding hash.hexdigest\(\) with Base64: `>>> hash.hexdigest() '781e5e245d69b566979b86e28d23f2c7'` The following is the incorrect calculation result. `>>> base64.b64encode(hash.hexdigest()) 'NzgxZTVlMjQ1ZDY5YjU2Njk3OWI4NmUyOGQyM2YyYzc='`
+**Note:** 
+
+Correct calculation method: Use `hash.digest()` to calculate the 128-bit binary array first. For example: `>>> hash.digest() 'x\x1e^$]i\xb5f\x97\x9b\x86\xe2\x8d#\xf2\xc7'`
+
+A common incorrect operation is to encode the calculated 32-bit string with Base64 to obtain the Content-MD5 value. For example, `hash.hexdigest()` is used to calculate a visible 32-bit string. `>>> hash.hexdigest() '781e5e245d69b566979b86e28d23f2c7'` If you encode the incorrect MD5 value with Base64, the result is as follows. `>>> base64.b64encode(hash.hexdigest()) 'NzgxZTVlMjQ1ZDY5YjU2Njk3OWI4NmUyOGQyM2YyYzc='`
 
 ## Example {#section_orz_dlw_bz .section}
 
-**Request example:**
+Request example:
 
 ```
-PUT /oss.jpg HTTP/1.1
-Host: oss-example.oss-cn-hangzhou.aliyuncs.com
-Cache-control: no-cache
-Expires: Fri, 28 Feb 2012 05:38:42 GMT
+PUT /oss.jpg HTTP/1.1 
+Host: oss-example.oss-cn-hangzhou.aliyuncs.com Cache-control: no-cache 
+Expires: Fri, 28 Feb 2012 05:38:42 GMT 
 Content-Encoding: utf-8
-Content-Disposition: attachment;filename=oss_download.jpg
-Date: Fri, 24 Feb 2012 06:03:28 GMT
-Content-Type: image/jpg
-Content-Length: 344606
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk=
+Content-Disposition: attachment;filename=oss_download.jpg 
+Date: Fri, 24 Feb 2012 06:03:28 GMT 
+Content-Type: image/jpg 
+Content-Length: 344606 
+x-oss-storage-class: Archive
+Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk=  
 
 [344606 bytes of object data]
-
 ```
 
-**Response example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK

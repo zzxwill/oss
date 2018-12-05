@@ -16,7 +16,7 @@ After you create a bucket, you can upload objects \(files\) to the bucket in eit
 3.  Click the **Files** tab.
 4.  Click **Upload** to open the Upload box.
 
-    **Note:** You can upload a file to a specified folder or to a default folder. You can select[EN-US\_TP\_4754.md](intl.en-US/Console User Guide/Manage objects/Create a folder.md) before clicking **Upload** to upload the file to a specified folder. You can also directly click **Upload** to upload a file to a default OSS folder.
+    **Note:** You can upload a file to a specified folder or to a default folder. You can select [EN-US\_TP\_4754.md](intl.en-US/Console User Guide/Manage objects/Create a folder.md)Create a folder before clicking **Upload** to upload the file to a specified folder. You can also directly click **Upload** to upload a file to a default OSS folder.
 
 5.  In the **Directory Address** box, set the directory for the objects to be uploaded.
     -   Current Directory: If you select this option, the objects will be uploaded to the current directory.

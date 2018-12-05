@@ -4,7 +4,7 @@ After you create a bucket, you can upload objects \(files\) to the bucket in eit
 
 -   You can upload the object smaller than 5 GB by using the OSS console.
 
--   You can upload the object larger than 5 GB by using SDKs or APIs. For more information, see [../../../../dita-oss-bucket/SP\_21/DNOSS11835551/EN-US\_TP\_4711.md\#](../../../../intl.en-US/API Reference/Multipart upload operations/Introduction.md#).
+-   You can upload the object larger than 5 GB by using SDKs or APIs. For more information, see [Introduction](../../../../intl.en-US/API Reference/Multipart upload operations/Introduction.md#).
 
 
 **Note:** If the name of the object to be uploaded is duplicate with that of the existing one in the bucket, it overwrites the existing one.

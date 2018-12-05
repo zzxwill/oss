@@ -8,7 +8,7 @@
 -   确保应用服务器已经安装`Python 2.6`以上版本（执行命令`python --version`进行查看）。
 -   确保PC端浏览器支持JavaScript。
 
-## 步骤一：配置应用服务器 {#section_rlc_nvj_gfb .section}
+## 步骤 1：配置应用服务器 {#section_rlc_nvj_gfb .section}
 
 下载应用服务器源码\(Python版本\)：[aliyun-oss-appserver-python-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537974140965/aliyun-oss-appserver-python-master.zip) 。
 
@@ -38,7 +38,7 @@ upload_dir = 'user-dir-prefix/'
 
 -   upload\_dir ： 指定上传文件的前缀，以便区别于其他文件以免发生冲突，您也可以填写空值。
 
-## 步骤二：配置客户端 {#section_mpy_2wj_gfb .section}
+## 步骤 2：配置客户端 {#section_mpy_2wj_gfb .section}
 
 下载客户端源码：[aliyun-oss-appserver-js-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537971352825/aliyun-oss-appserver-js-master.zip) 。
 
@@ -58,7 +58,7 @@ serverUrl = 'http://88.88.88.88:8888'
 serverUrl = 'http://11.22.33.44:1234'
 ```
 
-## 步骤三： 修改CORS {#section_hk5_cpy_2fb .section}
+## 步骤 3： 修改CORS {#section_hk5_cpy_2fb .section}
 
 从浏览器向OSS发出的请求消息带有`Origin`的消息头，OSS对带有`Origin`头的请求消息会首先进行`跨域规则`的验证。
 
@@ -66,9 +66,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797433212308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154399995612308_zh-CN.png)
 
-## 步骤四：体验上传回调 {#section_c5r_cpy_2fb .section}
+**说明：** **来源**设置为 \* 是为了使用方便，不确保安全性。建议您填写自己需要的域名。
+
+## 步骤 4：体验上传回调 {#section_c5r_cpy_2fb .section}
 
 -   启动应用服务器
 
@@ -82,11 +84,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797433212306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154399995612306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153797433212309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154399995612309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_bvh_gbk_gfb .section}
@@ -173,5 +175,7 @@ serverUrl = 'http://11.22.33.44:1234'
             self.end_headers()
             self.wfile.write(resp_body)
     ```
+
+    详情请参见API文档[Callback–回调签名](../../../../cn.zh-CN/API 参考/关于Object操作/Callback.md#section_btz_phx_wdb)。
 
 

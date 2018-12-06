@@ -15,14 +15,14 @@ Signature = base64(hmac-sha1(AccessKeySecret,
             + CanonicalizedResource))
 ```
 
--   `AccessKeySecret` 表示签名所需的密钥
--   `VERB`表示HTTP 请求的Method，主要有PUT，GET，POST，HEAD，DELETE等
--   `\n` 表示换行符
--   `Content-MD5` 表示请求内容数据的MD5值，对消息内容（不包括头部）计算MD5值获得128比特位数字，对该数字进行base64编码而得到。该请求头可用于消息合法性的检查（消息内容是否与发送时一致），如”eB5eJF1ptWaXm4bijSPyxw==”，也可以为空。详情参看[RFC2616 Content-MD5](https://www.ietf.org/rfc/rfc2616.txt)
--   `Content-Type` 表示请求内容的类型，如”application/octet-stream”，也可以为空
--   `Date` 表示此次操作的时间，且必须为GMT格式，如”Sun, 22 Nov 2015 08:16:38 GMT”
--   `CanonicalizedOSSHeaders` 表示以 x-oss- 为前缀的http header的字典序排列
--   `CanonicalizedResource` 表示用户想要访问的OSS资源
+-   `AccessKeySecret` 表示签名所需的密钥。
+-   `VERB`表示HTTP 请求的Method，主要有PUT、GET、POST、HEAD、DELETE等。
+-   `\n` 表示换行符。
+-   `Content-MD5` 表示请求内容数据的MD5值，对消息内容（不包括头部）计算MD5值获得128比特位数字，对该数字进行base64编码而得到。该请求头可用于消息合法性的检查（消息内容是否与发送时一致），如”eB5eJF1ptWaXm4bijSPyxw==”，也可以为空。详情请参见[RFC2616 Content-MD5](https://www.ietf.org/rfc/rfc2616.txt)。
+-   `Content-Type` 表示请求内容的类型，如”application/octet-stream”，也可以为空。
+-   `Date` 表示签名过期时间，且必须为GMT格式，如”Sun, 22 Nov 2015 08:16:38 GMT”。
+-   `CanonicalizedOSSHeaders` 表示以 x-oss- 为前缀的HTTP eader的字典序排列。
+-   `CanonicalizedResource` 表示用户想要访问的OSS资源。
 
 其中，Date和CanonicalizedResource不能为空；如果请求中的Date时间和OSS服务器的时间差15分钟以上，OSS服务器将拒绝该服务，并返回HTTP 403错误。
 
@@ -30,8 +30,8 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 所有以 x-oss- 为前缀的HTTP Header被称为CanonicalizedOSSHeaders。它的构建方法如下：
 
-1.  将所有以 x-oss- 为前缀的HTTP请求头的名字转换成 小写 。如`X-OSS-Meta-Name: TaoBao`转换成`x-oss-meta-name: TaoBao`。
-2.  如果请求是以STS获得的AccessKeyId和AccessKeySecret发送时，还需要将获得的security-token值，以 `x-oss-security-token:security-token` 的形式加入到签名字符串中。
+1.  将所有以 x-oss- 为前缀的HTTP请求头的名字转换成小写 。如`X-OSS-Meta-Name: TaoBao`转换成`x-oss-meta-name: TaoBao`。
+2.  如果请求是以STS获得的AccessKeyId和AccessKeySecret发送时，还需要将获得的security-token值以 `x-oss-security-token:security-token` 的形式加入到签名字符串中。
 3.  将上一步得到的所有HTTP请求头按照名字的字典序进行升序排列。
 4.  删除请求头和内容之间分隔符两端出现的任何空格。如`x-oss-meta-name: TaoBao`转换成：`x-oss-meta-name:TaoBao`。
 5.  将每一个头和内容用 `\n` 分隔符分隔拼成最后的CanonicalizedOSSHeaders。
@@ -40,24 +40,24 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 -   CanonicalizedOSSHeaders可以为空，无需添加最后的 `\n`。
 -   如果只有一个，则如 `x-oss-meta-a\n`，注意最后的`\n`。
--   如果有多个，则如 `x-oss-meta-a:a\nx-oss-meta-b:b\nx-oss-meta-c:c\n`, 注意最后的”\\n”。
+-   如果有多个，则如 `x-oss-meta-a:a\nx-oss-meta-b:b\nx-oss-meta-c:c\n`，注意最后的`\n`。
 
 ## 构建CanonicalizedResource的方法 {#section_rvv_dx2_xdb .section}
 
 用户发送请求中想访问的OSS目标资源被称为CanonicalizedResource。它的构建方法如下：
 
 1.  将CanonicalizedResource置成空字符串 `""`；
-2.  放入要访问的OSS资源 `/BucketName/ObjectName`（**无ObjectName**则CanonicalizedResource为”/BucketName/“，如果同时也没有BucketName则为“/”）
+2.  放入要访问的OSS资源 `/BucketName/ObjectName`（如果没有ObjectName则CanonicalizedResource为”/BucketName/“，如果同时也没有BucketName则为“/”）
 3.  如果请求的资源包括子资源\(SubResource\) ，那么将所有的子资源按照字典序，从小到大排列并以 `&` 为分隔符生成子资源字符串。在CanonicalizedResource字符串尾添加 `？`和子资源字符串。此时的CanonicalizedResource如：`/BucketName/ObjectName?acl&uploadId=UploadId`
-4.  如果用户请求在指定了查询字符串\(QueryString，也叫Http Request Parameters\)，那么将这些查询字符串及其请求值按照 字典序，从小到大排列，以 `&` 为分隔符，按参数添加到CanonicalizedResource中。此时的CanonicalizedResource如：`/BucketName/ObjectName?acl&response-content-type=ContentType&uploadId=UploadId`。
+4.  如果用户请求在指定了查询字符串\(QueryString，也叫Http Request Parameters\)，那么将这些查询字符串及其请求值按照字典序，从小到大排列，以 `&` 为分隔符，按参数添加到CanonicalizedResource中，如：`/BucketName/ObjectName?acl&response-content-type=ContentType&uploadId=UploadId`。
 
 **说明：** 
 
 -   OSS目前支持的子资源\(sub-resource\)包括：acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，tagging，objectMeta，uploadId，partNumber，security-token，position，img，style，styleName，replication，replicationProgress，replicationLocation，cname，bucketInfo，comp，qos，live，status，vod，startTime，endTime，symlink，x-oss-process，response-content-type，response-content-language，response-expires，response-cache-control，response-content-disposition，response-content-encoding等
 -   子资源\(sub-resource\)有三种类型：
-    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)
-    -   指定返回Header字段，如 `response-***`,详见 [GetObject](intl.zh-CN/API 参考/关于Object操作/GetObject.md#)的 `Request Parameters`
-    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../intl.zh-CN/图片处理指南/图片处理访问规则.md#)
+    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](cn.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。
+    -   指定返回Header字段，如 `response-***`，详见[GetObject](cn.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
+    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../cn.zh-CN/图片处理指南/图片处理访问规则.md#)。
 
 ## 计算签名头规则 {#section_qcb_p1f_xdb .section}
 
@@ -173,7 +173,7 @@ X-OSS-Magic: abracadabra
     |iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
     |Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
 
--   当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请使用 [可视化签名工具](https://bbs.aliyun.com/read/233851.html) 确认签名并排除错误。
+-   当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请参见[自签名计算失败](../../../../cn.zh-CN/常见错误排除/排障工具/自签名计算失败.md#)排除错误。
 
 ## 常见问题 {#section_vkz_sbf_xdb .section}
 

@@ -111,17 +111,19 @@
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153960344112308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154406661212308_zh-CN.png)
+
+**说明：** **来源**设置为 \* 是为了使用方便，不确保安全性。建议您填写自己需要的域名。
 
 ## 步骤 5：体验上传回调 {#section_fxb_5ft_2fb .section}
 
 在PC侧的Web浏览器中输入`http://11.22.33.44:8080/aliyun-oss-appserver-php/index.html`。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153960344112306_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154406661212306_zh-CN.png)
 
 单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153960344212309_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154406661212309_zh-CN.png)
 
 ## 应用服务器核心代码解析 {#section_apl_gsj_gfb .section}
 

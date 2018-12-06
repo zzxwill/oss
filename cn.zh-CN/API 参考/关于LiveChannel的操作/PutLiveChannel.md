@@ -20,7 +20,7 @@ Authorization: SignatureValue
      <Type>HLS</Type>
      <FragDuration>FragDuration</FragDuration>
      <FragCount>FragCount</FragCount>
-     <PlayListName>PlaylistName</PlayListName>
+     <PlaylistName>PlaylistName</PlaylistName>
   </Target>
   <Snapshot>
     <RoleName>Snapshot ram role</RoleName>

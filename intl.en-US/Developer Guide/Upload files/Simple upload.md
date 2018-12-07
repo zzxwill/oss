@@ -27,7 +27,7 @@ To prevent unauthorized third parties from uploading objects to your bucket, OSS
 After uploading objects to OSS, you may want to:
 
 -   Initiate a callback request to a specified application server. For more information, see [Upload callback](intl.en-US/Developer Guide/Upload files/Upload callback.md#).
--   Process the uploaded images. For more information, see [Image processing](intl.en-US/Developer Guide/Image Processing.md#).
+-   Process the uploaded images. For more information, see[Image processing](../../../../intl.en-US/Image Processing Guide/Image processing.md#).
 
 ## Reference {#section_nvr_ybb_5db .section}
 

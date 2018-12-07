@@ -9,13 +9,13 @@ You can access OSS directly by calling a RESTful API provided by OSS or using an
 
 ## Types of AccessKeys {#section_en5_23v_tdb .section}
 
-Currently, the three types of [AccessKey](intl.en-US/Developer Guide/Basic concepts.md#section_u3j_nmt_tdb) for OSS access are as follows:
+Currently, the three types of [AccessKey](reseller.en-US/Developer Guide/Basic concepts.md#section_u3j_nmt_tdb) for OSS access are as follows:
 
 -   Alibaba Cloud account AccessKeys
 
     These are the AccessKeys of the bucket owners. The AccessKey provided by each Alibaba Cloud account has full access to its own resources. Each Alibaba Cloud account can simultaneously have zero to five active or inactive AccessKey pairs \(AccessKeyID and AccessKeySecret\).
 
-    You can add or delete AccessKey pairs in the [AccessKey console](https://ak-console.aliyun.com).
+    You can add or delete AccessKey pairs in the [AccessKey console](https://partners-intl.console.aliyun.com/#/ak).
 
     Each AccessKey pair is either active or inactive.
 
@@ -68,11 +68,11 @@ OSS provides the following permission control to access its stored objects:
     |private|Only the owner of the bucket can read, write, and delete the objects in the bucket. Other people cannot access the objects in the bucket without authorization.|
 
 -   Set and get bucket ACL
-    -   API: [PutBucketACL](../../../../intl.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)
-    -   SDK: Java SDK - [Manage a bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
-    -   Console: [Create a bucket](../../../../intl.en-US/Console User Guide/Manage buckets/Create a bucket.md#)
-    -   API: [GetBucketACL](../../../../intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
-    -   SDK: Java SDK - [Manage a bucket](https://www.alibabacloud.com/help/doc-detail/32012.htm)
+    -   API: [PutBucketACL](../../../../reseller.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)
+    -   SDK: Java SDK - [Manage a bucket](https://partners-intl.aliyun.com/help/doc-detail/32012.htm)
+    -   Console: [Create a bucket](../../../../reseller.en-US/Console User Guide/Manage buckets/Create a bucket.md#)
+    -   API: [GetBucketACL](../../../../reseller.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
+    -   SDK: Java SDK - [Manage a bucket](https://partners-intl.aliyun.com/help/doc-detail/32012.htm)
 
 ## Object-level permissions {#section_af3_cjv_tdb .section}
 
@@ -92,10 +92,10 @@ OSS provides the following permission control to access its stored objects:
     -   If no ACL is configured for an object, the object uses the default ACL, indicating that the object has the same ACL as the bucket where the object is stored.
     -   If an ACL is configured for an object, the object ACL has higher-level permission than the bucket ACL. For example, an object with the public-read permission can be accessed by authenticated users and anonymous users, regardless of the bucket permission.
 -   Set and get object ACL
-    -   API: [PutObjectACL](../../../../intl.en-US/API Reference/Object operations/Put Object ACL.md#)
-    -   SDK: [Set the object ACL](https://www.alibabacloud.com/help/doc-detail/32015.htm) in Java SDK
-    -   API: [GetObjectACL](../../../../intl.en-US/API Reference/Object operations/GetObjectACL.md#)
-    -   SDK: [Get the object ACL](https://www.alibabacloud.com/help/doc-detail/32015.htm) in Java SDK
+    -   API: [PutObjectACL](../../../../reseller.en-US/API Reference/Object operations/Put Object ACL.md#)
+    -   SDK: [Set the object ACL](https://partners-intl.aliyun.com/help/doc-detail/32015.htm) in Java SDK
+    -   API: [GetObjectACL](../../../../reseller.en-US/API Reference/Object operations/GetObjectACL.md#)
+    -   SDK: [Get the object ACL](https://partners-intl.aliyun.com/help/doc-detail/32015.htm) in Java SDK
 
 ## Account-level permissions \(RAM\) {#section_mjv_sjv_tdb .section}
 
@@ -109,7 +109,7 @@ OSS provides the following permission control to access its stored objects:
 
 -   Configuration
 
-    For more information about how to create a RAM user, how to grant permissions, and group access management, see the [RAM User Guide](https://www.alibabacloud.com/help/doc-detail/28645.htm).
+    For more information about how to create a RAM user, how to grant permissions, and group access management, see the [RAM User Guide](https://partners-intl.aliyun.com/help/doc-detail/28645.htm).
 
     For more information on how to configure policies required for authorization, see the **RAM and STS authorization policy configuration** section of this document.
 
@@ -126,7 +126,7 @@ OSS provides the following permission control to access its stored objects:
 
 -   Configuration
 
-    For more information on STS, see [Roles](https://www.alibabacloud.com/help/doc-detail/28649.htm) in the *RAM User Guide*. You can call [AssumeRole](https://www.alibabacloud.com/help/doc-detail/28763.htm) of the STS interface or directly use the STS SDK to obtain valid access credentials.
+    For more information on STS, see [Roles](https://partners-intl.aliyun.com/help/doc-detail/28649.htm) in the *RAM User Guide*. You can call [AssumeRole](https://partners-intl.aliyun.com/help/doc-detail/28763.htm) of the STS interface or directly use the STS SDK to obtain valid access credentials.
 
 
 ## RAM and STS scenario practices {#section_scy_dlv_tdb .section}
@@ -137,7 +137,7 @@ A mobile app is used as an example. Suppose that you are a mobile app developer.
 
 -   Mode 1: Using AppServer for data transit and data isolation
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1542784626982_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1544172082982_en-US.png)
 
     As shown in the preceding figure, you develop an AppServer. Only the AppServer can access cloud data. The ClientApp can read or write data only through the AppServer. The AppServer guarantees the data isolation of different users.
 
@@ -147,7 +147,7 @@ A mobile app is used as an example. Suppose that you are a mobile app developer.
 
     The STS solution is shown as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1542784626983_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1544172082983_en-US.png)
 
     **Procedure**
 
@@ -339,13 +339,13 @@ Following is the example of the RAM or STS authorization policy configuration:
 
 ## More examples {#section_ocz_zpv_tdb .section}
 
-For more examples of authorization policy configuration, see [Tutorial: control access to buckets and folders](intl.en-US/Developer Guide/Access and control/Tutorial: Control access to buckets and folders.md#) and [OSS FAQ](https://www.alibabacloud.com/help/faq-list/39711.htm).
+For more examples of authorization policy configuration, see [Tutorial: control access to buckets and folders](reseller.en-US/Developer Guide/Access and control/Tutorial: Control access to buckets and folders.md#) and [OSS FAQ](https://partners-intl.aliyun.com/help/doc-detail/58905.htm).
 
 For the online policy graphical configuration tool, click [here](http://gosspublic.alicdn.com/ram-policy-editor/english.html).
 
-You can use the Simple Policy function of ossbrowser to grant RAM users the access rights to specific buckets or directories. For more information, see [Grant permissions with a simple policy](../../../../intl.en-US/Utilities/ossbrowser/Permission management.md#section_zyx_1k3_wdb).
+You can use the Simple Policy function of ossbrowser to grant RAM users the access rights to specific buckets or directories. For more information, see [Grant permissions with a simple policy](../../../../reseller.en-US/Utilities/ossbrowser/Permission management.md#section_zyx_1k3_wdb).
 
 ## Best practices {#section_dlf_bqv_tdb .section}
 
--   [RAM and STS User Guide](../../../../intl.en-US/Best Practices/Access control/Overview.md#)
+-   [RAM and STS User Guide](../../../../reseller.en-US/Best Practices/Access control/Overview.md#)
 

@@ -2,7 +2,7 @@
 
 ## Applicable scenarios {#section_b3p_zhb_5db .section}
 
-The [Simple upload](intl.en-US/Developer Guide/Upload files/Simple upload.md#), [Form upload](intl.en-US/Developer Guide/Upload files/Form upload.md#), and [Multipart upload](intl.en-US/Developer Guide/Upload files/Multipart upload.md#) methods create normal-type objects which have fixed content after the upload is finished. They can only be read, but cannot be modified.  If the object content changes, the user must upload an object of the same name to overwrite the content. This is a major difference between OSS and file systems.
+The [Simple upload](reseller.en-US/Developer Guide/Upload files/Simple upload.md#), [Form upload](reseller.en-US/Developer Guide/Upload files/Form upload.md#), and [Multipart upload](reseller.en-US/Developer Guide/Upload files/Multipart upload.md#) methods create normal-type objects which have fixed content after the upload is finished. They can only be read, but cannot be modified.  If the object content changes, the user must upload an object of the same name to overwrite the content. This is a major difference between OSS and file systems.
 
 This feature makes many application scenarios inconvenient, such as video monitoring and live video broadcast, since video data is constantly produced in real time.  Using other upload methods, users must slice the video stream into small pieces and then upload them as new objects.  In actual use, these methods have obvious defects:
 
@@ -28,20 +28,19 @@ In addition to video scenarios, the append object method can also be used to app
 
 ## Upload security and authorization {#section_lyr_d3b_5db .section}
 
-To prevent unauthorized third parties from uploading objects to the developer’s bucket, OSS provides bucket-level and object-level access permission control. For more information, see [Access control](intl.en-US/Developer Guide/Access and control/Access control.md#). In addition to bucket-level and object-level access permissions, OSS also provides account-level authorization to authorize third-party uploads. For more information, see [Authorized third-party upload](intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
+To prevent unauthorized third parties from uploading objects to the developer’s bucket, OSS provides bucket-level and object-level access permission control. For more information, see [Access control](reseller.en-US/Developer Guide/Access and control/Access control.md#). In addition to bucket-level and object-level access permissions, OSS also provides account-level authorization to authorize third-party uploads. For more information, see [Authorized third-party upload](reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
 
 ## Post-upload Operations {#section_ssw_23b_5db .section}
 
-To process uploaded images, users can use [Image Processing](intl.en-US/Developer Guide/Image Processing.md#). For audio/video file format conversion, users can use [Media Processing](intl.en-US/Developer Guide/Cloud data processing.md#).
+To process uploaded images, users can use [Image Processing](../../../../reseller.en-US/Image Processing Guide/Image processing.md#). For audio/video file format conversion, users can use [Media Processing](reseller.en-US/Developer Guide/Cloud data processing.md#).
 
 ## Reference for using the function {#section_s25_f3b_5db .section}
 
--   API: [Append Object](../../../../intl.en-US/API Reference/Object operations/AppendObject.md#)
--   Java SDK: [Append object](https://www.alibabacloud.com/help/doc-detail/84784.htm)
+-   API: [Append Object](../../../../reseller.en-US/API Reference/Object operations/AppendObject.md#)
 
 **Note:** Append object method does not support upload callback.
 
 ## Best practices {#section_p5k_j3b_5db .section}
 
--   [RAM and STS User Guide](../../../../intl.en-US/Best Practices/Access control/Overview.md#)
+-   [RAM and STS User Guide](../../../../reseller.en-US/Best Practices/Access control/Overview.md#)
 

@@ -230,6 +230,6 @@ However in this sample, the backend program is not immediately aware of the numb
 -   [Set Cross-Origin Resource Sharing \(CORS\)](../../../../intl.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#)
 -   [Overview of direct transfer on Web client](intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
 -   [Directly transfer the file after adding a signature on the JavaScript client](intl.en-US/Best Practices/Direct upload to OSS from Web/Javascript client signature pass-through.md#)
--   [Directly add a signature on the server, transfer the file, and set upload callback](intl.en-US/Best Practices/Direct upload to OSS from Web/Directly add a signature on the server, transfer the file, and set upload callback.md#)
+-   [Directly add a signature on the server, transfer the file, and set upload callback](intl.en-US//Directly add a signature on the server, transfer the file, and set upload callback.md#)
 -   [Set up direct data transfer for mobile apps](intl.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
 

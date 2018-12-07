@@ -8,7 +8,7 @@ A PostObject message consists of the header and the body. The header and the bod
 
 Common headers include Host, User-Agent, Content-Length, Content-Type and Content-MD5 while form fields include key, OSSAccessKeyId, Signature, Content-Disposition, object meta \(x-oss-meta-\*\), x-oss-security-token, other HTTP headers \(Cache-Control/Content-Type/Cache-Control/Content-Type/Content-Disposition/Content-Encoding/Expires/Content-Encoding/Expires\) and file. The `file` must be the last field in those form fields.
 
-For more information, see [Post Object](../../../../intl.en-US/API Reference/Object operations/PostObject.md#).
+For more information, see [Post Object](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
 
 ## PostObject common errors {#section_uxq_lfj_wdb .section}
 
@@ -17,7 +17,7 @@ The following table shows PostObject common errors:
 |No.|Error|Cause| Solution|
 |:--|:----|:----|:--------|
 |1|ErrorCode: MalformedPOSTRequest ErrorMessage: The body of your POST request is not well-formed multipart/form-data|Invalid form field format.|See PostObject form field format following the table for the correct format of form fields.|
-|2|ErrorCode: InvalidAccessKeyId ErrorMessage: The OSS Access Key Id You provided does not exist in our records.|`AccessKeyID` was disabled or did not exist, the temporary user AccessKeyID was expired or the temporary user did not provide STS Token.|See [Invalid AccessKeyId Troubleshooting](intl.en-US/Errors and Troubleshooting/OSS 403.md#) for the troubleshooting method.|
+|2|ErrorCode: InvalidAccessKeyId ErrorMessage: The OSS Access Key Id You provided does not exist in our records.|`AccessKeyID` was disabled or did not exist, the temporary user AccessKeyID was expired or the temporary user did not provide STS Token.|See [Invalid AccessKeyId Troubleshooting](reseller.en-US/Errors and Troubleshooting/OSS 403.md#) for the troubleshooting method.|
 |3|ErrorCode: AccessDenied ErrorMessage: Invalid according to Policy: Policy expired.|The `expiration` in the form field Id `policy`was expired.|Adjust `expiration` in policy while ensuring that the format of `expiration` complies with ISO8601 GMT.|
 |4|ErrorCode: AccessDenied ErrorMessage: SignatureDoesNotMatch The request signature we calculated does not match the signature you provided. Check your key and signing method.|Incorrect signature.|See PostObject signature for the signature method.|
 |5|ErrorCode: InvalidPolicyDocument ErrorMessage: Invalid Policy: Invalid Simple-Condition: Simple-Conditions must have exactly one property specified.|The policy contains at least one condition in the request.|See PostObject policy format.|
@@ -27,7 +27,7 @@ The following table shows PostObject common errors:
 |9|ErrorCode: AccessDenied ErrorMessage: Invalid according to Policy: Policy Condition failed: \[“eq”, “$bucket”, “mingdi-bjx”\]|The `bucket` specified by the request and that specified by `policy` do not match.|Check the value of `bucket` in endpoint.|
 |10|ErrorCode: AccessDenied ErrorMessage: Invalid according to Policy: Policy Condition failed: \[“starts-with”, “$x-oss-meta-prop”, “prop-“\]|File metadata `x-oss-meta-prop` specified by the request and that specified by policy do not match.|Check the value of `x-oss-meta-prop` in the request.|
 |11|ErrorCode: AccessDenied ErrorMessage: Invalid according to Policy: Policy Condition failed: \[“eq”, “$\{field\}”, “$\{value\}”\]|The `{field}` specified in form fields and that specified by policy do not match, or that field was not specified in the request.|Check the value of `{field}` in the request.|
-|12|ErrorCode: AccessDenied ErrorMessage: You have no right to access this object because of bucket acl.|Current user did not have the required permission.|See [OSS Permission Problems and Troubleshooting](intl.en-US/Errors and Troubleshooting/OSS permission.md#).|
+|12|ErrorCode: AccessDenied ErrorMessage: You have no right to access this object because of bucket acl.|Current user did not have the required permission.|See [OSS Permission Problems and Troubleshooting](reseller.en-US/Errors and Troubleshooting/OSS permission.md#).|
 |13|ErrorCode: InvalidArgument ErrorMessage: The bucket POST must contain the specified ‘key’. If it is specified, please check the order of the fields|The form field does not specify `key`, or it is placed after the form field `file`.|Add form field `key` or adjust orders.|
 
 -   PostObject form field format
@@ -64,7 +64,7 @@ The following table shows PostObject common errors:
     **Note:** 
 
     -   In the preceding sample request, `\r\n` shows a new line, namely a line feed. Also, this applies to the following sample requests.
-    -   The preceding sample request is incomplete. For the complete request, see [Post Object](../../../../intl.en-US/API Reference/Object operations/PostObject.md#).
+    -   The preceding sample request is incomplete. For the complete request, see [Post Object](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
     If you have any questions, see the sample code:
 
     -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)  
@@ -116,7 +116,7 @@ The following table shows PostObject common errors:
     |\\t|Horizontal tab|
     |\\uxxxx|Unicode character|
 
-    For more information about PostPolicy, see [Post Policy](../../../../intl.en-US/API Reference/Object operations/PostObject.md#section_d5z_1ww_wdb).
+    For more information about PostPolicy, see [Post Policy](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#section_d5z_1ww_wdb).
 
 -   PostObject signature
 
@@ -124,7 +124,7 @@ The following table shows PostObject common errors:
 
     1.  Create a policy encoded with `UTF-8`.
     2.  Encode the policy with `base64`. The resulting value is the value to be populated into the `policy` form field, and this value is used as the string to be signed.
-    3.  Sign the string with `AccessKeySecret`. Specifically, hash the string with hmac-sha1 and then encode it with base64. The signature method is the same as that for [Header Signature](../../../../intl.en-US/API Reference/Access control/Add a signature to the header.md#).
+    3.  Sign the string with `AccessKeySecret`. Specifically, hash the string with hmac-sha1 and then encode it with base64. The signature method is the same as that for [Header Signature](../../../../reseller.en-US/API Reference/Access control/Add a signature to the header.md#).
     Namely:
 
     ```
@@ -258,7 +258,7 @@ The following table shows PostObject common errors:
     --9431149156168
     ```
 
-    **Note:** For more information about file meta information, see [File Meta Information Object Meta](../../../../intl.en-US/Developer Guide/Manage files/Object Meta.md#).
+    **Note:** For more information about file meta information, see [File Meta Information Object Meta](../../../../reseller.en-US/Developer Guide/Manage files/Object Meta.md#).
 
 -   How to specify conditions such as expiration, Key, Bucket, size, and header?
 
@@ -290,10 +290,9 @@ The following table shows PostObject common errors:
 
 -   [C\# Post Demo](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs?spm=a2c4g.11186623.2.21.ogoRhr&file=PostPolicySample.cs)
 -   [Java Post Demo](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java?spm=a2c4g.11186623.2.22.ogoRhr&file=PostObjectSample.java)
--   [JavaScript Post Demo](../../../../intl.en-US/Best Practices/Direct upload to OSS from Web/Javascript client signature pass-through.md#)
 
 ## Common links {#section_tfy_5hj_wdb .section}
 
--   [Post object](../../../../intl.en-US/API Reference/Object operations/PostObject.md#)
+-   [Post object](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#)
 -   [Java PostObject](https://yq.aliyun.com/articles/30346?spm=a2c4g.11186623.2.25.ogoRhr)
 

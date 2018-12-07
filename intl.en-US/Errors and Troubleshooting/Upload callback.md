@@ -19,11 +19,7 @@ When a file is uploaded, the OSS can provide a [Callback](../../../../reseller.e
 
 ## Data stream {#section_m3w_gv3_wdb .section}
 
-The upload and callback process for an OSS instance is shown as follows:
-
-![](images/3009_en-US.jpg)
-
-The following table describes the definitions of the preceding data streams.
+The following table describes the data streams.
 
 |Data stream|Meaning|Description|
 |:----------|:------|:----------|
@@ -177,7 +173,6 @@ The following table lists PostObject usage examples.
 |:--|:----------------------|
 |Java|[PostObjectSample.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)|
 |Python|[object\_post.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/object_post.py)|
-|JS|[Javascript client signature pass-through](../../../../reseller.en-US/Best Practices/Direct upload to OSS from Web/Javascript client signature pass-through.md#)|
 |C\#|[PostPolicySample.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)|
 
 ## Callback server {#section_jgd_dx3_wdb .section}

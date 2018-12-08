@@ -1,14 +1,14 @@
 # GetBucketInfo {#reference_rwk_bwv_tdb .reference}
 
-GetBucketInfo接口用于查看bucket的相关信息。
+GetBucketInfo接口用于查看Bucket的相关信息。
 
 可查看内容包含如下：
 
 -   创建时间
--   外网访问Endpoint
--   内网访问Endpoint
--   bucket的拥有者信息
--   bucket的ACL（AccessControlList）
+-   外网访问 Endpoint
+-   内网访问 Endpoint
+-   Bucket 的拥有者信息
+-   Bucket 的 ACL（AccessControlList）
 
 ## 请求语法 {#section_qw4_lfw_bz .section}
 
@@ -23,39 +23,39 @@ Authorization: SignatureValue
 
 |名称|类型|描述|
 |:-|:-|:-|
-|BucketInfo|容器|保存Bucket信息内容的容器 子节点：Bucket节点
+|BucketInfo|容器|保存 Bucket 信息内容的容器 子节点：Bucket节点
 
 父节点：无
 
 |
-|Bucket|容器|保存Bucket具体信息的容器 父节点：BucketInfo节点
+|Bucket|容器|保存 Bucket 具体信息的容器 父节点：BucketInfo 节点
 
 |
-|CreationDate|时间|Bucket创建时间。时间格式 2013-07-31T10:56:21.000Z 父节点：BucketInfo.Bucket
+|CreationDate|时间|Bucket 创建时间。时间格式 2013-07-31T10:56:21.000Z 父节点：BucketInfo.Bucket
 
 |
-|ExtranetEndpoint|字符串|Bucket访问的外网域名 父节点：BucketInfo.Bucket
+|ExtranetEndpoint|字符串|Bucket 访问的外网域名 父节点：BucketInfo.Bucket
 
 |
-|IntranetEndpoint|字符串|同区域ECS访问Bucket的内网域名父节点：BucketInfo.Bucket
+|IntranetEndpoint|字符串|同区域 ECS 访问 Bucket 的内网域名父节点：BucketInfo.Bucket
 
 |
-|Location|字符串|Bucket所在数据中心的区域 父节点：BucketInfo.Bucket
+|Location|字符串|Bucket 所在数据中心的区域 父节点：BucketInfo.Bucket
 
 |
-|Name|字符串|Bucket名字父节点：BucketInfo.Bucket
+|Name|字符串|Bucket 名称父节点：BucketInfo.Bucket
 
 |
-|Owner|容器|用于存放Bucket拥有者信息的容器。父节点：BucketInfo.Bucket
+|Owner|容器|用于存放 Bucket 拥有者信息的容器。父节点：BucketInfo.Bucket
 
 |
-|ID|字符串|Bucket拥有者的用户ID。父节点：BucketInfo.Bucket.Owner
+|ID|字符串|Bucket 拥有者的用户 ID。父节点：BucketInfo.Bucket.Owner
 
 |
 |DisplayName|字符串|Bucket拥有者的名称 \(目前和ID一致\)。父节点：BucketInfo.Bucket.Owner
 
 |
-|AccessControlList|容器|存储ACL信息的容器父节点：BucketInfo.Bucket
+|AccessControlList|容器|存储 ACL 信息的容器父节点：BucketInfo.Bucket
 
 |
 |Grant|枚举字符串|Bucket的ACL权限。有效值：private、public-read、public-read-write
@@ -68,16 +68,20 @@ Authorization: SignatureValue
 父节点：BucketInfo.Bucket
 
 |
+|Comment|字符串|未知|
+|StorageClass|字符串|Bucket 存储类型有效值：Standard、IA、Archive
+
+|
 
 ## 细节分析 {#section_cgv_sfw_bz .section}
 
--   如果Bucket不存在，返回404错误。错误码：NoSuchBucket。
--   只有Bucket的拥有者才能查看Bucket的信息，否则返回403 Forbidden错误，错误码：AccessDenied。
--   请求可以从任何一个OSS的Endpoint发起。
+-   如果 Bucket 不存在，返回404错误。错误码：NoSuchBucket。
+-   只有 Bucket 的拥有者才能查看 Bucket 的信息，否则返回403 Forbidden 错误，错误码：AccessDenied。
+-   请求可以从任何一个 OSS 的 Endpoint 发起。
 
 ## 示例 {#section_i2n_tfw_bz .section}
 
-**请求示例：**
+请求示例：
 
 ```
 Get /?bucketInfo HTTP/1.1
@@ -87,7 +91,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc: BuG4rRK+zNhH1AcF51NNHD39zXw=
 
 ```
 
-**成功获取Bucket信息的返回示例：**
+成功获取 Bucket 信息的返回示例：
 
 ```
 HTTP/1.1 200
@@ -116,7 +120,7 @@ Server: AliyunOSS
 </BucketInfo>
 ```
 
-**获取不存在的Bucket信息的返回示例：**
+获取不存在的 Bucket 信息的返回示例：
 
 ```
 HTTP/1.1 404 
@@ -136,7 +140,7 @@ Server: AliyunOSS
 </Error>
 ```
 
-**获取没有权限访问的Bucket信息的返回示例：**
+获取没有权限访问的 Bucket 信息的返回示例：
 
 ```
 HTTP/1.1 403

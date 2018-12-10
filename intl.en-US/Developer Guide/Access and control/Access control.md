@@ -137,7 +137,7 @@ A mobile app is used as an example. Suppose that you are a mobile app developer.
 
 -   Mode 1: Using AppServer for data transit and data isolation
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1544172082982_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1544427214982_en-US.png)
 
     As shown in the preceding figure, you develop an AppServer. Only the AppServer can access cloud data. The ClientApp can read or write data only through the AppServer. The AppServer guarantees the data isolation of different users.
 
@@ -147,7 +147,7 @@ A mobile app is used as an example. Suppose that you are a mobile app developer.
 
     The STS solution is shown as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1544172082983_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1544427214983_en-US.png)
 
     **Procedure**
 
@@ -285,6 +285,7 @@ Following is the example of the RAM or STS authorization policy configuration:
             |AppendObject|oss:PutObject|
             |GetObjectAcl|oss:GetObjectAcl|
             |PutObjectAcl|oss:PutObjectAcl|
+            |RestoreObject|oss:RestoreObject|
 
 -   Resource
 

@@ -53,7 +53,7 @@
         </IfModule>
         ```
 
-    其他Web服务器或其：他Apache版本，请根据实际情况进行配置。
+    其他Web服务器或其他Apache版本，请根据实际情况进行配置。
 
 -   修改配置应用服务器
 
@@ -73,7 +73,7 @@
     ```
 
     -   $id ： 设置您的AccessKeyId。
-    -   $key ： 设置您的AessKeySecret。
+    -   $key ： 设置您的AccessKeySecret。
     -   $host： 格式为`BucketName.Endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](../../../../cn.zh-CN/开发指南/基本概念介绍.md#section_t3j_nmt_tdb)。
     -   $callbackUrl：设置上传回调URL，即回调服务器地址，用于处理应用服务器与OSS之前的通信。OSS会在文件上传完成后，把文件上传信息通过此回调URL发送给应用服务器。本例中修改为：
 
@@ -111,7 +111,7 @@
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154406661212308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154443254212308_zh-CN.png)
 
 **说明：** **来源**设置为 \* 是为了使用方便，不确保安全性。建议您填写自己需要的域名。
 
@@ -119,11 +119,11 @@
 
 在PC侧的Web浏览器中输入`http://11.22.33.44:8080/aliyun-oss-appserver-php/index.html`。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154406661212306_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154443254312306_zh-CN.png)
 
 单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154406661212309_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154443254312309_zh-CN.png)
 
 ## 应用服务器核心代码解析 {#section_apl_gsj_gfb .section}
 

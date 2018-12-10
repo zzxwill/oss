@@ -20,8 +20,8 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 -   `\n` 表示换行符。
 -   `Content-MD5` 表示请求内容数据的MD5值，对消息内容（不包括头部）计算MD5值获得128比特位数字，对该数字进行base64编码而得到。该请求头可用于消息合法性的检查（消息内容是否与发送时一致），如”eB5eJF1ptWaXm4bijSPyxw==”，也可以为空。详情请参见[RFC2616 Content-MD5](https://www.ietf.org/rfc/rfc2616.txt)。
 -   `Content-Type` 表示请求内容的类型，如”application/octet-stream”，也可以为空。
--   `Date` 表示签名过期时间，且必须为GMT格式，如”Sun, 22 Nov 2015 08:16:38 GMT”。
--   `CanonicalizedOSSHeaders` 表示以 x-oss- 为前缀的HTTP eader的字典序排列。
+-   `Date` 表示此次操作的时间，且必须为GMT格式，如”Sun, 22 Nov 2015 08:16:38 GMT”。
+-   `CanonicalizedOSSHeaders` 表示以 x-oss- 为前缀的HTTP Header的字典序排列。
 -   `CanonicalizedResource` 表示用户想要访问的OSS资源。
 
 其中，Date和CanonicalizedResource不能为空；如果请求中的Date时间和OSS服务器的时间差15分钟以上，OSS服务器将拒绝该服务，并返回HTTP 403错误。
@@ -55,9 +55,9 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 -   OSS目前支持的子资源\(sub-resource\)包括：acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，tagging，objectMeta，uploadId，partNumber，security-token，position，img，style，styleName，replication，replicationProgress，replicationLocation，cname，bucketInfo，comp，qos，live，status，vod，startTime，endTime，symlink，x-oss-process，response-content-type，response-content-language，response-expires，response-cache-control，response-content-disposition，response-content-encoding等
 -   子资源\(sub-resource\)有三种类型：
-    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](cn.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。
-    -   指定返回Header字段，如 `response-***`，详见[GetObject](cn.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
-    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../cn.zh-CN/图片处理指南/图片处理访问规则.md#)。
+    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)。
+    -   指定返回Header字段，如 `response-***`，详见[GetObject](intl.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
+    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../intl.zh-CN/图片处理指南/图片处理访问规则.md#)。
 
 ## 计算签名头规则 {#section_qcb_p1f_xdb .section}
 
@@ -173,7 +173,7 @@ X-OSS-Magic: abracadabra
     |iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
     |Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
 
--   当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请参见[自签名计算失败](../../../../cn.zh-CN/常见错误排除/排障工具/自签名计算失败.md#)排除错误。
+-   当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请参见[自签名计算失败](../../../../intl.zh-CN/常见错误排除/排障工具/自签名计算失败.md#)排除错误。
 
 ## 常见问题 {#section_vkz_sbf_xdb .section}
 

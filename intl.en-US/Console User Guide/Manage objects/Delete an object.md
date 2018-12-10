@@ -1,20 +1,14 @@
 # Delete an object {#concept_hpp_1mm_vdb .concept}
 
-If you do not need to store uploaded files any longer, delete them to avoid further fees. You can delete a single file or multiple files on the OSS console.
+You can delete a single object or multiple objects \(up to 1,000 at a time\) in the OSS console. If you want to select and delete objects in a more flexible manner or delete more than 1,000 objects at a time, see [Delete an object](../../../../reseller.en-US/Developer Guide/Manage files/Delete an object.md#) in the OSS Developer Guide.
 
-**Note:** 
-
--   The deleted file cannot be recovered. Perform this operation with caution.
--   You can delete up to **1000** files at a time on the console.
--   If you want to delete only the selected files or perform batch deletion in a larger volume, follow the procedures in API or SDK documents. For more information, see the relevant sections of the [Delete an object](../../../../intl.en-US/Developer Guide/Manage files/Delete an object.md#).
--   API: See [DeleteObject](../../../../intl.en-US/API Reference/Object operations/DeleteObject.md#) and [DeleteMultipleObjects](../../../../intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#).
--   SDK: See Delete multiple objects in [Java SDK - Manage objects](../../../../intl.en-US/SDK Reference/Java/Manage objects/Delete objects.md#).
+**Warning:** A deleted object cannot be recovered. Exercise caution when performing this action.
 
 ## Procedure {#section_y3c_xmm_vdb .section}
 
-1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
-2.  Click to open the target bucket.
-3.  Click **Files**.
-4.  Select one or multiple files, and then click **Delete**.
-5.  Click **OK**.
+1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
+2.  In the left-side bucket list, click the name of the target bucket.
+3.  On the overview page of the bucket, click the **Files** tab.
+4.  Select one or more objects, and then select **Batch operation** \> **Delete**. You can also select **More** \> **Delete** on the right of the object you want to delete.
+5.  In the displayed dialog box, click **OK**.
 

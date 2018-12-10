@@ -27,10 +27,10 @@ Compared with a local file system, the functions and performance provided by oss
 
     |Released Linux| Download|
     |:-------------|:--------|
-    |Ubuntu 16.04 \(x64\)|[ossfs\_1.80.5\_ubuntu16.04\_amd64.deb](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1527232098199/ossfs_1.80.5_ubuntu16.04_amd64.deb?spm=a2c4g.11186623.2.4.xMFgkl&file=ossfs_1.80.5_ubuntu16.04_amd64.deb)|
-    |Ubuntu 14.04 \(x64\)|[ossfs\_1.80.5\_ubuntu14.04\_amd64.deb](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1527232140988/ossfs_1.80.5_ubuntu14.04_amd64.deb?spm=a2c4g.11186623.2.5.xMFgkl&file=ossfs_1.80.5_ubuntu14.04_amd64.deb)|
-    |CentOS 7.0 \(x64\)|[ossfs\_1.80.5\_centos7.0\_x86\_64.rpm](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1527232195135/ossfs_1.80.5_centos7.0_x86_64.rpm?spm=a2c4g.11186623.2.6.xMFgkl&file=ossfs_1.80.5_centos7.0_x86_64.rpm)|
-    |CentOS 6.5 \(x64\)|[ossfs\_1.80.5\_centos6.5\_x86\_64.rpm](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/32196/cn_zh/1527232237335/ossfs_1.80.5_centos6.5_x86_64.rpm?spm=a2c4g.11186623.2.7.xMFgkl&file=ossfs_1.80.5_centos6.5_x86_64.rpm)|
+    |Ubuntu 16.04 \(x64\)|[ossfs\_1.80.5\_ubuntu16.04\_amd64.deb](http://gosspublic.alicdn.com/ossfs/ossfs_1.80.5_ubuntu16.04_amd64.deb)|
+    |Ubuntu 14.04 \(x64\)|[ossfs\_1.80.5\_ubuntu14.04\_amd64.deb](http://gosspublic.alicdn.com/ossfs/ossfs_1.80.5_ubuntu14.04_amd64.deb)|
+    |CentOS 7.0 \(x64\)|[ossfs\_1.80.5\_centos7.0\_x86\_64.rpm](http://gosspublic.alicdn.com/ossfs/ossfs_1.80.5_centos7.0_x86_64.rpm)|
+    |CentOS 6.5 \(x64\)|[ossfs\_1.80.5\_centos6.5\_x86\_64.rpm](http://gosspublic.alicdn.com/ossfs/ossfs_1.80.5_centos6.5_x86_64.rpm)|
 
     Due to the lower version of the Linux distribution, the kernel version is relatively lower. The ossfs is prone to disconnection or other problems during the running process. Therefore, users are advised to upgrade the operating system to CentOS 7.0 or Ubuntu 14.04 or later.
 
@@ -81,7 +81,7 @@ Compared with a local file system, the functions and performance provided by oss
     ossfs my-bucket /tmp/ossfs -ourl=http://oss-cn-hangzhou.aliyuncs.com
     ```
 
-    **Note:** If you use an Alibaba Cloud ECS instance to provide ossfs services, you can use the intranet endpoints. In this example, you can replace the OSS endpoint with `oss-cn-hangzhou-internal.aliyuncs.com` to save bandwidth costs. For more information about intranet endpoints, see [Regions and endpoints](../../../../reseller.en-US/Developer Guide/Regions and endpoints.md#)
+    **Note:** If you use an Alibaba Cloud ECS instance to provide ossfs services, you can use the intranet endpoints. In this example, you can replace the OSS endpoint with `oss-cn-hangzhou-internal.aliyuncs.com` to save bandwidth costs. For more information about intranet endpoints, see [Regions and endpoints](../../../../reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#)
 
     Unmount the bucket:
 

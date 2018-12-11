@@ -48,7 +48,7 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
 上述步骤会启动一个FTP server，默认监听在127.0.0.1的2048端口。同时，为了方便您对FTP server的状态进行管控，还会启动一个web服务器，监听在127.0.0.1的8192端口。如果您的系统有图形界面，还会自动打开控制页面。在控制页面中允许修改监听地址、监听端口、日志类型、指定某个地域的存储空间（格式为bucket.enpoint）、页面语言。修改后需保存配置并在重启后生效。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/154452153310880_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/154452252010880_zh-CN.png)
 
 **说明：** 同一时间内只能存在一个服务器和一个连接。如果在一个服务器已连接的情况下新建连接，则之前连接会直接断开。
 
@@ -64,7 +64,7 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
     **说明：** access\_key\_id和access\_key\_secret的获取，请参见[创建RAM用户](../../../../cn.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AK部分。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/154452153310881_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/154452252010881_zh-CN.png)
 
 
 ## 高级使用 {#section_xdq_krt_vdb .section}
@@ -108,9 +108,9 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
 ## 可能遇到的问题 {#section_g3r_zrt_vdb .section}
 
--   如果连接FTP server时，遇到无法连接到服务器的错误时。
+-   如果连接FTP server时，遇到无法连接到服务器的错误。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15445215332521_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15445225202521_zh-CN.png)
 
     有两种可能：
 

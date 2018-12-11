@@ -40,10 +40,15 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 首先解压之前下载的文件，然后根据环境情况选择不同的运行方式。
 
 -   Windows：双击运行start.vbs即可
+
+    如双击无反应，请升级您的IE浏览器或设置其他浏览器为默认浏览器。
+
 -   Linux： 打开终端，运行`$ bash start.sh`
 -   Mac：双击start.command，或者在终端运行`$ bash start.command`
 
 上述步骤会启动一个FTP server，默认监听在127.0.0.1的2048端口。同时，为了方便您对FTP server的状态进行管控，还会启动一个web服务器，监听在127.0.0.1的8192端口。如果您的系统有图形界面，还会自动打开控制页面。在控制页面中允许修改监听地址、监听端口、日志类型、指定某个地域的存储空间（格式为bucket.enpoint）、页面语言。修改后需保存配置并在重启后生效。
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/154452153310880_zh-CN.png)
 
 **说明：** 同一时间内只能存在一个服务器和一个连接。如果在一个服务器已连接的情况下新建连接，则之前连接会直接断开。
 
@@ -57,7 +62,9 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 -   密码：access\_key\_secret
 -   账号：使用默认值
 
-    **说明：** access\_key\_id和access\_key\_secret的获取，请参见[创建RAM用户](../../../../intl.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AK部分。
+    **说明：** access\_key\_id和access\_key\_secret的获取，请参见[创建RAM用户](../../../../cn.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AK部分。
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/154452153310881_zh-CN.png)
 
 
 ## 高级使用 {#section_xdq_krt_vdb .section}
@@ -101,7 +108,9 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
 ## 可能遇到的问题 {#section_g3r_zrt_vdb .section}
 
--   如果连接FTP server时，遇到以下错误：
+-   如果连接FTP server时，遇到无法连接到服务器的错误时。
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15445215332521_zh-CN.png)
 
     有两种可能：
 
@@ -111,11 +120,11 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
     -   所用的access\_key信息为ram 子账户的access\_key，而子账户不具有List buckets权限。
 
-        解决：当使用子账户访问时，请在控制页面中指定bucket endpoints， 即告诉FTP server某个bucket应该用哪个endpoint来访问。同时，子账户也需要一些必须的权限。关于使用ram访问oss时的访问控制，请参考文档[访问控制](../../../../intl.zh-CN/开发指南/访问与控制/访问控制.md#)。具体如下。
+        解决：当使用子账户访问时，请在控制页面中指定bucket endpoints， 即告诉FTP server某个bucket应该用哪个endpoint来访问。同时，子账户也需要一些必须的权限。关于使用ram访问oss时的访问控制，请参考文档[访问控制](../../../../cn.zh-CN/开发指南/访问与控制/访问控制.md#)。具体如下。
 
         -   只读访问
 
-            OSS FTP工具需要的权限为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的ram子账户，请参考图文教程[如何结合ram实现文件共享](intl.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
+            OSS FTP工具需要的权限为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的ram子账户，请参考图文教程[如何结合ram实现文件共享](cn.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
 
         -   上传文件
 

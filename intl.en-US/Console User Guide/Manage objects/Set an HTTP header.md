@@ -1,6 +1,6 @@
 # Set an HTTP header {#concept_pk1_sxl_vdb .concept}
 
-You can set an HTTP header for one or multiple files in the OSS console. You can set an HTTP header for up to 1,000 files using the batch process in the OSS console.
+HTTP header is used to define the policy of HTTP requests, such as cache policy or download policy. You can set an HTTP header for up to 1,000 files using the batch process in the OSS console.
 
 **Note:** If you want to set an HTTP header for more than 1,000 files, see the Java SDK document [Manage Object Meta](https://www.alibabacloud.com/help/doc-detail/84840.htm).
 

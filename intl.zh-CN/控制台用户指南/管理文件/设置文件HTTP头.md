@@ -1,8 +1,8 @@
 # 设置文件HTTP头 {#concept_pk1_sxl_vdb .concept}
 
-您可以通过OSS控制台单个或批量设置HTTP头。使用控制台批量设置HTTP头的限制数量为1000个文件。
+您可以通过设置文件HTTP头来自定义HTTP请求的策略，例如缓存策略、文件强制下载策略等。
 
-**说明：** 如需为更多文件设置HTTP头，请参见API文档[PutObject](../../../../intl.zh-CN/API 参考/关于Object操作/PutObject.md#)和Java SDK文档[管理文件元信息](https://www.alibabacloud.com/help/doc-detail/84840.htm)。
+**说明：** 使用控制台批量设置HTTP头的限制数量为1000个文件。如需为更多文件设置HTTP头，请参见API文档[PutObject](../../../../intl.zh-CN/API 参考/关于Object操作/PutObject.md#)和Java SDK文档[管理文件元信息](https://www.alibabacloud.com/help/doc-detail/84840.htm)。
 
 ## 操作步骤 {#section_i1g_cyl_vdb .section}
 

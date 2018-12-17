@@ -231,7 +231,7 @@ If the Post Object request contains other form fields, these extra form fields c
 |Condition match modes|Description|
 |:--------------------|:----------|
 |Exact match|The value of a form field must be exactly the same as the value declared in the conditions. For example, if the value of the key form field must be a, the conditions must be: \{“key”: “a”\}, or: \[“eq”, “$key”, “a”\]|
-|Starts With|The value of a form field must start with the specified value. For example, if the value of key must start with /user/user1, the conditions must be: \[“starts-with”, “$key”, “/user/user1”\]|
+|Starts With|The value of a form field must start with the specified value. For example, if the value of key must start with user/user1, the conditions must be: \[“starts-with”, “$key”, “user/user1”\]|
 |Specified file size|Specify the maximum and minimum sizes of the files that can be uploaded. For example, if the acceptable file size is 1–10 bytes, the conditions must be: \["content-length-range", 1, 10\]|
 
 **Escape characters**

@@ -234,7 +234,7 @@ Conditions是一个列表，可以用于指定Post请求的表单域的合法值
 |Conditions匹配方式|描述|
 |:-------------|:-|
 |精确匹配|表单域的值必须精确匹配conditions中声明的值。如指定key表单域的值必须为a： \{“key”: “a”\} 同样可以写为： \[“eq”, “$key”, “a”\]|
-|Starts With|表单域的值必须以指定值开始。例如指定key的值必须以/user/user1开始： \[“starts-with”, “$key”, “/user/user1”\]|
+|Starts With|表单域的值必须以指定值开始。例如指定key的值必须以user/user1开始： \[“starts-with”, “$key”, “user/user1”\]|
 |指定文件大小|指定所允许上传的文件最大大小和最小大小，例如允许的文件大小为1到10字节： \[“content-length-range”, 1, 10\]|
 
 **转义字符**

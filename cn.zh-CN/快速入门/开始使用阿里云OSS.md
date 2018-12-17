@@ -15,7 +15,7 @@
 
 使用阿里云管理控制台来完成OSS基本操作的流程如下：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4330/1545012601919_zh-CN.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4330/1545015823919_zh-CN.jpg)
 
 1.  [开通OSS服务](intl.zh-CN/快速入门/开通OSS服务.md#)
 2.  [创建存储空间](intl.zh-CN/快速入门/创建存储空间.md#)

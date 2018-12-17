@@ -10,7 +10,7 @@
 
 ## 步骤 1：配置应用服务器 {#section_rlc_nvj_gfb .section}
 
-下载应用服务器源码\(Python版本\)：[aliyun-oss-appserver-python-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/86983/APP_zh/1537974140965/aliyun-oss-appserver-python-master.zip) 。
+下载应用服务器源码\(Python版本\)：[aliyun-oss-appserver-python-master.zip](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/97721/cn_zh/1545016122500/aliyun-oss-appserver-python-master.zip) 。
 
 将源码下载到应用服务器的硬盘，本示例中以`Ubuntu 16.04`为例，放置到`/home/aliyun/aliyun-oss-appserver-python`目录下。进入该目录，打开源码文件`appserver.py`，修改如下的代码片段：
 
@@ -66,7 +66,7 @@ serverUrl = 'http://11.22.33.44:1234'
 
 具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154399995612308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154505864012308_zh-CN.png)
 
 **说明：** **来源**设置为 \* 是为了使用方便，不确保安全性。建议您填写自己需要的域名。
 
@@ -84,11 +84,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154399995612306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154505864012306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件后，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154399995612309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154505864112309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_bvh_gbk_gfb .section}

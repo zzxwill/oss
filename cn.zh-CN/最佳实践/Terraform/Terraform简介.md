@@ -24,7 +24,7 @@ OSS 的 Terraform Module 目前主要提供 Bucket 管理、文件对象管理�
 
 ## 参考文档 {#section_cdn_jky_zfb .section}
 
--   安装及使用 Terraform 请参见：[使用Terraform管理OSS](cn.zh-CN/最佳实践/Terraform/使用Terraform管理OSS.md#)
+-   安装及使用 Terraform 请参见：[使用Terraform管理OSS](intl.zh-CN/最佳实践/Terraform/使用Terraform管理OSS.md#)
 -   OSS Terraform Module 下载地址请参见：[terraform-alicloud-modules](https://github.com/terraform-alicloud-modules/terraform-alicloud-oss-object)
 
 -   更多 OSS Terraform Module 介绍请参见：[alicloud\_oss\_bucket](https://www.terraform.io/docs/providers/alicloud/r/oss_bucket.html)

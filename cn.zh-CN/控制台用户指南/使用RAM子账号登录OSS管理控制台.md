@@ -1,33 +1,50 @@
 # 使用RAM子账号登录OSS管理控制台 {#concept_r3h_c1y_5db .concept}
 
-基于阿里云OSS管理控制台，您可以使用直观的界面进行相应的操作。除了使用阿里云账号，您还可以使用子账号（RAM用户）登录OSS管理控制台。
+RAM 子账号是您通过 RAM 控制台创建的 RAM 用户账号，使用 RAM 子账号同样可以登录 OSS 管理控制台。
 
-使用RAM子账号登录OSS管理控制台的步骤如下：
+## RAM 子账号使用场景 {#section_zt3_qjw_dgb .section}
 
-1.  创建RAM用户。
-2.  给子账号授权。
-3.  使用子账号登录控制台。
+您可以在以下场景中使用 RAM 子账号登录 OSS 控制台：
 
-## 创建RAM用户 {#section_tf2_lcy_5db .section}
+-   主账号的 Bucket 内存放了企业内部共享文件，您可以创建 RAM 子账号给员工，并授予相应的访问权限，员工可以使用 RAM 子账号登录 OSS 控制台查看这些共享文件。
+-   公司有部分合作伙伴需要定期查看一些资料，您可以将资料放在指定的 Bucket 内，并创建 RAM 子账号，授予指定 Bucket 的访问权限，合作伙伴可以定期使用 RAM 子账号登录 OSS 控制台查看共享文件。
+-   开发环境需要使用阿里云账号，不方便将主账号拿来测试，可以创建 RAM 子账号用于测试。
+-   其他使用场景。
 
-使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，选择**用户管理** \> **新建用户**来创建RAM用户。具体操作方法请参见[RAM用户操作手册](../../../../intl.zh-CN/用户指南/身份管理/用户.md#)中的“创建RAM用户”章节。
+    使用 RAM 子账号登录 OSS 管理控制台的步骤如下：
 
-## 给子账号授权 {#section_gxr_gly_5db .section}
+    1.  [创建 RAM 子账号](#)。
+    2.  [给 RAM 子账号授权](#)。
+    3.  [使用 RAM 子账号登录 OSS 控制台](#)。
 
-使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，选择对应的RAM用户，单击**授权**，进行授权操作。具体操作方法请参见[RAM授权帮助](../../../../intl.zh-CN/用户指南/授权管理/权限与授权策略.md#)文档。
+## 创建 RAM 子账号 {#section_tf2_lcy_5db .section}
 
-为确保子账号登录控制台后能正常使用OSS控制台的功能，除授予OSS相应的访问权限外，还需要MNS、CloudMonitor、CDN的访问权限，如下图所示：
+1.  登录[RAM 控制台](https://ram.console.aliyun.com)。
+2.  单击**人员管理** \> **用户** \> **新建用户**创建 RAM 用户。
+3.  填写新建用户的信息，并根据需要配置**访问方式**，单击**添加用户**可一次添加多个用户。详细配置方法请参见[RAM 用户操作手册](../../../../cn.zh-CN/用户指南/身份管理/用户管理/用户.md#) 中的“创建RAM用户”章节。
+4.  用户信息填写完毕后单击**确定**，之后单击**返回**。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15414878911495_zh-CN.PNG)
+## 给 RAM 子账号授权 {#section_gxr_gly_5db .section}
 
-## 使用子账号登录控制台 {#section_c2h_bmy_5db .section}
+1.  打开 RAM 控制台[用户列表](https://ram.console.aliyun.com/users)。
+2.  选择您需要授权的 RAM 用户，单击对应用户的**添加权限**。
+3.  根据您的需求添加对应的权限。系统只提供部分策略，您可根据需要添加自定义权限。更多信息请参见[权限策略管理](../../../../cn.zh-CN/用户指南/权限管理/权限策略管理.md#)。
 
-使用子账号登录控制台的操作步骤如下：
+    **说明：** 
 
-1.  使用阿里云账号登录到[RAM控制台](https://ram.console.aliyun.com)，单击**用户管理**。
-2.  选择对应的RAM用户，单击**管理**，配置相关信息。
-3.  打开**启用控制台登录**，设置RAM用户登录控制台的密码。
-4.  在概览页面查看您的**RAM用户登录链接**，打开该链接，使用RAM用户名和密码进行登录。
+    为确保 RAM 子账号登录控制台后能正常使用 OSS 控制台的功能，除授予 OSS 相应的访问权限外，还需要 MNS、CloudMonitor、CDN 的访问权限，如下图所示：![RAM 子账号](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15451142411495_zh-CN.PNG)
 
-详情请参见[RAM用户操作手册](../../../../intl.zh-CN/用户指南/身份管理/用户.md#)。
+
+## 使用 RAM 子账号登录 OSS 管理控制台 {#section_c2h_bmy_5db .section}
+
+使用 RAM 子账号登录 OSS 管理控制台的步骤如下：
+
+1.  登录[RAM 控制台](https://ram.console.aliyun.com)。
+2.  在概览页面查看您的**用户登录地址**。打开该链接，使用 RAM 子账号的用户名和密码进行登录。
+
+    ![RAM 子账号](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/154511424211370_zh-CN.png)
+
+3.  打开 [OSS 管理控制台进行](https://oss.console.aliyun.com)进行管理。
+
+更多信息请参见[RAM 用户操作手册](../../../../cn.zh-CN/用户指南/身份管理/用户管理/用户.md#)。
 

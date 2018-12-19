@@ -38,17 +38,17 @@ Post Object常见错误见下表：
 
     -   Header一定要有`Content-Type: multipart/form-data; boundary={boundary}`。
     -   Header和body之间由`\r\n--{boundary}` 分割。
-    -   表单域格式
+    -   表单域格式 ：
 
         ```
         Content-Disposition: form-data;
                 name="{key}"\r\n\r\n{value}\r\n--{boundary}
         ```
 
-        。
-
-    -   表单域`file`必须为最后一个表单域。
     -   表单域名称大小写敏感，如policy、key、file、OSSAccessKeyId、OSSAccessKeyId、Content-Disposition。
+
+        **说明：** 表单域`file`必须为最后一个表单域。
+
     -   Bucket为`public-read-write`时，可以不指定表单域OSSAccessKeyId、policy、Signature；一旦指定OSSAccessKeyId、policy、 Signature中的任意一个，无论bucket是否为public-read-write，则另两个必须指定。
     下面是Post Object请求的示例：
 

@@ -37,8 +37,10 @@ The following table shows PostObject common errors:
     -   The header must include `Content-Type: multipart/form-data; boundary={boundary}`.
     -   The header and the body are separated by `\r\n--{boundary}`.
     -   The form field format is `Content-Disposition: form-data; name="{key}"\r\n\r\n{value}\r\n--{boundary}`.
-    -   The form field `file` must be the last form field.
     -   Form field names are case-sensitive, such as policy, key, file, OSSAccessKeyId, OSSAccessKeyId, and Content-Disposition.
+
+        **Note:** The form field `file` must be the last form field.
+
     -   When the value of `bucket` is `public-read-write`, you do not have to specify the form fields OSSAccessKeyId, policy, and Signature. If any of OSSAccessKeyId, policy, and Signature is specified, the other two form fields must be specified no matter whether `bucket` is `public-read-write` or not.
     The following describes an example PostObject request:
 

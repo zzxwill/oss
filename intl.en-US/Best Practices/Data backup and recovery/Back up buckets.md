@@ -9,17 +9,17 @@ The following methods can be used to back up OSS data on the cloud:
 
 ## Back up data using cross-region replication {#section_m2p_y4f_vdb .section}
 
-Applicable scenarios
+-   Applicable scenarios
 
-See [Cross-Region replication development guide](../../../../reseller.en-US/Developer Guide/Manage files/Cross-region replication.md#).
+    See [Cross-Region replication development guide](../../../../../reseller.en-US/Developer Guide/Manage files/Cross-region replication.md#).
 
-Operation on the console
+-   Operation on the console
 
-See [Cross-Region replication operation guide](../../../../reseller.en-US/Console User Guide/Manage buckets/Set cross-region replication.md#).
+    See [Cross-Region replication operation guide](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set cross-region replication.md#).
 
-FAQs
+-   FAQ
 
-NOTE
+**Note:** 
 
 -   The source bucket and target bucket belong to the same user but different regions.
 -   The source bucket and target bucket do not use archive storage.
@@ -38,15 +38,15 @@ The OssImport tool can migrate data stored on local hosts or other cloud storage
 
 Applicable scenarios
 
-See [Data migration](../../../../reseller.en-US/Utilities/ossimport/Data migration.md#).
+See [Data migration](../../../../../reseller.en-US/Tools/ossimport/Data migration.md#).
 
 Installation and deployment
 
-See [Architecture and configuration](../../../../reseller.en-US/Utilities/ossimport/Architecture and configuration.md#), [Standalone deployment](../../../../reseller.en-US/Utilities/ossimport/Standalone deployment.md#), and [Distributed deployment](../../../../reseller.en-US/Utilities/ossimport/Distributed deployment.md#).
+See [Architecture and configuration](../../../../../reseller.en-US/Tools/ossimport/Architecture and configuration.md#), [Standalone deployment](../../../../../reseller.en-US/Tools/ossimport/Standalone deployment.md#), and [Distributed deployment](../../../../../reseller.en-US/Tools/ossimport/Distributed deployment.md#).
 
 FAQ
 
-See [FAQs](../../../../reseller.en-US/Utilities/ossimport/FAQs.md#).
+See [FAQ](../../../../../reseller.en-US/Tools/ossimport/FAQ.md#).
 
 NOTE
 

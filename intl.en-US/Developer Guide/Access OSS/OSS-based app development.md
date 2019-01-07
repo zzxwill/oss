@@ -11,9 +11,9 @@ Typical OSS-based app development involves the following four components:
 
 ## Best practices {#section_ahj_bv1_5db .section}
 
--   [Set up direct data transfer for mobile apps](../../../../reseller.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
--   [Set up data callback for mobile apps](../../../../reseller.en-US/Best Practices/Application server/Set up data callback for mobile apps.md#)
--   [Permission control](../../../../reseller.en-US/Best Practices/Application server/Permission control.md#)
+-   [Set up direct data transfer for mobile apps](../../../../../reseller.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
+-   [Set up data callback for mobile apps](../../../../../reseller.en-US/Best Practices/Application server/Set up data callback for mobile apps.md#)
+-   [Permission control](../../../../../reseller.en-US/Best Practices/Application server/Permission control.md#)
 
 ## Service development process {#section_ims_dv1_5db .section}
 
@@ -21,7 +21,7 @@ Typical OSS-based app development involves the following four components:
 
     The following figure shows the process of data upload with temporary credential authorization:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15382784781027_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15468297191027_en-US.png)
 
     The description of the process is as follows:
 
@@ -40,7 +40,7 @@ Typical OSS-based app development involves the following four components:
 
     The following figure shows the process of data upload with signed URL or form authorization:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15382784781030_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4352/15468297191030_en-US.png)
 
     The description of the process is as follows:
 
@@ -71,12 +71,12 @@ Typical OSS-based app development involves the following four components:
     2.  The application server returns the signed URL to the client.
     3.  The client obtains authorization \(signed URL\) and calls the mobile client SDK to download data from OSS.
     4.  The client successfully downloads data from OSS.
-    **Note:** The client cannot store the developer's AccessKey. You can get only the URL signed by the application server or the temporary credentials issued via STS, that is, the AccessKey of the STS and token \).
+    **Note:** The client cannot store the developer's AccessKey. You can get only the URL signed by the application server or the temporary credentials issued with STS, that is, the AccessKey of the STS and token \).
 
 
 ## Best practices {#section_sjx_ww1_5db .section}
 
--   [What is RAM and STS](../../../../reseller.en-US/Best Practices/Access control/Overview.md#)
+-   [What is RAM and STS](../../../../../reseller.en-US/Developer Guide/Hide/Access control/Overview.md#)
 
 ## Reference {#section_ip1_zw1_5db .section}
 

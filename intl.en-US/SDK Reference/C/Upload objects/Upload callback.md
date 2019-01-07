@@ -1,7 +1,5 @@
 # Upload callback {#concept_90224_zh .concept}
 
-For the complete code of upload callback, see [GitHub](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/sample/oss_multipart_upload_sample.c).
-
 Run the following code for upload callback:
 
 ```
@@ -95,5 +93,5 @@ int main(int argc, char *argv[])
 }
 ```
 
-For more information about upload callback, see [Upload callback](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#). For detailed debugging methods and troubleshooting information, see [Upload callback error and exclusion](../../../../reseller.en-US/Errors and Troubleshooting/Upload callback.md#).
+For more information about upload callback, see [Upload callback](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#). For detailed debugging methods and troubleshooting information, see [Upload callback error and exclusion](../../../../../reseller.en-US/Errors and Troubleshooting/Upload callback.md#).
 

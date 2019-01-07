@@ -14,7 +14,7 @@ The supported SQL syntax is as follows:
 
 -   SQL statements: Select From Where
 -   Data Type: String, Int \(64bit\), float \(64bit\), Timestamp, and Boolean
--   Operation: Logical condition \(AND, OR, NOT\), Arithmetic Expression（+-\*/%\), Comparison operation \(\>,=, <, \>=, <=, ! =\), and String operation \(LIKE, || \)
+-   Operation: Logical condition \(AND, OR, NOT\), Arithmetic Expression \(+-\*/%\), Comparison operation \(\>,=, <, \>=, <=, ! =\), and String operation \(LIKE, || \)
 
 The sharding mechanism of SelectObject is similar to the shard download mechanism of GetObject, and includes two sharding methods: sharding by row and sharding by Split. Sharding by row is a common method, but it results in uneven load balancing of sparse data. Sharding by Split is more efficient than sharding by row as a Split contains multiple rows of data, and the data size of each Split is roughly equal, which enables better load balancing performance. Additionally, byte-based sharding \(provided by GetObject\) may corrupt data. Therefore, sharding by Split is recommended for CSV data.
 
@@ -309,7 +309,7 @@ expr:
 | cast (column index or column name or literal as INT|DOUBLE|DATETIME)
 ```
 
-op: includes \> < \>= <= ! = =, LIKE，+-\*/%, and connection string ||.
+op: includes \> < \>= <= ! = =, LIKE, +-\*/%, and connection string ||.
 
 cast: Cast can only be one type for the same column.
 
@@ -403,7 +403,7 @@ CreateSelectObjectMeta API is used to obtain information about the target CSV fi
 
 Response Body: empty
 
-Response Header：
+Response Header:
 
 -   x-oss-select-csv-lines: total number of rows
 -   x-oss-select-csv-columns: total number of columns

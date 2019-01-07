@@ -2,7 +2,7 @@
 
 ## Background {#section_x4w_tjy_5db .section}
 
-Direct signature by JS clients has a serious hidden security hazard in that the OSS AccessId/AcessKey are exposed on the front-end which may be accessible to others. This document explains how to get a signature from and upload a policy to the backend PHP code.
+Direct signature by JS clients has a serious hidden security hazard in that the OSS AccessId/AcessKey are exposed on the frontend which may be accessible to others. This document explains how to get a signature from and upload a policy to the backend PHP code.
 
 The logic for uploading a signature to the backend is as follows:
 
@@ -48,7 +48,7 @@ The OSS PostObject method is used for uploads. You can construct a PostObject re
         -   Set $key to AccessKeySecret.
         -   Set $host to bucket+endpoint.
 
-            **Note:** For information on the endpoint, see [Basic OSS concepts](../../../../intl.en-US/Developer Guide/Basic concepts.md#).
+            **Note:** For information on the endpoint, see [Basic OSS concepts](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
 
             ```
             $id= 'xxxxxx';
@@ -60,7 +60,7 @@ The OSS PostObject method is used for uploads. You can construct a PostObject re
 
         **Note:** Make sure that the CORS settings of the bucket attribute support the POST method. This is because, HTML directly uploads data to OSS and produces a cross-origin request in the process. Hence, you must allow cross-original requests in the bucket attributes.
 
-        For procedure, see [Set CORS](../../../../intl.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#). The settings are as follows:
+        For procedure, see [Set CORS](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#). The settings are as follows:
 
         **Note:** In earlier-version IE browsers, Plupload is executed in flash. You must set crossdomain.xml.
 
@@ -226,9 +226,9 @@ However in this sample, the backend program is not immediately aware of the numb
 
 ## Related Documents {#section_zym_pny_5db .section}
 
--   [Basic concepts](../../../../intl.en-US/Developer Guide/Basic concepts.md#)
--   [Set Cross-Origin Resource Sharing \(CORS\)](../../../../intl.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#)
--   [Overview of direct transfer on Web client](intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
--   [Directly add a signature on the server, transfer the file, and set upload callback](intl.en-US//Directly add a signature on the server, transfer the file, and set upload callback.md#)
--   [Set up direct data transfer for mobile apps](intl.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
+-   [Basic concepts](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#)
+-   [Set Cross-Origin Resource Sharing \(CORS\)](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#)
+-   [Overview of direct transfer on Web client](reseller.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
+-   [Directly add a signature on the server, transfer the file, and set upload callback](reseller.en-US//Directly add a signature on the server, transfer the file, and set upload callback.md#)
+-   [Set up direct data transfer for mobile apps](reseller.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)
 

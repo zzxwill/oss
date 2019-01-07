@@ -4,7 +4,7 @@ OSS .NET SDK has two types of exceptions: ClientException and OSSException. Both
 
 ## ClientException {#section_syf_ct2_lfb .section}
 
-The ClientException exception occurs when the client attempts to send requests and when the data is transmitted to OSS. For example, when a request is sent, ClientException may occur due to unavailable network connections. ClientException may occur during file uploads due to IO exceptions.
+The ClientException exception occurs when the client attempts to send requests and when the data is transmitted to OSS. For example, when a request is sent, ClientException may occur due to unavailable network connections. ClientException may occur during file uploads due to I/O exceptions.
 
 ## OSSException { .section}
 

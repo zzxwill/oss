@@ -21,14 +21,14 @@ String endpoint = "oss-cn-hangzhou.aliyuncs.com"; // 请填写您的 endpoint。
 String bucket = "bucket-name";                    // 请填写您的 bucketname 。
 String host = "http://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
 
-// callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
+// callbackUrl为上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
 String callbackUrl = "http://88.88.88.88:8888";
 String dir = "user-dir-prefix/"; // 用户上传文件时指定的前缀。
 ```
 
 -   accessId ： 设置您的AccessKeyId。
 -   accessKey ： 设置您的AessKeySecret。
--   host： 格式为`bucketname.endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](../../../../cn.zh-CN/开发指南/基本概念介绍.md#section_t3j_nmt_tdb)。
+-   host： 格式为`bucketname.endpoint`，例如`bucket-name.oss-cn-hangzhou.aliyuncs.com`。关于Endpoint的介绍，请参见[Endpoint访问域名](../../../../../cn.zh-CN/开发指南/基本概念介绍.md#section_t3j_nmt_tdb)。
 -   callbackUrl： 设置上传回调URL，即回调服务器地址，用于处理应用服务器与OSS之前的通信。OSS会在文件上传完成后，把文件上传信息通过此回调URL发送给应用服务器。本例中修改为：
 
     ```
@@ -50,7 +50,7 @@ String dir = "user-dir-prefix/"; // 用户上传文件时指定的前缀。
 serverUrl = 'http://88.88.88.88:8888'
 ```
 
-将变量`severUrl`改成应用服务器的地址，客户端可以通过它可以获取签名直传Policy等信息。如本例中可修改为：
+将变量`severUrl`改成应用服务器的地址，客户端可以通过它获取签名直传Policy等信息。如本例中可修改为：
 
 ```
 // serverUrl是 用户获取 '签名和Policy' 等信息的应用服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
@@ -63,9 +63,11 @@ serverUrl = 'http://11.22.33.44:1234'
 
 即客户端进行表单直接上传到OSS会产生跨域请求，需要为Bucket设置跨域规则（CORS），支持Post方法。
 
-具体操作步骤请参见[设置跨域访问](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
+具体操作步骤请参见[设置跨域访问](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913933612308_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154693668912308_zh-CN.png)
+
+**说明：** **来源**设置为 \* 是为了使用方便，不确保安全性。建议您填写自己需要的域名。
 
 ## 步骤 4：体验上传回调 {#section_hsr_jhz_2fb .section}
 
@@ -77,17 +79,19 @@ serverUrl = 'http://11.22.33.44:1234'
     `java -jar target/appservermaven-1.0.0.jar 1234`
     ```
 
-    也可以在PC端使用`Eclipse/Intellij IDEA`等IDE工具导出`jar包`，然后将`jar包`拷贝到应用服务器，再执行`jar包`启动应用服务器。
+    **说明：** 请将 1234 改成配置应用服务器时的Port。
+
+    您也可以在PC端使用`Eclipse/Intellij IDEA`等IDE工具导出`jar包`，然后将`jar包`拷贝到应用服务器，再执行`jar包`启动应用服务器。
 
 -   启动客户端
 
     在PC侧的客户端源码目录中，打开`index.html` 文件。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913933612306_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154693668912306_zh-CN.png)
 
     单击**选择文件**，选择指定类型的文件，单击**开始上传**。上传成功后，显示回调服务器返回的内容。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/153913933612309_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/154693668912309_zh-CN.png)
 
 
 ## 应用服务器核心代码解析 {#section_hjf_v5j_gfb .section}
@@ -203,6 +207,6 @@ serverUrl = 'http://11.22.33.44:1234'
     	}
     ```
 
-    详情请参见API文档[Callback–回调签名](../../../../cn.zh-CN/API 参考/关于Object操作/Callback.md#section_btz_phx_wdb)。
+    详情请参见API文档[Callback–回调签名](../../../../../cn.zh-CN/API 参考/关于Object操作/Callback.md#section_btz_phx_wdb)。
 
 

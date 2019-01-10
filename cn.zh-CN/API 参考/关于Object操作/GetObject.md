@@ -1,6 +1,6 @@
 # GetObject {#reference_ccf_rgd_5db .reference}
 
-用于获取某个Object，此操作要求用户对该Object有读权限。
+GetObject用于获取某个Object ，此操作要求用户对该Object有读权限。
 
 ## 请求语法 {#section_pjt_dmw_bz .section}
 
@@ -12,9 +12,13 @@ Authorization: SignatureValue
 Range: bytes=ByteRange(可选)
 ```
 
-## 请求参数\(Request Parameters\) {#section_gsg_gmw_bz .section}
+## 请求参数 {#section_gsg_gmw_bz .section}
 
-OSS支持用户在发送GET请求时，可以自定义OSS返回请求中的一些Header，前提条件是用户发送的GET请求必须携带签名。这些Header包括：
+OSS支持用户在发送GET请求时，可以自定义OSS返回请求中的一些Header。
+
+**说明：** 用户发送的GET请求必须携带签名。
+
+自定义返回请求的Header包括 ：
 
 |名称|类型|描述|
 |--|--|--|
@@ -37,54 +41,65 @@ OSS支持用户在发送GET请求时，可以自定义OSS返回请求中的一�
 
 |
 
+**说明：** 在自定义OSS返回请求中的一些Header，只有请求处理成功（即返回码为 200 OK ），OSS才会将请求的Header设置成用户GET请求参数中指定的值。
+
+OSS不支持在匿名访问的GET请求中，通过请求参数来自定义返回请求的Header。
+
 ## 请求Header {#section_ywk_qmw_bz .section}
 
 |名称|类型|描述|
 |--|--|--|
-|Range|字符串|指定文件传输的范围。如，设定 bytes=0-9，表示传送第0到第9这10个字符。 默认值：无
+|Range|字符串| 指定文件传输的范围。
 
-|
-|If-Modified-Since|字符串|如果指定的时间早于实际修改时间，则正常传送文件，并返回200 OK；否则返回304 not modified 默认值：无
+ 默认值：无
+
+ 在请求Header中使用Range参数
+
+-   符合范围规范，返回消息中则会包含整个Object的长度和此次返回的范围。例如：Content-Range: bytes 0-9/44，表示整个Object长度为44，此次返回的范围为0-9。
+-   不符合范围规范，则传送整个Object，并且不在结果中提及Content-Range。
+
+ |
+|If-Modified-Since|字符串|如果指定的时间早于实际修改时间或指定的时间不符合规范，直接返回Object，并返回200 OK；否则返回304 not modified。默认值：无
 
 时间格式：GMT时间，例如Fri, 13 Nov 2015 14:47:53 GMT
 
 |
-|If-Unmodified-Since|字符串|如果传入参数中的时间等于或者晚于文件实际修改时间，则正常传输文件，并返回200 OK；否则返回412 precondition failed错误 默认值：无
+|If-Unmodified-Since|字符串|如果传入参数中的时间等于或者晚于Object实际修改时间，则正常传输Object，并返回200 OK；否则返回412 precondition failed错误 。默认值：无
 
 时间格式：GMT时间，例如Fri, 13 Nov 2015 14:47:53 GMT
 
-|
-|If-Match|字符串|如果传入期望的ETag和object的 ETag匹配，则正常传输文件，并返回200 OK；否则返回412 precondition failed错误 默认值：无
+If-Modified-Since和If-Unmodified-Since可以同时使用。
 
 |
-|If-None-Match|字符串|如果传入的ETag值和Object的ETag不匹配，则正常传输文件，并返回200 OK；否则返回304 Not Modified 默认值：无
+|If-Match|字符串|如果传入期望的ETag和Object的ETag匹配，则正常传输Object，并返回200 OK；否则返回412 precondition failed错误。默认值：无
 
 |
+|If-None-Match|字符串|如果传入的ETag值和Object的ETag不匹配，则正常传输Object，并返回200 OK；否则返回304 Not Modified。默认值：无
+
+If-Match和If-None-Match可以同时使用。
+
+|
+
+## 常见错误码： {#section_hnc_tz5_jgb .section}
+
+|错误码|HTTP状态码|2说明|
+|---|-------|---|
+|NoSuchKey|404|Object不存在。|
+|SymlinkTargetNotExist|404|Object类型为符号链接，并且目标Object不存在。|
+|InvalidTargetType|400|Object类型为符号链接，并且目标Object类型为符号链接。|
+|InvalidObjectState|403|对于归档类型（Archive）的Object，没有提交Restore请求或者上一次提交Restore已经超时。|
+|InvalidObjectState|403|对于归档类型的Object，已经提交Restore请求，但数据的Restore操作还没有完成。|
 
 ## 细节分析 {#section_xb4_wmw_bz .section}
 
--   GetObject通过range参数可以支持断点续传，对于比较大的Object建议使用该功能。
--   如果在请求头中使用Range参数；则返回消息中会包含整个文件的长度和此次返回的范围，例如：Content-Range: bytes 0-9/44，表示整个文件长度为44，此次返回的范围为0-9。如果不符合范围规范，则传送整个文件，并且不在结果中提及Content-Range。
--   如果“If-Modified-Since”元素中设定的时间不符合规范，直接返回文件，并返回200 OK。
--   If-Modified-Since和If-Unmodified-Since可以同时存在，If-Match和If-None-Match也可以同时存在。
--   如果包含If-Unmodified-Since并且不符合或者包含If-Match并且不符合，返回412 precondition failed
--   如果包含If-Modified-Since并且不符合或者包含If-None-Match并且不符合，返回304 Not Modified
--   如果文件不存在返回404 Not Found错误。错误码：NoSuchKey。
--   OSS不支持在匿名访问的GET请求中，通过请求参数来自定义返回请求的header。
--   在自定义OSS返回请求中的一些Header时，只有请求处理成功（即返回码为200时），OSS才会将请求的header设置成用户GET请求参数中指定的值。
--   若该Object为进行服务器端熵编码加密存储的，则在GET请求时会自动解密返回给用户，并且在响应头中，会返回x-oss-server-side-encryption，其值表明该Object的服务器端加密算法。
--   需要将返回内容进行 GZIP压缩传输的用户，需要在请求的Header中显示方式加入 Accept-Encoding:gzip，OSS会根据文件的Content-Type和文件大小，判断是否返回给用户经过GZIP 压缩的数据。如果采用了GZIP压缩则不会附带etag 信息。目前OSS支持GZIP压缩的Content-Type为HTML、Javascript、CSS、XML、RSS、Json，文件大小需不小于1k。
--   如果文件类型为符号链接，返回目标文件的内容。并且， 响应头中`Content-Length`、`ETag`、`Content-Md5` 均为目标文件的元信息；`Last-Modified`是目标文件和符号链接的最大值；其他均为符号链接的元信息。
--   如果文件类型为符号链接，并且目标文件不存在，返回404 Not Found错误。错误码：SymlinkTargetNotExist。
--   如果文件类型为符号链接，并且目标文件类型是符号链接，返回400 Bad request错误。错误码：InvalidTargetType。
--   对于Archive归档类型，Object下载需要提交Restore请求，并等待Restore完成；只有在Object的Restore操作完成且超时前，Object才能被下载：
-    -   如果没有提交Restore请求，或者上一次提交Restore已经超时， 则返回403错，错误码为：InvalidObjectState。
-    -   或者已经提交Restore请求，但数据的Restore操作还没有完成， 则返回403错，错误码为：InvalidObjectState。
-    -   只有Restore完成，且没有超时，数据才能直接下载。
+-   若Object为服务器端熵编码加密存储，则在GET请求时会自动解密返回给用户，并且在响应Header中返回x-oss-server-side-encryption，其值表明该Object的服务器端加密算法。
+-   如果返回内容进行GZIP压缩传输，需要在请求的Header中以显示方式加入Accept-Encoding:gzip，OSS会根据Object的Content-Type和Object大小（不小于1KB），判断是否返回经过GZIP 压缩的数据。如果采用了GZIP压缩则不会附带ETag 信息。目前OSS支持GZIP压缩的Content-Type为HTML、Javascript、CSS、XML、RSS、Json。
+-   如果Object类型为符号链接，返回目标Object的内容。响应头中`Content-Length`、`ETag`、`Content-Md5` 均为目标Object的元信息；`Last-Modified`是目标Object和符号链接的最大值；其他均为符号链接的元信息。
+-   如果Object类型为归档类型，需要完成Restore请求且该请求不能超时。
 
 ## 示例 {#section_vrp_zmw_bz .section}
 
-**请求示例：**
+**简单的GET请求示例：**
 
 ```
 GET /oss.jpg HTTP/1.1
@@ -108,7 +123,7 @@ Server: AliyunOSS
 [344606 bytes of object data]
 ```
 
-**Range请求示例：**
+**带有Range参数的请求示例：**
 
 ```
 GET //oss.jpg HTTP/1.1
@@ -135,7 +150,7 @@ Server: AliyunOSS
 [801 bytes of object data]
 ```
 
-**自定义返回消息头的请求示例：**
+**带自定义返回消息头的请求示例：**
 
 ```
 GET /oss.jpg?response-expires=Thu%2C%2001%20Feb%202012%2017%3A00%3A00%20GMT& response-content-type=text&response-cache-control=No-cache&response-content-disposition=attachment%253B%2520filename%253Dtesting.txt&response-content-encoding=utf-8&response-content-language=%E4%B8%AD%E6%96%87 HTTP/1.1
@@ -164,7 +179,7 @@ Server: AliyunOSS
 [344606 bytes of object data]
 ```
 
-**符号链接的请求示例：**
+**Object类型为符号链接的请求示例：**
 
 ```
 GET /link-to-oss.jpg HTTP/1.1
@@ -191,7 +206,7 @@ x-oss-object-type: Symlink
 Content-MD5: gIYmXvwCEe0fmi8Jv0YiJw==
 ```
 
-**Archive类型Object的Restore操作已经完成时的请求示例：**
+**Restore操作已经完成的请求示例：**
 
 ```
 GET /oss.jpg HTTP/1.1
@@ -200,7 +215,7 @@ Date: Sat, 15 Apr 2017 09:38:30 GMT
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:zUglwRPGkbByZxm1+y4eyu+NIUs=
 ```
 
-**返回示例**
+**返回示例：**
 
 ```
 HTTP/1.1 200 OK

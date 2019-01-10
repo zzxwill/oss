@@ -1,34 +1,34 @@
 # Image processing {#concept_47660_zh .concept}
 
-Image Processing \(IMG\) is a massive, secure, cost-effective and highly reliable image processing service. After source images are uploaded to OSS, you can process images on any Internet device at any anytime, from anywhere through simple RESTful APIs.
+Image Processing \(IMG\) is a massive, secure, cost-effective, and highly reliable image processing service. After source images are uploaded to OSS, you can process images on any Internet device at any anytime and from anywhere through simple RESTful APIs.
 
-For more information about IMG, see [Image Processing](../../../../reseller.en-US/Image Processing Guide/Image processing.md#).
+For more information about IMG, see [Image Processing](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#).
 
 For the complete code of IMG, see [GitHub](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/image.py).
 
 ## Basic features {#section_rqw_skn_kfb .section}
 
-OSS offers the following IMG features:
+OSS provides the following IMG features:
 
--   [Retrieve dominant image tones](../../../../reseller.en-US/Image Processing Guide/Obtain image information/Retrieve dominant image tones.md#)
--   [Format conversion](../../../../reseller.en-US/Image Processing Guide/Convert formats/Format conversion.md#)
--   [Resize images](../../../../reseller.en-US/Image Processing Guide/Resize images.md#)
--   [Incircle](../../../../reseller.en-US/Image Processing Guide/Crop images/Incircle.md#)
--   [Adaptive orientation](../../../../reseller.en-US/Image Processing Guide/Rotate images/Adaptive orientation.md#)
--   [Brightness](../../../../reseller.en-US/Image Processing Guide/Apply effects/Brightness.md#)
--   [Add watermarks](../../../../reseller.en-US/Image Processing Guide/Add watermarks.md#): allows you to add images, texts, or image-text watermarks to another image.
--   [Image processing](../../../../reseller.en-US/Image Processing Guide/Image processing.md#)
--   [Image processing access rules](../../../../reseller.en-US/Image Processing Guide/Image processing access rules.md#): calls multiple IMG functions.
+-   [Retrieve dominant image tones](../../../../../reseller.en-US/Data Processing/Image Processing/Obtain image information/Retrieve dominant image tones.md#)
+-   [Format conversion](../../../../../reseller.en-US/Data Processing/Image Processing/Convert formats/Format conversion.md#)
+-   [Resize images](../../../../../reseller.en-US/Data Processing/Image Processing/Resize images.md#)
+-   [Incircle](../../../../../reseller.en-US/Data Processing/Image Processing/Crop images/Incircle.md#)
+-   [Adaptive orientation](../../../../../reseller.en-US/Data Processing/Image Processing/Rotate images/Adaptive orientation.md#)
+-   [Brightness](../../../../../reseller.en-US/Data Processing/Image Processing/Apply effects/Brightness.md#)
+-   [Add watermarks](../../../../../reseller.en-US/Data Processing/Image Processing/Add watermarks.md#): allows you to add images, texts, or image-text watermarks to another image.
+-   [Image processing](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#)
+-   [Image processing access rules](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing access rules.md#): calls multiple IMG functions.
 
 ## Usage { .section}
 
-IMG uses standard HTTP GET. You can configure IMG parameters in QueryString of a URL.
+IMG uses standard HTTP GET requests. You can configure IMG parameters in the QueryString included in the URL.of an image.
 
-If the ACL of an image object is private read and write, only authorized users are allowed for access.
+If the ACL for an image is private read and write, only authorized users are allowed can access the image.
 
 -   Anonymous access
 
-    You can use the following format in level-3 domains to access a processed image:
+    You can use a level-3 domain name in the following format to access a processed image:
 
     ```
     http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<yourAction>,<yourParamValue>
@@ -37,31 +37,31 @@ If the ACL of an image object is private read and write, only authorized users a
     |Parameter|Description|
     |:--------|:----------|
     |bucket|Specifies the name of a bucket.|
-    |endpoint|Specifies endpoint used to access a region.|
+    |endpoint|Specifies the endpoint used to access the region that the bucket is created.|
     |object|Specifies the name of an image object.|
     |image|Specifies the reserved identifier for IMG.|
-    |action|Specifies the operations on an image, such as scaling, cropping, and rotating.|
-    |param|Specifies the parameter that indicates the operation on an image.|
+    |action|Specifies the operation performed on an image, such as scaling, cropping, and rotating.|
+    |param|Specifies the parameter that indicates the operation performed on an image.|
 
     -   Basic operations
 
-        For example, scale an image to a width of 100 px. Adjust the height based on the ratio.
+        For example, scale an image to a width of 100 px and adjust the height based on the ratio.
 
         ```
         http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
         ```
 
-    -   Customized image styles
+    -   Customize image styles
 
-        You can use the following format in level-3 domains to access a processed image:
+        You can use a level-3 domain name in the following format to access a processed image:
 
         ```
         http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=style/<yourStyleName>
         ```
 
-        -   style: specifies a reserved identifier of a customized image style.
+        -   style: specifies the reserved identifier of a customized image style.
         -   yourStyleName: specifies the name of a custom image style. It is the name specified in the rule that is created on the OSS console.
-        Example:
+        For example:
 
         ```
         http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=style/oss-pic-style-w-100
@@ -69,21 +69,21 @@ If the ACL of an image object is private read and write, only authorized users a
 
     -   Cascade operations
 
-        Cascade operations allow you to perform multiple operations on an image sequentially.
+        Cascade operations allow you to perform multiple operations on an image in sequence.
 
         ```
         http://<yourBucketName>.<yourEndpoint>/<yourObjectName>?x-oss-process=image/<yourAction1>,<yourParamValue1>/<yourAction2>,<yourParamValue2>/...
         ```
 
-        Example:
+        For example:
 
         ```
         http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100/rotate,90
         ```
 
-    -   HTTPS access
+    -   Access through HTTPS
 
-        IMG supports access through HTTPS. Example:
+        IMG allows you to access images through the HTTPS protocol. For example:
 
         ```
         https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_100
@@ -91,7 +91,7 @@ If the ACL of an image object is private read and write, only authorized users a
 
 -   Authorized access
 
-    Authorized access allows you to customize an image style, HTTPS access, and cascade operations.
+    Authorized access allows you to customize an image style, access images through the HTTPS protocol, and perform cascade operations.
 
     Run the following code to generate a signed URL for IMG:
 
@@ -101,36 +101,36 @@ If the ACL of an image object is private read and write, only authorized users a
     
     # This example uses endpoint China East 1 (Hangzhou). Specify the actual endpoint based on your requirements.
     endpoint = 'http://oss-cn-hangzhou.aliyuncs.com'
-    # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all the APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
+    # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We strongly recommend that you create a RAM user and use it for API access and daily operations and maintenance. Log on to https://ram.console.aliyun.com to create a RAM user.
     access_key_id = '<yourAccessKeyId>'
     access_key_secret = '<yourAccessKeySecret>'
     bucket_name = '<yourBucketName>'
     key = 'example.jpg'
     
     # Creates a bucket instance. All object-related methods must be called by the bucket instance.
-    bucket = oss2.Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
+    bucket = oss2. Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
     
-    # Upload a sample image.
+    # Uploads a sample image.
     bucket.put_object_from_file(key, 'example.jpg')
     
-    # Generate a signed URL. Set the expiration time to 10 minutes. The unit of expiration time is second.
+    # Generates a signed URL and sets the expiration time to 10 minutes. The unit of expiration time is second.
     style = 'image/resize,m_fixed,w_100,h_100/rotate,90'
     url = bucket.sign_url('GET', key, 10 * 60, params={'x-oss-process': style})
     print(url)
     
     ```
 
--   Access with SDK
+-   Access image objects with SDK
 
-    You can use SDK to access and process an image object.
+    You can use OSS SDK to access and process an image object.
 
-    SDK allows you to customize image styles, HTTPS access, and cascade operations.
+    SDK allows you to customize image styles, access images through the HTTPS protocol, and perform cascade operations.
 
     -   Basic operations
 
-        get\_object and get\_object\_to\_file support image processing.
+        The get\_object and get\_object\_to\_file methods support image processing.
 
-        Run the following code to perform basic operations on an image:
+        Use the following code to perform basic operations on an image:
 
         ```language-python
         # -*- coding: utf-8 -*-
@@ -139,7 +139,7 @@ If the ACL of an image object is private read and write, only authorized users a
         
         # This example uses endpoint China East 1 (Hangzhou). Specify the actual endpoint based on your requirements.
         endpoint = 'http://oss-cn-hangzhou.aliyuncs.com'
-        # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all the APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
+        # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We strongly recommend that you create a RAM user and use it for API access and daily operations and maintenance. Log on to https://ram.console.aliyun.com to create a RAM user.
         access_key_id = '<yourAccessKeyId>'
         access_key_secret = '<yourAccessKeySecret>'
         bucket_name = '<yourBucketName>'
@@ -147,45 +147,45 @@ If the ACL of an image object is private read and write, only authorized users a
         new_pic = 'example-new.jpg'
         
         # Creates a bucket instance. All object-related methods must be called by the bucket instance.
-        bucket = oss2.Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
+        bucket = oss2. Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
         
-        # Upload a sample image.
+        # Uploads a sample image.
         bucket.put_object_from_file(key, 'example.jpg')
         
-        # Scale the image.
+        # Scales the image.
         style = 'image/resize,m_fixed,w_100,h_100'
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Crop the image.
+        # Crops the image.
         style = 'image/crop,w_100,h_100,x_100,y_100,r_1'
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Rotate the image.
+        # Rotates the image.
         style = 'image/rotate,90'
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Sharpen the image.
+        # Sharpens the image.
         style = 'image/sharpen,100'
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Add watermarks.
+        # Adds watermarks.
         style = 'image/watermark,text_SGVsbG8g5Zu-54mH5pyN5YqhIQ'
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Convert the image format.
+        # Converts the image format.
         style = 'image/format,png'
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Delete the sample image.
+        # Deletes the sample image.
         bucket.delete_object(key)
-        # Clear the local file.
+        # Clears local files.
         os.remove(new_pic)
         
         ```
 
     -   Customize an image style
 
-        The following code is used to customize the image style:
+        You can run the following code to customize an image style:
 
         ```language-python
         # -*- coding: utf-8 -*-
@@ -194,7 +194,7 @@ If the ACL of an image object is private read and write, only authorized users a
         
         # This example uses endpoint China East 1 (Hangzhou). Specify the actual endpoint based on your requirements.
         endpoint = 'http://oss-cn-hangzhou.aliyuncs.com'
-        # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
+        # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We strongly recommend that you create a RAM user and use it for API access and daily operations and maintenance. Log on to https://ram.console.aliyun.com to create a RAM account.
         access_key_id = '<yourAccessKeyId>'
         access_key_secret = '<yourAccessKeySecret>'
         bucket_name = '<yourBucketName>'
@@ -202,20 +202,20 @@ If the ACL of an image object is private read and write, only authorized users a
         new_pic = 'example-new.jpg'
         
         # Creates a bucket instance. All object-related methods must be called by the bucket instance.
-        bucket = oss2.Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
+        bucket = oss2. Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
         
-        # Upload a sample image.
+        # Uploads a sample image.
         bucket.put_object_from_file(key, 'example.jpg')
         
-        # Customize the image style.
+        # Customizes the image style.
         style = 'style/oss-pic-style-w-100'
         
-        # Process the image.
+        # Processes the image.
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Delete the sample image.
+        # Deletes the sample image.
         bucket.delete_object(key)
-        # Clear the local file.
+        # Clears local files.
         os.remove(new_pic)
         
         ```
@@ -231,7 +231,7 @@ If the ACL of an image object is private read and write, only authorized users a
         
         # This example uses endpoint China East 1 (Hangzhou). Specify the actual endpoint based on your requirements.
         endpoint = 'http://oss-cn-hangzhou.aliyuncs.com'
-        # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
+        # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We strongly recommend that you create a RAM user and use it for API access and daily operations and maintenance. Log on to https://ram.console.aliyun.com to create a RAM user.
         access_key_id = '<yourAccessKeyId>'
         access_key_secret = '<yourAccessKeySecret>'
         bucket_name = '<yourBucketName>'
@@ -239,26 +239,102 @@ If the ACL of an image object is private read and write, only authorized users a
         new_pic = 'example-new.jpg'
         
         # Creates a bucket instance. All object-related methods must be called by the bucket instance.
-        bucket = oss2.Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
+        bucket = oss2. Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, bucket_name)
         
-        # Upload a sample image.
+        # Uploads a sample image.
         bucket.put_object_from_file(key, 'example.jpg')
         
-        // Perform cascade operations.
+        # Performs cascade operations.
         style = 'image/resize,m_fixed,w_100,h_100/rotate,90'
         
-        # Process the image.
+        # Processes the image.
         bucket.get_object_to_file(key, new_pic, process=style)
         
-        # Delete the sample image.
+        # Deletes the sample image.
         bucket.delete_object(key)
-        # Clear the local file.
+        # Clears local files.
         os.remove(new_pic)
         
         ```
 
 
-## IMG tools { .section}
+## Image processing persistence {#section_pdl_dpw_mfb .section}
 
-You can use the IMG viewer [ImageStyleViever](https://gosspublic.alicdn.com/image/index.html) to directly view the IMG result.
+OSS provides the “saveas” operation for data processing. With this feature, you can save the processing result to a specified bucket as resources and assign the result with a specified key. After the resources are saved, you can access the resources directly by specifying the bucket to speed up resource download. This feature applies to ultra-large image cropping or other high-latency operations.
+
+Run the following code for image processing persistence:
+
+```
+# -*- coding: utf-8 -*-
+import os
+import base64
+import oss2
+
+# This example uses endpoint China East 1 (Hangzhou). Specify the actual endpoint based on your requirements.
+endpoint = 'http://oss-cn-hangzhou.aliyuncs.com'
+# It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. Instead, we strongly recommend that you create a RAM user and use it for API access and daily operations and maintenance. Log on to https://ram.console.aliyun.com to create a RAM account.
+# source_bucket_name and taget_bucket_name are the same bucket. 
+access_key_id = '<yourAccessKeyId>'
+access_key_secret = '<yourAccessKeySecret>'
+source_bucket_name = '<yourBucketName>'
+taget_bucket_name = '<yourTargetBucketName>'
+source_image_name = 'example.jpg'
+
+# Creates a bucket instance. All object-related methods must be called by the bucket instance.
+bucket = oss2. Bucket(oss2. Auth(access_key_id, access_key_secret), endpoint, source_bucket_name)
+
+# Scales the image.
+style = 'image/resize,m_fixed,w_100,h_100'
+Target_image_name = 'example-resize.jpg'
+process = "{0}|sys/saveas,o_{1},b_{2}".format(style, 
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(target_image_name))),
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(taget_bucket_name))))
+result = bucket.process_object(source_image_name, process)
+print(result)
+
+# Crops the image.
+style = 'image/crop,w_100,h_100,x_100,y_100,r_1'
+target_image_name = 'example-crop.jpg'
+process = "{0}|sys/saveas,o_{1},b_{2}".format(style, 
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(target_image_name))),
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(taget_bucket_name))))
+result = bucket.process_object(source_image_name, process)
+print(result)
+
+# Rotates the image.
+style = 'image/rotate,90'
+target_image_name = 'example-rotate.jpg'
+process = "{0}|sys/saveas,o_{1},b_{2}".format(style, 
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(target_image_name))),
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(taget_bucket_name))))
+result = bucket.process_object(source_image_name, process)
+print(result)
+
+# Sharpens the image.
+style = 'image/sharpen,100'
+target_image_name = 'example-sharpen.jpg'
+process = "{0}|sys/saveas,o_{1},b_{2}".format(style, 
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(target_image_name))),
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(taget_bucket_name))))
+result = bucket.process_object(source_image_name, process)
+print(result)
+
+# Adds watermarks.
+style = 'image/watermark,text_SGVsbG8g5Zu-54mH5pyN5YqhIQ'
+target_image_name = 'example-watermark.jpg'
+process = "{0}|sys/saveas,o_{1},b_{2}".format(style, 
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(target_image_name))),
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(taget_bucket_name))))
+result = bucket.process_object(source_image_name, process)
+print(result)
+
+# Converts the image format.
+style = 'image/format,png'
+target_image_name = 'example-formatconvert.png'
+process = "{0}|sys/saveas,o_{1},b_{2}".format(style, 
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(target_image_name))),
+    oss2.compat.to_string(base64.urlsafe_b64encode(oss2.compat.to_bytes(taget_bucket_name))))
+result = bucket.process_object(source_image_name, process)
+print(result)
+```
 

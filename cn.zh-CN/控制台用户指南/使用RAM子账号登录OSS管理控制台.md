@@ -21,18 +21,18 @@ RAM 子账号是您通过 RAM 控制台创建的 RAM 用户账号，使用 RAM �
 
 1.  登录[RAM 控制台](https://ram.console.aliyun.com)。
 2.  单击**人员管理** \> **用户** \> **新建用户**创建 RAM 用户。
-3.  填写新建用户的信息，并根据需要配置**访问方式**，单击**添加用户**可一次添加多个用户。详细配置方法请参见[RAM 用户操作手册](../../../../cn.zh-CN/用户指南/身份管理/用户管理/用户.md#) 中的“创建RAM用户”章节。
+3.  填写新建用户的信息，并根据需要配置**访问方式**，单击**添加用户**可一次添加多个用户。详细配置方法请参见[RAM 用户操作手册](../../../../../cn.zh-CN/用户指南/身份管理/用户管理/用户.md#) 中的“创建RAM用户”章节。
 4.  用户信息填写完毕后单击**确定**，之后单击**返回**。
 
 ## 给 RAM 子账号授权 {#section_gxr_gly_5db .section}
 
 1.  打开 RAM 控制台[用户列表](https://ram.console.aliyun.com/users)。
 2.  选择您需要授权的 RAM 用户，单击对应用户的**添加权限**。
-3.  根据您的需求添加对应的权限。系统只提供部分策略，您可根据需要添加自定义权限。更多信息请参见[权限策略管理](../../../../cn.zh-CN/用户指南/权限管理/权限策略管理.md#)。
+3.  根据您的需求添加对应的权限。系统只提供部分策略，您可根据需要添加自定义权限。更多信息请参见[权限策略管理](../../../../../cn.zh-CN/用户指南/权限管理/权限策略管理.md#)。
 
     **说明：** 
 
-    为确保 RAM 子账号登录控制台后能正常使用 OSS 控制台的功能，除授予 OSS 相应的访问权限外，还需要 MNS、CloudMonitor、CDN 的访问权限，如下图所示：![RAM 子账号](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15451142411495_zh-CN.PNG)
+    为确保 RAM 子账号登录控制台后能正常使用 OSS 控制台的功能，除授予 OSS 相应的访问权限外，还需要 MNS、CloudMonitor、CDN 的访问权限，如下图所示：![RAM 子账号](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/15471912631495_zh-CN.PNG)
 
 
 ## 使用 RAM 子账号登录 OSS 管理控制台 {#section_c2h_bmy_5db .section}
@@ -42,9 +42,9 @@ RAM 子账号是您通过 RAM 控制台创建的 RAM 用户账号，使用 RAM �
 1.  登录[RAM 控制台](https://ram.console.aliyun.com)。
 2.  在概览页面查看您的**用户登录地址**。打开该链接，使用 RAM 子账号的用户名和密码进行登录。
 
-    ![RAM 子账号](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/154511424211370_zh-CN.png)
+    ![RAM 子账号](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4737/154719126311370_zh-CN.png)
 
-3.  打开 [OSS 管理控制台进行](https://oss.console.aliyun.com)进行管理。
+3.  打开 [OSS 管理控制台](https://oss.console.aliyun.com)进行管理。
 
-更多信息请参见[RAM 用户操作手册](../../../../cn.zh-CN/用户指南/身份管理/用户管理/用户.md#)。
+更多信息请参见[RAM 用户操作手册](../../../../../cn.zh-CN/用户指南/身份管理/用户管理/用户.md#)。
 

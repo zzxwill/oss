@@ -2,7 +2,7 @@
 
 After initiating a Multipart Upload event, you can upload data in parts based on the specified object name and Upload ID. Each uploaded part has a part number ranging from 1 to 10,000.
 
-For the same Upload ID, this part number identifies not only this part of data but also the location of this part in the entire file. If you upload new data using the same part number, OSS overwrites the existing data identified by this part number. Except the last part, the minimum size of other parts is 100 KB. The size of the last part is not restricted.
+For the same Upload ID, this part number identifies not only this part of data but also the location of this part in the entire file. If you upload new data using the same part number, OSS overwrites the existing data identified by this part number. The number of parts ranges from 1 to 10,000. The size of a single part ranges from 100 KB to 5 GB, while the last part can be less than 100 KB.
 
 ## Request syntax {#section_efc_3px_wdb .section}
 
@@ -20,7 +20,7 @@ Authorization: SignatureValue
 -   In the Multipart Upload mode, except the last part, all other parts must be larger than 100 KB. However, the Upload Part interface does not immediately verify the size of the uploaded part \(because it does not know whether the part is the last one\). It verifies the size of the uploaded part only when Multipart Upload is completed.
 -   OSS puts the MD5 value of the part data received by the server in the ETag header and return it to the user.
 -   The part number ranges from 1 to 10,000. If the part number exceeds this range, OSS returns the InvalidArgument error code.
--   If the x-oss-server-side-encryption request header is specified when the Initiate Multipart Upload interface is called, OSS encrypts the uploaded part and return the x-oss-server-side-encryption header in the Upload Part response header. The value of x-oss-server-side-encryption indicates the server-side encryption algorithm used for this part. For more information, see the Initiate Multipart Upload interface.
+-   If the x-oss-server-side-encryption request header is specified when the Initiate Multipart Upload interface is called, OSS encrypts the uploaded part and return the x-oss-server-side-encryption header in the Upload Part response header. The value of x-oss-server-side-encryption indicates the server-side encryption algorithm used for this part.
 -   To make sure that the data transmitted over the network is free from errors, the user includes Content-MD5 in the request. The OSS calculates the MD5 value for the uploaded data and compares it with the MD5 value uploaded by the user. If they are inconsistent, OSS returns the InvalidDigest error code.
 
 ## Examples {#section_xbd_4px_wdb .section}

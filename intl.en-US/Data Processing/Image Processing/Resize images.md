@@ -40,7 +40,7 @@ Operation name: `resize`
     -   The size of a single side cannot exceed 30,000.
 -   For the thumbnail: The scaled image size is restricted. The product of the width and height of the target thumbnail cannot exceed 4096 x 4096, and the length of a single side cannot exceed 4096 x 4.
 -   When the width or height of a thumbnail is specified, the image is scaled by a single side by default in the case of proportional scaling. With fixed width and height, the image is scaled down by assuming equal width and height.
--   When only the width or height of a thumbnail is specified, the image is returned in the same format as the original image. If you want to save the image into other formats, see [Quality Transformation](reseller.en-US/Data Processing/Image Processing/Convert formats/Quality Transformation.md#) and [Format conversion](reseller.en-US/Data Processing/Image Processing/Convert formats/Format conversion.md#).
+-   When only the width or height of a thumbnail is specified, the image is returned in the same format as the original image. If you want to save the image into other formats, see [Quality Transformation](intl.en-US/Data Processing/Image Processing/Convert formats/Quality Transformation.md#) and [Format conversion](intl.en-US/Data Processing/Image Processing/Convert formats/Format conversion.md#).
 -   When resize is called, the image cannot be enlarged by default. That is, if the requested image is larger than the original image, the original image is returned. If you want to enlarge the image, add the parameter`limit,0` to be called \(for example: `https://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_500,limit_0`\)
 
 ## Example {#section_l4x_pqn_vdb .section}
@@ -51,7 +51,7 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,h\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,h_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295232414_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433082414_en-US.jpg)
 
 
 **Scaling-down by a single side \(by the longer side and shorter side\)**
@@ -60,7 +60,7 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,l\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,l_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242415_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092415_en-US.jpg)
 
 
 **Scaling-down based on target width or height**
@@ -69,7 +69,7 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_fixed,h\_100,w\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_fixed,h_100,w_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242416_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092416_en-US.jpg)
 
 
 **Proportional scaling, restricted in a rectangle frame**
@@ -78,13 +78,13 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_lfit,h\_100,w\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_lfit,h_100,w_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242418_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092418_en-US.png)
 
 -   Scale down an image by the longer side to 100 x 100 \(w x h\) and save it as png.
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_lfit,h\_100,w\_100/format,png](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_lfit,h_100,w_100/format,png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242419_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092419_en-US.png)
 
 
 **Proportional scaling, restricted out of a rectangle frame**
@@ -93,7 +93,7 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_mfit,h\_100,w\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_mfit,h_100,w_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242420_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092420_en-US.jpg)
 
 
 **Fixed width and height, automatic cropping**
@@ -102,7 +102,7 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_fill,h\_100,w\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_fill,h_100,w_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242425_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092425_en-US.jpg)
 
 
 **Fixed width and height, scaling down and filling**
@@ -111,18 +111,18 @@ Operation name: `resize`
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_pad,h\_100,w\_100](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_pad,h_100,w_100)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242421_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092421_en-US.jpg)
 
 -   Scale down an image by the shorter side to 100 x 100, and then fill the remaining area with red.
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m\_pad,h\_100,w\_100,color\_FF0000](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,m_pad,h_100,w_100,color_FF0000)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242422_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092423_en-US.jpg)
 
 -   Scale down an image to 1/2 of the original size.
 
     [http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,p\_50](http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,p_50)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474295242423_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4769/15474433092422_en-US.jpg)
 
 

@@ -36,13 +36,13 @@ The naming conventions for objects are as follows:
 
 ## Region {#section_s3j_nmt_tdb .section}
 
-A region represents the physical location of an OSS data center. You can choose the region where OSS will store the buckets you create. You may choose a region to optimize latency, minimize costs, or address regulatory requirements. Generally, the closer the user is in proximity to a region, the faster the access speed is. For more information, see [OSS regions and endpoints](intl.en-US/Developer Guide/Regions and endpoints.md#).
+A region represents the physical location of an OSS data center. You can choose the region where OSS will store the buckets you create. You may choose a region to optimize latency, minimize costs, or address regulatory requirements. Generally, the closer the user is in proximity to a region, the faster the access speed is. For more information, see [OSS regions and endpoints](reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
 
 Regions are configured at bucket level instead of object level. Therefore, all objects contained in a bucket are stored in the same region. A region is specified when a bucket is created, and cannot be changed once it is created.
 
 ## Endpoint {#section_t3j_nmt_tdb .section}
 
-An endpoint is the domain name used to access the OSS. OSS provides external services through HTTP RESTful APIs. Different regions use different endpoints. For the same region, access through an intranet or through the Internet also uses different endpoints. For example, regarding the Hangzhou region, its Internet endpoint is oss-cn-hangzhou.aliyuncs.com, and its intranet endpoint is oss-cn-hangzhou-internal.aliyuncs.com. For more information, see [OSS regions and endpoints](intl.en-US/Developer Guide/Regions and endpoints.md#).
+An endpoint is the domain name used to access the OSS. OSS provides external services through HTTP RESTful APIs. Different regions use different endpoints. For the same region, access through an intranet or through the Internet also uses different endpoints. For example, regarding the Hangzhou region, its Internet endpoint is oss-cn-hangzhou.aliyuncs.com, and its intranet endpoint is oss-cn-hangzhou-internal.aliyuncs.com. For more information, see [OSS regions and endpoints](reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
 
 ## AccessKey {#section_u3j_nmt_tdb .section}
 
@@ -52,15 +52,13 @@ An AccessKey \(AK\) is composed of an AccessKeyId and an AccessKeySecret. They w
 -   The bucket owner uses RAM to authorize a third party to apply for AccessKeys.
 -   The bucket owner uses STS to authorize a third party to apply for AccessKeys.
 
-For more information about AccessKeys, see[Access control](intl.en-US/Developer Guide/Access and control/Access control.md#).
+For more information about AccessKeys, see[Access control](reseller.en-US/Developer Guide/Access and control/Access control.md#).
 
 ## Strong consistency {#section_w3j_nmt_tdb .section}
 
 In OSS, object operations are atomic, which means operations are either successful or failed without an intermediate state. OSS will never write corrupted or partial data.
 
 Object operations in OSS are strongly consistent. For example, once a user receives an upload \(PUT\) success response, the object can be read immediately, and the data has already been written in triplicate. Therefore, OSS provides strong consistency for read-after-write.  The same is true for the delete operations. Once a user deletes an object, the object becomes nonexistent immediately.
-
-This strong consistency feature makes the usage of OSS the same as that of a traditional storage device. Modifications are immediately visible and users do not have to consider consistency issues.
 
 ## Comparison between OSS and file systems {#section_x3j_nmt_tdb .section}
 

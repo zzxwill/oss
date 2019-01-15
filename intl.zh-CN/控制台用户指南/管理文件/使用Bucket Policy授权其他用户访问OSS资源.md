@@ -2,7 +2,7 @@
 
 您可以通过Bucket Policy授权其他用户访问您的OSS资源。
 
-相比于[RAM Policy](../../../../intl.zh-CN//授权管理/授权策略管理.md#)，Bucket Policy支持在控制台直接进行图形化配置操作，并且Bucket拥有者直接可以进行访问授权。Bucket Policy常见的应用场景如下：
+相比于[RAM Policy](../../../../../intl.zh-CN//授权管理/授权策略管理.md#)，Bucket Policy支持在控制台直接进行图形化配置操作，并且Bucket拥有者直接可以进行访问授权。Bucket Policy常见的应用场景如下：
 
 -   向其他账号的RAM用户授权访问。
 
@@ -29,7 +29,7 @@
     -   **匿名账号（\*）**：若您需要给所有用户授权，可以选择**匿名账号（\*）**。
     **说明：** 给 RAM 用户授予ListUsers权限可参考：
 
-    -   [为 RAM 用户授权](../../../../intl.zh-CN/快速入门/为 RAM 用户授权.md#)。
+    -   [为 RAM 用户授权](../../../../../intl.zh-CN/快速入门/为 RAM 用户授权.md#)。
     -   ListUsers权限的 RAM 授权模板：
 
         ```

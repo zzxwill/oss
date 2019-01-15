@@ -2,7 +2,7 @@
 
 ## About upload callback {#section_jpf_dv3_wdb .section}
 
-When a file is uploaded, the OSS can provide a [Callback](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) to your callback server.  You can carry the relevant callback parameters in the upload request to implement the upload callback.  The APIs that support upload callback are [PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#), [PostObject](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#), and [CompleteMultipartUpload](../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#). For more information, see [Developer Guide](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) and [API Reference](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+When a file is uploaded, the OSS can provide a [Callback](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) to your callback server.  You can carry the relevant callback parameters in the upload request to implement the upload callback.  The APIs that support upload callback are [PutObject](../../../../../reseller.en-US/API Reference/Object operations/PutObject.md#), [PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#), and [CompleteMultipartUpload](../../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#). For more information, see [Developer Guide](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) and [API Reference](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
 
 **Note:** A callback server is also called a service server.
 
@@ -23,21 +23,21 @@ The following table describes the data streams.
 
 |Data stream|Meaning|Description|
 |:----------|:------|:----------|
-|1|The client uploads a file and carries a callback parameter.\[1\]|The upload is implemented by SDK \([PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#) and [CompleteMultipartUpload](../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#), and the callback by the [PostObject](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#) API.|
+|1|The client uploads a file and carries a callback parameter.\[1\]|The upload is implemented by SDK \([PutObject](../../../../../reseller.en-US/API Reference/Object operations/PutObject.md#) and [CompleteMultipartUpload](../../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)\), and the callback by the [PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#) API.|
 |2|The OSS instance stores the file and initiates a callback.|The OSS instance sends a `POST` \[2\] request to the specified  `CallbackUrl` in the upload request. The callback time-out period is five seconds \[3\].|
-|3| The callback server returns the processing result.|-   The message body returned by the callback server must be in JSON format. 
+|3|The callback server returns the processing result.|-   The message body returned by the callback server must be in JSON format. 
 -   The OSS determines that the callback fails if the returned result is not 200.\[4\]
 
  |
-|4|The OSS returns the upload and callback result.|--   If both the upload and callback succeed,  `200` is returned. 
+|4|The OSS returns the upload and callback result.| -   If both the upload and callback succeed,  `200` is returned. 
 -   If the upload succeeds but the callback fails, `203` is returned. The value of ErrorCode is  `CallbackFailed`, and ErrorMessage indicates the error cause.
 
-|
+ |
 
 **Note:** 
 
--   \[1\] For more information about the format, see `SDK/PostObject`.
--   \[2\] For more information about the format of the callback request POST, see [Initiate a callback request](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+-   \[1\] For more information about the format, see [SDK/PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
+-   \[2\] For more information about the format of the callback request POST, see [Initiate a callback request](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
 -   \[3\] The time-out time is fixed and cannot be configured.
 -   \[4\] `40x` is returned for parameter invalidation or authentication failure, while `50x` is returned for time-out or connection failure.
 
@@ -141,7 +141,7 @@ CallbackVarItem := '"''x:'VarName'"' : '"'VarValue'"'
 -   The custom variables must start with ***x:***: They are case sensitive and in the format of  `${x:my_var}`.
 -   The custom variable length is limited by the length of the message header and URL. We recommend that the number of the custom variables do not exceed 10 and the total length do not exceed 512 bytes.
 
-## SDK usage example {#section_gn4_xw3_wdb .section}
+## SDK usage example {#SDK .section}
 
 Some SDKs, such as JAVA and JS, encapsulate the preceding steps. Some SDKs, such as Python, PHP, and C, need to use the preceding rules to generate the upload callback parameters and custom variables.  The following table lists SDK usage examples.
 
@@ -165,7 +165,7 @@ Some SDKs, such as JAVA and JS, encapsulate the preceding steps. Some SDKs, such
 
 ## PostObject usage example {#section_sd1_bx3_wdb .section}
 
-PostObject supports the upload callback, whose callback parameters are carried by the form field `callback` and custom variables are carried by an independent form field. For more information, see[PostObjet](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
+PostObject supports the upload callback, whose callback parameters are carried by the form field `callback` and custom variables are carried by an independent form field. For more information, see [PostObjet](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
 
 The following table lists PostObject usage examples.
 
@@ -181,7 +181,7 @@ The callback server is an HTTP server that processes callback requests and POST 
 
 Callback signature
 
-The callback server needs to verify the signature of a POST request to make sure that the POST request is from the OSS upload callback.  The callback server also can directly process the message without verifying the signature. To enhance the security of the callback server, we recommend that the callback server verify the message signature. For more information about the callback signature rules, see [Callback signature](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+The callback server needs to verify the signature of a POST request to make sure that the POST request is from the OSS upload callback.  The callback server also can directly process the message without verifying the signature. To enhance the security of the callback server, we recommend that the callback server verify the message signature. For more information about the callback signature rules, see [Callback signature](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
 
 **Note:** The OSS callback server example describes how to implement signature verification. We recommend that you directly use the code.
 
@@ -260,9 +260,7 @@ The upload callback debugging includes debugging of the client that uploads a fi
     </Error>
     ```
 
-    Cause: 
-
-    The callback parameter settings are incorrect, or the parameter format is incorrect. The common error is that the callback parameters in `ArgumentValue` are not in valid  JSON format. In JSON, `\` and `"` are escape characters. For example,  `"callbackBody":"{"bucket":${bucket},"object":${object}}"` must be `"callbackBody":"{\"bucket\":${bucket},\"object\":${object}}"`. For more information about the SDKs, see the upload callback examples in the [SDK usage example](#section_gn4_xw3_wdb) part.
+    **Note:** The callback parameter settings are incorrect, or the parameter format is incorrect. The common error is that the callback parameters in `ArgumentValue` are not in valid  JSON format. In JSON, `\` and `"` are escape characters. For example,  `"callbackBody":"{"bucket":${bucket},"object":${object}}"` must be `"callbackBody":"{\"bucket\":${bucket},\"object\":${object}}"`. For more information about the SDKs, see the upload callback examples in the [SDK usage example](#) part.
 
     |Character after escape|Character before escape|
     |:---------------------|:----------------------|
@@ -275,75 +273,74 @@ The upload callback debugging includes debugging of the client that uploads a fi
     |\\t|\\\\t|
 
 -   CallbackFailed
+    -   Example 1
 
-    ```
-    <Error>
-      <Code>CallbackFailed</Code>
-      <Message>Response body is not valid json format.</Message>
-      <RequestId>587C81A125F797621829923D</RequestId>
-      <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
-    </Error>
-    ```
+        ```
+        <Error>
+          <Code>CallbackFailed</Code>
+          <Message>Response body is not valid json format.</Message>
+          <RequestId>587C81A125F797621829923D</RequestId>
+          <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
+        </Error>
+        ```
 
-    Cause: 
+        **Note:** The message body sent from the callback server to the OSS is not in JSON format. You can confirm the content by running  `curl -d "<Content>" <CallbackServerURL> -v` or capture packets. We recommend that you use Wireshark to capture packets in Windows, and use tcpdump to capture packets in Linux. Invalid returned messages include: `OK` and `\357\273\277{"Status":"OK"}` \(the BOM header containing the `ef bb bf` bytes\).
 
-    The message body sent from the callback server to the OSS is not in JSON format. You can confirm the content by running  `curl -d "<Content>" <CallbackServerURL> -v` or capture packets. We recommend that you use Wireshark to capture packets in Windows, and use tcpdump to capture packets in Linux. Invalid returned messages include: `OK` and `\357\273\277{"Status":"OK"}` \(the BOM header containing the `ef bb bf` bytes\).
+    -   Example 2
 
-    ```
-    <Error>
-      <Code>CallbackFailed</Code>
-      <Message>Error status : -1. OSS can not connect to your callbackUrl, please check it.</Message>
-      <RequestId>587C8735355BE8694A8E9100</RequestId>
-      <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
-    </Error>
-    ```
+        ```
+        <Error>
+          <Code>CallbackFailed</Code>
+          <Message>Error status : -1. OSS can not connect to your callbackUrl, please check it.</Message>
+          <RequestId>587C8735355BE8694A8E9100</RequestId>
+          <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
+        </Error>
+        ```
 
-    Cause: 
+        **Note:** The processing time of the callback server exceeds  five seconds. Therefore, the OSS determines that a time-out occurs. We recommend that you modify the processing logic of the callback server to asynchronous processing to make sure that it can complete processing within five seconds and returns the result to the OSS.
 
-    The processing time of the callback server exceeds  five seconds. Therefore, the OSS determines that a time-out occurs. We recommend that you modify the processing logic of the callback server to asynchronous processing to make sure that it can complete processing within five seconds and returns the result to the OSS.
+    -   Example 3
 
-    ```
-    <Error>
-      <Code>CallbackFailed</Code>
-      <Message> error status:-1 8.8.8.8: 9090 reply timeout, cost: 5000 MS, timeout: 5000 MS (Ernest-4, errno170) </message>
-      <RequestId>587C8D382AE0B92FA3EEF62C</RequestId>
-      <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
-    </Error>
-    ```
+        ```
+        <Error>
+          <Code>CallbackFailed</Code>
+          <Message> error status:-1 8.8.8.8: 9090 reply timeout, cost: 5000 MS, timeout: 5000 MS (Ernest-4, errno170) </message>
+          <RequestId>587C8D382AE0B92FA3EEF62C</RequestId>
+          <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
+        </Error>
+        ```
 
-    Cause: 
+        **Note:** The processing time of the callback server exceeds five seconds. Therefore, the OSS determines that a time-out occurs.
 
-    The processing time of the callback server exceeds five seconds. Therefore, the OSS determines that a time-out occurs.
+    -   Example 4
 
-    ```
-    <Error>
-      <Code>CallbackFailed</Code>
-      <Message>Error status : 400.</Message>
-      <RequestId>587C89A02AE0B92FA3C7981D</RequestId>
-      <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
-    </Error>
-    ```
+        ```
+        <Error>
+          <Code>CallbackFailed</Code>
+          <Message>Error status : 400.</Message>
+          <RequestId>587C89A02AE0B92FA3C7981D</RequestId>
+          <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
+        </Error>
+        ```
 
-    Cause: 
+        **Note:** The status code of the message sent from the callback server to the OSS is `400`. Check the processing logic of the callback server.
 
-    The status code of the message sent from the callback server to the OSS is `400`. Check the processing logic of the callback server.
+    -   Example 5
 
-    ```
-    <Error>
-      <Code>CallbackFailed</Code>
-      <Message>Error status : 502.</Message>
-      <RequestId>587C8D382AE0B92FA3EEF62C</RequestId>
-      <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
-    </Error>
-    ```
+        ```
+        <Error>
+          <Code>CallbackFailed</Code>
+          <Message>Error status : 502.</Message>
+          <RequestId>587C8D382AE0B92FA3EEF62C</RequestId>
+          <HostId>bucket.oss-cn-hangzhou.aliyuncs.com</HostId>
+        </Error>
+        ```
 
-    Cause: 
-
-    The callback server is not started, `CallbackUrl` is missing in the callback parameters, or the network between the OSS instance and the callback server is disconnected. We recommend that you deploy the callback server on the ECS, which belongs to the same intranet as the OSS, to save the traffic cost and guarantee the network quality.
+        **Note:** The callback server is not started, `CallbackUrl` is missing in the callback parameters, or the network between the OSS instance and the callback server is disconnected. We recommend that you deploy the callback server on the ECS, which belongs to the same intranet as the OSS, to save the traffic cost and guarantee the network quality.
 
 
 ## Common links {#section_q4w_nz3_wdb .section}
 
--   [Callback Guide](../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#)
--   [Callback API](../../../../reseller.en-US/API Reference/Object operations/Callback.md#)
+-   [Callback Guide](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#)
+-   [Callback API](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#)
 

@@ -2,7 +2,7 @@
 
 ## Lifecycle Object Transition {#section_oyb_bnz_5db .section}
 
-OSS supports three [storage classes](../../../../intl.en-US/Developer Guide/Storage classes/Introduction to storage classes.md#): Standard, Infrequent Access, and Archive.
+OSS supports three [storage classes](../../../../../reseller.en-US/Developer Guide/Storage classes/Introduction to storage classes.md#): Standard, Infrequent Access, and Archive.
 
 The Object Transition mechanism is now available in OSS Lifecycle Management function in all regions across China. The following storage classes are supported for automatic conversion:
 
@@ -10,7 +10,7 @@ The Object Transition mechanism is now available in OSS Lifecycle Management fun
 -   Standard -\> Archive
 -   Infrequent Access -\> Archive
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/1620_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15475300601620_en-US.png)
 
 **Examples**
 
@@ -20,9 +20,9 @@ You can configure lifecycle policies for objects with a given prefix in one buck
 -   They are converted to Archive class after being stored for 180 days.
 -   They are deleted automatically after being stored for 360 days.
 
-You can complete the configuration of the preceding lifecycle policies in the console. For more information, see [Set lifecycle](../../../../intl.en-US/Console User Guide/Manage buckets/Set lifecycle.md#).
+You can complete the configuration of the preceding lifecycle policies in the console. For more information, see [Set lifecycle](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set lifecycle.md#).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/1622_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15475300601622_en-US.png)
 
 **Note:** If the following three parameters are configured:
 
@@ -61,5 +61,5 @@ For example, for the conversion of Infrequent Access Object in the Bucket of Sta
 
 For the Object that has been converted to Archive class, you can only read it after performing Restore operation and restore it to a readable state.
 
-For mor einformation, see [Create and use the Archive bucket](../../../../intl.en-US/Developer Guide/Storage classes/Create and use the Archive bucket.md#).
+For more information, see [Create and use the Archive bucket](../../../../../reseller.en-US/Developer Guide/Storage classes/Create and use the Archive bucket.md#).
 

@@ -1,10 +1,8 @@
 # PostObject {#reference_smp_nsw_wdb .reference}
 
-PostObject使用HTML表单上传文件到指定bucket。
+PostObject使用HTML表单上传Object到指定Bucket。
 
-Post作为Put的替代品，使得基于浏览器上传文件到bucket成为可能。Post Object的消息实体通过多重表单格式（multipart/form-data）编码，在Put Object操作中参数通过HTTP请求头传递，在Post操作中参数则作为消息实体中的表单域传递。
-
-## Post object {#section_xwr_rsw_wdb .section}
+## PostObject {#section_xwr_rsw_wdb .section}
 
 请求语法
 
@@ -48,38 +46,38 @@ Upload to OSS
 --9431149156168--
 ```
 
-表单域
+请求Header
 
 |名称|类型|描述|必须|
 |:-|:-|:-|:-|
-|OSSAccessKeyId|字符串|Bucket 拥有者的Access Key Id。默认值：无
+|OSSAccessKeyId|字符串|Bucket 拥有者的AccessKeyId。默认值：无
 
-限制：当bucket非public-read-write或者提供了policy（或Signature）表单域时，必须提供该表单域。
+限制：当Bucket非public-read-write或者提供了policy（或Signature）表单域时，必须提供该表单域。
 
-|有条件的|
-|policy|字符串|policy规定了请求的表单域的合法性。不包含policy表单域的请求被认为是匿名请求，并且只能访问public-read-write的bucket。更详细描述请参考下文 Post Policy。默认值：无
+|有条件|
+|policy|字符串|Policy规定了请求表单域的合法性。不包含policy表单域的请求被认为是匿名请求，并且只能访问public-read-write的Bucket。更详细描述请参考下文 Post Policy。默认值：无
 
-限制：当bucket非public-read-write或者提供了OSSAccessKeyId（或Signature）表单域时，必须提供该表单域。
+限制：当Bucket非public-read-write或者提供了OSSAccessKeyId（或Signature）表单域时，必须提供该表单域。
 
-|有条件的|
-|Signature|字符串|根据Access Key Secret和policy计算的签名信息，OSS验证该签名信息从而验证该Post请求的合法性。更详细描述请参考下文 Post Signature。默认值：无
+|有条件|
+|Signature|字符串|根据AccessKeySecret和policy计算的签名信息，OSS验证该签名信息从而验证该Post请求的合法性。更详细描述请参考下文 Post Signature。默认值：无
 
-限制：当bucket非public-read-write或者提供了OSSAccessKeyId（或policy）表单域时，必须提供该表单域。
+限制：当Bucket非public-read-write或者提供了OSSAccessKeyId（或policy）表单域时，必须提供该表单域。
 
-|有条件的|
-|Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires|字符串|REST请求头，更多的信息见Put Object。 默认值：无
+|有条件|
+|Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires|字符串|HTTP请求Header，更详细信息请参见[Put Object](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。 默认值：无
 
 |可选|
-|file|字符串|文件或文本内容，必须是表单中的最后一个域。浏览器会自动根据文件类型来设置Content-Type，会覆盖用户的设置。 OSS一次只能上传一个文件。默认值：无
+|file|字符串|文件或文本内容，必须是表单中的最后一个域。浏览器会自动根据文件类型来设置Content-Type，并覆盖用户的设置。 OSS一次只能上传一个文件。默认值：无
 
 |必须|
-|key|字符串|上传文件的object名称。 如果名称包含路径，如a/b/c/b.jpg， 则OSS会自动创建相应的文件夹。 默认值：无
+|key|字符串|上传Object的名称。 如果名称包含路径，如a/b/c/b.jpg， 则OSS会自动创建相应的文件夹。 默认值：无
 
  |必须|
 |success\_action\_redirect|字符串|上传成功后客户端跳转到的URL，如果未指定该表单域，返回结果由success\_action\_status表单域指定。如果上传失败，OSS返回错误码，并不进行跳转。默认值：无
 
 |可选|
-|success\_action\_status|字符串|未指定success\_action\_redirect表单域时，该表单域指定了上传成功后返回给客户端的状态码。 接受值为200, 201, 204（默认）。 如果该域的值为200或者204，OSS返回一个空文档和相应的状态码。 如果该域的值设置为201，OSS返回一个XML文件和201状态码。 如果其值未设置或者设置成一个非法值，OSS返回一个空文档和204状态码。默认值：无
+|success\_action\_status|字符串|未指定success\_action\_redirect表单域时，该表单域指定了上传成功后返回给客户端的状态码。 接受值为200、201、204（默认）。 如果该域的值为200或者204，OSS返回一个空文档和相应的状态码。 如果该域的值设置为201，OSS返回一个XML文件和201状态码。 如果其值未设置或者设置成一个非法值，OSS返回一个空文档和204状态码。默认值：无
 
 | |
 |x-oss-meta-\*|字符串|用户指定的user meta值。 OSS不会检查或者使用该值。默认值：无
@@ -88,13 +86,13 @@ Upload to OSS
 |x-oss-server-side-encryption|字符串|指定OSS创建object时的服务器端加密编码算法。合法值：AES256
 
 |可选|
-|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption为KMS时有效。
+|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption的值为KMS时有效。
 
 |可选|
-|x-oss-object-acl|字符串|指定oss创建object时的访问权限。合法值：public-read，private，public-read-write
+|x-oss-object-acl|字符串|指定OSS创建object时的访问权限。合法值：public-read、private、public-read-write
 
 |可选|
-|x-oss-security-token|字符串|若本次访问是使用STS临时授权方式，则需要指定该项为SecurityToken的值，同时OSSAccessKeyId需要使用与之配对的临时AccessKeyId，计算签名时，与使用普通AccessKeyId签名方式一致。默认值：无
+|x-oss-security-token|字符串|若本次访问是使用STS临时授权方式，则需要指定该项为SecurityToken的值，同时OSSAccessKeyId需要使用与之配对的临时AccessKeyId。计算签名时，与使用普通AccessKeyId签名方式一致。默认值：无
 
 |可选|
 
@@ -104,7 +102,7 @@ Upload to OSS
 |:-|:-|:-|
 |x-oss-server-side-encryption|字符串|如果请求指定了x-oss-server-side-encryption熵编码，则响应Header中包含了该头部，指明了所使用的加密算法。|
 
-响应元素\(Response Elements\)
+**响应元素**
 
 |名称|类型|描述|
 |:-|:-|:-|
@@ -123,19 +121,19 @@ Upload to OSS
 
 **细节分析**
 
--   进行Post操作要求对bucket有写权限，如果bucket为public-read-write，可以不上传签名信息，否则要求对该操作进行签名验证。与Put操作不同，Post操作使用AccessKeySecret对policy进行签名计算出签名字符串作为Signature表单域的值，OSS会验证该值从而判断签名的合法性。
--   无论bucket是否为public-read-write，一旦上传OSSAccessKeyId, policy, Signature表单域中的任意一个，则另两个表单域为必选项，缺失时OSS会返回错误码：InvalidArgument。
--   post操作提交表单编码必须为“multipart/form-data”，即header中Content-Type为`multipart/form-data`;`boundary=xxxxxx` 这样的形式，boundary为边界字符串。
--   提交表单的URL为bucket域名即可，不需要在URL中指定object。即请求行是`POST / HTTP/1.1`，不能写成`POST /ObjectName HTTP/1.1`。
+-   进行Post操作要求对Bucket有写权限，如果Bucket为public-read-write，可以不上传签名信息，否则要求对该操作进行签名验证。与Put操作不同，Post操作使用AccessKeySecret对policy进行签名，计算出签名字符串作为Signature表单域的值，OSS会验证该值从而判断签名的合法性。
+-   无论Bucket是否为public-read-write，一旦上传OSSAccessKeyId、policy、Signature表单域中的任意一个，则另两个表单域为必选项，缺失时OSS会返回错误码：InvalidArgument。
+-   Post操作提交表单编码必须为`multipart/form-data`，即Header中Content-Type为`multipart/form-data;boundary=xxxxxx` 这样的形式，boundary为边界字符串。
+-   提交表单的URL为Bucket域名即可，不需要在URL中指定object。即请求行是`POST / HTTP/1.1`，不能写成`POST /ObjectName HTTP/1.1`。
 -   policy规定了该次Post请求中表单域的合法值，OSS会根据policy判断请求的合法性，如果不合法会返回错误码：AccessDenied。在检查policy合法性时，policy中不涉及的表单域不进行检查。
 -   表单和policy必须使用UTF-8编码，policy为经过UTF-8编码和base64编码的JSON。
 -   Post请求中可以包含额外的表单域，OSS会根据policy对这些表单域检查合法性。
--   如果用户上传了Content-MD5请求头，OSS会计算body的Content-MD5并检查一致性，如果不一致，将返回InvalidDigest错误码。
+-   如果用户上传了Content-MD5请求Header，OSS会计算body的Content-MD5并检查一致性，如果不一致，将返回InvalidDigest错误码。
 -   如果POST请求中包含Header签名信息或URL签名信息，OSS不会对它们做检查。
 -   如果请求中携带以x-oss-meta-为前缀的表单域，则视为user meta，比如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的user meta总大小不能超过8k。
--   Post请求的body总长度不允许超过5G。若文件长度过大，会返回错误码：EntityTooLarge。
--   如果上传指定了x-oss-server-side-encryption Header请求域，则必须设置其值为AES256，否则会返回400和错误码：InvalidEncryptionAlgorithmError。指定该Header后，在响应头中也会返回该Header，OSS会对上传的Object进行加密编码存储，当这个Object被下载时，响应头中会包含x-oss-server-side-encryption，值被设置成该Object的加密算法。
--   表单域为大小写不敏感的，但是表单域的值为大小写敏感的。
+-   Post请求的body总长度不允许超过5G。若文件长度过大，则返回错误码：EntityTooLarge。
+-   如果上传指定了x-oss-server-side-encryption Header请求域，则必须设置其值为AES256，否则会返回400和错误码：InvalidEncryptionAlgorithmError。指定该Header后，在响应头中也会返回该Header，OSS会对上传的Object进行加密编码存储，当这个Object被下载时，响应Header中会包含x-oss-server-side-encryption，值被设置成该Object的加密算法。
+-   表单域对大小写不敏感，但表单域的值对大小写敏感的。
 
 **示例**
 
@@ -195,7 +193,7 @@ Upload to OSS
 
 ## Post Policy {#section_d5z_1ww_wdb .section}
 
-Post请求的policy表单域用于验证请求的合法性。 policy为一段经过UTF-8和base64编码的JSON文本，声明了Post请求必须满足的条件。虽然对于public-read-write的bucket上传时，post表单域为可选项，我们强烈建议使用该域来限制Post请求。
+Post请求的policy表单域用于验证请求的合法性。 policy为一段经过UTF-8和base64编码的JSON文本，声明了Post请求必须满足的条件。虽然对于public-read-write的Bucket上传时，Post表单域为可选项，我们强烈建议使用该域来限制Post请求。
 
 **policy示例**
 
@@ -208,11 +206,11 @@ Post请求的policy表单域用于验证请求的合法性。 policy为一段经
 }
 ```
 
-Post policy中必须包含expiration和condtions。
+Post policy中必须包含expiration和conditions。
 
 **Expiration**
 
-Expiration项指定了policy的过期时间，以ISO8601 GMT时间表示。例如”2014-12-01T12:00:00.000Z”指定了Post请求必须发生在2014年12月1日12点之前。
+Expiration项指定了policy的过期时间，以ISO8601 GMT时间表示。例如`2014-12-01T12:00:00.000Z`指定了Post请求必须发生在2014年12月1日12点之前。
 
 **Conditions**
 
@@ -220,14 +218,14 @@ Conditions是一个列表，可以用于指定Post请求的表单域的合法值
 
 |名称|描述|
 |:-|:-|
-|content-length-range|上传文件的最小和最大允许大小。 该condition支持contion-length-range匹配方式。|
-|Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires|HTTP请求头。 该condition支持精确匹配和starts-with匹配方式。|
-|key|上传文件的object名称。 该condition支持精确匹配和starts-with匹配方式。|
+|content-length-range|上传Object的最小和最大允许大小。 该condition支持contion-length-range匹配方式。|
+|Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires|HTTP请求Header。 该condition支持精确匹配和starts-with匹配方式。|
+|key|上传Object的object名称。 该condition支持精确匹配和starts-with匹配方式。|
 |success\_action\_redirect|上传成功后的跳转URL地址。 该condition支持精确匹配和starts-with匹配方式。|
 |success\_action\_status|未指定success\_action\_redirect时，上传成功后的返回状态码。 该condition支持精确匹配和starts-with匹配方式。|
 |x-oss-meta-\*|用户指定的user meta。 该condition支持精确匹配和starts-with匹配方式。|
 
-如果Post请求中包含其他的表单域，可以将这些额外的表单域加入到policy的conditions中,conditions不涉及的表单域将不会进行合法性检查。
+如果Post请求中包含其他的表单域，可以将这些额外的表单域加入到policy的conditions中，conditions不涉及的表单域将不会进行合法性检查。
 
 **Conditions匹配方式**
 
@@ -239,7 +237,7 @@ Conditions是一个列表，可以用于指定Post请求的表单域的合法值
 
 **转义字符**
 
-于在 Post policy 中 $ 表示变量，所以如果要描述 $，需要使用转义字符\\$。除此之外，JSON 将对一些字符进行转义。下图描述了 Post policy 的 JSON 中需要进行转义的字符。
+在 Post policy 中 $ 表示变量，如果要描述 $，需要使用转义字符\\$。除此之外，JSON 将对一些字符进行转义。下表描述了 Post policy 的 JSON 中需要进行转义的字符。
 
 |转义字符|描述|
 |:---|:-|
@@ -259,10 +257,10 @@ Conditions是一个列表，可以用于指定Post请求的表单域的合法值
 对于验证的Post请求，HTML表单中必须包含policy和Signature信息。policy控制请求中那些值是允许的。计算Signature的具体流程为：
 
 1.  创建一个 UTF-8 编码的 policy。
-2.  将 policy 进行 base64 编码，其值即为 policy 表单域该填入的值，将该值作为将要签名的字符串。
-3.  使用 AccessKeySecret 对要签名的字符串进行签名，签名方法与Head中签名的计算方法相同（将要签名的字符串替换为 policy 即可），请参见在Header中包含签名。
+2.  将 policy 进行 base64 编码，其值即为 policy 表单域填入的值，将该值作为将要签名的字符串。
+3.  使用 AccessKeySecret 对要签名的字符串进行签名，签名方法与Header中签名的计算方法相同（将要签名的字符串替换为 policy 即可），请参见在Header中包含签名。
 
 ## 示例 Demo {#section_owq_2gt_xfb .section}
 
-Web 端表单直传 OSS 示例 Demo，请参见[JavaScript客户端签名直传](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)。
+Web 端表单直传 OSS 示例 Demo，请参见[JavaScript客户端签名直传](../../../../../cn.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)。
 

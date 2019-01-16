@@ -18,7 +18,10 @@ The following table describes parameters for ObjectListing.
 |marker|Specifies the initial object in the list.|String getMarker\(\)|
 |maxKeys|Specifies the maximum number of objects that can be listed.|int getMaxKeys\(\)|
 |nextMarker|Specifies the initial position for the next object.|String getNextMarker\(\)|
-|isTruncated|Specifies whether all results are returned.|boolean isTruncated\(\)|
+|isTruncated|Specifies whether the listed objects are truncated.-   If the objects are all listed without truncation, a false value is returned.
+-   If the listed objects are truncated, a true value is returned.
+
+|boolean isTruncated\(\)|
 |commonPrefixes|Specifies a set of objects whose names share a prefix and end with a forward slash \(/\) delimiter.|List<String\> getCommonPrefixes\(\)|
 |encodingType|Specifies the encoding type used in the response.|String getEncodingType\(\)|
 
@@ -294,7 +297,7 @@ The delimiter and prefix parameters can be used to simulate folder functions.
 -   Prefix: specifies the prefix as the name of a folder. The folder is used to list all files \(in the folder\) and subfolders \(directories in the folder\) that start with this prefix. These files and subfolders are included in the Objects list.
 -   Delimiter: If the delimiter is specified as a forward slash \(/\), only the files and subfolders \(directories\) are displayed. Subfolders \(directories\) are included in the CommonPrefixes list, while the files and folders in subfolders are not displayed.
 
-For more information about folders, see [Folder simulation](../../../../reseller.en-US/Developer Guide/Manage files/View the object list.md#). For the complete code of creating an object, see [GitHub](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/CreateFolderSample.java).
+For more information about folders, see [Folder simulation](../../../../../reseller.en-US/Developer Guide/Manage files/View the object list.md#). For the complete code of creating an object, see [GitHub](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/CreateFolderSample.java).
 
 Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. Forward slashes \(/\) are used as delimiters for folders. The subsequent examples show how to simulate folder functions.
 

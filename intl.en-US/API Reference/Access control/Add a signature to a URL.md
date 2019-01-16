@@ -2,6 +2,34 @@
 
 In addition to using an authorization header, you can add signature information to a URL. It enables you to forward a URL to the third party for an authorized access.
 
+## Sample code {#section_wcr_k2f_xdb .section}
+
+Python sample code used to add a signature to a URL:
+
+```
+import base64
+import hmac
+import sha
+import urllib
+h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
+             "GET\n\n\n1141889120\n/oss-example/oss-api.pdf",
+             sha)
+urllib.quote (base64.encodestring(h.digest()).strip())
+```
+
+OSS SDK provides the method for adding a signature into an URL. For the detailed usage, see Authorized access in the OSS SDK Reference.
+
+To add a signature to the OSS SDK URL, see the following table.
+
+|SDK|URL signature method|Implementation file|
+|:--|:-------------------|:------------------|
+|Java SDK|OSSClient.generatePresignedUrl|[OSSClient.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/OSSClient.java?spm=a2c4g.11186623.2.6.30uUQV&file=OSSClient.java)|
+|Python SDK|Bucket.sign\_url|[api.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/api.py?spm=a2c4g.11186623.2.7.30uUQV&file=api.py)|
+|Net SDK|OssClient.GeneratePresignedUri|[OssClient.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/OssClient.cs?spm=a2c4g.11186623.2.8.30uUQV&file=OssClient.cs)|
+|PHP SDK|OssClient.signUrl|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php?spm=a2c4g.11186623.2.9.30uUQV)|
+|JavaScript SDK|signatureUrl|[object.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/object.js?spm=a2c4g.11186623.2.10.30uUQV&file=object.js)|
+|C SDK|oss\_gen\_signed\_url|[oss\_object.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_object.c?spm=a2c4g.11186623.2.11.30uUQV&file=oss_object.c)|
+
 ## Implementation {#section_rtl_3df_xdb .section}
 
 URL signature example:
@@ -39,34 +67,6 @@ The URL signature must include at least the following three parameters: Signatur
     http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D&security-token=SecurityToken
     ```
 
-
-## Sample code {#section_wcr_k2f_xdb .section}
-
-Python sample code used to add a signature to a URL:
-
-```
-import base64
-import hmac
-import sha
-import urllib
-h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
-             "GET\n\n\n1141889120\n/oss-example/oss-api.pdf",
-             sha)
-urllib.quote (base64.encodestring(h.digest()).strip())
-```
-
-OSS SDK provides the method for adding a signature into an URL. For the detailed usage, see Authorized access in the OSS SDK Reference.
-
-To add a signature to the OSS SDK URL, see the following table.
-
-|SDK|URL signature method|Implementation file|
-|:--|:-------------------|:------------------|
-|Java SDK|OSSClient.generatePresignedUrl|[OSSClient.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/OSSClient.java?spm=a2c4g.11186623.2.6.30uUQV&file=OSSClient.java)|
-|Python SDK|Bucket.sign\_url|[api.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/api.py?spm=a2c4g.11186623.2.7.30uUQV&file=api.py)|
-|Net SDK|OssClient.GeneratePresignedUri|[OssClient.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/OssClient.cs?spm=a2c4g.11186623.2.8.30uUQV&file=OssClient.cs)|
-|PHP SDK|OssClient.signUrl|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php?spm=a2c4g.11186623.2.9.30uUQV)|
-|JavaScript SDK|signatureUrl|[object.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/object.js?spm=a2c4g.11186623.2.10.30uUQV&file=object.js)|
-|C SDK|oss\_gen\_signed\_url|[oss\_object.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_object.c?spm=a2c4g.11186623.2.11.30uUQV&file=oss_object.c)|
 
 ## Detail analysis {#section_cbj_q2f_xdb .section}
 

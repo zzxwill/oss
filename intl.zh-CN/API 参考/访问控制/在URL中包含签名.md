@@ -2,6 +2,34 @@
 
 除了使用Authorization Header，用户还可以在URL中加入签名信息，这样用户就可以把该URL转给第三方实现授权访问。
 
+## 示例代码 {#section_wcr_k2f_xdb .section}
+
+URL中添加签名的python示例代码：
+
+```
+import base64
+import hmac
+import sha
+import urllib
+h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
+             "GET\n\n\n1141889120\n/oss-example/oss-api.pdf",
+             sha)
+urllib.quote (base64.encodestring(h.digest()).strip())
+```
+
+OSS SDK中提供了提供URL签名的方法，使用方法请参看SDK参考中的授权访问文档。
+
+OSS SDK的URL签名实现，请参看下表：
+
+|SDK|URL签名方法|实现文件|
+|:--|:------|:---|
+|Java SDK|OSSClient.generatePresignedUrl|[OSSClient.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/OSSClient.java?spm=a2c4g.11186623.2.6.30uUQV&file=OSSClient.java)|
+|Python SDK|Bucket.sign\_url|[api.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/api.py?spm=a2c4g.11186623.2.7.30uUQV&file=api.py)|
+|.Net SDK|OssClient.GeneratePresignedUri|[OssClient.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/OssClient.cs?spm=a2c4g.11186623.2.8.30uUQV&file=OssClient.cs)|
+|PHP SDK|OssClient.signUrl|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php?spm=a2c4g.11186623.2.9.30uUQV)|
+|JavaScript SDK|signatureUrl|[Object.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/object.js?spm=a2c4g.11186623.2.10.30uUQV&file=object.js)|
+|C SDK|oss\_gen\_signed\_url|[oss\_object.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_object.c?spm=a2c4g.11186623.2.11.30uUQV&file=oss_object.c)|
+
 ## 实现方式 {#section_rtl_3df_xdb .section}
 
 URL签名示例:
@@ -39,34 +67,6 @@ URL签名，必须至少包含Signature、Expires和OSSAccessKeyId三个参数�
     http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D&security-token=SecurityToken
     ```
 
-
-## 示例代码 {#section_wcr_k2f_xdb .section}
-
-URL中添加签名的python示例代码：
-
-```
-import base64
-import hmac
-import sha
-import urllib
-h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
-             "GET\n\n\n1141889120\n/oss-example/oss-api.pdf",
-             sha)
-urllib.quote (base64.encodestring(h.digest()).strip())
-```
-
-OSS SDK中提供了提供URL签名的方法，使用方法请参看SDK参考中的授权访问文档。
-
-OSS SDK的URL签名实现，请参看下表：
-
-|SDK|URL签名方法|实现文件|
-|:--|:------|:---|
-|Java SDK|OSSClient.generatePresignedUrl|[OSSClient.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/OSSClient.java?spm=a2c4g.11186623.2.6.30uUQV&file=OSSClient.java)|
-|Python SDK|Bucket.sign\_url|[api.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/api.py?spm=a2c4g.11186623.2.7.30uUQV&file=api.py)|
-|.Net SDK|OssClient.GeneratePresignedUri|[OssClient.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/OssClient.cs?spm=a2c4g.11186623.2.8.30uUQV&file=OssClient.cs)|
-|PHP SDK|OssClient.signUrl|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php?spm=a2c4g.11186623.2.9.30uUQV)|
-|JavaScript SDK|signatureUrl|[Object.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/object.js?spm=a2c4g.11186623.2.10.30uUQV&file=object.js)|
-|C SDK|oss\_gen\_signed\_url|[oss\_object.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_object.c?spm=a2c4g.11186623.2.11.30uUQV&file=oss_object.c)|
 
 ## 细节分析 {#section_cbj_q2f_xdb .section}
 

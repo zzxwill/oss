@@ -2,44 +2,6 @@
 
 除了使用Authorization Header，用户还可以在URL中加入签名信息，这样用户就可以把该URL转给第三方实现授权访问。
 
-## 实现方式 {#section_rtl_3df_xdb .section}
-
-URL签名示例:
-
-```
-http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D
-```
-
-URL签名，必须至少包含Signature、Expires和OSSAccessKeyId三个参数。
-
--   `Expires`参数的值是一个[Unix time](https://en.wikipedia.org/wiki/Unix_time)（自UTC时间1970年1月1号开始的秒数），用于标识该URL的超时时间。如果OSS接收到这个URL请求的时候晚于签名中包含的Expires参数时，则返回请求超时的错误码。例如：当前时间是1141889060，开发者希望创建一个60秒后自动失效的URL，则可以设置Expires时间为1141889120。URL的有效时间默认为3600秒，最大为64800秒。
--   `OSSAccessKeyId` 即密钥中的AccessKeyId。
--   `Signature` 表示签名信息。所有的OSS支持的请求和各种Header参数，在URL中进行签名的算法和[在Header中包含签名](cn.zh-CN/API 参考/访问控制/在Header中包含签名.md#)的算法基本一样。
-
-    ```
-    Signature = urlencode(base64(hmac-sha1(AccessKeySecret,
-              VERB + "\n" 
-              + CONTENT-MD5 + "\n" 
-              + CONTENT-TYPE + "\n" 
-              + EXPIRES + "\n" 
-              + CanonicalizedOSSHeaders
-              + CanonicalizedResource)))
-    ```
-
-    其中，与Header中包含签名相比主要区别如下：
-
-    -   通过URL包含签名时，之前的Date参数换成Expires参数。
-    -   不支持同时在URL和Header中包含签名。
-    -   如果传入的Signature，Expires，OSSAccessKeyId出现不止一次，以第一次为准。
-    -   请求先验证请求时间是否晚于Expires时间，然后再验证签名。
-    -   将签名字符串放到URL时，注意要对URL进行urlencode
--   临时用户URL签名时，需要携带`security-token`，格式如下：
-
-    ```
-    http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D&security-token=SecurityToken
-    ```
-
-
 ## 示例代码 {#section_wcr_k2f_xdb .section}
 
 URL中添加签名的python示例代码：
@@ -67,6 +29,44 @@ OSS SDK的URL签名实现，请参看下表：
 |PHP SDK|OssClient.signUrl|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php?spm=a2c4g.11186623.2.9.30uUQV)|
 |JavaScript SDK|signatureUrl|[Object.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/object.js?spm=a2c4g.11186623.2.10.30uUQV&file=object.js)|
 |C SDK|oss\_gen\_signed\_url|[oss\_object.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_object.c?spm=a2c4g.11186623.2.11.30uUQV&file=oss_object.c)|
+
+## 实现方式 {#section_rtl_3df_xdb .section}
+
+URL签名示例:
+
+```
+http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D
+```
+
+URL签名，必须至少包含Signature、Expires和OSSAccessKeyId三个参数。
+
+-   `Expires`参数的值是一个[Unix time](https://en.wikipedia.org/wiki/Unix_time)（自UTC时间1970年1月1号开始的秒数），用于标识该URL的超时时间。如果OSS接收到这个URL请求的时候晚于签名中包含的Expires参数时，则返回请求超时的错误码。例如：当前时间是1141889060，开发者希望创建一个60秒后自动失效的URL，则可以设置Expires时间为1141889120。URL的有效时间默认为3600秒，最大为64800秒。
+-   `OSSAccessKeyId` 即密钥中的AccessKeyId。
+-   `Signature` 表示签名信息。所有的OSS支持的请求和各种Header参数，在URL中进行签名的算法和[在Header中包含签名](intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)的算法基本一样。
+
+    ```
+    Signature = urlencode(base64(hmac-sha1(AccessKeySecret,
+              VERB + "\n" 
+              + CONTENT-MD5 + "\n" 
+              + CONTENT-TYPE + "\n" 
+              + EXPIRES + "\n" 
+              + CanonicalizedOSSHeaders
+              + CanonicalizedResource)))
+    ```
+
+    其中，与Header中包含签名相比主要区别如下：
+
+    -   通过URL包含签名时，之前的Date参数换成Expires参数。
+    -   不支持同时在URL和Header中包含签名。
+    -   如果传入的Signature，Expires，OSSAccessKeyId出现不止一次，以第一次为准。
+    -   请求先验证请求时间是否晚于Expires时间，然后再验证签名。
+    -   将签名字符串放到URL时，注意要对URL进行urlencode
+-   临时用户URL签名时，需要携带`security-token`，格式如下：
+
+    ```
+    http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D&security-token=SecurityToken
+    ```
+
 
 ## 细节分析 {#section_cbj_q2f_xdb .section}
 

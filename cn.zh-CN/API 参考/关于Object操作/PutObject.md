@@ -178,6 +178,6 @@ Content-Md5计算方式错误
     ETag: "A797938C31D59EDD08D86188F6D5B872"
     ```
 
--   **说明：** 更多Put Object示例代码请参见[Python SDK上传文件](../../../../intl.zh-CN/SDK 参考/Python/上传文件/概述.md#)。
+-   **说明：** 更多Put Object示例代码请参见[Python SDK上传文件](../../../../../cn.zh-CN/SDK 参考/Python/上传文件/概述.md#)。
 
 

@@ -2,6 +2,23 @@
 
 You can add an authorization header to carry signature information in an HTTP request to indicate that the message has been authorized.
 
+## SDK signature implementation {#section_dbw_1bf_xdb .section}
+
+OSS SDK has implemented the signature. You do not need to worry about the signature issue when you use the OSS SDK. To learn more about the signature implementations of specific languages, see the OSS SDK code. The files for implementing OSS SDK signature are shown in the following table:
+
+|SDK|Signature implementation|
+|:--|:-----------------------|
+|Java SDK|[OSSRequestSigner.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/internal/OSSRequestSigner.java)|
+|Python SDK|[auth.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/auth.py)|
+|Net SDK|[OssRequestSigner.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/Util/OssRequestSigner.cs)|
+|PHP SDK|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php)|
+|C SDK|[oss\_auth.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_auth.c)|
+|JavaScript SDK|[client.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/client.js)|
+|Go SDK|[auth.go](https://github.com/aliyun/aliyun-oss-go-sdk/blob/master/oss/auth.go)|
+|Ruby SDK|[util.rb](https://github.com/aliyun/aliyun-oss-ruby-sdk/blob/master/lib/aliyun/oss/util.rb)|
+|iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
+|Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
+
 ## Calculation of the Authorization field {#section_w3s_bw2_xdb .section}
 
 ```
@@ -57,7 +74,7 @@ The target OSS resource specified in the request sent by the user is called a Ca
 -   Three types of sub-resources are available:
     -   Resource identifiers, such as acl, append, uploadId, and symlink sub-resources. For more information, see [Bucket-related operations](reseller.en-US/API Reference/Bucket operations/PutBucket.md#) and [Object-related operations](reseller.en-US/API Reference/Object operations/PutObject.md#).
     -   Specify response header fields such as `response-***`. For more information, see the `Request Parameters section` of [GetObject](reseller.en-US/API Reference/Object operations/GetObject.md#) .
-    -   Object handling methods, such as `x-oss-process`. It is used as the object handling method, such as [Image Processing](../../../../reseller.en-US/Image Processing Guide/Image processing access rules.md#).
+    -   Object handling methods, such as `x-oss-process`. It is used as the object handling method, such as [Image Processing](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing access rules.md#).
 
 ## Rules to calculate a signature header {#section_qcb_p1f_xdb .section}
 
@@ -106,7 +123,7 @@ X-OSS-Meta-Author: foo@bar.com
 X-OSS-Magic: abracadabra
 ```
 
-## Detail analysis {#section_dbw_1bf_xdb .section}
+Detail analysis are as follows:
 
 -   If the input AccessKeyID does not exist or is inactive, the error 403 Forbidden is returned. Error code: InvalidAccessKeyId.
 -   If the authorization value format in the user request header is incorrect, the error 400 Bad Request is returned.  Error code: InvalidArgument.
@@ -147,21 +164,6 @@ X-OSS-Magic: abracadabra
     </Error>
     ```
 
-
-**Note:** OSS SDK has implemented the signature. You do not need to worry about the signature issue when you use the OSS SDK. To learn more about the signature implementations of specific languages, see the OSS SDK code. The files for implementing OSS SDK signature are shown in the following table:
-
-|SDK|Signature implementation|
-|:--|:-----------------------|
-|Java SDK|[OSSRequestSigner.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/internal/OSSRequestSigner.java)|
-|Python SDK|[auth.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/auth.py)|
-|Net SDK|[OssRequestSigner.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/Util/OssRequestSigner.cs)|
-|PHP SDK|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php)|
-|C SDK|[oss\_auth.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_auth.c)|
-|JavaScript SDK|[client.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/client.js)|
-|Go SDK|[auth.go](https://github.com/aliyun/aliyun-oss-go-sdk/blob/master/oss/auth.go)|
-|Ruby SDK|[util.rb](https://github.com/aliyun/aliyun-oss-ruby-sdk/blob/master/lib/aliyun/oss/util.rb)|
-|iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
-|Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
 
 ## Content-MD5 calculation method {#section_vkz_sbf_xdb .section}
 

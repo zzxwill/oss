@@ -2,6 +2,23 @@
 
 用户可以在HTTP请求中增加 `Authorization` 的Header来包含签名（Signature）信息，表明这个消息已被授权。
 
+## SDK 签名实现 {#section_dbw_1bf_xdb .section}
+
+OSS SDK已经实现签名，用户使用OSS SDK不需要关注签名问题。如果您想了解具体语言的签名实现，请参考OSS SDK的代码。OSS SDK签名实现的文件如下表：
+
+|SDK|签名实现|
+|:--|:---|
+|Java SDK|[OSSRequestSigner.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/internal/OSSRequestSigner.java)|
+|Python SDK|[auth.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/auth.py)|
+|.Net SDK|[OssRequestSigner.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/Util/OssRequestSigner.cs)|
+|PHP SDK|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php)|
+|C SDK|[oss\_auth.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_auth.c)|
+|JavaScript SDK|[client.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/client.js)|
+|Go SDK|[auth.go](https://github.com/aliyun/aliyun-oss-go-sdk/blob/master/oss/auth.go)|
+|Ruby SDK|[util.rb](https://github.com/aliyun/aliyun-oss-ruby-sdk/blob/master/lib/aliyun/oss/util.rb)|
+|iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
+|Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
+
 ## Authorization字段计算的方法 {#section_w3s_bw2_xdb .section}
 
 ```
@@ -55,9 +72,9 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 -   OSS目前支持的子资源\(sub-resource\)包括：acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，tagging，objectMeta，uploadId，partNumber，security-token，position，img，style，styleName，replication，replicationProgress，replicationLocation，cname，bucketInfo，comp，qos，live，status，vod，startTime，endTime，symlink，x-oss-process，response-content-type，response-content-language，response-expires，response-cache-control，response-content-disposition，response-content-encoding等
 -   子资源\(sub-resource\)有三种类型：
-    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](cn.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。
-    -   指定返回Header字段，如 `response-***`，详见[GetObject](cn.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
-    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../cn.zh-CN/图片处理指南/图片处理访问规则.md#)。
+    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)。
+    -   指定返回Header字段，如 `response-***`，详见[GetObject](intl.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
+    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../../intl.zh-CN/数据处理/图片处理指南/图片处理访问规则.md#)。
 
 ## 计算签名头规则 {#section_qcb_p1f_xdb .section}
 
@@ -106,7 +123,7 @@ X-OSS-Meta-Author: foo@bar.com
 X-OSS-Magic: abracadabra
 ```
 
-## 细节分析 {#section_dbw_1bf_xdb .section}
+细节分析如下：
 
 -   如果传入的AccessKeyId不存在或inactive，返回403 Forbidden。错误码：InvalidAccessKeyId。
 -   若用户请求头中Authorization值的格式不对，返回400 Bad Request。错误码：InvalidArgument。
@@ -121,7 +138,9 @@ X-OSS-Magic: abracadabra
 
 -   如果签名验证的时候，头中没有传入Date或者格式不正确，返回403 Forbidden错误。错误码：AccessDenied。
 -   传入请求的时间必须在OSS服务器当前时间之后的15分钟以内，否则返回403 Forbidden。错误码：RequestTimeTooSkewed。
--   如果AccessKeyId是active的，但OSS判断用户的请求发生签名错误，则返回403 Forbidden，并在返回给用户的response中告诉用户正确的用于验证加密的签名字符串。用户可以根据OSS的response来检查自己的签名字符串是否正确。返回示例：
+-   如果AccessKeyId是active的，但OSS判断用户的请求发生签名错误，则返回403 Forbidden，并在返回给用户的response中告诉用户正确的用于验证加密的签名字符串。用户可以根据OSS的response来检查自己的签名字符串是否正确。
+
+    返回示例：
 
     ```
     <?xml version="1.0" ?>
@@ -155,25 +174,6 @@ X-OSS-Magic: abracadabra
     </Error>
     ```
 
-
-**说明：** 
-
--   OSS SDK已经实现签名，用户使用OSS SDK不需要关注签名问题。如果您想了解具体语言的签名实现，请参考OSS SDK的代码。OSS SDK签名实现的文件如下表：
-
-    |SDK|签名实现|
-    |:--|:---|
-    |Java SDK|[OSSRequestSigner.java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/main/java/com/aliyun/oss/internal/OSSRequestSigner.java)|
-    |Python SDK|[auth.py](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/oss2/auth.py)|
-    |.Net SDK|[OssRequestSigner.cs](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/sdk/Util/OssRequestSigner.cs)|
-    |PHP SDK|[OssClient.php](https://github.com/aliyun/aliyun-oss-php-sdk/blob/master/src/OSS/OssClient.php)|
-    |C SDK|[oss\_auth.c](https://github.com/aliyun/aliyun-oss-c-sdk/blob/master/oss_c_sdk/oss_auth.c)|
-    |JavaScript SDK|[client.js](https://github.com/ali-sdk/ali-oss/blob/master/lib/client.js)|
-    |Go SDK|[auth.go](https://github.com/aliyun/aliyun-oss-go-sdk/blob/master/oss/auth.go)|
-    |Ruby SDK|[util.rb](https://github.com/aliyun/aliyun-oss-ruby-sdk/blob/master/lib/aliyun/oss/util.rb)|
-    |iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
-    |Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
-
--   当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请参见[自签名计算失败](../../../../cn.zh-CN/常见错误排除/排障工具/自签名计算失败.md#)排除错误。
 
 ## 常见问题 {#section_vkz_sbf_xdb .section}
 

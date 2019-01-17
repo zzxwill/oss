@@ -2,7 +2,9 @@
 
 AppendObject接口用于以追加写的方式上传文件。
 
-通过Append Object操作创建的Object类型为Appendable Object，而通过Put Object上传的Object是Normal Object。
+通过AppendObject操作创建的Object类型为Appendable Object，而通过PutObject上传的Object是Normal Object。
+
+**说明：** 针对Appendable Object，不支持指定CMK ID进行服务端KMS加密。
 
 ## 请求语法 {#section_n23_kpw_bz .section}
 
@@ -19,7 +21,7 @@ Authorization: SignatureValue
 
 |名称|类型|描述|
 |--|--|--|
-|Cache-Control|字符串|指定该Object被下载时的网页的缓存行为；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
+|Cache-Control|字符串|指定该Object被下载时网页的缓存行为；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
 
 |
 |Content-Disposition|字符串|指定该Object被下载时的名称；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
@@ -54,40 +56,40 @@ Authorization: SignatureValue
 
 **说明：** 
 
--   如果StorageClass的值不合法，则返回400 错误。错误码：InvalidArgumet。
+-   如果StorageClass的值不合法，则返回400 错误。错误码：InvalidArgument。
 -   对于任意存储类型Bucket，若上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
 -   首次执行AppendObject操作时，指定该值有效，后续追加时指定该值无效。
 
 |
 
-## 响应Header {#section_xbv_rpw_bz .section}
+v
 
 |名称|类型|描述|
 |--|--|--|
-|x-oss-next-append-position|64位整型|指明下一次请求应当提供的position。实际上就是当前Object长度。当Append Object成功返回，或是因position和Object长度不匹配而引起的409错误时，会包含此header。|
+|x-oss-next-append-position|64位整型|指明下一次请求应当提供的position。实际上就是当前Object长度。当AppendObject成功返回，或是因position和Object长度不匹配而引起的409错误时，会包含此Header。|
 |x-oss-hash-crc64ecma|64位整型|表明Object的64位CRC值。该64位CRC根据[ECMA-182](http://www.ecma-international.org/publications/standards/Ecma-182.htm)标准计算得出。|
 
 ## 和其他操作的关系 {#section_vgd_wpw_bz .section}
 
--   不能对一个非Appendable Object进行Append Object操作。例如，已经存在一个同名Normal Object时，Append Object调用返回409，错误码ObjectNotAppendable。
--   对一个已经存在的Appendable Object进行Put Object操作，那么该Appendable Object会被新的Object覆盖，类型变为Normal Object。
--   Head Object操作会返回x-oss-object-type，用于表明Object的类型。对于Appendable Object来说，该值为Appendable。对Appendable Object，Head Object也会返回上述的x-oss-next-append-position和x-oss-hash-crc64ecma。
--   Get Bucket（List Objects）请求的响应XML中，会把Appendable Object的Type设为Appendable。
--   不能使用Copy Object来拷贝一个Appendable Object，也不能改变它的服务器端加密的属性。可以使用Copy Object来改变用户自定义元信息。
+-   不能对一个非Appendable Object进行AppendObject操作。例如，已经存在一个同名Normal Object时，AppendObject调用返回409，错误码ObjectNotAppendable。
+-   对一个已经存在的Appendable Object进行PutObject操作，那么该Appendable Object会被新的Object覆盖，类型变为Normal Object。
+-   HeadObject操作会返回x-oss-object-type，用于表明Object的类型。对于Appendable Object来说，该值为Appendable。对Appendable Object，HeadObject也会返回上述的x-oss-next-append-position和x-oss-hash-crc64ecma。
+-   GetBucket（List Objects）请求的响应XML中，会把Appendable Object的Type设为Appendable。
+-   不能使用CopyObject来拷贝一个Appendable Object，也不能改变它的服务器端加密的属性。可以使用CopyObject来改变用户自定义元信息。
 
 ## 细节分析 {#section_jxx_wpw_bz .section}
 
 -   URL参数append和position均为CanonicalizedResource，需要包含在签名中。
-    -   URL的参数必须包含append，用来指定这是一个Append Object操作。
-    -   URL查询参数还必须包含position，其值指定从何处进行追加。首次追加操作的position必须为0，后续追加操作的position是Object的当前长度。例如，第一次Append Object请求指定position值为0，content-length是65536；那么，第二次Append Object需要指定position为65536。每次操作成功后，响应头部x-oss-next-append-position也会标明下一次追加的position。
+    -   URL的参数必须包含append，用来指定这是一个AppendObject操作。
+    -   URL查询参数还必须包含position，其值指定从何处进行追加。首次追加操作的position必须为0，后续追加操作的position是Object的当前长度。例如，第一次AppendObject请求指定position值为0，content-length是65536；那么，第二次AppendObject需要指定position为65536。每次操作成功后，响应头部x-oss-next-append-position也会标明下一次追加的position。
 -   当Position值为0时：
     -   如果没有同名Appendable Object，或者同名Appendable Object长度为0，该请求成功；其他情况均视为Position和Object长度不匹配的情形。
-    -   如果没有同名Object存在，那么Append Object可以和Put Object请求一样，设置诸如x-oss-server-side-encryption之类的请求Header。这一点和Initiate Multipart Upload是一样的。如果在Position为0的请求时，加入了正确的x-oss-server-side-encryption头，那么后续的Append Object响应头部也会包含x-oss-server-side-encryption头，其值表明加密算法。后续如果需要更改meta，可以使用Copy Object请求。
+    -   如果没有同名Object存在，那么AppendObject可以和PutObject请求一样，设置诸如x-oss-server-side-encryption之类的请求Header。这一点和Initiate Multipart Upload是一样的。如果在Position为0的请求时，加入了正确的x-oss-server-side-encryption头，那么后续的AppendObject响应头部也会包含x-oss-server-side-encryption头，其值表明加密算法。后续如果需要更改meta，可以使用CopyObject请求。
 -   如果position的值和当前Object的长度不一致，OSS会返回409 错误，错误码为PositionNotEqualToLength。发生上述错误时，用户可以通过响应头部x-oss-next-append-position来得到下一次position，并再次进行请求。
 -   由于并发的关系，即使用户把position的值设为了x-oss-next-append-position，该请求依然可能因为PositionNotEqualToLength而失败。
--   Append Object产生的Object长度限制和Put Object一样。每次Append Object都会更新该Object的最后修改时间。
+-   Append Object产生的Object长度限制和PutObject一样。每次AppendObject都会更新该Object的最后修改时间。
 -   在position值正确的情况下，对已存在的Appendable Object追加一个长度为0的内容，该操作不会改变Object的状态。
--   处于WORM保护期的Object不支持Append Object操作。
+-   处于WORM保护期的Object不支持AppendObject操作。
 
 ## CRC64的计算方式 {#section_xb5_xpw_bz .section}
 

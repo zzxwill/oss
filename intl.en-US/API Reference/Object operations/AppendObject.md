@@ -4,6 +4,8 @@ AppendObject is used to upload a file by appending the file to an existing objec
 
 An object created with the AppendObject operation is an appendable object, and an object uploaded with the PutObject operation is a normal object.
 
+**Note:** You cannot use KMS to encrypt appendable objects on the server by specifying CMK IDs for them.
+
 ## Request syntax {#section_n23_kpw_bz .section}
 
 ```

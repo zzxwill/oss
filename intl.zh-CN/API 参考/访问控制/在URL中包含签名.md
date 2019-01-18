@@ -38,9 +38,9 @@ URL签名示例:
 http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D
 ```
 
-URL签名，必须至少包含Signature、Expires和OSSAccessKeyId三个参数。
+URL签名必须至少包含Signature、Expires和OSSAccessKeyId三个参数。
 
--   `Expires`参数的值是一个[Unix time](https://en.wikipedia.org/wiki/Unix_time)（自UTC时间1970年1月1号开始的秒数），用于标识该URL的超时时间。如果OSS接收到这个URL请求的时候晚于签名中包含的Expires参数时，则返回请求超时的错误码。例如：当前时间是1141889060，开发者希望创建一个60秒后自动失效的URL，则可以设置Expires时间为1141889120。URL的有效时间默认为3600秒，最大为64800秒。
+-   `Expires`参数的值是一个[Unix time](https://baike.baidu.com/item/unix时间戳/2078227?fr=aladdin)（自UTC时间1970年1月1号开始的秒数），用于标识该URL的超时时间。如果OSS接收到这个URL请求的时候晚于签名中包含的Expires参数时，则返回请求超时的错误码。例如：当前时间是1141889060，开发者希望创建一个60秒后自动失效的URL，则可以设置Expires时间为1141889120。URL的有效时间默认为3600秒，最大为64800秒。
 -   `OSSAccessKeyId` 即密钥中的AccessKeyId。
 -   `Signature` 表示签名信息。所有的OSS支持的请求和各种Header参数，在URL中进行签名的算法和[在Header中包含签名](intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)的算法基本一样。
 
@@ -54,13 +54,13 @@ URL签名，必须至少包含Signature、Expires和OSSAccessKeyId三个参数�
               + CanonicalizedResource)))
     ```
 
-    其中，与Header中包含签名相比主要区别如下：
+    与Header中包含签名相比主要区别如下：
 
     -   通过URL包含签名时，之前的Date参数换成Expires参数。
     -   不支持同时在URL和Header中包含签名。
-    -   如果传入的Signature，Expires，OSSAccessKeyId出现不止一次，以第一次为准。
-    -   请求先验证请求时间是否晚于Expires时间，然后再验证签名。
-    -   将签名字符串放到URL时，注意要对URL进行urlencode
+    -   如果多次传入入的Signature，Expires，OSSAccessKey参数Id，以第一次为准。
+    -   先验证请求时间是否晚于Expires时间，然后再验证签名。
+    -   将签名字符串放到URL时，注意要对URL进行urlencode。
 -   临时用户URL签名时，需要携带`security-token`，格式如下：
 
     ```
@@ -70,7 +70,7 @@ URL签名，必须至少包含Signature、Expires和OSSAccessKeyId三个参数�
 
 ## 细节分析 {#section_cbj_q2f_xdb .section}
 
--   使用在URL中签名的方式，会将你授权的数据在过期时间以内曝露在互联网上，请预先评估使用风险。
+-   使用在URL中签名的方式，会将你授权的数据在过期时间内曝露在互联网上，请预先评估使用风险。
 -   PUT和GET请求都支持在URL中签名。
 -   在URL中添加签名时，Signature，Expires，OSSAccessKeyId顺序可以交换，但是如果Signature，Expires，OSSAccessKeyId缺少其中的一个或者多个，返回403 Forbidden消息。错误码：AccessDenied。
 -   如果访问的当前时间晚于请求中设定的Expires时间或时间格式错误，返回403 Forbidden消息。错误码：AccessDenied。

@@ -37,6 +37,8 @@ func main() {
 }
 ```
 
+For more information about endpoints, see [Regions and endpoints](../../../../../reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
+
 ## Upload objects { .section}
 
 Run the following code to upload a file to OSS:

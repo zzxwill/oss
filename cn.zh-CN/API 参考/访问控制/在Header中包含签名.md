@@ -19,6 +19,8 @@ OSS SDK已经实现签名，用户使用OSS SDK不需要关注签名问题。如
 |iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
 |Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
 
+当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请参见[自签名计算失败](../../../../../cn.zh-CN/常见错误排除/排障工具/自签名计算失败.md#)排除错误。
+
 ## Authorization字段计算的方法 {#section_w3s_bw2_xdb .section}
 
 ```
@@ -66,15 +68,14 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 1.  将CanonicalizedResource置成空字符串 `""`；
 2.  放入要访问的OSS资源 `/BucketName/ObjectName`（如果没有ObjectName则CanonicalizedResource为”/BucketName/“，如果同时也没有BucketName则为“/”）
 3.  如果请求的资源包括子资源\(SubResource\) ，那么将所有的子资源按照字典序，从小到大排列并以 `&` 为分隔符生成子资源字符串。在CanonicalizedResource字符串尾添加 `？`和子资源字符串。此时的CanonicalizedResource如：`/BucketName/ObjectName?acl&uploadId=UploadId`
-4.  如果用户请求在指定了查询字符串\(QueryString，也叫Http Request Parameters\)，那么将这些查询字符串及其请求值按照字典序，从小到大排列，以 `&` 为分隔符，按参数添加到CanonicalizedResource中，如：`/BucketName/ObjectName?acl&response-content-type=ContentType&uploadId=UploadId`。
 
 **说明：** 
 
 -   OSS目前支持的子资源\(sub-resource\)包括：acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，tagging，objectMeta，uploadId，partNumber，security-token，position，img，style，styleName，replication，replicationProgress，replicationLocation，cname，bucketInfo，comp，qos，live，status，vod，startTime，endTime，symlink，x-oss-process，response-content-type，response-content-language，response-expires，response-cache-control，response-content-disposition，response-content-encoding等
 -   子资源\(sub-resource\)有三种类型：
-    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)。
-    -   指定返回Header字段，如 `response-***`，详见[GetObject](intl.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
-    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../../intl.zh-CN/数据处理/图片处理指南/图片处理访问规则.md#)。
+    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](cn.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。
+    -   指定返回Header字段，如 `response-***`，详见[GetObject](cn.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
+    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../../cn.zh-CN/数据处理/图片处理指南/图片处理访问规则.md#)。
 
 ## 计算签名头规则 {#section_qcb_p1f_xdb .section}
 

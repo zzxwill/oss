@@ -1,34 +1,34 @@
-# Download an object {#concept_k4p_dvl_vdb .concept}
+# Download an object {#task_wlr_lr4_tdb .task}
 
-After uploading an object to a bucket, you can share or download the object.
+After uploading an object to a bucket, you can obtain the URL of the object to download it or share it with other users.
 
-## Procedure {#section_g3q_2vl_vdb .section}
+The object has been uploaded to the bucket. For more information, see [Upload an object](reseller.en-US/Quick Start/Upload an object.md#).
 
-1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
-2.  In the left-side bucket list, click the name of the target bucket.
-3.  In the overview page of the bucket, click the **Files** tab.
-4.  Click the name of the target file. In the Preview page of the file, you can perform the following operations:
+1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
+2.  In the left-side bucket list, click the name of the bucket that you created.
+3.  In the overview page of the bucket, click the Files tab.
+4.  Click the name of the object that you want to download or share, or click **Preview** on the right of the object. In the Preview page, you can see the following options: 
+    -   **Download**: Download the object to your local storage device.
 
-    -   **Download**: You can download the file to your local storage.
+        Depending on how many objects you require, you can also download objects by using the following methods:
 
-        You can also download files in the following methods:
+        -   Download multiple objects: On the **Files** tab page, select multiple objects, and then choose **Batch operation** \> **Download**.
+        -   Download a single object: On the **Files** tab page, select an object, and then choose **More** \> **Download**.
+    -   **Open File URL**: View an object in a browser. The object that cannot be viewed in a browser \(such as Excel files\) is downloaded when the URL is opened.
 
-        -   Download one or more files: On the **Files** page, select one or more files, and then select **Batch operation** \> **Download**.
-        -   Download a single file: On the **Files** page, select a file, and then select **More** \> **Download**.
-    -   **Open File URL**: You can directly open the file in a browser. A file that cannot be opened directly, such as Excel files, is downloaded when the URL is opened.
-    -   **Copy File URL**: You can obtain the URL of a file and share it with others, allowing them to browse and download the file.
+        **Warning:** If the bucket is configured with Referer Whitelist and Empty Referer is not allowed, then the URL cannot be opened directly in a browser.
 
-        You can also obtain the URL of a file in the following methods:
+    -   **Copy File URL**: Copy the URL of the object and share it with other users, so that they can use the URL to view or download the object.
 
-        -   Obtain the URL of one or more files: On the **Files** page, select one or more files, and then select **Batch operation** \> **Export URL List**.
-        -   Obtain the URL of a single file: On the **Files** page, select **More** \> **Copy File URL**.
-    -   **Copy File Path**: You can search a file or add watermarks to an image file.
-    **Warning:** If the bucket is configured with Referer Whitelist and Empty Referer is not allowed, then the URL cannot be opened directly in a browser.
+        You can also obtain the URL of an object in the following methods:
 
-5.  If your bucket ACL is set to **Private**, you must set the **Validity Period** in the **Signature** field when obtaining the URL of a file. The validity period is 3,600 seconds by default and cannot exceed 64,800 seconds.
+        -   Obtain the URL of one or more objects: On the **Files** page, select one or more objects, and then select **Batch operation** \> **Export URL List**.
+        -   Obtain the URL of a single object: On the **Files** page, select **More** \> **Copy File URL**.
+        If you want to share the URL of an object whose ACL is Private, you must set the **Validity Period** on the Preview page when you want to obtain the URL of an object. The default value of the validity period is 3,600 seconds, and the maximum value is 64,800 seconds.
 
-    **Note:** 
+        **Note:** 
 
-    -   The validity period of a signed URL is calculated based on NTP. You can share a URL to others, allowing them to access the file within the validity period. If your bucket ACL is set to Private, a signature will be added to the URL. For more information, see [Add a signature to a URL](../../../../intl.en-US/API Reference/Access control/Add a signature to a URL.md#).
-    -   You can change the ACL of a bucket or a file anytime. For more information, see [Change bucket ACL](intl.en-US/Console User Guide/Manage buckets/Change bucket ACL.md#) and [Change object ACL](intl.en-US/Console User Guide/Manage objects/Change object ACL.md#).
+        -   The validity period of a signed URL is calculated based on NTP. You can share the signed URL of an object to other users so that they can use the URL to access the object within the validity period. If your objects ACL is Private, a signature is added to the URL of the objects stored in the bucket. For more information, see [Add a signature to a URL](../../../../../reseller.en-US/API Reference/Access control/Add a signature to a URL.md#).
+        -   For more information about how to change buckets and objects ACL, see [Change bucket ACL](reseller.en-US/Console User Guide/Manage buckets/Change bucket ACL.md#)and [Change object ACL](reseller.en-US/Console User Guide/Manage objects/Change object ACL.md#).
+    -   **Copy File Path**: Copy the path of the object. You can use the path when searching for the object or adding watermarks to the object \(if it is a picture\).
 

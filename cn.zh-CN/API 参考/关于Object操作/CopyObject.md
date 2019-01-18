@@ -107,7 +107,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
     -   对目标 Object 所在的 Bucket 增加一次 Put 请求次数。
     -   对目标 Object 所在的 Bucket 增加相应的存储量。
 -   预判断请求Header
-    -   四个预判断请求H eader（x-oss-copy-source-if-match、x-oss-copy-source-if-none-match、x-oss-copy-source-if-unmodified-since、x-oss-copy-source-if-modified-since）中，任意个数可同时出现。相应逻辑请参见 GetObject 操作中的[细节分析](cn.zh-CN/API 参考/关于Object操作/GetObject.md#section_xb4_wmw_bz)。
+    -   四个预判断请求Header（x-oss-copy-source-if-match、x-oss-copy-source-if-none-match、x-oss-copy-source-if-unmodified-since、x-oss-copy-source-if-modified-since）中，任意个数可同时出现。相应逻辑请参见 GetObject 操作中的[细节分析](cn.zh-CN/API 参考/关于Object操作/GetObject.md#section_xb4_wmw_bz)。
     -   拷贝操作涉及到的请求 Header 都是以x-oss-开头，所以要加到签名字符串中。
 
 ## 示例 {#section_osk_5lw_bz .section}

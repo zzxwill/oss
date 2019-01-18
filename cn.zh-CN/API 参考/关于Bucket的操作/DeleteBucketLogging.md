@@ -1,6 +1,6 @@
 # DeleteBucketLogging {#reference_jrn_gsw_tdb .reference}
 
-DeleteBucketLogging接口用于关闭bucket访问日志记录功能。
+DeleteBucketLogging用于关闭 Bucket 访问日志记录功能。
 
 ## 请求语法 {#section_lyn_m3w_bz .section}
 
@@ -13,9 +13,9 @@ Authorization: SignatureValue
 
 ## 细节分析 {#section_anj_n3w_bz .section}
 
--   如果Bucket不存在，返回404 no content错误，错误码：NoSuchBucket。
--   只有Bucket的拥有者才能关闭Bucket访问日志记录功能。如果试图操作一个不属于你的Bucket，OSS返回403 Forbidden错误，错误码：AccessDenied。
--   如果目标Bucket并没有开启Logging功能，仍然返回HTTP状态码 204。
+-   如果 Bucket 不存在，返回 404 Not Found 错误，错误码：NoSuchBucket。
+-   只有 Bucket 的拥有者才能关闭 Bucket 访问日志记录功能。非Bucket拥有者操作该Bucket，OSS 返回 403 Forbidden 错误，错误码：AccessDenied。
+-   如果目标 Bucket 没有开启 Logging 日志记录功能，返回 HTTP 状态码 204。
 
 ## 示例 {#section_isc_43w_bz .section}
 

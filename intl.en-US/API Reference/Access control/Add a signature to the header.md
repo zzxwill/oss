@@ -66,7 +66,6 @@ The target OSS resource specified in the request sent by the user is called a Ca
 1.  Set CanonicalizedResource into a null character string \(“”\);
 2.  Add the OSS resource to be accessed in the following format: `/BucketName/ObjectName`. \(If ObjectName does not exist, CanonicalizedResource is “/BucketName/“. If BucketName does not exist either, CanonicalizedResource is “/“.\)
 3.  If the requested resource includes sub-resources \(SubResource\), sort all the sub-resources in a lexicographically ascending order and separate the sub-resources using the separator `&` to generate a sub-resource string. Add “?” and the sub-resource string to the end of the CanonicalizedResource string. In this case, CanonicalizedResource is like: `/BucketName/ObjectName?acl&uploadId=UploadId`
-4.  If the user request specifies the query string \(QueryString, also called HTTP Request Parameters\), sort these query strings and request values in a lexicographically ascending order, separate the query strings and request values using the separator `&`, and add them to CanonicalizedResource based on the parameters. In this case, CanonicalizedResource is like:  `/BucketName/ObjectName?acl&response-content-type=ContentType&uploadId=UploadId`.
 
 **Note:** 
 

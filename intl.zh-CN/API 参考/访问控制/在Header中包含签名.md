@@ -66,7 +66,6 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 1.  将CanonicalizedResource置成空字符串 `""`；
 2.  放入要访问的OSS资源 `/BucketName/ObjectName`（如果没有ObjectName则CanonicalizedResource为”/BucketName/“，如果同时也没有BucketName则为“/”）
 3.  如果请求的资源包括子资源\(SubResource\) ，那么将所有的子资源按照字典序，从小到大排列并以 `&` 为分隔符生成子资源字符串。在CanonicalizedResource字符串尾添加 `？`和子资源字符串。此时的CanonicalizedResource如：`/BucketName/ObjectName?acl&uploadId=UploadId`
-4.  如果用户请求在指定了查询字符串\(QueryString，也叫Http Request Parameters\)，那么将这些查询字符串及其请求值按照字典序，从小到大排列，以 `&` 为分隔符，按参数添加到CanonicalizedResource中，如：`/BucketName/ObjectName?acl&response-content-type=ContentType&uploadId=UploadId`。
 
 **说明：** 
 

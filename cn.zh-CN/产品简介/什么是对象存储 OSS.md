@@ -39,7 +39,7 @@
 
 -   云服务器ECS：提供简单高效、处理能力可弹性伸缩的云端计算服务。请参见[ECS产品详情页面](https://www.aliyun.com/product/ecs)。
 -   内容分发网络CDN：将源站资源缓存到各区域的边缘节点，供您就近快速获取内容。请参见[CDN产品详情页面](https:/www.aliyun.com/product/cdn)。
--   E-MapReduce：构建于阿里云云服务器 ECS 上的大数据处理的系统解决方案，基于开源的 Apache Hadoop 和 Apache Spark，方便您分析和处理自己的数据。请参见[E-MapReduce产品详情页面](https:/www.aliyun.com/product/emapreduce)。
+-   E-MapReduce：构建于阿里云云服务器 ECS 上的大数据处理的系统解决方案，基于开源的 Apache Hadoop 和 Apache Spark，方便您分析和处理自己的数据。请参见[E-MapReduce产品详情页面](https://www.aliyun.com/product/emapreduce)。
 -   媒体处理：将存储于OSS的音视频转码成适合在PC、TV以及移动终端上播放的格式。并基于海量数据深度学习，对音视频的内容、文字、语音、场景多模态分析，实现智能审核、内容理解、智能编辑。请参见[媒体处理产品详情页面](https://www.aliyun.com/product/mts)。
 
 ## 使用OSS {#section_o5k_1mb_n2b .section}

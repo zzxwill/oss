@@ -1,6 +1,6 @@
 # DeleteBucketWebsite {#reference_zrl_msw_tdb .reference}
 
-DeleteBucketWebsite操作用于关闭bucket的静态网站托管模式以及跳转规则。
+DeleteBucketWebsite操作用于关闭Bucket的静态网站托管模式以及跳转规则。
 
 ## 请求语法 {#section_iw2_x3w_bz .section}
 
@@ -13,8 +13,8 @@ Authorization: SignatureValue
 
 ## 细节分析 {#section_dzz_x3w_bz .section}
 
--   如果Bucket不存在，返回404 no content错误，错误码：NoSuchBucket。
--   只有Bucket的拥有者才能关闭Bucket的静态网站托管模式。如果试图操作一个不属于你的Bucket，OSS返回403 Forbidden错误，错误码：AccessDenied。
+-   如果Bucket不存在，返回404 Not Found 错误，错误码：NoSuchBucket。
+-   只有Bucket的拥有者才能关闭Bucket的静态网站托管模式。非Bucket拥有者操作该Bucket，OSS返回403 Forbidden错误，错误码：AccessDenied。
 
 ## 示例 {#section_wgs_y3w_bz .section}
 

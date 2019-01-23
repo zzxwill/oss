@@ -1,5 +1,7 @@
 # Regions and endpoints {#concept_zt4_cvy_5db .concept}
 
+Regions indicate the regions where the data center of OSS is located. Endpoints indicate the domain names used by users to access OSS through Internet. This topic describes the mapping relationship between regions and endpoints.
+
 ## Regions and OSS endpoints in classic networks {#section_plb_2vy_5db .section}
 
 The following table describes the OSS Internet and intranet endpoints of each region in classic networks.
@@ -60,6 +62,6 @@ ECS instances in VPC networks can use the following endpoints to access OSS.
 
 ## Usage of endpoints {#section_fxj_wv4_yfb .section}
 
--   For the composition rules of OSS endpoints and the methods of accessing OSS through the Internet and intranet, see [Endpoints](intl.en-US/Developer Guide/Endpoint/Endpoints.md#).
--   If you are an ECS user and need to use an OSS intranet endpoint, see [How do ECS users use OSS intranet addresses?](https://www.alibabacloud.com/help/faq-detail/39584.htm)
+-   For the composition rules of OSS endpoints and the methods of accessing OSS through the Internet and intranet, see [Endpoints](reseller.en-US/Developer Guide/Endpoint/Endpoints.md#).
+-   If you are an ECS user and need to use an OSS intranet endpoint, see [How do ECS users use OSS intranet addresses?](https://partners-intl.aliyun.com/help/faq-detail/39584.htm)
 

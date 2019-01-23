@@ -21,7 +21,7 @@ You can define and manage the lifecycle of all or a subset of objects in a bucke
             -   Transition to IA after specified days
             -   Transition to Archive after specified days
             -   Delete all objects after specified Days
-            **Note:** For more information about how to charge for the objects converted to other storage classes, see [Manage object lifecycle](../../../../../reseller.en-US/Developer Guide/Manage files/Manage object lifecycle.md#).
+            **Note:** For the billing information about objects whose storage classes are converted, see [Manage object lifecycle](../../../../../reseller.en-US/Developer Guide/Manage files/Manage object lifecycle.md#).
 
         -   **Expiration date**: Delete all the files that were last modified before the specified date or convert them to another storage type \(Infrequent Access or Archive\). For example, if it is set to 2012-12-21, objects last modified before this date are scanned and deleted or converted to another storage type by the backend program. Configuration options include:
             -   Transition to IA after specified date

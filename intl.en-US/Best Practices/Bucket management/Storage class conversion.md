@@ -12,7 +12,7 @@ The Object Transition mechanism is now available in OSS Lifecycle Management fun
 -   Standard -\> Archive
 -   Infrequent Access -\> Archive
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15482105431620_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15482267381620_en-US.png)
 
 **Examples**
 
@@ -24,7 +24,7 @@ You can configure lifecycle policies for objects with a given prefix in one buck
 
 You can complete the configuration of the preceding lifecycle policies in the console. For more information, see [Set lifecycle](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set lifecycle.md#).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15482105431622_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15482267381622_en-US.png)
 
 **Note:** If the following three parameters are configured:
 

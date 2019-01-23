@@ -1,5 +1,7 @@
 # Storage class conversion {#concept_p13_zmz_5db .concept}
 
+This topic describes how to convert the stroage class of an object between Standard, IA, and Archive.
+
 ## Lifecycle Object Transition {#section_oyb_bnz_5db .section}
 
 OSS supports three [storage classes](../../../../../reseller.en-US/Developer Guide/Storage classes/Introduction to storage classes.md#): Standard, Infrequent Access, and Archive.
@@ -10,7 +12,7 @@ The Object Transition mechanism is now available in OSS Lifecycle Management fun
 -   Standard -\> Archive
 -   Infrequent Access -\> Archive
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15475300601620_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15482105431620_en-US.png)
 
 **Examples**
 
@@ -22,7 +24,7 @@ You can configure lifecycle policies for objects with a given prefix in one buck
 
 You can complete the configuration of the preceding lifecycle policies in the console. For more information, see [Set lifecycle](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set lifecycle.md#).
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15475300601622_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4410/15482105431622_en-US.png)
 
 **Note:** If the following three parameters are configured:
 

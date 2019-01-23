@@ -1,6 +1,6 @@
 # Introduction to storage classes {#concept_fcn_3xt_tdb .concept}
 
-OSS provides three storage classes: Standard, Infrequent Access, and Archive. These storage classes cover various data storage scenarios from hot data to cold data.
+OSS provides three storage classes: Standard, Infrequent Access, and Archive. These storage classes cover various data storage scenarios from frequently accessed \(hot\) data to infrequently accessed \(cold\) data.
 
 ## Standard {#section_r3z_lxt_tdb .section}
 
@@ -80,7 +80,7 @@ OSS Archive storage has the following features:
 |PutBucketLifecycle|Supported|Supported|Supported, data deletion only|
 |GetBucketLifecycle|Supported|Supported|Supported|
 |DeleteBucketLifecycle|Supported|Supported|Supported|
-|Bucket Cross-Origin Replication| | | |
+|Bucket Cross-Origin Replication|
 |PutBucketReplication|Supported|Supported|Supported|
 |Bucket Cross-Origin Resource Sharing|
 |PutBucketcors|Supported|Supported|Supported|

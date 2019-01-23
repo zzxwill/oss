@@ -4,7 +4,7 @@ OSS provides three storage classes: Standard, Infrequent Access, and Archive. Th
 
 ## Standard {#section_r3z_lxt_tdb .section}
 
-OSS Standard storage provides highly reliable, highly available, and high-performance object storage service that supports frequent data access. The high throughput and low latency of OSS makes it particularly well suited for storing social networking and sharing images, audio and video apps, large website data, and big data analysis.
+OSS Standard storage provides highly reliable, highly available, and high-performance object storage service that supports frequent data access. The high throughput and low latency of OSS make it well suited for storing social networking content such as images, audio, and video. It is also great for storing large unstructured data sets for use in big data analytics.
 
 OSS Standard storage has the following features:
 

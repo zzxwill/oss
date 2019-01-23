@@ -1,10 +1,12 @@
 # Quick start {#concept_c31_lx1_5db .concept}
 
+This topic describes how to perform basic OSS operations, such as create a bucket, upload an object, and download an object.
+
 1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
 2.  Create a bucket.
 3.  Upload and download files.
 
-For more information, see [Get started with Alibaba Cloud OSS](../../../../reseller.en-US/Quick Start/Get started with Object Storage Service.md#).
+For more information, see [Get started with Alibaba Cloud OSS](../../../../../reseller.en-US/Quick Start/Get started with Object Storage Service.md#).
 
 ## Get familiar with OSS upload and download {#section_itz_nx1_5db .section}
 

@@ -27,7 +27,7 @@ Cross-region replication supports synchronization of buckets with different name
 -   Because Bucket Replication uses an asynchronous copying method, it can take from minutes to hours to copy data to the target bucket, depending on the size of the objects being replicated. 
 -   Cross-region synchronization only works when no synchronization to a third bucket is enabled for the two buckets to be synchronized. For example, if synchronization to Bucket B is enabled for Bucket A, you can no longer enable synchronization to Bucket C for Bucket A, unless you delete the former configuration first. Similarly, if synchronization to Bucket B is enabled for Bucket A, it is not allowed to enable synchronization from Bucket C to Bucket B.
 -   Synchronization is supported only between two buckets in different regions.
--   Currently, the cross-region replication feature is only supported between different regions in Mainland China and between Eastern and Western United States.
+-   Currently, the cross-region replication feature is only supported between different regions in Mainland China.
 
 ## Reference {#section_mwf_m1z_5db .section}
 

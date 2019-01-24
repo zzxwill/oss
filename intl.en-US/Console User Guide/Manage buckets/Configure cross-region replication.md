@@ -1,10 +1,8 @@
 # Configure cross-region replication {#concept_h3r_shf_vdb .concept}
 
-Currently, cross-region replication supports the synchronization between buckets with different names. If you have two buckets in different regions, you can enable the cross-region replication feature in the OSS console to synchronize data from the source bucket to the target bucket.
+Cross-region replication is used to automatically and asynchronously copy objects across buckets in different regions. Any changes \(creation, replacement, and deletion\) to objects in the source bucket will be synchronized to the target bucket.
 
-**Note:** 
-
-Currently, the cross-region replication feature is only supported between different regions in Mainland China and between US West 1 and US East 1.
+**Note:** Currently, the cross-region replication feature is only supported between different regions in Mainland China.
 
 ## Procedure {#section_a4q_5hf_vdb .section}
 

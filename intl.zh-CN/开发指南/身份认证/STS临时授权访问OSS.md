@@ -18,7 +18,7 @@ OSS 可以通过阿里云 STS \(Security Token Service\) 进行临时授权访�
 
 使用 STS 授权用户直接访问 OSS 的流程如下：
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1547433595983_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1548400086983_zh-CN.png)
 
 1.  App 用户登录。App 用户和云账号无关，它是 App 的终端用户，AppServer 支持 App 用户登录。对于每个有效的 App 用户来说，需要 AppServer 能定义出每个 App 用户的最小访问权限。
 2.  AppServer 请求 STS 服务获取一个安全令牌（SecurityToken）。在调用 STS 之前，AppServer 需要确定 App 用户的最小访问权限（用 Policy 语法描述）以及授权的过期时间。然后通过扮演角色（AssumeRole）来获取一个代表角色身份的安全令牌。
@@ -40,15 +40,15 @@ STS 安全令牌、角色管理和使用相关内容详情，请参考 [RAM 角�
     3.  在用户页面，单击**新建用户**。
     4.  在新建用户页面，用户账号信息填写**登录名称**、**显示名称**，访问方式下勾选**编程访问**，并单击**确定**。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154743359535383_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840008635383_zh-CN.jpg)
 
     5.  单击**权限管理** \> **添加权限**。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154743359635405_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840008635405_zh-CN.jpg)
 
     6.  在添加权限页面，为已创建子账号添加**AliyunSTSAssumeRoleAccess** 权限。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154743359635411_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840008635411_zh-CN.jpg)
 
         **说明：** 尽量不要赋予子账号其他任意权限，因为在扮演角色的时候会自动获得被扮演角色的所有\(部分\)权限。
 
@@ -79,7 +79,7 @@ STS 安全令牌、角色管理和使用相关内容详情，请参考 [RAM 角�
         }
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154743359635423_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840008735423_zh-CN.jpg)
 
 3.  创建角色。
     1.  登录 [RAM 访问控制管理控制台](https://ram.console.aliyun.com)。
@@ -87,14 +87,14 @@ STS 安全令牌、角色管理和使用相关内容详情，请参考 [RAM 角�
     3.  在 RAM 角色管理页面，单击**新建 RAM 角色**。
     4.  在新建 RAM 角色页面，填写**RAM 角色名称**，本示例 RAM 角色名称为 RamOssTest，选择可信实体类型及受信云账号 ID 保留默认选项。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154743359635434_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840008735434_zh-CN.jpg)
 
     5.  单击已创建 RAM 角色 RamOssTest 右侧对应的**添加权限** 。
     6.  在添加权限页面，选择**自定义权限策略**，添加步骤 2 中创建的策略 Ramtest。
 
         添加策略后，页面如下图所示：
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154743359635437_zh-CN.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840008735437_zh-CN.jpg)
 
         **说明：** ARN 代表需要扮演角色的 ID。
 

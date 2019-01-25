@@ -16,7 +16,7 @@ A mobile application is used as an example. Assume that you are a mobile applica
 
 The following figure describes the process of using STS to grant OSS access to users.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1548399790983_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1548400094983_en-US.png)
 
 1.  An application user logs on to the application server. An application user is an end user of the application and has no relationship to an Alibaba Cloud account. The application server can be logged on by an application user. The application server must define the minimum access permission for each valid application user.
 2.  The application server request a security token from STS. Before calling STS, the application server must determine the minimum access permission for each application user \(described in policy syntax\) and the expiration time of the authorization. Then, the application server uses AssumeRole to obtain a security token which indicates a role.
@@ -24,7 +24,7 @@ The following figure describes the process of using STS to grant OSS access to u
 4.  The application server returns the access credential to the application user \(ClientApp\). The credential can be cached by the ClientApp. When the credential becomes invalid, the ClientApp must request a new valid access credential from the application server. For example, if the valid period of the returned access credential is an hour, the ClientApp can request the application server to update the access token every 30 minutes.
 5.  The ClientApp use the access credential in the local cache to request Alibaba Cloud service APIs. ECS perceives the STS access credential and uses STS to verify the credential so that it can correctly respond user's requests.
 
-For more information about STS security tokens, role management, and role usage, see [Understand RAM roles](../../../../../reseller.en-US/User Guide/Identity management/RAM roles and identities/Understand RAM roles.md#). You can call the [AssumeRole](../../../../../reseller.en-US/API Reference (STS)/Operation interfaces/AssumeRole.md#) interface to obtain a valid access credential.
+For more information about STS security tokens, role management, and role usage, see [Understand RAM roles](../../../../../intl.en-US/User Guide/Identity management/RAM roles and identities/Understand RAM roles.md#). You can call the [AssumeRole](../../../../../intl.en-US/API Reference (STS)/Operation interfaces/AssumeRole.md#) interface to obtain a valid access credential.
 
 ## Procedure {#section_t4q_4zr_ggb .section}
 
@@ -33,25 +33,25 @@ Assume that a bucket named ram-test is used to store user data and it is require
 You can use OSS SDK and STS SDK together to access an OSS instance with a temporary access token provided by STS.
 
 1.  Create a RAM user.
-    1.  Log on to the [RAM console](https://partners-intl.console.aliyun.com/#/ram).
+    1.  Log on to the [RAM console](https://ram.console.aliyun.com).
     2.  In the RAM page, click **Users**.
     3.  In the Users page, click **Create User**.
     4.  In the Create User page, enter **Logon Name** and **Display Name** in the User Account Information area, select **Programmatic Access** for Access Mode, and then click **OK**.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035383_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840009435383_en-US.jpg)
 
     5.  Select **Permissions** \> **Add Permissions**.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035405_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840009435405_en-US.jpg)
 
     6.  In the Add Permissions page, add the **AliyunSTSAssumeRoleAccess** permission for the created RAM user.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035411_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840009435411_en-US.jpg)
 
         **Note:** Do not grant other permissions to the RAM user because it automatically obtains all permissions of a role when it acts as the role.
 
 2.  Create a permission policy.
-    1.  Log on to the [RAM console](https://partners-intl.console.aliyun.com/#/ram).
+    1.  Log on to the [RAM console](https://ram.console.aliyun.com).
     2.  In the RAM page, click **Policies**.
     3.  Click **Create Policy**.
     4.  In the Create Custom Policy page, enter the **Policy Name** and **Note**, and select **Visualized** or **Script** for Configure Mode.
@@ -77,28 +77,28 @@ You can use OSS SDK and STS SDK together to access an OSS instance with a tempor
         }
         ```
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035434_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840009435434_en-US.jpg)
 
 3.  Create a role.
-    1.  Log on to the [RAM console](https://partners-intl.console.aliyun.com/#/ram).
+    1.  Log on to the [RAM console](https://ram.console.aliyun.com).
     2.  In the RAM page, click **RAM Roles**.
     3.  In the RAM Roles page, click **Create RAM Role**.
     4.  In the Create RAM Role page, enter the **RAM Role Name** \(RamOssTest in this example\), select the type of trusted entities and keep the default selection for Select Trusted Alibaba Cloud Account.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035423_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840009435423_en-US.jpg)
 
     5.  Click **Add Permissions** on the right of the created role RamOssTest.
     6.  In the Add Permissions page, select **Custom Policy** and add the policy Ramtest that you created in step 2.
 
         After the policy is added, the page is shown as follows.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979135437_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154840009435437_en-US.jpg)
 
         **Note:** ARN indicates the ID of the role that the RAM user acts.
 
 4.  Obtain an STS AK and security token through STS APIs
 
-    You can request STS through STS SDKs to obtain a security token. For more information about the installation and usage of STS SDKs, see [Installation](../../../../../reseller.en-US/SDK Reference/SDK Reference - STS/Java SDK/Installation.md#).
+    You can request STS through STS SDKs to obtain a security token. For more information about the installation and usage of STS SDKs, see [Installation](../../../../../intl.en-US/SDK Reference/SDK Reference - STS/Java SDK/Installation.md#).
 
     The following code is described as an example to obtain a security token through STS Java SDK.
 

@@ -14,7 +14,7 @@ This topic describes how to change permission access control at the bucket level
     OSS ACL provides bucket-level access control. Currently, three access permissions are available for a bucket:
 
     -   Private: Only the owner of the bucket can perform read/write operations on the objects in the bucket. Other users cannot access the objects.
-    -   Public Read: Only the owner of the bucket can perform write operations on the objects in the bucket, while anyone \(including anonymous users\) can perform read operations on the objects.
+    -   Public Read: Only the owner of the bucket can perform write operations on the objects in the bucket, while anyone \(including anonymous users\) can perform read operations on the objects, which may result in data leakage and excessive charges.
     -   Public Read/Write: Anyone \(including anonymous users\) can perform read and write operations on the objects in the bucket, which may result in data leakage and excessive charges. In addition, your rights may be damaged if illegal information is maliciously written to objects in your bucket. Therefore, we recommend you do not set the ACL of your bucket to public read/write except for specific scenarios.
 5.  Click **Save**.
 

@@ -16,7 +16,7 @@ A mobile application is used as an example. Assume that you are a mobile applica
 
 The following figure describes the process of using STS to grant OSS access to users.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1548399647983_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4347/1548399790983_en-US.png)
 
 1.  An application user logs on to the application server. An application user is an end user of the application and has no relationship to an Alibaba Cloud account. The application server can be logged on by an application user. The application server must define the minimum access permission for each valid application user.
 2.  The application server request a security token from STS. Before calling STS, the application server must determine the minimum access permission for each application user \(described in policy syntax\) and the expiration time of the authorization. Then, the application server uses AssumeRole to obtain a security token which indicates a role.
@@ -38,20 +38,19 @@ You can use OSS SDK and STS SDK together to access an OSS instance with a tempor
     3.  In the Users page, click **Create User**.
     4.  In the Create User page, enter **Logon Name** and **Display Name** in the User Account Information area, select **Programmatic Access** for Access Mode, and then click **OK**.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839964735383_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035383_en-US.jpg)
 
     5.  Select **Permissions** \> **Add Permissions**.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839964735405_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035405_en-US.jpg)
 
     6.  In the Add Permissions page, add the **AliyunSTSAssumeRoleAccess** permission for the created RAM user.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839964835411_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035411_en-US.jpg)
 
         **Note:** Do not grant other permissions to the RAM user because it automatically obtains all permissions of a role when it acts as the role.
 
 2.  Create a permission policy.
-
     1.  Log on to the [RAM console](https://partners-intl.console.aliyun.com/#/ram).
     2.  In the RAM page, click **Policies**.
     3.  Click **Create Policy**.
@@ -78,7 +77,7 @@ You can use OSS SDK and STS SDK together to access an OSS instance with a tempor
         }
         ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839964835434_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035434_en-US.jpg)
 
 3.  Create a role.
     1.  Log on to the [RAM console](https://partners-intl.console.aliyun.com/#/ram).
@@ -86,14 +85,14 @@ You can use OSS SDK and STS SDK together to access an OSS instance with a tempor
     3.  In the RAM Roles page, click **Create RAM Role**.
     4.  In the Create RAM Role page, enter the **RAM Role Name** \(RamOssTest in this example\), select the type of trusted entities and keep the default selection for Select Trusted Alibaba Cloud Account.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839964835423_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979035423_en-US.jpg)
 
     5.  Click **Add Permissions** on the right of the created role RamOssTest.
     6.  In the Add Permissions page, select **Custom Policy** and add the policy Ramtest that you created in step 2.
 
         After the policy is added, the page is shown as follows.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839964835437_en-US.jpg)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80860/154839979135437_en-US.jpg)
 
         **Note:** ARN indicates the ID of the role that the RAM user acts.
 

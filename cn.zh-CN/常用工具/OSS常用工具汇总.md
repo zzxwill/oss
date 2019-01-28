@@ -12,7 +12,10 @@
 -   支持RAM子账号的图形化Policy授权操作。
 -   支持Windows、Linux、Mac平台。
 
-使用限制：ossbrowser是图形化工具，传输速度和性能不如ossutil。
+使用限制：
+
+-   ossbrowser是图形化工具，传输速度和性能不如ossutil。
+-   只支持5GB以下的文件上传或复制。
 
 |
 |[ossutil](cn.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)|Object和Bucket的命令行管理工具。-   提供方便、简洁、丰富的Object和Bucket管理命令，操作性能好。

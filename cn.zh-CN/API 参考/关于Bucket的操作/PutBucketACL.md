@@ -16,12 +16,12 @@ Authorization: SignatureValue
 
 ## 细节分析 {#section_l4x_fnr_bz .section}
 
--   Bucket拥有者发起PutBucketACL请求时，如果Bucket已存在但权限不一致，将更新权限。
+-   Bucket拥有者发起PutBucketACL请求时，如果Bucket已存在但权限不一致，将更新权限。如果Bucket不存在，将创建Bucket。
 -   发起PutBucketACL请求时，如果没有传入用户验证信息，则返回403 Forbidden消息。错误码：AccessDenied。
 
 ## 示例 {#section_nsl_hnr_bz .section}
 
-**请求示例：**
+请求示例：
 
 ```
 PUT /?acl HTTP/1.1
@@ -31,7 +31,7 @@ Date: Fri, 24 Feb 2012 03:21:12 GMT
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:KU5h8YMUC78M30dXqf3JxrTZHiA=
 ```
 
-**正常的返回示例：**
+正常的返回示例：
 
 ```
 HTTP/1.1 200 OK
@@ -42,7 +42,7 @@ Connection: keep-alive
 Server: AliyunOSS
 ```
 
-**设置权限无效的返回示例：**
+设置权限无效的返回示例：
 
 ```
 HTTP/1.1 400 Bad Request

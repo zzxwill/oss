@@ -2,6 +2,8 @@
 
 GetBucketAcl用来获取某个Bucket的访问权限。
 
+**说明：** 只有Bucket的拥有者才能使用GetBucketACL这个接口。
+
 ## 请求语法 {#section_d1r_t2w_bz .section}
 
 ```
@@ -18,7 +20,7 @@ Authorization: SignatureValue
 |AccessControlList|容器|存储ACL信息的容器类。父节点：AccessControlPolicy
 
 |
-|AccessControlPolicy|容器|保存Get Bucket ACL结果的容器。父节点：None
+|AccessControlPolicy|容器|保存GetBucketACL结果的容器。父节点：None
 
 |
 |DisplayName|字符串|Bucket拥有者的名称（目前和ID一致）。父节点：AccessControlPolicy.Owner
@@ -36,13 +38,9 @@ Authorization: SignatureValue
 
 |
 
-## 细节分析 {#section_opt_w2w_bz .section}
-
-只有Bucket的拥有者才能使用GetBucketACL这个接口。
-
 ## 示例 {#section_gwr_x2w_bz .section}
 
-**请求示例：**
+请求示例：
 
 ```
 GET /?acl HTTP/1.1
@@ -52,7 +50,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:CTkuxpLAi4XZ+WwIfNm0FmgbrQ0=
 
 ```
 
-**返回示例：**
+返回示例：
 
 ```
 HTTP/1.1 200 OK

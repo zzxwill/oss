@@ -1,16 +1,16 @@
 # Apache Impala（CDH6）查询OSS数据 {#concept_igt_g1w_wfb .concept}
 
-CDH（Cloudera's Distribution, including Apache Hadoop）是众多 Hadoop 发行版本中的一种。最新版本 CDH6.0.1 中的 Hadoop 3.0.0 版本已经支持 OSS。本文介绍如何使 CDH6 的相关组件（Hadoop、Hive、Spark、Impala 等）能够查询 OSS。
+CDH（Cloudera's Distribution, including Apache Hadoop）是众多 Hadoop 发行版本中的一种。CDH的最新版本是6.0.1，支持Hadoop 3.0.0，本文介绍如何使 CDH6 的相关组件（Hadoop、Hive、Spark、Impala 等）能够查询 OSS。
 
 ## 准备工作 {#section_pwg_1gx_wfb .section}
 
-您需要拥有一个已搭建好的 CDH6 集群。若没有已搭建好的 CDH6 集群，您需要参考官方文档，先搭建一个 CDH6 集群。
+您需要拥有一个已搭建好的 CDH6 集群。若没有已搭建好的 CDH6 集群，您需要参考[官方文档](https://www.cloudera.com/documentation/enterprise/6/6.0/topics/installation.html)，先搭建一个 CDH6 集群，本文演示版本为 CDH6.0.1 版本。
 
 ## 步骤一：增加 OSS 配置 {#section_gvt_2vx_wfb .section}
 
 1.  通过集群管理工具 CM 来增加配置。若没有 CM 管理的集群，可以修改core-site.xml。以CM为例，需要增加如下配置：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64876/154380672133147_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64876/154883761133147_zh-CN.png)
 
     |配置项|值|
     |:--|:-|
@@ -55,7 +55,7 @@ CDH（Cloudera's Distribution, including Apache Hadoop）是众多 Hadoop 发行
 
 虽然 CDH6 支持 OSS，但是它里面的 Impala 组件却没有将 OSS 的支持放到它的 CLASSPATH 里面去，因此您需要在所有的 Impala 节点执行如下操作：
 
-1.  进入$\{CDH\_HOME\}/lib/impala目录，执行如下命令：
+1.  进入$\{CDH\_HOME\}/lib/impala目录，创建符号链接：
 
     ```
     [root@cdh-master impala]# cd lib/

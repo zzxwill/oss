@@ -97,7 +97,8 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 ## 细节分析 {#section_cqk_tlw_bz .section}
 
 -   限制条件
-    -   仅支持小于 1GB 的文件。如果要拷贝大于 1GB 的文件，必须使用 MultipartUpload 操作，详情请参见[UploadPartCopy](cn.zh-CN/API 参考/关于MultipartUpload的操作/UploadPartCopy.md#)。
+    -   仅支持小于 1GB 的文件。如果要拷贝大于 1GB 的文件，可在拷贝时修改meta信息，或使用 MultipartUpload 操作，详情请参见[UploadPartCopy](intl.zh-CN/API 参考/关于MultipartUpload的操作/UploadPartCopy.md#)。
+    -   通过 CopyObject 接口修改对象的meta信息，最大可支持48.8TB的文件。
     -   请求者必须对源 Object 有读权限。
     -   源 Object 和目标 Object 必须属于同一地域（数据中心）。
     -   不能拷贝通过追加上传方式产生的 Object。
@@ -107,7 +108,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
     -   对目标 Object 所在的 Bucket 增加一次 Put 请求次数。
     -   对目标 Object 所在的 Bucket 增加相应的存储量。
 -   预判断请求Header
-    -   四个预判断请求Header（x-oss-copy-source-if-match、x-oss-copy-source-if-none-match、x-oss-copy-source-if-unmodified-since、x-oss-copy-source-if-modified-since）中，任意个数可同时出现。相应逻辑请参见 GetObject 操作中的[细节分析](cn.zh-CN/API 参考/关于Object操作/GetObject.md#section_xb4_wmw_bz)。
+    -   四个预判断请求Header（x-oss-copy-source-if-match、x-oss-copy-source-if-none-match、x-oss-copy-source-if-unmodified-since、x-oss-copy-source-if-modified-since）中，任意个数可同时出现。相应逻辑请参见 GetObject 操作中的[细节分析](intl.zh-CN/API 参考/关于Object操作/GetObject.md#section_xb4_wmw_bz)。
     -   拷贝操作涉及到的请求 Header 都是以x-oss-开头，所以要加到签名字符串中。
 
 ## 示例 {#section_osk_5lw_bz .section}

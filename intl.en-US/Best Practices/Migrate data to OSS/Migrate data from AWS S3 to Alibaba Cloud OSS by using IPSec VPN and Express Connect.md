@@ -13,7 +13,7 @@ This topic focuses on the second network architecture. The IPSEC VPN tunnel and 
 
 The following figure shows the overall network architecture.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80669/154882987738273_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80669/154883034738273_en-US.png)
 
 The advantage of this network architecture is that the data in the S3 bucket is first moved to the Alibaba Cloud Network VPC in the same region as the S3 bucket, and then the data is retransmitted to the OSS bucket of the destination region by means of the Alibaba Cloud ExpressConnnect cross-region high-speed network. This network architecture accelerates the transmission speed of cross-country data migration.
 

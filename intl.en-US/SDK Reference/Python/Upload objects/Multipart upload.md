@@ -18,9 +18,9 @@ from oss2.models import PartInfo
 import oss2
 
 # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
-auth = oss2. Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
+auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 # This example uses endpoint China East 1 (Hangzhou). Specify the actual endpoint based on your requirements.
-bucket = oss2. Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
+bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketName>')
 
 key = '<yourObjectName>'
 filename = '<yourLocalFile>'
@@ -55,4 +55,6 @@ with open(filename, 'rb') as fileobj:
     assert bucket.get_object(key).read() == fileobj.read()
 
 ```
+
+**Note:** We recommend you set a larger part size when the network connection is stable. Otherwise, set a smaller part size.
 

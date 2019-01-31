@@ -40,5 +40,10 @@ oss2.resumable_upload(bucket, '<yourObjectName>', '<yourLocalFile>',
     num_threads=4)
 ```
 
-For more information about resumable upload, see [Resumable upload](../../../../reseller.en-US/Developer Guide/Upload files/Multipart upload.md#) in the OSS Developer Guide.
+For more information about resumable upload, see [Resumable upload](../../../../../reseller.en-US/Developer Guide/Upload files/Multipart upload.md#) in the OSS Developer Guide.
+
+**Note:** 
+
+-   Multiple threads are launched in resumable uploads or downloads. Therefore, you do not need to encapsulate multiple upload or download threads when calling the method. Otherwise, data may be transmitted repeatedly.
+-   We recommend you set a larger part size when the network connection is stable. Otherwise, set a smaller part size.
 

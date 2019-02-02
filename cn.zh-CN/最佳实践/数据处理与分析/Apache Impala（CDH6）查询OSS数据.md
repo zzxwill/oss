@@ -10,7 +10,7 @@ CDH（Cloudera's Distribution, including Apache Hadoop）是众多 Hadoop 发行
 
 1.  通过集群管理工具 CM 来增加配置。若没有 CM 管理的集群，可以修改core-site.xml。以CM为例，需要增加如下配置：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64876/154883761133147_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64876/154907476333147_zh-CN.png)
 
     |配置项|值|
     |:--|:-|
@@ -343,8 +343,8 @@ TPC-DS 基于 Hive QL，因为 Hive QL与 Impala SQL兼容性比较高，所以�
 
 -   [Hadoop 支持集成 OSS](https://yq.aliyun.com/articles/292792?spm=a2c4e.11155435.0.0.7ccba82fbDwfhK)
 -   [Hadoop](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-aliyun/src/site/markdown/tools/hadoop-aliyun/index.md)
--   [CDH5 Hadoop如何读写OSS](cn.zh-CN/最佳实践/数据处理与分析/CDH5 Hadoop如何读写OSS.md#)
--   [HDP2.6 Hadoop如何读写OSS](cn.zh-CN/最佳实践/数据处理与分析/HDP2.6 Hadoop如何读写OSS.md#)
+-   [CDH5 Hadoop如何读写OSS](cn.zh-CN/最佳实践/数据处理与分析/通过CDH5 Hadoop读取和写入OSS数据.md#)
+-   [HDP2.6 Hadoop如何读写OSS](cn.zh-CN/最佳实践/数据处理与分析/通过HDP2.6 Hadoop读取和写入OSS数据.md#)
 
 您也可以通过阿里云 EMR 访问 OSS。阿里云 EMR 基于开源生态，包括 Hadoop、Spark、Kafka、Flink、Storm 等组件，为您提供集群、作业、数据管理等服务的一站式企业大数据平台，并无缝支持 OSS。阿里云 EMR 与 OSS 紧密结合，针对开源生态访问 OSS，有多项技术优化，详情可参考 [EMR产品介绍](https://www.aliyun.com/product/emapreduce))。
 

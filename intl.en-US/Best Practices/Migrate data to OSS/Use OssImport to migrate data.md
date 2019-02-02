@@ -1,135 +1,67 @@
 # Use OssImport to migrate data {#concept_awy_rdg_vdb .concept}
 
-This article explains how to migrate data from third-party storages \(or OSS\) to OSS by using OssImport.
+This topic describes how to migrate data from third-party storage products \(or from another OSS source\) to OSS by using OssImport.
 
-## Deployment mode: standalone and distributed  {#section_pnx_ydg_vdb .section}
+## Environment configuration {#section_mj4_4s4_fgb .section}
 
-OssImport supports standalone and distributed deployment modes.  Generally, the distributed mode is recommended.  This article provides the information you may want to know  and the documentation resources you may find useful throughout the migration process.
+OssImport can be deployed in two modes: standalone mode and distributed mode.
 
-## Migration solution \(from a third-party storage to OSS\) {#section_dh2_12g_vdb .section}
+-   Standalone mode applies to small-scale data migration scenarios where the data size is smaller than 30 TB.
+-   Distributed mode applies to large-scale data migration scenarios.
 
-Follow these steps to seamlessly migrate data from a third-party storage to OSS: \(See [OssImport architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#) for officially supported third-party storage types\)
+For example, you need to migrate 500 TB of data from an AWS S3 bucket in the Tokyo region to an OSS bucket in the China East 1 \(Hangzhou\) region within a week. Before migrating the data, you must configure environments to deploy OssImport in distributed mode as follows:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4431/1976_en-US.png)
+-   Activate OSS.
+    1.  Use your Alibaba Cloud account to create an OSS bucket in China East 1 \(Hangzhou\).
+    2.  Create a RAM user in the RAM console, and then grant OSS access permissions to the RAM user. You also need to securely store the AccessKeyID and AccessKeySecret of the RAM user.
+-   Purchase ECS instances.
 
-The detailed steps are as follows:
+    Purchase ECS instances with two CPUs and 4 GB of memory in the China East 1 \(Hangzhou\) region \(in which the OSS bucket is also created\). If you want to release the ECS instances after data migration, we recommend that you select Pay-As-You-Go as the billing method when purchasing the instances.
 
-1.  Step 1: Fully migrate the historical data before T1. See [OssImport architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#).
-    -   Record the migration start time T1 \(which is a UNIX timestamp, namely, the number of seconds elapsed since UTC 00:00, January 1, 1970, and is retrieved by the `date +%s`command\).
-    -   See the [OssImport distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#) migration instructions.
-2.  Step 2: Enable OSS back-to-source and switch read/write to OSS, so that no new data is added to the migration source.
-    -   After Step 1 is complete, enable the [OSS back-to-source function](../intl.en-US/Console User Guide/Manage buckets/Set back-to-origin rules.md#) in the OSS console, where the source is the migration source \(the third-party storage\).
-    -   When the read/write of the business system is switched to OSS, assume that this point of time is T2.
-    -   In this case, data before T1 is read from OSS, data after T1 is read from the third-party service by OSS through the back-to-source function, and new data is fully written to OSS.
-3.  Step 3: Quickly migrate the data generated between T1 and T2.
-    -   After Step 2 is complete, no new data is added to the third-party storage, and data read/write is switched to OSS.
-    -   Modify the configuration items `importSince=T1` in the configuration file `job.cfg` to initiate a new migration job for migrating the data generated between T1 and T2.
-4.  Complete the migration: After Step 3 is complete, you have finished the migration.
-    -   After Step 3 is complete, all reads/writes of your business are switched to OSS. The third-party storage maintains only the historical data, which can either be retained or deleted as needed.
-    -   OssImport migrates and verifies data but does not delete any data.
+    The number of required ECS instances can be calculated as follows: X/Y/\(Z/100\). In the formula, X indicates the size of data that needs to be migrated, Y indicates the number of days that the migration requires, and Z indicates the transfer speed of a single ECS instance \(MB/s\), that is, how much TB of data can be migrated by a single ECS instance each day \(calculated as Z/100\). Assume that the transfer speed of an ECS instance is 200 MB/s \(that is, an ECS instance can migrate 2 TB of data each day\). This means you must purchase 36 ECS instances in total \(calculated from 500/7/2\).
 
-Migration costs
+-   Configure OssImport
 
-Migration costs include the ECS, traffic, storage, and time costs.  In most cases, such as TB-level data migration, the storage cost is directly proportional to the migration cost, and the ECS cost is lower than the traffic and storage costs.
-
-Prerequisites
-
-Assume that you have the following migration requirements:
-
-|Item|Description|
-|:---|:----------|
-|Migration source|AWS S3 \(Tokyo\)|
-|Migration target|OSS \(Hong Kong\)|
-|Data volume|500 TB|
-|Required migration schedule|Within one week|
-
-Prepare an environment as follows:
-
-|Item|Description|
-|:---|:----------|
-|Activate OSS|The steps for activating OSS are as follows:1.  Create an OSS \(Hong Kong\) bucket with your account.
-2.  Create a new sub-account in the RAM console and grant the sub-account the permission to access OSS.  Save the AccessKeyID and AccessKeySecret.
-
-|
-|Purchase ECSs|Purchase ECSs that reside in the same region \(Hong Kong\) as OSS. Typically, two CPU cores and 4 GB memory are the recommended configurations. If the ECSs are to be released after the migration, determine the configurations as needed. For the number of ECSs during the actual migration, see [Number of ECSs](#ecs1).|
-|Configure OssImport| **Note:** Use an intranet OSS endpoint for the target endpoint of the destDomain \([OssImport architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#)\). The ECS-OSS communication occur over the intranet, which does not incur any Internet traffic costs.  For more information, see [Regions and endpoints](../intl.en-US/Developer Guide/Regions and endpoints.md#).
-
- |
-|Migration procedure| 1.  Build an OssImport distributed environment on the ECS.
-2.  OssImport downloads data from AWS S3 \(Tokyo\) to the ECS \(Hong Kong\) over the Internet.
-3.  OssImport uploads data from the ECS \(Hong Kong\) to the OSS \(Hong Kong\) over the intranet.
-
- |
-
-The number of ECSs for migration
-
-Calculate the required number of ECSs for migration as needed:
-
--   Assume that you want to migrate X TBs of data within Y days at a speed of Z Mbps per ECS. \(About Z/100 TBs of data is migrated every day.\)
-
--   For the actual migration, approximately X/Y/\(Z/100\) ECSs are required.
+    For the large-scale data migration requirement in this example, you must deployed OssImport in ECS instances in distributed mode. For the configuration information about distributed mode, such as `conf/job.cfg`, `conf/sys.properties`, and concurrency control, see [Architecture and configuration](../../../../../reseller.en-US/Tools/ossimport/Architecture and configuration.md#). For more information about OssImport distributed deployment, such as the downloading method of OssImport and the troubleshooting of OssImport configuration, see [Distributed deployment](../../../../../reseller.en-US/Tools/ossimport/Distributed deployment.md#).
 
 
-Assume that the migration speed per ECS is 200 Mbps.\(About 2 TBs of data is migrated every day.\)   In this case, approximately 36 ECSs \(500/7/2\) are required.
+## Procedure {#section_bdl_ybq_fgb .section}
 
-## Migration procedure using OssImport {#section_rcn_f3g_vdb .section}
+You can use OssImport in distributed mode to migrate data from AWS S3 to OSS as follows:
 
-Configuration reference
+**Note:** After deploying OssImport in distributed mode in the ECS instances, use OssImport to download data from the AWS S3 bucket in the Tokyo region to the ECS instances in China East 1 \(Hangzhou\). We recommend you download the data through Internet. Use OssImport to upload the data from the ECS instances to the OSS bucket in China East 1 \(Hangzhou\). We recommend you upload the data through the intranet.
 
-Read the tutorials [OssImport  architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#) and [Distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#), respectively, for the configuration definition and the procedure. Check the following information before getting started:
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4431/15490913121976_en-US.png)
 
--   OssImport downloading: Download the distributed version of OssImport on the master and use the same SSH account and password for the master and worker. \(You do not have to download OssImport to the worker.  OssImport is automatically distributed to the worker when the `deploy` command is executed. For more information, see [Distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#).\)
+1.  Fully migrate the historical data in AWS S3 before the time T1. For more information, see the Running section in [Distributed deployment](../../../../../reseller.en-US/Tools/ossimport/Distributed deployment.md#section_m1y_1jh_wdb).
 
--   Java environment: Make sure that both the master and worker are installed with Java.
+    T1 is a UNIX timestamp, namely, the number of seconds elapsed since UTC 00:00, January 1, 1970, and can be obtained by running the `date +%s` command\).
 
-    **Note:** The worker must be installed with Java as well.
+2.  In the OSS console, enable [Back-to-Origin](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set back-to-origin rules.md#) for the target bucket and set the access URL of the AWS S3 as the origin URL.
+3.  Switch all read and write operations on AWS S3 to OSS, and record the time \(T2\).
 
--   workdir configuration: Specify a workdir by configuring the configuration item `workingDir` in `conf/sys.properties`. For more information, see [Distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#).
+    In this way, all historical data before T1 is directly read from the OSS bucket, and the data stored between T1 and T2 is read from AWS S3 through the mirroring back-to-origin function of OSS.
 
-    **Note:** See the relevant documentation for how to configure the workdir. Do not set it as the path to the OssImport package, or, wherever possible, another non-empty directory.
+    After T2, all new data is written to OSS and no new data is written to AWS S3.
 
--   Concurrency control: Configure the configuration item `taskObjectCountLimit` in `conf/job.cfg` and `workerTaskThreadNum` in `conf/sys.properties`. For more information, see [OssImport architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#).
+4.  Modify the item `importSince=T1` in the configuration file `job.cfg`, and then start a migration task again to migrate the data added between T1 and T2.
 
-    If most of the files to be migrated are small files and both the migration speed of each ECS and  the CPU workload are low, consider increasing `workerTaskThreadNum` and decreasing `taskObjectCountLimit` and see how it works out.
+    **Note:** 
 
--   Other issues encountered during the operation are generally associated with configuration. For more information, see [Distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#) and the log files under `workdir/Logs` on the master and worker.
+    -   After step 4, all read and write operations are performed on the target OSS bucket. Data stored in AWS S3 is historical data, which can be retained or deleted as needed.
+    -   OssImport only migrates and verifies data but does not delete it.
 
-Test run
+Various costs are incurred during data migration, including the cost of ECS instances, traffic costs, storage costs, and time-dependent costs. Furthermore, if the size of the data to be migrated is larger than 1 TB, the storage cost increases due to the time required for the migration. However, the storage cost generally remains lower than the costs associated with network traffic and ECS instances. You can reduce the time needed for migration by using more ECS instances.
 
-We recommend that you build a small environment \(such as with two or three ECSs\) and migrate a small amount of data to verify if the configuration is proper.  Verify that the migration bandwidth of each ECS reaches the expected value such as 200 Mbps. If you do not have any specific requirement on the migration schedule, skip this verification item.
+## References {#section_fvm_cbv_fgb .section}
 
-View the bandwidth: Use `iftop` or `Nload` \(which needs to be installed first by running the `yum install ***` command\) for this purpose, because latency exists in the bandwidth statistics in the ECS console.
+For more information about OssImport, see the following documentations:
 
-**Note:** You may not be able to verify the concurrency if the number of testing files is low. In this case, decrease `taskObjectCountLimit` \(such as to the number of files/workerTaskThreadNum/total number of workers\) and see how it works out.
+[Distributed deployment](../../../../../reseller.en-US/Tools/ossimport/Distributed deployment.md#)
 
-## Migration procedure {#section_hdz_pkg_vdb .section}
+[Architecture and configuration](../../../../../reseller.en-US/Tools/ossimport/Architecture and configuration.md#)
 
-1.  Migrate historical data.
-    -   Clear tasks and configurations.
-    -   See [Distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#) for the specific procedure.
-    -   Start the migration.
-    -   You can view the actually migrated data in the OSS bucket in the [OSS console](https://oss.console.aliyun.com/overview) .
-2.  Configure OSS back-to-source and switch the read/write of the business system to OSS.
-    -   Enable [OSS back-to-source](../intl.en-US/Console User Guide/Manage buckets/Set back-to-origin rules.md#) in the [OSS console](https://oss.console.aliyun.com/), where the back-to-source address is the migration source \(the third-party storage\).
-    -   Assume that the point of time when the read/write of the business system is switched to OSS is T2. Then no new data is written to the migration source after T2.
-3.  Migrate remaining data.
+[Data migration](../../../../../reseller.en-US/Tools/ossimport/Data migration.md#)
 
-    Modify the configuration item `importSince=T1` in `job.cfg`. See [OssImport  architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#). Migrate the remaining data \(between T1 and T2\).In special cases, you can migrate again by setting  `importSince = 0, isSkipExistFile=true` in `job.cfg`. For more information, see [OssImport architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#).
-
-
-The migration speed
-
--   Migration speed per ECS: If the migration speed of each ECS is low \(for example, the speed is lower than 200 Mbps and the CPU  workload is low\), you can optimize the concurrency control parameters by referring to relevant tutorials and this article, that is, modify `taskObjectCountLimit` in `conf/job.cfg` and `workerTaskThreadNum` in `conf/sys.properties` and see how it works out.
-
--   Number of ECSs for migration: See [Number of ECSs](#ecs1) to estimate the required number of ECSs. \(The ECS cost only accounts for a minor part of the total migration costs compared with the traffic, storage, and time costs.\)  The migration is accelerated when more ECSs are in place.
-
-
-## Tutorials related to OssImport distributed deployment {#section_whk_ykg_vdb .section}
-
-|No.|Tutorial|
-|:--|:-------|
-|1|[OssImport distributed deployment](../intl.en-US/Utilities/ossimport/Distributed deployment.md#)|
-|2|[OssImport architecture and configuration](../intl.en-US/Utilities/ossimport/Architecture and configuration.md#)|
-|3|[OssImport best practices](../intl.en-US/Utilities/ossimport/Data migration.md#)|
-|4|[OssImport FAQ](../intl.en-US/Utilities/ossimport/FAQs.md#)|
+[FAQ](../../../../../reseller.en-US/Tools/ossimport/FAQ.md#)
 

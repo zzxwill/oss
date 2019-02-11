@@ -4,7 +4,7 @@
 
 ## 匿名请求流程 {#section_dk1_gx2_2gb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1545295120959_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/1549849744959_zh-CN.png)
 
 1.  用户的请求被发送到OSS的HTTP服务器上。
 2.  OSS根据URL解析出Bucket和Object。
@@ -20,7 +20,7 @@
 
 ## 带身份验证的请求流程 {#section_ax4_3x2_2gb .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/15452951201026_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4345/15498497441026_zh-CN.png)
 
 1.  用户的请求被发送到OSS的HTTP服务器上。
 2.  OSS根据URL解析出Bucket和Object。
@@ -82,7 +82,7 @@
 
 ## 带身份验证访问OSS的三种方法 {#section_bpf_5qg_l2b .section}
 
--   使用控制台访问OSS：控制台中对用户隐藏了身份验证的细节，使用控制台访问OSS的用户无需关注细节。更多信息请参见[下载文件](../../../../intl.zh-CN/控制台用户指南/管理文件/下载文件.md#)。
--   使用SDK访问OSS：OSS提供了多种开发语言的SDK，SDK中实现了签名算法，只需要将AccessKey信息作为参数输入即可。详情请参见各语言SDK文档中的**访问控制**章节，例如 [Java SDK：使用签名URL进行临时授权](../../../../intl.zh-CN/SDK 参考/Java/授权访问.md#ul_nh5_wbd_kfb)、[Python SDK：使用签名URL进行临时授权](../../../../intl.zh-CN/SDK 参考/Python/授权访问.md#section_zx1_55k_kfb)。
--   使用API访问OSS：如果您想用自己喜欢的语言来封装调用RESTful API接口，您需要实现签名算法来计算签名。具体请参见API手册中的[在Header中包含签名](../../../../intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)和[在URL中包含签名](../../../../intl.zh-CN/API 参考/访问控制/在URL中包含签名.md#)。
+-   使用控制台访问OSS：控制台中对用户隐藏了身份验证的细节，使用控制台访问OSS的用户无需关注细节。更多信息请参见[下载文件](../../../../../intl.zh-CN/控制台用户指南/管理文件/下载文件.md#)。
+-   使用SDK访问OSS：OSS提供了多种开发语言的SDK，SDK中实现了签名算法，只需要将AccessKey信息作为参数输入即可。详情请参见各语言SDK文档中的**访问控制**章节，例如 [Java SDK：使用签名URL进行临时授权](../../../../../intl.zh-CN/SDK 参考/Java/授权访问.md#ul_nh5_wbd_kfb)、[Python SDK：使用签名URL进行临时授权](../../../../../intl.zh-CN/SDK 参考/Python/授权访问.md#section_zx1_55k_kfb)。
+-   使用API访问OSS：如果您想用自己喜欢的语言来封装调用RESTful API接口，您需要实现签名算法来计算签名。具体请参见API手册中的[在Header中包含签名](../../../../../intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)和[在URL中包含签名](../../../../../intl.zh-CN/API 参考/访问控制/在URL中包含签名.md#)。
 

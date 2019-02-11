@@ -11,7 +11,7 @@
 
 以上问题可以通过在ECS实例上搭建反向代理的方式访问OSS。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/123246/154907429038572_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/123246/154984989538572_zh-CN.png)
 
 ## 配置步骤 {#section_o22_12n_qgb .section}
 
@@ -56,7 +56,9 @@
     }
     ```
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/123259/154907429038587_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/123259/154984989538587_zh-CN.png)
+
+    **说明：** 本文为演示环境，实际环境中，为了您的数据安全，建议配置https模块，配置方法可参考[反向代理配置](https://help.aliyun.com/knowledge_detail/39544.html)。
 
 5.  进入Nginx主程序文件夹，启动Nginx：
 
@@ -67,7 +69,7 @@
 
 6.  测试使用ECS外网地址加文件访问路径访问OSS资源。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/123259/154907429038588_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/123259/154984989538588_zh-CN.png)
 
 
 ## 更多参考 {#section_d2t_53n_qgb .section}

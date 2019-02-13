@@ -15,18 +15,18 @@ Authorization: SignatureValue
 
 |名称|类型|描述|
 |--|--|--|
-|LocationConstraint|字符串|Bucket所在的区域。有效值：oss-cn-hangzhou、oss-cn-qingdao、oss-cn-beijing、oss-cn-hongkong、oss-cn-shenzhen、oss-cn-shanghai
+|LocationConstraint|字符串|Bucket所在的区域。有效值：oss-cn-hangzhou、oss-cn-qingdao、oss-cn-beijing、oss-cn-hongkong、oss-cn-shenzhen、oss-cn-shanghai、oss-us-west-1、oss-us-east-1、oss-ap-southeast-1。
 
 |
 
-## 细节分析 {#section_f5l_hfw_bz .section}
+**说明：** 
 
 -   只有Bucket的拥有者才能查看Bucket的Location信息，否则返回403 Forbidden错误，错误码：AccessDenied。
--   目前LocationConstraint有效值：oss-cn-hangzhou，oss-cn-qingdao，oss-cn-beijing，oss-cn-hongkong，oss-cn-shenzhen，oss-cn-shanghai，oss-us-west-1，oss-us-east-1，oss-ap-southeast-1。分别对应杭州数据中心，青岛数据中心，北京数据中心、香港数据中心、深圳数据中心、上海数据中心、美国硅谷数据中心、美国弗吉尼亚数据中心和亚太（新加坡）数据中心。
+-   Bucket所在区域与数据中心的对应关系请参见[访问域名与数据中心](../../../../../cn.zh-CN/开发指南/访问域名（Endpoint）/访问域名和数据中心.md#)。
 
 ## 示例 {#section_f32_3fw_bz .section}
 
-**请求示例：**
+请求示例：
 
 ```
 Get /?location HTTP/1.1
@@ -36,7 +36,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:ceOEyZavKY4QcjoUWYSpYbJ3naA=
 
 ```
 
-**已设置LOG规则的返回示例：**
+设置LOG规则的返回示例：
 
 ```
 HTTP/1.1 200

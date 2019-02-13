@@ -1,6 +1,8 @@
 # 设置存储空间读写权限（ACL） {#concept_fnt_4z1_5db .concept}
 
-除了在创建存储空间的时候能够对存储空间的 ACL 进行设置，也可以之后根据自己的业务需求对存储空间的ACL进行修改。这个操作只有该存储空间的创建者有权限执行。目前存储空间有三种访问权限：
+您可以在创建存储空间（Bucket）时设置存储空间的访问权限（ACL），也可以在创建Bucket后根据自己的业务需求修改存储空间的ACL，该操作只有存储空间的拥有者可以执行。
+
+存储空间有三种访问权限：
 
 |权限值|中文名称|权限对访问者的限制|
 |:--|:---|:--------|
@@ -12,17 +14,19 @@
 |
 |private|私有读写|只有该存储空间的拥有者可以对该存储空间内的文件进行读写操作，其他人无法访问该存储空间内的文件。|
 
-## 功能使用参考 {#section_fmv_tz1_5db .section}
+## 操作方式 {#section_bdy_cv3_kgb .section}
 
-设置存储空间 ACL
-
--   控制台：[设置访问权限](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/修改存储空间读写权限.md#)
--   Java SDK：[设置存储空间访问权限](https://help.aliyun.com/document_detail/32012.html#h2-u8BBEu7F6Eu5B58u50A8u7A7Au95F4u7684u8BBFu95EEu6743u96504)
--   API：[PutBucketACL](../../../../../cn.zh-CN/API 参考/关于Bucket的操作/PutBucketACL.md#)
-
-获取存储空间 ACL
-
--   控制台：登录后可以在存储空间属性中查看
--   Java SDK：[获取存储空间访问权限](https://help.aliyun.com/document_detail/32012.html#h2-u83B7u53D6u5B58u50A8u7A7Au95F4u7684u8BBFu95EEu6743u96505)
--   API：[GetBucketACL](../../../../../cn.zh-CN/API 参考/关于Bucket的操作/GetBucketAcl.md#)
+|操作方式|说明|
+|----|--|
+|[控制台](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/修改存储空间读写权限.md#)|Web应用程序，直观易用|
+|[图形化工具ossbrowser](../../../../../cn.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化工具，易操作|
+|[命令行工具ossutil](../../../../../cn.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#ul_imw_f5s_vdb)|命令行工具，性能好|
+|[Java SDK](../../../../../cn.zh-CN/SDK 参考/Java/存储空间.md#table_grn_jjf_2gb)|丰富、完整的各类语言SDK demo|
+|[Python SDK](../../../../../cn.zh-CN/SDK 参考/Python/存储空间.md#section_rvh_l1j_kfb)|
+|[PHP SDK](../../../../../cn.zh-CN/SDK 参考/PHP/存储空间.md#section_ond_15p_kfb)|
+|[Go SDK](../../../../../cn.zh-CN/SDK 参考/Go/存储空间.md#)|
+|[C SDK](../../../../../cn.zh-CN/SDK 参考/C/存储空间.md#)|
+|[.NET SDK](../../../../../cn.zh-CN/SDK 参考/.NET/存储空间.md#)|
+|[Node.js SDK](../../../../../cn.zh-CN/SDK 参考/Node.js/存储空间.md#ul_ict_gqk_lfb)|
+|[Ruby SDK](../../../../../cn.zh-CN/SDK 参考/Ruby/存储空间.md#ul_px3_pnn_lfb)|
 

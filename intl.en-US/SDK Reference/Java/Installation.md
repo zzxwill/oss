@@ -6,7 +6,7 @@ This topic describes how to install OSS Java SDK.
 
 -   Environment requirements
 
-    You must use Java 1.6 or later versions.
+    You must use Java 1.8 or later versions.
 
 -   Check the Java version
 

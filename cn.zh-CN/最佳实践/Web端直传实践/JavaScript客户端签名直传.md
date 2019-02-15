@@ -2,17 +2,11 @@
 
 本文主要介绍如何基于POST Policy的使用规则在客户端通过JavaScript代码完成签名，然后通过表单直传数据到OSS。
 
-## Demo {#section_fgf_dqq_p2b .section}
-
-[PC浏览器测试样例](http://oss-demo.aliyuncs.com/oss-h5-upload-js-direct/index.html)
-
-本示例采用Plupload 直接提交表单数据（即[PostObject](../../../../intl.zh-CN/API 参考/关于Object操作/PostObject.md#)）到OSS，可以运行在PC浏览器、手机浏览器、微信等。您可以同时选择多个文件上传，并设置上传到指定目录和设置上传文件名称是随机文件名还是本地文件名。您还可以通过进度条查看上传进度。
-
-**说明：** 文件上传到一个测试的公共Bucket，会定时清理，所以不要传一些敏感及重要数据。
-
 ## 步骤 1：下载应用服务器代码 {#section_ugn_1ky_5db .section}
 
 [下载地址](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/sample/oss-h5-upload-js-direct.zip)
+
+本示例采用Plupload 直接提交表单数据（即[PostObject](../../../../../cn.zh-CN/API 参考/关于Object操作/PostObject.md#)）到OSS，可以运行在PC浏览器、手机浏览器、微信等。您可以同时选择多个文件上传，并设置上传到指定目录和设置上传文件名称是随机文件名还是本地文件名。您还可以通过进度条查看上传进度。
 
 ## 步骤 2：修改配置文件 {#section_jty_1tm_q2b .section}
 
@@ -48,14 +42,16 @@ host = 'http://post-test.oss-cn-hangzhou.aliyuncs.com';
 -   $key：您的AcessKeySecret
 -   $host：格式为`BucketName.Endpoint`，例如`post-test.oss-cn-hangzhou.aliyuncs.com`
 
-    **说明：** 关于Endpoint的介绍，请参见[Endpoint（访问域名）](../../../../intl.zh-CN/开发指南/基本概念介绍.md#section_s3j_nmt_tdb)。
+    **说明：** 关于Endpoint的介绍，请参见[Endpoint（访问域名）](../../../../../cn.zh-CN/开发指南/基本概念介绍.md#section_s3j_nmt_tdb)。
 
 
 ## 步骤 3：设置CORS {#section_jgc_3mk_p2b .section}
 
 客户端进行表单直传到OSS时，会从浏览器向OSS发送带有`Origin`的请求消息。OSS对带有`Origin`头的请求消息会进行跨域规则（CORS）的验证。因此需要为Bucket设置跨域规则以支持Post方法。
 
-具体操作步骤请参见[设置跨域访问](../../../../intl.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
+具体操作步骤请参见[设置跨域访问](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置跨域访问.md#)。
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/21672/155020996512308_zh-CN.png)
 
 **说明：** **来源**设置为 \* 是为了使用方便，不确保安全性。建议您填写自己需要的域名。
 
@@ -152,5 +148,5 @@ multipart_params: {
 
 ## 总结 {#section_gzz_dnm_q2b .section}
 
-在客户端通过JavaScript代码完成签名，无需过多配置，即可实现直传，非常方便。但是客户端通过JavaScript把AccesssKeyID 和AccessKeySecret写在代码里面有泄露的风险，建议采用[服务端签名后直传](intl.zh-CN/最佳实践/Web端直传实践/服务端签名后直传.md#)。
+在客户端通过JavaScript代码完成签名，无需过多配置，即可实现直传，非常方便。但是客户端通过JavaScript把AccesssKeyID 和AccessKeySecret写在代码里面有泄露的风险，建议采用[服务端签名后直传](cn.zh-CN/最佳实践/Web端直传实践/服务端签名后直传.md#)。
 

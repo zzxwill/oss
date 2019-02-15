@@ -2,8 +2,6 @@
 
 To help familiarize yourself with the basic concepts and configurations of alarm contacts and alarm contact groups, we recommend that the following documents are read before this user guide:
 
--   [Alarm service overview](https://www.alibabacloud.com/help/doc-detail/28608.htm)
--   [Manage alarm contact](https://www.alibabacloud.com/help/doc-detail/28609.htm)
 
 Additionally, OSS alarm rules are developed in accordance with OSS metric items. This means they are categorized by dimensions similar to those of OSS metric items. Two alarm dimensions are available: user-level and bucket-level.
 
@@ -11,7 +9,7 @@ Additionally, OSS alarm rules are developed in accordance with OSS metric items.
 
 The alarm rule page is where you can view, modify, activate, deactivate, and delete alarm rules related to OSS monitoring alarms. You can also view historical alarms of the different alarm rules. An example screenshot is as follows:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946221216_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083591216_en-US.png)
 
 -   Click **Modify** next to the expected alarm rule to modify it.
 -   Click **Delete** next to the expected alarm rule to delete it.  You can also select multiple alarm rules and then click **Delete** at the bottom of the table to delete alarm rules in batches.
@@ -19,7 +17,7 @@ The alarm rule page is where you can view, modify, activate, deactivate, and del
 -   If an alarm rule is in the Forbidden status, click **Enable** next to the expected alarm rule to activate it. The rule is then be resumed to detect exceptions and send alarm information.  You can also select multiple alarm rules and then click **Enable** at the bottom of the table to activate alarm rules in batches.
 -   Click **Alarm history** next to the expected alarm rule to view information on past alarms corresponding to this rule. 
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946226384_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083606384_en-US.png)
 
 Alarm history concepts
 
@@ -29,7 +27,7 @@ Alarm history concepts
 
 To view details about an alarm, such as the alarm contact list and contact details, click **View** next to the expected alarm. An example screenshot displaying specific details is as follows:
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946226385_en-US.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083606385_en-US.jpg)
 
 Search for alarm rules
 
@@ -37,11 +35,11 @@ Based on the control information at the bottom of the alarm rule page, you can q
 
 -   Alarm dimension drop-down box: All and Bucket Level.  If you select All, all user-level and bucket-level alarm rules are displayed.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946226386_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083606386_en-US.png)
 
 -   Bucket drop-down box: If you select Bucket Level in the alarm dimension drop-down box, this box lists the buckets of the current user.  Select a bucket to display all the alarm rules for this bucket:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946226387_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083606387_en-US.png)
 
 -   Monitored items drop-down box lists all OSS metric items, including user-level and bucket level metric items. If you select Monitored items, user-level and bucket-level alarm rules for all monitored items are displayed.
 -   Alarm status drop-down box lists alarm status, including OK and Alarm .
@@ -72,11 +70,9 @@ Add alarm rules
 
 After specifying a bucket in the Bucket List Tab, click **Set Alarm Rule** to set an alarm rule. Alternatively, click the alarm icon ![](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/image/media/alert_chart.jpg) in a metric chart in the User Overview tab or the Monitoring View tab of a specific bucket to open the **Batch Set Alarm Rules** page to set multiple alarm rules. 
 
-The following example describes how to set alarms at the user-level. To learn more about the terms and concepts used later, see the [Alarm service overview](https://www.alibabacloud.com/help/doc-detail/28608.htm) of CloudMonitor.
-
 1.  Set parameters for **Alarm rules** as follows:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946221217_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083601217_en-US.jpg)
 
     -   Alarm dimension specifies the monitoring dimension of the alarm rule to set. If the dimension is set to bucket-level, the expected bucket with which to set the alarm rule for must be specified.
     -   Monitored items specifies all the metric items for the selected alarm dimension. You can use the quick search box to easily find metric items:
@@ -87,13 +83,11 @@ The following example describes how to set alarms at the user-level. To learn mo
     -   Click **Delete** next to the expected alarm rule to delete it. 
 2.  Click **Next**, the page to **Set the alarm types** is then displayed. 
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946221219_en-US.jpg)
-
-    If you have set alarm contract groups following the [Manage alarm contact](https://www.alibabacloud.com/help/doc-detail/28609.htm), they are displayed on the interface. If you have not set alarm contact groups, click **Quickly create a contact group** and follow the prompts to create a group. 
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083601219_en-US.jpg)
 
 3.  Click **OK**.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15482946221220_en-US.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15502083601220_en-US.jpg)
 
 
 -   Add alarm rules in the Bucket list

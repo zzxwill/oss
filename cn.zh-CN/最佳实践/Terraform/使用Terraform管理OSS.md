@@ -18,8 +18,8 @@
 4.  创建 RAM 用户，并为其授权。
 
     1.  登录 [RAM 控制台](https://ram.console.aliyun.com/#/overview)。
-    2.  创建名为 Terraform 的 RAM 用户，并为该用户创建 AccessKey。具体步骤参见 [创建 RAM 用户](https://help.aliyun.com/document_detail/28637.html#concept-gpm-ccf-xdb)。
-    3.  为 RAM 用户授权。您可以根据实际的情况为 Terraform 授予合适的管理权限。具体步骤参见 [为 RAM 用户授权](https://help.aliyun.com/document_detail/28639.html#concept-t13-3gf-xdb)。
+    2.  创建名为 Terraform 的 RAM 用户，并为该用户创建 AccessKey。具体步骤参见[创建 RAM 用户](../../../../../cn.zh-CN/快速入门/创建 RAM 用户.md#)。
+    3.  为 RAM 用户授权。您可以根据实际的情况为 Terraform 授予合适的管理权限。具体步骤参见[为 RAM 用户授权](../../../../../cn.zh-CN/快速入门/为 RAM 用户授权.md#)。
     **说明：** 请不要使用主账号的 AccessKey 配置 Terraform 工具。
 
 5.  因为每个 Terraform 项目都需要创建 1 个独立的执行目录，所以先创建一个测试目录terraform-test。
@@ -226,19 +226,20 @@ Terraform 安装完成之后，您就可以通过 Terraform 的操作命令管�
 -   `terraform destroy`：可删除通过 Terraform 创建的空的 Bucket。
 -   导入 Bucket：若 Bucket 不是通过 Terraform 创建，可通过命令导入现有的 Bucket。
 
-    首先，创建一个 main.tf 的文件，并写入配置：
+    首先，创建一个 main.tf 的文件，并写入 Bucket 相关信息：
 
     ```
     [root@test terraform-test]#vim main.tf
     resource "alicloud_oss_bucket" "bucket" { 
-     # (resource arguments)
+     bucket = "test-hangzhou-2025" 
+     acl = "private"
     }
     ```
 
-    使用如下命令导入现有的 Bucket：
+    使用如下命令导入 test-hangzhou-2025 这个 Bucket：
 
     ```
-    terraform import alicloud_oss_bucket.bucket bucketname
+    terraform import alicloud_oss_bucket.bucket test-hangzhou-2025
     ```
 
 

@@ -20,7 +20,9 @@ Authorization: SignatureValue
 
 |响应头|类型|描述|
 |:--|--|:-|
-|Content-Length|字符串|Object的文件大小。|
+|Content-Length|字符串| Object的文件大小。
+
+ |
 |ETag|字符串| Object生成时会创建ETag \(entity tag\)，ETag用于标示一个Object的内容。
 
  对于PutObject请求创建的Object，ETag值是其内容的MD5值；对于其他方式创建的Object，ETag值是其内容的UUID。ETag值可以用于检查Object内容是否发生变化。不建议用户使用ETag来作为Object内容的MD5校验数据完整性。

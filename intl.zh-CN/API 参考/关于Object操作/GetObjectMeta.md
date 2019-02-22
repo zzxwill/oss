@@ -67,7 +67,7 @@ GetObjectMeta接口所对应的各语言SDK如下：
 -   [Go](../../../../../intl.zh-CN/SDK 参考/Go/管理文件/管理文件访问权限.md)
 -   [C](../../../../../intl.zh-CN/SDK 参考/C/管理文件/管理文件访问权限.md)
 -   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/管理文件/管理文件元信息.md)
--   [IOS](../../../../../intl.zh-CN/SDK 参考/iOS/管理文件.md)
+-   [iOS](../../../../../intl.zh-CN/SDK 参考/iOS/管理文件.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}
 

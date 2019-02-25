@@ -1,11 +1,6 @@
 # DeleteMultipleObjects {#reference_ydg_25v_wdb .reference}
 
-DeleteMultipleObjects支持用户通过一个HTTP请求删除同一个Bucket中的多个Object。
-
-Delete Multiple Objects操作支持一次请求内最多删除1000个Object，并提供两种返回模式：详细\(verbose\)模式和简单\(quiet\)模式。
-
--   详细模式：OSS返回的消息体中会包含每一个删除Object的结果。
--   简单模式：OSS返回的消息体中只包含删除过程中出错的Object结果；如果所有删除都成功的话，则没有消息体。
+DeleteMultipleObjects接口用于删除同一个存储空间（Bucket）中的多个文件（Object）。
 
 ## 请求语法 {#section_iqs_fvv_wdb .section}
 
@@ -26,79 +21,100 @@ Authorization: SignatureValue
 </Delete>
 ```
 
-## 请求参数\(Request Parameters\) {#section_wmb_lvv_wdb .section}
+## 请求头 {#section_ztg_wzw_wdb .section}
 
-Delete Multiple Objects时，可以通过encoding-type对返回结果中的Key进行编码。
+OSS会根据以下请求头验证收到的消息体，消息体正确才会执行删除操作。
 
-|名称|描述|
-|:-|:-|
-|encoding-type|指定对返回的Key进行编码，目前支持url编码。Key使用UTF-8字符，但xml 1.0标准不支持解析一些控制字符，比如ascii值从0到10的字符。对于Key中包含xml 1.0标准不支持的控制字符，可以通过指定encoding-type对返回的Key进行编码。数据类型：字符串
+|名称|类型|是否必选|描述|
+|:-|:-|:---|:-|
+|encoding-type|字符串|否| Key使用UTF-8字符。如果Key中包含XML 1.0标准不支持的控制字符，您可以通过指定encoding-type对返回结果中的Key进行编码。
 
-默认值：无
+ 默认值：无
 
-可选值：url
-
-|
-
-## 请求元素\(Request Elements\) {#section_l1c_svv_wdb .section}
-
-|名称|类型|描述|
-|:-|:-|:-|
-|Delete|容器|保存Delete Multiple Object请求的容器。子节点：一个或多个Object元素，可选的Quiet元素
-
-父节点： None
-
-|
-|Key|字符串|被删除Object的名字。父节点：Object
-
-|
-|Object|容器|保存一个Object信息的容器。子节点：key
-
-父节点：Delete
-
-|
-|Quiet|枚举字符串|打开“简单”响应模式的开关。有效值：true、false
-
-默认值：false
-
-父节点：Delete
-
-|
-
-## 响应元素\(Response Elements\) {#section_ync_yyv_wdb .section}
-
-|名称|类型|描述|
-|:-|:-|:-|
-|Deleted|容器|保存被成功删除的Object的容器。子节点：Key
-
-父节点：DeleteResult
-
-|
-|DeleteResult|容器|保存Delete Multiple Object请求结果的容器。子节点：Deleted
-
-父节点：None
-
-|
-|Key|字符串|OSS执行删除操作的Object名字。父节点：Deleted
+ 可选值：url
 
  |
-|EncodingType|字符串|指明返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，那返回的结果会对Key进行编码。父节点：容器
+|Content-Length|字符串|是| 用于描述HTTP消息体的传输长度。
 
-|
+ OSS会根据此请求头验证收到的消息体，消息体正确才会执行删除操作。
 
-## 细节分析 {#section_xfy_rzv_wdb .section}
+ |
+|Content-MD5|字符串|是| Content-MD5是一串由MD5算法生成的值，该请求头用于检查消息内容是否与发送时一致。上传了Content-MD5请求头后，OSS会计算消息体的Content-MD5并检查一致性。
 
--   Delete Multiple Objects请求必须填Content-Length和Content-MD5字段。OSS会根据这些字段验证收到的消息体是正确的，之后才会执行删除操作。
--   生成Content-MD5字段内容方法：首先将Delete Multiple Object请求内容经过MD5加密后得到一个128位字节数组；再将该字节数组用base64算法编码；最后得到的字符串即是Content-MD5字段内容。
--   Delete Multiple Objects请求默认是详细\(verbose\)模式。
--   在Delete Multiple Objects请求中删除一个不存在的Object，仍然认为是成功的。
--   Delete Multiple Objects的消息体最大允许2MB的内容，超过2MB会返回MalformedXML错误码。
--   Delete Multiple Objects请求最多允许一次删除1000个Object；超过1000个Object会返回MalformedXML错误码。
--   如果用户上传了Content-MD5请求头，OSS会计算body的Content-MD5并检查一致性，如果不一致，将返回InvalidDigest错误码。
+ **说明：** 将DeleteMultipleObjects的请求消息体经过MD5加密后得到一个128位字节数组。然后将该字节数组用base64算法编码，编码后得到的字符串即Content-MD5字段内容。
+
+ |
+
+## 请求元素 {#section_l1c_svv_wdb .section}
+
+|名称|类型|是否必选|描述|
+|:-|:-|----|:-|
+|Delete|容器|是| 保存DeleteMultipleObjects请求的容器。
+
+ 子节点：一个或多个Object元素，Quiet元素
+
+ 父节点： None
+
+ |
+|Object|容器|是| 保存一个Object信息的容器。
+
+ 子节点：Key
+
+ 父节点：Delete
+
+ |
+|Key|字符串|是| 被删除Object的名字。
+
+ 父节点：Object
+
+ |
+|Quiet|枚举字符串|是| 打开简单响应模式的开关。
+
+ DeleteMultipleObjects提供以下两种消息返回模式：
+
+-   简单模式\(quiet\)：OSS返回的消息体中只包含删除过程中出错的Object结果。如果所有删除都成功，则没有消息体。
+-   详细模式\(verbose\)：OSS返回的消息体中会包含所有删除Object的结果。默认采用详细模式。
+
+ 有效值：true（开启简单模式）、false（开启详细模式）
+
+ 默认值：false
+
+ 父节点：Delete
+
+ |
+
+## 响应元素 {#section_ync_yyv_wdb .section}
+
+|名称|类型|描述|
+|:-|:-|:-|
+|Deleted|容器| 保存被成功删除的Object的容器。
+
+ 子节点：Key
+
+ 父节点：DeleteResult
+
+ |
+|DeleteResult|容器| 保存DeleteMultipleObjects请求结果的容器。
+
+ 子节点：Deleted
+
+ 父节点：None
+
+ |
+|Key|字符串| 被删除Object的名字。
+
+ 父节点：Deleted
+
+ |
+|EncodingType|字符串| 返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，则返回的结果会对Key进行编码。
+
+ 父节点：容器
+
+ |
 
 ## 示例 {#section_mcs_21w_wdb .section}
 
-**请求示例I：**
+**关闭简单响应模式的请求示例**
 
 ```
 POST /?delete HTTP/1.1
@@ -122,7 +138,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:+z3gBfnFAxBcBDgx27Y/jEfbfu8=
 </Delete>
 ```
 
-**返回示例：**
+**返回示例**
 
 ```
 HTTP/1.1 200 OK
@@ -146,7 +162,7 @@ Server: AliyunOSS
 </DeleteResult>
 ```
 
-**请求示例II：**
+**打开简单响应模式的请求示例**
 
 ```
 POST /?delete HTTP/1.1
@@ -170,7 +186,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:WuV0Jks8RyGSNQrBca64kEExJDs=
 </Delete>
 ```
 
-**返回示例：**
+**返回示例**
 
 ```
 HTTP/1.1 200 OK
@@ -180,4 +196,27 @@ Content-Length: 0
 Connection: keep-alive
 Server: AliyunOSS
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+-   [Java](../../../../../cn.zh-CN/SDK 参考/Java/管理文件/删除文件.md)
+-   [Python](../../../../../cn.zh-CN/SDK 参考/Python/管理文件/删除文件.md)
+-   [PHP](../../../../../cn.zh-CN/SDK 参考/Python/管理文件/删除文件.md)
+-   [Go](../../../../../cn.zh-CN/SDK 参考/Go/管理文件/删除文件.md)
+-   [C](../../../../../cn.zh-CN/SDK 参考/C/管理文件/删除文件.md)
+-   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/管理文件/删除文件.md)
+-   [iOS](../../../../../cn.zh-CN/SDK 参考/iOS/管理文件.md)
+-   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/管理文件.md)
+-   [Browser.js](../../../../../cn.zh-CN/SDK 参考/Browser.js/管理文件.md)
+-   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/管理文件.md)
+
+## 错误码 {#section_nfp_nfc_5gb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|InvalidDigest|400|上传了Content-MD5请求头后，OSS会计算消息体的Content-MD5并检查一致性，如果不一致会返回此错误码。|
+|MalformedXML|400| -   消息体最大允许2 MB的内容，超过2 MB会返回此错误码。
+-   DeleteMultipleObjects接口最多支持单次请求删除1000个Object。单次请求超过1000个Object返回此错误码。
+
+ |
 

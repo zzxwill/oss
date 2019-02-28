@@ -25,7 +25,7 @@ HDP（Hortonworks Data Platform） 是由 Hortonworks 发行的大数据平台�
     hadoop-oss-hdp-2.6.1.0-129/aliyun-java-sdk-ecs-4.2.0.jar
     hadoop-oss-hdp-2.6.1.0-129/aliyun-java-sdk-sts-3.0.0.jar
     hadoop-oss-hdp-2.6.1.0-129/jdom-1.1.jar
-    hadoop-oss-hdp-2.6.1.0-129/aliyun-sdk-oss-3.0.0.jar
+    hadoop-oss-hdp-2.6.1.0-129/aliyun-sdk-oss-3.4.1.jar
     hadoop-oss-hdp-2.6.1.0-129/hadoop-aliyun-2.7.3.2.6.1.0-129.jar
     
     
@@ -44,7 +44,7 @@ HDP（Hortonworks Data Platform） 是由 Hortonworks 发行的大数据平台�
     drwxr-xr-x 2 root root 4.0K Oct 28 20:10 ranger-yarn-plugin-impl
     drwxr-xr-x 2 root root 4.0K Oct 28 20:10 native
     -rw-r--r-- 1 root root 114K Oct 28 20:56 aliyun-java-sdk-core-3.4.0.jar
-    -rw-r--r-- 1 root root 513K Oct 28 20:56 aliyun-sdk-oss-3.0.0.jar
+    -rw-r--r-- 1 root root 513K Oct 28 20:56 aliyun-sdk-oss-3.4.1.jar
     -rw-r--r-- 1 root root  13K Oct 28 20:56 aliyun-java-sdk-sts-3.0.0.jar
     -rw-r--r-- 1 root root 211K Oct 28 20:56 aliyun-java-sdk-ram-3.0.0.jar
     -rw-r--r-- 1 root root 770K Oct 28 20:56 aliyun-java-sdk-ecs-4.2.0.jar

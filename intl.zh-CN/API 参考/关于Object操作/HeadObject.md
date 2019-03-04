@@ -1,6 +1,8 @@
 # HeadObject {#reference_bgh_cbw_wdb .reference}
 
-HeadObject只返回某个Object的meta信息，不返回文件内容。
+HeadObject接口用于获取某个文件（Object）的元信息。使用此接口不会返回文件内容。
+
+**说明：** 您也可以在PutObject时获取元信息。PutObject时传入以x-oss-meta-为开头的请求头，例如x-oss-meta-location，则会返回相应的元信息。
 
 ## 请求语法 {#section_wmz_jbw_wdb .section}
 
@@ -11,34 +13,32 @@ Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## 请求Header {#section_xjh_mbw_wdb .section}
+## 请求头 {#section_xjh_mbw_wdb .section}
 
-|名称|类型|描述|
-|--|--|--|
-|If-Modified-Since|字符串|如果传入参数中的时间早于实际修改时间，则返回200 OK和Object Meta；否则返回304 not modified 默认值：无
-
- |
-|If-Unmodified-Since|字符串|如果传入参数中的时间等于或者晚于文件实际修改时间，则返回200 OK和Object Meta；否则返回412 precondition failed错误 默认值：无
+|名称|类型|是否必选|描述|
+|:-|:-|:---|:-|
+|If-Modified-Since|字符串|否|如果传入参数中的时间早于实际修改时间，则返回200 OK和Object Meta；否则返回304 not modified。 默认值：无
 
  |
-|If-Match|字符串|如果传入期望的ETag和Object的 ETag匹配，则返回200 OK和Object Meta；否则返回412 precondition failed错误默认值：无
+|If-Unmodified-Since|字符串|否|如果传入参数中的时间等于或者晚于文件实际修改时间，则返回200 OK和Object Meta；否则返回412 precondition failed。默认值：无
+
+ |
+|If-Match|字符串|否|如果传入期望的ETag和Object的 ETag匹配，则返回200 OK和Object Meta；否则返回412 precondition failed。默认值：无
 
 |
-|If-None-Match|字符串|如果传入期望的ETag值和Object的ETag不匹配，则返回200 OK和Object Meta；否则返回304 Not Modified 默认值：无
+|If-None-Match|字符串|否|如果传入期望的ETag值和Object的ETag不匹配，则返回200 OK和Object Meta；否则返回304 Not Modified。默认值：无
 
  |
 
-## 响应Header {#section_gxm_sgq_yfb .section}
+## 响应头 {#section_gxm_sgq_yfb .section}
+
+**说明：** 如果文件类型为符号链接， 响应头中`Content-Length`、`ETag`、`Content-Md5` 均为目标文件的元信息；`Last-Modified`是目标文件和符号链接的最大值；其他均为符号链接元信息。
 
 |名称|类型|描述|
 |:-|:-|:-|
 |x-oss-meta-\*|字符串|以x-oss-meta-为前缀的参数作为用户自定义meta header。当用户在PutObject时设置了以x-oss-meta-为前缀的自定义meta，则响应中会包含这些自定义meta。|
 |非x-oss-meta-开头的自定义header|字符串|当用户在PutObject时，自定义一些非x-oss-meta为前缀的Header，如x-oss-persistent-headers:key1:base64\_encode\(value1\),key2:base64\_encode\(value2\).... ，响应中会增加相应的自定义Header。详情请参见[OSS如何添加非x-oss-meta-开头的自定义](headerhttps://yq.aliyun.com/articles/499171)|
-|x-oss-server-side-encryption|字符串|指定OSS创建Object时的服务器端加密编码算法。合法值：AES256 或 KMS
-
-**说明：** 您需要购买KMS套件才可以使用KMS加密算法，否则会报KmsServiceNotEnabled错误码。
-
-|
+|x-oss-server-side-encryption|字符串|若该Object为进行服务器端熵编码加密存储的，则在响应头头中会返回此参数，其值表明该Object的服务器端加密算法。|
 |x-oss-server-side-encryption-key-id|字符串|如果用户在创建Object时使用了服务端加密，且加密方法为KMS，则响应中会包含此Header，表示加密所使用的用户KMS key ID。|
 |x-oss-storage-class|字符串|表示Object的存储类型，分别为：标准存储类型（Standard）、低频访问存储类型（Infrequent Access）、归档存储类型（Archive）。-   标准存储类型提供高可靠、高可用、高性能的对象存储服务，能够支持频繁的数据访问。
 -   低频访问存储类型适合需要长期存储但不经常被访问的数据（平均每月访问频率1到2次）。
@@ -68,25 +68,9 @@ Authorization: SignatureValue
 |Access-Control-Allow-Headers|字符串|当Object所在的Bucket配置了CORS规则，如果请求满足指定的CORS规则时会在响应中包含这些Headers。|
 |Access-Control-Expose-Headers|字符串|表示允许访问客户端JavaScript程序的headers列表。当Object所在的Bucket配置了CORS规则，如果请求满足指定的CORS规则时会在响应中包含ExposeHeader。|
 
-## 细节分析 {#section_bxx_3cw_wdb .section}
-
--   不论正常返回200 OK还是非正常返回，Head Object都不返回消息体。
--   HeadObject支持在头中设定If-Modified-Since, If-Unmodified-Since, If-Match，If-None-Match的查询条件。具体规则请参见GetObject中对应的选项。如果没有修改，返回304 Not Modified。
--   如果用户在PutObject的时候传入以x-oss-meta-为开头的user meta，比如x-oss-meta-location，返回消息时，返回这些user meta。
--   如果文件不存在返回404 Not Found错误。
--   若该Object为进行服务器端熵编码加密存储的，则在Head请求响应头中，会返回x-oss-server-side-encryption，其值表明该Object的服务器端加密算法。
--   如果文件类型为符号链接， 响应头中`Content-Length`、`ETag`、`Content-Md5` 均为目标文件的元信息；`Last-Modified`是目标文件和符号链接的最大值；其他均为符号链接元信息。
--   如果文件类型为符号链接，并且目标文件不存在，返回404 Not Found错误。错误码：SymlinkTargetNotExist。
--   如果文件类型为符号链接，并且目标文件类型是符号链接，返回400 Bad request错误。错误码：InvalidTargetType。
--   x-oss-storage-class展示Object的存储类型：Standard，IA，Archive。
--   如果Bucket类型为Archive，且用户已经提交Restore请求，则响应头中会以x-oss-restore返回该Object的Restore状态，分如下几种情况：
-    -   如果没有提交Restore或者Restore已经超时，则不返回该字段。
-    -   如果已经提交Restore，且Restore没有时完成，则返回的x-oss-restore值为: ongoing-request=”true”。
-    -   如果已经提交Restore，且Restore已经完成，则返回的x-oss-restore值为: ongoing-request=”false”, expiry-date=”Sun, 16 Apr 2017 08:12:33 GMT”，其中expiry-date是Restore完成后文件进入可读状态的过期时间。
-
 ## 示例 {#section_fml_4dw_wdb .section}
 
-请求示例：
+**简单请求示例**
 
 ```
 HEAD /oss.jpg HTTP/1.1
@@ -95,7 +79,7 @@ Date: Fri, 24 Feb 2012 07:32:52 GMT
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:JbzF2LxZUtanlJ5dLA092wpDC/E=
 ```
 
-返回示例：
+**返回示例**
 
 ```
 HTTP/1.1 200 OK
@@ -111,7 +95,7 @@ Connection: keep-alive
 Server: AliyunOSS
 ```
 
-提交Restore请求但restore没有完成时的请求示例
+**提交Restore请求但Restore没有完成时的请求示例??这里是restoreobject接口？？**
 
 ```
 HEAD /oss.jpg HTTP/1.1
@@ -120,7 +104,7 @@ Date: Sat, 15 Apr 2017 07:32:52 GMT
 Authorization: OSS e1Unnbm1rgdnpI:KKxkdNrUBu2t1kqlDh0MLbDb99I=
 ```
 
-返回示例
+**返回示例**
 
 ```
 HTTP/1.1 200 OK
@@ -137,7 +121,7 @@ Connection: keep-alive
 Server: AliyunOSS
 ```
 
-提交Restore请求且restore已经完成时的请求示例
+**提交Restore请求且restore已经完成时的请求示例**
 
 ```
 HEAD /oss.jpg HTTP/1.1
@@ -146,7 +130,7 @@ Date: Sat, 15 Apr 2017 09:35:51 GMT
 Authorization: OSS e1Unnbm1rgdnpI:21qtGJ+ykDVmdu6O6FMJnn+WuBw=
 ```
 
-返回示例
+**返回示例**
 
 ```
 HTTP/1.1 200 OK
@@ -159,4 +143,36 @@ Last-Modified: Sat, 15 Apr 2017 06:07:48 GMT
 ETag: "fba9dede5f27731c9771645a39863328"
 Content-Length: 344606
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   Java对应哪些接口？？？？管理元信息？？但在页面没有搜到HeadObject
+-   Python
+-   PHP
+-   Go
+-   C
+-   .NET
+-   Android
+-   iOS
+-   Node.js
+-   Browser.js
+-   Ruby
+
+## 错误码 {#section_nfp_nfc_5gb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|NoSuchKey|404|文件不存在。|
+|SymlinkTargetNotExist|404|文件类型为符号链接。|
+|InvalidTargetType|400|文件类型为符号链接，且目标文件类型是符号链接。|
+|Not Modified|304| -   指定了If-Modified-Since请求头，但源Object在指定的时间后没被修改过。
+-   指定了If-None-Match请求头，且源Object的ETag值和您提供的ETag相等。
+
+ |
+|Precondition Failed|412| -   指定了If-Unmodified-Since，但指定的时间早于Object实际修改时间 。
+-   指定了If-Match，但源Object的ETag值和您提供的ETag不相等。
+
+ |
 

@@ -1,6 +1,8 @@
 # GetBucketLifecycle {#reference_zq5_grw_tdb .reference}
 
-GetBucketLifecycle用于查看Bucket的Lifecycle配置。
+GetBucketLifecycle接口用于查看存储空间（Bucket）的生命周期规则（Lifecycle）。只有Bucket的拥有者才有权限查看Bucket的生命周期规则。
+
+## 请求语法 {#section_kn3_zhw_bz .section}
 
 ```
 GET /?lifecycle HTTP/1.1
@@ -9,14 +11,9 @@ Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## 细节分析 {#section_vff_13w_bz .section}
-
--   只有Bucket的拥有者才能查看Bucket的Lifecycle配置，否则返回403 Forbidden错误，错误码：AccessDenied。
--   如果Bucket或Lifecycle不存在，返回404 Not Found错误，错误码：NoSuchBucket或NoSuchLifecycle。
-
 ## 示例 {#section_xzz_13w_bz .section}
 
-**请求示例：**
+**请求示例**
 
 ```
 Get /?lifecycle HTTP/1.1
@@ -26,7 +23,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:ceOEyZavKY4QcjoUWYSpYbJ3naA=
 
 ```
 
-**已设置Lifecycle的返回示例：**
+**返回示例（已设置生命周期规则）**
 
 ```
 HTTP/1.1 200
@@ -50,7 +47,7 @@ Server: AliyunOSS
 
 ```
 
-**未设置Lifecycle的返回示例：**
+**返回示例（未设置生命周期规则）**
 
 ```
 HTTP/1.1 404
@@ -69,4 +66,24 @@ Server: AliyunOSS
   <HostId> BucketName.oss.example.com</HostId>
 </Error>
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   [Java](../../../../../cn.zh-CN/SDK 参考/Java/生命周期.md)
+-   [Python](../../../../../cn.zh-CN/SDK 参考/Python/生命周期.md)
+-   [PHP](../../../../../cn.zh-CN/SDK 参考/PHP/生命周期.md)
+-   [Go](../../../../../cn.zh-CN/SDK 参考/Go/生命周期.md)
+-   [C](../../../../../cn.zh-CN/SDK 参考/C/生命周期.md)
+-   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/生命周期.md)
+-   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/生命周期.md)
+-   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/生命周期.md)
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|AccessDenied|403 Forbidden|没有权限查看Bucket的生命周期规则。只有Bucket的拥有者才能查看Bucket的生命周期规则。|
+|NoSuchBucket或NoSuchLifecycle|404 Not Found|Bucket不存在或没有配置生命周期规则。|
 

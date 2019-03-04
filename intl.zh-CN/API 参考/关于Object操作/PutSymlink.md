@@ -18,7 +18,7 @@ x-oss-symlink-target: TargetObjectName
 |:-|:-|:---|:-|
 |x-oss-symlink-target|字符串|是| 软链接指向的目标文件。
 
- 合法值：命名规范同Object。
+ 合法值：命名规范同Object
 
  **说明：** 
 
@@ -28,14 +28,14 @@ x-oss-symlink-target: TargetObjectName
  |
 |x-oss-storage-class|字符串|否| 指定Object的存储类型。
 
- 取值：Standard、IA、Archive。
+ 取值：Standard、IA、Archive
 
  **说明：** 
 
 -   IA与Archive类型的单个文件如不足64 KB，会按64 KB计量计费。建议您在使用Symlink接口时不要将Object的存储类型指定为IA或Archive。
 -   对于任意存储类型的Bucket，若上传Object时指定此参数，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
 
- 支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject。
+ 支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject
 
  |
 
@@ -48,7 +48,9 @@ x-oss-symlink-target: TargetObjectName
 -   如果试图添加的文件已经存在，并且有访问权限，新添加的文件将覆盖原来的文件，成功将返回200 OK。
 -   使用PutSymlink接口时，携带以x-oss-meta-为前缀的参数，则视为user meta，例如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的user meta总大小不能超过8 KB。
 
-## 请求示例 {#section_th3_m1x_wdb .section}
+## 示例 {#section_th3_m1x_wdb .section}
+
+请求示例
 
 ```
 PUT /link-to-oss.jpg?symlink HTTP/1.1 
@@ -60,7 +62,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk= x-oss-s
 x-oss-storage-class: Standard
 ```
 
-## 返回示例 {#section_nnf_tcc_5gb .section}
+返回示例
 
 ```
 HTTP/1.1 200 OK
@@ -72,7 +74,9 @@ x-oss-request-id: 582131B9109F4EE66CDE56A5
 ETag: "0A477B89B4602AA8DECB8E19BFD447B6"
 ```
 
-## SDK示例 {#section_egl_m2c_5gb .section}
+## SDK {#section_egl_m2c_5gb .section}
+
+PutSymlink接口所对应的各语言SDK如下：
 
 -   [Java](../../../../../intl.zh-CN/SDK 参考/Java/管理文件/管理软链接.md)
 -   [Python](../../../../../intl.zh-CN/SDK 参考/Python/管理文件/管理软链接.md)
@@ -85,5 +89,5 @@ ETag: "0A477B89B4602AA8DECB8E19BFD447B6"
 
 |错误码|HTTP 状态码|描述|
 |:--|:-------|:-|
-|InvalidArgument|400|StorageClass的值不合法导致。|
+|InvalidArgument|400|StorageClass的值不合法。|
 

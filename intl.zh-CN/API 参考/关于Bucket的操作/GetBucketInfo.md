@@ -1,14 +1,8 @@
 # GetBucketInfo {#reference_rwk_bwv_tdb .reference}
 
-GetBucketInfo接口用于查看Bucket的相关信息。
+GetBucketInfo接口用于查看存储空间（Bucket）的相关信息。只有Bucket的拥有者才能查看Bucket的信息。
 
-可查看内容包含如下：
-
--   创建时间
--   外网访问 Endpoint
--   内网访问 Endpoint
--   Bucket 的拥有者信息
--   Bucket 的 ACL（AccessControlList）
+**说明：** 请求可以从任何一个OSS的Endpoint发起。
 
 ## 请求语法 {#section_qw4_lfw_bz .section}
 
@@ -19,69 +13,92 @@ Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## 响应元素\(Response Elements\) {#section_bkn_mfw_bz .section}
+## 响应元素 {#section_bkn_mfw_bz .section}
 
 |名称|类型|描述|
 |:-|:-|:-|
-|BucketInfo|容器|保存 Bucket 信息内容的容器 子节点：Bucket节点
+|BucketInfo|容器| 保存Bucket信息内容的容器
 
-父节点：无
+ 子节点：Bucket节点
 
-|
-|Bucket|容器|保存 Bucket 具体信息的容器 父节点：BucketInfo 节点
+ 父节点：无
 
-|
-|CreationDate|时间|Bucket 创建时间。时间格式 2013-07-31T10:56:21.000Z 父节点：BucketInfo.Bucket
+ |
+|Bucket|容器| 保存Bucket具体信息的容器
 
-|
-|ExtranetEndpoint|字符串|Bucket 访问的外网域名 父节点：BucketInfo.Bucket
+ 父节点：BucketInfo 节点
 
-|
-|IntranetEndpoint|字符串|同区域 ECS 访问 Bucket 的内网域名父节点：BucketInfo.Bucket
+ |
+|CreationDate|时间| Bucket创建时间
 
-|
-|Location|字符串|Bucket 所在数据中心的区域 父节点：BucketInfo.Bucket
+ 时间格式：2013-07-31T10:56:21.000Z
 
-|
-|Name|字符串|Bucket 名称父节点：BucketInfo.Bucket
+ 父节点：BucketInfo.Bucket
 
-|
-|Owner|容器|用于存放 Bucket 拥有者信息的容器。父节点：BucketInfo.Bucket
+ |
+|ExtranetEndpoint|字符串| Bucket的外网域名
 
-|
-|ID|字符串|Bucket 拥有者的用户 ID。父节点：BucketInfo.Bucket.Owner
+ 父节点：BucketInfo.Bucket
 
-|
-|DisplayName|字符串|Bucket拥有者的名称 \(目前和ID一致\)。父节点：BucketInfo.Bucket.Owner
+ |
+|IntranetEndpoint|字符串| 同区域ECS访问Bucket的内网域名
 
-|
-|AccessControlList|容器|存储 ACL 信息的容器父节点：BucketInfo.Bucket
+ 父节点：BucketInfo.Bucket
 
-|
-|Grant|枚举字符串|Bucket的ACL权限。有效值：private、public-read、public-read-write
+ |
+|Location|字符串| Bucket的地域
 
-父节点：BucketInfo.Bucket.AccessControlList
+ 父节点：BucketInfo.Bucket
 
-|
-|DataRedundancyType |枚举字符串|数据容灾类型有效值：LRS、ZRS
+ |
+|Name|字符串| Bucket名称
 
-父节点：BucketInfo.Bucket
+ 父节点：BucketInfo.Bucket
 
-|
-|Comment|字符串|未知|
-|StorageClass|字符串|Bucket 存储类型有效值：Standard、IA、Archive
+ |
+|Owner|容器| 用于存放Bucket拥有者信息的容器
 
-|
+ 父节点：BucketInfo.Bucket
 
-## 细节分析 {#section_cgv_sfw_bz .section}
+ |
+|ID|字符串| Bucket拥有者的用户ID
 
--   如果 Bucket 不存在，返回404错误。错误码：NoSuchBucket。
--   只有 Bucket 的拥有者才能查看 Bucket 的信息，否则返回403 Forbidden 错误，错误码：AccessDenied。
--   请求可以从任何一个 OSS 的 Endpoint 发起。
+ 父节点：BucketInfo.Bucket.Owner
+
+ |
+|DisplayName|字符串| Bucket拥有者的名称 \(目前和用户ID一致\)
+
+ 父节点：BucketInfo.Bucket.Owner
+
+ |
+|AccessControlList|容器| 存储ACL信息的容器
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|Grant|枚举字符串| Bucket的ACL权限
+
+ 有效值：private、public-read、public-read-write
+
+ 父节点：BucketInfo.Bucket.AccessControlList
+
+ |
+|DataRedundancyType |枚举字符串| 数据容灾类型
+
+ 有效值：LRS、ZRS
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|StorageClass|字符串| Bucket存储类型
+
+ 有效值：Standard、IA、Archive
+
+ |
 
 ## 示例 {#section_i2n_tfw_bz .section}
 
-请求示例：
+**请求示例**
 
 ```
 Get /?bucketInfo HTTP/1.1
@@ -91,7 +108,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc: BuG4rRK+zNhH1AcF51NNHD39zXw=
 
 ```
 
-成功获取 Bucket 信息的返回示例：
+**返回示例（成功获取Bucket信息）**
 
 ```
 HTTP/1.1 200
@@ -120,7 +137,7 @@ Server: AliyunOSS
 </BucketInfo>
 ```
 
-获取不存在的 Bucket 信息的返回示例：
+**返回示例（获取不存在的Bucket信息）**
 
 ```
 HTTP/1.1 404 
@@ -140,7 +157,7 @@ Server: AliyunOSS
 </Error>
 ```
 
-获取没有权限访问的 Bucket 信息的返回示例：
+**返回示例（获取没有权限访问的Bucket信息）**
 
 ```
 HTTP/1.1 403
@@ -158,4 +175,21 @@ Server: AliyunOSS
   <HostId>test.oss.aliyuncs.com</HostId>
 </Error>
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   [Java](../../../../../intl.zh-CN/SDK 参考/Java/存储空间.md)
+-   [Python](../../../../../intl.zh-CN/SDK 参考/Python/存储空间.md)
+-   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/存储空间.md)
+-   [Go](../../../../../intl.zh-CN/SDK 参考/Go/存储空间.md)
+-   [C](../../../../../intl.zh-CN/SDK 参考/C/存储空间.md)
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|NoSuchBucket|404|目标Bucket不存在。|
+|AccessDenied|403|没有查看该Bucket信息的权限。只有Bucket的拥有者才能查看Bucket的信息。|
 

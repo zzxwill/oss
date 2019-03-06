@@ -126,5 +126,5 @@ hadoop fs -ls /
 2.  在VPC环境中新建一个集群（自建或使用E-MapReduce服务）。
 3.  将数据从OSS上迁移到新的HDFS集群中。
 
-如果你使用E-MapReduce服务，还可以直接在Hadoop集群中通过 [Spark](https://www.alibabacloud.com/help/doc-detail/28118.htm?spm=a2c63.p38356.a3.7.41d2b5c82kHPxv), [MapReduce](https://www.alibabacloud.com/help/doc-detail/28128.htm) 和 [Hive](https://www.alibabacloud.com/help/doc-detail/28129.htm) 等组件访问OSS，这样不仅可以减少一次数据复制（从OSS到HDFS），还可以极大的降低存储成本。有关降低成本的详细信息，请参见[EMR+OSS：计算与存储分离](intl.zh-CN/最佳实践/数据处理与分析/EMR+OSS：离线计算的存储与计算分离.md#).
+如果你使用E-MapReduce服务，还可以直接在Hadoop集群中通过 [Spark](https://www.alibabacloud.com/help/doc-detail/28118.htm?spm=a2c63.p38356.a3.7.41d2b5c82kHPxv), [MapReduce](https://www.alibabacloud.com/help/doc-detail/28128.htm) 和 [Hive](https://www.alibabacloud.com/help/doc-detail/28129.htm) 等组件访问OSS，这样不仅可以减少一次数据复制（从OSS到HDFS），还可以极大的降低存储成本。有关降低成本的详细信息，请参见[EMR+OSS：计算与存储分离](intl.zh-CN/最佳实践/数据处理与分析/EMR+OSS：离线计算的存储与计算分离.md#)。
 

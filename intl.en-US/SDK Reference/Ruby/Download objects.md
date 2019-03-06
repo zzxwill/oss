@@ -1,0 +1,118 @@
+# Download objects {#concept_32118_zh .concept}
+
+This topic describes how to download an object from OSS to a local file.
+
+The OSS Ruby SDK provides rich interfaces for object download. You can download an object from OSS through any of the following methods:
+
+-   Download to a local file
+-   Stream download
+-   Resumable download
+-   HTTP download \(by a browser\)
+
+## Download an object to a local file { .section}
+
+The following code uses the `Bucket#get_object` interface with the `:file` parameter specified to download an object as a local file:
+
+```language-ruby
+require 'aliyun/oss'
+
+client = Aliyun::OSS::Client.new(
+  endpoint: 'endpoint',
+  access_key_id: 'AccessKeyId', access_key_secret: 'AccessKeySecret')
+
+bucket = client.get_bucket('my-bucket')
+bucket.get_object('my-object', :file => 'local-file')
+
+```
+
+## Stream download { .section}
+
+When uploading a large file, we often need to upload the file in a streaming way instead of processing and uploading all the content at the same time. We want to upload a part of content at a time. The following code uses the `Bucket#get_object` interface with the `block` parameter specified to process downloaded content through streaming:
+
+```language-ruby
+require 'aliyun/oss'
+
+client = Aliyun::OSS::Client.new(
+  endpoint: 'endpoint',
+  access_key_id: 'AccessKeyId', access_key_secret: 'AccessKeySecret')
+
+bucket = client.get_bucket('my-bucket')
+bucket.get_object('my-object') do |chunk|
+  # handle_data(chunk)
+  puts "Got a chunk, size: #{chunk.size}."
+end
+
+```
+
+## Resumable download { .section}
+
+If the network jitters or the program crashes when a large object is being downloaded, the whole download operation fails. You have to re-download the objects, wasting resources. When the network is unstable, you may need to make multiple retries. The `Bucket#resumable_download` interface can be used to achieve resumable download. The interface has the following parameters:
+
+-   key: The name of the object to be downloaded.
+-   file: The local path to the downloaded object.
+-   opts: An optional parameter. It mainly includes:
+    -   :cpt\_file: The path of the checkpoint file. If not specified, the path of the checkpoint object is by default the `file.cpt` under the same directory of the local `file`. The file is the name of the local file.
+    -   :disable\_cpt: If this parameter is set to true, the download progress is not recorded during download, and resumable upload is not performed when upload fails.
+    -   :part\_size: The size of each part. The default size is 10 MB.
+    -   &block: If a block function is imported when the Bucket\#resumable\_download interface is called, the download progress is handled by the block function.
+
+For more information about the parameters, see [API Documentation](http://www.rubydoc.info/gems/aliyun-sdk/).
+
+The principle is to divide the object to be downloaded into multiple parts and download them separately. When all the parts are downloaded, the download of the entire object is completed. The progress of the current download task and downloaded parts is recorded \(recorded in the checkpoint file\) and downloaded parts \(saved as `file.part.N`, among which `file` is the name of the object downloaded to a local path\). If one part fails to be downloaded, the re-download starts from the recorded position in the checkpoint object. This requires that the same checkpoint object with the previous download must be used in the next call. The file.part.N files and checkpoint object is deleted when download is completed.
+
+```language-ruby
+require 'aliyun/oss'
+
+client = Aliyun::OSS::Client.new(
+  endpoint: 'endpoint',
+  access_key_id: 'AccessKeyId', access_key_secret: 'AccessKeySecret')
+
+bucket = client.get_bucket('my-bucket')
+bucket.resumable_download('my-object', 'local-file') do |p|
+  puts "Progress: #{p}"
+end
+
+bucket.resumable_download(
+  'my-object', 'local-file',
+  :part_size => 100 * 1024, :cpt_file => '/tmp/x.cpt') { |p|
+  puts "Progress: #{p}"
+}
+
+```
+
+**Note:** 
+
+-   The SDK records the download intermediate states in the cpt object; therefore, make sure that you have the write permission on the cpt object.
+-   The SDK saves downloaded parts as file.part.N files; therefore, make sure that you have the file creation permission on the directory where the file.part.N files are stored.
+-   The cpt object records the intermediate state information of the download and has a self-checking function. You cannot edit the object. Download fails if the cpt object is corrupted.
+-   If the object to be downloaded is changed during download \(the ETag is changed\) or a part is missing or modified, an error is reported.
+
+## HTTP download { .section}
+
+Objects stored in OSS can be downloaded through HTTP directly without using the SDK. HTTP download supports browsers and command-line interface \(CLI\) tools \(such as `wget` and `curl`\). The URL of the object to be downloaded is generated by the SDK. The `Bucket#object_url` method is used to generate an HTTP download address which supports the following parameters:
+
+-   key: The name of the object to be downloaded.
+-   sign: Whether to generate a signed URL. An object with the public-read or public-read-write permission can be accessed without a signed URL. An object with the private permission must be accessed with a signed URL.
+-   expiry: The validity period of the URL. The default value is 60 seconds.
+
+```language-ruby
+require 'aliyun/oss'
+
+client = Aliyun::OSS::Client.new(
+  endpoint: 'endpoint',
+  access_key_id: 'AccessKeyId', access_key_secret: 'AccessKeySecret')
+
+bucket = client.get_bucket('my-bucket')
+# Generate a URL. By default, the generated URL is a signed URL valid for 60 seconds.
+puts bucket.object_url('my-object')
+# http://my-bucket.oss-cn-hangzhou.aliyuncs.com/my-object?Expires=1448349966&OSSAccessKeyId=5viOHfldyK6K72ht&Signature=aM2HpBLeMq1aec6JCd7BBAKYiwI%3D
+
+# Generate an unsigned URL
+puts bucket.object_url('my-object', false)
+# http://my-bucket.oss-cn-hangzhou.aliyuncs.com/my-object
+
+# Set the URL validity period to one hour (3,600 seconds)
+puts bucket.object_url('my-object', true, 3600)
+
+```
+

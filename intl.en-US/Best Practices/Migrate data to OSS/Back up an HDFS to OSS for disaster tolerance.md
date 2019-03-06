@@ -22,7 +22,7 @@ hadoop fs -ls /
 
 1.  Download[emr-tools](https://yq.aliyun.com/attachment/download/?spm=5176.100239.blogcont78093.18.BfNz7d&id=1956).
 
-    **Note:** emr-tools is compatible with Hadoop versions 2.4.x, 2.5.x, 2.6.x, and 2.7.x. If you require compatibility with other Hadoop versions, [open a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+    **Note:** emr-tools is compatible with Hadoop versions  2.4.x, 2.5.x, 2.6.x, and 2.7.x.
 
 2.  Extract the compressed tool to a local directory.
 
@@ -41,9 +41,7 @@ hadoop fs -ls /
 
     |Parameters|Description|
     |:---------|:----------|
-    |accessKeyId|The key used to access OSS APIs.For more information, see [How to obtain AccessKeyId and AccessKeySecret](https://www.alibabacloud.com/help/doc-detail/48699.htm).
-
-|
+    |accessKeyId|The key used to access OSS APIs.|
     |accessKeySecret|
     |bucket-name.oss-cn-hangzhou.aliyuncs.com|The OSS access domain name, including the bucket name and endpoint address.|
 
@@ -125,6 +123,4 @@ If your cluster is already on ECS, but in a classic network, it will not provide
 1.  Use emr-tools to migrate data to OSS.
 2.  Create a new cluster \(create it yourself or use E-MapReduce\) in the VPC environment.
 3.  Migrate data from OSS to the new HDFS cluster.
-
-If you use E-MapReduce, on the Hadoop cluster, you can directly access OSS using [Spark](https://www.alibabacloud.com/help/doc-detail/28118.htm?spm=a2c63.p38356.a3.7.41d2b5c82kHPxv), [MapReduce](https://www.alibabacloud.com/help/doc-detail/28128.htm) and [Hive](https://www.alibabacloud.com/help/doc-detail/28129.htm). This not only avoids one data copy operation \(from OSS to HDFS\), but also greatly reduces storage costs. For more information about cost reduction, see [EMR+OSS: Separated storage and computing](intl.en-US/Best Practices/Data processing and analysis/EMR+OSS: Separated storage and computing for offline computing.md#).
 

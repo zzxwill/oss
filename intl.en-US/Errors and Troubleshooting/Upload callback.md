@@ -1,8 +1,10 @@
 # Upload callback {#concept_tj5_cv3_wdb .concept}
 
+This topic describes common errors in callback functions in upload operations and how to handle them.
+
 ## About upload callback {#section_jpf_dv3_wdb .section}
 
-When a file is uploaded, the OSS can provide a [Callback](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) to your callback server.  You can carry the relevant callback parameters in the upload request to implement the upload callback.  The APIs that support upload callback are [PutObject](../../../../../reseller.en-US/API Reference/Object operations/PutObject.md#), [PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#), and [CompleteMultipartUpload](../../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#). For more information, see [Developer Guide](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) and [API Reference](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+When a file is uploaded, the OSS can provide a [Callback](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) to your callback server.  You can carry the relevant callback parameters in the upload request to implement the upload callback.  The APIs that support upload callback are [PutObject](../../../../../reseller.en-US/API Reference/Object operations/PutObject.md#), [PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#), and [CompleteMultipartUpload](../../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#). For more information, see [Upload callback](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#) and [Callback API](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#) in the Developer Guide.
 
 **Note:** A callback server is also called a service server.
 
@@ -23,10 +25,12 @@ The following table describes the data streams.
 
 |Data stream|Meaning|Description|
 |:----------|:------|:----------|
-|1|The client uploads a file and carries a callback parameter.\[1\]|The upload is implemented by SDK \([PutObject](../../../../../reseller.en-US/API Reference/Object operations/PutObject.md#) and [CompleteMultipartUpload](../../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)\), and the callback by the [PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#) API.|
-|2|The OSS instance stores the file and initiates a callback.|The OSS instance sends a `POST` \[2\] request to the specified  `CallbackUrl` in the upload request. The callback time-out period is five seconds \[3\].|
+|1|The client uploads a file and carries a callback parameter. For more information about the format, see [SDK/PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).|The upload is implemented by SDK \([PutObject](../../../../../reseller.en-US/API Reference/Object operations/PutObject.md#) and [CompleteMultipartUpload](../../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)\), and the callback by the [PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#) API.|
+|2|The OSS instance stores the file and initiates a callback.|The OSS instance sends a `POST`request to the specified  `CallbackUrl` in the upload request. The callback time-out period is five seconds, which is a fixed value and cannot be configured.For more information about the format of the POST request, see [Initiate a callback request](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+
+|
 |3|The callback server returns the processing result.|-   The message body returned by the callback server must be in JSON format. 
--   The OSS determines that the callback fails if the returned result is not 200.\[4\]
+-   OSS determines that the callback fails if the returned result is not the 200 status code. The `40x` code indicates invalid parameters or callback failures. The `50x` indicates time-out or connection failures.
 
  |
 |4|The OSS returns the upload and callback result.| -   If both the upload and callback succeed,  `200` is returned. 
@@ -34,18 +38,9 @@ The following table describes the data streams.
 
  |
 
-**Note:** 
-
--   \[1\] For more information about the format, see [SDK/PostObject](../../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
--   \[2\] For more information about the format of the callback request POST, see [Initiate a callback request](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
--   \[3\] The time-out time is fixed and cannot be configured.
--   \[4\] `40x` is returned for parameter invalidation or authentication failure, while `50x` is returned for time-out or connection failure.
-
 ## SDK/PostObject {#section_q1w_zv3_wdb .section}
 
 During the file upload, you can set the callback parameters to specify the URL of the callback server, data to be sent to the callback server, and data format. When the callback server processes a callback, some context information, such as the `bucket` and `object`, is specified using system variables. Other context information is specified using custom variables.
-
-Upload callback parameters
 
 The following parameters are available for an upload callback:
 
@@ -111,7 +106,7 @@ Variables for `CallbackJson`, such as `${bucket}`,  `${object}`, and `${size}`,
 **Note:** 
 
 -   The system variables are case sensitive.
--   The system variable format must be `${bucket}`.
+-   The system variable is in the `${bucket}` format.
 -   imageInfo is set for images. For the non-image format, the value of imageInfo is blank.
 
 Variables for `CallbackJson`, such as `${x:my_var}` , in the  `CallbackJson` example are the custom variables. During the callback, the OSS replaces the custom variables with custom values.  Custom variable values are defined and carried by the upload request in either of the following two ways:
@@ -273,6 +268,9 @@ The upload callback debugging includes debugging of the client that uploads a fi
     |\\t|\\\\t|
 
 -   CallbackFailed
+
+    Examples of CallbackFailed error are described as follows:
+
     -   Example 1
 
         ```
@@ -338,9 +336,46 @@ The upload callback debugging includes debugging of the client that uploads a fi
 
         **Note:** The callback server is not started, `CallbackUrl` is missing in the callback parameters, or the network between the OSS instance and the callback server is disconnected. We recommend that you deploy the callback server on the ECS, which belongs to the same intranet as the OSS, to save the traffic cost and guarantee the network quality.
 
+-   The body of the response is not in JSON format.
 
-## Common links {#section_q4w_nz3_wdb .section}
+    For example:
 
--   [Callback Guide](../../../../../reseller.en-US/Developer Guide/Upload files/Upload callback.md#)
--   [Callback API](../../../../../reseller.en-US/API Reference/Object operations/Callback.md#)
+    ![](images/38047_en-US.png)
+
+    This error may be caused by the following reasons:
+
+    -   The body of the response returned by the application server to OSS is not in JSON format, as shown in the following figure:
+
+        ![](images/38048_en-US.png)
+
+        OSS reports the error if resp\_body is not in valid JSON format. In addition, this error may be caused by other underlying factors, such as the application server returning a stack trace instead of a normal response to OSS because of exceptions.
+
+    -   The body of the response returned by the application server to OSS carries a BOM in the header.
+
+        This problem generally occurs in application servers coded in PHP, which include a BOM header in the response returned to OSS. Therefore, OSS reports the error because three additional bytes \(that is, the BOM header\) are included in the response, which does not conform to JSON format. The following figure shows the content included in the packet sent by the application server.
+
+        ![](images/38049_en-US.png)
+
+        In the preceding figure, the `ef bb bf` bytes are the three additional bytes of the BOM header.
+
+        **Note:** To resolve this issue, remove the BOM header in the response returned by the application server to OSS.
+
+-   Error status
+
+    Error status codes, such as 502 and 400, are errors that are returned due to incorrect callback functions, as shown in the following figure.
+
+    ![](images/38050_en-US.png)
+
+    **Note:** An error status code, such as 400, 404, or 403, is returned to indicate the HTTP status returned by the application server to OSS. A return of status code 200 indicates the operation is successful.
+
+    Error status code 502 is returned when the web service is not enabled on the application server, meaning the server cannot receive the callback request sent by OSS.
+
+-   Timeout
+
+    The following figure shows a timeout error.
+
+    ![](images/38051_en-US.png)
+
+    **Note:** For security reasons, OSS waits to receive the callback response for a maximum of 5 seconds. If the response is not returned, OSS disconnects from the application server and returns a timeout error to the client. The IP address included in the error message can be ignored.
+
 

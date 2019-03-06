@@ -1,6 +1,6 @@
 # DeleteBucketWebsite {#reference_zrl_msw_tdb .reference}
 
-DeleteBucketWebsite操作用于关闭bucket的静态网站托管模式以及跳转规则。
+DeleteBucketWebsite接口用于关闭存储空间（Bucket）的静态网站托管模式以及跳转规则。只有Bucket的拥有者才能关闭Bucket的静态网站托管模式。
 
 ## 请求语法 {#section_iw2_x3w_bz .section}
 
@@ -11,14 +11,9 @@ Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## 细节分析 {#section_dzz_x3w_bz .section}
-
--   如果Bucket不存在，返回404 no content错误，错误码：NoSuchBucket。
--   只有Bucket的拥有者才能关闭Bucket的静态网站托管模式。如果试图操作一个不属于你的Bucket，OSS返回403 Forbidden错误，错误码：AccessDenied。
-
 ## 示例 {#section_wgs_y3w_bz .section}
 
-**请求示例：**
+**请求示例**
 
 ```
 DELETE /?website HTTP/1.1
@@ -28,7 +23,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:LnM4AZ1OeIduZF5vGFWicOMEkVg=
 
 ```
 
-**返回示例：**
+**返回示例**
 
 ```
 HTTP/1.1 204 No Content 
@@ -39,7 +34,7 @@ Content-Length: 0
 Server: AliyunOSS
 ```
 
-**完整代码：**
+**完整代码**
 
 ```
 DELETE /?website HTTP/1.1
@@ -55,4 +50,11 @@ Content-Length: 0
 Connection: keep-alive
 x-oss-request-id: 5B5AE19C188DC1CE81DAD7C8
 ```
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|NoSuchBucket|404 Not Found|目标Bucket不存在。|
+|AccessDenied|403 Forbidden|没有关闭Bucket静态网站托管模式的权限。只有Bucket的拥有者才能关闭Bucket的静态网站托管模式。|
 

@@ -18,8 +18,10 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
     -   使用`--encoding-type url` 选项表示输入的 Object 名和文件名都是经过 url 编码。目前，ossutil 只支持 url encode，且 Bucket 名不支持 url encode。
     当批量上传/下载/拷贝文件时，如果某个文件出错，ossutil 默认会将错误信息记录在 report 文件，并跳过该文件，继续其他文件的操作。更多信息请参见 ossutil help cp。
 
-    **说明：** 当出现存储空间（Bucket）不存在、AccessKeyID/AccessKeySecret 错误造成的权限验证非法等错误时，不再继续拷贝其他文件。
+    **说明：** 
 
+    -   默认情况下，ossutil 进行数据传输时都会打开 crc64 校验，您可以在上传/下载/复制时使用 `--disable-crc64`选项关闭 crc64 校验。
+    -   当出现存储空间（Bucket）不存在、AccessKeyID/AccessKeySecret 错误造成的权限验证非法等错误时，不再继续拷贝其他文件。
 -   上传文件
     -   将当前目录下 a.txt 文件上传到 oss://bucket/path
 

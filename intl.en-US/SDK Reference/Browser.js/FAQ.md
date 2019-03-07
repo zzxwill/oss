@@ -4,7 +4,7 @@ This topic describes common questions and answers.
 
 ## How to call STS {#section_ljz_42m_lfb .section}
 
-A browser is an untrusted environment. It brings an extremely high risk if you store an AccessKeyID and AccessKeySecret in a browser. We recommend that you use the [STS](https://help.aliyun.com/document_detail/56286.html) mode
+A browser is an untrusted environment. It brings an extremely high risk if you store an AccessKeyID and AccessKeySecret in a browser.
 
 for OSS interface calls in a browser environment.
 

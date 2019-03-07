@@ -346,3 +346,25 @@ x-oss-server-time: 47
 </WebsiteConfiguration>
 ```
 
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   Java
+-   Python
+-   PHP
+-   Go
+-   C
+-   .NET
+-   Android
+-   iOS
+-   Node.js
+-   Browser.js
+-   Ruby
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+| |4| |
+

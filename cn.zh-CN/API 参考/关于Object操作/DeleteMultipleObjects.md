@@ -27,7 +27,7 @@ OSS会根据以下请求头验证收到的消息体，消息体正确才会执�
 
 |名称|类型|是否必选|描述|
 |:-|:-|:---|:-|
-|encoding-type|字符串|否| Key使用UTF-8字符。如果Key中包含XML 1.0标准不支持的控制字符，您可以通过指定encoding-type对返回结果中的Key进行编码。
+|Encoding-type|字符串|否| Key使用UTF-8字符。如果Key中包含XML 1.0标准不支持的控制字符，您可以通过指定encoding-type对返回结果中的Key进行编码。
 
  默认值：无
 
@@ -199,16 +199,16 @@ Server: AliyunOSS
 
 ## SDK {#section_egl_m2c_5gb .section}
 
--   [Java](../../../../../cn.zh-CN/SDK 参考/Java/管理文件/删除文件.md)
--   [Python](../../../../../cn.zh-CN/SDK 参考/Python/管理文件/删除文件.md)
--   [PHP](../../../../../cn.zh-CN/SDK 参考/Python/管理文件/删除文件.md)
--   [Go](../../../../../cn.zh-CN/SDK 参考/Go/管理文件/删除文件.md)
--   [C](../../../../../cn.zh-CN/SDK 参考/C/管理文件/删除文件.md)
--   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/管理文件/删除文件.md)
--   [iOS](../../../../../cn.zh-CN/SDK 参考/iOS/管理文件.md)
--   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/管理文件.md)
--   [Browser.js](../../../../../cn.zh-CN/SDK 参考/Browser.js/管理文件.md)
--   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/管理文件.md)
+-   [Java](../../../../../intl.zh-CN/SDK 参考/Java/管理文件/删除文件.md)
+-   [Python](../../../../../intl.zh-CN/SDK 参考/Python/管理文件/删除文件.md)
+-   [PHP](../../../../../intl.zh-CN/SDK 参考/Python/管理文件/删除文件.md)
+-   [Go](../../../../../intl.zh-CN/SDK 参考/Go/管理文件/删除文件.md)
+-   [C](../../../../../intl.zh-CN/SDK 参考/C/管理文件/删除文件.md)
+-   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/管理文件/删除文件.md)
+-   [iOS](../../../../../intl.zh-CN/SDK 参考/iOS/管理文件/概述.md)
+-   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/管理文件.md)
+-   [Browser.js](../../../../../intl.zh-CN/SDK 参考/Browser.js/管理文件.md)
+-   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/管理文件.md)
 
 ## 错误码 {#section_nfp_nfc_5gb .section}
 

@@ -70,6 +70,22 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
         ./ossutil cp -r symbolic_link/ oss://bucket/path
         ```
 
+    -   上传文件/文件夹并设置限速
+
+        上传文件/文件夹时，指定 `--maxupspeed` 选项，可设定上传时的最高速度，单位为 KB/s，缺省为 0（不限速）。
+
+        -   上传文件并设置限速为 1MByte/s
+
+            ```
+            $./ossutil cp a.jpg oss://bucket/path --maxupspeed 1024
+            ```
+
+        -   上传文件夹并设置限速为 1MByte/s
+
+            ```
+            $./ossutil cp -r dir oss://bucket/path --maxupspeed 1024
+            ```
+
     -   上传文件夹并指定 `--update` 选项
 
         批量上传时，若指定 `--update` 选项，只有当目标文件不存在，或源文件新于目标文件时，ossutil 才会执行上传操作。命令如下：

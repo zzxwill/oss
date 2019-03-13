@@ -1,8 +1,12 @@
 # PutBucket {#reference_wdh_fj5_tdb .reference}
 
-PutBucket接口用于创建 Bucket（不支持匿名访问）。
+PutBucket接口用于创建存储空间（Bucket）。
 
-创建的 Bucket 所在的 Region 和发送请求的 Endpoint 所对应的 Region 一致。Bucket所在的数据中心确定后，该Bucket中的所有Object将一直存放在对应Region。详情请参见[访问域名和数据中心](../../../../intl.zh-CN/开发指南/访问域名（Endpoint）/访问域名和数据中心.md#) 。
+**说明：** 
+
+-   此接口不支持匿名访问。
+-   一个用户在同一地域（Region）内最多可创建30个Bucket。
+-   每个地域都有对应的访问域名（Endpoint），地域与访问域名的对应关系参见[访问域名和数据中心](../../../../../intl.zh-CN/开发指南/访问域名（Endpoint）/访问域名和数据中心.md#) 。
 
 ## 请求语法 {#section_w34_mmr_bz .section}
 
@@ -18,19 +22,39 @@ Authorization: SignatureValue
 </CreateBucketConfiguration>
 ```
 
-## 细节分析 {#section_yrk_pmr_bz .section}
+## 请求头 {#section_asb_zxq_3gb .section}
 
--   可以通过 Put 请求中的 `x-oss-acl`header 来设置Bucket访问权限。目前Bucket有三种访问权限：public-read-write，public-read 和 private。
--   如果创建的 Bucket 没有指定访问权限，则默认使用 Private 权限。
--   如果创建的 Bucket 不符合命名规范，则返回400 Bad Request 消息。错误码：InvalidBucketName。
--   如果用户发起 PUT Bucket 请求时没有传入用户验证信息，则返回403 Forbidden消息。错误码：AccessDenied。
--    同一用户在同一 Region 内最多可创建30 个Bucket。如果超过30 个，则返回400 Bad Request 消息。错误码：TooManyBuckets。
--   创建 Bucket，可以指定 Bucket 的存储类型，可选值为Standard、IA和Archive。
--   创建 Bucket，可以指定 Bucket 的数据容灾类型（DataRedundancyType），可选值为LRS（本地容灾类型，默认值）、ZRS（同城容灾类型）。
+|名称|类型|是否必选|描述|
+|:-|:-|:---|:-|
+|x-oss-acl|字符串|否| 指定Bucket访问权限。
+
+ 有效值：public-read-write、public-read、private
+
+ **说明：** 如果创建的 Bucket 没有指定访问权限，则默认使用private权限。
+
+ |
+
+## 请求元素 {#section_mtf_lwq_3gb .section}
+
+|名称|类型|是否必选|描述|
+|--|--|:---|--|
+|StorageClass|字符串| | 指定Bucket存储类型。
+
+ 有效值：Standard、IA、Archive
+
+ |
+|DataRedundancyType|字符串|否| 指定Bucket的数据容灾类型。
+
+ 有效值：
+
+-   LRS（本地容灾类型，默认值）
+-   ZRS（同城容灾类型）
+
+ |
 
 ## 示例 {#section_axr_rmr_bz .section}
 
-请求示例：
+**请求示例**
 
 ```
 PUT / HTTP/1.1
@@ -44,7 +68,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:77Dvh5wQgIjWjwO/KyRt8dOPfo8=
 </CreateBucketConfiguration>
 ```
 
-返回示例：
+**返回示例**
 
 ```
 HTTP/1.1 200 OK
@@ -55,4 +79,30 @@ Content-Length: 0
 Connection: keep-alive
 Server: AliyunOSS
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   [Java](../../../../../intl.zh-CN/SDK 参考/Java/存储空间.md)
+-   [Python](../../../../../intl.zh-CN/SDK 参考/Python/存储空间.md)
+-   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/存储空间.md)
+-   [Go](../../../../../intl.zh-CN/SDK 参考/Go/存储空间.md)
+-   [C](../../../../../intl.zh-CN/SDK 参考/C/存储空间.md)
+-   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/存储空间.md)
+-   [Android](../../../../../intl.zh-CN/SDK 参考/Android/存储空间.md)
+-   [iOS](../../../../../intl.zh-CN/SDK 参考/iOS/存储空间.md)
+-   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/存储空间.md)
+-   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/存储空间.md)
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|InvalidBucketName|400|创建的Bucket不符合命名规范。|
+|AccessDenied|403| -   发起PutBucket请求时没有传入用户验证信息。
+-   没有操作权限。
+
+ |
+|TooManyBuckets|400|创建的Bucket数量超过上限。 同一用户在同一 Region内最多可创建30个Bucket。|
 

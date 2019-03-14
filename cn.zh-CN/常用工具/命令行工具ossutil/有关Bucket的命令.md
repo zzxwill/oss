@@ -56,7 +56,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
 示例，将bucket1设置为Private权限：
 
 ```
-$./ossutil set-acl oss://bucket1 private -b
+./ossutil set-acl oss://bucket1 private -b
 
 ```
 
@@ -105,7 +105,7 @@ $./ossutil set-acl oss://bucket1 private -b
     示例：
 
     ```
-    $./ossutil ls
+    ./ossutil ls
     CreationTime                                 Region    StorageClass    BucketName
     2016-10-2116:18:37 +0800 CST       oss-cn-hangzhou         Archive    oss://go-sdk-test-bucket-xyz-for-object
     2016-12-0115:06:21 +0800 CST       oss-cn-hangzhou        Standard    oss://ossutil-test
@@ -132,7 +132,7 @@ $./ossutil set-acl oss://bucket1 private -b
     示例：分页列举前两个Bucket。
 
     ```
-    $ ./ossutil ls oss:// --limited-num=1 -s 
+    ./ossutil ls oss:// --limited-num=1 -s 
     oss://bucket1
     Bucket Number is:1
     0.303869(s) elapsed
@@ -154,7 +154,7 @@ $./ossutil set-acl oss://bucket1 private -b
     示例：
 
     ```
-    $./ossutil ls oss://ossutil-test
+    ./ossutil ls oss://ossutil-test
     LastModifiedTime                    Size(B)  StorageClass   ETAG                                    ObjectName
     2016-12-0115:06:37 +0800 CST      10363812      Standard   61DE142E5AFF9A6748707D4A77BFBCFB        oss://ossutil-test/a1
     2016-12-0115:06:42 +0800 CST      10363812      Standard   61DE142E5AFF9A6748707D4A77BFBCFB        oss://ossutil-test/a2
@@ -173,7 +173,7 @@ $./ossutil set-acl oss://bucket1 private -b
     示例：
 
     ```
-    $./ossutil ls oss://bucket1 -a 
+    ./ossutil ls oss://bucket1 -a 
     LastModifiedTime                    Size(B)  StorageClass   ETAG                                    ObjectName
     2015-06-0514:06:29 +0000 CST        201933      Standard   7E2F4A7F1AC9D2F0996E8332D5EA5B41        oss://bucket1/dir1/obj11
     2015-06-0514:36:21 +0000 CST        201933      Standard   6185CA2E8EB8510A61B3A845EAFE4174        oss://bucket1/obj1
@@ -198,7 +198,7 @@ $./ossutil set-acl oss://bucket1 private -b
     与[分页列举 Bucket](cn.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_gjb_g3l_xgb) 类似，可以使用`--limited-num`与`--marker`选项来分页列举Object。示例：
 
     ```
-    $./ossutil ls oss://ossutil-test --limited-num=1
+    ./ossutil ls oss://ossutil-test --limited-num=1
     LastModifiedTime                    Size(B)  StorageClass   ETAG                                    ObjectName
     2016-12-0115:06:37 +0800 CST      10363812      Standard   61DE142E5AFF9A6748707D4A77BFBCFB        oss://ossutil-test/a1
     Object Number is:1
@@ -220,7 +220,7 @@ $./ossutil set-acl oss://bucket1 private -b
     示例：
 
     ```
-    $./ossutil ls oss://ossutil-test
+    ./ossutil ls oss://ossutil-test
     oss://ossutil-test/a1
     oss://ossutil-test/a2
     oss://ossutil-test/a3
@@ -238,7 +238,7 @@ $./ossutil set-acl oss://bucket1 private -b
     使用`-d`选项可以显示当前目录下的文件和子目录，而非递归显示所有子目录下的所有Object。示例：
 
     ```
-    $./ossutil ls oss://bucket1 -s -d
+    ./ossutil ls oss://bucket1 -s -d
     oss://bucket1/obj1
     oss://bucket1/sample.txt
     oss://bucket1/dir1/
@@ -263,7 +263,7 @@ $./ossutil set-acl oss://bucket1 private -b
     使用 -m 选项可以当前操作的Bucket中未上传完成的Multipart事件。如下示例：
 
     ```
-    $./ossutil ls oss://bucket1 -m 
+    ./ossutil ls oss://bucket1 -m 
     InitiatedTime                  UploadID                          ObjectName
     2017-01-1303:45:26 +0000 CST  15754AF7980C4DFB8193F190837520BB  oss://bucket1/obj1
     2017-01-1303:45:25 +0000 CST  3998971ACAF94AD9AC48EAC1988BE863  oss://bucket1/obj2
@@ -283,7 +283,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
 -   下载http\_url地址到本地，并输出探测报告
 
     ```
-    $./ossutil probe --download --url http_url [--addr=domain_name] [file_name]
+    ./ossutil probe --download --url http_url [--addr=domain_name] [file_name]
     ```
 
     通过文件URL将存储空间内的一个文件下载到本地来测试网络传输质量，并输出探测报告。
@@ -301,7 +301,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
 -   下载指定Bucket中的Object，并输出探测报告
 
     ```
-    $./ossutil probe --download --bucketname bucket-name [--object=object_name]
+    ./ossutil probe --download --bucketname bucket-name [--object=object_name]
     [--addr=domain_name] [file_name]
     ```
 
@@ -310,7 +310,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
 -   上传探测并输出探测报告
 
     ```
-    $./ossutil probe --upload [file_name] --bucketname bucket-name [--object=obj
+    ./ossutil probe --upload [file_name] --bucketname bucket-name [--object=obj
     ect_name] [--addr=domain_name] [--upmode]
     ```
 

@@ -40,7 +40,7 @@ OSS提供的API接口如下：
 |[GetObject](intl.zh-CN/API 参考/关于Object操作/GetObject.md#)|获取Object|
 |[AppendObject](intl.zh-CN/API 参考/关于Object操作/AppendObject.md#)|在Object尾追加上传数据|
 |[DeleteObject](intl.zh-CN/API 参考/关于Object操作/DeleteObject.md#)|删除Object|
-|[DeleteMultiple Objects](intl.zh-CN/API 参考/关于Object操作/DeleteMultipleObjects.md#)|删除多个Object|
+|[DeleteMultipleObjects](intl.zh-CN/API 参考/关于Object操作/DeleteMultipleObjects.md#)|删除多个Object|
 |[HeadObject](intl.zh-CN/API 参考/关于Object操作/HeadObject.md#)|只返回某个Object的meta信息，不返回文件内容|
 |[GetObjectMeta](intl.zh-CN/API 参考/关于Object操作/GetObjectMeta.md#)|返回Object的基本meta信息，包括该Object的ETag、Size（文件大小）、LastModified，不返回文件内容|
 |[PostObject](intl.zh-CN/API 参考/关于Object操作/PostObject.md#)|使用Post上传Object|

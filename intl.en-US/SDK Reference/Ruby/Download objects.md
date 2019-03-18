@@ -105,7 +105,7 @@ client = Aliyun::OSS::Client.new(
 bucket = client.get_bucket('my-bucket')
 # Generate a URL. By default, the generated URL is a signed URL valid for 60 seconds.
 puts bucket.object_url('my-object')
-# http://my-bucket.oss-cn-hangzhou.aliyuncs.com/my-object?Expires=1448349966&OSSAccessKeyId=5viOHfldyK6K72ht&Signature=aM2HpBLeMq1aec6JCd7BBAKYiwI%3D
+# http://my-bucket.oss-cn-hangzhou.aliyuncs.com/my-object?Expires=1448349966&OSSAccessKeyId=5vxxxx&Signature=aM2HpBLeMq1aec6JCd7BBAKYiwI%3D
 
 # Generate an unsigned URL
 puts bucket.object_url('my-object', false)

@@ -15,7 +15,7 @@
     2.  根据业务情况，购买合适的[高防 IP](https://common-buy.aliyun.com/?spm=5176.10695662.958511.2.5f267a64VdiI7O&commodityCode=ddosBag#/buy)。
     3.  将高防 IP 绑定到您已设置好的自定义域名上。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/154986360334179_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/155289406434179_zh-CN.png)
 
         -   防护网站：填写您绑定的 OSS 自定义域名。
         -   协议类型：按照您的实际访问方式选择。
@@ -26,7 +26,7 @@
 
     基于安全考虑，Bucket 默认域名解析的 IP 是随机变化的，若您期望使用固定 IP 方式访问，推荐使用 ECS 搭建反向代理的方式进行访问 OSS。ECS 上的 EIP 可以绑定高防 IP 以抵御 DDoS 攻击和 CC 攻击。具体可以按照如下方式进行配置：
 
-    1.  创建一个 CentOS 或 Ubuntu 的 ECS 实例，详情请参考[创建 ECS 实例](../../../../../cn.zh-CN/用户指南/实例/创建实例/使用向导创建实例.md#)。
+    1.  创建一个 CentOS 或 Ubuntu 的 ECS 实例，详情请参考[创建 ECS 实例](../../../../../cn.zh-CN/实例/实例生命周期/创建实例/使用向导创建实例.md#)。
 
         **说明：** 若 Bucket 有很大的网络流量或访问请求，请提高 ECS 硬件配置或者搭建 ECS 集群。
 
@@ -51,7 +51,7 @@
 
 -   针对已经进入沙箱的Bucket，阿里云不提供迁出服务。因此，针对已经进入沙箱的 Bucket，请按照[方案二](#)配置安全防护措施。
 
-    **说明：** 建议在 Bucket 所在的 Region 搭建 ECS，并且 proxy\_pass 填写 Bucket 内网域名地址；
+    **说明：** 建议在 Bucket 所在的 Region 搭建 ECS，并且 proxy\_pass 填写 Bucket 内网域名地址。
 
 -   若您的账号下的 Bucket 曾多次遭受攻击。那么，您后续新建的 Bucket 默认也会进入沙箱。此时，针对新建 Bucket 的安全访问措施如下：
     1.  购买高防 IP。

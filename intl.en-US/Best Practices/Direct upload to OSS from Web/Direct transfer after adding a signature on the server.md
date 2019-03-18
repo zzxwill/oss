@@ -60,7 +60,7 @@ The OSS PostObject method is used for uploads. You can construct a PostObject re
 
         **Note:** Make sure that the CORS settings of the bucket attribute support the POST method. This is because, HTML directly uploads data to OSS and produces a cross-origin request in the process. Hence, you must allow cross-original requests in the bucket attributes.
 
-        For procedure, see [Set CORS](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#). The settings are as follows:
+        For procedure, see [Set CORS](../../../../../reseller.en-US/Console User Guide/Manage buckets/Configure CORS rules.md#). The settings are as follows:
 
         **Note:** In earlier-version IE browsers, Plupload is executed in flash. You must set crossdomain.xml.
 
@@ -165,7 +165,7 @@ The OSS PostObject method is used for uploads. You can construct a PostObject re
     Parse xmlhttp.responseText \(the following only serves as an example. The actual format may vary, but the values of signature, accessid, and policy must exist\).
 
     ```
-    {"accessid":"6MKOqxGiGU4AUk44",
+    {"accessid":"6MKOxxxxxx4AUk44",
     "host":"http://post-test.oss-cn-hangzhou.aliyuncs.com",
     "policy":"eyJleHBpcmF0aW9uIjoiMjAxNS0xMS0wNVQyMDoyMzoyM1oiLCJjxb25kaXRpb25zIjpbWyJjcb250ZW50LWxlbmd0aC1yYW5nZSIsMCwxMDQ4NTc2MDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVzZXItZGlyXC8iXV19",
     "signature":"I2u57FWjTKqX/AE6doIdyff151E=",
@@ -227,7 +227,7 @@ However in this sample, the backend program is not immediately aware of the numb
 ## Related Documents {#section_zym_pny_5db .section}
 
 -   [Basic concepts](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#)
--   [Set Cross-Origin Resource Sharing \(CORS\)](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set Cross-Origin Resource Sharing (CORS).md#)
+-   [Set Cross-Origin Resource Sharing \(CORS\)](../../../../../reseller.en-US/Console User Guide/Manage buckets/Configure CORS rules.md#)
 -   [Overview of direct transfer on Web client](reseller.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
 -   [Directly add a signature on the server, transfer the file, and set upload callback](reseller.en-US//Directly add a signature on the server, transfer the file, and set upload callback.md#)
 -   [Set up direct data transfer for mobile apps](reseller.en-US/Best Practices/Application server/Set up direct data transfer for mobile apps.md#)

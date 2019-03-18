@@ -57,7 +57,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
         </SelectRequest>
         ```
 
-    -   请求语法（Json）
+    -   请求语法（JSON）
 
         ```
         POST /object?x-oss-process=json/select HTTP/1.1 
@@ -352,7 +352,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
         POST /oss-select/bigcsv_normal.csv?x-oss-process=csv%2Fselect HTTP/1.1
         Date: Fri, 25 May 2018 22:11:39 GMT
         Content-Type:
-        Authorization: OSS LTAIJPXxMLocA0fD:FC/9JRbBGRw4o2QqdaL246Pxuvk=
+        Authorization: OSS LTAIJP****LocA0fD:FC/9JRbBGRw4o2QqdaL246Pxuvk=
         User-Agent: aliyun-sdk-dotnet/2.8.0.0(windows 16.7/16.7.0.0/x86;4.0.30319.42000)
         Content-Length: 748
         Expect: 100-continue
@@ -686,11 +686,13 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
 
     |名称|Frame-Type值|Payload格式|描述|
     |:-|:----------|:--------|:-|
-    |Meta End Frame（Csv）|8388614| offset | status| splits count | rows count | columns count | error message
+    |Meta End Frame（Csv）|8388614| offset | total scanned bytes | status| splits count | rows count | columns count | error message
 
- <-8 bytes\><--4bytes\><--4 bytes--\><--8 bytes\><--4 bytes---\><variable size\>
+ <-8 bytes\><------8 bytes------\><--4bytes\><--4 bytes--\><--8 bytes\><--4 bytes---\><variable size\>
 
  | offset：8位整数，扫描结束时的文件偏移。
+
+ total scanned bytes：8位整数，最终扫描过的数据大小。
 
  status：4位整数，最终的status
 
@@ -705,11 +707,13 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
  Meta End Frame用来汇报Create Select Meta API最终的状态。
 
  |
-    |Meta End Frame（Json）|8388615| offset | status| splits count | rows count | error message
+    |Meta End Frame（Json）|8388615| offset | total scanned bytes | status| splits count | rows count | error message
 
- <-8 bytes\><--4bytes\><--4 bytes--\><--8 bytes\><variable size\>
+ <-8 bytes\><------8 bytes------\><--4bytes\><--4 bytes--\><--8 bytes\><variable size\>
 
  | offset：8位整数，扫描结束时的文件偏移。
+
+ total scanned bytes：8位整数，最终扫描过的数据大小。
 
  status：4位整数，最终的status
 

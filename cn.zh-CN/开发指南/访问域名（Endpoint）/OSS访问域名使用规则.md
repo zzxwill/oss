@@ -11,14 +11,14 @@ OSS会为每一个存储空间（Bucket）分配默认的访问域名，本文�
 **说明：** 
 
 -   OSS以HTTP RESTful API的形式对外提供服务，当访问不同的地域（Region）时，需要不同的访问域名。
--   Endpoint分内网和外网访问域名。例如，华东1（杭州）地域的外网Endpoint是`oss-cn-hangzhou.aliyuncs.com`，内网Endpoint是`oss-cn-hangzhou-internal.aliyuncs.com`。Region和Endpoint对照表请参考[访问域名和数据中心](cn.zh-CN/开发指南/访问域名（Endpoint）/访问域名和数据中心.md#)。
--   您也可以通过[绑定自定义域名](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/管理域名/绑定自定义域名.md#)或[绑定CDN加速域名](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/管理域名/绑定CDN加速域名.md#)，将OSS的外网访问域名替换为您的自有域名。
+-   Endpoint分内网和外网访问域名。例如，华东1（杭州）地域的外网Endpoint是`oss-cn-hangzhou.aliyuncs.com`，内网Endpoint是`oss-cn-hangzhou-internal.aliyuncs.com`。Region和Endpoint对照表请参考[访问域名和数据中心](intl.zh-CN/开发指南/访问域名（Endpoint）/访问域名和数据中心.md#)。
+-   您也可以通过[绑定自定义域名](../../../../../intl.zh-CN/控制台用户指南/管理存储空间/管理域名/绑定自定义域名.md#)或[绑定CDN加速域名](../../../../../intl.zh-CN/控制台用户指南/管理存储空间/管理域名/绑定CDN加速域名.md#)，将OSS的外网访问域名替换为您的自有域名。
 
 ## 通过外网访问OSS服务 {#section_sgf_k5v_tdb .section}
 
 外网指的是互联网。通过外网访问产生的流入流量（写）是免费的，流出流量（读）是收费的。
 
-**说明：** OSS费用详情请参见[OSS服务价格页](https://cn.aliyun.com/price/product#/oss/detail)和[计量项和计费项](../../../../../cn.zh-CN/计量计费/计量项和计费项.md#)。
+**说明：** OSS费用详情请参见[OSS服务价格页](https://www.alibabacloud.com/product/oss#pricing)。
 
 外网访问OSS有如下两种方式：
 
@@ -38,7 +38,7 @@ OSS会为每一个存储空间（Bucket）分配默认的访问域名，本文�
     abc.oss-cn-hangzhou.aliyuncs.com/myfile/aaa.txt
     ```
 
-    **说明：** OSS访问域名需携带Object访问路径才可以被访问，仅访问域名，如`abc.oss-cn-hangzhou.aliyuncs.com`，会有报错提示。若您希望直接访问OSS访问域名，可以通过配置[静态网站托管](../../../../../cn.zh-CN/最佳实践/存储空间管理/静态网站托管.md#)来实现。
+    **说明：** OSS访问域名需携带Object访问路径才可以被访问，仅访问域名，如`abc.oss-cn-hangzhou.aliyuncs.com`，会有报错提示。若您希望直接访问OSS访问域名，可以通过配置[静态网站托管](../../../../../intl.zh-CN/最佳实践/存储空间管理/静态网站托管.md#)来实现。
 
     您还可以直接将Object的URL放入HTML中使用，如下所示：
 
@@ -64,8 +64,6 @@ OSS会为每一个存储空间（Bucket）分配默认的访问域名，本文�
 
 内网指的是阿里云产品之间的内网通信网络，例如您通过ECS云服务器访问OSS服务。内网产生的流入和流出流量均免费，但是请求次数仍会计费。
 
-**说明：** OSS费用详情请参见[OSS服务价格页](https://cn.aliyun.com/price/product#/oss/detail)和[计量项和计费项](../../../../../cn.zh-CN/计量计费/计量项和计费项.md#)。
-
 内网访问OSS有如下两种方式：
 
 -   访问方式一：在访问的时候以URL的形式来表示OSS的资源。OSS的URL构成如下。
@@ -78,7 +76,7 @@ OSS会为每一个存储空间（Bucket）分配默认的访问域名，本文�
     -   Bucket：OSS存储空间
     -   Endpoint：Bucket所在数据中心的访问域名，您需要填写内网Endpoint
     -   Object：上传到OSS上的文件
-    示例：如您在Region为华东1，Bucket名称为abc ，Object名称为myfile/aaa.txt，那么您的内网访问地址为：
+    示例：如您的Bucket名称为abc，Region为华东1，Object名称为myfile/aaa.txt，那么您的内网访问地址为：
 
     ```
     abc.oss-cn-hangzhou-internal.aliyuncs.com/myfile/aaa.txt

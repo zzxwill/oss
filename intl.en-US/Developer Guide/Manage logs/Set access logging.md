@@ -33,7 +33,7 @@ The following table describes the fields that compose a log file. In a log file,
 
 |Name|Example|Description|
 |:---|:------|:----------|
-|Remote IP|119.140.142.11|Indicates the IP address from which the request is initiated \(note that a proxy or firewall may block this field\).|
+|Remote IP|119.xx.xx.11|Indicates the IP address from which the request is initiated \(note that a proxy or firewall may block this field\).|
 |Reserved|-|Indicates that this is a reserved field.|
 |Reserved|-|Indicates that this is a reserved field.|
 |Time|\[02/May/2012:00:00:04 +0800\]|Indicates the time when OSS receives a request.|
@@ -44,9 +44,9 @@ The following table describes the fields that compose a log file. In a log file,
 |Referer|`http://www.aliyun.com/product/oss`|Indicates the requested HTTP referer.|
 |User-Agent|curl/7.15.5|Indicates the HTTP User-Agent header.|
 |HostName|oss-example.oss-cn-hangzhou.aliyuncs.com|Indicates the domain name that the request accesses.|
-|Request ID|505B01695037C2AF032593A4|Indicates the UUID used to uniquely identify the request.|
+|Request ID|505B016950xxxxxx032593A4|Indicates the UUID used to uniquely identify the request.|
 |LoggingFlag|true|Indicates whether the access logging function is enabled|
-|Requester Aliyun ID|1657136103983691|Indicates the Alibaba Cloud ID of the requester, which is “-“ for anonymous access.|
+|Requester Aliyun ID|16571xxxxxx83691|Indicates the Alibaba Cloud ID of the requester, which is “-“ for anonymous access.|
 |Operation|GetObject|Indicates the reqest type.|
 |Bucket|oss-example|Indicates the name of the request bucket.|
 |Key|/aliyun-logo.png|Indicated the key that the user requests.|
@@ -54,7 +54,7 @@ The following table describes the fields that compose a log file. In a log file,
 |Server Cost Time \(ms\)|17|Indicates the amount of time that the OSS server used to process the request \(in ms\).|
 |Error Code|NoSuchBucket|Indicates the error code returned by OSS.|
 |Request Length|302|Indicates the length of the user request \(in bytes\).|
-|UserID|1657136103983691|Indicates the ID of the bucket owner.|
+|UserID|16571xxxxxx83691|Indicates the ID of the bucket owner.|
 |Delta DataSize|280|Indicates the bucket size variation, which is `-` if the bucket size has not changed.|
 |Sync Request|-|Indicates whether the request is a CDN back-to-origin request, which is `-` if the request is not a back-to-origin request.|
 |Reserved|-|Indicates that this is a reserved field.|

@@ -1,6 +1,6 @@
 # Add a signature to a URL {#concept_xqh_2df_xdb .concept}
 
-In addition to using an authorization header, you can add signature information to a URL. It enables you to forward a URL to the third party for an authorized access.
+In addition to using an authorization header, you can also add signature information to a URL so that you can forward the URL to the third party for authorized access.
 
 ## Sample code {#section_wcr_k2f_xdb .section}
 
@@ -17,7 +17,7 @@ h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
 urllib.quote (base64.encodestring(h.digest()).strip())
 ```
 
-OSS SDK provides the method for adding a signature into an URL. For the detailed usage, see Authorized access in the OSS SDK Reference.
+OSS SDK provides the method for adding a signature into an URL. For the detailed usage, see Authorized access in OSS SDK documentation.
 
 To add a signature to the OSS SDK URL, see the following table.
 
@@ -40,9 +40,9 @@ http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc
 
 The URL signature must include at least the following three parameters: Signature, Expires, and OSSAccessKeyId.
 
--   The `Expires`  parameter indicates the time-out period of a URL. The value of this parameter is UNIX time \(which is the number of seconds that have elapsed since 00:00:00 UTC, January 1, 1970. For more information, see [Wikipedia](https://en.wikipedia.org/wiki/Unix_time)\). If the time when OSS receives the URL request is later than the value of the Expires parameter and is included in the signature, an error code request timed-out is returned. For example, if the current time is 1141889060, to create a URL that is scheduled to expire in 60 seconds, you can set the value of Expires to 1141889120.The valid period of a URL is 3,600 seconds by default and 64,800 seconds in maximum.
+-   The `Expires` parameter indicates the timeout period of a URL. The value of this parameter is [UNIX time](https://en.wikipedia.org/wiki/Unix_time) \(which is the number of seconds that have elapsed since 00:00:00 UTC, January 1, 1970\). If the time when OSS receives the URL request is later than the value of the Expires parameter included in the signature, an error code of request timed-out is returned. For example, if the current time is 1141889060, to create a URL that is scheduled to expire in 60 seconds, you can set the value of Expires to 1141889120. The valid period of a URL is 3,600 seconds by default and 64,800 seconds in maximum.
 -   `OSSAccessKeyId` refers to the AccessKeyID in the key.
--   `Signature`  indicates the signature information. For all requests and header parameters that OSS supports, the algorithm for adding a signature to a URL is basically the same as that of [Adding a signature to a header](reseller.en-US/API Reference/Access control/Add a signature to the header.md#).
+-   `Signature` indicates the signature information. For all requests and header parameters that OSS supports, the algorithm for adding a signature to a URL is basically the same as that of [Adding a signature to a header](intl.en-US/API Reference/Access control/Add a signature to the header.md#).
 
     ```
     Signature = urlencode(base64(hmac-sha1(AccessKeySecret,
@@ -54,14 +54,14 @@ The URL signature must include at least the following three parameters: Signatur
               + CanonicalizedResource)))
     ```
 
-    The difference is listed as follows:
+    The differences are listed as follows:
 
-    -   When a signature is added to a URL, the Expires parameter replaces the Date parameter.
+    -   When a signature is added to a URL, the Date parameter is replaced by the Expires parameter.
     -   Signatures cannot be included in a URL and the Header at the same time.
-    -   If more than one incoming Signature, Expires, or AccessKeyId value is available, the first of each incoming value is used.
-    -   Whether the request time is later than the Expires time, is verified first before verifying the signature.
-    -   When you put the signature string into a URL, remember to perform the UrlEncode for a URL.
--   When you add a signature to a temporary user URL, the `security-token` must also be entered. The format is as follows:
+    -   If the value of Signature, Expires, or AccessKeyId is passed in for multiple times, the value passed for the first time is used.
+    -   Before the signature is verified, the request time is verified to check whether it is later than the value of Expires.
+    -   Before adding the signature string into a URL, perform the UrlEncode for the URL.
+-   When you add the signature to a URL as a temporary user, the `security-token` must also be included. The format is as follows:
 
     ```
     http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D&security-token=SecurityToken
@@ -70,11 +70,10 @@ The URL signature must include at least the following three parameters: Signatur
 
 ## Detail analysis {#section_cbj_q2f_xdb .section}
 
--   If you adopt the approach of adding a signature to a URL, the authorized data is exposed on the Internet before the authorization period expires. We recommend that you must assess the usage risks in advance.
--   The PUT and GET requests both support adding a signature in a URL.
--   When a signature is added to a URL, the sequence of Signature, Expires, and AccessKeyId can be swapped. If one or more Signature, Expires, or AccessKeyId parameter is missing, the error 403 Forbidden is returned. Error code: AccessDenied.
--   If the current access time is later than the Expires time set in the request, the error 403 Forbidden is returned. Error code: AccessDenied.
--   If the format of the Expires time is incorrect, the error 403 Forbidden is returned. Error code: AccessDenied.
--   If the URL includes one or more Signature, Expires, or AccessKeyId parameter and the header also includes signature information, the error 400 Bad Request is returned. Error code: InvalidArgument.
--   When the signature string is generated, the Date parameter is replaced by the Expires parameter, but the headers such as content-type and content-md5 defined in the preceding section are still included. \(Though the Date request header still exists in the request, you can skip adding it to the signature string.\)
+-   If you add a signature to a URL, the authorized data is exposed on the Internet before the authorization period expires. We recommend that you assess the risks in advance.
+-   PUT and GET requests support adding a signature in a URL.
+-   When a signature is added to a URL, the sequence of Signature, Expires, and AccessKeyId can be swapped. However, if one or more of the Signature, Expires, or AccessKeyId parameter is missing, the 403 Forbidden error message is returned with the error code: AccessDenied.
+-   If the current access time is later than the value of Expires set in the request or the format of Expires is incorrect, the 403 Forbidden error message is returned with the error code: AccessDenied.
+-   If the URL includes one or more of the Signature, Expires, or AccessKeyId parameter and the header also includes signature information, the 400 Bad Request error message is returned with the error code: InvalidArgument.
+-   When the signature string is generated, the Date parameter is replaced by the Expires parameter, but the headers defined in the preceding section, such as content-type and content-md5, are still included. \(The Date header is still included in the request, but it does not need to be added into the signature string.\)
 

@@ -6,7 +6,7 @@ This topic provides solutions for common problems that you may come across while
 
 The following figure shows the process of pushing a stream to a LiveChannel, helping you investigate problems occurred when you push a stream to a LiveChannel.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80008/155295958835194_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80008/155296021135194_en-US.png)
 
 For more information, see the following topics:
 

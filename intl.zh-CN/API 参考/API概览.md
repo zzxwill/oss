@@ -18,7 +18,7 @@ OSS提供的API接口如下：
 |[PutBucketWebsite](intl.zh-CN/API 参考/关于Bucket的操作/PutBucketWebsite.md#)|设置Bucket为静态网站托管模式|
 |[PutBucketReferer](intl.zh-CN/API 参考/关于Bucket的操作/PutBucketReferer.md#)|设置Bucket的防盗链规则|
 |[PutBucketLifecycle](intl.zh-CN/API 参考/关于Bucket的操作/PutBucketLifecycle.md#)|设置Bucket中Object的生命周期规则|
-|[GetBucket\(ListObject\)](intl.zh-CN/API 参考/关于Bucket的操作/GetBucket (ListObject).md#)|列出Bucket中所有Object的信息|
+|[GetBucket\(ListObject\)](intl.zh-CN/API 参考/关于Bucket的操作/GetBucket (ListObjects).md#)|列出Bucket中所有Object的信息|
 |[GetBucketAcl](intl.zh-CN/API 参考/关于Bucket的操作/GetBucketAcl.md#)|获得Bucket访问权限|
 |[GetBucketLocation](intl.zh-CN/API 参考/关于Bucket的操作/GetBucketLocation.md#)|获得Bucket所属的数据中心位置信息|
 |[GetBucketInfo](intl.zh-CN/API 参考/关于Bucket的操作/GetBucketInfo.md#)|获取Bucket信息|

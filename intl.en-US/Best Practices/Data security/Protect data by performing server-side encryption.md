@@ -60,7 +60,7 @@ OSS supports the following three server-side encryption methods:
         Content-Type                : text/plain
         Etag                        : 936180E0B7AA1EF56942F05F9E578D3A
         Last-Modified               : 2018-10-2420:41:54 +0800 CST
-        Owner                       : 1416614965936597
+        Owner                       : 14166xxxxxx36597
         X-Oss-Hash-Crc64ecma        : 9888192182077127097
         X-Oss-Object-Type           : Normal
         X-Oss-Storage-Class         : Standard
@@ -78,7 +78,7 @@ OSS supports the following three server-side encryption methods:
         Content-Type                : text/plain
         Etag                        : 936180E0B7AA1EF56942F05F9E578D3A
         Last-Modified               : 2018-10-2420:46:39 +0800 CST
-        Owner                       : 1416614965936597
+        Owner                       : 14166xxxxxx36597
         X-Oss-Hash-Crc64ecma        : 9888192182077127097
         X-Oss-Object-Type           : Normal
         X-Oss-Server-Side-Encryption: AES256

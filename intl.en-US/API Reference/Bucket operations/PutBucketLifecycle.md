@@ -1,6 +1,11 @@
 # PutBucketLifecycle {#reference_xlw_dbv_tdb .reference}
 
-The bucket owner can set the lifecycle of a bucket with the PutBucketLifecycle request. After Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects \(to another storage class\) corresponding the lifecycle rules on a regular basis.
+Configures the lifecycle rules for a bucket. After lifecycle rules are configured for a bucket, OSS automatically deletes the objects that conform to the lifecycle rules on a regular basis. Only the owner of a bucket can initiate a PutBucketLifecycle request.
+
+**Note:** 
+
+-   If no lifecycle rules have been configured for a bucket, the PutBucketLifecycle operation creates a new lifecycle rule. If a lifecycle rule is configured for the bucket, this operation overwrites the previous lifecycle rule.
+-   You can perform the PutBucketLifecycle operation to set the expiration time of objects and parts that are not completely uploaded in multipart upload tasks\).
 
 ## Request syntax {#section_bfn_rcw_bz .section}
 
@@ -29,74 +34,68 @@ Host: BucketName.oss.aliyuncs.com
 
 ## Request elements {#section_vrs_vcw_bz .section}
 
-|Name|Type|Required?|Description|
-|----|----|---------|-----------|
-|CreatedBeforeDate|string |One from the two: Days and CreatedBeforeDate|Specify the time before which the rules go into effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z, which means the objects with a last update time before 2002-10-11T00:00:00.000Z are deleted or transitioned to another storage class, and the objects updated after this time \(including this time\) are not deleted or transitioned. Parent node: Expiration or AbortMultipartUpload
+|Element|Type|Required|Description|
+|-------|----|--------|-----------|
+|CreatedBeforeDate|String |One of Days and CreatedBeforeDate is required.|Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time \(including this time\) are not deleted or converted. Parent node: Expiration or AbortMultipartUpload
 
 |
-|Days|positive integer |One from the two: Days and CreatedBeforeDate|Specify how many days after the last object update until the rules take effect.  Parent node: Expiration
+|Days|Positive integer |One of Days and CreatedBeforeDate is required|Specifies how many days after the object is updated for the last time until the rules take effect.  Parent node: Expiration
 
 |
-|Expiration|container |No|Specify the expiration attribute of the object.  Sub-node: Days or CreatedBeforeDate 
+|Expiration|Container |No|Specifies the expiration attribute of the lifecycle rules for the object.  Sub-node: Days or CreatedBeforeDate 
 
 Parent node: Rule
 
 |
-|AbortMultipartUpload|container |No|Specify the expiration attribute of the unfulfilled Part rules.  Sub-node: Days or CreatedBeforeDate 
+|AbortMultipartUpload|Container |No|Specifies the expiration attribute of the multipart upload tasks that are not complete.Sub-node: Days or CreatedBeforeDate 
 
 Parent node: Rule
 
 |
-|ID|string|No|The unique ID of a rule. An ID is composed of 255 bytes at most. When you fail to specify this value or this value is null, OSS generates a unique value for you. Sub-node: none 
+|ID|String|No|Indicates the unique ID of a lifecycle rule. An ID is composed of 255 bytes at most. If the value of ID is not specified or null, OSS automatically generates a unique ID for the rule. Sub-node: None 
 
 Parent node: Rule
 
 |
-|LifecycleConfiguration|container|Yes|Container used for storing lifecycle configurations, which can hold a maximum of 1000 rules.  Sub-node: Rule 
+|LifecycleConfiguration|Container|Yes|Specifies the container used to store lifecycle configurations, which can store a maximum of 1,000 rules.  Sub-node: Rule 
 
-Parent node: none
+Parent node: None
 
 |
-|Prefix|string|Yes|Specify the prefix applicable to a rule. Only those objects with a matching prefix can be affected by the rule.  It cannot be overlapped.  Sub-node: none 
+|Prefix|String|Yes|Specifies the prefix applicable to a rule. Only objects with a matching prefix are affected by the rule. A prefix cannot be overlapped.  Sub-node: None 
 
 Parent node: Rule
 
 |
-|Rule|container|Yes|Express a rule  Sub-nodes: ID, Prefix, Status, Expiration 
+|Rule|Container|Yes|Expresses a rule.**Note:** 
+
+-   You cannot create a rule to convert the storage class of a Archive bucket.
+-   The expiration time of an object must be longer than the time period after which the object is converted into the IA or Archive storage class.
+
+Sub-nodes: ID, Prefix, Status, and Expiration 
 
 Parent node: LifecycleConfiguration
 
 |
-|Status|string|Yes|If this value is Enabled, OSS runs this rule regularly. If this value is Disabled, then OSS ignores this rule.  Parent node: Rule 
+|Status|String|Yes|If the value of this parameter is Enabled, OSS executes this rule regularly. If this value of this parameter is Disabled, OSS ignores this rule.  Parent node: Rule
 
 Valid value: Enabled, Disabled
 
 |
-|StorageClass|string|Required if parent node transition is set|Specifies the type of target storage that the object is transition to the OSS. Value: IA, Archive
+|StorageClass|String|Required if Transition is configure.|Specifies the storage class that objects that conform to the rule are converted into.**Note:** The storage class of the objects in a bucket of the IA storage class can be converted into Archive but cannot be converted into Standard.
+
+Value: IA, Archive
 
 Parent node: Transition
 
  |
-|Transition|Container|No|Specifies when the object is transition to the IA or archive storage type during a valid life cycle.|
+|Transition|Container|No|Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle.**Note:** An object of the Standard storage class in a bucket of the same storage class can be converted into the IA or Archive storage class. However, the time when the object is converted to the Archive storage class must be longer than that when it is converted to the IA storage class.
 
-## Detail analysis {#section_udl_ycw_bz .section}
-
--   Only the bucket owner can initiate a Put Bucket Lifecycle request. Otherwise, the message of 403 Forbidden is returned.  Error code: AccessDenied.
--   If no lifecycle has been set previously, this operation creates a new lifecycle configuration or overwrites the previous configuration.
--   You can also set an expiration time for an object, or for the Part. Here, the Part refers to the unsubmitted parts for multipart upload.
-
-Notes for storage types transition:
-
--   Supports objects in Standard bucket transition to IA and Archive storage type. Standard bucket can simultaneously configure both transition to IA and archive storage type rules for one object. In this case, the time set to transition to archive must be longer than the time to transition to IA. For example, the days set for transition to IA is 30, then it must be greater than 30 days set for transition to archive. Otherwise, the invalidargument error is returned.
--   The object setting must have an expiration time greater than the time converted to IA or archive. Otherwise, the invalidArgument error is returned.
--   Supports objects transition to archive storage type in IA bucket.
--   Archvie bucket creation is not supported.
--   IA object convertion is not supported as standard.
--   The archive object convertion is not supported for IA or standard.
+|
 
 ## Examples {#section_ox3_zcw_bz .section}
 
-**Request example:**
+Request example:
 
 ```
 PUT /?lifecycle HTTP/1.1
@@ -131,7 +130,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:KU5h8YMUC78M30dXqf3JxrTZHiA=
 </LifecycleConfiguration>
 ```
 
-**Response example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK
@@ -141,4 +140,27 @@ Content-Length: 0
 Connection: keep-alive
 Server: AliyunOSS
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage lifecycle rules.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Manage lifecycle rules.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Manage lifecycle rules.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Manage lifecycle rules.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Manage lifecycle rules.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Manage lifecycle rules.md)
+-   [Node.js](../../../../../intl.en-US/SDK Reference/Node. js/Manage lifecycle rules.md)
+-   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Manage lifecycle rules.md)
+
+## Error codes {#section_dsv_grs_qgb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|AccessDenied|403|You do not have the permission to configure the lifecycle rules for a bucket. Only the owner of a bucket can initiate a PutBucketLifecycle request.|
+|InvalidArgument|400| -   An object of the Standard storage class in a bucket of the same storage class can be converted into the IA or Archive storage class. You can configure individual rules for an object in a bucket of the Standard storage class at the same time to convert the object to the IA and Archive storage classes. However, the time when the object is converted to the Archive storage class must be longer than that when it is converted to the IA storage class.
+-   The expiration time of an object must be longer than the time period after which the object is converted into the IA or Archive storage class.
+
+ |
 

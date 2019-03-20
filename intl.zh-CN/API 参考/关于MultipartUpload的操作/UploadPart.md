@@ -47,3 +47,25 @@ x-oss-request-id: 3e6aba62-1eae-d246-6118-8ff42cd0c21a
 Date: Wed, 22 Feb 2012 08:32:21 GMT
 ```
 
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   Java
+-   Python
+-   PHP
+-   Go
+-   C
+-   .NET
+-   Android
+-   iOS
+-   Node.js
+-   Browser.js
+-   Ruby
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+| |4| |
+

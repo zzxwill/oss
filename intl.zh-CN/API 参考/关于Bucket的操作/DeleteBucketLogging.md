@@ -1,6 +1,6 @@
 # DeleteBucketLogging {#reference_jrn_gsw_tdb .reference}
 
-DeleteBucketLogging接口用于关闭bucket访问日志记录功能。
+DeleteBucketLogging用于关闭存储空间（Bucket）的访问日志记录功能。只有Bucket的拥有者才有权限关闭Bucket访问日志记录功能。
 
 ## 请求语法 {#section_lyn_m3w_bz .section}
 
@@ -10,12 +10,6 @@ Host: BucketName.oss-cn-hangzhou.aliyuncs.com
 Date: GMT Date
 Authorization: SignatureValue
 ```
-
-## 细节分析 {#section_anj_n3w_bz .section}
-
--   如果Bucket不存在，返回404 no content错误，错误码：NoSuchBucket。
--   只有Bucket的拥有者才能关闭Bucket访问日志记录功能。如果试图操作一个不属于你的Bucket，OSS返回403 Forbidden错误，错误码：AccessDenied。
--   如果目标Bucket并没有开启Logging功能，仍然返回HTTP状态码 204。
 
 ## 示例 {#section_isc_43w_bz .section}
 
@@ -31,6 +25,8 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:6ZVHOehYzxoC1yxRydPQs/CnMZU=
 
 **返回示例**
 
+**说明：** 如果目标Bucket没有开启访问日志记录功能，则返回204状态码。
+
 ```
 HTTP/1.1 204 No Content 
 x-oss-request-id: 534B371674E88A4D8906008B
@@ -39,4 +35,24 @@ Connection: keep-alive
 Content-Length: 0  
 Server: AliyunOSS
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+此接口所对应的各语言SDK如下：
+
+-   [Java](../../../../../intl.zh-CN/SDK 参考/Java/访问日志.md)
+-   [Python](../../../../../intl.zh-CN/SDK 参考/Python/访问日志.md)
+-   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/访问日志.md)
+-   [Go](../../../../../intl.zh-CN/SDK 参考/Go/设置访问日志.md)
+-   [C](../../../../../intl.zh-CN/SDK 参考/C/访问日志.md)
+-   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/访问日志.md)
+-   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/访问日志.md)
+-   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/设置访问日志.md)
+
+## 错误码 {#section_dsv_grs_qgb .section}
+
+|错误码|HTTP 状态码|描述|
+|:--|:-------|:-|
+|NoSuchBucket|404|目标Bucket不存在。|
+|AccessDenied|403|没有关闭Bucket访问日志记录功能的权限。只有Bucket的拥有者才可以关闭Bucket访问日志记录功能。|
 

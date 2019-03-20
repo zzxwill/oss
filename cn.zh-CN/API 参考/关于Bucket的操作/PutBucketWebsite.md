@@ -212,7 +212,7 @@ Authorization: SignatureValue
  |否|
 |MirrorFollowRedirect|bool型| 如果镜像回源获取的结果是3xx，是否要继续跳转到指定的Location获取数据。
 
- 比如发起镜像回源请求时，如果源站返回了302，并且指定了Location。如果此项为true，则oss会继续请求Location指定的地址（最多跳转10此次，如果超过10次，则返回镜像回源失败）。如果为false，那么OSS就会返回302，并将Location透传出去。只有在RedirectType为Mirror时生效。
+ 比如发起镜像回源请求时，如果源站返回了302，并且指定了Location。如果此项为true，则oss会继续请求Location指定的地址（最多跳转10次，如果超过10次，则返回镜像回源失败）。如果为false，那么OSS就会返回302，并将Location透传出去。只有在RedirectType为Mirror时生效。
 
  默认值：true
 

@@ -1,6 +1,6 @@
 # GetBucketLogging {#reference_mm3_zwv_tdb .reference}
 
-GetBucketLogging is used to view the access log configurations of a bucket.
+Views the access logging configuration of a bucket. Only the owner of a bucket can view the access logging configuration of the bucket.
 
 ## Request syntax {#section_cjt_lgw_bz .section}
 
@@ -11,40 +11,36 @@ Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## Response  {#section_dvp_mgw_bz .section}
+## Response elements {#section_dvp_mgw_bz .section}
 
 |Name|Type|Description|
 |----|----|-----------|
-|BucketLoggingStatus|Container|The container for storing access log status informationChild element: LoggingEnabled
+|BucketLoggingStatus|Container|Indicates the container used to store access logging configuration of a bucket.Sub-node: LoggingEnabled
 
-Parent element: none
+Parent node: None
 
-|
-|LoggingEnabled|Container|The container for storing access log information. This element is required only when server access logging is enabled. Child element: TargetBucket, TargetPrefix
-
-Parent element: BucketLoggingStatus
+**Note:** If no logging rules are set for the source bucket, OSS returns an XML message body in which the value of BucketLoggingStatus is null.
 
 |
-|TargetBucket|Character|The bucket for storing access logs. Child element: none
+|LoggingEnabled|Container|Indicates the container used to store access logging information. This element is returned if it is enabled and is not returned if it is disabled.Sub-node: TargetBucket and TargetPrefix
 
-Parent element: BucketLoggingStatus.LoggingEnabled
-
-|
-|TargetPrefix|Character|The prefix of the names of saved access log files. Child element: none
-
-Parent element: BucketLoggingStatus.LoggingEnabled
+Parent node: BucketLoggingStatus
 
 |
+|TargetBucket|Character|Indicates the bucket that stores access logs. Sub-node: None
 
-## Detail analysis {#section_o5y_4gw_bz .section}
+Parent node: BucketLoggingStatus.LoggingEnabled
 
--   If a bucket does not exist, the error “404 no content” is returned. Error code: NoSuchBucket.
--   Only the owner of a bucket can view the access logging configuration of the bucket. If other users attempt to access the configuration, the error 403 Forbidden with the error code: AccessDenied is returned.
--   If no logging rules are set for the source bucket, OSS still returns an XML message body with the element BucketLoggingStatus being null.
+|
+|TargetPrefix|Character|Indicates the prefix of the names of stored access log files. Sub-node: None
 
-## Example {#section_sss_pgw_bz .section}
+Parent node: BucketLoggingStatus.LoggingEnabled
 
-**Request example:**
+|
+
+## Examples {#section_sss_pgw_bz .section}
+
+Request example:
 
 ```
 Get /? logging HTTP/1.1
@@ -53,7 +49,7 @@ Date: Fri, 04 May 2012 05:31:04 GMT
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:ceOEyZavKY4QcjoUWYSpYbJ3naA=
 ```
 
-**Response example with logging rules configured:**
+Response example returned when logging rules are set for the bucket:
 
 ```
 HTTP/1.1 200
@@ -72,7 +68,7 @@ Server: AliyunOSS
 </BucketLoggingStatus>
 ```
 
-**Response example with no logging rules configured:**
+Response example returned when no logging rules are set for the bucket:
 
 ```
 HTTP/1.1 200 
@@ -86,4 +82,24 @@ Server: AliyunOSS
 <BucketLoggingStatus xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
 </BucketLoggingStatus>
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Set logging.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Set logging.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Set logging.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Set logging.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Set logging.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Set logging.md)
+-   [Node.js](../../../../../intl.en-US/SDK Reference/Node. js/Set logging.md)
+-   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Set logging.md)
+
+## Error codes {#section_dsv_grs_qgb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|NoSuchBucket|404|The target bucket does not exist.|
+|AccessDenied|403|You do not have the permission to view the access logging configuration of a bucket. Only the owner of a bucket can view the access logging configuration of the bucket.|
 

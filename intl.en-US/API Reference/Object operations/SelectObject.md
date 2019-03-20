@@ -1,6 +1,6 @@
 # SelectObject {#reference_lz1_r1x_b2b .reference}
 
-SelectObject is used to query an object that you have the read permission on.
+Queries an object. To perform SelectObject operations, you must have the read permission on the object.
 
 ## SelectObject {#section_fm3_3zq_ngb .section}
 
@@ -8,7 +8,7 @@ SelectObject is used to run SQL statements on the target object and return the q
 
 The 206 status code is returned if the operation is successfully performed. If the SQL statements are incorrect or do not match the target object, the 400 status code is returned.
 
-**Note:** For more information about the functions of SelectObject, see [SelectObject](../../../../../reseller.en-US/Developer Guide/Manage files/SelectObject.md#).
+**Note:** For more information about the functions of SelectObject, see [SelectObject](../../../../../intl.en-US/Developer Guide/Manage files/SelectObject.md#).
 
 -   Request syntax
     -   Request syntax \(CSV\)
@@ -109,49 +109,49 @@ The 206 status code is returned if the operation is successfully performed. If t
     |:------|:---|:----------|
     |SelectRequest|Container| Specifies the container that saves the SelectObject request.
 
- Child nodes: Expression, InputSerialization, and OutputSerialization
+ Sub-nodes: Expression, InputSerialization, and OutputSerialization
 
  Parent node: None
 
  |
     |Expression|String| Specifies the base64-coded SQL statements.
 
- Child node: None
+ Sub-node: None
 
  Parent node: SelectRequest
 
  |
     |InputSerialization|Container| \(Optional\) Specifies the input serialization parameters.
 
- Child nodes: CompressionType, CSV, and JSON
+ Sub-nodes: CompressionType, CSV, and JSON
 
  Parent node: SelectRequest
 
  |
     |OutputSerialization|Container| \(Optional\) Specifies the output serialization parameters.
 
- Child nodes: CSV, JSON, and OutputRawData
+ Sub-nodes: CSV, JSON, and OutputRawData
 
  Parent node: SelectRequest
 
  |
     |CSV\(InputSerialization\)|Container| \(Optional\) Specifies the format parameter for the input CSV file.
 
- Child nodes: FileHeaderInfo, RecordDelimiter, FieldDelimiter, QuoteCharacter, CommentCharacter, and Range
+ Sub-nodes: FileHeaderInfo, RecordDelimiter, FieldDelimiter, QuoteCharacter, CommentCharacter, and Range
 
  Parent node: InputSerialization
 
  |
     |CSV\(OutputSerialization\)|Container| \(Optional\) Specifies the format parameter for the output CSV file.
 
- Child nodes: RecordDelimiter and FieldDelimiter
+ Sub-nodes: RecordDelimiter and FieldDelimiter
 
  Parent node: OutputSerialization
 
  |
     |JSON\(InputSerialization\)|Container| Specifies the format parameter for the input JSON file.
 
- Child node: Type
+ Sub-node: Type
 
  |
     |Type|Enumeration| Specifies the type of the input JSON file: DOCUMENT | LINES
@@ -159,19 +159,19 @@ The 206 status code is returned if the operation is successfully performed. If t
  |
     |JSON\(InputSerialization\)|Container| Specifies the format parameter for the input JSON file.
 
- Child node: RecordDelimiter
+ Sub-node: RecordDelimiter
 
  |
     |OutputRawData|Bool \(false by default\)| \(Optional\) Specifies the output data as raw data, which is not the frame-based format.
 
- Child node: None
+ Sub-node: None
 
  Parent node: OutputSerialization
 
  |
     |CompressionType|Enumeration| Specifies the compression type of the object: None|GZIP
 
- Child node: None
+ Sub-node: None
 
  Parent node: InputSerialization
 
@@ -183,28 +183,28 @@ The 206 status code is returned if the operation is successfully performed. If t
      -   Use: Indicates that the CSV file contains header information. You can use the column name in the CSV file as the column name in the SelectObject operation.
     -   Ignore: Indicates that the CSV file contains header information. However, you cannot use the column name in the CSV file as the column name in the SelectObject operation.
     -   None: Indicates that the CSV file does not contain header information. This is the default value.
- Child node: None
+ Sub-node: None
 
  Parent node: CSV \(input\)
 
  |
     |RecordDelimiter|String| \(Optional\) Specifies the delimiter, which is base64-encoded and `\n` by default. The value of this element before being encoded can be the ANSI value of two characters in maximum. For example, `\n` is used to indicate a line break in Java code.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CSV \(input and output\) and JSON \(output\)
 
  |
     |FieldDelimiter|String| \(Optional\) Specifies the delimiter used to separate columns in the CSV file. The value of this element is the base64-encoded ANSI value of a character and is `,` by default. For example, `,` is used to indicate a comma in Java code.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CSV \(input and output\)
 
  |
     |QuoteCharacter|String| \(Optional\) Specifies the quote characters used in the CSV file. The value of this element is base64-encoded and is `\”` by default. In a CSV file, line breaks and column delimiters are processed as normal characters. The value of this element before being encoded must be the ANSI value of a character. For example, `\”` is used to indicate a quote character in Java code.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CSV \(input\)
 
@@ -218,7 +218,7 @@ The 206 status code is returned if the operation is successfully performed. If t
 
  This parameter is valid only when the document is in CSV format or the JSON Type is LINES.
 
- Child node: None
+ Sub-node: None
 
  Parent nodes: CSV \(input\) and JSON \(input\)
 
@@ -231,21 +231,21 @@ The 206 status code is returned if the operation is successfully performed. If t
 
  Value of 1st column,,,,Value of 5th column,\\n
 
- Child node: None
+ Sub-node: None
 
  Parent node: OutputSerialization \(CSV\)
 
  |
     |EnablePayloadCrc|Bool| Indicates that each frame includes a 32-bit CRC32 value for verification. The client can calculate the CRC32 value of each payload and compare it with the included CRC32 value to verify data integrity.
 
- Child node: None
+ Sub-node: None
 
  Parent node: OutputSerialization
 
  |
     |Options|Container| Specifies other optional parameters.
 
- Child node: SkipPartialDataRecord and MaxSkippedRecordsAllowed
+ Sub-node: SkipPartialDataRecord and MaxSkippedRecordsAllowed
 
  Parent node: SelectRequest
 
@@ -254,7 +254,7 @@ The 206 status code is returned if the operation is successfully performed. If t
 
  Default value: false
 
- Child node: None
+ Sub-node: None
 
  Parent node: OutputSerialization
 
@@ -263,7 +263,7 @@ The 206 status code is returned if the operation is successfully performed. If t
 
  Default value: false
 
- Child node: None
+ Sub-node: None
 
  Parent node: Options
 
@@ -274,7 +274,7 @@ The 206 status code is returned if the operation is successfully performed. If t
 
  Default value: 0
 
- Child node: None
+ Sub-node: None
 
  Parent node: Options
 
@@ -283,7 +283,7 @@ The 206 status code is returned if the operation is successfully performed. If t
 
  Default value: false
 
- Child node: None
+ Sub-node: None
 
  Parent node: JSON
 
@@ -604,70 +604,70 @@ CreateSelectObjectMeta is used to obtain information about the target CSV file, 
     |:------|----|:----------|
     |CsvMetaRequest|Container| Specifies the container that saves the Select csv Meta request.
 
- Child node: InputSerialization
+ Sub-node: InputSerialization
 
  Parent node: None
 
  |
     |JsonMetaRequest|Container| Specifies the container that saves the Select json Meta request.
 
- Child node: InputSerialization
+ Sub-node: InputSerialization
 
  Parent node: None
 
  |
     |InputSerialization|Container| \(Optional\) Specifies the input serialization parameters.
 
- Child node: CompressionType, CSV, and JSON
+ Sub-node: CompressionType, CSV, and JSON
 
  Parent node: CsvMetaRequest and JsonMetaRequest
 
  |
     |OverwriteIfExists|Bool| \(Optional\) Recalculates the SelectMeta and overwrites the existing data. The default value is false, which means that the result is directly returned if the Select Meta already exists.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CsvMetaRequest and JsonMetaRequest
 
  |
     |CompressionType|Enumeration| \(Optional\) Specifies the compression type of the object. Only None is supported currently.
 
- Child node: None
+ Sub-node: None
 
  Parent node: InputSerialization
 
  |
     |RecordDelimiter|String| \(Optional\) Specifies the delimiter, which is base64-encoded and `\n` by default. The value of this element before being encoded can be the ANSI value of two characters in maximum. For example, `\n` is used to indicate a line break in Java code.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CSV
 
  |
     |FieldDelimiter|String| \(Optional\) Specifies the delimiter used to separate columns in the CSV file. The value of this element is the base64-encoded ANSI value of a character and is `,` by default. For example, `,` is used to indicate a comma in Java code.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CSV \(input and output\)
 
  |
     |QuoteCharacter|String| \(Optional\) Specifies the quote characters used in the CSV file. The value of this element is base64-encoded and is `\”` by default. In a CSV file, line breaks and column delimiters are processed as normal characters. The value of this element before being encoded must be the ANSI value of a character. For example, `\”` is used to indicate a quote character in Java code.
 
- Child node: None
+ Sub-node: None
 
  Parent node: CSV \(input\)
 
  |
     |CSV|Container| Specifies the format of the input CSV file.
 
- Child node: RecordDelimiter, FieldDelimiter, and QuoteCharacter
+ Sub-node: RecordDelimiter, FieldDelimiter, and QuoteCharacter
 
  Parent node: InputSerialization
 
  |
     |JSON|Container| Specifies the format of the input JSON file.
 
- Child node: Type
+ Sub-node: Type
 
  Parent node: InputSerialization
 

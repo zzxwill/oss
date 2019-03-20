@@ -1,6 +1,8 @@
 # GetObject {#reference_ccf_rgd_5db .reference}
 
-GetObject is used to obtain an object. You must have read permission before you use Get Object function.
+Obtains an object. To perform GetObject operations, you must have the read permission on the object.
+
+**Note:** If the storage class of the request object is Archive, you must send a RestoreObject request first and ensure that the request is successfully responded without timeout.
 
 ## Request syntax {#section_pjt_dmw_bz .section}
 
@@ -9,82 +11,89 @@ GET /ObjectName HTTP/1.1
 Host: BucketName.oss-cn-hangzhou.aliyuncs.com
 Date: GMT Date
 Authorization: SignatureValue
-Range: bytes=ByteRange (Optional)
+Range: bytes=ByteRange (optional)
 ```
 
 ## Request parameters {#section_gsg_gmw_bz .section}
 
-When sending a GET request, you can customize some headers in OSS response. If you send an anonymous user request, you can only customize \`content-type\` headers. Other headers require that you send GET requests with signatures. These headers include:
+**Note:** 
 
-|Name|Type|Description|
-|----|----|-----------|
-|response-content-type|string|Specifies the content-type header in the request returned by OSS. If you send an anonymous user request, you can also specify the content-type header. Default value: None
+-   You can customize some headers in the response to a GET request by setting headers in the GET request. However, the headers in the response are set to the values specified in the GET request headers only when the request is successful \(the 200 OK code is returned\).
+-   You cannot customize response headers by setting headers in the GET request as an anonymous user.
+-   You must sign the GET request before sending it.
 
-|
-|response-content-language|string|Specifies the content-language header in the request returned by OSS. Default value: None
+The following table describes the headers that you can customize:
 
-|
-|response-expires|string|Specifies the expires header in the request returned by OSS. Default value: None
-
-|
-|response-cache-control|string|Specifies the cache-control header in the request returned by OSS. Default value: None
+|Header|Type|Required|Description|
+|------|----|--------|-----------|
+|response-content-type|String|No|Specifies the content-type header in the request returned by OSS. Default value: None
 
 |
-|Response-content-Disposition|string|Specifies the content-disposition header in the request returned by OSS. Default value: None
+|response-content-language|String|No|Specifies the content-language header in the response returned by OSS. Default value: None
 
 |
-|response-content-encoding|string|Specifies the content-encoding header in the request returned by OSS. Default value: None
+|response-expires|String|No|Specifies the expires header in the response returned by OSS. Default value: None
 
 |
-
-## Request header {#section_ywk_qmw_bz .section}
-
-|Name|Type|Description|
-|----|----|-----------|
-|Range|string|Specifies the range of file transfer. For example, if the range is set to bytes = 0-9, the system transfers byte 0 to byte 9. Default value: None
+|response-cache-control|String|No|Specifies the cache-control header in the response returned by OSS. Default value: None
 
 |
-|If-Modified-Since|string|If the specified time is earlier than the actual modification time, the system transfers the file normally, and returns the 200 OK message; otherwise, the system returns the 304 Not Modified message. Default value: None
-
-Time format: GMT, for example: Fri, 13 Nov 2015 14:47:53 GMT
+|response-content-disposition|String|No|Specifies the content-disposition header in the response returned by OSS. Default value: None
 
 |
-|If-Unmodified-Since|string|If the specified time is same as or later than the actual file modification time, the system transfers the file normally, and returns the 200 OK message; otherwise, the system returns the 412 Precondition Failed message. Default value: None
-
-Time format: GMT, for example: Fri, 13 Nov 2015 14:47:53 GMT
+|response-content-encoding|String|No|Specifies the content-encoding header in the response returned by OSS. Default value: None
 
 |
-|If-Match|string|If the expected ETag that is introduced matches the ETag of the object, the system transfers the file normally, and returns the 200 OK message; otherwise, the system returns the 412 Precondition Failed message. Default value: None
+|Range|String|No| Specifies the range of object that is transmitted.
+
+ Default value: None
+
+ -   If the value of Range is valid, the total size of the object and the range of the returned object are included in the response. For example, "Content-Range: bytes 0-9/44" indicates that the total size of the object is 44, and the data in the range of 0-9 is returned.
+-   If the value of Range is invalid, the entire object is transmitted, and Content-Range is not included in the response.
+
+ |
+|If-Modified-Since|String|No|If the time specified in the parameter is earlier than the modification time or does not conform to the standards, OSS returns the object and the 200 OK message. Otherwise, the 304 Not Modified message is returned.Default value: None
+
+Time format: GMT, for example: Fri, 13 Nov 2015 14:47:53 GMT.
 
 |
-|If-None-Match|string|If the introduced ETag does not match the ETag of the object, the system transfers the file normally, and returns the 200 OK message; otherwise, the system returns the 304 Not Modified message. Default value: None
+|If-Unmodified-Since|String|No|If the time specified in the parameter is the same as or later than the modification time of the object, OSS returns the object and the 200 OK message. Otherwise, the 412 Precondition Failed error message is returned.Default value: None
+
+Time format: GMT, for example: Fri, 13 Nov 2015 14:47:53 GMT.
+
+You can specify the If-Modified-Since and If-Unmodified-Since parameters in a request at the same time.
 
 |
+|If-Match|String|No|If the expected ETag that is introduced matches the ETag of the object, OSS transmits the object normally and returns the 200 OK message. Otherwise, the 412 Precondition Failed message is returned.Default value: None
 
-## Detail analysis {#section_xb4_wmw_bz .section}
+|
+|If-None-Match|String|No|If the introduced ETag does not match the ETag of the object, OSS transmits the object normally and returns the 200 OK message. Otherwise, the system returns the 304 Not Modified message.Default value: None
 
--   The Range parameter in the Get Object request can be set to support resumable data transfer from breakpoints. This function is recommended if the object size is large.
--   If the Range parameter is used in the request header, the returned message includes the length of the entire file and the range returned for the request. For example, if the returned message is Content-Range: bytes 0-9/44, it means that the length of the entire file is 44, and the range returned is 0 to 9.  If the range requirement is not met, the system transfers the entire file and does not include Content-Range in the result.
--   If the time specified by If-Modified-Since does not match the actual modification time, the system directly returns the file and the 200 OK message.
--   If-Modified-Since can coexist with If-Unmodified-Since. If-Match can also coexist with If-None-Match.
--   If the request contains If-Unmodified-Since and If-Unmodified-Since does not match the actual modification time, or the request contains If-Match and If-Match does not match the Etag of the object, the system returns the 412 Precondition Failed message.
--   If the request contains If-Modified-Since and If-Modified-Since does not match the actual modification time, or the request contains If-None-Match and If-None-Match does not match the ETag of the object, the system returns Error 304 Not Modified.
--   If the file does not exist, the system returns Error 404 Not Found.  The error code is NoSuchKey.
--   OSS does not allow you to customize the headers in OSS returned request by using request parameters in the GET request during an anonymous access.
--   When you customize some headers in OSS returned request, OSS sets these headers to the values specified by parameters in the GET Object Request only when the request is successfully processed, that is, when the system returns the 200 OK message.
--   If this object is encrypted on the server side, the system automatically returns the decrypted object on receiving the GET Object request, and returns x-oss-server-side-encryption in the response header. The value of x-oss-server-side-encryption indicates the server-side encryption algorithm of the object.
--   If you want to compress and transfer the returned content using GZIP, add Accept-Encoding:gzip to the display mode in the request header. OSS determines whether to return the data compressed by GZIP to you based on the Content-Type and size of the file. If the content is compressed using GZIP, the content does not contain the Etag.  Currently, OSS supports GZIP compression for the following Content-Types: HTML, Javascript, CSS, XML, RSS, and JSON, and the file size must be at least 1 KB.
--   If the file type is symbolic link, the content of the target file is returned. In the response header, `Content-Length`, `ETag`, and `Content-Md5` are metadata of the target file, `Last-Modified` is the maximum value of the target file and symbolic link, and others are metadata of symbolic links.
--   If the file type is symbolic link and the target file does not exist, the system returns Error 404 Not Found. The error code is SymlinkTargetNotExist.
--   If the file type is symbolic link and the target file type is symbolic link, the system returns Error 400 Bad request. The error code is InvalidTargetType.
--   For the Archive type, submit the Restore request and complete Restore before downloading an object. The object can be downloaded only when the Restore operation is completed and not timed-out.
-    -   If the Restore request is not submitted or the last Restore operation is time-out, the system returns Error 403. The error code is InvalidObjectState.
-    -   If the Restore request has been submitted but the Restore operation is not completed, the system returns Error 403. The error code is InvalidObjectState.
-    -   Data can be directly downloaded only when the Restore operation is completed and not timed-out.
+You can specify the If-Match and If-None-Match parameters in a request at the same time.
 
-## Example {#section_vrp_zmw_bz .section}
+|
+|Accept-Encoding|String|No| Specifies the encoding type at the client-side.
 
-**Request example:**
+ If you want an object to be returned in the GZIP format, explicitly add Accept-Encoding:gzip in the request header. OSS determines whether to return the object compressed in the GZIP format based on the Content-Type and size of the object \(larger than or equal to 1 KB\).
+
+ **Note:** 
+
+-   If an object is compressed in the GZIP format, the ETag of the object is not included in the returned result.
+-   Currently, OSS supports GZIP compression for the following Content-Types: HTML, Javascript, CSS, XML, RSS, and JSON.
+
+ |
+
+## Response header {#section_ump_3hn_xgb .section}
+
+**Note:** If the type of the requested object is symbol link, the content of the object is returned. In the response header, `Content-Length`, `ETag`, and `Content-Md5` are the metadata of the requested object, `Last-Modified` is the maximum value of the requested object and symbol link \(that is, the later modification time\), and other parameters are the metadata of the symbol link.
+
+|Header|Type|Description|
+|------|----|-----------|
+|x-oss-server-side-encryption|String|If the requested object is encrypted with the entropy coding algorithm on the server, OSS decrypts the object and includes this header in the response to indicates the encryption algorithm used to encrypt the object on the server.|
+
+## Examples {#section_vrp_zmw_bz .section}
+
+**Simple request example:**
 
 ```
 GET /oss.jpg HTTP/1.1
@@ -108,7 +117,7 @@ Server: AliyunOSS
 [344606 bytes of object data]
 ```
 
-**Request example with range specified:**
+**Request example with Range specified:**
 
 ```
 GET //oss.jpg HTTP/1.1
@@ -135,7 +144,7 @@ Server: AliyunOSS
 [801 bytes of object data]
 ```
 
-**Request example with the returned message header customized:**
+**Request example with returned message headers customized:**
 
 ```
 GET /oss.jpg? response-expires=Thu%2C%2001%20Feb%202012%2017%3A00%3A00%20GMT& response-content-type=text&response-cache-control=No-cache&response-content-disposition=attachment%253B%2520filename%253Dtesting.txt&response-content-encoding=utf-8&response-content-language=%E4%B8%AD%E6%96%87 HTTP/1.1
@@ -164,7 +173,7 @@ Server: AliyunOSS
 [344606 bytes of object data]
 ```
 
-**Request example of symbolic link:**
+**Request example with the object type specified as symbol link:**
 
 ```
 GET /link-to-oss.jpg HTTP/1.1
@@ -191,7 +200,7 @@ x-oss-object-type: Symlink
 Content-MD5: gIYmXvwCEe0fmi8Jv0YiJw==
 ```
 
-**Example of a request when the Restore operation of an object of the Archive type is completed:**
+**Request example for an Archive object that is restored:**
 
 ```
 GET /oss.jpg HTTP/1.1
@@ -200,7 +209,7 @@ Date: Sat, 15 Apr 2017 09:38:30 GMT
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:zUglwRPGkbByZxm1+y4eyu+NIUs=
 ```
 
-**Response example**
+**Response example:**
 
 ```
 HTTP/1.1 200 OK
@@ -215,4 +224,38 @@ Content-Length: 344606
 Server: AliyunOSS
 [354606 bytes of object data]
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Upload objects/Overview.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Upload objects/Overview.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Upload objects/Overview .md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Upload objects/Overview.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Upload objects/Overview.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Upload objects/Overview.md)
+-   [Node.js](../../../../../intl.en-US//Upload objects.md)
+-   [Browser.js](../../../../../intl.en-US/SDK Reference/Browser.js/Upload objects.md)
+-   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Upload objects.md)
+
+## Error codes {#section_hnc_tz5_jgb .section}
+
+|Error code|HTTP status code|Description|
+|----------|----------------|-----------|
+|NoSuchKey|404|The requested object does not exist.|
+|SymlinkTargetNotExist|404|The requested object is a symbol link and does not exist.|
+|InvalidTargetType|400|The requested object is a symbol link.|
+|InvalidObjectState|403|The storage class of the requested object is Archive and: -   The RestoreObject request for the object is not initiated or timed out.
+-   The RestoreObject request for the object has been initiated but the object is not restored yet.
+
+|
+|Not Modified|304| -   The If-Modified-Since header is specified in the request, but the source object has not been modified after the time specified in the request.
+-   The If-None-Match header is specified in the request, and the ETag provided in the request is the same as the ETag of the source object.
+
+ |
+|Precondition Failed|412| -   The If-Unmodified-Since header is specified, but the time specified in the request is earlier than the modification time of the object.
+-   The If-Match header is specified, but the provided ETag is different from the ETag of the source object.
+
+ |
 

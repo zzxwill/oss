@@ -1,8 +1,8 @@
 # DeleteMultipleObjects {#reference_ydg_25v_wdb .reference}
 
-The DeleteMultipleObjects operation allows you to delete multiple objects in the same bucket with one HTTP request.
+Deletes multiple objects from the same bucket.
 
-You can perform the Delete Multiple  Objects operation to delete up to 1,000 objects with one request. Two response modes are available: the Verbose mode and the Quiet mode.
+You can perform the DeleteMultipleObjects operation to delete up to 1,000 objects with one request. Two response modes are available: the Verbose mode and the Quiet mode.
 
 -   Verbose mode: The message body returned by OSS contains the result of each deleted object.
 -   Quiet mode: The message body returned by OSS only contains the results for objects which encountered an error in the DELETE process. If all objects are successfully deleted, no message body is returned.
@@ -10,13 +10,13 @@ You can perform the Delete Multiple  Objects operation to delete up to 1,000 ob
 ## Request syntax {#section_iqs_fvv_wdb .section}
 
 ```
-POST /? delete HTTP/1.1
+POST /?delete HTTP/1.1
 Host: BucketName.oss-cn-hangzhou.aliyuncs.com
 Date: GMT Date
 Content-Length: ContentLength
 Content-MD5: MD5Value
 Authorization: SignatureValue
-<? xml version="1.0" encoding="UTF-8"? >
+<?xml version="1.0" encoding="UTF-8"?>
 <Delete>
   <Quiet>true</Quiet>
   <Object>
@@ -26,9 +26,9 @@ Authorization: SignatureValue
 </Delete>
 ```
 
-## Request parameters {#section_wmb_lvv_wdb .section}
+## Request headers {#section_wmb_lvv_wdb .section}
 
-During the Delete Multiple Objects operation, you can use encoding-type to encode the Key in the returned result.
+OSS verifies the received message body based on the following headers, and deletes the object only when the attributes of the message body conform to the headers.
 
 |Name|Description|
 |:---|:----------|
@@ -40,26 +40,51 @@ Optional value: url
 
 |
 
+|Header|Type|Required|Description|
+|:-----|:---|:-------|:----------|
+|Encoding-type|String|No| The Key parameter is UTF-8 encoded. If the Key parameter includes control characters which are not supported by the XML 1.0 standard, you can specify this header to encode the Key parameter in the returned result.
+
+ Default value: None
+
+ Valid value: url
+
+ |
+|Content-Length|String|Yes| Indicates the length of the HTTP message body.
+
+ OSS verifies the received message body based on this header, and deletes the object only when the length of the message body is the same as this header.
+
+ |
+|Content-MD5|String|Yes| Content-MD5 is a string calculated with the MD5 algorithm. This header is used to check whether the content of the received message is consistent with that of the sent message. If this header is included in the request, OSS calculates the Content-MD5 of the received message body and compares it with the value of this header.
+
+ **Note:** To obtain the value of this header, encrypt the message body of the DeleteMultipleObjects request using the MD5 algorithm to get a 128-bit byte array, and then base64-encode the byte array.
+
+ |
+
 ## Request elements {#section_l1c_svv_wdb .section}
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|Delete|Container|Specify the container that saves the Delete Multiple Objects request.Sub-nodes: one or more object elements and the optional quiet element
+|Element|Type|Required|Description|
+|:------|:---|--------|:----------|
+|Delete|Container|Yes|Specifies the container that stores the DeleteMultipleObjects request.Sub-node: One or more Objects, Quite
 
 Parent node: None
 
 |
-|Key|String|Specify the name of the deleted object. Parent node: Object
+|Key|String|Yes|Specifies the name of the object to be deleted. Parent node: Object
 
 |
-|Object|Container|Specify the container that saves the information about the object.Sub-node: key
+|Object|Container|Yes|Specifies the container that stores the information about the object.Sub-node: Key
 
 Parent node: Delete
 
 |
-|Quiet|enumerative string|Enables the “Quiet” response mode.Valid values: true, false
+|Quiet|Enumerated string|Yes|Enables the Quiet response mode.DeleteMultipleObjects provides the following two response modes:
 
-Default: false
+-   Quiet: The message body of the response returned by OSS only includes objects that fail to be deleted. If all objects are deleted successfully, the response does not include a message body.
+-   Verbose: The message body of the response returned by OSS includes the results of all deleted objects. This mode is used by default.
+
+Valid value: true\(enables Quite mode\), false\(enables Verbose mode\)
+
+Default value: false
 
 Parent node: Delete
 
@@ -67,38 +92,28 @@ Parent node: Delete
 
 ## Response elements {#section_ync_yyv_wdb .section}
 
-|Name|Type|Description|
-|:---|:---|:----------|
-|Deleted|Container|Specify the container that saves the successfully deleted objects. Sub-node: key
+|Elements|Type|Description|
+|:-------|:---|:----------|
+|Deleted|Container|Specifies the container that stores the successfully deleted objects. Sub-node: Key
 
 Parent node: DeleteResult
 
 |
-|DeleteResult|Container|Specify the container that saves the result of the Delete Multiple Objects request. Sub-node: Deleted
+|DeleteResult|Container|Specifies the container that stores the returned results of the DeleteMultipleObjects request. Sub-node: Deleted
 
 Parent node: None
 
 |
-|Key|String|Specify the name of the object on which OSS performs the Delete operation.Parent node: Deleted
+|Key|String|Specifies the name of the deleted object.Parent node: Deleted
 
  |
-|EncodingType|String|Indicates the type used by the encoding in the return result. Specify the encoding type for the returned results. If encoding-type is specified in the request, the Key is encoded in the returned result.Parent node: Container
+|EncodingType|String|Specifies the encoding type for the returned results. If encoding-type is specified in the request, the Key is encoded in the returned result.Parent node: Container
 
 |
 
-## Detail analysis {#section_xfy_rzv_wdb .section}
-
--   The Content-Length and Content-MD5 fields must be specified in the Delete Multiple Objects request. OSS verifies that the received message body is correct based on the two fields before performing the Delete operation.
--   Method to generate the Content-MD5 field: Encrypt the MD5 value of the Delete Multiple Objects request to obtain a 128-byte array, and encode the array using Base64. The final string obtained is the content of the Content-MD5 field.
--   The return mode of the Delete Multiple Objects request is Verbose by default.
--   If the Delete Multiple Objects request is used to delete a non-existing object, the operation is still regarded as successful.
--   The Delete Multiple Objects request can contain a message body of up to 2 MB. If the size of the message body exceeds 2 MB, the system returns the MalformedXML error code.
--   The Delete Multiple Objects request can be used to delete up to 1,000 objects at a time. If the number of objects to be deleted at a time exceeds 1,000, the system returns the MalformedXML error code.
--   If you have uploaded the Content-MD5 request header, OSS calculates the body’s Content-MD5 and check if the two are consistent. If the two are different, the error code InvalidDigest is returned.
-
 ## Example {#section_mcs_21w_wdb .section}
 
-**Request example I:**
+Request example with Quite mode disabled:
 
 ```
 POST /? delete HTTP/1.1
@@ -122,7 +137,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:+z3gBfnFAxBcBDgx27Y/jEfbfu8=
 </Delete>
 ```
 
-**Response example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK
@@ -146,7 +161,7 @@ Server: AliyunOSS
 </DeleteResult>
 ```
 
-**Request Example II:**
+Request example with Quite mode enabled:
 
 ```
 POST /? delete HTTP/1.1
@@ -170,7 +185,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:WuV0Jks8RyGSNQrBca64kEExJDs=
 </Delete>
 ```
 
-**Response example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK
@@ -180,4 +195,29 @@ Content-Length: 0
 Connection: keep-alive
 Server: AliyunOSS
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage objects/Delete objects.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Manage objects/Delete objects.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/Python/Manage objects/Delete objects.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Manage objects/Delete objects.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Manage objects/Delete objects.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Manage objects/Delete objects.md)
+-   [iOS](../../../../../intl.en-US//Manage objects.md)
+-   [Node.js](../../../../../intl.en-US//Manage objects.md)
+-   [Browser.js](../../../../../intl.en-US/SDK Reference/Browser.js/Manage objects.md)
+-   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Manage objects.md)
+
+## Error codes {#section_nfp_nfc_5gb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|InvalidDigest|400|If you specify the Content-MD5 header in the request, OSS calculates the Content-MD5 of the message body and compares it with this header. If the two values are different, this error code is returned.|
+|MalformedXML|400| -   A DeleteMultipleObjects request can contain a message body of up to 2 MB. If the size of the message body exceeds 2 MB, this error code is returned.
+-   A Delete Multiple Objects request can be used to delete up to 1,000 objects at a time. If the number of objects to be deleted at a time exceeds 1,000, this error code is returned.
+
+ |
 

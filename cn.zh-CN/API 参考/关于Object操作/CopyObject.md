@@ -54,7 +54,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
  默认值：无
 
  |
-|x-oss-copy-source-if-modified-since|字符串|否| 如果源Object自从用户指定的时间以后被修改过，则执行拷贝操作；否则返回304 Not Modified错误码（预处理失败）。
+|x-oss-copy-source-if-modified-since|字符串|否| 如果源Object在用户指定的时间以后被修改过，则执行拷贝操作；否则返回304 Not Modified错误码（预处理失败）。
 
  默认值：无
 
@@ -212,8 +212,8 @@ x-oss-server-time: 150
 -   [C](../../../../../cn.zh-CN/SDK 参考/C/管理文件/拷贝文件.md)
 -   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/管理文件/删除文件.md)
 -   [Android](../../../../../cn.zh-CN/SDK 参考/Android/管理文件/拷贝文件.md)
--   [iOS](../../../../../cn.zh-CN/SDK 参考/iOS/管理文件.md)
--   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/管理文件.md)
+-   [iOS](../../../../../cn.zh-CN/SDK 参考/iOS/管理文件/概述.md)
+-   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/管理文件/概述.md)
 -   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/管理文件.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}

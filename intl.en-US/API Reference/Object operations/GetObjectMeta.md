@@ -1,36 +1,48 @@
 # GetObjectMeta {#reference_sg4_k2w_wdb .reference}
 
-GetObjectMeta is used to obtain the basic meta information of an object in a bucket, but it does not return the content. The meta information includes the Etag, Size \(the file size\), and LastModified.
+Obtains the metadata of an object in a bucket, including the ETag, Size, and LastModified. The content of the object is not returned.
+
+**Note:** 
+
+-   If the requested object is a symbol link, the information of the symbol link is returned.
+-   The response to a GetObjectMeta request does not include a message body whether the request is successful.
 
 ## Request syntax {#section_nvn_42w_wdb .section}
 
 ```
-GET /ObjectName? objectMeta HTTP/1.1
+HEAD /ObjectName?objectMeta HTTP/1.1
 Host: BucketName.oss-cn-hangzhou.aliyuncs.com
 Date: GMT Date
 Authorization: SignatureValue
 ```
 
-## Detail analysis {#section_b3b_q2w_wdb .section}
+## Response headers {#section_und_k4s_qgb .section}
 
--   After the Get Object Meta request is sent, no message body is returned no matter whether the system returns the OK message or an error message.
--   Get Object Meta must contain the parameters of the ObjectMeta request; otherwise, it indicates a Get Object request.
--   If the file does not exist, the system returns the 404 Not Found error.
--   Get Object Meta is more lightweight than Header Object. Only some basic meta information of an object in a bucket is returned. The meta information includes the Etag, Size \(the file size\), and LastModified. The Size is measured with the value of the Content-Length header.
--   If the file type is symbolic link, only the information of the symbolic link itself is returned.
+|Header|Type|Description|
+|:-----|----|:----------|
+|Content-Length|String| Indicates the size of the object.
 
-## Example {#section_wkh_52w_wdb .section}
+ |
+|ETag|String| Indicates the ETag of the object, which is generated when an object is created to identify the content of the object.
 
-**Request example:**
+ For an object created by a PutObject request, its ETag is the MD5 value of its content. For an object created in other methods, its ETag is the UUID of its content. The ETag of an object can be used to check whether the content of the object changes. We recommend you do not use ETag as the MD5 value of an object to verify data integrity.
+
+ Default value: None
+
+ |
+
+## Examples {#section_wkh_52w_wdb .section}
+
+Request example:
 
 ```
-GET /oss.jpg? objectMeta HTTP/1.1
+HEAD /oss.jpg?objectMeta HTTP/1.1
 Host: oss-example.oss-cn-hangzhou.aliyuncs.com
 Date: Wed, 29 Apr 2015 05:21:12 GMT
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:CTkuxpLAi4XZ+WwIfNm0FmgbrQ0=
 ```
 
-**Request example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK
@@ -42,4 +54,24 @@ Content-Length: 344606
 Connection: keep-alive
 Server: AliyunOSS
 ```
+
+## SDK {#section_pfh_pnw_tgb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage objects/Manage Object Meta.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Manage objects/Manage Object Meta.md)
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage objects/Manage Object Meta.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Manage objects/Manage Object Meta.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Manage objects/Manage Object Meta.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Manage objects/Manage ACL for an object.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Manage objects/Manage ACL for an object.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Manage objects/Manage Object Meta.md)
+-   [iOS](../../../../../intl.en-US//Manage objects.md)
+
+## Error codes {#section_dsv_grs_qgb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|Not Found|404|The requested object does not exist.|
 

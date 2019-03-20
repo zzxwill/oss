@@ -1,13 +1,16 @@
 # PutBucketWebsite {#reference_hwb_yr5_tdb .reference}
 
-PutBucketWebsite is used to set a bucket to static website hosting mode and set routing rules.
+Sets a bucket to static website hosting mode and sets routing rules.
 
-## website {#section_bfq_shc_pfb .section}
+## Website {#section_bfq_shc_pfb .section}
 
-The website interface provides the following two features:
+The Website interface provides the following two features:
 
 -   Sets the default home page and the default 404 page.
 -   Sets the RoutingRule. The RoutingRule is used to specify the 3xx routing rules and mirroring back-to-origin rules.
+
+    **Note:** Mirroring back-to-origin is supported in Alibaba Cloud and Finance Cloud.
+
 
 The following example shows the fields of website:
 
@@ -92,8 +95,8 @@ Authorization: SignatureValue
 
 ## Request elements {#section_d4t_vn2_xdb .section}
 
-|Name|Type|Description|Required|
-|WebsiteConfiguration|Container| Root element
+|Element|Type|Description|Required|
+|WebsiteConfiguration|Container| Root node
 
  Parent element: None
 
@@ -293,7 +296,7 @@ Default value: false
 ## Detail Analysis {#section_hms_f42_xdb .section}
 
 -   Static websites are the websites where all Web pages are composed of static content, including scripts such as JavaScript executed on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and APS.NET.
--   To use your own domain name to access bucket-based static websites, you can use the CNAME. For more information about the configuration method, see [Bind custom domain names \(CNAME\)](../../../../reseller.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
+-   To use your own domain name to access bucket-based static websites, you can use the CNAME. For more information about the configuration method, see [Bind custom domain names \(CNAME\)](../../../../../intl.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
 -   To set a bucket to static website hosting mode, you must specify the index page, and the error page is optional.
 -   To set a bucket to static website hosting mode, the specified index page and error page are objects in the bucket.
 -   After a bucket is set to static website hosting mode, OSS returns the index page for anonymous access to the root domain name of the static website, and returns the results of Get Bucket for signed access to the root domain name of the static website.

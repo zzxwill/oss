@@ -13,10 +13,10 @@ An object created with the AppendObject operation is an appendable object, and a
 
 |Operations|Relationship|
 |:---------|:-----------|
-|[PutObject](reseller.en-US/API Reference/Object operations/PutObject.md)|If you perform a PutObject operation on an existing appendable object, the appendable object is overwritten by a new normal object.|
-|[HeadObject](reseller.en-US/API Reference/Object operations/HeadObject.md)|If you perform a HeadObject operation on an existing appendable object, then x-oss-next-append-position, x-oss-hash-crc64ecma, and x-oss-object-type are returned. The x-oss-object-type of the appendable object is Appendable.|
-|[GetBucket](reseller.en-US/API Reference/Object operations/GetObject.md)|In the response to a GetBucket request, the x-oss-object-type of the appendable object is set to Appendable.|
-|[CopyObject](reseller.en-US/API Reference/Object operations/CopyObject.md)|You can neither use CopyObject to copy an appendable object, nor change the server-side encryption method of this object. However, you can use CopyObject to modify the custom metadata of an object.|
+|[PutObject](intl.en-US/API Reference/Object operations/PutObject.md)|If you perform a PutObject operation on an existing appendable object, the appendable object is overwritten by a new normal object.|
+|[HeadObject](intl.en-US/API Reference/Object operations/HeadObject.md)|If you perform a HeadObject operation on an existing appendable object, then x-oss-next-append-position, x-oss-hash-crc64ecma, and x-oss-object-type are returned. The x-oss-object-type of the appendable object is Appendable.|
+|[GetBucket](intl.en-US/API Reference/Object operations/GetObject.md)|In the response to a GetBucket request, the x-oss-object-type of the appendable object is set to Appendable.|
+|[CopyObject](intl.en-US/API Reference/Object operations/CopyObject.md)|You can neither use CopyObject to copy an appendable object, nor change the server-side encryption method of this object. However, you can use CopyObject to modify the custom metadata of an object.|
 
 ## Request syntax {#section_n23_kpw_bz .section}
 

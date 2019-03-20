@@ -1,70 +1,89 @@
 # API overview {#reference_wrz_l2q_tdb .reference}
 
-The API interfaces provided by OSS are as follows:
+OSS provides the following APIs:
 
-## Service operations {#section_lmg_t2q_tdb .section}
+## Service-related operations {#section_lmg_t2q_tdb .section}
 
 |API|Description|
 |---|-----------|
-|[GetService](intl.en-US/API Reference/Service operations/GetService (ListBuckets).md#)|Obtain all the buckets of a specified account.|
+|[GetService](intl.en-US/API Reference/Service operations/GetService (ListBuckets).md#)|Obtains all buckets owned by a specified account.|
 
-## Bucket operations {#section_oqw_hb2_xdb .section}
-
-|API|Description|
-|:--|:----------|
-|[Put Bucket](intl.en-US/API Reference/Bucket operations/PutBucket.md#)|Crate a bucket.|
-|[Put Bucket ACL](intl.en-US/API Reference/Bucket operations/Put Bucket ACL.md#)|Set the bucket access permission.|
-|[Put Bucket Logging](intl.en-US/API Reference/Bucket operations/PutBucketLogging.md#)|Enable logging for the bucket.|
-|[Put Bucket website](intl.en-US/API Reference/Bucket operations/Putbucketwebsite.md#)|Configure static website hosting for the bucket.|
-|[Put Bucket Referer](intl.en-US/API Reference/Bucket operations/Put Bucket Referer.md#)|Configure anti-leech rules for the bucket.|
-|[Put Bucket Lifecycle](intl.en-US/API Reference/Bucket operations/Put Bucket Lifecycle.md#)|Configure lifecycle rules for objects in the bucket.|
-|[Get Bucket ACL](intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)|Get the bucket access permission.|
-|[Get Bucket location](intl.en-US/API Reference/Bucket operations/Getbucketlocation.md#)|Get the location information about the data center to which the bucket belongs.|
-|[Get Bucket Logging](intl.en-US/API Reference/Bucket operations/GetBucketLogging.md#)|View the access log configuration of the bucket.|
-|[Get Bucket website](intl.en-US/API Reference/Bucket operations/GetBucketWebsite.md#)|View the static website hosting status of the bucket.|
-|[Get Bucket Referer](intl.en-US/API Reference/Bucket operations/Get Bucket Referer.md#)|View anti-leech rules for the bucket.|
-|[Get Bucket Lifecycle](intl.en-US/API Reference/Bucket operations/Get Bucket Lifecycle.md#)|View the lifecycle rules of objects in the bucket.|
-|[Delete Bucket](intl.en-US/API Reference/Bucket operations/Delete Bucket.md#)|Delete the bucket.|
-|[Delete Bucket Logging](intl.en-US/API Reference/Bucket operations/DeleteBucketLogging.md#)|Disable the access logging feature of the bucket.|
-|[Delete Bucket website](intl.en-US/API Reference/Bucket operations/DeleteBucketWebsite.md#)|Disable the static website hosting mode of the bucket.|
-|[Delete Bucket Lifecycle](intl.en-US/API Reference/Bucket operations/DeleteBucketLifecycle.md#)|Delete the lifecycle rules of objects in the bucket.|
-|[Get Bucket \(list object\)](intl.en-US/API Reference/Bucket operations/GetBucket (List Object).md#)|Get information of all the objects in the bucket.|
-|[Get Bucket info](intl.en-US/API Reference/Bucket operations/GetBucketInfo.md#)|Get bucket Information|
-
-## Object operations {#section_tq2_kb2_xdb .section}
+## Bucket-related operations {#section_oqw_hb2_xdb .section}
 
 |API|Description|
 |:--|:----------|
-|[Put Object](intl.en-US/API Reference/Object operations/PutObject.md#)|Upload an object.|
-|[Copy Object](intl.en-US/API Reference/Object operations/CopyObject.md#)|Copy an object to make it another object.|
-|[Get Object](intl.en-US/API Reference/Object operations/GetObject.md#)|Get an object.|
-|[Delete Object](intl.en-US/API Reference/Object operations/DeleteObject.md#)|Delete an object.|
-|[Delete Multiple Objects](intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#)|Delete multiple objects.|
-|[Head Object](intl.en-US/API Reference/Object operations/HeadObject.md#)|Get the object meta information.|
-|[Post Object](intl.en-US/API Reference/Object operations/PostObject.md#)|Upload an object in the Post mode.|
-|[Append Object](intl.en-US/API Reference/Object operations/AppendObject.md#)|Append the upload data at the end of the object.|
-|[Put Object ACL](intl.en-US/API Reference/Object operations/Put Object ACL.md#)|Set the object ACL.|
-|[Get Object ACL](intl.en-US/API Reference/Object operations/GetObjectACL.md#)|Get the object ACL information.|
-|[Callback](intl.en-US/API Reference/Object operations/Callback.md#)| Upload callback.|
+|[PutBucket](intl.en-US/API Reference/Bucket operations/PutBucket.md#)|Creates a bucket.|
+|[PutBucketACL](intl.en-US/API Reference/Bucket operations/PutBucketACL.md#)|Sets the ACL for a bucket.|
+|[PutBucketLogging](intl.en-US/API Reference/Bucket operations/PutBucketLogging.md#)|Enables the logging function for a bucket.|
+|[PutBucketWebsite](intl.en-US/API Reference/Bucket operations/PutBucketWebsite.md#)|Sets a bucket to static website hosting mode.|
+|[PutBucketReferer](intl.en-US/API Reference/Bucket operations/PutBucketReferer.md#)|Configures anti-leech rules for a bucket.|
+|[PutBucketLifecycle](intl.en-US/API Reference/Bucket operations/PutBucketLifecycle.md#)|Configures lifecycle rules for the objects in a bucket.|
+|[GetBucket \(ListObject\)](intl.en-US/API Reference/Bucket operations/GetBucket (ListObject).md#)|Gets the information about all objects in a bucket.|
+|[GetBucketAcl](intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)|Gets the ACL for a bucket.|
+|[GetBucketLocation](intl.en-US/API Reference/Bucket operations/GetBucketLocation.md#)|Gets the location information about the data center to which a bucket belongs.|
+|[GetBucketInfo](intl.en-US/API Reference/Bucket operations/GetBucketInfo.md#)|Obtains the information about a bucket.|
+|[GetBucketLogging](intl.en-US/API Reference/Bucket operations/GetBucketLogging.md#)|Views the configuration of the logging function for a bucket.|
+|[GetBucketWebsite](intl.en-US/API Reference/Bucket operations/GetBucketWebsite.md#)|Views the static website hosting status of a bucket.|
+|[GetBucketReferer](intl.en-US/API Reference/Bucket operations/GetBucketReferer.md#)|Views the anti-leech rules for a bucket.|
+|[GetBucketLifecycle](intl.en-US/API Reference/Bucket operations/GetBucketLifecycle.md#)|Views the lifecycle rules for the objects in a bucket.|
+|[DeleteBucket](intl.en-US/API Reference/Bucket operations/DeleteBucket.md#)|Deletes a bucket.|
+|[DeleteBucketLogging](intl.en-US/API Reference/Bucket operations/DeleteBucketLogging.md#)|Disables the logging function for a bucket.|
+|[DeleteBucketWebsite](intl.en-US/API Reference/Bucket operations/DeleteBucketWebsite.md#)|Disables the static website hosting mode for a bucket.|
+|[DeleteBucketLifecycle](intl.en-US/API Reference/Bucket operations/DeleteBucketLifecycle.md#)|Deletes the lifecycle rules for the objects in a bucket.|
 
-## Multipart upload operations {#section_my2_rb2_xdb .section}
+## Object-related operations {#section_tq2_kb2_xdb .section}
 
 |API|Description|
 |:--|:----------|
-|[Initiate Multipart upload](intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)|Initialize a multipart upload event.|
-|[Upload Part](intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)|Upload files in multiple parts.|
-|[Upload Part Copy](intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#)|Copy and upload files in multiple parts.|
-|[Complete Multipart upload](intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)|Complete the multipart upload of the entire file.|
-|[Abort Multipart upload](intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#)|Cancel a multipart upload event.|
-|[List Multipart Uploads](intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#)|List all the ongoing multipart upload events.|
-|[List Parts](intl.en-US/API Reference/Multipart upload operations/ListParts.md#)|List all successfully uploaded parts mapped to a specific upload ID.|
+|[PutObject](intl.en-US/API Reference/Object operations/PutObject.md#)|Uploads an object|
+|[CopyObject](intl.en-US/API Reference/Object operations/CopyObject.md#)|Copies an object to another object.|
+|[GetObject](intl.en-US/API Reference/Object operations/GetObject.md#)|Gets an object.|
+|[AppendObject](intl.en-US/API Reference/Object operations/AppendObject.md#)|Appends the upload data to the end of an object.|
+|[DeleteObject](intl.en-US/API Reference/Object operations/DeleteObject.md#)|Deletes an object|
+|[DeleteMultiple Objects](intl.en-US/API Reference/Object operations/DeleteMultipleObjects.md#)|Deletes multiple objects.|
+|[HeadObject](intl.en-US/API Reference/Object operations/HeadObject.md#)|Returns only the metadata of an object but not the object content.|
+|[GetObjectMeta](intl.en-US/API Reference/Object operations/GetObjectMeta.md#)|Returns the metadata of an object, including the ETag, Size \(object size\), and LastModified and does not return the object content.|
+|[PostObject](intl.en-US/API Reference/Object operations/PostObject.md#)|Uploads an object in Post mode.|
+|[PutObjectACL](intl.en-US/API Reference/Object operations/PutObjectACL.md#)|Sets the ACL for an object.|
+|[GetObjectACL](intl.en-US/API Reference/Object operations/GetObjectACL.md#)|Gets the ACL for an object.|
+|[Callback](intl.en-US/API Reference/Object operations/Callback.md#)|Enables the callback function.|
+|[PutSymlink](intl.en-US/API Reference/Object operations/PutSymlink.md#)|Creates a symbol link.|
+|[GetSymlink](intl.en-US/API Reference/Object operations/GetSymlink.md#)|Obtains a symbol link.|
+|[RestoreObject](intl.en-US/API Reference/Object operations/RestoreObject.md#)|Restores an object.|
+|[SelectObject](intl.en-US/API Reference/Object operations/SelectObject.md#)|Queries objects using SQL statements.|
+
+## Operations related to multipart upload {#section_my2_rb2_xdb .section}
+
+|API|Description|
+|:--|:----------|
+|[InitiateMultipartUpload](intl.en-US/API Reference/Multipart upload operations/InitiateMultipartUpload.md#)|Initializes a MultipartUpload event.|
+|[UploadPart](intl.en-US/API Reference/Multipart upload operations/UploadPart.md#)|Uploads an object in multiple parts.|
+|[UploadPartCopy](intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#)|Uploads and copies an object in multiple parts.|
+|[CompleteMultipartUpload](intl.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#)|Complete the MultipartUpload event for an object.|
+|[AbortMultipartUpload](intl.en-US/API Reference/Multipart upload operations/AbortMultipartUpload.md#)|Cancels a MultipartUpload event.|
+|[ListMultipartUploads](intl.en-US/API Reference/Multipart upload operations/ListMultipartUploads.md#)|Lists all ongoing MultipartUpload events.|
+|[ListParts](intl.en-US/API Reference/Multipart upload operations/ListParts.md#)|Lists all parts successfully uploaded in a MultipartUpload event with a specified upload ID.|
 
 ## Cross-Origin Resource Sharing \(CORS\) {#section_xhx_sb2_xdb .section}
 
 |API|Description|
 |:--|:----------|
-|[Put Bucket cors](intl.en-US/API Reference/Cross-Origin Resource Sharing/PutBucketcors.md#)|Configure a CORS rule for a specified bucket.|
-|[Get Bucket cors](intl.en-US/API Reference/Cross-Origin Resource Sharing/GetBucketcors.md#)|Get the current CORS rules of a specified bucket.|
-|[Delete Bucket cors](intl.en-US/API Reference/Cross-Origin Resource Sharing/DeleteBucketcors.md#)|Disable the CORS function for a specified bucket and clear all the rules.|
-|[Option Object](intl.en-US/API Reference/Cross-Origin Resource Sharing/OptionObject.md#)|Preflight request for cross-region access.|
+|[PutBucketcors](intl.en-US/API Reference/Cross-Origin Resource Sharing/PutBucketcors.md#)|Sets a CORS rule for a specified bucket.|
+|[GetBucketcors](intl.en-US/API Reference/Cross-Origin Resource Sharing/GetBucketcors.md#)|Gets the current CORS rules for a specified bucket.|
+|[DeleteBucketcors](intl.en-US/API Reference/Cross-Origin Resource Sharing/DeleteBucketcors.md#)|Disables the CORS function for a specified bucket and clears all the CORS rules.|
+|[OptionObject](intl.en-US/API Reference/Cross-Origin Resource Sharing/OptionObject.md#)|Specifies the preflight request for cross-region access.|
+
+## Operations related to LiveChannel {#section_lgb_1lp_fgb .section}
+
+|API|Description|
+|---|-----------|
+|[PutLiveChannelStatus](intl.en-US/API Reference/LiveChannel-related operations/PutLiveChannelStatus.md#)|Switches the status of LiveChannel.|
+|[PutLiveChannel](intl.en-US/API Reference/LiveChannel-related operations/PutLiveChannel.md#)|Creates a LiveChannel.|
+|[GetVodPlaylist](intl.en-US/API Reference/LiveChannel-related operations/GetVodPlaylist.md#)|Gets the specified playlist.|
+|[PostVodPlaylist](intl.en-US/API Reference/LiveChannel-related operations/PostVodPlaylist.md#)|Generates a playlist.|
+|[GetLiveChannelStat](intl.en-US/API Reference/LiveChannel-related operations/GetLiveChannelStat.md#)|Gets the stream pushing status of a LiveChannel.|
+|[GetLiveChannelInfo](intl.en-US/API Reference/LiveChannel-related operations/GetLiveChannelInfo.md#)|Gets the configurations of a LiveChannel.|
+|[GetLiveChannelHistory](intl.en-US/API Reference/LiveChannel-related operations/GetLiveChannelHistory.md#)|Gets the stream pushing record of a LiveChannel.|
+|[ListLiveChannel](intl.en-US/API Reference/LiveChannel-related operations/ListLiveChannel.md#)|Lists LiveChannels.|
+|[DeleteLiveChannel](intl.en-US/API Reference/LiveChannel-related operations/DeleteLiveChannel.md#)|Deletes a LiveChannel.|
 

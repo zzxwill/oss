@@ -73,3 +73,17 @@ OSS提供的API接口如下：
 |[DeleteBucketcors](intl.zh-CN/API 参考/跨域资源共享/DeleteBucketcors.md#)|关闭指定Bucket对应的CORS功能并清空所有规则|
 |[OptionObject](intl.zh-CN/API 参考/跨域资源共享/OptionObject.md#)|跨域访问preflight请求|
 
+## 关于Live Channel的操作 {#section_lgb_1lp_fgb .section}
+
+|API|描述|
+|---|--|
+|[PutLiveChannelStatus](intl.zh-CN/API 参考/关于LiveChannel的操作/PutLiveChannelStatus.md#)|切换LiveChannel的状态|
+|[PutLiveChannel](intl.zh-CN/API 参考/关于LiveChannel的操作/PutLiveChannel.md#)|创建LiveChannel|
+|[GetVodPlaylist](intl.zh-CN/API 参考/关于LiveChannel的操作/GetVodPlaylist.md#)|获取播放列表|
+|[PostVodPlaylist](intl.zh-CN/API 参考/关于LiveChannel的操作/PostVodPlaylist.md#)|生成播放列表|
+|[Get LiveChannelStat](intl.zh-CN/API 参考/关于LiveChannel的操作/GetLiveChannelStat.md#)|获取LiveChannel的推流状态信息|
+|[GetLiveChannelInfo](intl.zh-CN/API 参考/关于LiveChannel的操作/GetLiveChannelInfo.md#)|获取LiveChannel的配置信息|
+|[GetLiveChannelHistory](intl.zh-CN/API 参考/关于LiveChannel的操作/GetLiveChannelHistory.md#)|获取LiveChannel的推流记录|
+|[ListLiveChannel](intl.zh-CN/API 参考/关于LiveChannel的操作/ListLiveChannel.md#)|列举LiveChannel|
+|[DeleteLiveChannel](intl.zh-CN/API 参考/关于LiveChannel的操作/DeleteLiveChannel.md#)|删除LiveChannel|
+

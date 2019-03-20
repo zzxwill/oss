@@ -1,8 +1,12 @@
 # PutBucket {#reference_wdh_fj5_tdb .reference}
 
-The PutBucket interface is used to create a bucket \(anonymous access is not supported \).
+Creates a bucket.
 
-The region of the created bucket is consistent with the region of the endpoint from which the request is sent. Once the data center of the bucket is determined, all objects in this bucket are stored in the corresponding region. For more information, see [Regions and endpoints](../../../../intl.en-US/Developer Guide/Regions and endpoints.md#) .
+**Note:** 
+
+-   Anonymous access is not supported.
+-   A user can create a maximum of 30 buckets in a region.
+-   Each region has an endpoint. For more information, see [Regions and endpoints](../../../../../intl.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
 
 ## Request syntax {#section_w34_mmr_bz .section}
 
@@ -18,20 +22,27 @@ Authorization: SignatureValue
 </CreateBucketConfiguration>
 ```
 
-## Detail analysis {#section_yrk_pmr_bz .section}
+## Request header {#section_asb_zxq_3gb .section}
 
--   You can use the `x-oss-acl` header in a Put request to set access permissions for a bucket.   Currently, three access permissions are available for a bucket: public-read-write, public-read, and private.
--   If the requested bucket already exists, 409 Conflict is returned. Error code: BucketAlreadyExists.
--   If the bucket to be created does not conform to the naming conventions, the message of 400 Bad Request is returned. Error code: InvalidBucketName.
--   If the information for user authentication is not introduced when you initiate a Put Bucket request, the message of 403 Forbidden is returned. Error code: AccessDenied.
--   You can create a maximum of 30 buckets in a region. If the number is exceeded, the message of 400 Bad Request is returned. Error code: TooManyBuckets.
--   If no access permission is specified for the created bucket, the `Private` permission applies by default.
--   The storage type of a new bucket can be specified. Standard, IA, and Archive are available.
--   When creating a bucket, you can specify the data redundancy type for the bucket. The values can be LRS \(Locally Redundant Storage\) and ZRS \(Zone Redundant Storage\), in which the LRS is the default value.
+|Parameter|Type|Required|Description|
+|---------|----|--------|-----------|
+|x-oss-acl|String|No|Specifies the ACL for the bucket.Valid values: public-read-write, public-read, and private
 
-## Example {#section_axr_rmr_bz .section}
+**Note:** If you do not set an ACL for a bucket when creating it, the ACL for the bucket is set to private by default.
 
-**Request example:**
+|
+
+## Request element {#section_mtf_lwq_3gb .section}
+
+|Element|Type|Description|
+|-------|----|-----------|
+|StorageClass|String|Specifies the storage class of the bucket.Valid values: Standard, IA, and Archive.
+
+|
+
+## Examples {#section_axr_rmr_bz .section}
+
+Request example:
 
 ```
 PUT / HTTP/1.1
@@ -45,7 +56,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:77Dvh5wQgIjWjwO/KyRt8dOPfo8=
 </CreateBucketConfiguration>
 ```
 
-**Response example:**
+Response example:
 
 ```
 HTTP/1.1 200 OK
@@ -56,4 +67,30 @@ Content-Length: 0
 Connection: keep-alive
 Server: AliyunOSS
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage a bucket.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Bucket.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Bucket.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Bucket.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Bucket.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Manage a bucket.md)
+-   [Android](../../../../../intl.en-US/SDK Reference/Android/Manage buckets.md)
+-   [iOS](../../../../../intl.en-US/SDK Reference/iOS/Manage buckets.md)
+-   [Node.js](../../../../../intl.en-US/SDK Reference/Node. js/Manage a bucket.md)
+-   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Manage buckets.md)
+
+## Error code {#section_dsv_grs_qgb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|InvalidBucketName|400|The bucket name does not conform to the naming convention.|
+|AccessDenied|403| -   Authentication information is not carried in a PutBucket request
+-   You are not authorized to perform operations on the bucket.
+
+ |
+|TooManyBuckets|400|More than 30 buckets are created within a region.|
 

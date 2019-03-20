@@ -1,12 +1,24 @@
 # CopyObject {#reference_mvx_xxc_5db .reference}
 
-CopyObject is used to copy an object within a bucket or between buckets in the same region.
+Copies objects within a bucket or between buckets in the same region. By calling CopyObject, you can send a PUT request to OSS. OSS automatically recognizes the request as a copy operation and perform it on the server.
 
-You can send a PUT request to OSS, and add the element “x-oss-copy-source” to the PUT request header to specify the copy source. OSS automatically determines that this is a Copy Object operation, and directly performs this operation on the server side. If the Copy Object operation is successful, the system returns new object information.
+The CopyObject interface sends a PUT request to OSS and adds the `x-oss-copy-source` element in the PUT request header to specify the source object. OSS recognizes the request as a copy operation and perform this operation on the server. If the copy operation is successful, the information about the target object is returned.
 
-This operation is applicable to a file smaller than 1 GB. To copy a file greater than 1 GB, you must use the Multipart Upload operation. For more information about this operation, see [UploadPartCopy](reseller.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#).
+## Limits {#section_c54_3q5_vgb .section}
 
-**Note:** For the Copy Object operation, the source bucket and the target bucket must be in the same region.
+-   CopyObject only supports objects smaller than 1 GB. To copy objects larger than 1 GB, you must use [UploadPartCopy](intl.en-US/API Reference/Multipart upload operations/UploadPartCopy.md#).
+-   You can call CopyObject to modify the metadata of an object that equals to or smaller than 48.8 TB \(by setting the source object and target object to the same object\).
+-   To use CopyObject, you must have the read permission on the source object.
+-   The source object and the target object must be in the same region.
+-   You cannot copy objects created by AppendObject.
+-   If the source object is a symbolic link, only the symbolic link \(instead of the content that the link directs to\) is copied.
+
+## Billing items {#section_efv_pq5_vgb .section}
+
+-   A GET request is billed according to the bucket where the source object is stored.
+-   A PUT request is billed according to the bucket where the target object is stored.
+-   The used storage capacity is billed according to the bucket where the target object is stored.
+-   If you change the storage class of an object by calling CopyObject, the object is considered as overwritten and will incur charges. An object of the IA or Archive storage class will be charged if it is overwritten within 30 and 60 days respectively after it is created. For example, if you change the storage class of an object from IA to Archive or Standard 10 days after the object is created, early deletion fees for 20 days will be charged.
 
 ## Request syntax {#section_jzf_fmr_xdb .section}
 
@@ -20,34 +32,69 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 
 ## Request header {#section_vdd_klw_bz .section}
 
-|Name|Type|Description|
-|----|----|-----------|
-|x-oss-copy-source|String|Specifies the copy source address \(the requester must have the permission to read the source object\). Default: None
+**Note:** The request headers used in copy operations start with x-oss-. Therefore, these headers must be added into the signature string.
+
+|Header|Type|Required|Description|
+|------|----|--------|-----------|
+|x-oss-copy-source|String|Yes|Specifies the address of the source object. Default value: None.
 
 |
-|x-oss-copy-source-if-match|String|If the source object’s ETag value is same as the ETag value provided by the user, a COPY operation is executed, and the code 200 is returned. Otherwise, the system returns the HTTP error code 412 \(preprocessing failed\).  Default: None
+|x-oss-copy-source-if-match|String|No|If the ETag of the source object is the same as the ETag provided by the user, the copy operation is performed and a 200 OK message is returned. Otherwise, a 412 Precondition Failed error code \(preprocessing failed\) is returned. Default value: None.
 
 |
-|x-oss-copy-source-if-none-match|String|If the source object’s ETag value is not the same as the ETag value provided by the user, a COPY operation is executed, and the code 200 is returned. Otherwise, the system returns the HTTP error code 304 \(preprocessing failed\).  Default: None
+|x-oss-copy-source-if-none-match|String|No|If the ETag of the source object is different from the ETag provided by the user, the copy operation is performed and a 200 OK message is returned. Otherwise, a 304 Not Modified error code \(preprocessing failed\) is returned. Default value: None.
 
 |
-|x-oss-copy-source-if-unmodified-since|String|If the time specified by the received parameter is same as or later than the modification time of the file, the system transfers the file normally, and returns 200 OK; otherwise, the system returns 412 Precondition Failed.  Default: None
+|x-oss-copy-source-if-unmodified-since|String|No|If the specified time is the same as or later than the modification time of the object, the object is copied normally and a 200 OK message is returned. Otherwise, a 412 Precondition Failed error code \(preprocessing failed\) is returned. Default value: None.
 
 |
-|x-oss-copy-source-if-modified-since|String|If the source object has been modified after the time specified by the user, the system performs a COPY operation. Otherwise, the system returns the 304 HTTP error code \(preprocessing failed\).  Default: None
+|x-oss-copy-source-if-modified-since|String|No|If the source object is modified after the time specified by the user, the copy operation is performed. Otherwise, a 304 Not Modified error code \(preprocessing failed\) is returned. Default value: None.
 
 |
-|x-oss-metadata-directive|String|Valid values include COPY and REPLACE. If this parameter is set to COPY, the system copies meta for the new object from the source object. If this parameter is set to REPLACE, the system ignores all meta values of the source object, and uses the meta value specified in this request. If this parameter is set to a value other than COPY and REPLACE, the system returns the 400 Bad Request message. Note that when the value is COPY, the source object’s x-oss-server-side-encryption meta value cannot be copied.Default value: COPY
+|x-oss-metadata-directive|String|No| Specifies how to set the metadata of the target object. The valid values are COPY and REPLACE.
 
-Valid values:COPY and REPLACE
+-   COPY \(default\): The metadata of the source object is copied to the target object. The x-oss-server-side-encryption of the source object is not copied. That is, server-side encryption is performed on the target object only if the x-oss-server-side-encryption header is specified in the COPY request.
+-   REPLACE: The metadata of the target object is set to the metadata specified in the user's request instead of the metadata of the source object.
+
+**Note:** If the source object and the target object have the same address, the metadata of the target object is replaced with the metadata of the source object regardless of the value of x-oss-metadata-directive.
+
+ |
+|x-oss-server-side-encryption|String|No|Specifies the server-side entropy encoding encryption algorithm when OSS creates the target object.Valid values:
+
+-   AES256
+-   KMS \(You must enable KMS in the console before you can use the KMS encryption algorithm. Otherwise, a KmsServiceNotEnabled error code is returned.\)
+
+**Note:** 
+
+-   If the x-oss-server-side-encryption header is not specified in the copy operation, the target object is not encrypted on the server side no matter whether server-side encryption has been performed on the source object.
+-   If you specify the x-oss-server-side-encryption header, server-side encryption is performed on the target object no matter whether the encryption has been performed on the source object. In addition, the response header for the copy request includes the x-oss-server-side-encryption header, and the value of the header is the encryption algorithm of the target object. When the target object is downloaded, the response header also includes the x-oss-server-side-encryption header, and the value of the header is the encryption algorithm of the target object.
 
 |
-|x-oss-server-side-encryption|String|Specifies the server-side entropy encryption algorithm when OSS creates the target object. Valid values: AES256 or KMS
-
-**Note:** You must enable the KMS \(Key Management Service\) on the console to use the KMS encryption algorithm. Otherwise, a KmsServiceNotenabled error code is reported.
+|x-oss-server-side-encryption-key-id|String|No|Indicates the primary key managed by KMS.This parameter is valid when the value of x-oss-server-side-encryption is KMS.
 
 |
-|x-oss-object-acl|String|Specifies the access permission when OSS creates an object. Valid values: public-read, private, public-read-write
+|x-oss-object-acl|String|No|Specifies the ACL for the target object when it is created. Valid values:
+
+-   public-read
+-   private
+-   public-read-write
+-   default
+
+|
+|x-oss-storage-class|String|No|Specifies the storage class of the object.Valid values:
+
+-   Standard
+-   IA
+-   Archive
+
+Supported interfaces: PutObject, InitMultipartUpload, AppendObject, PutObjectSymlink, and CopyObject
+
+**Note:** 
+
+-   If the value of StorageClass is invalid, a 400 error message is returned with an error code: InvalidArgument.
+-   We recommend that you do not set the storage class to IA or Archive when calling CopyObject because an IA or Archive object smaller than 64 KB is billed at 64 KB.
+-   If you specify the value of x-oss-storage-class when uploading an object to a bucket, the storage class of the uploaded object is the specified value of x-oss-storage-class. For example, if you specify the value of x-oss-storage-class to Standard when uploading an object to a bucket of the IA storage class, the storage class of the object is Standard.
+-   If you change the storage class of an object, the object is considered as overwritten and will incur charges. An object of the IA or Archive class will be charged if it is overwritten within 30 and 60 days respectively after it is created.
 
 |
 
@@ -55,58 +102,115 @@ Valid values:COPY and REPLACE
 
 |Name|Type|Description|
 |----|----|-----------|
-|CopyObjectResult|String|Object copying resultDefault: None
+|CopyObjectResult|String|Indicates the result of CopyObject.Default value: None.
 
 |
-|ETag|String|ETag value of the new object.Parent element: CopyObjectResult
+|ETag|String|Indicates the ETag of the target object.Parent node: CopyObjectResult
 
 |
-|LastModified|String|Last update time of the new object.Parent element: CopyObjectResult
+|LastModified|String|Indicates the time when the target object is last modified.Parent node: CopyObjectResult
 
 |
 
-## Detail analysis {#section_cqk_tlw_bz .section}
+## Examples {#section_osk_5lw_bz .section}
 
--   You can use the Copy Object operation to modify the meta information of an existing object.
--   If the source object address is the same as the target object address in the Copy Object operation, the system directly replaces the meta information in the source object regardless of the value of x-oss-metadata-directive.
--   OSS allows the Copy Object request to contain any number of the four pre-judgment headers. For more information about the related logic, see Detail Analysis of Get Object.
--   To complete a Copy Object operation, the requester must have the permission to read the source object.
--   The source object and the target object must belong to the same data center. Otherwise, the system returns the error code 403 AccessDenied. The error message is Target object does not reside in the same data center as source object.
--   In the billing statistics of the Copy Object operation, the number of Get requests increases by 1 in the bucket of the source object, the number of Put requests increases by 1 in the bucket of the target object, and a storage space is added accordingly.
--   In the Copy Object operation, all relevant request headers start from x-oss-, and therefore must be added to the signature string.
--   If the x-oss-server-side-encryption header is specified in the Copy Object request, and its value \(AES256\) is valid, the target object is encrypted on the server side after the Copy Object operation is performed no matter whether the source object has been encrypted on the server side. In addition, the Copy Object response header contains x-oss-server-side-encryption, the value of which is set to the encryption algorithm of the target object. When this target object is downloaded, the response header also contains x-oss-server-side-encryption, the value of which is set to the encryption algorithm of this target object. If the x-oss-server-side-encryption request header is not specified in the Copy Object operation, the target object is the data that is not encrypted on the server side even if the source object has been encrypted on the server side.
--   When the x-oss-metadata-directive header in the Copy Object request is set to COPY \(default value\), the system does not copy the x-oss-server-side-encryption value of the source object. That is, the target object is encrypted on the server side only when x-oss-server-side-encryption is specified accordingly in the Copy Object request.
--   When the x-oss-server-side-encryption request header is specified in the COPY operation, and the request value is not AES256, the system returns Error 400 with the error code “InvalidEncryptionAlgorithmError”.
--   If the size of the file to be copied is greater than 1 GB, the system returns Error 400 with the error code “EntityTooLarge”.
--   This operation cannot be used to copy objects created by Append Object.
--   If the file type is symbolic link, copy the symbolic link only.
+-   Example 1
 
-## Example {#section_osk_5lw_bz .section}
+    Request example:
 
-**Request example:**
+    ```
+    PUT /copy_oss.jpg HTTP/1.1 
+    Host: oss-example.oss-cn-hangzhou.aliyuncs.com 
+    Date: Fri, 24 Feb 2012 07:18:48 GMT 
+    x-oss-storage-class: Archive
+    x-oss-copy-source: /oss-example/oss.jpg 
+    Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:gmnwPKuu20LQEjd+iPkL259A+n0=
+    ```
 
-```
-PUT /copy_oss.jpg HTTP/1.1
-Host: oss-example.oss-cn-hangzhou.aliyuncs.com
-Date: Fri, 24 Feb 2012 07:18:48 GMT
-x-oss-copy-source: /oss-example/oss.jpg
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:gmnwPKuu20LQEjd+iPkL259A+n0=
-```
+    Response example:
 
-**Return example:**
+    ```
+    HTTP/1.1 200 OK
+    x-oss-request-id: 559CC9BDC755F95A64485981
+    Content-Type: application/xml
+    Content-Length: 193
+    Connection: keep-alive
+    Date: Fri, 24 Feb 2012 07:18:48 GMT
+    Server: AliyunOSS
+    <? xml version="1.0" encoding="UTF-8"? >
+    <CopyObjectResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
+     <LastModified>Fri, 24 Feb 2012 07:18:48 GMT</LastModified>
+     <ETag>"5B3C1A2E053D763E1B002CC607C5A0FE"</ETag>
+    </CopyObjectResult>
+    ```
 
-```
-HTTP/1.1 200 OK
-x-oss-request-id: 559CC9BDC755F95A64485981
-Content-Type: application/xml
-Content-Length: 193
-Connection: keep-alive
-Date: Fri, 24 Feb 2012 07:18:48 GMT
-Server: AliyunOSS
-<? xml version="1.0" encoding="UTF-8"? >
-<CopyObjectResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
- <LastModified>Fri, 24 Feb 2012 07:18:48 GMT</LastModified>
- <ETag>"5B3C1A2E053D763E1B002CC607C5A0FE"</ETag>
-</CopyObjectResult>
-```
+-   Example 2
+
+    Request example:
+
+    ```
+    PUT /test%2FAK.txt HTTP/1.1
+    Host: tesx.oss-cn-zhangjiakou.aliyuncs.com
+    Accept-Encoding: identity
+    User-Agent: aliyun-sdk-python/2.6.0(Windows/7/AMD64;3.7.0)
+    Accept: */*
+    Connection: keep-alive
+    x-oss-copy-source: /test/AK.txt
+    date: Fri, 28 Dec 2018 09:41:55 GMT
+    authorization: OSS qn6qrrqxo2oawuk53otfjbyc:gmnwPKuu20LQEjd+iPkL259A+n0=
+    Content-Length: 0
+    ```
+
+    Response example:
+
+    ```
+    HTTP/1.1 200 OK
+    Server: AliyunOSS
+    Date: Fri, 28 Dec 2018 09:41:56 GMT
+    Content-Type: application/xml
+    Content-Length: 184
+    Connection: keep-alive
+    x-oss-request-id: 5C25EFE4462CE00EC6D87156
+    ETag: "F2064A169EE92E9775EE5324D0B1682E"
+    x-oss-hash-crc64ecma: 12753002859196105360
+    x-oss-server-time: 150
+    
+    <? xml version="1.0" encoding="UTF-8"? >
+    <CopyObjectResult>
+      <ETag>"F2064A169EE92E9775EE5324D0B1682E"</ETag>
+      <LastModified>2018-12-28T09:41:56.000Z</LastModified>
+    </CopyObjectResult>
+    ```
+
+    **Note:** x-oss-hash-crc64ecma indicates the 64-bit CRC value of the object. This value is calculated based on the [ECMA-182](http://www.ecma-international.org/publications/standards/Ecma-182.htm) standard. An object generated in a COPY operation may not have this value.
+
+
+## SDK {#section_egl_m2c_5gb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage objects/Copy objects.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Manage objects/Copy objects.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Manage objects/Copy objects.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Manage objects/Copy objects.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Manage objects/Copy objects.md)
+-   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Manage objects/Delete objects.md)
+-   [iOS](../../../../../intl.en-US//Manage objects.md)
+-   [Node.js](../../../../../intl.en-US//Manage objects.md)
+-   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Manage objects.md)
+
+## Error codes {#section_dsv_grs_qgb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|InvalidArgument|400|The values of parameters \(such as x-oss-storage-class are invalid.|
+|Precondition Failed|412| -   The x-oss-copy-source-if-match header is specified in the request, but the provided ETag is different from the ETag of the source object.
+-   The x-oss-copy-source-if-unmodified-since header is specified in the request, but the time specified in the request is earlier than the modification time of the object.
+
+ |
+|Not Modified|304| -   The x-oss-copy-source-if-none-match header is specified in the request, and the provided ETag is the same as the ETag of the source object.
+-   The x-oss-copy-source-if-modified-since header is specified in the request, but the source object has not been modified after the time specified in the request.
+
+ |
+|KmsServiceNotEnabled|403|The x-oss-server-side-encryption header is set to KMS, but the KMS service is not enabled.|
 

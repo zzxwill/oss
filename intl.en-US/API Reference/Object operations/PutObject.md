@@ -178,6 +178,6 @@ A common error in calculations is to encode the calculated 32-bit string with Ba
 
 -   **Note:** 
 
-For more example code for PutObject, see [Upload objects](../../../../../reseller.en-US/SDK Reference/Python/Upload objects/Overview.md#).
+For more example code for PutObject, see [Upload objects](../../../../../intl.en-US/SDK Reference/Python/Upload objects/Overview.md#).
 
 

@@ -58,10 +58,10 @@ PostObject使用HTML表单上传Object到指定Bucket。
     |policy|字符串|Policy规定了请求表单域的合法性。不包含policy表单域的请求被认为是匿名请求，并只能访问public-read-write的Bucket。默认值：无
 
 限制：当Bucket为非public-read-write或者提供了OSSAccessKeyId（或Signature）表单域时，必须提供policy表单域。|有条件|
-    |Signature|字符串|根据AccessKeySecret和policy计算的签名信息，OSS验证该签名信息从而验证该Post请求的合法性。更详细描述请参考下文 [Post Signature](intl.zh-CN/API 参考/关于Object操作/PostObject.md#section_wny_mww_wdb)。默认值：无
+    |Signature|字符串|根据AccessKeySecret和policy计算的签名信息，OSS验证该签名信息从而验证该Post请求的合法性。更详细描述请参考下文 [Post Signature](cn.zh-CN/API 参考/关于Object操作/PostObject.md#section_wny_mww_wdb)。默认值：无
 
 限制：当Bucket为非public-read-write或者提供了OSSAccessKeyId（或policy）表单域时，必须提供Signature表单域。|有条件|
-    |Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires|字符串|HTTP请求Header，更详细信息请参见[PutObject](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)。 默认值：无
+    |Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires|字符串|HTTP请求Header，更详细信息请参见[PutObject](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。 默认值：无
 
 |可选|
     |file|字符串|文件或文本内容，必须是表单中的最后一个域。浏览器会自动根据文件类型来设置Content-Type，并覆盖用户的设置。 OSS一次只能上传一个文件。默认值：无
@@ -83,7 +83,7 @@ PostObject使用HTML表单上传Object到指定Bucket。
     -   如果该域的值设置为201，OSS返回一个XML文件和201状态码。
     -   如果该域的值未设置或者设置成一个非法值，OSS返回一个空文档和204状态码。
 | |
-    |x-oss-meta-\*|字符串|用户指定的user meta值。 OSS不会检查或者使用该值。默认值：无
+    |x-oss-meta-\*|字符串|用户指定的user meta值。默认值：无
 
 |可选|
     |x-oss-server-side-encryption|字符串|指定OSS创建Object时的服务器端加密编码算法。合法值：AES256
@@ -263,9 +263,9 @@ Post policy中必须包含expiration和conditions。
 
 1.  创建一个 UTF-8 编码的 policy。
 2.  将 policy 进行 base64 编码，其值即为 policy 表单域填入的值，将该值作为将要签名的字符串。
-3.  使用 AccessKeySecret 对要签名的字符串进行签名，签名方法与Header中签名的计算方法相同（将要签名的字符串替换为 policy 即可），请参见[在Header中包含签名](intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)。
+3.  使用 AccessKeySecret 对要签名的字符串进行签名，签名方法与Header中签名的计算方法相同（将要签名的字符串替换为 policy 即可），请参见[在Header中包含签名](cn.zh-CN/API 参考/访问控制/在Header中包含签名.md#)。
 
 ## 示例 Demo {#section_owq_2gt_xfb .section}
 
-Web 端表单直传 OSS 示例 Demo，请参见[JavaScript客户端签名直传](../../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)。
+Web 端表单直传 OSS 示例 Demo，请参见[JavaScript客户端签名直传](../../../../../cn.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)。
 

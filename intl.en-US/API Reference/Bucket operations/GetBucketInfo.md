@@ -1,14 +1,8 @@
 # GetBucketInfo {#reference_rwk_bwv_tdb .reference}
 
-GetBucketInfo operation is used to view the bucket information.
+Views the information about a bucket. Only the owner of a bucket can view the information about the bucket.
 
-The information includes the following:
-
--   Create time
--   Internet access endpoint
--   Intranet access endpoint
--   Bucket owner information
--   Bucket ACL \(AccessControlList\)
+**Note:** A GetBucketInfo request can be initiated from any OSS endpoint.
 
 ## Request syntax {#section_qw4_lfw_bz .section}
 
@@ -21,63 +15,60 @@ Authorization: SignatureValue
 
 ## Response elements {#section_bkn_mfw_bz .section}
 
-|Name|Type|Description|
-|----|----|-----------|
-|BucketInfo|Container|The container that saves the bucket information content Sub-node: Bucket node
+|Element|Type|Description|
+|-------|----|-----------|
+|BucketInfo|Container|Indicates the container that stores the bucket information.Sub-node: Bucket
 
-Parent node: none
-
-|
-|Bucket|Container|The container that saves the bucket specific information  Parent node: BucketInfo node
+Parent node: None
 
 |
-|CreationDate|time|The creation time of the bucket. Time format: 2013-07-31T10:56:21.000Z  Parent node: BucketInfo.Bucket
+|Bucket|Container|Indicates the container that stores specific bucket information.Parent node: BucketInfo
 
 |
-|ExtranetEndpoint|string|The Internet domain name that the bucket accesses Parent node: BucketInfo.Bucket
+|CreationDate|Time|Indicates the time when the bucket is created.Parent node: BucketInfo.Bucket
 
 |
-|IntranetEndpoint|string|The intranet domain name for accessing the bucket from ECS in the same regionParent node: BucketInfo.Bucket
+|ExtranetEndpoint|String|Indicates the domain name used to access the bucket through the Internet.Parent node: BucketInfo.Bucket
 
 |
-|Location|string|The region of the data center that the bucket is located in  Parent node: BucketInfo.Bucket
+|IntranetEndpoint|String|Indicates the domain name used by the ECS instances in the same region to access the bucket through the intranet.Parent node: BucketInfo.Bucket
 
 |
-|Name|string|The bucket nameParent node: BucketInfo.Bucket
+|Location|String|Indicates the region where the bucket is located. Parent node: BucketInfo.Bucket
 
 |
-|Owner|container|Container used for saving the information about the bucket owner. Parent node: BucketInfo.Bucket
+|Name|String|Indicates the bucket name.Parent node: BucketInfo.Bucket
 
 |
-|ID|string|User ID of the bucket owner. Parent node: BucketInfo.Bucket.Owner
+|Owner|Container|Indicates the container used to store the information about the bucket owner.Parent node: BucketInfo.Bucket
 
 |
-|DisplayName|string|Name of the bucket owner \(the same as the ID currently\). Parent node: BucketInfo.Bucket.Owner
+|ID|String|Indicates the user ID of the bucket owner. Parent node: BucketInfo.Bucket.Owner
 
 |
-|AccessControlList|container|Container used for storing the ACL information Parent node: BucketInfo.Bucket
+|DisplayName|String|Indicates the name of the bucket owner, which is the same as the value ID.Parent node: BucketInfo.Bucket.Owner
 
 |
-|Grant|enumerative string|ACL permissions of the bucket. Valid values: private, public-read, and public-read-write
+|AccessControlList|Container|Indicates the container used to store the ACL information.Parent node: BucketInfo.Bucket
+
+|
+|Grant|Enumerated string|Indicates the ACL for the bucket. Valid values: private, public-read, and public-read-write
 
 Parent node: BucketInfo.Bucket.AccessControlList
 
 |
-|DataRedundancyType|enumerative string|The data redundancy type of the bucket.Valid values: LRSand ZRS
+|DataRedundancyType|Enumerated string|Indicates the data redundancy type of the bucket.Valid values: LRS and ZRS
 
 Parent node: BucketInfo.Bucket
 
  |
+|StorageClass|String|Indicates the storage class of the bucket.Valid value: Standard, IA, and Archive
 
-## Detail analysis {#section_cgv_sfw_bz .section}
+|
 
--   If the bucket does not exist, error 404 is returned. Error code: NoSuchBucket.
--   Only the owner of a bucket can view the information of the bucket. If other users attempt to access the location information, the error 403 Forbidden with the error code: AccessDenied is returned.
--   The request can be initiated from any OSS endpoint.
+## Examples {#section_i2n_tfw_bz .section}
 
-## Example {#section_i2n_tfw_bz .section}
-
-**Request example:**
+Request example:
 
 ```
 Get /? bucketInfo HTTP/1.1
@@ -87,7 +78,7 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc: BuG4rRK+zNhH1AcF51NNHD39zXw=
 
 ```
 
-**Return example after the bucket information is obtained successfully:**
+Response example returned when the bucket information is obtained successfully:
 
 ```
 HTTP/1.1 200
@@ -116,7 +107,7 @@ Server: AliyunOSS
 </BucketInfo>
 ```
 
-**Return example if the requested bucket information does not exist:**
+Response example returned when the requested bucket does not exist:
 
 ```
 HTTP/1.1 404 
@@ -136,7 +127,7 @@ Server: AliyunOSS
 </Error>
 ```
 
-**Return example if the requester has no access permission to the bucket information:**
+Response example returned when the requester has no access permission to the bucket:
 
 ```
 HTTP/1.1 403
@@ -154,4 +145,21 @@ Server: AliyunOSS
   <Hostid> test.oss.aliyuncs.com </hostid>
 </Error>
 ```
+
+## SDK {#section_egl_m2c_5gb .section}
+
+The SDKs of this API are as follows:
+
+-   [Java](../../../../../intl.en-US/SDK Reference/Java/Manage a bucket.md)
+-   [Python](../../../../../intl.en-US/SDK Reference/Python/Bucket.md)
+-   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Bucket.md)
+-   [Go](../../../../../intl.en-US/SDK Reference/Go/Bucket.md)
+-   [C](../../../../../intl.en-US/SDK Reference/C/Bucket.md)
+
+## Error codes {#section_dsv_grs_qgb .section}
+
+|Error code|HTTP status code|Description|
+|:---------|:---------------|:----------|
+|NoSuchBucket|404|The target bucket does not exist.|
+|AccessDenied|403|You do not have the permission to view the bucket information. Only the owner of a bucket can view the information about the bucket.|
 

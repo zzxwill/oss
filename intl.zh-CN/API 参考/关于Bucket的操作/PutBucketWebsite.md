@@ -311,7 +311,7 @@ PUT /?website HTTP/1.1
 Host: oss-example.oss-cn-hangzhou.aliyuncs.com
 Content-Length: 209
 Date: Fri, 04 May 2012 03:21:12 GMT
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:KU5h8YMUC78M30dXqf3JxrTZHiA=
+Authorization: OSS qn6qrrqx******k53otfjbyc:KU5h8YM******0dXqf3JxrTZHiA=
 
 <?xml version="1.0" encoding="UTF-8"?>
 <WebsiteConfiguration>

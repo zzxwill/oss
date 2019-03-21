@@ -19,7 +19,7 @@ Authorization: SignatureValue
 DELETE /?website HTTP/1.1
 Host: BucketName.oss-cn-hangzhou.aliyuncs.com 
 Date: Fri, 24 Feb 2012 05:45:34 GMT  
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:LnM4AZ1OeIduZF5vGFWicOMEkVg=
+Authorization: OSS qn6qrrqx******k53otfjbyc:LnM4AZ1O******5vGFWicOMEkVg=
 
 ```
 
@@ -40,7 +40,7 @@ Server: AliyunOSS
 DELETE /?website HTTP/1.1
 Date: Fri, 27 Jul 2018 09:10:52 GMT
 Host: test.oss-cn-hangzhou-internal.aliyuncs.com
-Authorization: OSS a1nBN******QMf8u:qPrKwuMaarA4Tfk1pqTCylFs1jY=
+Authorization: OSS a1nBN******QMf8u:qPrKwuM******fk1pqTCylFs1jY=
 User-Agent: aliyun-sdk-python-test/0.4.0
 
 HTTP/1.1 204 No Content

@@ -8,7 +8,7 @@ Different OSS resources and functions have different limits. For more informatio
 
 ## Usage {#section_vkl_wkl_s2b .section}
 
-This topic describes the request syntax, request samples and return samples for each interface. If you want to perform additional development, we recommend you use OSS SDKs. For more information about the installation and usage of OSS SDKs, see [OSS SDK introduction](https://help.aliyun.com/document_detail/52834.html).
+This topic describes the request syntax, request samples and return samples for each interface. If you want to perform additional development, we recommend you use OSS SDKs. For more information about the installation and usage of OSS SDKs, see [OSS SDK introduction](https://www.alibabacloud.com/help/doc-detail/52834.html).
 
 ## Pricing {#section_khp_1pl_s2b .section}
 

@@ -40,7 +40,7 @@ Server: AliyunOSS
 DELETE /?website HTTP/1.1
 Date: Fri, 27 Jul 2018 09:10:52 GMT
 Host: test.oss-cn-hangzhou-internal.aliyuncs.com
-Authorization: OSS a1nBNgkzzxcQMf8u:qPrKwuMaarA4Tfk1pqTCylFs1jY=
+Authorization: OSS a1nBN******QMf8u:qPrKwuMaarA4Tfk1pqTCylFs1jY=
 User-Agent: aliyun-sdk-python-test/0.4.0
 
 HTTP/1.1 204 No Content

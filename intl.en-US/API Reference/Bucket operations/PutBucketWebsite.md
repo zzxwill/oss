@@ -296,7 +296,7 @@ Default value: false
 ## Detail Analysis {#section_hms_f42_xdb .section}
 
 -   Static websites are the websites where all Web pages are composed of static content, including scripts such as JavaScript executed on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and APS.NET.
--   To use your own domain name to access bucket-based static websites, you can use the CNAME. For more information about the configuration method, see [Bind custom domain names \(CNAME\)](../../../../../intl.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
+-   To use your own domain name to access bucket-based static websites, you can use the CNAME. For more information about the configuration method, see [Bind custom domain names \(CNAME\)](../../../../../reseller.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
 -   To set a bucket to static website hosting mode, you must specify the index page, and the error page is optional.
 -   To set a bucket to static website hosting mode, the specified index page and error page are objects in the bucket.
 -   After a bucket is set to static website hosting mode, OSS returns the index page for anonymous access to the root domain name of the static website, and returns the results of Get Bucket for signed access to the root domain name of the static website.
@@ -311,7 +311,7 @@ PUT /? website HTTP/1.1
 Host: oss-example.oss-cn-hangzhou.aliyuncs.com
 Content-Length: 209
 Date: Fri, 04 May 2012 03:21:12 GMT
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:KU5h8YMUC78M30dXqf3JxrTZHiA=
+Authorization: OSS qn6q**************tfjbyc:KU5h8YMUC78M30dXqf3JxrTZHiA=
 
 <? xml version="1.0" encoding="UTF-8"? >
 <WebsiteConfiguration>
@@ -342,7 +342,7 @@ PUT /? website HTTP/1.1
 Date: Fri, 27 Jul 2018 09:03:18 GMT
 Content-Length: 2064
 Host: test.oss-cn-hangzhou-internal.aliyuncs.com
-Authorization: OSS a1nBNgkzzxcQMf8u:sNKIHT6ci/z231yIT5vYnetDLu4=
+Authorization: OSS a1nBN******QMf8u:sNKIHT6ci/z231yIT5vYnetDLu4=
 User-Agent: aliyun-sdk-python-test/0.4.0
 
 <WebsiteConfiguration>

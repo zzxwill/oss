@@ -104,7 +104,7 @@
 
 ## 步骤2：构造回调请求 {#section_a45_yfx_wdb .section}
 
-构造完成上述的 callback 和 callback-var 两个参数后，需将参数附加到 OSS 的 请求中。
+构造完成上述的 callback 和 callback-var 两个参数后，需将参数附加到 OSS 的请求中。
 
 附加方式共有三种，方式如下：
 
@@ -382,10 +382,6 @@ bucket=callback-test&object=test.txt&etag=D8E8FCA2DC0F896FD7CB4CB0031BA249&size=
 
     -   下载地址：[点击这里](https://gosspublic.alicdn.com/images/callback_app_server.py.zip)
     -   运行方法：解压包直接运行`python callback_app_server.py`，运行该程序需要安装 RSA 的依赖。
-    C\# 版本：
-
-    -   下载地址：[点击这里](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/31989/cn_zh/1501048926621/callback-server-dotnet.zip)
-    -   运行方法：解压后参看 `README.md`。
     .NET 版本：
 
     -   下载地址：[点击这里](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/31989/cn_zh/1501048926621/callback-server-dotnet.zip)

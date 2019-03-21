@@ -296,7 +296,7 @@ Authorization: SignatureValue
 ## 细节分析 {#section_hms_f42_xdb .section}
 
 -   所谓静态网站是指所有的网页都由静态内容构成，包括客户端执行的脚本，例如JavaScript；OSS不支持涉及到需要服务器端处理的内容，例如PHP，JSP，APS.NET等。
--   如果你想使用自己的域名来访问基于bucket的静态网站，可以通过域名CNAME来实现。具体配置方法请参见[绑定自定义域名](../../../../../cn.zh-CN/开发指南/存储空间（Bucket）/绑定自定义域名.md#)。
+-   如果你想使用自己的域名来访问基于bucket的静态网站，可以通过域名CNAME来实现。具体配置方法请参见[绑定自定义域名](../../../../../intl.zh-CN/开发指南/存储空间（Bucket）/绑定自定义域名.md#)。
 -   用户将一个bucket设置成静态网站托管模式时，必须指定索引页面，错误页面则是可选的。
 -   用户将一个bucket设置成静态网站托管模式时，指定的索引页面和错误页面是该bucket内的一个object。
 -   在将一个bucket设置成静态网站托管模式后，对静态网站根域名的匿名访问，OSS将返回索引页面；对静态网站根域名的签名访问，OSS将返回Get Bucket结果。
@@ -342,7 +342,7 @@ PUT /?website HTTP/1.1
 Date: Fri, 27 Jul 2018 09:03:18 GMT
 Content-Length: 2064
 Host: test.oss-cn-hangzhou-internal.aliyuncs.com
-Authorization: OSS a1nBNgkzzxcQMf8u:sNKIHT6ci/z231yIT5vYnetDLu4=
+Authorization: OSS a1nBN******QMf8u:sNKIHT6ci/z231yIT5vYnetDLu4=
 User-Agent: aliyun-sdk-python-test/0.4.0
 
 <WebsiteConfiguration>

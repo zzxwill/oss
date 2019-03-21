@@ -9,6 +9,9 @@ website接口主要有两个功能：
 -   设置默认主页和默认404页。
 -   设置RoutingRule。RoutingRule用来指定3xx跳转规则以及镜像回源规则。
 
+    **说明：** 镜像回源支持公共云、金融云。
+
+
 website字段样例：
 
 ```
@@ -209,7 +212,7 @@ Authorization: SignatureValue
  |否|
 |MirrorFollowRedirect|bool型| 如果镜像回源获取的结果是3xx，是否要继续跳转到指定的Location获取数据。
 
- 比如发起镜像回源请求时，如果源站返回了302，并且指定了Location。如果此项为true，则oss会继续请求Location指定的地址（最多跳转10此次，如果超过10次，则返回镜像回源失败）。如果为false，那么OSS就会返回302，并将Location透传出去。只有在RedirectType为Mirror时生效。
+ 比如发起镜像回源请求时，如果源站返回了302，并且指定了Location。如果此项为true，则oss会继续请求Location指定的地址（最多跳转10次，如果超过10次，则返回镜像回源失败）。如果为false，那么OSS就会返回302，并将Location透传出去。只有在RedirectType为Mirror时生效。
 
  默认值：true
 
@@ -293,7 +296,7 @@ Authorization: SignatureValue
 ## 细节分析 {#section_hms_f42_xdb .section}
 
 -   所谓静态网站是指所有的网页都由静态内容构成，包括客户端执行的脚本，例如JavaScript；OSS不支持涉及到需要服务器端处理的内容，例如PHP，JSP，APS.NET等。
--   如果你想使用自己的域名来访问基于bucket的静态网站，可以通过域名CNAME来实现。具体配置方法请参见[绑定自定义域名](../../../../intl.zh-CN/开发指南/访问与控制/绑定自定义域名.md#)。
+-   如果你想使用自己的域名来访问基于bucket的静态网站，可以通过域名CNAME来实现。具体配置方法请参见[绑定自定义域名](../../../../../intl.zh-CN/开发指南/存储空间（Bucket）/绑定自定义域名.md#)。
 -   用户将一个bucket设置成静态网站托管模式时，必须指定索引页面，错误页面则是可选的。
 -   用户将一个bucket设置成静态网站托管模式时，指定的索引页面和错误页面是该bucket内的一个object。
 -   在将一个bucket设置成静态网站托管模式后，对静态网站根域名的匿名访问，OSS将返回索引页面；对静态网站根域名的签名访问，OSS将返回Get Bucket结果。
@@ -339,7 +342,7 @@ PUT /?website HTTP/1.1
 Date: Fri, 27 Jul 2018 09:03:18 GMT
 Content-Length: 2064
 Host: test.oss-cn-hangzhou-internal.aliyuncs.com
-Authorization: OSS a1nBNgkzzxcQMf8u:sNKIHT6ci/z231yIT5vYnetDLu4=
+Authorization: OSS a1nBN******QMf8u:sNKIHT6ci/z231yIT5vYnetDLu4=
 User-Agent: aliyun-sdk-python-test/0.4.0
 
 <WebsiteConfiguration>

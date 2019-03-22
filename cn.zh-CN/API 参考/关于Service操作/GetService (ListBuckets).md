@@ -1,6 +1,6 @@
 # GetService \(ListBuckets\) {#reference_ahf_k4t_tdb .reference}
 
-对于服务地址作Get请求可以返回请求者拥有的所有Bucket，其中“/”表示根目录。
+对于服务地址做Get请求可以返回请求者拥有的所有Bucket，其中“/”表示根目录。
 
 ## 请求语法 {#section_glm_xkr_bz .section}
 
@@ -13,14 +13,14 @@ Authorization: SignatureValue
 
 ## 请求参数 {#section_z4x_zkr_bz .section}
 
-GetService\(ListBucket\)时，可以通过prefix，marker和max-keys对list做限定，返回部分结果。
+GetService\(ListBucket\)时，可以通过prefix、marker和max-keys对list做限定，返回部分结果。
 
 |名称|类型|是否必需|描述|
 |--|--|----|--|
-|prefix|字符串|否|限定返回的bucket name必须以prefix作为前缀，可以不设定，不设定时不过滤前缀信息默认值：无
+|prefix|字符串|否|限定返回的bucket name必须以prefix作为前缀，可以不设定，不设定时不过滤前缀信息。默认值：无
 
 |
-|marker|字符串|否|设定结果从marker之后按字母排序的第一个开始返回，可以不设定，不设定时从头开始返回数据默认值：无
+|marker|字符串|否|设定结果从marker之后按字母排序的第一个开始返回，可以不设定，不设定时从头开始返回数据。。默认值：无
 
 |
 |max-keys|字符串|否|限定此次返回bucket的最大数，如果不设定，默认为100，max-keys取值不能大于1000默认值：100
@@ -31,7 +31,7 @@ GetService\(ListBucket\)时，可以通过prefix，marker和max-keys对list做�
 
 |名称|类型|描述|
 |--|--|--|
-|ListAllMyBucketsResult|容器|保存Get Service请求结果的容器。子节点：Owner, Buckets
+|ListAllMyBucketsResult|容器|保存Get Service请求结果的容器。子节点：Owner、Buckets
 
 父节点：None
 
@@ -87,7 +87,7 @@ GetService\(ListBucket\)时，可以通过prefix，marker和max-keys对list做�
 |IntranetEndpoint|字符串|同区域ECS访问Bucket的内网域名。父节点：ListAllMyBucketsResult.Buckets.Bucket
 
 |
-|StorageClass|字符串|Bucket存储类型，支持“Standard”、“IA”、“Archive”。（目前只有部分区域支持“Archive”类型）父节点：ListAllMyBucketsResult.Buckets.Bucket
+|StorageClass|字符串|Bucket存储类型，支持“Standard”、“IA”、“Archive”（目前只有部分区域支持“Archive”类型）。父节点：ListAllMyBucketsResult.Buckets.Bucket
 
 |
 

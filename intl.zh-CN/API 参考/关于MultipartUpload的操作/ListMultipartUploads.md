@@ -13,13 +13,13 @@ Date: GMT Date
 Authorization: Signature
 ```
 
-## 请求参数\(Request Parameters\) {#section_jnq_mwx_wdb .section}
+## 请求参数 {#section_jnq_mwx_wdb .section}
 
 |名称|类型|描述|
 |:-|:-|:-|
 |delimiter|字符串|是一个用于对Object名字进行分组的字符。所有名字包含指定的前缀且第一次出现delimiter字符之间的object作为一组元素——CommonPrefixes。|
 |max-uploads|字符串|限定此次返回Multipart Uploads事件的最大数目，如果不设定，默认为1000，max-uploads取值不能大于1000。|
-|key-marker|字符串|与upload-id-marker参数一同使用来指定返回结果的起始位置。 -   如果upload-id-marker参数未设置，查询结果中包含：所有Object名字的字典序大于key-marker参数值的Multipart事件。
+|key-marker|字符串|与upload-id-marker参数一同使用来指定返回结果的起始位置。 -   如果upload-id-marker参数未设置，查询结果中包含所有Object名字的字典序大于key-marker参数值的Multipart事件。
 -   如果upload-id-marker参数被设置，查询结果中包含：所有Object名字的字典序大于key-marker参数值的Multipart事件和Object名字等于key-marker参数值，但是Upload ID比upload-id-marker参数值大的Multipart Uploads事件。
 
  |
@@ -36,7 +36,7 @@ Authorization: Signature
 
 |名称|类型|描述|
 |:-|:-|:-|
-|ListMultipartUploadsResult|容器|保存List Multipart Upload请求结果的容器。子节点：Bucket, KeyMarker, UploadIdMarker, NextKeyMarker, NextUploadIdMarker, MasUploads, Delimiter, Prefix, CommonPrefixes, IsTruncated, Upload
+|ListMultipartUploadsResult|容器|保存ListMultipartUpload请求结果的容器。子节点：Bucket, KeyMarker, UploadIdMarker, NextKeyMarker, NextUploadIdMarker, MasUploads, Delimiter, Prefix, CommonPrefixes, IsTruncated, Upload
 
 父节点：None
 
@@ -62,7 +62,7 @@ Authorization: Signature
 |MaxUploads|整数|返回的最大Upload数目。父节点：ListMultipartUploadsResult
 
 |
-|IsTruncated|枚举字符串|标明是否本次返回的Multipart Upload结果列表被截断。“true”表示本次没有返回全部结果；“false”表示本次已经返回了全部结果。有效值false、true 
+|IsTruncated|枚举字符串|标明本次返回的MultipartUpload结果列表是否被截断。“true”表示本次没有返回全部结果；“false”表示本次已经返回了全部结果。有效值：false、true 
 
 默认值：false 
 
@@ -88,8 +88,8 @@ Authorization: Signature
 
 -   max-uploads参数最大值为1000。
 -   在OSS的返回结果首先按照Object名字字典序升序排列；对于同一个Object，则按照时间序，升序排列。
--   可以灵活地使用prefix参数对bucket内的object进行分组管理（类似与文件夹的功能）。
--   List Multipart Uploads请求支持5种请求参数： prefix，marker，delimiter，upload-id-marker和max-uploads。通过这些参数的组合，可以设定查询Multipart Uploads事件的规则，获得期望的查询结果。
+-   可以灵活地使用prefix参数对bucket内的object进行分组管理（类似文件夹功能）。
+-   ListMultipartUploads请求支持5种请求参数： prefix、marker、delimiter、upload-id-marker和max-uploads。通过这些参数的组合，可以设定查询Multipart Uploads事件的规则，获得期望的查询结果。
 
 ## 示例 {#section_m24_hyx_wdb .section}
 

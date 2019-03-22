@@ -1,6 +1,6 @@
 # Set a retention strategy {#task_lnq_csm_cfb .task}
 
-A retention strategy is used to specify the protection period of objects in a bucket. No one can modify or delete a protected object during the protection period. For more information, see [Set a retention strategy](../../../../../reseller.en-US/Developer Guide/Buckets/Set a WORM strategy.md#). Currently, you can set a retention strategy only for a bucket in the China South 1 \(Shenzhen\) region.
+A retention strategy is used to specify the protection period of objects in a bucket. No one can modify or delete a protected object during the protection period. For more information, see [Set a retention strategy](../../../../../reseller.en-US/Developer Guide/Buckets/Set a retention strategy.md#). Currently, you can set a retention strategy only for a bucket in the China South 1 \(Shenzhen\) region.
 
 1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss). 
 2.  In the bucket list on the left, click the name of the target bucket. 

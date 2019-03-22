@@ -109,7 +109,7 @@ http://www.aliyun.com/product/oss
 |HostName|oss-example.regionid.example.com|Domain name for access request|
 |Request ID|505B01695037C2AF032593A4|UUID used to uniquely identify this request|
 |LoggingFlag|true|Whether the access logging function is enabled|
-|Requester Aliyun ID|1657136103983691|Alibaba Cloud ID of the requester, “-“ for an anonymous access|
+|Requester Aliyun ID|16571\*\*\*\*\*\*83691|Alibaba Cloud ID of the requester, “-“ for an anonymous access|
 |Operation|GetObject|Request type|
 |Bucket|oss-example|Name of the bucket requested for access|
 |Key|/aliyun-logo.png|Key of user request|
@@ -117,7 +117,7 @@ http://www.aliyun.com/product/oss
 |Server Cost Time \(ms\)|17|Time utilized by OSS server to process this request \(in ms\)|
 |Error Code|NoSuchBucket|Error code returned by OSS|
 |Request Length|302|Length of user request \(byte\)|
-|UserID|1657136103983691| ID of the bucket owner|
+|UserID|16571\*\*\*\*\*\*83691| ID of the bucket owner|
 |Delta DataSize|280|Bucket size variation, “-“ for no change|
 |Sync Request|-|Whether this is an origin retrieval request from CDN, “-“ for no|
 |Reserved|-|Reserved field|
@@ -181,14 +181,14 @@ Server: AliyunOSS
 
 The SDKs of this API are as follows:
 
--   [Java](../../../../../intl.en-US/SDK Reference/Java/Set logging.md)
--   [Python](../../../../../intl.en-US/SDK Reference/Python/Set logging.md)
--   [PHP](../../../../../intl.en-US/SDK Reference/PHP/Set logging.md)
--   [Go](../../../../../intl.en-US/SDK Reference/Go/Set logging.md)
--   [C](../../../../../intl.en-US/SDK Reference/C/Set logging.md)
--   [.NET](../../../../../intl.en-US/SDK Reference/. NET/Set logging.md)
--   [Node.js](../../../../../intl.en-US/SDK Reference/Node. js/Set logging.md)
--   [Ruby](../../../../../intl.en-US/SDK Reference/Ruby/Set logging.md)
+-   [Java](../../../../../reseller.en-US/SDK Reference/Java/Set logging.md)
+-   [Python](../../../../../reseller.en-US/SDK Reference/Python/Set logging.md)
+-   [PHP](../../../../../reseller.en-US/SDK Reference/PHP/Set logging.md)
+-   [Go](../../../../../reseller.en-US/SDK Reference/Go/Set logging.md)
+-   [C](../../../../../reseller.en-US/SDK Reference/C/Set logging.md)
+-   [.NET](../../../../../reseller.en-US/SDK Reference/. NET/Set logging.md)
+-   [Node.js](../../../../../reseller.en-US/SDK Reference/Node. js/Set logging.md)
+-   [Ruby](../../../../../reseller.en-US/SDK Reference/Ruby/Set logging.md)
 
 ## Error codes {#section_dsv_grs_qgb .section}
 

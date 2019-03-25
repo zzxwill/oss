@@ -19,8 +19,6 @@ OSS SDK已经实现签名，用户使用OSS SDK不需要关注签名问题。如
 |iOS SDK|[OSSModel.m](https://github.com/aliyun/aliyun-oss-ios-sdk/blob/master/AliyunOSSSDK/OSSModel.m)|
 |Android SDK|[OSSUtils.java](https://github.com/aliyun/aliyun-oss-android-sdk/blob/master/oss-android-sdk/src/main/java/com/alibaba/sdk/android/oss/common/utils/OSSUtils.java)|
 
-当您自己实现签名，访问OSS报 `SignatureDoesNotMatch` 错误时，请参见[自签名计算失败](../../../../../cn.zh-CN/常见错误排除/排障工具/自签名计算失败.md#)排除错误。
-
 ## Authorization字段计算的方法 {#section_w3s_bw2_xdb .section}
 
 ```
@@ -65,24 +63,24 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 用户发送请求中想访问的OSS目标资源被称为CanonicalizedResource。它的构建方法如下：
 
-1.  将CanonicalizedResource置成空字符串 `""`；
-2.  放入要访问的OSS资源 `/BucketName/ObjectName`（如果没有ObjectName则CanonicalizedResource为”/BucketName/“，如果同时也没有BucketName则为“/”）
-3.  如果请求的资源包括子资源\(SubResource\) ，那么将所有的子资源按照字典序，从小到大排列并以 `&` 为分隔符生成子资源字符串。在CanonicalizedResource字符串尾添加 `？`和子资源字符串。此时的CanonicalizedResource如：`/BucketName/ObjectName?acl&uploadId=UploadId`
+1.  将CanonicalizedResource置成空字符串 `""`。
+2.  放入要访问的OSS资源 `/BucketName/ObjectName`（如果没有ObjectName则CanonicalizedResource为”/BucketName/“，如果同时也没有BucketName则为“/”）。
+3.  如果请求的资源包括子资源\(SubResource\) ，那么将所有的子资源按照字典序，从小到大排列并以 `&` 为分隔符生成子资源字符串。在CanonicalizedResource字符串尾添加 `？`和子资源字符串。此时的CanonicalizedResource如：`/BucketName/ObjectName?acl&uploadId=UploadId`。
 
 **说明：** 
 
--   OSS目前支持的子资源\(sub-resource\)包括：acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，tagging，objectMeta，uploadId，partNumber，security-token，position，img，style，styleName，replication，replicationProgress，replicationLocation，cname，bucketInfo，comp，qos，live，status，vod，startTime，endTime，symlink，x-oss-process，response-content-type，response-content-language，response-expires，response-cache-control，response-content-disposition，response-content-encoding等
+-   OSS目前支持的子资源\(sub-resource\)包括：acl，uploads，location，cors，logging，website，referer，lifecycle，delete，append，tagging，objectMeta，uploadId，partNumber，security-token，position，img，style，styleName，replication，replicationProgress，replicationLocation，cname，bucketInfo，comp，qos，live，status，vod，startTime，endTime，symlink，x-oss-process，response-content-type，response-content-language，response-expires，response-cache-control，response-content-disposition，response-content-encoding等。
 -   子资源\(sub-resource\)有三种类型：
-    -   资源标识，如子资源中的acl，append，uploadId，symlink等，详见[关于Bucket的操作](cn.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。
-    -   指定返回Header字段，如 `response-***`，详见[GetObject](cn.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
-    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../../cn.zh-CN/数据处理/图片处理指南/图片处理访问规则.md#)。
+    -   资源标识，如子资源中的acl、append、uploadId、symlink等，详见[关于Bucket的操作](intl.zh-CN/API 参考/关于Bucket的操作/PutBucket.md#)和[关于Object的操作](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)。
+    -   指定返回Header字段，如 `response-***`，详见[GetObject](intl.zh-CN/API 参考/关于Object操作/GetObject.md#)的`Request Parameters`。
+    -   文件（Object）处理方式，如 `x-oss-process`，用于文件的处理方式，如[图片处理](../../../../../intl.zh-CN/数据处理/图片处理指南/图片处理访问规则.md#)。
 
 ## 计算签名头规则 {#section_qcb_p1f_xdb .section}
 
 -   签名的字符串必须为 `UTF-8` 格式。含有中文字符的签名字符串必须先进行 `UTF-8` 编码，再与 `AccessKeySecret`计算最终签名。
--   签名的方法用[RFC 2104](http://www.ietf.org/rfc/rfc2104.txt)中定义的HMAC-SHA1方法，其中Key为 AccessKeySecret\` 。
+-   签名的方法用[RFC 2104](http://www.ietf.org/rfc/rfc2104.txt)中定义的HMAC-SHA1方法，其中Key为 AccessKeySecret。
 -   `Content-Type` 和 `Content-MD5` 在请求中不是必须的，但是如果请求需要签名验证，空值的话以换行符 `\n` 代替。
--   在所有非HTTP标准定义的header中，只有以 `x-oss-` 开头的header，需要加入签名字符串；其他非HTTP标准header将被OSS忽略（如上例中的x-oss-magic是需要加入签名字符串的）。
+-   在所有非HTTP标准定义的header中，只有以 `x-oss-` 开头的header，需要加入签名字符串；其他非HTTP标准header将被OSS忽略（如下方签名示例中的x-oss-magic是需要加入签名字符串的）。
 -   以 `x-oss-` 开头的header在签名验证前需要符合以下规范：
     -   header的名字需要变成小写。
     -   header按字典序自小到大排序。
@@ -91,7 +89,7 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 ## 签名示例 {#section_qxg_s1f_xdb .section}
 
-假如AccessKeyId是”44CF9590006BF252F707”，AccessKeySecret是”OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV”
+假如AccessKeyId是“44CF959\*\*\*\*\*\*252F707”，AccessKeySecret是“OtxrzxIsfpFjA7Sw\*\*\*\*\*\*8Bw21TLhquhboDYROV”
 
 |请求|签名字符串计算公式|签名字符串|
 |:-|:--------|:----|
@@ -105,17 +103,17 @@ python示例代码：
 import base64
 import hmac
 import sha
-h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
+h = hmac.new("OtxrzxIsfpFjA7Sw******8Bw21TLhquhboDYROV",
              "PUT\nODBGOERFMDMzQTczRUY3NUE3NzA5QzdFNUYzMDQxNEM=\ntext/html\nThu, 17 Nov 2005 18:49:58 GMT\nx-oss-magic:abracadabra\nx-oss-meta-author:foo@bar.com\n/oss-example/nelson", sha)
 Signature = base64.b64encode(h.digest())
 print("Signature: %s" % Signature)
 ```
 
-签名\(Signature\)计算结果应该为 26NBxoKdsyly4EDv6inkoDft/yA=，因为Authorization = “OSS “ + AccessKeyId + “:” + Signature所以最后Authorization为 “OSS 44CF9590006BF252F707:26NBxoKdsyly4EDv6inkoDft/yA=”然后加上Authorization头来组成最后需要发送的消息：
+签名\(Signature\)计算结果应该为 26NBxoKd\*\*\*\*\*\*Dv6inkoDft/yA=，因为Authorization = “OSS”+ AccessKeyId + “:” + Signature，所以最后Authorization为 “OSS 44CF95900\*\*\*BF252F707:26NBxoKd\*\*\*\*\*\*Dv6inkoDft/yA=”，然后加上Authorization头来组成最后需要发送的消息：
 
 ```
 PUT /nelson HTTP/1.0
-Authorization:OSS 44CF9590006BF252F707:26NBxoKdsyly4EDv6inkoDft/yA=
+Authorization:OSS 44CF95900***BF252F707:26NBxoKd******Dv6inkoDft/yA=
 Content-Md5: eB5eJF1ptWaXm4bijSPyxw==
 Content-Type: text/html
 Date: Thu, 17 Nov 2005 18:49:58 GMT

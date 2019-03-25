@@ -17,7 +17,7 @@ h = hmac.new("OtxrzxIsfpFjA7SwPzILwy8Bw21TLhquhboDYROV",
 urllib.quote (base64.encodestring(h.digest()).strip())
 ```
 
-OSS SDK中提供了提供URL签名的方法，使用方法请参看SDK参考中的授权访问文档。
+OSS SDK中提供了URL签名方法，详细请参考[SDK文档](../../../../../intl.zh-CN/SDK 参考/SDK 文档简介.md)。
 
 OSS SDK的URL签名实现，请参看下表：
 
@@ -32,7 +32,7 @@ OSS SDK的URL签名实现，请参看下表：
 
 ## 实现方式 {#section_rtl_3df_xdb .section}
 
-URL签名示例:
+URL签名示例：
 
 ```
 http://oss-example.oss-cn-hangzhou.aliyuncs.com/oss-api.pdf?OSSAccessKeyId=nz2pc56s936**9l&Expires=1141889120&Signature=vjbyPxybdZaNmGa%2ByT272YEAiv4%3D
@@ -58,7 +58,7 @@ URL签名必须至少包含Signature、Expires和OSSAccessKeyId三个参数。
 
     -   通过URL包含签名时，之前的Date参数换成Expires参数。
     -   不支持同时在URL和Header中包含签名。
-    -   如果多次传入入的Signature，Expires，OSSAccessKey参数Id，以第一次为准。
+    -   如果多次传入Signature、Expires、OSSAccessKey参数Id，以第一次为准。
     -   先验证请求时间是否晚于Expires时间，然后再验证签名。
     -   将签名字符串放到URL时，注意要对URL进行urlencode。
 -   临时用户URL签名时，需要携带`security-token`，格式如下：

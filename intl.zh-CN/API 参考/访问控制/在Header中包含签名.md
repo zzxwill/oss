@@ -89,13 +89,11 @@ Signature = base64(hmac-sha1(AccessKeySecret,
 
 ## 签名示例 {#section_qxg_s1f_xdb .section}
 
-假如AccessKeyId是“44CF959\*\*\*\*\*\*252F707”，AccessKeySecret是“OtxrzxIsfpFjA7Sw\*\*\*\*\*\*8Bw21TLhquhboDYROV”
-
 |请求|签名字符串计算公式|签名字符串|
 |:-|:--------|:----|
 |PUT /nelson HTTP/1.0 Content-MD5: eB5eJF1ptWaXm4bijSPyxw== Content-Type: text/html Date: Thu, 17 Nov 2005 18:49:58 GMT Host: oss-example.oss-cn-hangzhou.aliyuncs.com X-OSS-Meta-Author: foo@bar.com X-OSS-Magic: abracadabra|Signature = base64\(hmac-sha1\(AccessKeySecret,VERB + “\\n” + Content-MD5 + “\\n”+ Content-Type + “\\n” + Date + “\\n” + CanonicalizedOSSHeaders+ CanonicalizedResource\)\)|“PUT\\n eB5eJF1ptWaXm4bijSPyxw==\\n text/html\\n Thu, 17 Nov 2005 18:49:58 GMT\\n x-oss-magic:abracadabra\\nx-oss-meta-author:foo@bar.com\\n/oss-example/nels|
 
-可用以下方法计算签名\(Signature\)：
+假如AccessKeyId是“44CF959\*\*\*\*\*\*252F707”，AccessKeySecret是“OtxrzxIsfpFjA7Sw\*\*\*\*\*\*8Bw21TLhquhboDYROV”，可用以下方法计算签名\(Signature\)：
 
 python示例代码：
 

@@ -6,7 +6,7 @@
 
 下图为 OSS livechannel 推流过程图解，了解这个过程，有助于排查 livechannel 推流过程中遇到的问题。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80008/155296020535194_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80008/155348429335194_zh-CN.png)
 
 更多详情请参考：
 
@@ -26,7 +26,7 @@
 
 ## 案例：录制 m3u8 文件失败 {#section_w12_twr_2gb .section}
 
-问题分析：录制的 m3u8 文件成功推流到来 OSS 才算录制成功。
+问题分析：录制的 m3u8 文件成功推流到 OSS 才算录制成功。
 
 解决方案：可以在客户端抓包查看是否有 publish succees 的标志，有这个标志才表示和 OSS 音频包交互成功。所以发现客户端推流有记录，但是就是没有录制视频的情况，可以抓包分析一下。
 
@@ -62,5 +62,5 @@ ffmpeg -re -i 0_20180525105430445.aac -acodec aac -strict -2 -f flv rtmp://xxx.o
 -   直接查看 ffmpeg 记录的日志，确定客户端是否有发送 `aac_header`。
 -   在客户端抓个 RTMP 的包，查看是否发送了 `aac_header`。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80008/155296020535199_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/80008/155348429335199_zh-CN.png)
 

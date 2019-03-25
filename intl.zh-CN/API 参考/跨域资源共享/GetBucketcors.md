@@ -27,7 +27,7 @@ Authorization: SignatureValue
 |AllowedHeader|字符串|控制在OPTIONS预取指令中Access-Control-Request-Headers头中指定的header是否允许。在Access-Control-Request-Headers中指定的每个header都必须在AllowedHeader中有一条对应的项。允许使用最多一个“\*”通配符。 父节点：CORSRule
 
 |
-|ExposeHeader|字符串|指定允许用户从应用程序中访问的响应头（例如一个Javascript的XMLHttpRequest对象。不允许使用“\*”通配符。父节点：CORSRule
+|ExposeHeader|字符串|指定允许用户从应用程序中访问的响应头（例如一个Javascript的XMLHttpRequest对象）。不允许使用“\*”通配符。父节点：CORSRule
 
  |
 |MaxAgeSeconds|整型|指定浏览器对特定资源的预取（OPTIONS）请求返回结果的缓存时间，单位为秒。 一个CORSRule里面最多允许出现一个。父节点：CORSRule
@@ -40,8 +40,8 @@ Authorization: SignatureValue
 ## 细节分析 {#section_g1k_byc_xdb .section}
 
 -   如果Bucket不存在，返回404 no content错误。错误码：NoSuchBucket。
--   只有Bucket的拥有者才能获取CORS规则，否则返回403 Forbidden错误,错误码：AccessDenied。
--   如果CORS规则不存在，返回404 Not Found错误，错误码NoSuchCORSConfiguration。
+-   只有Bucket的拥有者才能获取CORS规则，否则返回403 Forbidden错误。错误码：AccessDenied。
+-   如果CORS规则不存在，返回404 Not Found错误。错误码：NoSuchCORSConfiguration。
 
 ## 示例 {#section_c3z_dyc_xdb .section}
 

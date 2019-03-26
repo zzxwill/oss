@@ -8,7 +8,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
 正确执行时，该API返回206。如果SQL语句不正确，或者和文件不匹配，则会返回400错误。
 
-**说明：** 关于SelectObject的功能介绍请参见开发指南中的[SelectObject](../../../../../intl.zh-CN/开发指南/管理文件/SelectObject.md#)。
+**说明：** 关于SelectObject的功能介绍请参见开发指南中的[SelectObject](../../../../../cn.zh-CN/开发指南/管理文件/SelectObject.md#)。
 
 -   请求语法
     -   请求语法（CSV）
@@ -135,7 +135,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
  父节点：SelectRequest
 
  |
-    |CSV（InputSerialization）|容器| 输入CSV的格式参数（可选）
+    |CSV\(InputSerialization\)|容器| 输入CSV的格式参数（可选）
 
  子节点：FileHeaderInfo、RecordDelimiter、FieldDelimiter、QuoteCharacter、CommentCharacter、 Range
 
@@ -149,17 +149,17 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
  父节点：OutputSerialization
 
  |
-    |JSON\(InputSerialization\)|容器| 输入Json的格式参数
+    |JSON\(InputSerialization\)|容器| 输入JSON的格式参数（可选）
 
- 子节点：Type
-
- |
-    |Type|枚举| 指定输入Json的类型：DOCUMENT | LINES
+ 子节点：Type、Range、ParseJsonNumberAsString
 
  |
-    |JSON\(InputSerialization\)|容器| 输入Json的格式参数
+    |JSON\(OutputSerialization\)|容器| 输出JSON的格式参数（可选）
 
  子节点：RecordDelimiter
+
+ |
+    |Type|枚举| 指定输入JSON的类型：DOCUMENT 、 LINES
 
  |
     |OutputRawData|bool，默认false| 指定输出数据为纯数据（不是下面提到的基于Frame格式）（可选）
@@ -293,7 +293,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
 -   返回Body
 
-    当请求响应中HTTP Status是4xx，表明该请求没有通过相应的SQL语法检查或者目标文件有明显的问题，此时返回错误信息的Body，其格式Get API返回的错误信息一致。
+    当请求响应中HTTP Status是4xx，表明该请求没有通过相应的SQL语法检查或者目标文件有明显的问题，此时返回错误信息的Body，和Get API返回的错误信息一致。
 
     当请求返回5xx，则表明服务器内部错误，返回的错误信息格式和Get API返回的错误信息一致。
 
@@ -646,9 +646,9 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
  父节点：CSV
 
  |
-    |FieldDelimiter|字符串| 指定CSV列分隔符，以Base64编码。默认值为，（可选）
+    |FieldDelimiter|字符串| 指定CSV列分隔符，以Base64编码。默认值为`，`（可选）
 
- 未编码前的值必须为一个字符，以字符的ANSI值表示，比如Java里用，表示逗号。
+ 未编码前的值必须为一个字符，以字符的ANSI值表示，比如Java里用`，`表示逗号。
 
  子节点：None
 

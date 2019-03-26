@@ -1,27 +1,22 @@
 # FAQ {#concept_63401_zh .concept}
 
-This topic lists common questions and answers.
+This topic describes common problems that may occur in the use of OSS Node.js SDK and the solutions for the problems.
 
 ## How to enable HTTPS access {#section_zgn_myk_lfb .section}
 
-When you initialize the SDK, you can input the following parameters:
-
--   region: This parameter is the region used when you applied for the OSS service, such as `oss-cn-hangzhou`. Complete region list can be viewed in [OSS Nodes](../../../../../reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
--   internal: Use in combination with `region`. If `internal` is specified to `true`, visit the intranet node.
--   secure: Use in combination with `region`. If `secure` is specified to `true`, use the HTTPS for access.
--   endpoint: For example, `http://oss-cn-hangzhou.aliyuncs.com`. If the `endpoint` is specified, the `region` is ignored. You can specify HTTPS or IP when using `endpoint`.
+To enable HTTPS access, specify the value of the secure parameter to true when initializing the SDK.
 
 ## How to obtain the upload progress { .section}
 
-You can obtain the upload progress when using [multipart upload](reseller.en-US/SDK Reference/Node. js/Upload objects.md#).
+You can specify the progress parameter to obtain the upload progress when performing [multipart upload](reseller.en-US//Upload objects.md#) operations.
 
 ## How to obtain the download progress { .section}
 
-The node can calculate the download progress based on the size of the download traffic.
+The download progress is calculated based on the size of the download traffic in OSS Node.js SDK.
 
 ## How to upload Base64-encoded images { .section}
 
-Convert the Base64 content to a File object and upload it to the OSS server on the call API.
+Convert the images to File objects and upload them to the OSS server by calling APIs.
 
 ```
  function dataURLtoFile(dataurl, filename) {
@@ -43,9 +38,9 @@ Convert the Base64 content to a File object and upload it to the OSS server on t
 
 ```
 
-## How to upload files to a specified directory { .section}
+## How to upload a file to a specified directory { .section}
 
-You only need to add the prefix of the specified directory to the name of the object to be uploaded, see: [Comparison of OSS and file system](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
+You only need to add the prefix of the directory to the name of the object that you want to upload. For more information, see: [Comparison of OSS and file system](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
 
 ```
 let OSS = require('ali-oss')
@@ -73,10 +68,10 @@ client.multipartUpload('base-dir/' +'object-name', 'local-file', {
 
 ## How to obtain the signed URL of an object { .section}
 
-You can call the `signatureUrl` method to obtain the download address. See [related documents](reseller.en-US/SDK Reference/Node. js/Download objects.md#).
+You can call the `signatureUrl` method to obtain the signed URL used to download an object. For more information, see the [signatureUrl](https://github.com/ali-sdk/ali-oss#user-content-signatureurlname-options) part in the OSS SDK document.
 
 ## Common errors { .section}
 
--    [SDK exception log is enabled](reseller.en-US/SDK Reference/Node. js/Exception handling.md#) 
--    [OSS common errors](../../../../../reseller.en-US/Errors and Troubleshooting/OSS error response.md#) 
+-    [Exception handling](reseller.en-US/SDK Reference/Node. js/Exception handling.md#) 
+-    [OSS error response](../../../../../reseller.en-US/Errors and Troubleshooting/OSS error response.md#) 
 

@@ -82,11 +82,13 @@ PostObject使用HTML表单上传Object到指定Bucket。
     -   如果该域的值为200或者204，OSS返回一个空文档和相应的状态码。
     -   如果该域的值设置为201，OSS返回一个XML文件和201状态码。
     -   如果该域的值未设置或者设置成一个非法值，OSS返回一个空文档和204状态码。
-| |
+|非必须|
     |x-oss-meta-\*|字符串|用户指定的user meta值。默认值：无
 
 |可选|
-    |x-oss-server-side-encryption|字符串|指定OSS创建Object时的服务器端加密编码算法。合法值：AES256
+    |x-oss-server-side-encryption|字符串|指定OSS创建Object时的服务器端加密编码算法。取值：AES256或 KMS（您需要购买KMS套件，才可以使用 KMS 加密算法，否则会报 KmsServiceNotEnabled 错误码）
+
+指定此参数后，在响应头中会返回此参数，OSS会对上传的Object进行加密编码存储。当下载该Object时，响应头中会包含x-oss-server-side-encryption，且该值会被设置成该Object的加密算法。
 
 |可选|
     |x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption的值为KMS时有效。
@@ -109,7 +111,7 @@ PostObject使用HTML表单上传Object到指定Bucket。
 
     |名称|类型|描述|
     |:-|:-|:-|
-    |PostResponse|容器|保持Post请求结果的容器。子节点：Bucket, ETag, Key, Location
+    |PostResponse|容器|保存Post请求结果的容器。子节点：Bucket, ETag, Key, Location
 
 |
     |Bucket|字符串|Bucket名称。父节点：PostResponse
@@ -131,8 +133,8 @@ PostObject使用HTML表单上传Object到指定Bucket。
     -   如果用户上传了Content-MD5请求Header，OSS会计算body的Content-MD5并检查一致性，如果不一致，将返回InvalidDigest错误码。
     -   如果POST请求中包含Header签名信息或URL签名信息，OSS不会对它们做检查。
     -   如果请求中携带以x-oss-meta-为前缀的表单域，则视为user meta，比如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的user meta总大小不能超过 8 KB。
-    -   Post请求的body总长度不允许超过5G。若文件长度过大，则返回错误码：EntityTooLarge。
-    -   如果上传指定了x-oss-server-side-encryption Header请求域，则必须设置其值为AES256，否则会返回400 错误，错误码：InvalidEncryptionAlgorithmError。指定该Header后，在响应头中也会返回该Header，OSS会对上传的Object进行加密编码存储，当这个Object被下载时，响应Header中会包含x-oss-server-side-encryption，值被设置成该Object的加密算法。
+    -   Post请求的body总长度不允许超过5GB。若文件长度过大，则返回错误码：EntityTooLarge。
+    -   如果上传指定了x-oss-server-side-encryption Header请求域，则必须设置其值为AES256与KMS，否则会返回400 错误，错误码：InvalidEncryptionAlgorithmError。指定该Header后，在响应头中也会返回该Header，OSS会对上传的Object进行加密编码存储，当这个Object被下载时，响应Header中会包含x-oss-server-side-encryption，值被设置成该Object的加密算法。
     -   表单域对大小写不敏感，但表单域的值对大小写敏感。
 -   示例
     -   请求示例：
@@ -257,7 +259,7 @@ Post policy中必须包含expiration和conditions。
 
 ## Post Signature {#section_wny_mww_wdb .section}
 
-对于验证的Post请求，HTML表单中必须包含policy和Signature信息。Policy控制请求中那些值是允许的。
+对于验证的Post请求，HTML表单中必须包含policy和Signature信息。Policy控制请求中哪些值是允许的。
 
 计算Signature的具体流程为：
 

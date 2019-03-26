@@ -18,7 +18,7 @@ OSS 的文件读取支持开启阿里云 CDN 加速服务，能够将 OSS 的 Bu
 1.  登录[OSS 管理控制台](https://oss.console.aliyun.com/overview)，在左侧存储空间列表中，单击目标存储空间名称。
 2.  单击**域名管理** \> **绑定用户域名**，打开绑定用户域名页面。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63857/155062913232011_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63857/155359209232011_zh-CN.png)
 
     -   用户域名：用于输入要绑定的域名名称，例如：hello-world.com，最大输入63字符。
     -   阿里云 CDN 加速：开启 [CDN 加速](../../../../../intl.zh-CN/开发指南/隐藏/CDN加速OSS.md#)服务。
@@ -31,9 +31,9 @@ OSS 的文件读取支持开启阿里云 CDN 加速服务，能够将 OSS 的 Bu
     -   若提示域名冲突，表示该域名已被其他用户绑定。您可以单击获取 TXT，通过添加域名 TXT 记录来验证域名所有权，强制绑定域名。此操作会解除域名与之前存储空间的绑定。详情请参见：[验证域名所有权](#)。
 5.  域名信息更新约需要一分钟时间。更新完成后，您可单击**域名绑定配置**，查看**阿里云 CDN 域名**和 **OSS 访问域名**。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155062913232592_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155359209332592_zh-CN.png)
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155062913335313_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155359209335313_zh-CN.png)
 
 
 ## 方式二：通过 CDN 控制台开启 CDN 加速服务 {#two .section}
@@ -42,7 +42,7 @@ OSS 的文件读取支持开启阿里云 CDN 加速服务，能够将 OSS 的 Bu
 2.  选择**域名管理** \> **添加域名**。
 3.  填写加速域名，并选择需要加速的 OSS Bucket 作为源站。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155062913332707_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155359209332707_zh-CN.png)
 
     |参数|说明|
     |:-|:-|
@@ -66,7 +66,7 @@ OSS 的文件读取支持开启阿里云 CDN 加速服务，能够将 OSS 的 Bu
 
 1.  登录 CDN 控制台，打开[域名管理](https://cdn.console.aliyun.com/#/domain/list)页面。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155062913334242_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155359209334242_zh-CN.png)
 
 2.  复制需要添加解析的域名对应的 CNAME 值。
 3.  登录[云解析 DNS 控制台](https://dns.console.aliyun.com/#/dns/domainList)。
@@ -102,21 +102,21 @@ OSS 的文件读取支持开启阿里云 CDN 加速服务，能够将 OSS 的 Bu
 
 配置 CNAME 后，不同的域名服务商 CNAME 配置生效的时间也不同。您可以 ping或 lookup 您所添加的域名，如果被转向 `*.*kunlun*.com`，即表示 CNAME 配置已经生效。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155062913334256_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155359209434256_zh-CN.png)
 
 ## 验证域名所有权 {#Verification .section}
 
-当您的域名被其他用户绑定时，您可参考以下步骤验证域名所有权操作强制解绑此域名。
+当您的域名被其他用户绑定时，您可以通过验证域名所有权，强制解绑此域名。
 
 **说明：** 此步骤仅在[绑定 CDN 加速域名](#)提示域名冲突时查看。
 
 1.  单击获取TXT，系统根据您的信息生成对应的TXT记录。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63870/155062913332020_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/63870/155359209432020_zh-CN.png)
 
 2.  登录您的域名解析商处添加对应的 TXT 记录。已添加到阿里云的域名，**添加记录**请参考[域名解析配置](#)。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155062913335316_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/64596/155359209435316_zh-CN.png)
 
     -   记录类型选择：TXT
     -   主机记录：@

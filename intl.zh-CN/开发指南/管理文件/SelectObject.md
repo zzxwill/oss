@@ -141,15 +141,15 @@ Python Select API详解
         -   当Json\_Type为DOCUMENT时，该文件为JSON文件。
         -   当Json\_Type为LINES时，该文件为JSON LINE文件。
  |
-        |CsvHeaderInfo|CSV的header信息，合法值为None、Ignore、 Use。        -   None：该文件没有header信息
+        |CsvHeaderInfo|CSV的header信息，合法值为None、Ignore、 Use。        -   None：该文件没有header信息。
         -   Ignore：该文件有header信息但未在SQL中使用。
         -   Use：该文件有Header信息且在sql语句中使用了Header中的列名。
 |
         |CommentCharacter|CSV中的注释字符。仅支持一个字符，默认为None表示没有注释字符。|
         |RecordDelimiter|CSV中的行分隔符，仅支持一个或两个字符。默认为\\n。|
         |OutputRecordDelimiter|Select输出结果中的行分隔符，默认为\\n。|
-        |FieldDelimiter|CSV的列分隔符，仅支持一个字符，默认为逗号,。|
-        |OutputFieldDelimiter|Select输出结果中的列分隔符，默认为,。|
+        |FieldDelimiter|CSV的列分隔符，仅支持一个字符，默认为逗号（,）。|
+        |OutputFieldDelimiter|Select输出结果中的列分隔符，默认为逗号（,）。|
         |QuoteCharacter|CSV 列的引号字符，只支持一个字符，默认为双引号。引号内的行列分隔符被当做普通字符处理。|
         |SplitRange|使用Split做分片查询。格式为\(start, end\)，此处为闭区间，表示查询范围从Split start\#到end\#。|
         |LineRange|使用行做分片查询。格式为\(start, end\)，此处为闭区间，表示查询范围从行号start\#到end\#。|

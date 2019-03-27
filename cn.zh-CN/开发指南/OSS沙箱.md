@@ -16,7 +16,7 @@
     2.  根据业务情况，购买合适的[高防 IP](https://common-buy.aliyun.com/?spm=5176.10695662.958511.2.5f267a64VdiI7O&commodityCode=ddosBag#/buy)。
     3.  将高防 IP 绑定到您已设置好的自定义域名上。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/155350329534179_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/155365725534179_zh-CN.png)
 
         -   防护网站：填写您绑定的 OSS 自定义域名。
         -   协议类型：按照您的实际访问方式选择。
@@ -69,7 +69,7 @@
         3.  申请通过后，参照[方案一](#)进行配置。
 -   因发布违法内容导致 Bucket 被切入沙箱
     -   针对已经入沙箱的 Bucket，请按照如下操作执行：
-        1.  [开通 OSS 违规检测](../../../../../cn.zh-CN/用户指南/OSS违规检测.md#)步骤开通内容安全服务，定期监测您的 Bucket，保证不再发布违规内容。
+        1.  按照[开通 OSS 违规检测](../../../../../cn.zh-CN/用户指南/OSS违规检测.md#)步骤开通内容安全服务，定期检测您的 Bucket，保证不再发布违规内容。
         2.  请按照[方案二](#)配置 ECS 反向代理，通过代理服务器进行访问。
 
             **说明：** 请在 Bucket 所在的 Region 搭建 ECS，并且 proxy\_pass 填写 Bucket 内网域名地址。
@@ -77,5 +77,5 @@
     -   若您多个 Bucket 同时发布违法内容，或单个 Bucket 多次发布违法内容。那么，您后续新建的 Bucket 默认也会进入沙箱。此时，您需按如下操作执行：
         1.  购买内容安全产品。
         2.  通过工单系统提交“新建 Bucket 默认不进入沙箱申请”。
-        3.  申请通过后，配置内容安全监测，定期监测您新建的 Bucket。
+        3.  申请通过后，配置内容安全检测，定期检测您新建的 Bucket。
 

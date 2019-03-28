@@ -35,11 +35,11 @@ OssImport部署方式详细介绍请参考[说明及配置](../../../../../cn.zh
 
 **说明：** 在ECS上搭建OssImport分布式环境后，OssImport从腾讯云COS华南1（深圳）区域下载数据到ECS华东1（杭州），建议使用外网。使用OssImport从ECS华东1（杭州）将数据上传到OSS华东1（杭州），建议使用内网。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4431/15529662351976_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4431/15537559601976_zh-CN.png)
 
 1.  全量迁移第三方存储T1前的历史数据，详细步骤请参考分布式部署的[运行](../../../../../cn.zh-CN/常用工具/数据迁移工具ossimport/分布式部署.md#section_m1y_1jh_wdb)。
 
-    注意T1为Unix时间戳，即自1970年1月1日UTC零点以来的秒数，通过命令`date +%s`获取）。
+    **说明：** T1为Unix时间戳，即自1970年1月1日UTC零点以来的秒数，通过命令date +%s获取。
 
 2.  在OSS控制台打开[OSS镜像回源](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置回源规则.md#)，回源地址设置为迁移源（第三方存储）。
 3.  将业务系统读写切换至OSS，此时业务系统记录的时间为T2。

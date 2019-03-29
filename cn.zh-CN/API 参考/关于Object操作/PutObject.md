@@ -6,6 +6,7 @@ PutObject接口用于上传文件（Object）。
 
 -   添加的文件大小不得超过5 GB。
 -   如果已经存在同名的Object，并且有访问权限，则新添加的文件将覆盖原来的文件，并成功返回200 OK。
+-   OSS 没有文件夹的概念，所有元素都是以文件来存储，但您可以通过创建一个空的Object创建模拟文件夹，具体参见[OSS文件夹](https://help.aliyun.com/knowledge_detail/39527.html?spm=5176.11065259.1996646101.searchclickresult.965e5d0fkji5gj)。
 
 ## 请求语法 {#section_ald_lkw_bz .section}
 
@@ -19,6 +20,8 @@ Authorization: SignatureValue
 ```
 
 ## 请求头 {#section_y1z_lkw_bz .section}
+
+**说明：** OSS支持HTTP协议规定的5个请求头：Cache-Control、Expires、Content-Encoding、Content-Disposition、Content-Type。如果上传Object时设置了这些请求头，则该Object被下载时，相应的请求头值会被自动设置成上传时的值。
 
 |名称|类型|是否必选|描述|
 |:-|:-|:---|:-|
@@ -48,8 +51,6 @@ Authorization: SignatureValue
 
  默认值：无
 
- 限制：无
-
  |
 |Content-Length|字符串|否| 用于描述HTTP消息体的传输大小。
 
@@ -64,8 +65,6 @@ Authorization: SignatureValue
 |Expires|字符串|否| 过期时间，详细描述参考照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。
 
  默认值：无
-
- **说明：** OSS不会对该值进行限制和验证。
 
  |
 |x-oss-server-side-encryption|字符串|否| 指定OSS创建Object时的服务器端加密编码算法。
@@ -94,11 +93,9 @@ Authorization: SignatureValue
  支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject。
 
  |
+|x-oss-meta-\*|字符串|否| 使用PutObject接口时，如果配置以x-oss-meta-\*为前缀的参数，则该参数视为元数据，例如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的元数据总大小不能超过8KB。元数据支持短横线（-）、数字、英文字母（a-z），英文字符的大写字母会被转成小写字母，不支持下划线（\_）在内的其他字符。
 
-**说明：** 
-
--   OSS支持HTTP协议规定的5个请求头：Cache-Control、Expires、Content-Encoding、Content-Disposition、Content-Type。如果上传Object时设置了这些请求头，则该Object被下载时，相应的请求头值会被自动设置成上传时的值。
--   使用PutObject接口时，如果配置以x-oss-meta-为前缀的参数，则该参数视为元数据，例如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的元数据总大小不能超过8KB。元数据支持短横线（-）、数字、英文字母（a-z），英文字符的大写字母会被转成小写字母，不支持下划线（\_）在内的其他字符。
+ |
 
 ## 示例 {#section_orz_dlw_bz .section}
 
@@ -173,7 +170,7 @@ ETag: "A797938C31D59EDD08D86188F6D5B872"
 -   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/上传文件/简单上传.md)
 -   [Android](../../../../../cn.zh-CN/SDK 参考/Android/上传文件/简单上传.md)
 -   [iOS](../../../../../cn.zh-CN/SDK 参考/iOS/上传文件/概述.md)
--   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/上传文件.md)
+-   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/上传文件/概述.md)
 -   [Browser.js](../../../../../cn.zh-CN/SDK 参考/Browser.js/上传文件.md)
 -   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/上传文件.md)
 

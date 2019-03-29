@@ -8,7 +8,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
 正确执行时，该API返回206。如果SQL语句不正确，或者和文件不匹配，则会返回400错误。
 
-**说明：** 关于SelectObject的功能介绍请参见开发指南中的[SelectObject](../../../../../cn.zh-CN/开发指南/管理文件/SelectObject.md#)。
+**说明：** 关于SelectObject的功能介绍请参见开发指南中的[SelectObject](../../../../../intl.zh-CN/开发指南/管理文件/SelectObject.md#)。
 
 -   请求语法
     -   请求语法（CSV）
@@ -475,7 +475,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
     | cast (column index |column name | json path | literal as INT|DOUBLE|)
     ```
 
-    op：包括 \> < \>= <= != =，LIKE，+-\*/%以及字符串连接||。
+    op：包括 `>`、`<` 、`>=`、`<=`、`!=`、 `=`、`，`、`LIKE`、`+`、`-`、`*`、`/`、`%`以及字符串连接||。
 
     cast: 对于同一个column，只能cast成一种类型。
 

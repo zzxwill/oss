@@ -20,12 +20,16 @@ Authorization: Signature
 |delimiter|字符串|是一个用于对Object名字进行分组的字符。所有名字包含指定的前缀且第一次出现delimiter字符之间的object作为一组元素——CommonPrefixes。|
 |max-uploads|字符串|限定此次返回Multipart Uploads事件的最大数目，如果不设定，默认为1000，max-uploads取值不能大于1000。|
 |key-marker|字符串|与upload-id-marker参数一同使用来指定返回结果的起始位置。 -   如果upload-id-marker参数未设置，查询结果中包含所有Object名字的字典序大于key-marker参数值的Multipart事件。
--   如果upload-id-marker参数被设置，查询结果中包含：所有Object名字的字典序大于key-marker参数值的Multipart事件和Object名字等于key-marker参数值，但是Upload ID比upload-id-marker参数值大的Multipart Uploads事件。
+-   如果upload-id-marker参数被设置，查询结果中包含：
+    -   所有Object名字的字典序大于key-marker参数值的Multipart事件。
+    -   Object名字等于key-marker参数值，但是Upload ID比upload-id-marker参数值大的Multipart Uploads事件。
 
  |
 |prefix|字符串|限定返回的object key必须以prefix作为前缀。注意使用prefix查询时，返回的key中仍会包含prefix。|
 |upload-id-marker|字符串|与key-marker参数一同使用来指定返回结果的起始位置。 -   如果key-marker参数未设置，则OSS忽略upload-id-marker参数。
--   如果key-marker参数被设置，查询结果中包含：所有Object名字的字典序大于key-marker参数值的Multipart事件和Object名字等于key-marker参数值，但是Upload ID比upload-id-marker参数值大的Multipart Uploads事件。
+-   如果key-marker参数被设置，查询结果中包含：
+    -   所有Object名字的字典序大于key-marker参数值的Multipart事件。
+    -   Object名字等于key-marker参数值，但是Upload ID比upload-id-marker参数值大的Multipart Uploads事件。
 
 |
 |encoding-type|字符串|指定对返回的内容进行编码，指定编码的类型。Delimiter、KeyMarker、Prefix、NextKeyMarker和Key使用UTF-8字符，但xml 1.0标准不支持解析一些控制字符，比如ascii值从0到10的字符。对于包含xml 1.0标准不支持的控制字符，可以通过指定encoding-type对返回的Delimiter、KeyMarker、Prefix、NextKeyMarker和Key进行编码。默认值：无

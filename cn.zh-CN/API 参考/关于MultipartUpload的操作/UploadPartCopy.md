@@ -2,7 +2,7 @@
 
 UploadPartCopy通过从一个已存在的Object中复制数据来上传一个Part。
 
-通过在UploadPart请求的基础上增加一个Header:x-oss-copy-source来调用该接口。当复制一个大于1GB的文件时，必须使用UploadPartCopy的方式进行复制。UploadPartCopy 的源Bucket地址和目标Bucket地址必须是同一个Region。如果想通过单个操作复制小于1GB的文件，可以参考[CopyObject](cn.zh-CN/API 参考/关于Object操作/CopyObject.md)。
+通过在UploadPart请求的基础上增加一个Header:x-oss-copy-source来调用该接口。当复制一个大于1GB的文件时，必须使用UploadPartCopy的方式进行复制。UploadPartCopy的源Bucket地址和目标Bucket地址必须是同一个Region。如果想通过单个操作复制小于1GB的文件，可以参考[CopyObject](intl.zh-CN/API 参考/关于Object操作/CopyObject.md)。
 
 ## 请求语法 {#section_gqh_crx_wdb .section}
 
@@ -50,11 +50,11 @@ x-oss-copy-source-range:bytes=first-last
 
 ## 细节分析 {#section_nbb_dsx_wdb .section}
 
--   调用该接口上传Part数据前，必须调用Initiate MultipartUpload接口，获取一个OSS服务器颁发的Upload ID。
+-   调用该接口上传Part数据前，必须调用InitiateMultipartUpload接口，获取一个OSS服务器颁发的Upload ID。
 -   MultipartUpload要求除最后一个Part以外，其他的Part大小都要大于100KB。但是UploadPart接口并不会立即校验上传Part的大小（因为不知道是否为最后一块）；只有当CompleteMultipartUpload的时候才会校验。
 -   不指定x-oss-copy-source-range请求头时，表示复制整个源Object。当指定该请求头时，则返回消息中会包含整个文件的长度和此次复制的范围，例如：Content-Range: bytes 0-9/44，表示整个文件长度为44，此次复制的范围为0-9。当指定的范围不符合范围规范时，则复制整个文件，并且不在结果中提及Content-Range。
--   若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在Upload Part响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算法，具体见[InitiateMultipartUpload接口](cn.zh-CN/API 参考/关于MultipartUpload的操作/InitiateMultipartUpload.md)。
--   该操作不能复制通过Append追加上传方式产生的object。
+-   若调用InitiateMultipartUpload接口时，指定了x-oss-server-side-encryption请求头，则会对上传的Part进行加密编码，并在Upload Part响应头中返回x-oss-server-side-encryption头，其值表明该Part的服务器端加密算法，具体见[InitiateMultipartUpload接口](intl.zh-CN/API 参考/关于MultipartUpload的操作/InitiateMultipartUpload.md)。
+-   该操作不能复制通过Append追加上传方式产生的Object。
 -   如果Bucket的类型为Archive，则不能调用该接口，否则返回400错误，错误码为OperationNotSupported。
 
 ## 示例 {#section_sv4_hsx_wdb .section}

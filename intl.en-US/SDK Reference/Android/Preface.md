@@ -6,6 +6,8 @@ This article describes how to install and use the OSS Android SDK.
 
 This document assumes that you have already activated the Alibaba Cloud OSS service and created an AccessKeyID and an AccessKeySecret. In the document, ID refers to the AccessKeyID and KEY indicates the AccessKeySecret.
 
+If you have not yet activated or do not know about the OSS service, log on to the [OSS product page](https://www.alibabacloud.com/product/oss) for more help.
+
 ## Environment requirements {#section_q4s_p2f_lfb .section}
 
 -   Android 2.3 or later

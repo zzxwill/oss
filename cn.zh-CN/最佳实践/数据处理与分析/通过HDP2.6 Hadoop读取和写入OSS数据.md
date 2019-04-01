@@ -181,5 +181,5 @@ HDP（Hortonworks Data Platform） 是由 Hortonworks 发行的大数据平台�
 
 关于 Hadoop 更多内容，可参考：[Hadoop 支持集成 OSS](https://yq.aliyun.com/articles/292792?spm=a2c4e.11155435.0.0.7ccba82fbDwfhK)。
 
-您也可以通过阿里云 EMR 访问 OSS。阿里云 EMR 基于开源生态，包括 Hadoop、Spark、Kafka、Flink、Storm 等组件，为您提供集群、作业、数据管理等服务的一站式企业大数据平台，并无缝支持 OSS。阿里云 EMR 与 OSS 紧密结合，针对开源生态访问 OSS，有多项技术优化，详情可参考 [EMR产品介绍](https://www.aliyun.com/product/emapreduce))。
+您也可以通过阿里云 EMR 访问 OSS。阿里云 EMR 基于开源生态，包括 Hadoop、Spark、Kafka、Flink、Storm 等组件，为您提供集群、作业、数据管理等服务的一站式企业大数据平台，并无缝支持 OSS。阿里云 EMR 与 OSS 紧密结合，针对开源生态访问 OSS，有多项技术优化，详情可参考 [EMR 产品介绍](../../../../../cn.zh-CN/产品简介/什么是 E-MapReduce.md#)。
 

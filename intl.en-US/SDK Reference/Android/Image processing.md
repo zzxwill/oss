@@ -8,7 +8,7 @@ After source images are uploaded to OSS, you can process the images on any Inter
 
 For more information about the features of OSS image processing service, see [OSS image processing](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#).
 
- [OSS image processing service](https://help.aliyun.com/document_detail/44686.html) provides the following features:
+ [OSS image processing service](https://www.alibabacloud.com/help/doc-detail/44686.html) provides the following features:
 
 -   [Resize images](../../../../../reseller.en-US/Data Processing/Image Processing/Resize images.md#)
 -   [Crop images](../../../../../reseller.en-US/Data Processing/Image Processing/Crop images/Incircle.md#)

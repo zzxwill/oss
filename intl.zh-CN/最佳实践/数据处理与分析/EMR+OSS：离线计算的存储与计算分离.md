@@ -1,6 +1,6 @@
 # EMR+OSS：离线计算的存储与计算分离 {#concept_x3n_yrm_vdb .concept}
 
-## 背景 {#section_xkj_1sm_vdb .section}
+## 背景信息 {#section_xkj_1sm_vdb .section}
 
 在传统Hadoop的使用中，存储与计算密不可分，而随着业务的发展，集群的规模常常不能满足业务的需求。例如，数据规模超过了集群存储能力，业务上对数据产出的周期提出新的要求导致计算能力跟不上。这就要求我们能随时应对集群存储空间不足或者计算能力不足的挑战。
 
@@ -12,14 +12,14 @@
 
 离线计算的存储和计算分离架构简单，如下图所示。OSS作为默认的存储，Hadoop/Spark作为计算引擎直接分析OSS存储的数据。
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/2247_zh-CN.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/15541937952247_zh-CN.png)
 
 ## 优势 {#section_igt_fsm_vdb .section}
 
 |因素|计算和存储不分离|计算和存储分离|
 |:-|:-------|:------|
 |灵活性|不灵活|计算与存储分离后，集群规划简单灵活，基本不需要估算未来业务的规模，做到按需使用。|
-|成本|高|在ECS自建的磁盘选择高效云盘，以1 master 8 cpu32g/6 slave 8 cpu32g/10T数据量为例进行估算，存储与计算分离后，成本下降一倍。|
+|成本|高|在ECS自建的磁盘选择高效云盘，以1 master 8 cpu32g/6 slave 8 cpu32g/10T数据量为例进行估算，存储与计算分离后，成本降低50%。|
 |性能|较高|至多下降10%。|
 
 ## 案例测试 {#section_sdx_lsm_vdb .section}
@@ -39,12 +39,15 @@
 -   测试结果
     -   性能
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/2248_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/15541937962248_zh-CN.png)
 
-    -   成本![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/2250_zh-CN.png)
+    -   成本
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/15541937962250_zh-CN.png)
+
     -   时间
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/2251_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4434/15541937962251_zh-CN.png)
 
 -   结果分析
 

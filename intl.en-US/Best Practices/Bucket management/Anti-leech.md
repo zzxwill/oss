@@ -2,9 +2,7 @@
 
 ## Background {#section_zkn_rd2_vdb .section}
 
-For example, A is the webmaster of a website. Webpages on the website contain links to images and audio/video files. These static resources are stored on [Alibaba Cloud OSS](https://www.alibabacloud.com/product/oss). For example, A may save an image file on OSS with the URL `http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`. 
-
-For OSS external resource url, see [OSS address](../../../../../intl.en-US/Developer Guide/Signature/OSS request process.md#) such a URL \(without signing\) requires the user's bucket permission to read publicly.
+For OSS external resource url, see [OSS address](../../../../../reseller.en-US/Developer Guide/Endpoint/Endpoints.md#) such a URL \(without signing\) requires the user's bucket permission to read publicly.
 
 B is the webmaster of another website, B use the image resources of the website without permission, use this method to steal space and traffic by placing it in a web page on your website. In this case, the third-party web site user sees the B web site, but it's not clear the source of the pictures on the website. Since OSS charges by usage, so that user A does not get any benefit, instead, the cost of resource use is borne.
 
@@ -85,7 +83,7 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
     -   Disable Allow Empty Referer, as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15531319331701_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15543560951701_en-US.png)
 
         Direct access: The resources are accessible even when anti-leech protection takes effect. The reason is, if the whitelist is blank, the system does not check whether the Referer field is blank. The Referer setting does not take effect when the whitelist is blank. Therefore, the Referer whitelist must be configured.
 
@@ -99,16 +97,16 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
         -   To allow access to other domain names such as `http://img.userdomain/index.html`, add `http://*.userdomain/` to the Referer whitelist.
         Both entries are configured as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15531319331702_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15543560951702_en-US.png)
 
         After testing, the following results are obtained:
 
         |Browser input| Expectation|Result|
         |:------------|:-----------|:-----|
-        |[http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png](http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png)|Expectation for direct access with a blank Referer: Blank Referers are not allowed and OSS returns 403.|As expected|
-        |[http://userdomain/error.html](http://userdomain/error.html)|Expectation for a request from the origin site: successful access.|As expected|
-        |[http://userdomain-steal/index.html](http://userdomain-steal/index.html)|Expectation for a request from a leeching site: OSS returns 403. Anti-leech protection is successful.|As expected|
-        |[http://img.userdomain/error.html](http://img.userdomain/error.html)|Expectation for a request from a third-level domain of the origin site: successful access.|As expected|
+        |http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png|Expectation for direct access with a blank Referer: Blank Referers are not allowed and OSS returns 403.|As expected|
+        |http://userdomain/error.html|Expectation for a request from the origin site: successful access.|As expected|
+        |http://userdomain-steal/index.html|Expectation for a request from a leeching site: OSS returns 403. Anti-leech protection is successful.|As expected|
+        |http://img.userdomain/error.html|Expectation for a request from a third-level domain of the origin site: successful access.|As expected|
 
         **Note:** 
 
@@ -118,23 +116,23 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
         The Referer whitelist contains `http://*.userdomain/` and `http://userdomain`, as shown in the following figure:
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15531319331709_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4411/15543560951709_en-US.png)
 
         After testing, the following results are obtained:
 
         |Browser input| Expectation|Result|
         |:------------|:-----------|:-----|
-        |[http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png](http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png)|Expectation for direct access with a blank Referer: successful access|As expected|
-        |[http://userdomain/error.html](http://userdomain/error.html)|Expectation for a request from the origin site: successful access|As expected|
-        |[http://userdomain-steal/index.html](http://userdomain-steal/index.html)| Expectation for a request from a leeching site: OSS returns 403. Anti-leech protection is successful.|As expected|
-        |[http://img.userdomain/error.html](http://img.userdomain/error.html)|Expectation for a request from a third-level domain of the origin site: successful access|As expected|
+        |http://referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png|Expectation for direct access with a blank Referer: successful access|As expected|
+        |http://userdomain/error.html|Expectation for a request from the origin site: successful access|As expected|
+        |http://userdomain-steal/index.html| Expectation for a request from a leeching site: OSS returns 403. Anti-leech protection is successful.|As expected|
+        |http://img.userdomain/error.html|Expectation for a request from a third-level domain of the origin site: successful access|As expected|
 
 -   How to configure Referer on OSS
 
     Functional use reference:
 
-    -   API: [Put Bucket Referer](../../../../../intl.en-US/API Reference/Bucket operations/PutBucketReferer.md#)
-    -   Console: [Anti-leech settings](../../../../../intl.en-US/Console User Guide/Manage buckets/Set anti-leech.md#)
+    -   API: [Put Bucket Referer](../../../../../reseller.en-US/API Reference/Bucket operations/PutBucketReferer.md#)
+    -   Console: [Anti-leech settings](../../../../../reseller.en-US/Console User Guide/Manage buckets/Set anti-leech.md#)
 -   Pros and cons of Referer anti-leech protection
 
     Referer anti-leech protection can be easily configured on the console. The main drawback of the Referer anti-leech protection is that it cannot prevent access attempts by the malicious spoofing Referers. If a leecher uses an application to simulate HTTP requests with a spoofing Referer, the Referer can bypass anti-leech protection settings. If you have higher anti-leech protection requirements, consider using signed URL anti-leech protection.
@@ -142,15 +140,14 @@ This section focuses on what Referer is and how OSS uses Referer for anti-theft 
 
 Signed URLs
 
-For the principles and implementation methods for signed URLs, see [Authorizing third-Party download](../../../../../intl.en-US/Developer Guide/Download files/Authorized third-party download.md#). A signed URL is implemented as follows:
+For the principles and implementation methods for signed URLs, see [Authorizing third-Party download](../../../../../reseller.en-US/Developer Guide/Download files/Authorized third-party download.md#). A signed URL is implemented as follows:
 
 1.  Set the bucket permission to private.
 2.  Generate a signature based on the expected expiration time \(the time when the signed URL expires\).
 
 Specific implementation
 
-1.  Install the latest PHP code by referring to the [PHP SDK documentation](https://www.alibabacloud.com/help/doc-detail/32099.htm).
-2.  Generate a signed URL and add it to the webpage as an external link, for example:
+1.  Generate a signed URL and add it to the webpage as an external link, for example:
 
     ```
     <? php
@@ -182,7 +179,7 @@ Specific implementation
      ? >
     ```
 
-3.  If the browser requests the resource multiple times, different signed URLs may be displayed. This is a normal phenomenon because the signed URL changes once it expires. After expiration time the link is no longer valid. It is displayed in Unix time format,  for example, Expires=1448991693. The time can be converted to the local time. In Linux, the command for converting the time is `date -d@1448991693`. You can also find a conversion tool on the Internet.
+2.  If the browser requests the resource multiple times, different signed URLs may be displayed. This is a normal phenomenon because the signed URL changes once it expires. After expiration time the link is no longer valid. It is displayed in Unix time format,  for example, Expires=1448991693. The time can be converted to the local time. In Linux, the command for converting the time is `date -d@1448991693`. You can also find a conversion tool on the Internet.
 
 Special instructions
 
@@ -196,10 +193,10 @@ Best practices of OSS-based anti-leech protection:
 
 -   Use third-level domain name URLs, such as `referer-test.oss-cn-hangzhou.aliyuncs.com/aliyun-logo.png`, as they are more secure than bound second-level domain names. The third-level domain name access method provides bucket-level cleaning and isolation, enabling you to respond to a burst in leeching traffic while preventing different buckets from affecting each other, thereby increasing service availability.
 -   If you use custom domain names as links, bind the CNAME to a third-level domain name, with the rule bucket + endpoint. For example, your bucket is named “test” and the third-level domain name is `test.oss-cn-hangzhou.aliyuncs.com`.
--   Set the strictest possible permission for the bucket. For example, set a bucket that provides Internet services to public-read or private. Do not set it to public-read-write. For bucket permission information, see [Access control](../../../../../intl.en-US/Developer Guide/Access and control/Overview.md#).
+-   Set the strictest possible permission for the bucket. For example, set a bucket that provides Internet services to public-read or private. Do not set it to public-read-write. For bucket permission information, see [Access control](../../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
 -   Verify access sources and set a Referer whitelist based on your requirement.
 -   If you need a more rigorous anti-leeching solution, consider using signed URLs.
--   Record access logs of the bucket, so that you can promptly discover leeching and verify the effectiveness of your anti-leeching solution. For access log information, see [Access logging configuration](../../../../../intl.en-US/Developer Guide/Access and control/Overview.md#).
+-   Record access logs of the bucket, so that you can promptly discover leeching and verify the effectiveness of your anti-leeching solution.
 
 ## FAQ {#section_htv_jl2_vdb .section}
 
@@ -213,7 +210,7 @@ Best practices of OSS-based anti-leech protection:
 
 -   How are signed URLs generated?  Is storing the AccessKeySecret on the client secure?
 
-    See the individual SDK documentation for the method of signing the URL. It is not recommended that the AccessKeySecret be directly stored on the client. RAM provides the [STS service](../../../../../intl.en-US/Developer Guide/Access and control/Overview.md#section_mjv_skv_tdb) to solve this problem. Also, see [RAM and STS Guide](intl.en-US/Developer Guide/Hide/Access control/Overview.md#).
+    See the individual SDK documentation for the method of signing the URL. It is not recommended that the AccessKeySecret be directly stored on the client. RAM provides the [STS service](../../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#section_mjv_skv_tdb) to solve this problem. Also, see [RAM and STS Guide](reseller.en-US/Developer Guide/Hide/Access control/Overview.md#).
 
 -   How do I use wildcard characters \(\*, ?\) to write `a.baidu.com` and `b.baidu.com` ?
 

@@ -1,8 +1,8 @@
 # ossprobe {#concept_frt_pxg_wdb .concept}
 
-## 简介 {#section_ts5_vxg_wdb .section}
+ossprobe是一款针对oss访问的检测工具，用于排查上传下载过程中，因网络故障或基本参数设置错误导致的问题。您在执行上传下载命令后，ossprobe会提示可能的错误原因，帮助您快速找出错误。
 
-ossprobe是一款针对oss访问的检测工具，用于排查上传下载过程中，因网络故障或基本参数设置错误导致的问题。用户执行上传下载命令后，ossprobe会提示可能的错误原因，帮助用户快速找出错误。
+**说明：** ossprobe的操作命令已整合到ossutil中，ossprobe工具将于2019年4月30日前下架，给您带来不便敬请谅解。ossutil中ossprobe的命令详情请参考[ossprobe命令](intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_njd_yzz_zgb)。
 
 ## 版本 {#section_us5_vxg_wdb .section}
 
@@ -22,9 +22,9 @@ ossprobe是一款针对oss访问的检测工具，用于排查上传下载过程
 
 ## 软件下载 {#section_nsf_zxg_wdb .section}
 
--   [windows64 ossprobe](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/tool/ossprobe.exe)
--   [linux64 ossprobe](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/tool/ossprobe)
--   [mac ossprobe](https://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/internal/oss/0.0.4/assets/tool/macossprobe/ossprobe)
+-   [windows64 ossprobe](http://gosspublic.alicdn.com/ossprobe/windows64-ossprobe.exe)
+-   [linux64 ossprobe](http://gosspublic.alicdn.com/ossprobe/linux64-ossprobe)
+-   [mac ossprobe](http://gosspublic.alicdn.com/ossprobe/mac-ossprobe)
 
 ## 检测下载问题 {#section_q4y_zxg_wdb .section}
 
@@ -45,7 +45,7 @@ ossprobe是一款针对oss访问的检测工具，用于排查上传下载过程
 
 -   示例
 
-    检测Url下载是否正常（[获取Url的方法](../intl.zh-CN/快速入门/分享文件.md#)），可以使用下面的命令：
+    检测Url下载是否正常（[获取Url的方法](../../../../../intl.zh-CN/快速入门/下载文件.md#)），可以使用下面的命令：
 
     |方式|命令|
     |:-|:-|
@@ -155,7 +155,7 @@ ossprobe --upload -i AccessKeyId -k AccessKeySecret -p EndPoint -b BucketName -a
 -   windows按下Win + R调出运行对话框，输入命令cmd并按回车执行。 在弹出的命令行终端界面中，输入该工具的所在的路径，然后填入相关检测参数后即可执行。
 -   linux&mac打开终端，在弹出的终端界面中，输入该工具的所在的路径，然后填入相关检测参数后即可执行。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4879/2982_zh-CN.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4879/15547011102982_zh-CN.jpg)
 
 
 ## 查看报告结果 {#section_kkh_3zg_wdb .section}
@@ -183,5 +183,5 @@ ossprobe --upload -i AccessKeyId -k AccessKeySecret -p EndPoint -b BucketName -a
 ## 参考资料 {#section_dmw_4zg_wdb .section}
 
 -   [oss错误码列表](https://www.alibabacloud.com/help/doc-detail/32157.htm)
--   [获取Url的方法](../intl.zh-CN/快速入门/分享文件.md#)
+-   [获取Url的方法](../../../../../intl.zh-CN/快速入门/下载文件.md#)
 

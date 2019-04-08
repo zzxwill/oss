@@ -41,7 +41,7 @@
 -   支持使用OSS的multipart功能上传大文件。
 -   支持MD5校验，保证数据完整性。
 
-使用限制：-   不支挂载归档型Bucket。
+使用限制：-   不支持挂载归档型Bucket。
 -   编辑已上传文件会导致文件被重新上传。
 -   元数据操作，例如`list directory`，因为需要远程访问OSS服务器，所以性能较差。
 -   重命名文件/文件夹可能会出错。若操作失败，可能会导致数据不一致。
@@ -76,6 +76,8 @@
 |
 |[ossprobe](intl.zh-CN/常用工具/ossprobe.md#)|针对OSS访问的网络检测工具。-   可用于排查访问OSS时因网络故障或参数设置原因导致的文件上传下载异常问题。
 -   支持Windows、Linux、Mac平台。
+
+**说明：** ossprobe的操作命令已整合到ossutil中，ossprobe工具将于2019年4月30日前下架，给您带来不便敬请谅解。ossutil中ossprobe的命令详情请参考[ossprobe命令](intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_njd_yzz_zgb)。
 
 |
 |[oss-emulator](https://github.com/aliyun/oss-emulator)|轻量级的OSS服务模拟器。-   提供与OSS服务相同的API接口，适用于基于OSS应用的调试、性能测试等。

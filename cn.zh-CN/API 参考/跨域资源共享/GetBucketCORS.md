@@ -20,7 +20,7 @@ Authorization: SignatureValue
  父节点：CORSConfiguration
 
  |
-|AllowedOrigin|字符串| 允许的跨域请求来源。 “\*”表示允许所有的来源的跨域请求。
+|AllowedOrigin|字符串| 允许的跨域请求来源。 星号（\*）表示允许所有的来源的跨域请求。
 
  父节点：CORSRule
 
@@ -94,6 +94,10 @@ Server: AliyunOSS
 -   [Python](../../../../../cn.zh-CN/SDK 参考/Python/跨域资源共享.md)
 -   [PHP](../../../../../cn.zh-CN/SDK 参考/PHP/跨域资源共享.md)
 -   [Go](../../../../../cn.zh-CN/SDK 参考/Go/跨域资源共享.md)
+-   [C++](../../../../../cn.zh-CN/SDK 参考/C++/跨域资源共享.md)
+-   [C](../../../../../cn.zh-CN/SDK 参考/C/跨域资源共享.md)
+-   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/跨域资源共享.md)
+-   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/跨域资源共享.md)
 
 ## 错误码 {#section_nfp_nfc_5gb .section}
 

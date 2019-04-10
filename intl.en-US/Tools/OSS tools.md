@@ -4,7 +4,7 @@ In addition to the OSS console, you can use the following common tools to use OS
 
 |Tool|Description|
 |:---|:----------|
-|[ossbrowser](reseller.en-US/Tools/ossbrowser/Quick start.md#)|Ossbrowser is a graphical object management tool.-   Graphical interface and easy to use.
+|[ossbrowser](reseller.en-US/Tools/ossbrowser/Quick start.md#)|ossbrowser is a graphical object management tool.-   Graphical interface and easy to use.
 -   Provides features similar to those of Windows Explorer.
 -   Supports browsing objects directly.
 -   Supports folder \(directory\) uploading and downloading.
@@ -12,16 +12,19 @@ In addition to the OSS console, you can use the following common tools to use OS
 -   Supports authorizing RAM users with policies in the graphical interface.
 -   Supports Windows, Linux, and Mac.
 
-Limits: ossbrower is a graphical tool. The transmission speed and performance is not as good as ossutil.
+Limits:
+
+-   ossbrower is a graphical tool. The transmission speed and performance is not as good as ossutil.
+-   You can only upload or copy objects smaller than 5 GB by using ossbrowser.
 
 |
-|[ossutil](reseller.en-US/Tools/ossutil/Quick Start.md#)|Ossutil is a command-line tool used to manage objects and buckets.-   Provides convenient, simple, and rich commands to manage objects and buckets with good operation performance.
+|[ossutil](reseller.en-US/Tools/ossutil/Quick Start.md#)|ossutil is a command-line tool used to manage objects and buckets.-   Provides convenient, simple, and rich commands to manage objects and buckets with good operation performance.
 -   Supports concurrent upload and resumable upload.
 -   Supports folder \(directory\) uploading and downloading.
 -   Supports common bucket management commands.
 
 |
-|[osscmd](reseller.en-US/Tools/osscmd/Quick installation.md#)|Osscmd is a command-line tool used to manage objects and buckets.-   Provides complete commands to manage objects and buckets
+|[osscmd](reseller.en-US/Tools/osscmd/Quick installation.md#)|osscmd is a command-line tool used to manage objects and buckets.-   Provides complete commands to manage objects and buckets
 -   Supports Windows and Linux.
 
 Limits:
@@ -32,13 +35,14 @@ Limits:
 **Note:** Osscmd will be replaced by ossutil in the future. Except for scenarios where bucket management functions that ossutil does not support are required, we recommend that you use [ossutil](reseller.en-US/Tools/ossutil/Quick Start.md#).
 
 |
-|[ossfs](reseller.en-US/Tools/ossfs/Quick installation.md#)|Ossfs is a tool used to mount a bucket to the local file system.Using ossfs, you can mount OSS buckets to the local file system of Linux. After a bucket is mounted, you can access or share the objects in the bucket by performing operations in the local file system.
+|[ossfs](reseller.en-US/Tools/ossfs/Quick installation.md#)|ossfs is a tool used to mount a bucket to the local file system.Using ossfs, you can mount OSS buckets to the local file system of Linux. After a bucket is mounted, you can access or share the objects in the bucket by performing operations in the local file system.
 
 -   Supports most functions of the POSIX file system, including file reading/writing, directories, link operations, permissions, UID/GID, and extended attributes.
 -   Supports uploading large files using the multipart upload function.
 -   Supports MD5 verification to ensure data integrity.
 
-Limits:-   If you edit an uploaded file, the file is uploaded again.
+Limits:-   Buckets of the Archive storage class cannot be mounted.
+-   If you edit an uploaded file, the file is uploaded again.
 -   The performance of metadata-related operations, such as `list directory`, is poor because these operations must access the OSS server remotely.
 -   An error may occur when you rename an object or a folder. Operation failures may cause inconsistent data.
 -   Ossfs does not apply to scenarios where read and write operations are highly concurrent.
@@ -46,13 +50,13 @@ Limits:-   If you edit an uploaded file, the file is uploaded again.
 -   Hard links are not supported.
 
 |
-|[ossftp](reseller.en-US/Tools/ossftp/Quick installation for OSS FTP.md#)|Ossftp is used to manage OSS objects.-   By using ossftp, you can perform operations on OSS with FTP clients, such as FileZilla, WinSCP, and FlashFXP.
+|[ossftp](reseller.en-US/Tools/ossftp/Quick installation for OSS FTP.md#)|ossftp is used to manage OSS objects.-   By using ossftp, you can perform operations on OSS with FTP clients, such as FileZilla, WinSCP, and FlashFXP.
 -   Ossftp acts as a FTP server that receives FTP requests and maps operations on files and folders to operations on OSS objects and buckets.
 -   Ossftp is based on Python2.7 and later.
 -   Supports Windows, Linux, and Mac.
 
 |
-|[ossimport](reseller.en-US/Tools/ossimport/Architecture and configuration.md#)|Ossimport is used to synchronize data to OSS.-   By using ossimport, you can synchronize third-party data source files to OSS.
+|[ossimport](reseller.en-US/Tools/ossimport/Architecture and configuration.md#)|ossimport is used to synchronize data to OSS.-   By using ossimport, you can synchronize third-party data source files to OSS.
 -   Supports distributed deployment mode. You can use multiple servers to migrate data in batches.
 -   Supports the migration of TBs of data.
 -   Supports Windows and Linux.
@@ -70,8 +74,10 @@ Limits:-   If you edit an uploaded file, the file is uploaded again.
 **Note:** We recommend you use this tool when you need to generate authorization policies automatically.
 
 |
-|[ossprobe](reseller.en-US/Tools/ossprobe.md#)|Ossprobe is used to monitor the access to OSS.-   You can use ossprobe to investigate upload and download problems caused by network exceptions or parameter settings.
+|[ossprobe](reseller.en-US/Tools/ossprobe.md#)|ossprobe is used to monitor the access to OSS.-   You can use ossprobe to investigate upload and download problems caused by network exceptions or parameter settings.
 -   Supports Windows, Linux, and Mac.
+-   **Note:** All commands of ossprobe have been integrated in to ossutil. Therefore, Alibaba Cloud will no longer provide ossprobe from April 30, 2019. Thanks a lot for your understanding for any inconvenience caused. For more information about using ossprobe commands in ossutil, see [ossprobe commands](reseller.en-US/Tools/ossutil/Bucket-related commands.md#section_njd_yzz_zgb).
+
 
 |
 |[oss-emulator](https://github.com/aliyun/oss-emulator)|Oss-emulator is a lightweight OSS service simulator. -   Provides the same APIs as those of OSS and applies to the debugging and testing for OSS applications.

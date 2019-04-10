@@ -74,7 +74,7 @@
 **说明：** 当您需要生成自定义授权策略时，推荐使用该工具。
 
 |
-|[ossprobe](intl.zh-CN/常用工具/ossprobe.md#)|针对OSS访问的网络检测工具。-   可用于排查访问OSS时因网络故障或参数设置原因导致的文件上传下载异常问题。
+|[ossprobe](intl.zh-CN/常用工具/ossprobe（即将下线）.md#)|针对OSS访问的网络检测工具。-   可用于排查访问OSS时因网络故障或参数设置原因导致的文件上传下载异常问题。
 -   支持Windows、Linux、Mac平台。
 
 **说明：** ossprobe的操作命令已整合到ossutil中，ossprobe工具将于2019年4月30日前下架，给您带来不便敬请谅解。ossutil中ossprobe的命令详情请参考[ossprobe命令](intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_njd_yzz_zgb)。

@@ -4,7 +4,7 @@
 
 |工具|简介|
 |:-|:-|
-|[ossbrowser](cn.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化的Object管理工具。-   图形化界面，使用简单。
+|[ossbrowser](intl.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化的Object管理工具。-   图形化界面，使用简单。
 -   提供类似Windows资源管理器的功能。
 -   支持直接浏览文件。
 -   支持文件目录（文件夹）的上传下载。
@@ -18,13 +18,13 @@
 -   只支持5GB以下的文件上传或复制。
 
 |
-|[ossutil](cn.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)|Object和Bucket的命令行管理工具。-   提供方便、简洁、丰富的Object和Bucket管理命令，操作性能好。
+|[ossutil](intl.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)|Object和Bucket的命令行管理工具。-   提供方便、简洁、丰富的Object和Bucket管理命令，操作性能好。
 -   支持文件并发上传、断点续传。
 -   支持文件目录（文件夹）的上传下载。
 -   支持Bucket常见管理命令。
 
 |
-|[osscmd](cn.zh-CN/常用工具/osscmd/快速安装.md#)|Object和Bucket的命令行管理工具。-   提供完备的Bucket、Object管理命令。
+|[osscmd](intl.zh-CN/常用工具/osscmd/快速安装.md#)|Object和Bucket的命令行管理工具。-   提供完备的Bucket、Object管理命令。
 -   支持Windows、Linux平台。
 
 使用限制：
@@ -32,16 +32,16 @@
 -   仅适用于Python2.5 - 2.7版本，不支持Python 3.x版本。
 -   不再支持OSS新增功能，如低频存储/归档存储、跨区域复制、镜像回源等。
 
-**说明：** ossutil将逐步取代osscmd。除ossutil不具备的某些Bucket管理功能的特殊情况外，建议使用[ossutil](cn.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)。
+**说明：** ossutil将逐步取代osscmd。除ossutil不具备的某些Bucket管理功能的特殊情况外，建议使用[ossutil](intl.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)。
 
 |
-|[ossfs](cn.zh-CN/常用工具/ossfs/快速安装.md#)|Bucket挂载工具。用于将OSS的Bucket挂载到Linux系统的本地文件系统中，挂载后可通过本地文件系统操作OSS上的Object，实现数据的访问和共享。
+|[ossfs](intl.zh-CN/常用工具/ossfs/快速安装.md#)|Bucket挂载工具。用于将OSS的Bucket挂载到Linux系统的本地文件系统中，挂载后可通过本地文件系统操作OSS上的Object，实现数据的访问和共享。
 
 -   支持POSIX文件系统的大部分功能，包括文件读写、目录、链接操作、权限、uid/gid、以及扩展属性（extended attributes）。
 -   支持使用OSS的multipart功能上传大文件。
 -   支持MD5校验，保证数据完整性。
 
-使用限制：-   不支挂载归档型Bucket。
+使用限制：-   不支持挂载归档型Bucket。
 -   编辑已上传文件会导致文件被重新上传。
 -   元数据操作，例如`list directory`，因为需要远程访问OSS服务器，所以性能较差。
 -   重命名文件/文件夹可能会出错。若操作失败，可能会导致数据不一致。
@@ -49,22 +49,18 @@
 -   多个客户端挂载同一个OSS Bucket时，数据一致性由您自行维护。例如，合理规划文件使用时间，避免出现多个客户端写同一个文件的情况。
 -   不支持hard link。
 
-**说明：** 相比于ossfs，建议您优先使用阿里云存储网关产品，详情请参见[云存储网关](../../../../../cn.zh-CN/最佳实践/通过云存储网关使用OSS服务/应用场景.md#)。
-
 |
-|[ossftp](cn.zh-CN/常用工具/ossftp/如何快速安装OSS FTP.md#)|管理Object的FTP工具。-   使用FileZilla、WinSCP、FlashFXP等FTP客户端操作OSS。
+|[ossftp](intl.zh-CN/常用工具/ossftp/如何快速安装OSS FTP.md#)|管理Object的FTP工具。-   使用FileZilla、WinSCP、FlashFXP等FTP客户端操作OSS。
 -   本质是FTP Server，用于接收FTP请求，将对文件、文件夹的操作映射为对OSS的操作。
 -   基于Python2.7及以上版本。
 -   支持Windows、Linux、Mac平台。
 
 |
-|[ossimport](cn.zh-CN/常用工具/数据迁移工具ossimport/说明及配置.md#)|OSS数据同步工具：-   可将各类第三方数据源文件同步到OSS上。
+|[ossimport](intl.zh-CN/常用工具/数据迁移工具ossimport/说明及配置.md#)|OSS数据同步工具：-   可将各类第三方数据源文件同步到OSS上。
 -   支持分布式部署，可使用多台服务器批量迁移数据。
 -   支持TB级以上数据迁移。
 -   支持Windows、Linux平台。
 -   适用于Java 1.7及以上版本。
-
-**说明：** 您也可以使用阿里云[数据在线迁移服务](https://help.aliyun.com/product/94157.html)，无需部署迁移工具。
 
 |
 |[可视化签名工具](https://bbs.aliyun.com/read/233851.html)|可视化签名工具（第三方工具）。-   可用于生成数据的签名URL。
@@ -78,8 +74,10 @@
 **说明：** 当您需要生成自定义授权策略时，推荐使用该工具。
 
 |
-|[ossprobe](cn.zh-CN/常用工具/ossprobe.md#)|针对OSS访问的网络检测工具。-   可用于排查访问OSS时因网络故障或参数设置原因导致的文件上传下载异常问题。
+|[ossprobe](intl.zh-CN/常用工具/ossprobe（即将下线）.md#)|针对OSS访问的网络检测工具。-   可用于排查访问OSS时因网络故障或参数设置原因导致的文件上传下载异常问题。
 -   支持Windows、Linux、Mac平台。
+
+**说明：** ossprobe的操作命令已整合到ossutil中，ossprobe工具将于2019年4月30日前下架，给您带来不便敬请谅解。ossutil中ossprobe的命令详情请参考[ossprobe命令](intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_njd_yzz_zgb)。
 
 |
 |[oss-emulator](https://github.com/aliyun/oss-emulator)|轻量级的OSS服务模拟器。-   提供与OSS服务相同的API接口，适用于基于OSS应用的调试、性能测试等。

@@ -2,9 +2,9 @@
 
 You can manage objects in a bucket by calling APIs to perform the following operations:
 
--   [判断文件是否存在](reseller.en-US/SDK Reference/Android/Manage objects/Determine whether a specified object exists.md#)
--   [获取文件元信息](reseller.en-US/SDK Reference/Android/Manage objects/Obtain the metadata of an object.md#)
--   [列举文件](reseller.en-US/SDK Reference/Android/Manage objects/List objects.md#)
--   [拷贝文件](reseller.en-US/SDK Reference/Android/Manage objects/Copy an object.md#)
--   [删除文件](reseller.en-US/SDK Reference/Android/Manage objects/Delete an object.md#)
+-   [Determine whether an object exists](reseller.en-US/SDK Reference/Android/Manage objects/Determine whether a specified object exists.md#)
+-   [Obtain Object Meta](reseller.en-US/SDK Reference/Android/Manage objects/Obtain the metadata of an object.md#)
+-   [List objects](reseller.en-US/SDK Reference/Android/Manage objects/List objects.md#)
+-   [Copy objects](reseller.en-US/SDK Reference/Android/Manage objects/Copy an object.md#)
+-   [Delete objects](reseller.en-US/SDK Reference/Android/Manage objects/Delete an object.md#)
 

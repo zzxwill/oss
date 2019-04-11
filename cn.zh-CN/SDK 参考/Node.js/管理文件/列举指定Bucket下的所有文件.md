@@ -17,7 +17,7 @@ let client = new OSS({
   region: '<Your region>',
   accessKeyId: '<Your AccessKeyId>',
   accessKeySecret: '<Your AccessKeySecret>',
-  bucket: 'Your bucket name'
+  bucket: '<Your bucket name>'，
 });
 async function list () {
   {

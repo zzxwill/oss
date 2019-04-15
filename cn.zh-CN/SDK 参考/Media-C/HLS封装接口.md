@@ -44,19 +44,19 @@ HLS相关封装接口都位于oss\_media\_hls\_stream.h中，目前提供的接�
         int32_t has_aud;
         aos_pool_t *pool;
     } oss_media_hls_stream_t;
-    
+    					
     ```
 
     **说明：** 
 
-    -   is\_live，是否是直播模式，直播模式的时候M3U8文件里面只最新的几个ts文件信息
-    -   bucket\_name，存储HLS文件的存储空间名称
-    -   ts\_name\_prefix，TS文件名称的前缀
-    -   m3u8\_name，M3U8文件名称
-    -   video\_frame\_rate，视频数据的帧率
-    -   audio\_sample\_rate，音频数据的采样率
-    -   hls\_time，每个ts文件最大持续时间
-    -   hls\_list\_size，直播模式时在M3U8文件中最多保留的ts文件个数
+    -   is\_live：是否为直播模式。直播模式时，M3U8文件里面只包含最新的几个ts文件信息。
+    -   bucket\_name：存储HLS文件的存储空间名称。
+    -   ts\_name\_prefix：TS文件名称的前缀。
+    -   m3u8\_name：M3U8文件名称。
+    -   video\_frame\_rate：视频数据的帧率。
+    -   audio\_sample\_rate：音频数据的采样率。
+    -   hls\_time：每个ts文件最大持续时间。
+    -   hls\_list\_size：直播模式时在M3U8文件中最多保留的ts文件个数。
 -   打开HLS stream文件
 
     ```language-c
@@ -69,13 +69,11 @@ HLS相关封装接口都位于oss\_media\_hls\_stream.h中，目前提供的接�
      */
     oss_media_hls_stream_t* oss_media_hls_stream_open(auth_fn_t auth_func,
                             const oss_media_hls_stream_options_t *options);
-    
+    					
     ```
 
-    **说明：** 
+    **说明：** 示例代码请参考[GitHub](https://github.com/aliyun/aliyun-media-c-sdk/blob/master/sample/hls_stream_sample.c?spm=a2c4g.11186623.2.10.753257afD3fSpP&file=hls_stream_sample.c)。
 
-    -   示例代码参考：[GitHub](https://github.com/aliyun/aliyun-media-c-sdk/blob/master/sample/hls_stream_sample.c)
-    -   。
 -   关闭HLS stream文件
 
     ```language-c
@@ -84,10 +82,10 @@ HLS相关封装接口都位于oss\_media\_hls\_stream.h中，目前提供的接�
      */
     int oss_media_hls_stream_close(oss_media_hls_stream_t *stream);
     
-    
+    					
     ```
 
-    **说明：** 示例代码参考：[GitHub](https://github.com/aliyun/aliyun-media-c-sdk/blob/master/sample/hls_stream_sample.c)。
+    **说明：** 示例代码请参考[GitHub](https://github.com/aliyun/aliyun-media-c-sdk/blob/master/sample/hls_stream_sample.c)。
 
 -   写HLS stream文件
 
@@ -108,7 +106,7 @@ HLS相关封装接口都位于oss\_media\_hls\_stream.h中，目前提供的接�
                                    uint8_t *audio_buf,
                                    uint64_t audio_len,
                                    oss_media_hls_stream_t *stream);
-    
+    					
     ```
 
     示例程序：
@@ -193,13 +191,12 @@ HLS相关封装接口都位于oss\_media\_hls\_stream.h中，目前提供的接�
     
         printf("convert H.264 and aac to HLS vod succeeded\n");
     }
-    
+    					
     ```
 
     **说明：** 
 
-    -   目前的录播、直播接口都支持只有视频，只有音频，同时有音视频等。
-    -   示例代码参考：[GitHub](https://github.com/aliyun/aliyun-media-c-sdk/blob/master/sample/hls_stream_sample.c) 
-    -   目前的录播、直播接口比较初级，用户如果有高级需求，可以模拟这两个接口，使用基础接口自助实现高级定制功能。
-    -   可以通过示例程序观看效果
+    -   目前的录播、直播接口都支持只有视频、只有音频或同时有音视频等。您可以通过示例程序观看效果。
+    -   示例代码请参考[GitHub](https://github.com/aliyun/aliyun-media-c-sdk/blob/master/sample/hls_stream_sample.c)
+    -   目前仅提供初级的录播、直播接口。如果您有高级需求，建议模拟这两个接口，并使用基础接口自助实现高级定制功能。
 

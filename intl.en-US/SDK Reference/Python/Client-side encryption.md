@@ -2,6 +2,11 @@
 
 Client-side encryption is performed locally on data before the data is uploaded to OSS.
 
+**Note:** 
+
+-   Only objects smaller than 5 GB can be encrypted at the client side.
+-   After uploading an object encrypted at the client side, you are not allowed to call the update\_objet\_meta or [CopyObject](../../../../reseller.en-US/API Reference/Object operations/CopyObject.md#) interface to modify the metadata of the object.
+
 For the complete code of client-side encryption, see [GitHub](https://github.com/aliyun/aliyun-oss-python-sdk/blob/master/examples/object_crypto.py).
 
 You can use the following two methods to manage keys:
@@ -17,8 +22,8 @@ For detailed information about client-side encryption, see [Introduction to clie
 
 |Parameter|Description|Required or not|
 |:--------|:----------|:--------------|
-|x-oss-meta-oss-crypto-key|Specifies the encrypted key, which is a string encoded with Base64 after being encryted by the RSA algorithm.|Required|
-|x-oss-meta-oss-crypto-start|Specifies the initial value of the encrypted data, which is generated randomly. The initial value is a string encoded with Base64 after being encryted by the RSA algorithm.|Required|
+|x-oss-meta-oss-crypto-key|Specifies the encrypted key, which is a string encoded with Base64 after being encrypted by the RSA algorithm.|Required|
+|x-oss-meta-oss-crypto-start|Specifies the initial value of the encrypted data, which is generated randomly. The initial value is a string encoded with Base64 after being encrypted by the RSA algorithm.|Required|
 |x-oss-meta-oss-cek-alg|Specifies the encryption algorithm with the following available values: AES, GCM, and NoPadding.|Required|
 |x-oss-meta-oss-wrap-alg|Specifies the encryption algorithm with the following available values: rsa and kms.|Required|
 |x-oss-meta-oss-matdesc|Specifies the description of the Content Encryption Key \(CEK\) in the JSON format. This parameter does not take effect currently.|Optional|
@@ -34,39 +39,29 @@ You can upload and download objects with the keys manually managed. The code is 
 import os
 import oss2
 from  oss2.crypto import LocalRsaProvider
-
 # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all the APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
-
 # Create a bucket and use the RSA method to encrypted the data. This method
 bucket = oss2.CryptoBucket(auth,'<yourEndpoint>', '<yourBucketName>', crypto_provider=LocalRsaProvider())
-
 key = 'motto.txt'
 content = b'a' * 1024 * 1024
 filename = 'download.txt'
-
-
 # Upload an object.
 bucket.put_object(key, content, headers={'content-length': str(1024 * 1024)})
-
 # Download an object.
 result = bucket.get_object(key)
-
 # Perform verification.
 content_got = b''
 for chunk in result:
     content_got += chunk
 assert content_got == content
-
 # Download an object to a local file.
 result = bucket.get_object_to_file(key, filename)
-
 # Perform verification.
 with open(filename, 'rb') as fileobj:
     assert fileobj.read() == content
-
 os.remove(filename)
-
+			
 ```
 
 ## Upload and download objects with the keys managed by KMS { .section}
@@ -97,7 +92,7 @@ os.remove(filename)
         }
       ]
     }
-    
+    					
     ```
 
 -   Sample code
@@ -107,38 +102,29 @@ os.remove(filename)
     import os
     import oss2
     from  oss2.crypto import AliKMSProvider
-    
     # It is highly risky to log on with AccessKey of an Alibaba Cloud account because the account has permissions on all the APIs in OSS. We recommend that you log on as a RAM user to access APIs or perform routine operations and maintenance. To create a RAM account, log on to https://ram.console.aliyun.com.
     auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
-    
     # Create a bucket and use the KMS method to encrypt the data. This method only applies to scenarios where objects are uploaded or downloaded entirely.
     bucket = oss2.CryptoBucket(auth,'<yourEndpoint>', 'liusiman123456',crypto_provider=AliKMSProvider('<yourAccessKeyId>', '<yourAccessKeySecret>', '<yourRegion>', '<yourCMK>', '1234'))
-    
     key = 'motto.txt'
     content = b'a' * 1024 * 1024
     filename = 'download.txt'
-    
     # Upload an object.
     bucket.put_object(key, content, headers={'content-length': str(1024 * 1024)})
-    
     # Download an object.
     result = bucket.get_object(key)
-    
     # Perform verification.
     content_got = b''
     for chunk in result:
         content_got += chunk
     assert content_got == content
-    
     # Download an object to a local file.
     result = bucket.get_object_to_file(key, filename)
-    
     # Perform verification.
     with open(filename, 'rb') as fileobj:
         assert fileobj.read() == content
-    
     os.remove(filename)
-    
+    					
     ```
 
 

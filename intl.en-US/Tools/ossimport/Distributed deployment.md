@@ -1,12 +1,12 @@
 # Distributed deployment {#concept_axx_n3h_wdb .concept}
 
-## Download {#section_cwl_43h_wdb .section}
+## Download {#section_nvo_fb8_8j6 .section}
 
 Distributed deployment currently only supports Linux, and does not support Windows.
 
-Download the tool for distributed deployment: [ossimport-2.3.3.tar.gz](http://gosspublic.alicdn.com/ossimport/international/distributed/ossimport-2.3.3.tar.gz).
+Download the tool for distributed deployment: [ossimport-2.3.4.tar.gz](http://gosspublic.alicdn.com/ossimport/international/distributed/ossimport-2.3.4.tar.gz).
 
-Download the tool to a local directory and use the command `tar -zxvf ossimport-2.3.2.tar.gz -C $HOME/ossimport` to unzip the files. The file structure after the unzipping is as follows:
+Download the tool to a local directory and use the command `tar -zxvf ossimport-2.3.4.tar.gz -C $HOME/ossimport` to unzip the files. The file structure after the unzipping is as follows:
 
 ```
 ossimport
@@ -26,26 +26,26 @@ ossimport
 
 Note:
 
--   OSS\_IMPORT\_HOME: The root directory of the OssImport. By default the directory is the **$HOME/ossimport ** in the unzip command. You can also run the command  `export OSS_IMPORT_HOME=<dir>` or modify the system configuration file **$HOME/.bashrc** to set the directory.
--   OSS\_IMPORT\_WORK\_DIR: The OssImport working directory. You can specify the directory through the configuration item **workingDir** in **conf/sys.properties**. The recommended values is **$HOME/ossimport/workdir**.
--   Use absolute paths for OSS\_IMPORT\_HOME or OSS\_IMPORT\_WORK\_DIR, such as  `/home/<user>/ossimport` or  `/home/<user>/ossimport/workdir`.
+-   OSS\_IMPORT\_HOME: The root directory of ossImport. By default the directory is the $HOME/ossimport in the unzip command. You can also run the `export OSS_IMPORT_HOME=<dir>` command or modify the system configuration file $HOME/.bashrc to set the directory.
+-   OSS\_IMPORT\_WORK\_DIR: The ossImport working directory. You can specify the directory through the configuration item workingDir in conf/sys.properties. The recommended values is $HOME/ossimport/workdir.
+-   Use absolute paths for OSS\_IMPORT\_HOME or OSS\_IMPORT\_WORK\_DIR, such as /home/<user\>/ossimport or /home/<user\>/ossimport/workdir.
 
-## Configuration {#section_smx_s3h_wdb .section}
+## Configuration {#section_d73_njv_khp .section}
 
-The distributed version has three configuration files: `conf/sys.properties`, `conf/job.cfg` and `conf/workers`. For descriptions of the configuration items, see the Introduction chapter.
+The distributed version has three configuration files: `conf/sys.properties`, `conf/job.cfg`, and `conf/workers`. For descriptions of the configuration items, see the Introduction chapter.
 
 -   `conf/job.cfg`: The configuration file template for the job in distributed mode. Modify the values according to the actual parameters before data migration.
--   `conf/sys.properties`: The configuration file for the system run parameters, such as the working directory and the worker running parameters
+-   `conf/sys.properties`: The configuration file for the system run parameters, such as the working directory and the worker running parameters.
 -   `conf/workers`: The worker list.
 
-Note:
+**Note:** 
 
--   Confirm the parameters in `sys.properties` and `job.cfg` before submitting the job.  The parameters in the job are not allowed to be changed after the job is submitted.
+-   Confirm the parameters in sys.properties and job.cfg before submitting the job. The parameters in the job are not allowed to be changed after the job is submitted.
 -   Determine the worker list `workers` before starting the service. After the service is started, workers are not allowed to be added or deleted.
 
-## Running {#section_m1y_1jh_wdb .section}
+## Running {#section_ej8_rdo_z8v .section}
 
--   Run commands
+-   Run commands.
 
     In distributed deployment, the general steps for job execution are as follows:
 
@@ -54,15 +54,15 @@ Note:
 
         Run `bash console.sh deploy` in Linux.
 
-        **Note:** Make sure the configuration files **Conf/job. cfg** and **CONF/workers** have been modified before deployment.
+        **Note:** Make sure the configuration files Conf/job. cfg and CONF/workers have been modified before deployment.
 
     -   Clear jobs of the same name.
 
-        If you ran a job of the same name before and want to run the job again, clear the job with the same name first. If you have never run the job or you want to retry a failed job, do not run the clear command. Run  `bash console.sh clean job_name` in Linux.
+        If you ran a job of the same name before and want to run the job again, clear the job with the same name first. If you have never run the job or you want to retry the tasks of a failed job, do not run the clear command. Run `bash console.sh clean job_name` in Linux.
 
     -   Submit the data migration job.
 
-        The OssImport does not support submitting jobs of the same name. If jobs with the same name exist, use the `clean` command to clean the job with the same name first.  To submit a job, you must specify the job configuration file. The job’s configuration file template is at  `conf/job.cfg`. We recommend that you modify the settings based on the template.  Run `bash console.sh submit [job_cfg_file]` in Linux and submit the job with the configuration file job\_cfg\_file.  The `job_cfg_file`  is an optional parameter. If not specified, the parameter is  `$OSS_IMPORT_HOME/conf/job.cfg` by default. The `$OSS_IMPORT_HOME`  is by default the directory where the  `console.sh` file is located.
+        OssImport does not support submitting jobs of the same name. If jobs with the same name exist, use the `clean` command to clean the job with the same name first. To submit a job, you must specify the job configuration file. The job’s configuration file template is conf/job.cfg. We recommend that you modify the settings based on the template. Run `bash console.sh submit [job_cfg_file]` in Linux and submit the job with the configuration file job\_cfg\_file. The `job_cfg_file` is an optional parameter. If not specified, the parameter is `$OSS_IMPORT_HOME/conf/job.cfg` by default. The `$OSS_IMPORT_HOME` is by default the directory where the console.sh file is located.
 
     -   Start the migration service.
 
@@ -74,17 +74,17 @@ Note:
 
     -   Retry failed tasks.
 
-        Tasks may fail to run because of network issues or other causes. Only failed tasks are retried. Run `bash console.sh retry [job_name]` in Linux. The **job\_name**  is an optional parameter which specifies to retry tasks of the job named **job\_name**. If the `job_name` parameter is not specified, failed tasks of all jobs are retried.
+        Tasks may fail to run because of network issues or other causes. Only failed tasks are retried. Run `bash console.sh retry [job_name]` in Linux. The job\_name parameter is optional. If it is specified, tasks of failed jobs are retried. If it is not specified, tasks of all jobs are retried.
 
     -   Stop the migration job.
 
         Run `bash console.sh stop` in Linux.
 
-        Note:
+        **Note:** 
 
-        -   When the `bash console.sh` parameter has an error, the `console.sh`automatically prompts the command format.
+        -   When the `bash console.sh` parameter has an error, `console.sh` automatically prompts the command format.
         -   We recommend that you use absolute paths for directories of the configuration file and submitted jobs.
-        -   The configuration for jobs \(that is, the configuration items in **job.cfg** \) cannot be modified after submitted.
+        -   The configuration for jobs \(that is, the configuration items in job.cfg\) cannot be modified after submitted.
 -   Common causes of job failure
     -   A file in the source directory was modified during the upload process. This cause is indicated by a `SIZE_NOT_MATCH` error in `log/audit.log`. In this case, the old file has been uploaded successfully, but the changes have not been synchronized to the OSS.
     -   A source file was deleted during the upload process, leading to the download failure.
@@ -93,7 +93,7 @@ Note:
     -   The program exits unexpectedly and the job state is Abort. If this happens, contact after-sales technical support.
 -   Job states and logs
 
-    After a job is submitted, the master splits the job into tasks, the workers run the tasks and the tracker collects the task states. After a job is completed, the workdir directory contains the following:
+    After a job is submitted, the master splits the job into tasks, the workers run the tasks and the tracker collects the task states. After a job is completed, the workdir directory contains the following:
 
     ```
     workdir
@@ -107,7 +107,7 @@ Note:
     │   ├── sys.properties  # Configuration file of the system running parameters
     │   └── workers         # Worker list
     ├── logs
-    │   ├── import.log      # Archive logs
+    │   ├── import.log      # Migration logs
     │   ├── master.log      # Master logs
     │   ├── tracker.log     # Tracker logs
     │   └── worker.log      # Worker logs
@@ -143,13 +143,14 @@ Note:
                 └── tasks
     ```
 
-    Note:
+    **Note:** 
 
-    -   For the job running state, view **logs/tracker.log**. For the worker running logs, view  `logs/worker.log`. For the master running logs, view **logs/master.log**. 
-    -   For the task failure cause, view **master/jobs/$\{JobName\}/failed\_tasks/$\{TaskName\}/audit.log**.
-    -   For failed task files, view **master/jobs/$\{JobName\}/failed\_tasks/$\{TaskName\}/error.list**.
+    -   For job running information, view logs/import.log.
+    -   For the task failure cause, view master/jobs/$\{JobName\}/failed\_tasks/$\{TaskName\}/audit.log.
+    -   For failed task files, view master/jobs/$\{JobName\}/failed\_tasks/$\{TaskName\}/error.list.
+    -   The preceding log files are for reference only. Do not deploy your services and application entirely based on them.
 
-## FAQ {#section_rxm_rjh_wdb .section}
+## FAQ {#section_4v5_djg_rc1 .section}
 
 See [FAQ](reseller.en-US/Tools/ossimport/FAQ.md#).
 

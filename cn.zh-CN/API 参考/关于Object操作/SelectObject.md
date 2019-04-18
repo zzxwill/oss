@@ -8,7 +8,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
 正确执行时，该API返回206。如果SQL语句不正确，或者和文件不匹配，则会返回400错误。
 
-**说明：** 关于SelectObject的功能介绍请参见开发指南中的[SelectObject](../../../../../intl.zh-CN/开发指南/管理文件/SelectObject.md#)。
+**说明：** 关于SelectObject的功能介绍请参见开发指南中的[SelectObject](../../../../intl.zh-CN/开发指南/管理文件/SelectObject.md#)。
 
 -   请求语法
     -   请求语法（CSV）
@@ -20,7 +20,6 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
         Content-Length: ContentLength
         Content-MD5: MD5Value 
         Authorization: Signature
-        
         <?xml  version="1.0"  encoding="UTF-8"?>
         <SelectRequest>
         	<Expression>base64 encode(Select * from OSSObject where ...)</Expression>
@@ -66,7 +65,6 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
         Content-Length: ContentLength
         Content-MD5: MD5Value 
         Authorization: Signature
-        
         <?xml  version="1.0"  encoding="UTF-8"?>
         <SelectRequest>
         	<Expression>
@@ -195,7 +193,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
  父节点：CSV （输入、输出），JSON（输出）
 
  |
-    |FieldDelimiter|字符串| 指定CSV列分隔符，以Base64编码。默认值为`,`（可选）。未编码前的值必须为一个字符，以字符的ANSI值表示，比如Java里用，表示逗号。
+    |FieldDelimiter|字符串| 指定CSV列分隔符，以Base64编码。默认值为`,`（可选）。未编码前的值必须为一个字符，以字符的ANSI值表示，比如Java里用`，`表示逗号。
 
  子节点：None
 
@@ -319,7 +317,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
     |名称|Frame-Type值|Payload格式|描述|
     |:-|:----------|:--------|:-|
-    |Data Frame|8388609| offset  |  data
+    |Data Frame|8388609| offset | data
 
  <-8 bytes\><---variable-\>
 
@@ -329,13 +327,13 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
  <----8 bytes--\>
 
  |Continuous Frame用以汇报当前进展以及维持http连接。如果该查询在5s内未返回数据则会返回一个Continuous Frame。|
-    |End Frame|8388613| offset  | total scanned bytes | http status code | error message
+    |End Frame|8388613| offset | total scanned bytes | http status code | error message
 
  <--8bytes-\><--8bytes---------\><----4 bytes--------\><-variable------\>
 
- |End Frame用来返回最终的状态，扫描的字节数以及可能的出错信息。其中offset为扫描后最终的位置偏移，total scanned bytes为最终扫描过的数据大小。http status code为最终的处理结果，error message为错误信息，包括所有跳过的行号及其总行数。这里返回status code的原因在于SelectObject为流式处理，因而在发送Response Header的时候仅仅处理了第一个Block。如果第一个Block数据和SQL是匹配的，则在Response Header中的Status为206，但如果下面的数据非法，我们已无法更改Header中的Status，只能在End Frame里包含最终的Status及其出错信息。因此客户端应该视其为最终状态。
+ |End Frame用来返回最终的状态，扫描的字节数以及可能的出错信息。其中offset为扫描后最终的位置偏移，total scanned bytes为最终扫描过的数据大小。http status code为最终的处理结果，error message为错误信息，包括所有跳过的行号及其总行数。 这里返回status code的原因在于SelectObject为流式处理，因而在发送Response Header的时候仅仅处理了第一个Block。如果第一个Block数据和SQL是匹配的，则在Response Header中的Status为206，但如果下面的数据非法，我们已无法更改Header中的Status，只能在End Frame里包含最终的Status及其出错信息。因此客户端应该视其为最终状态。
 
-|
+ |
 
 -   关于Error Message
 
@@ -358,7 +356,6 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
         Expect: 100-continue
         Connection: keep-alive
         Host: host name
-        
         <?xml version="1.0"?>
         <SelectRequest>
         	<Expression>c2VsZWN0IGNvdW50KCopIGZyb20gb3Nzb2JqZWN0IHdoZXJlIF80ID4gNDU=
@@ -397,7 +394,6 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
         date: Mon, 10 Dec 2018 18:28:11 GMT
         authorization: OSS AccessKeySignature
         Content-Length: 317
-        
         <SelectRequest>
         	<Expression>c2VsZWN0ICogZnJvbSBvc3NvYmplY3Qub2JqZWN0c1sqXSB3aGVyZSBwYXJ0eSA9ICdEZW1vY3JhdCc=
         	</Expression>
@@ -423,15 +419,10 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
     ```
     select_list: column name
-    
     | column index (比如_1, _2. 仅Csv文件有column index)
-    
     | json path (比如s.contacts.firstname 仅应用在Json文件)
-    
     | function(column index | column name)
-    
     | function(json_path) (仅应用在Json 文件)
-    
     | select_list AS alias
     ```
 
@@ -485,7 +476,7 @@ SelectObject API 用于对目标文件执行SQL语句，返回执行结果。
 
     聚合和Limit的混用
 
-    `Select avg(cast(_1 as int)) from ossobject limit 100`
+     `Select avg(cast(_1 as int)) from ossobject limit 100` 
 
     对于上面的语句，其含义是指在前100行中计算第一列的AVG值。这个行为和MY SQL不同，原因是在 SelectObject中聚合永远只返回一行数据，因而对聚合来说限制其输出规模是多余的。因此SelectObject里limit 将先于聚合函数执行。
 
@@ -570,7 +561,6 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
 
         ```
         POST  /samplecsv?x-oss-process=csv/meta
-        
         <CsvMetaRequest>
         	<InputSerialization>
         		<CompressionType>None</CompressionType>
@@ -588,7 +578,6 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
 
         ```
         POST  /samplecsv?x-oss-process=json/meta
-        
         <JsonMetaRequest>
         	<InputSerialization>
         		<CompressionType>None</CompressionType>
@@ -742,7 +731,6 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
         Expect: 100-continue
         Connection: keep-alive
         Host: Host
-        
         <?xml version="1.0"?>
         <CsvMetaRequest>
         	<InputSerialization>
@@ -768,7 +756,6 @@ CreateSelectObjectMeta API用于获取目标文件总的行数，总的列数（
         Expect: 100-continue
         Connection: keep-alive
         Host: Host
-        
         <?xml version="1.0"?>
         <JsonMetaRequest>
         	<InputSerialization>
@@ -855,12 +842,12 @@ Select有两种形式返回ErrorCode。
 
 |ErrorCode|描述|HTTP Status Code|Http Status Code in End Frame|
 |---------|--|----------------|-----------------------------|
-|InvalidSqlParameter|非法的SQL参数。请求中SQL为空或者SQL长度超过最大值或者SQL不是以base64编码。
+|InvalidSqlParameter|非法的SQL参数。 请求中SQL为空或者SQL长度超过最大值或者SQL不是以base64编码。
 
-|400|无|
-|InvalidInputFieldDelimiter|非法的CSV列分隔符（输入）。该参数不是以Base64编码或者解码后的长度大于1。
+ |400|无|
+|InvalidInputFieldDelimiter|非法的CSV列分隔符（输入）。 该参数不是以Base64编码或者解码后的长度大于1。
 
-|400|无|
+ |400|无|
 |InvalidInputRecordDelimiter|非法的CSV行分隔符\(输入\)。该参数不是以Base64编码或者解码后长度大于2。|400|无|
 |InvalidInputQuote|非法的CSV Quote字符\(输入\)。该参数不是以Base64编码或者解码后长度超过1。|400|无|
 |InvalidOutputFieldDelimiter|非法的CSV列分隔符（输出）。该参数不是以Base64编码或者解码后的长度大于1。|400|无|

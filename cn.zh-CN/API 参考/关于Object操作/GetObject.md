@@ -118,18 +118,18 @@ Range: bytes=ByteRange(可选)
 GET /oss.jpg HTTP/1.1
 Host: oss-example.oss-cn-hangzhou.aliyuncs.com
 Date: Fri, 24 Feb 2012 06:38:30 GMT
-Authorization:OSS qn6qrrqxo2oawuk53otfjbyc:UNQDb7GapEgJCZkcde6OhZ9Jfe8=
+Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:UNQDb7GapEgJkcde6OhZ9J*****
 ```
 
 **返回示例**
 
 ```
 HTTP/1.1 200 OK
-x-oss-request-id: 3a89276f-2e2d-7965-3ff9-51c875b99c41
+x-oss-request-id: 3a8f-2e2d-7965-3ff9-51c875b*****
 x-oss-object-type: Normal
 Date: Fri, 24 Feb 2012 06:38:30 GMT
 Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT
-ETag: "5B3C1A2E053D763E1B002CC607C5A0FE "
+ETag: "5B3C1A2E0563E1B002CC607C*****"
 Content-Type: image/jpg
 Content-Length: 344606
 Server: AliyunOSS
@@ -143,18 +143,18 @@ GET //oss.jpg HTTP/1.1
 Host:oss-example. oss-cn-hangzhou.aliyuncs.com
 Date: Fri, 28 Feb 2012 05:38:42 GMT
 Range: bytes=100-900
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:qZzjF3DUtd+yK16BdhGtFcCVknM=
+Authorization: OSS qn6qrrqxo2oawuk5jbyc:qZzjF3DUtd+yK16BdhGtFcC*****
 ```
 
 **返回示例**
 
 ```
 HTTP/1.1 206 Partial Content
-x-oss-request-id: 28f6508f-15ea-8224-234e-c0ce40734b89
+x-oss-request-id: 28f6-15ea-8224-234e-c0ce407*****
 x-oss-object-type: Normal
 Date: Fri, 28 Feb 2012 05:38:42 GMT
 Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT
-ETag: "5B3C1A2E053D763E1B002CC607C5A0FE "
+ETag: "5B3C1A2E05E1B002CC607C*****"
 Accept-Ranges: bytes
 Content-Range: bytes 100-900/344606
 Content-Type: image/jpg
@@ -175,11 +175,11 @@ Date: Fri, 24 Feb 2012 06:09:48 GMT
 
 ```
 HTTP/1.1 200 OK
-x-oss-request-id: 559CC9BDC755F95A64485981
+x-oss-request-id: 559CC9BDC75A644*****
 x-oss-object-type: Normal
 Date: Fri, 24 Feb 2012 06:09:48 GMT 
 Last-Modified: Fri, 24 Feb 2012 06:07:48 GMT
-ETag: "5B3C1A2E053D763E1B002CC607C5A0FE "
+ETag: "5B3C1A2E053D1B002CC607*****"
 Content-Length: 344606
 Connection: keep-alive
 Content-disposition: attachment; filename:testing.txt
@@ -199,7 +199,7 @@ GET /link-to-oss.jpg HTTP/1.1
 Accept-Encoding: identity
 Date: Tue, 08 Nov 2016 03:17:58 GMT
 Host: oss-example.oss-cn-hangzhou.aliyuncs.com
-Authorization:OSS qn6qrrqxo2oawuk53otfjbyc:qZzjF3DUtd+yK16BdhGtFcCVknM=
+Authorization: OSS qn6qrrqxok53otfjbyc:qZzjF3DUtd+yK16BdhGtFc*****
 ```
 
 **返回示例**
@@ -211,12 +211,12 @@ Date: Tue, 08 Nov 2016 03:17:58 GMT
 Content-Type: application/octet-stream
 Content-Length: 20
 Connection: keep-alive
-x-oss-request-id: 582143E6D3436A212ADCC87D
+x-oss-request-id: 582143E6A212AD*****
 Accept-Ranges: bytes
-ETag: "8086265EFC0211ED1F9A2F09BF462227"
+ETag: "8086265EFC021F9A2F09BF4****"
 Last-Modified: Tue, 08 Nov 2016 03:17:58 GMT
 x-oss-object-type: Symlink
-Content-MD5: gIYmXvwCEe0fmi8Jv0YiJw==
+Content-MD5: gIYmXvwCEe0fmi8Jv0Y****
 ```
 
 **Restore操作已经完成的请求示例**
@@ -225,19 +225,19 @@ Content-MD5: gIYmXvwCEe0fmi8Jv0YiJw==
 GET /oss.jpg HTTP/1.1
 Host: oss-archive-example.oss-cn-hangzhou.aliyuncs.com
 Date: Sat, 15 Apr 2017 09:38:30 GMT
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:zUglwRPGkbByZxm1+y4eyu+NIUs=
+Authorization: OSS qn6qrrqxo2o***k53otfjbyc:zUglwRPGkbByZxm1+y4eyu+*****
 ```
 
 **返回示例**
 
 ```
 HTTP/1.1 200 OK
-x-oss-request-id: 58F723894529F18D7F000053
+x-oss-request-id: 58F723829F29F18D7F00*****
 x-oss-object-type: Normal
 x-oss-restore: ongoing-request="false", expiry-date="Sun, 16 Apr 2017 08:12:33 GMT"
 Date: Sat, 15 Apr 2017 09:38:30 GMT
 Last-Modified: Sat, 15 Apr 2017 06:07:48 GMT
-ETag: "5B3C1A2E053D763E1B002CC607C5A0FE "
+ETag: "5B3C1A2E0763E1B002CC607C*****"
 Content-Type: image/jpg
 Content-Length: 344606
 Server: AliyunOSS

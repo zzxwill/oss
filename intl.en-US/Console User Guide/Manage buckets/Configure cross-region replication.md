@@ -2,7 +2,9 @@
 
 Cross-region replication is used to automatically and asynchronously copy objects across buckets in different regions. Any changes \(creation, replacement, and deletion\) to objects in the source bucket will be synchronized to the target bucket.
 
-**Note:** Currently, the cross-region replication feature is only supported between different regions in Mainland China.
+**Note:** 
+
+-   Currently, the cross-region replication feature is only supported between different regions in Mainland China and between the US West 1 \(Silicon Valley\) and US East 1 \(Virginia\) regions.
 
 ## Procedure {#section_a4q_5hf_vdb .section}
 

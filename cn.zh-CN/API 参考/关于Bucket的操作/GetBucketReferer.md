@@ -19,12 +19,12 @@ Authorization: SignatureValue
 
  父节点：无
 
- 子节点：AllowEmptyReferer，RefererList
+ 子节点：AllowEmptyReferer、RefererList
 
  |
 |AllowEmptyReferer|枚举字符串| 指定是否允许Referer字段为空的请求访问。
 
- 取值：true，false
+ 取值：true、false
 
  父节点：RefererConfiguration
 
@@ -62,7 +62,6 @@ Date: Thu, 13 Sep 2012 07:51:28 GMT
 Connection: keep-alive
 Content-Length: 218  
 Server: AliyunOSS
-
 <?xml version="1.0" encoding="UTF-8"?>
 <RefererConfiguration>
 <AllowEmptyReferer>true</AllowEmptyReferer >
@@ -86,7 +85,6 @@ Date: Thu, 13 Sep 2012 07:56:46 GMT
 Connection: keep-alive
 Content-Length: 308  
 Server: AliyunOSS
-
 <?xml version="1.0" encoding="UTF-8"?>
 <RefererConfiguration>
 <AllowEmptyReferer>true</AllowEmptyReferer >
@@ -98,14 +96,14 @@ Server: AliyunOSS
 
 此接口所对应的各语言SDK如下：
 
--   [Java](../../../../../intl.zh-CN/SDK 参考/Java/防盗链.md)
--   [Python](../../../../../intl.zh-CN/SDK 参考/PHP/防盗链.md)
--   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/防盗链.md)
--   [Go](../../../../../intl.zh-CN/SDK 参考/Go/防盗链.md)
--   [C](../../../../../intl.zh-CN/SDK 参考/C/防盗链.md)
--   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/防盗链.md)
--   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/防盗链.md)
--   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/防盗链.md)
+-   [Java](../../../../cn.zh-CN/SDK 参考/Java/防盗链.md)
+-   [PHP](../../../../cn.zh-CN/SDK 参考/PHP/防盗链.md)
+-   [Python](../../../../cn.zh-CN/SDK 参考/Python/防盗链.md#)
+-   [Go](../../../../cn.zh-CN/SDK 参考/Go/防盗链.md)
+-   [C](../../../../cn.zh-CN/SDK 参考/C/防盗链.md)
+-   [.NET](../../../../cn.zh-CN/SDK 参考/.NET/防盗链.md)
+-   [Node.js](../../../../cn.zh-CN/SDK 参考/Node.js/防盗链.md)
+-   [Ruby](../../../../cn.zh-CN/SDK 参考/Ruby/防盗链.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}
 

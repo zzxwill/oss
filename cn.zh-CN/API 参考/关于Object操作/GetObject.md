@@ -108,6 +108,7 @@ Range: bytes=ByteRange(可选)
 |名称|类型|描述|
 |--|--|--|
 |x-oss-server-side-encryption|字符串|若Object在服务器端采用熵编码加密存储，使用GET请求时，系统会自动解密返回给用户，并且在响应头中返回x-oss-server-side-encryption，表明该Object的服务器端加密算法。|
+|x‑oss‑tagging‑count|字符串|对象关联的标签的个数。仅当用户有读取标签权限时返回|
 
 ## 示例 {#section_vrp_zmw_bz .section}
 
@@ -247,16 +248,15 @@ Server: AliyunOSS
 
 GetObject接口所对应的各语言SDK如下：
 
--   [Java](../../../../../cn.zh-CN/SDK 参考/Java/上传文件/概述.md)
--   [Python](../../../../../cn.zh-CN/SDK 参考/Python/上传文件/概述.md)
--   [PHP](../../../../../cn.zh-CN/SDK 参考/PHP/上传文件/概述 .md)
--   [Go](../../../../../cn.zh-CN/SDK 参考/Go/上传文件/概述.md)
--   [C](../../../../../cn.zh-CN/SDK 参考/C/上传文件/概述.md)
--   [.NET](../../../../../cn.zh-CN/SDK 参考/.NET/上传文件/概述.md)
--   [Android](../../../../../cn.zh-CN/SDK 参考/Android/上传文件/概述.md)
--   [Node.js](../../../../../cn.zh-CN/SDK 参考/Node.js/上传文件.md)
--   [Browser.js](../../../../../cn.zh-CN/SDK 参考/Browser.js/上传文件.md)
--   [Ruby](../../../../../cn.zh-CN/SDK 参考/Ruby/上传文件.md)
+-   [Java](../../../../intl.zh-CN/SDK 参考/Java/上传文件/概述.md)
+-   [Python](../../../../intl.zh-CN/SDK 参考/Python/上传文件/概述.md)
+-   [PHP](../../../../intl.zh-CN/SDK 参考/PHP/上传文件/概述 .md)
+-   [Go](../../../../intl.zh-CN/SDK 参考/Go/上传文件/概述.md)
+-   [C](../../../../intl.zh-CN/SDK 参考/C/上传文件/概述.md)
+-   [.NET](../../../../intl.zh-CN/SDK 参考/.NET/上传文件/概述.md)
+-   [Node.js](../../../../intl.zh-CN/SDK 参考/Node.js/上传文件/概述.md)
+-   [Browser.js](../../../../intl.zh-CN/SDK 参考/Browser.js/上传文件.md)
+-   [Ruby](../../../../intl.zh-CN/SDK 参考/Ruby/上传文件.md)
 
 ## 错误码 {#section_hnc_tz5_jgb .section}
 
@@ -265,10 +265,10 @@ GetObject接口所对应的各语言SDK如下：
 |NoSuchKey|404|目标Object不存在。|
 |SymlinkTargetNotExist|404|Object类型为符号链接，且目标Object不存在。|
 |InvalidTargetType|400|Object类型为符号链接，且目标Object类型仍为符号链接。|
-|InvalidObjectState|403|下载归档类型的Object时，-   没有提交RestoreObject请求或者上一次提交RestoreObject已经超时。
+|InvalidObjectState|403|下载归档类型的Object时， -   没有提交RestoreObject请求或者上一次提交RestoreObject已经超时。
 -   已经提交RestoreObject请求，但数据的RestoreObject操作还没有完成。
 
-|
+ |
 |Not Modified|304| -   指定了If-Modified-Since请求头，但源Object在指定的时间后没被修改过。
 -   指定了If-None-Match请求头，且源Object的ETag值和您提供的ETag相等。
 

@@ -6,6 +6,7 @@ PutObject接口用于上传文件（Object）。
 
 -   添加的文件大小不得超过5 GB。
 -   如果已经存在同名的Object，并且有访问权限，则新添加的文件将覆盖原来的文件，并成功返回200 OK。
+-   OSS没有文件夹的概念，所有元素都是以文件来存储，但您可以通过创建一个空的Object创建模拟文件夹，具体参见[OSS文件夹](https://help.aliyun.com/knowledge_detail/39527.html?spm=5176.11065259.1996646101.searchclickresult.965e5d0fkji5gj)。
 
 ## 请求语法 {#section_ald_lkw_bz .section}
 
@@ -19,6 +20,8 @@ Authorization: SignatureValue
 ```
 
 ## 请求头 {#section_y1z_lkw_bz .section}
+
+**说明：** OSS支持HTTP协议规定的5个请求头：Cache-Control、Expires、Content-Encoding、Content-Disposition、Content-Type。如果上传Object时设置了这些请求头，则该Object被下载时，相应的请求头值会被自动设置成上传时的值。
 
 |名称|类型|是否必选|描述|
 |:-|:-|:---|:-|
@@ -48,8 +51,6 @@ Authorization: SignatureValue
 
  默认值：无
 
- 限制：无
-
  |
 |Content-Length|字符串|否| 用于描述HTTP消息体的传输大小。
 
@@ -64,8 +65,6 @@ Authorization: SignatureValue
 |Expires|字符串|否| 过期时间，详细描述参考照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。
 
  默认值：无
-
- **说明：** OSS不会对该值进行限制和验证。
 
  |
 |x-oss-server-side-encryption|字符串|否| 指定OSS创建Object时的服务器端加密编码算法。
@@ -94,15 +93,16 @@ Authorization: SignatureValue
  支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject。
 
  |
+|x-oss-meta-\*|字符串|否| 使用PutObject接口时，如果配置以x-oss-meta-\*为前缀的参数，则该参数视为元数据，例如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的元数据总大小不能超过8KB。元数据支持短横线（-）、数字、英文字母（a-z），英文字符的大写字母会被转成小写字母，不支持下划线（\_）在内的其他字符。
 
-**说明：** 
+ |
+|x‑oss‑tagging|字符串|否|指定Object的标签，可同时设置多个标签，例如： TagA=A&TagB=B。 **说明：** Key和Value需要先进行URL编码，如果某项没有"="，则看作Value为空字符串。
 
--   OSS支持HTTP协议规定的5个请求头：Cache-Control、Expires、Content-Encoding、Content-Disposition、Content-Type。如果上传Object时设置了这些请求头，则该Object被下载时，相应的请求头值会被自动设置成上传时的值。
--   使用PutObject接口时，如果配置以x-oss-meta-为前缀的参数，则该参数视为元数据，例如x-oss-meta-location。一个Object可以有多个类似的参数，但所有的元数据总大小不能超过8KB。元数据支持短横线（-）、空格 、双引号（""）、 数字、英文字母（a-z, A-Z），不支持下划线（\_）在内的其他字符。
+ |
 
 ## 示例 {#section_orz_dlw_bz .section}
 
-**简单上传的请求示例**
+ **简单上传的请求示例** 
 
 ```
 PUT /test.txt HTTP/1.1
@@ -116,7 +116,7 @@ authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk=
 Transfer-Encoding: chunked
 ```
 
-**返回示例**
+ **返回示例** 
 
 ```
 HTTP/1.1 200 OK
@@ -131,7 +131,7 @@ Content-MD5: 1B2M2Y8AsgTpgAmY7PhCfg==
 x-oss-server-time: 7
 ```
 
-**带有归档存储类型的请求示例**
+ **带有归档存储类型的请求示例** 
 
 ```
 PUT /oss.jpg HTTP/1.1 
@@ -144,11 +144,10 @@ Content-Type: image/jpg
 Content-Length: 344606 
 x-oss-storage-class: Archive
 Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:kZoYNv66bsmc10+dcGKw5x2PRrk=  
-
 [344606 bytes of object data]
 ```
 
-**返回示例**
+ **返回示例** 
 
 ```
 HTTP/1.1 200 OK
@@ -159,26 +158,25 @@ Content-Length: 0
 Connection: keep-alive
 x-oss-request-id: 5650BD72207FB30443962F9A
 x-oss-bucket-version: 1418321259
-
 ETag: "A797938C31D59EDD08D86188F6D5B872"
 ```
 
 ## SDK {#section_egl_m2c_5gb .section}
 
--   [Java](../../../../../intl.zh-CN/SDK 参考/Java/上传文件/简单上传.md)
--   [Python](../../../../../intl.zh-CN/SDK 参考/Python/上传文件/简单上传.md) 
--   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/上传文件/简单上传.md)
--   [Go](../../../../../intl.zh-CN/SDK 参考/Go/上传文件/简单上传.md)
--   [C](../../../../../intl.zh-CN/SDK 参考/C/上传文件/简单上传.md)
--   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/上传文件/简单上传.md)
--   [iOS](../../../../../intl.zh-CN/SDK 参考/iOS/上传文件.md)
--   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/上传文件.md)
--   [Browser.js](../../../../../intl.zh-CN/SDK 参考/Browser.js/上传文件.md)
--   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/上传文件.md)
+-   [Java](../../../../intl.zh-CN/SDK 参考/Java/上传文件/简单上传.md)
+-   [Python](../../../../intl.zh-CN/SDK 参考/Python/上传文件/简单上传.md)
+-   [PHP](../../../../intl.zh-CN/SDK 参考/PHP/上传文件/简单上传.md)
+-   [Go](../../../../intl.zh-CN/SDK 参考/Go/上传文件/简单上传.md)
+-   [C](../../../../intl.zh-CN/SDK 参考/C/上传文件/简单上传.md)
+-   [.NET](../../../../intl.zh-CN/SDK 参考/.NET/上传文件/简单上传.md)
+-   [iOS](../../../../intl.zh-CN/SDK 参考/iOS/上传文件/概述.md)
+-   [Node.js](../../../../intl.zh-CN/SDK 参考/Node.js/上传文件/概述.md)
+-   [Browser.js](../../../../intl.zh-CN/SDK 参考/Browser.js/上传文件.md)
+-   [Ruby](../../../../intl.zh-CN/SDK 参考/Ruby/上传文件.md)
 
 ## 常见问题 {#section_w35_wkw_bz .section}
 
-**如何计算Content-MD5？**
+ **如何计算Content-MD5？** 
 
 首先计算MD5加密的二进制数组（128位），然后再对这个二进制数组进行base64编码（而不是对32位字符串编码）。例如，用Python计算`0123456789`的Content-MD5，代码为：
 

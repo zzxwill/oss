@@ -92,7 +92,7 @@ Initiate Multipart Upload时，可以通过encoding-type对返回结果中的Key
 ## 细节分析 {#section_dvp_l4x_wdb .section}
 
 -   该操作计算认证签名的时候，需要加“?uploads”到CanonicalizedResource中。
--   初始化Multipart Upload请求，支持如下标准的HTTP请求头：Cache-Control、Content-Disposition、Content-Encoding、Content-Type、Expires，以及以`x-oss-meta-`开头的用户自定义Headers。具体含义请参见[PutObject](intl.zh-CN/API 参考/关于Object操作/PutObject.md#)。
+-   初始化Multipart Upload请求，支持如下标准的HTTP请求头：Cache-Control、Content-Disposition、Content-Encoding、Content-Type、Expires，以及以`x-oss-meta-`开头的用户自定义Headers。具体含义请参见[PutObject](cn.zh-CN/API 参考/关于Object操作/PutObject.md#)。
 -   初始化Multipart Upload请求，并不会影响已经存在的同名Object。
 -   服务器收到初始化Multipart Upload请求后，会返回一个XML格式的请求体。该请求体内有三个元素：Bucket、Key和UploadID。请记录下其中的UploadID，以用于后续的Multipart相关操作。
 -   初始化Multipart Upload请求时，若设置了x-oss-server-side-encryption Header，则在响应头中会返回该Header，并且在上传的每个part时，服务端会自动对每个part进行熵编码加密存储，目前OSS服务器端只支持AES256和KMS加密，指定其他值会返回400 错误和错误码：InvalidEncryptionAlgorithmError；在上传每个part时不必再添加x-oss-server-side-encryption 请求头，若指定该请求头则OSS会返回400 错误和错误码：InvalidArgument。

@@ -118,17 +118,28 @@ Host: BucketName.oss.aliyuncs.com
  **说明：** Standard Bucket中的Standard Object可以转储为IA、Archive存储类型，但转储Archive存储类型的时间必须比转储IA存储类型的时间长。例如Transition IA设置Days为30，Transition Archive设置Days必须大于IA。
 
  |
+|Tag|容器|否|指定规则所适用的对象标签，可设置多个。 父节点：Rule
+
+ 子节点：Key， Value
+
+ |
+|Key|字符串|若父节点Tag已设置，则为必需|Tag Key 父节点：Tag
+
+ |
+|Value|字符串|若父节点Tag已设置，则为必需|Tag Value 父节点：Tag
+
+ |
 
 ## 示例 {#section_ox3_zcw_bz .section}
 
-**请求示例**
+ **请求示例** 
 
 ```
 PUT /?lifecycle HTTP/1.1
 Host: oss-example.oss.aliyuncs.com
 Content-Length: 443
 Date: Thu , 8 Jun 2017 13:08:38 GMT
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:PYbzsdWSMrAIWAlMW8luWekJ8=
+Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:PYbzsdWAIWAlMW8luk*****
 <?xml version="1.0" encoding="UTF-8"?>
 <LifecycleConfiguration>
   <Rule>
@@ -178,14 +189,35 @@ Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:PYbzsdWSMrAIWAlMW8luWekJ8=
       <CreatedBeforeDate>2017-01-01T00:00:00.000Z</CreatedBeforeDate>
     </AbortMultipartUpload>
   </Rule>
+  <Rule>
+    <ID>r1</ID>
+    <Prefix>rule1</Prefix>
+    <Tag><Key>xx</Key><Value>1</Value></Tag>
+    <Tag><Key>yy</Key><Value>2</Value></Tag>
+    <Status>Enabled</Status>
+    <Expiration>
+      <Days>30</Days>
+    </Expiration>
+  </Rule>
+  <Rule>
+    <ID>r2</ID>
+    <Prefix>rule2</Prefix>
+    <Tag><Key>xx</Key><Value>1</Value></Tag>
+    <Status>Enabled</Status>
+    <Transition>
+      <Days>60</Days>
+    <StorageClass>Archive</StorageClass>
+    </Transition>
+  </Rule>
 </LifecycleConfiguration>
+			
 ```
 
-**返回示例**
+ **返回示例** 
 
 ```
 HTTP/1.1 200 OK
-x-oss-request-id: 534B371674E88A4D8906008B
+x-oss-request-id: 534B371674A4D890*****
 Date: Thu , 8 Jun 2017 13:08:38 GMT
 Content-Length: 0
 Connection: keep-alive
@@ -196,14 +228,14 @@ Server: AliyunOSS
 
 此接口所对应的各语言SDK如下：
 
--   [Java](../../../../../intl.zh-CN/SDK 参考/Java/生命周期.md)
--   [Python](../../../../../intl.zh-CN/SDK 参考/Python/生命周期.md)
--   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/生命周期.md)
--   [Go](../../../../../intl.zh-CN/SDK 参考/Go/生命周期.md)
--   [C](../../../../../intl.zh-CN/SDK 参考/C/生命周期.md)
--   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/生命周期.md)
--   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/生命周期.md)
--   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/生命周期.md)
+-   [Java](../../../../intl.zh-CN/SDK 参考/Java/生命周期.md)
+-   [Python](../../../../intl.zh-CN/SDK 参考/Python/生命周期.md)
+-   [PHP](../../../../intl.zh-CN/SDK 参考/PHP/生命周期.md)
+-   [Go](../../../../intl.zh-CN/SDK 参考/Go/生命周期.md)
+-   [C](../../../../intl.zh-CN/SDK 参考/C/生命周期.md)
+-   [.NET](../../../../intl.zh-CN/SDK 参考/.NET/生命周期.md)
+-   [Node.js](../../../../intl.zh-CN/SDK 参考/Node.js/生命周期.md)
+-   [Ruby](../../../../intl.zh-CN/SDK 参考/Ruby/生命周期.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}
 

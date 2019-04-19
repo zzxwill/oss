@@ -13,78 +13,78 @@ Date: GMT date
 Authorization: SignatureValue
 ```
 
-## 请求参数\(Request Parameters\) {#section_n32_jnx_wdb .section}
+## 请求参数 {#section_n32_jnx_wdb .section}
 
 Initiate Multipart Upload时，可以通过encoding-type对返回结果中的Key进行编码。
 
 |名称|类型|描述|
 |:-|:-|:-|
-|encoding-type|字符串|指定对返回的Key进行编码，目前支持url编码。Key使用UTF-8字符，但xml 1.0标准不支持解析一些控制字符，比如ascii值从0到10的字符。对于Key中包含xml 1.0标准不支持的控制字符，可以通过指定encoding-type对返回的Key进行编码。默认值：无
+|encoding-type|字符串|指定对返回的Key进行编码，目前支持url编码。Key使用UTF-8字符，但xml 1.0标准不支持解析一些控制字符，比如ascii值从0到10的字符。对于Key中包含xml 1.0标准不支持的控制字符，可以通过指定encoding-type对返回的Key进行编码。 默认值：无
 
-可选值：url
+ 可选值：url
 
-|
+ |
 
-## 请求Header {#section_mny_pnx_wdb .section}
+## 请求头 {#section_mny_pnx_wdb .section}
 
 |名称|类型|描述|
 |:-|:-|:-|
-|Cache-Control|字符串|指定该Object被下载时的网页的缓存行为；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。默认值：无
+|Cache-Control|字符串|指定该Object被下载时的网页的缓存行为；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
 
-|
-|Content-Disposition|字符串|指定该Object被下载时的名称；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。默认值：无
+ |
+|Content-Disposition|字符串|指定该Object被下载时的名称；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
 
-|
-|Content-Encoding|字符串|指定该Object被下载时的内容编码格式；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。默认值：无
+ |
+|Content-Encoding|字符串|指定该Object被下载时的内容编码格式；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
 
-|
-|Expires|整数|过期时间（milliseconds）；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。默认值：无
+ |
+|Expires|整数|过期时间（milliseconds）；更详细描述请参照[RFC2616](https://www.ietf.org/rfc/rfc2616.txt)。 默认值：无
 
-|
-|x-oss-server-side-encryption|字符串|指定上传该Object每个part时使用的服务器端加密编码算法，OSS会对上传的每个part采用服务器端加密编码进行存储。合法值：AES256 或 KMS 
+ |
+|x-oss-server-side-encryption|字符串|指定上传该Object每个part时使用的服务器端加密编码算法，OSS会对上传的每个part采用服务器端加密编码进行存储。 合法值：AES256 或 KMS
 
-注意：用户需要在控制台开通KMS（密钥管理服务），才可使用KMS加密算法，否则会报KmsServiceNotEnabled错误码。
+ 注意：用户需要在控制台开通KMS（密钥管理服务），才可使用KMS加密算法，否则会报KmsServiceNotEnabled错误码。
 
-|
-|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。该参数在x-oss-server-side-encryption为KMS时有效。
+ |
+|x-oss-server-side-encryption-key-id|字符串|表示KMS托管的用户主密钥。 该参数在x-oss-server-side-encryption为KMS时有效。
 
-|
-|x-oss-storage-class|字符串|指定Object的存储类型。取值：
+ |
+|x-oss-storage-class|字符串|指定Object的存储类型。 取值：
 
 -   Standard
 -   IA
 -   Archive
 
-支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject。
+ 支持的接口：PutObject、InitMultipartUpload、AppendObject、 PutObjectSymlink、CopyObject。
 
-**说明：** 
+ **说明：** 
 
 -   如果StorageClass的值不合法，返回400 错误。错误码：InvalidArgumet。
 -   对于任意存储类型Bucket，若上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
 
-|
+ |
 
-## 响应元素\(Response Elements\) {#section_y4f_b4x_wdb .section}
+## 响应元素 {#section_y4f_b4x_wdb .section}
 
 |名称|类型|描述|
 |:-|:-|:-|
-|Bucket|字符串|初始化一个Multipart Upload事件的Bucket名称。父节点：InitiateMultipartUploadResult
+|Bucket|字符串|初始化一个Multipart Upload事件的Bucket名称。 父节点：InitiateMultipartUploadResult
 
-|
-|InitiateMultipartUploadResult|容器|保存Initiate Multipart Upload请求结果的容器。子节点：Bucket, Key, UploadId
+ |
+|InitiateMultipartUploadResult|容器|保存Initiate Multipart Upload请求结果的容器。 子节点：Bucket, Key, UploadId
 
-父节点：None
+ 父节点：None
 
-|
-|Key|字符串|初始化一个Multipart Upload事件的Object名称。父节点：InitiateMultipartUploadResult
+ |
+|Key|字符串|初始化一个Multipart Upload事件的Object名称。 父节点：InitiateMultipartUploadResult
 
-|
-|UploadId|字符串|唯一标示此次Multipart Upload事件的ID。父节点：InitiateMultipartUploadResult
+ |
+|UploadId|字符串|唯一标示此次Multipart Upload事件的ID。 父节点：InitiateMultipartUploadResult
 
-|
-|EncodingType|字符串|指明返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，那返回的结果会对Key进行编码。父节点：容器
+ |
+|EncodingType|字符串|指明返回结果中编码使用的类型。如果请求的参数中指定了encoding-type，那返回的结果会对Key进行编码。 父节点：容器
 
-|
+ |
 
 ## 细节分析 {#section_dvp_l4x_wdb .section}
 
@@ -103,7 +103,7 @@ POST /multipart.data?uploads HTTP/1.1
 Host: oss-example.oss-cn-hangzhou.aliyuncs.com 
 Date: Wed, 22 Feb 2012 08:32:21 GMT 
 x-oss-storage-class: Archive
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:/cluRFtRwMTZpC2hTj4F67AGdM4=
+Authorization: OSS qn6qrrqxo2oawuk53otfjbyc:/cluRFtRwMTZpC2hTj4F67AG****
 ```
 
 返回示例：
@@ -113,14 +113,14 @@ HTTP/1.1 200 OK
 Content-Length: 230
 Server: AliyunOSS
 Connection: keep-alive
-x-oss-request-id: 42c25703-7503-fbd8-670a-bda01eaec618
+x-oss-request-id: 42c25703-7503-fbd8-670a-bda01eae****
 Date: Wed, 22 Feb 2012 08:32:21 GMT
 Content-Type: application/xml
 <?xml version="1.0" encoding="UTF-8"?>
 <InitiateMultipartUploadResult xmlns=”http://doc.oss-cn-hangzhou.aliyuncs.com”>
     <Bucket> multipart_upload</Bucket>
     <Key>multipart.data</Key>
-    <UploadId>0004B9894A22E5B1888A1E29F8236E2D</UploadId>
+    <UploadId>0004B9894A22E5B1888A1E29F823****</UploadId>
 </InitiateMultipartUploadResult>
 ```
 

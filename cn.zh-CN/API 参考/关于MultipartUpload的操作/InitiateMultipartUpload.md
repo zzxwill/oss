@@ -63,6 +63,9 @@ Initiate Multipart Upload时，可以通过encoding-type对返回结果中的Key
 -   对于任意存储类型Bucket，若上传Object时指定该值，则此次上传的Object将存储为指定的类型。例如，在IA类型的Bucket中上传Object时，若指定x-oss-storage-class为Standard，则该Object直接存储为Standard。
 
  |
+|x‑oss‑tagging|字符串|指定Object的标签，可同时设置多个标签，例如： TagA=A&TagB=B **说明：** Key和Value需要先进行URL编码，如果某项没有"="，则看作Value为空字符串。
+
+ |
 
 ## 响应元素 {#section_y4f_b4x_wdb .section}
 

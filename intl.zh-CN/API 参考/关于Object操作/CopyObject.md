@@ -54,7 +54,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
  默认值：无
 
  |
-|x-oss-copy-source-if-modified-since|字符串|否| 如果源Object自从用户指定的时间以后被修改过，则执行拷贝操作；否则返回304 Not Modified错误码（预处理失败）。
+|x-oss-copy-source-if-modified-since|字符串|否| 如果源Object在用户指定的时间以后被修改过，则执行拷贝操作；否则返回304 Not Modified错误码（预处理失败）。
 
  默认值：无
 
@@ -67,7 +67,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 
 **说明：** 不会复制源Object的x-oss-server-side-encryption。目标Object是否进行服务器端加密编码只根据当前拷贝操作是否指定了x-oss-server-side-encryption来决定。
 
--   REPLACE
+-   REPLACE 
 
 忽略源Object的元数据，直接采用请求中指定的元数据。
 
@@ -108,6 +108,13 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 -   更改Object存储类型涉及到数据覆盖，如果IA或Archive类型Object分别在创建后30和60天内被覆盖，则它们会产生提前删除费用。
 
  |
+|x‑oss‑tagging|字符串|否|指定Object的对象标签，可同时设置多个标签，例如： TagA=A&TagB=B。 **说明：** Key和Value需要先进行URL编码，如果某项没有"="，则看作Value为空字符串。
+
+ |
+|x‑oss-tagging-directive|字符串|否|指定如何设置目标Object的对象标签。取值如下： -   Copy（默认值）：复制源Object的对象标签到目标 Object。
+-   Replace：忽略源Object的对象标签，直接采用请求中 指定的对象标签。
+
+ |
 
 ## 响应元素 {#section_tvz_qlw_bz .section}
 
@@ -131,7 +138,7 @@ x-oss-copy-source: /SourceBucketName/SourceObjectName
 
 ## 示例 {#section_osk_5lw_bz .section}
 
-**示例1**
+ **示例1** 
 
 请求示例
 
@@ -161,7 +168,7 @@ Server: AliyunOSS
 </CopyObjectResult>
 ```
 
-**示例 2**
+ **示例 2** 
 
 请求示例
 
@@ -191,7 +198,6 @@ x-oss-request-id: 5C25EFE4462CE00EC6D87156
 ETag: "F2064A169EE92E9775EE5324D0B1682E"
 x-oss-hash-crc64ecma: 12753002859196105360
 x-oss-server-time: 150
-
 <?xml version="1.0" encoding="UTF-8"?>
 <CopyObjectResult>
   <ETag>"F2064A169EE92E9775EE5324D0B1682E"</ETag>
@@ -205,15 +211,15 @@ x-oss-server-time: 150
 
 此接口所对应的各语言SDK如下：
 
--   [Java](../../../../../intl.zh-CN/SDK 参考/Java/管理文件/拷贝文件.md)
--   [Python](../../../../../intl.zh-CN/SDK 参考/Python/管理文件/拷贝文件.md)
--   [PHP](../../../../../intl.zh-CN/SDK 参考/PHP/管理文件/拷贝文件.md)
--   [Go](../../../../../intl.zh-CN/SDK 参考/Go/管理文件/拷贝文件.md)
--   [C](../../../../../intl.zh-CN/SDK 参考/C/管理文件/拷贝文件.md)
--   [.NET](../../../../../intl.zh-CN/SDK 参考/.NET/管理文件/删除文件.md)
--   [iOS](../../../../../intl.zh-CN/SDK 参考/iOS/管理文件.md)
--   [Node.js](../../../../../intl.zh-CN/SDK 参考/Node.js/管理文件.md)
--   [Ruby](../../../../../intl.zh-CN/SDK 参考/Ruby/管理文件.md)
+-   [Java](../../../../intl.zh-CN/SDK 参考/Java/管理文件/拷贝文件.md)
+-   [Python](../../../../intl.zh-CN/SDK 参考/Python/管理文件/拷贝文件.md)
+-   [PHP](../../../../intl.zh-CN/SDK 参考/PHP/管理文件/拷贝文件.md)
+-   [Go](../../../../intl.zh-CN/SDK 参考/Go/管理文件/拷贝文件.md)
+-   [C](../../../../intl.zh-CN/SDK 参考/C/管理文件/拷贝文件.md)
+-   [.NET](../../../../intl.zh-CN/SDK 参考/.NET/管理文件/删除文件.md)
+-   [iOS](../../../../intl.zh-CN/SDK 参考/iOS/管理文件/概述.md)
+-   [Node.js](../../../../intl.zh-CN/SDK 参考/Node.js/管理文件/概述.md)
+-   [Ruby](../../../../intl.zh-CN/SDK 参考/Ruby/管理文件.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}
 

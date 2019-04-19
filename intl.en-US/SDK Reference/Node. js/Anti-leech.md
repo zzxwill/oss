@@ -2,14 +2,14 @@
 
 This topic describes how to use anti-leech.
 
-为了防止您在OSS上的数据被其他人盗链而产生额外费用，您可以设置防盗链功能，包括以下参数：
+To prevent your data on OSS from being leeched, OSS supports anti-leeching through the referer field settings in the HTTP header, including the following parameters:
 
--   Referer白名单。仅允许指定的域名访问OSS资源。
--   是否允许空Referer。如果不允许空Referer，则只有HTTP或HTTPS header中包含Referer字段的请求才能访问OSS资源。
+-   Referer whitelist: Used to allow access only for specified domains to OSS data.
+-   Empty referer: Determines whether the referer can be empty. If it is not allowed, only requests with the referer filed in their HTTP or HTTPS headers can access OSS data.
 
-For more information about anti-leach, see [Anti-leech settings](../../../../../reseller.en-US/Developer Guide/Buckets/Anti-leech settings.md#).
+For more information about anti-leach, see [Anti-leech settings](../../../../reseller.en-US/Developer Guide/Buckets/Anti-leech settings.md#).
 
-## Configure a Referer whitelist {#section_tt5_5wk_lfb .section}
+## Configure a referer whitelist {#section_tt5_5wk_lfb .section}
 
 Use `putBucketReferer` to set a referer whitelist:
 
@@ -36,7 +36,7 @@ async function putBucketReferer () {
  }
  
 putBucketReferer();
-
+			
 ```
 
 ## View a referer whitelist { .section}
@@ -63,7 +63,7 @@ async function getBucketReferer () {
 }
 
 getBucketReferer();
-
+			
 ```
 
 ## Clear a referer whitelist { .section}
@@ -90,6 +90,6 @@ async function deleteBucketReferer () {
 }
 
 deleteBucketReferer();
-
+			
 ```
 

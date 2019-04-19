@@ -14,7 +14,7 @@ OSS supports strong compliant retention strategies. You can set a time-based com
 
 ## Operation {#section_gq3_zz5_cfb .section}
 
-You can set a compliant retention strategy in the OSS console. For more information, see [Set a compliant retention strategy](../../../../../reseller.en-US/Developer Guide/Compliant retention strategy/Set a compliant retention strategy.md#).
+You can set a compliant retention strategy in the OSS console. For more information, see [Set a compliant retention strategy](../../../../reseller.en-US/Developer Guide/Compliant retention strategy/Set a compliant retention strategy.md#).
 
 ## Description {#section_nk2_fz5_cfb .section}
 
@@ -34,6 +34,7 @@ Assume that you created a bucket named examplebucket on June 1, 2013, and then u
 
     -   Within 24 hours after a compliant retention strategy is created for a bucket, the bucket owner and authorized users can delete the strategy if it is not locked. If the compliant retention strategy is locked, it cannot be deleted and the protection period of the strategy cannot be shorten. However, you can extend the protection period of the strategy.
     -   If a compliant retention strategy is not locked after it is created for 24 hours, it is not locked.
+    -   If you try to delete or modify the data in a bucket protected by a compliant retention strategy, OSS API returns the `409 FileImmutable` message.
 -   Deletion rules
     -   A time-based compliant retention strategy is a metadata property of a bucket. When a bucket is deleted, the compliant retention strategy and access strategies set for the bucket are also deleted. Therefore, the owner of an empty bucket can delete the retention strategy set for the bucket by deleting the bucket.
     -   If a compliant retention strategy is not locked within 24 hours after it is created for a bucket, the bucket owner and authorized users can delete it.

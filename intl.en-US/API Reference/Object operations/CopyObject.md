@@ -200,8 +200,8 @@ The SDKs of this API are as follows:
 -   [PHP](../../../../reseller.en-US/SDK Reference/PHP/Manage objects/Copy objects.md)
 -   [Go](../../../../reseller.en-US/SDK Reference/Go/Manage objects/Copy objects.md)
 -   [C](../../../../reseller.en-US/SDK Reference/C/Manage objects/Copy objects.md)
--   [.NET](../../../../reseller.en-US/SDK Reference/. NET/Manage objects/Delete objects.md)
--   [iOS](../../../../reseller.en-US/SDK Reference/iOS/Manage an object/Overview.md)
+-   [.NET](../../../../reseller.en-US/SDK Reference/. NET/Manage objects/Copy objects.md#)
+-   [iOS](../../../../reseller.en-US/SDK Reference/iOS/Manage objects/Overview.md)
 -   [Node.js](../../../../reseller.en-US//Manage objects.md)
 -   [Ruby](../../../../reseller.en-US/SDK Reference/Ruby/Manage objects.md)
 

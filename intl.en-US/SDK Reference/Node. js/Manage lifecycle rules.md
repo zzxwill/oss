@@ -2,18 +2,18 @@
 
 OSS allows you to set lifecycle rules for buckets to automatically remove expired objects and save the storage space.
 
-OSS支持设置生命周期（Lifecycle）规则，自动删除过期的文件和碎片，或将到期的文件转储为低频或归档存储类型，从而节省存储费用。每条规则包含：
+You can configure lifecycle rules for OSS buckets or objects to automatically delete expired objects and parts or change the storage class of expired objects to IA or Archive, saving storage costs. A lifecycle rule includes the following elements:
 
--   规则ID。用于标识一条规则，同一存储空间内规则ID不能重复。
--   策略。有以下两种设置方式。同一存储空间内仅支持一种设置方式。
-    -   按前缀匹配。此种方式允许创建多条规则，前缀不能重复。
-    -   配置到整个存储空间。此种方式只能创建一条规则。
--   过期时间。有两种指定方式：
-    -   指定一个过期天数N，文件会在其最近更新时间点的N天后过期。
-    -   指定一个过期时间点，最近更新时间在该时间点之前的文件全部过期。
--   是否生效。
+-   Rule ID: Identifies a lifecycle rule. A rule ID is unique in a bucket.
+-   Strategy: You can set one of the following two application strategies for a rule. The strategy for all rules set for a bucket must be the same.
+    -   The rule applies to objects with specified prefixes. You can create multiple rules with this strategy. Prefixes specified in different rules must be different.
+    -   The rule applies to the entire bucket. You can create only one rule with this strategy.
+-   Expiration period:
+    -   Specifies the expiration period \(N days\) of a lifecycle rule. An object expires N days after it is modified for the last time.
+    -   Specifies an expiration time. Objects modified before the time expire.
+-   Status: Indicates whether the rule is enabled or disabled.
 
-For more information, see [Lifecycle rules](../../../../../reseller.en-US/Developer Guide/Manage files/Manage object lifecycle.md#).
+For more information, see [Lifecycle rules](../../../../reseller.en-US/Developer Guide/Manage files/Manage lifecycle rules.md#).
 
 ## Configure lifecycle rules {#section_rl5_kvk_lfb .section}
 
@@ -51,7 +51,7 @@ async function putBucketLifecycle () {
 }
 
 putBucketLifecycle();
-
+			
 ```
 
 ## View lifecycle rules { .section}
@@ -78,7 +78,7 @@ async function getBucketLifecycle () {
 }
 
 getBucketLifecycle();
-
+			
 ```
 
 ## Clear lifecycle rules { .section}
@@ -105,6 +105,6 @@ async function deleteBucketLifecycle () {
 }
 
 deleteBucketLifecycle();
-
+			
 ```
 

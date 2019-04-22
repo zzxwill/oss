@@ -50,14 +50,14 @@ Authorization: SignatureValue
 Get /?referer HTTP/1.1
 Host: oss-example.oss.aliyuncs.com  
 Date: Thu, 13 Sep 2012 07:51:28 GMT
-Authorization: OSS qn6qrrqxo2oawuk53otfjbyc: BuG4rRK+zNhH1AcF51NNHD39zXw=
+Authorization: OSS qn6qrrqxo2oawuk53otfjbyc: BuG4rRK+zNhH1AcF51NNHD39****
 ```
 
 **返回示例（已设置Referer规则）**
 
 ```
 HTTP/1.1 200
-x-oss-request-id: 534B371674E88A4D8906008B
+x-oss-request-id: 534B371674E88A4D8906****
 Date: Thu, 13 Sep 2012 07:51:28 GMT
 Connection: keep-alive
 Content-Length: 218  
@@ -80,7 +80,7 @@ Server: AliyunOSS
 
 ```
 HTTP/1.1 200
-x-oss-request-id: 534B371674E88A4D8906008B
+x-oss-request-id: 534B371674E88A4D8906****
 Date: Thu, 13 Sep 2012 07:56:46 GMT
 Connection: keep-alive
 Content-Length: 308  
@@ -96,14 +96,14 @@ Server: AliyunOSS
 
 此接口所对应的各语言SDK如下：
 
--   [Java](../../../../cn.zh-CN/SDK 参考/Java/防盗链.md)
--   [PHP](../../../../cn.zh-CN/SDK 参考/PHP/防盗链.md)
--   [Python](../../../../cn.zh-CN/SDK 参考/Python/防盗链.md#)
--   [Go](../../../../cn.zh-CN/SDK 参考/Go/防盗链.md)
--   [C](../../../../cn.zh-CN/SDK 参考/C/防盗链.md)
--   [.NET](../../../../cn.zh-CN/SDK 参考/.NET/防盗链.md)
--   [Node.js](../../../../cn.zh-CN/SDK 参考/Node.js/防盗链.md)
--   [Ruby](../../../../cn.zh-CN/SDK 参考/Ruby/防盗链.md)
+-   [Java](../../../../intl.zh-CN/SDK 参考/Java/防盗链.md)
+-   [PHP](../../../../intl.zh-CN/SDK 参考/PHP/防盗链.md)
+-   [Python](../../../../intl.zh-CN/SDK 参考/Python/防盗链.md#)
+-   [Go](../../../../intl.zh-CN/SDK 参考/Go/防盗链.md)
+-   [C](../../../../intl.zh-CN/SDK 参考/C/防盗链.md)
+-   [.NET](../../../../intl.zh-CN/SDK 参考/.NET/防盗链.md)
+-   [Node.js](../../../../intl.zh-CN/SDK 参考/Node.js/防盗链.md)
+-   [Ruby](../../../../intl.zh-CN/SDK 参考/Ruby/防盗链.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}
 

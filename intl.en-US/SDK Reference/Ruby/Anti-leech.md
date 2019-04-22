@@ -2,14 +2,14 @@
 
 OSS is a Pay-As-You-Go service. To prevent users’ data on the OSS from being leeched, OSS supports anti-leech based on the referer field in the HTTP header.
 
-为了防止您在OSS上的数据被其他人盗链而产生额外费用，您可以设置防盗链功能，包括以下参数：
+To prevent your data on OSS from being leeched, OSS supports anti-leeching through the referer field settings in the HTTP header, including the following parameters:
 
--   Referer白名单。仅允许指定的域名访问OSS资源。
--   是否允许空Referer。如果不允许空Referer，则只有HTTP或HTTPS header中包含Referer字段的请求才能访问OSS资源。
+-   Referer whitelist: Used to allow access only for specified domains to OSS data.
+-   Empty referer: Determines whether the referer can be empty. If it is not allowed, only requests with the referer filed in their HTTP or HTTPS headers can access OSS data.
 
-For more information about the OSS anti-leech features, see [Anti-leech settings](../../../../../reseller.en-US/Developer Guide/Buckets/Anti-leech settings.md#).
+For more information about the OSS anti-leech features, see [Anti-leech settings](../../../../reseller.en-US/Developer Guide/Buckets/Anti-leech settings.md#).
 
-## Configure a Referer whitelist { .section}
+## Configure a referer whitelist { .section}
 
 The following code uses `Bucket#referer=` to configure a referer whitelist:
 
@@ -23,7 +23,7 @@ client = Aliyun::OSS::Client.new(
 bucket = client.get_bucket('my-bucket')
 bucket.referer = BucketReferer.new(
   allow_empty: true, whitelist: ['my-domain.com', '*.example.com'])
-
+			
 ```
 
 ## View a referer whitelist { .section}
@@ -40,7 +40,7 @@ client = Aliyun::OSS::Client.new(
 bucket = client.get_bucket('my-bucket')
 ref = bucket.referer
 puts ref.to_s
-
+			
 ```
 
 ## Clear a referer whitelist { .section}
@@ -56,6 +56,6 @@ client = Aliyun::OSS::Client.new(
 
 bucket = client.get_bucket('my-bucket')
 bucket.referer = BucketReferer.new(allow_empty: true, whitelist: [])
-
+			
 ```
 

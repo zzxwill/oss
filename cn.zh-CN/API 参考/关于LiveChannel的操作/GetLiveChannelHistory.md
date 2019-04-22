@@ -1,6 +1,6 @@
 # GetLiveChannelHistory {#reference_kjz_yld_xdb .reference}
 
-GetLiveChannelHistory接口用来获取指定LiveChannel的推流记录。
+GetLiveChannelHistory接口用于获取指定LiveChannel的推流记录。使用GetLiveChannelHistory接口最多会返回指定LiveChannel最近的10次推流记录。
 
 ## 请求语法 {#section_wtq_bmd_xdb .section}
 
@@ -15,35 +15,31 @@ Authorization: SignatureValue
 
 |名称|类型|描述|
 |:-|:-|:-|
-|LiveChannelHistory|容器|保存GetLiveChannelHistory返回结果的容器。子节点：LiveRecord
+|LiveChannelHistory|容器|保存GetLiveChannelHistory返回结果的容器。 子节点：LiveRecord
 
-父节点：无
+ 父节点：无
 
-|
-|LiveRecord|容器|保存一次推流记录信息的容器。子节点：StartTime，EndTime，RemoteAddr
+ |
+|LiveRecord|容器|保存一次推流记录信息的容器。 子节点：StartTime、EndTime、RemoteAddr
 
-父节点：LiveChannelHistory
+ 父节点：LiveChannelHistory
 
-|
-|StartTime|字符串|推流开始时间，使用ISO8601格式表示。子节点：无
+ |
+|StartTime|字符串|推流开始时间，使用ISO8601格式表示。 子节点：无
 
-父节点：LiveRecord
+ 父节点：LiveRecord
 
-|
-|EndTime|字符串|推流结束时间，使用ISO8601格式表示。子节点：无
+ |
+|EndTime|字符串|推流结束时间，使用ISO8601格式表示。 子节点：无
 
-父节点：LiveRecord
+ 父节点：LiveRecord
 
-|
-|RemoteAddr|字符串|推流客户端的ip地址。子节点：无
+ |
+|RemoteAddr|字符串|推流客户端的ip地址。 子节点：无
 
-父节点：LiveRecord
+ 父节点：LiveRecord
 
-|
-
-## 细节分析 {#section_t2r_lmd_xdb .section}
-
-目前最多会返回指定LiveChannel最近的10次推流记录。
+ |
 
 ## 示例 {#section_znp_mmd_xdb .section}
 
@@ -53,7 +49,7 @@ Authorization: SignatureValue
 GET /test-channel?live&comp=history HTTP/1.1
 Date: Thu, 25 Aug 2016 07:00:12 GMT
 Host: test-bucket.oss-cn-hangzhou.aliyuncs.com
-Authorization: OSS YJjHKOKWDWINLKXv:pqgDBP8JXTXAytBoXpvNoZfo68k=
+Authorization: OSS YJjHKOKWDWINLKXv:pqgDBP8JXTXAytBoXpvNoZfo****
 ```
 
 **返回实例**

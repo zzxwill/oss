@@ -6,7 +6,7 @@ PutObject接口用于上传文件（Object）。
 
 -   添加的文件大小不得超过5 GB。
 -   如果已经存在同名的Object，并且有访问权限，则新添加的文件将覆盖原来的文件，并成功返回200 OK。
--   OSS没有文件夹的概念，所有元素都是以文件来存储，但您可以通过创建一个空的Object创建模拟文件夹，具体参见[OSS文件夹](https://help.aliyun.com/knowledge_detail/39527.html?spm=5176.11065259.1996646101.searchclickresult.965e5d0fkji5gj)。
+-   OSS没有文件夹的概念，所有元素都是以文件来存储，但您可以通过创建一个以正斜线（/）结尾，大小为0的Object创建模拟文件夹。
 
 ## 请求语法 {#section_ald_lkw_bz .section}
 

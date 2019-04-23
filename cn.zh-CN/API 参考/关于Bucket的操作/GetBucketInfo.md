@@ -100,11 +100,11 @@ Server: AliyunOSS
 
 此接口所对应的各语言SDK如下：
 
--   [Java](../../../../intl.zh-CN/SDK 参考/Java/存储空间.md)
--   [Python](../../../../intl.zh-CN/SDK 参考/Python/存储空间.md)
--   [PHP](../../../../intl.zh-CN/SDK 参考/PHP/存储空间.md)
--   [Go](../../../../intl.zh-CN/SDK 参考/Go/存储空间.md)
--   [C](../../../../intl.zh-CN/SDK 参考/C/存储空间.md)
+-   [Java](../../../../cn.zh-CN/SDK 参考/Java/存储空间.md)
+-   [Python](../../../../cn.zh-CN/SDK 参考/Python/存储空间.md)
+-   [PHP](../../../../cn.zh-CN/SDK 参考/PHP/存储空间.md)
+-   [Go](../../../../cn.zh-CN/SDK 参考/Go/存储空间.md)
+-   [C](../../../../cn.zh-CN/SDK 参考/C/存储空间.md)
 
 ## 错误码 {#section_dsv_grs_qgb .section}
 

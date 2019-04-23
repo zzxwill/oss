@@ -17,6 +17,96 @@ Authorization: SignatureValue
 
 |名称|类型|描述|
 |:-|:-|:-|
+|BucketInfo|容器| 保存Bucket信息内容的容器
+
+ 子节点：Bucket节点
+
+ 父节点：无
+
+ |
+|Bucket|容器| 保存Bucket具体信息的容器
+
+ 父节点：BucketInfo 节点
+
+ |
+|CreationDate|时间| Bucket创建时间
+
+ 时间格式：2013-07-31T10:56:21.000Z
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|ExtranetEndpoint|字符串| Bucket的外网域名
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|IntranetEndpoint|字符串| 同区域ECS访问Bucket的内网域名
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|Location|字符串| Bucket的地域
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|Name|字符串| Bucket名称
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|Owner|容器| 用于存放Bucket拥有者信息的容器
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|ID|字符串| Bucket拥有者的用户ID
+
+ 父节点：BucketInfo.Bucket.Owner
+
+ |
+|DisplayName|字符串| Bucket拥有者的名称 \(目前和用户ID一致\)
+
+ 父节点：BucketInfo.Bucket.Owner
+
+ |
+|AccessControlList|容器| 存储ACL信息的容器
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|Grant|枚举字符串| Bucket的ACL权限
+
+ 有效值：private、public-read、public-read-write
+
+ 父节点：BucketInfo.Bucket.AccessControlList
+
+ |
+|DataRedundancyType|枚举字符串| 数据容灾类型
+
+ 有效值：LRS、ZRS
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|StorageClass|字符串| Bucket存储类型
+
+ 有效值：Standard、IA、Archive
+
+ |
+|Comment|字符串| Bucket的备注内容
+
+ 父节点：BucketInfo.Bucket
+
+ |
+|Versioning|字符串| Bucket的版本控制状态
+
+ 有效值：Enabled、Suspended
+
+ 父节点：BucketInfo.Bucket
+
+ |
 
 ## 示例 {#section_i2n_tfw_bz .section}
 

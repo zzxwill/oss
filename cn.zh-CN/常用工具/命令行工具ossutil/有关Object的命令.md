@@ -2,28 +2,51 @@
 
 ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文件读写权限 ACL、设置和查看文件元信息（object meta）等功能。
 
-使用这些命令前，请使用 config 命令配置访问 AK。
+**说明：** 使用以下命令前，请先将您的 ossutil 升级到最新版本，并使用 config 命令配置访问 AK。详情请参见[快速开始](cn.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)。
 
-## 上传/下载/拷贝文件 {#section_qb3_y2y_bgb .section}
+## 创建文件目录 {#section_c1q_4wn_jhb .section}
 
-强烈建议在使用 cp 命令前，先使用 ossutil help cp 来查看帮助。
+使用 mkdir 命令可在存储空间内创建文件目录。使用 mkdir 命令前，建议先使用 ossutil help mkdir 命令查看帮助信息。
+
+-   创建一个目录
+
+    ```
+    ./ossutil mkdir oss://bucket/dir/
+    ```
+
+    **说明：** 
+
+    -   dir 需以正斜线（/）结尾，若未添加正斜线（/），ossutil 会自动添加。
+    -   若目录已存在，会出现报错。
+-   创建一个多级目录
+
+    ```
+    ./ossutil mkdir oss://bucket/dir1/dir2/
+    ```
+
+    创建多级目录时，只会创建最后一级目录。例如此命令中，若将 dir2/ 删除，且 dir1/ 中无文件，则 dir1/ 会消失。
+
+
+## 使用 cp 命令上传/下载/拷贝文件 {#section_qb3_y2y_bgb .section}
+
+使用 cp 命令，可对文件进行上传/下载/拷贝文件操作。在使用 cp 命令前，建议先使用 ossutil help cp 命令查看帮助信息。
 
 -   cp 命令简介
 
     使用 cp 命令进行上传/下载/拷贝文件时：
 
     -   使用 `-r` 选项来拷贝文件夹，对大文件默认使用分片上传并可进行断点续传（开启分片上传的大文件阈值可用 `--bigfile-threshold`选项来设置）。
-    -   使用 `-f` 选项来默认强制上传，当目标端存在同名文件时，不询问，直接覆盖。
-    -   使用 `--retry-times=${times}` 选项来指定当错误发生时 ossutil 重试次数，该值默认为 10，取值范围为：1-500。
+    -   使用 `-f` 选项表示强制上传。当目标端存在同名文件时，不询问，直接覆盖。
+    -   使用 `--retry-times=${times}` 选项来指定当错误发生时 ossutil 重试次数。该值默认为 10，取值范围为：1-500。
     -   使用`--encoding-type url` 选项表示输入的 Object 名和文件名都是经过 url 编码。目前，ossutil 只支持 url encode，且 Bucket 名不支持 url encode。
     当批量上传/下载/拷贝文件时，如果某个文件出错，ossutil 默认会将错误信息记录在 report 文件，并跳过该文件，继续其他文件的操作。更多信息请参见 ossutil help cp。
 
     **说明：** 
 
-    -   默认情况下，ossutil 进行数据传输时都会打开 crc64 校验，您可以在上传/下载/复制时使用 `--disable-crc64`选项关闭 crc64 校验。
-    -   当出现存储空间（Bucket）不存在、AccessKeyID/AccessKeySecret 错误造成的权限验证非法等错误时，不再继续拷贝其他文件。
+    -   默认情况下，ossutil 进行数据传输时都会打开 crc64 校验，您可以在上传/下载/拷贝 `--disable-crc64`选项关闭 crc64 校验。
+    -   当出现存储空间（Bucket）不存在、AccessKeyId/AccessKeySecret 错误造成的权限验证非法等错误时，不再继续拷贝其他文件。
 -   上传文件
-    -   将当前目录下 a.txt 文件上传到 oss://bucket/path
+    -   将当前目录下 a.txt 文件上传到 oss://bucket/path 
 
         ```
         $./ossutil cp a.txt oss://bucket/path
@@ -34,7 +57,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
         上传文件的同时可以使用`--meta` 选项设置Object 的 meta 信息，其内容格式为`header:value#header:value...`，如下将当前目录下文件 a.txt 上传并设置其 meta 信息：
 
         ```
-        `$./ossutil cp a.txt oss://bucket/path --meta=Cache-Control:no-cache#Content-Encoding:gzip`
+        $./ossutil cp a.txt oss://bucket/path --meta=Cache-Control:no-cache#Content-Encoding:gzip
         ```
 
         **说明：** 当前可选的 Header 列表如下：
@@ -64,7 +87,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
         $./ossutil cp -r dir oss://bucket/path
         ```
 
-        **说明：** 若上传目标对象为符号软链接，且指向本地文件夹，则使用 cp 命令上传时，应当在软链接加上正斜线（/）。
+        **说明：** 若上传目标对象为符号链接（软链接），且指向本地文件夹，则使用 cp 命令上传时，应当给软链接加上正斜线（/）。
 
         ```
         ./ossutil cp -r symbolic_link/ oss://bucket/path
@@ -72,7 +95,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
     -   上传文件/文件夹并设置限速
 
-        上传文件/文件夹时，指定 `--maxupspeed` 选项，可设定上传时的最高速度，单位为 KB/s，缺省为 0（不限速）。
+        上传文件/文件夹时，指定 `--maxupspeed` 选项，可设置上传时的最高速度，单位为 KB/s，缺省为 0（不限速）。
 
         -   上传文件并设置限速为 1MByte/s
 
@@ -102,7 +125,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         ```
         $./ossutil cp -r dir oss://bucket/path --snapshot-path=path
-        
+        								
         ```
 
         **说明：** 
@@ -141,7 +164,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         ```
         $./ossutil cp -r oss://bucket/path  /dir  --update
-        
+        								
         ```
 
         该选项可用于当批量下载失败重传时，跳过已经下载成功的文件。实现增量下载。
@@ -154,14 +177,14 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         ```
         ./ossutil cp oss://bucket/path1/a oss://bucket/path2/
-        
+        									
         ```
 
     -   拷贝单个文件并重命名
 
         ```
         ./ossutil cp oss://bucket/path1/a oss://bucket/path2/b
-        
+        								
         ```
 
     -   拷贝单个文件并指定 `--meta` 选项
@@ -197,7 +220,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         ```
         $./ossutil cp oss://your_src_bucket/path1/ oss://your_dest_bucket/path2/ -r
-        
+        									
         ```
 
     -   同 region 不同 Bucket 之间的增量文件拷贝
@@ -214,8 +237,8 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
     在 cp 命令中，通过 `--jobs` 项和 `--parallel` 项控制并发数。当 ossutil 自行设置的默认并发达不到用户的性能需求时，您可以自行调整该两个选项来升降性能。
 
-    -   `--jobs` 项控制多个文件上传/下载/拷贝时，文件间启动的并发数。
-    -   `--parallel`制分片上传/下载/拷贝一个大文件时，每一个大文件启动的并发数。
+    -   使用`--jobs` 项来控制多个文件上传/下载/拷贝时，文件间启动的并发数。
+    -   使用`--parallel`项来控制分片上传/下载/拷贝一个大文件时，每一个大文件启动的并发数。
     默认情况下，ossutil 会根据文件大小来计算 parallel 个数（该选项对于小文件不起作用，进行分片上传/下载/拷贝的大文件文件阈值可由 `--bigfile-threshold` 选项来控制）。当进行批量大文件的上传/下载/拷贝时，实际的并发数为 jobs 个数乘以 parallel 个数。
 
     **警告：** 
@@ -223,15 +246,33 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
     -   通常情况下，当 ECS 虚拟机或者服务器在网络、内存、CPU 等资源不是特别大的情况下，建议将并发数调整到 100 以下。如果网络、内存、CPU 等资源没有占满，可以适当增加并发数。
     -   如果并发数调得太大，由于线程间资源切换及抢夺等，ossutil 上传/下载/拷贝性能可能会下降。并发数过大可能会产生 EOF 错误。所以请根据实际的机器情况调整`--jobs` 和`--parallel` 选项的数值。如果要进行压测，可在一开始时调低这两项数值，然后逐渐调大直至找到最优值。
 
+## 使用追加上传方式上传文件 {#section_rbh_5fn_jhb .section}
+
+使用 appendfromfile 命令可将本地文件以追加上传的方式上传到 OSS 中。追加上传详情请参见[追加上传](../../../../cn.zh-CN/开发指南/上传文件（Object）/追加上传.md#)。使用 appendfromfile 命令前，建议先使用 ossutil help appendfromfile 命令查看帮助信息。
+
+-   使用追加上传方式上传文件
+
+    ```
+    ./ossutil appendfromfile a.txt oss://bucket/object [--meta=meta-value]
+    ```
+
+    如果 object 不存在，可通过 --meta 设置 object 的 meta 信息，例如`--meta "X-Oss-Meta-Author:test"`。如果 object 已经存在，不可以输入 --meta 信息，OSS 不支持在已经存在的 appendable object 上设置 meta 信息。
+
+    **说明：** 
+
+    -   通过追加上传方式上传的文件，必须手动指定 Object 的名称。
+    -   只有通过追加上传创建的文件才可以后续继续被追加上传。
+    -   通过追加上传的文件，不能被拷贝，可以修改文件本身的meta信息。
+
 ## 生成文件 URL {#section_vh3_qqm_xgb .section}
 
-使用 sign 命令可以生成经过签名的文件 URL 供第三方用户临时访问 Object。
+使用 sign 命令可以生成经过签名的文件 URL 供第三方用户临时访问 Object。使用 sign 命令前，建议先使用 ossutil help sign 命令查看帮助信息。
 
 -   生成默认超时时间的文件 URL，默认超时时间为 60 秒
 
     ```
     $./ossutil sign oss://bucket/path/object
-    
+    						
     ```
 
 -   生成指定超时时间的文件 URL
@@ -242,45 +283,43 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
     $./ossutil sign oss://bucket/path/object --timeout=${time}
     ```
 
-    **说明：** 更多信息请参见帮助命令 ./ossutil help sign.
-
 
 ## 删除文件 {#section_vj5_rqm_xgb .section}
 
--   删除单个 Object
+-   删除单个文件
 
     ```
     $./ossutil rm oss://bucket/path/object
     ```
 
--   删除指定前缀的所有 Object
+-   删除指定前缀的所有文件
 
-    配合`-r`选项，可以递归执行删除操作删除指定前缀的所有Object。
+    配合 `-r` 选项，可以递归执行删除操作，删除指定前缀的所有文件。
 
     ```
     $./ossutil rm oss://bucket/path/ -r
     ```
 
-    **说明：** 更多帮助信息请参考./ossutil help rm。
+    **说明：** 更多帮助信息请参考 ossutil help rm。
 
 
-## 管理 Object {#section_stq_ysm_xgb .section}
+## 管理文件 {#section_stq_ysm_xgb .section}
 
--   设置 Object 的 ACL 权限
+-   设置文件的 ACL 权限
 
-    ossutil使用set-acl命令来设置Object的ACL权限，可以使用`-r`选项递归操作设置Object的ACL权限。
+    ossutil 使用 set-acl 命令来设置文件的 ACL 权限，可以使用`-r`选项递归操作设置文件的 ACL 权限。
 
-    **说明：** Object的ACL权限分为：
+    **说明：** 文件的 ACL 权限分为：
 
-    -   default：继承Bucket
+    -   default：继承 Bucket
     -   private：私有
     -   public-read：公共读
     -   public-read-write：公共读写
-    -   设置指定 Object 的 ACL 权限
+    -   设置指定文件的 ACL 权限
 
         ```
         $./ossutil set-acl oss://bucket/path/object private
-        
+        							
         ```
 
     -   设置指定前缀的所有文件的 ACL 权限：
@@ -289,35 +328,35 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
         $./ossutil set-acl oss://bucket/path/ private -r
         ```
 
-    **说明：** 更多帮助信息请参见 ./ossutil help set-acl。
+    **说明：** 更多帮助信息请参见 ossutil help set-acl。
 
--   设置 Object 的 meta 信息
+-   设置文件的 meta 信息
 
-    ossutil 使用 set-meta 命令设置 Object 的 meta 信息，可以使用 `-r` 选项递归操作设置 Object 的 meta 信息。
+    ossutil 使用 set-meta 命令设置文件的 meta 信息，可以使用 `-r` 选项递归操作设置文件的 meta 信息。
 
-    -   设置指定 Object 的 meta 信息
+    -   设置指定文件的 meta 信息
 
         ```
         $./ossutil set-meta oss://bucket/path/object x-oss-object-acl:private -u
-        
+        								
         ```
 
-    -   设置指定前缀的所有 Object 的 meta 信息：
+    -   设置指定前缀的所有文件的 meta 信息：
 
         ```
         $./ossutil set-meta oss://bucket/path/ x-oss-object-acl:private -u -r
-        
+        								
         ```
 
-    **说明：** 更多帮助信息请参见 ./ossutil help set-meta。
+    **说明：** 更多帮助信息请参见 ossutil help set-meta。
 
--   查看 Object 的 meta 信息
+-   查看文件的 meta 信息
 
-    ossutil 使用 stat 命令来查看 Object 的 meta 信息。
+    ossutil 使用 stat 命令来查看文件的 meta 信息。
 
     ```
     $./ossutil stat oss://bucket/path/object
-    
+    						
     ```
 
     示例：查看oss://my-bucket/path/a 的 meta 信息。
@@ -335,34 +374,34 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
     X-Oss-Hash-Crc64ecma        :12488808046134286088
     X-Oss-Object-Type           : Normal
     0.125417(s) elapsed
-    
+    						
     ```
 
-    **说明：** 更多帮助信息请参见 ./ossutil help stat。
+    **说明：** 更多帮助信息请参见 ossutil help stat。
 
--   恢复冷冻状态的 Object 为可读状态
+-   恢复冷冻状态的文件为可读状态
 
-    ossutil 使用 restore 命令恢复冷冻状态的 Object 为可读状态，可以使用 `-r` 选项递归操作恢复冷冻状态的 Object 为可读状态。
+    ossutil 使用 restore 命令恢复冷冻状态的文件为可读状态，可以使用 `-r` 选项递归操作恢复冷冻状态的文件为可读状态。
 
     -   恢复指定的冷冻文件为可读状态：
 
         ```
         $./ossutil restore oss://bucket/path/object
-        
+        								
         ```
 
     -   恢复指定前缀的所有冷冻文件为可读状态：
 
         ```
         $./ossutil restore oss://bucket/path/ -r
-        
+        								
         ```
 
         **说明：** 
 
-        -   restore 操作解冻过程需要 1 分钟时间，解冻中无法读取 Object。
-        -   解冻状态默认持续 1 天，对解冻状态的 Object 调用 restore 命令，会将 Object 的解冻状态延长一天，最多可以延长到 7 天，之后 Object 又回到初始时的冷冻状态。
-        -   更多帮助信息请参见 ./ossutil help restore。
+        -   restore 操作解冻过程需要 1 分钟时间，解冻中无法读取文件。
+        -   解冻状态默认持续 1 天，对解冻状态的文件调用 restore 命令，会将文件的解冻状态延长一天，最多可以延长到 7 天，之后文件又回到初始时的冷冻状态。
+        -   更多帮助信息请参见 ossutil help restore。
 -   符号链接（软链接）
     -   创建符号链接
 
@@ -370,14 +409,14 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         ```
         $./ossutil create-symlink oss://bucket/path/symlink-object oss://bucket/path/object
-        
+        								
         ```
 
         示例：创建指向文件 a.txt 的符号链接 b。
 
         ```
         $./ossutil create-symlink oss://my-bucket/path/b oss://my-bucket/path/a.txt
-        
+        								
         ```
 
         **说明：** 创建符号链接时：
@@ -387,7 +426,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
         -   不检查目标文件是否有权限访问。
         -   以上检查在 GetObject 等需要访问目标文件的 API 接口时进行。
         -   如果试图添加的文件已经存在，并且有访问权限。新添加的文件将覆盖原来的文件。
-        更多帮助信息请参见 ./ossutil help create-symlink。
+        更多帮助信息请参见 ossutil help create-symlink。
 
     -   读取符号链接文件的描述信息
 
@@ -395,7 +434,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         ```
         $./ossutil read-symlink oss://bucket/path/symlink-object
-        
+        								
         ```
 
         示例：读取符号链接文件 b 的描述信息。
@@ -407,12 +446,12 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
         X-Oss-Symlink-Target    : a
         ```
 
-        **说明：** 更多帮助信息请参见 ./ossutil help read-symlink。
+        **说明：** 更多帮助信息请参见 ossutil help read-symlink。
 
 
 ## 请求者付费模式 {#section_qpx_wvm_xgb .section}
 
-ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置请求者付费模式.md#)的Bucket内文件进行上传、下载和拷贝的操作。
+ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../../../../cn.zh-CN/控制台用户指南/管理存储空间/设置请求者付费模式.md#)的Bucket内文件进行上传、下载和拷贝的操作。
 
 -   上传文件到开通了请求者付费模式的 Bucket：
 
@@ -438,7 +477,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
     $./ossutil cp oss://my-bucket/path/test.mp4 oss://payer --payer=requester
     ```
 
--   列举开通了请求者付费模式的 Bucket 内的 Object：
+-   列举开通了请求者付费模式的 Bucket 内的文件：
 
     ```
     $./ossutil ls oss://bucket --payer=requester
@@ -449,7 +488,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
 
 修改 5GB 以下文件的存储类型，可使用 set-meta 命令；如果想修改 5GB 以上文件的存储类型，必须使用 cp 命令。
 
--   通过 set-meta命令修改文件存储类型。
+-   通过 set-meta 命令修改文件存储类型。
     -   设置单个文件的存储类型为 IA 类型：
 
         ```
@@ -491,11 +530,11 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
     **说明：** 
 
     -   存储类型为归档类型的文件不能通过 set-meta 或者 cp 命令直接转换成其他类型，必须先通过 restore 命令将该文件转换成低频存储，之后再使用 set-meta 或者 cp 命令转换文件类型。
-    -   使用 cp 覆写文件时涉及到数据覆盖操作。如果**低频型**或**归档型**文件分别在创建后 30 和 60 天内被覆盖，则它们会产生提前删除费用。例如，低频型文件创建 10 天后，被覆写修改成归档型或标准型，则会产生 20 天的提前删除费用。
+    -   使用 cp 覆写文件时涉及到数据覆盖操作。如果**低频访问型**或**归档型**文件分别在创建后 30 和 60 天内被覆盖，则它们会产生提前删除费用。例如，低频型文件创建 10 天后，被覆写修改成归档型或标准型，则会产生 20 天的提前删除费用。
 
 ## 通过过滤参数 include/exclude 批量操作符合指定条件的文件 {#section_dxl_tw3_kgb .section}
 
-您可以使用过滤参数 include/exclude，在 cp、set-meta、set-acl 操作时批量选择对应条件的 Object。
+您可以使用过滤参数 include/exclude，在 cp、set-meta、set-acl 操作时批量选择对应条件的文件。
 
 -   include/exclude 参数支持格式：
 
@@ -505,7 +544,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
     -   \[!sequence\]：匹配不在序列的任意字符，例如：abc\[!0-7\].jpg，表示匹配文件名不为 abc0.jpg~abc7.jpg 的文件。
     **说明：** 
 
-    -   不支持带目录的格式，例如：--include "/usr//test/.jpg"。
+    -   不支持带目录的格式，例如：--include "/usr/test/.jpg"。
     -   include 和 exclude 可以出现多次，当多个规则出现时，这些规则按从左往右的顺序应用。
     -   指定 include/exclude 选项时，需同时指定 recursive（-r）选项。
 
@@ -523,7 +562,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
             $./ossutil cp dir/ oss://my-bucket/path --exclude "*.jpg" -r
             ```
 
-        -   复制所有文件名包含 abc 且不是 jpg 和 txt 格式的文件：
+        -   拷贝所有文件名包含 abc 且不是 jpg 和 txt 格式的文件：
 
             ```
             $./ossutil cp oss://my-bucket1/path oss://my-bucket2/path --include "*abc*" --exclude "*.jpg" --exclude "*.txt" -r
@@ -534,7 +573,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
 
             ```
             $./ossutil64 set-meta oss://my-bucket/path X-Oss-Storage-Class:IA --include "*.jpg" -u -r
-            
+            										
             ```
 
         -   将所有文件名包含 abc 且文件格式不为 jpg 和 txt 的文件设置为标准存储：
@@ -548,7 +587,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
 
             ```
             $./ossutil64 set-acl oss://my-bucket/path private  --include "*.jpg"  -r
-            
+            										
             ```
 
     -   综合示例：上传指定条件（所有文件名不包含 2 且文件格式为 jpg 和 txt）的文件并设定文件存储类型及读写权限：
@@ -557,4 +596,14 @@ ossutil 从 1.4.2 版本开始，支持对开通了[请求者付费模式](../..
         $./ossutil cp dir/ oss://my-bucket/path -rf --include "*.txt"  --include "*.jpg" --exclude "*2*" --meta  X-Oss-Storage-Class:Standard --acl public-read
         ```
 
+
+## 查看文件内容 {#section_uk2_nsn_jhb .section}
+
+使用 cat 命令可以将文件内容输出到 ossutil。
+
+```
+./ossutil cat oss://bucket/object
+```
+
+**说明：** 仅建议使用此命令查看文本文件内容。
 

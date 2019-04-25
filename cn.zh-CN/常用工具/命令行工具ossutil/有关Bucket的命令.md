@@ -1,10 +1,11 @@
 # 有关Bucket的命令 {#concept_rjp_vgs_vdb .concept}
 
-ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功能。
+您可以使用ossutil管理您的OSS，本文主要介绍与Bucket相关的命令。
 
-**说明：** 关于Bucket其他更多的管理功能暂不支持，如有需要，请使用[osscmd](cn.zh-CN/常用工具/osscmd/快速安装.md#)。
+**说明：** 
 
-在使用这些命令前，请先使用config命令配置访问AK。
+-   使用以下命令前，请先将您的ossutil升级到最新版本，并使用config命令配置访问 AK。详情请参见[快速开始](cn.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)。
+-   关于Bucket其他更多的管理功能暂不支持，如有需要，请使用[osscmd](cn.zh-CN/常用工具/osscmd/快速安装.md#)。
 
 ## 创建Bucket {#section_qk1_v2l_xgb .section}
 
@@ -16,16 +17,16 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
 
     如果成功创建，ossutil会打印消耗时间并退出，否则会输出错误信息。
 
-    **说明：** 更多帮助信息请参见`ossutil help mb`。
+    **说明：** 更多帮助信息请参见ossutil help mb。
 
 -   创建Bucket时指定访问权限
 
-    创建Bucket时，其权限默认为Private，可以通过`--acl`选项来指定创建的目标Bucket权限。`--acl`可配置参数为：
+    创建Bucket时，其权限默认为Private，可以通过`--acl`选项来指定创建的Bucket权限。`--acl`可配置参数为：
 
     -   private：私有
     -   public-read：公共读
     -   public-read-write：公共读写
-    **说明：** 访问权限详情请参见[基于读写权限ACL的权限控制](../../../../../cn.zh-CN/开发指南/权限控制/基于读写权限ACL的权限控制.md#)。
+    **说明：** 访问权限详情请参见[基于读写权限ACL的权限控制](../../../../cn.zh-CN/开发指南/权限控制/基于读写权限ACL的权限控制.md#)。
 
     示例：创建一个公共读写的Bucket：
 
@@ -40,9 +41,9 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     -   Standard：标准存储
     -   IA：低频访问
     -   Archive：归档存储
-    **说明：** 存储类型详情请参见[存储类型介绍](../../../../../cn.zh-CN/开发指南/存储类型/存储类型介绍.md#)。
+    **说明：** 存储类型详情请参见[存储类型介绍](../../../../cn.zh-CN/开发指南/存储类型/存储类型介绍.md#)。
 
-    示例：创建一个低频访问存储类型\(IA\)的Bucket:
+    示例：创建一个低频访问存储类型（IA）的Bucket:
 
     ```
     ./ossutil mb oss://bucket --storage-class IA
@@ -53,14 +54,14 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
 
 创建Bucket时，Bucket默认的ACL为Private，可以通过set-acl命令来修改Bucket的ACL。在设置Bucket的ACL权限时，需要设置`-b`选项。
 
-示例，将bucket1设置为Private权限：
+示例，将bucket1的权限设置为Private：
 
 ```
 ./ossutil set-acl oss://bucket1 private -b
-
+			
 ```
 
-更多帮助信息请参见ossutil help set-acl。
+**说明：** 更多帮助信息请参见ossutil help set-acl。
 
 ## 删除Bucket {#section_wmp_z2l_xgb .section}
 
@@ -116,7 +117,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     2016-11-2121:18:39 +0800 CST       oss-cn-hangzhou         Archive    oss://ztztzt
     Bucket Number is:7
     0.252174(s) elapsed
-    
+    						
     ```
 
 -   分页列举Bucket
@@ -125,7 +126,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     ./ossutil ls oss:// --limited-num=${num} --marker=${bucketname}
     ```
 
-    当Bucket数目太多时，为了避免刷屏，可以使用`--limited-num`与`--marker`选项来分页列举Bucket。
+    当Bucket数目太多时，可以使用`--limited-num`与`--marker`选项来分页列举Bucket。
 
     -   `--limited-num`用于控制分页展示条数。
     -   `--marker`用于控制分页从哪个Bucket开始列举，ossutil显示的结果从marker设定值之后按字母排序的第一个Bucket开始返回。该值一般为上一页查询显示的最后一个BucketName。
@@ -161,7 +162,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     2016-12-0115:06:45 +0800 CST      10363812      Standard   61DE142E5AFF9A6748707D4A77BFBCFB        oss://ossutil-test/a3
     Object Number is:3
     0.007379(s) elapsed
-    
+    							
     ```
 
 -   列举所有的Object和未完成的Multipart事件
@@ -186,7 +187,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     2017-01-2011:16:21 +0800 CST     A20157A7B2FEC4670626DAE0F4C0073C    oss://bucket1/tobj
     UploadId Number is:4
     0.191289(s) elapsed
-    
+    							
     ```
 
 -   分页列举所有的Object
@@ -208,7 +209,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     2016-12-0115:06:42 +0800 CST      10363812      Standard   61DE142E5AFF9A6748707D4A77BFBCFB        oss://ossutil-test/a2
     Object Number is:1
     0.008392(s) elapsed
-    
+    							
     ```
 
 -   指定列举结果显示模式为精简模式
@@ -226,7 +227,6 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     oss://ossutil-test/a3
     Object Number is:3
     0.007379(s) elapsed  
-    
     ```
 
 -   模拟目录方式列举
@@ -244,7 +244,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     oss://bucket1/dir1/
     Object and Directory Number is:3 
     0.119884(s) elapsed
-    
+    						
     ```
 
 -   请求者付费模式下列举
@@ -260,7 +260,7 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     ./ossutil ls oss://bucket -m
     ```
 
-    使用 -m 选项可以当前操作的Bucket中未上传完成的Multipart事件。如下示例：
+    使用`-m`选项可以列举当前操作的Bucket中未上传完成的Multipart事件。如下示例：
 
     ```
     ./ossutil ls oss://bucket1 -m 
@@ -269,16 +269,140 @@ ossutil提供了创建、删除、列举Bucket、以及为Bucket设置ACL的功�
     2017-01-1303:45:25 +0000 CST  3998971ACAF94AD9AC48EAC1988BE863  oss://bucket1/obj2
     2017-01-2011:16:21 +0800 CST  A20157A7B2FEC4670626DAE0F4C0073C  oss://bucket1/tobj
     UploadID Number is:30.009424(s) elapsed
-    
+    							
     ```
 
+-   列举所有未完成上传的Mutipart Object的分片信息
+
+    ```
+    ./ossutil getallpartsize oss://bucket
+    ```
+
+-   列举单个未完成分片上传的Object的分片信息
+
+    ```
+    ./ossutil listpart oss://bucket/object uploadid
+    ```
+
+    `uploadid`：填写未完成分片上传的Object的UploadID。
+
 -   更多有关分片上传操作命令，详见[有关Multipart的命令](cn.zh-CN/常用工具/命令行工具ossutil/有关Multipart的命令.md#)。
+
+## 管理跨域资源共享（CORS） {#section_edx_l2n_hhb .section}
+
+ cors命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的CORS配置。CORS介绍请参见[设置跨域资源共享](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置跨域资源共享.md#)。
+
+**说明：** 使用该命令前，建议先使用帮助命令ossutil help cors查看命令详情。
+
+-   添加/修改CORS配置
+
+    ```
+    ./ossutil cors --method put oss://bucket  local_xml_file
+    ```
+
+    若Bucket未配置CORS，ossutil从配置文件local\_xml\_file中读取CORS配置，并在Bucket中添加对应规则；若Bucket已配置CORS，ossutil将Bucket的CORS配置修改为配置文件内的配置。
+
+    **说明：** local\_xml\_file是一个xml格式的文件，举例如下：
+
+    ```
+    <?xml version="1.0" encoding="UTF-8"?>
+       <CORSConfiguration>
+         <CORSRule>
+             <AllowedOrigin>www.aliyun.com</AllowedOrigin>
+             <AllowedMethod>PUT</AllowedMethod>
+             <MaxAgeSeconds>10000</MaxAgeSeconds>
+         </CORSRule>
+     </CORSConfiguration>
+    ```
+
+-   获取CORS配置
+
+    ```
+    ./ossutil cors --method get oss://bucket  [local_xml_file]
+    ```
+
+    local\_xml\_file为文件路径参数。若填写，则将CORS的配置保存为本地文件；若置空，则将CORS配置的输出到屏幕上。
+
+-   删除CORS配置
+
+    ```
+    ./ossutil cors --method delete oss://bucket
+    ```
+
+
+## 管理日志 {#section_rzd_3yn_hhb .section}
+
+ logging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志管理配置。日志管理详情请参见[访问日志存储](../../../../cn.zh-CN/开发指南/日志管理/访问日志存储.md#)。
+
+**说明：** 使用该命令前，建议先使用帮助命令ossutil help logging查看命令详情。
+
+-   添加/修改日志管理配置
+
+    ```
+    ./ossutil logging --method put oss://bucket  oss://target-bucket/[prefix]
+    ```
+
+    若Bucket未开启日志管理，此命令将Bucket的访问日志以Object的形式保存到target-bucket中；若Bucket已开启日志管理，此命令可修改日志记录的存储位置。
+
+    prefix参数可指定日志记录存储的目录和前缀。若填写，日志将被记录到target-bucket的指定目录下；若不填写，则保存到target-bucket的根目录下。日志文件命名规则请参见[日志记录命名规则](../../../../cn.zh-CN/控制台用户指南/日志管理/设置日志存储.md#section_n4b_q3z_5db)。
+
+-   查看日志管理配置
+
+    ```
+    ./ossutil logging --method get oss://bucket  [local_xml_file]
+    ```
+
+    local\_xml\_file为文件路径参数。若填写，则将日志管理的配置保存为本地文件；若置空，则将日志管理的配置输出到屏幕上。
+
+-   删除日志管理配置
+
+    ```
+    ./ossutil logging --method delete oss://bucket
+    ```
+
+
+## 设置防盗链 {#section_zyj_dqg_jhb .section}
+
+ referer命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志防盗链配置。防盗链详情请参见[设置防盗链](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置防盗链.md#)。
+
+**说明：** 使用该命令前，建议先使用帮助命令ossutil help referer查看命令详情。
+
+-   添加/修改防盗链配置
+
+    ```
+    ./ossutil referer --method put oss://bucket referer-value [--disable-empty-referer]
+    ```
+
+    若Bucket未设置防盗链，此命令将添加防盗链配置；若Bucket已设置防盗链，此命令将修改防盗链配置。
+
+    -   `referer-value`：设置Referer白名单，仅允许指定的域名访问OSS资源。支持通配符星号（\*）和问号（?），多个域名可用空格隔开。
+    -   `--disable-empty-referer`：选择是否允许Referer为空。增加此选项表示不允许Referer为空，反之表示允许Referer为空。如果不允许空Referer，则只有HTTP或HTTPS header中包含Referer字段的请求才能访问OSS资源。
+    示例，设置防盗链，且不允许Referer为空：
+
+    ```
+    ./ossutil referer --method put oss://ossutil-test www.test1.com www.test2.com --disable-empty-referer
+    ```
+
+-   查看防盗链配置
+
+    ```
+    ./ossutil referer --method get oss://bucket  [local_xml_file]
+    ```
+
+    local\_xml\_file为文件路径参数。若填写，则将防盗链的配置保存为本地文件；若置空，则将防盗链的配置输出到屏幕上。
+
+-   删除防盗链配置
+
+    ```
+    ./ossutil referer --method delete oss://bucket
+    ```
+
 
 ## 探测OSS网络 {#section_njd_yzz_zgb .section}
 
 probe命令是针对OSS访问的检测命令，可用于排查上传下载过程中因网络故障或基本参数设置错误导致的问题。执行probe命令后，ossutil会提示可能的错误原因，帮助您快速排查错误原因。
 
-**说明：** 使用该命令前，建议先使用帮助命令ossutil probe help查看命令详情。
+**说明：** 使用该命令前，建议先使用帮助命令ossutil help probe查看命令详情。
 
 -   下载http\_url地址到本地，并输出探测报告
 
@@ -288,16 +412,16 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
 
     通过文件URL将存储空间内的一个文件下载到本地来测试网络传输质量，并输出探测报告。
 
-    -   --url：填写指定Bucket内文件的URL地址。
+    -   `--url`：填写指定Bucket内文件的URL地址。
 
         -   公共读文件：直接输入文件URL，例如：`https://bucketname.oss-cn-beijing.aliyuncs.com/myphoto.jpg`。
         -   私有文件：输入带签名的文件URL，并且在URL前后需加双引号（“”）。例如：`“https://bucketname.oss-cn-beijing.aliyuncs.com/myphoto.jpg?Expires=1552015472&OSSAccessKeyId=TMP.xxxxxxxx5r9f1FV12y8_Qis6LUVmvoSCUSs7aboCCHtydQ0axN32Sn-UvyY3AAAwLAIUarYNLcO87AKMEcE5O3AxxxxxxoCFAQuRdZYyVFyqOW8QkGAN-bamUiQ&Signature=bIa4llbMbldrl7rwckr%2FXXvTtxw%3D”`。
         **说明：** 如何文件URL请参考[获取URL](https://help.aliyun.com/knowledge_detail/39607.html)。
 
-    -   --addr=domain\_name（可选）：可在下载文件时同时向一个指定的域名或IP地址发起ping操作。不添加该选项，ossutil不进行额外的探测操作。
+    -   `--addr=domain_name`（可选）：可在下载文件时同时向一个指定的域名或IP地址发起ping操作。不添加该选项，ossutil不进行额外的探测操作。
         -   增加`--addr=`选项，但是缺省值的话，默认向`www.aliyun.com`发起ping操作。
         -   增加`--addr=`选项，并指定一个域名或IP，则向指定的地址发起ping操作。
-    -   file\_name（可选）：为下载的文件指定存储路径。如果不输入file\_name，则下载文件保存在当前目录下，文件名由工具自动判断；如果输入file\_name，则file\_name为文件名或者目录名，下载的文件名为file\_name或者保存在file\_name目录下。
+    -   `file_name`（可选）：为下载的文件指定存储路径。如果不输入`file_name`，则下载文件保存在当前目录下，文件名由工具自动判断；如果输入`file_name`，则`file_name`为文件名或者目录名，下载的文件名为`file_name`或者保存在`file_name`目录下。
 -   下载指定Bucket中的Object，并输出探测报告
 
     ```
@@ -305,8 +429,8 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
     [--addr=domain_name] [file_name]
     ```
 
-    -   --bucketname：填写Bucket名。
-    -   --object=（可选）：填写指定的Object路径可下载指定的Object。例如：path/myphoto.jpg。不指定`--object`，则工具会生成一个临时文件上传到`bucket-name`后再将其下载，下载结束后会将该临时文件从本地和Bucket中删除。
+    -   `--bucketname`：填写Bucket名。
+    -   `--object=`（可选）：填写指定的Object路径可下载指定的Object。例如：path/myphoto.jpg。不指定`--object`，则工具会生成一个临时文件上传到`bucket-name`后再将其下载，下载结束后会将该临时文件从本地和Bucket中删除。
 -   上传探测并输出探测报告
 
     ```
@@ -314,11 +438,11 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
     ect_name] [--addr=domain_name] [--upmode]
     ```
 
-    -   file\_name（可选）： 指定`file_name`可将指定的文件上传到`bucket-name`中；不指定`file_name`，则工具会生成一个临时文件上传到`bucket-name`中，探测结束后会将临时文件删除。
-    -   --object=（可选）：输入文件名或文件路径，可指定Object上传后的名称，例如：path/myphoto.jpg。若不配置`--object`，则由工具自动生成上传后的Object名称，探测结束后会将该临时Object删除。
-    -   --upmode（可选）：指定上传的方式，缺省该项则使用普通上传。可选值为：
+    -   `file_name`（可选）： 指定`file_name`可将指定的文件上传到`bucket-name`中；不指定`file_name`，则工具会生成一个临时文件上传到`bucket-name`中，探测结束后会将临时文件删除。
+    -   `--object=`（可选）：输入文件名或文件路径，可指定Object上传后的名称，例如：path/myphoto.jpg。若不配置`--object`，则由工具自动生成上传后的Object名称，探测结束后会将该临时Object删除。
+    -   `--upmode`（可选）：指定上传的方式，缺省该项则使用普通上传。可选值为：
         -   normal：普通上传
-        -   append：追加上次
+        -   append：追加上传
         -   multipart：分片上传
 
 -   查看探测报告
@@ -328,7 +452,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
     -   执行步骤后出现×表示没有通过，否则表示通过。
     -   结果显示整个上传下载成功还是失败。当成功时，会给出文件的大小和上传下载时间；失败时，会给出导致错误的原因，或直接给出修改建议。
 
-        **说明：** 并不是每次错误的检测都能提示出修改建议，对于没有提示修改建议的检测，请根据错误码提示，并结合[oss错误码ErrorCode](../../../../../cn.zh-CN/SDK 参考/Java/异常处理.md#section_gn4_55c_bhb)进行问题排查。
+        **说明：** 并不是每次错误的检测都能提示出修改建议，对于没有提示修改建议的检测，请根据错误码提示，并结合[oss错误码ErrorCode](../../../../cn.zh-CN/SDK 参考/Java/异常处理.md#section_gn4_55c_bhb)进行问题排查。
 
     probe命令执行完毕后，ossutil会在当前目录下生成一个以logOssProbe开头的文件，里面包含此次探测命令执行的详细信息。
 

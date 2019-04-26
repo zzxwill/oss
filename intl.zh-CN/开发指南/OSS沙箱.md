@@ -1,0 +1,81 @@
+# OSS沙箱 {#concept_j41_hvl_cgb .concept}
+
+当您的 OSS Bucket 遭受攻击或通过 Bucket 分享违法内容，OSS 会自动将 Bucket 切入沙箱。沙箱中的 Bucket 仍可以正常响应请求，但服务质量将被降级，您的应用可能会有明显感知。
+
+-   对于被攻击的 Bucket，OSS 会将其切入沙箱。若您的 Bucket 遭受攻击，您需要自行承担因攻击而产生的全额费用。
+-   若您的用户通过您的 Bucket 分享涉黄、涉政、涉恐等违法内容，也会导致您的 Bucket 被切入沙箱。情节严重者，将被追究法律责任。
+
+**说明：** 当您的 Bucket 切入到沙箱中后，您将会收到短信和邮件通知。
+
+## 针对攻击的预防措施 {#section_pjx_m1m_cgb .section}
+
+为防止您的 Bucket 因攻击原因被切入沙箱，您可使用高防 IP 来抵御 DDoS 攻击和 CC 攻击。如果您的业务有可能遭受攻击，可以按照如下两种方案添加预防措施。
+
+-   方案一：绑定域名并配置高防 IP
+    1.  OSS 绑定自定义域名，配置步骤请参考[绑定自定义域名](../../../../intl.zh-CN/控制台用户指南/管理存储空间/管理域名/绑定自定义域名.md#)。
+    2.  根据业务情况，购买合适的[高防 IP](https://common-buy.aliyun.com/?spm=5176.10695662.958511.2.5f267a64VdiI7O&commodityCode=ddosBag#/buy)。
+    3.  将高防 IP 绑定到您已设置好的自定义域名上。
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/155624615334179_zh-CN.png)
+
+        -   防护网站：填写您绑定的 OSS 自定义域名。
+        -   协议类型：按照您的实际访问方式选择。
+        -   源站IP/域名：选择源站域名，并填写您 OSS 的默认访问域名。
+        其他步骤及参数填写，请参考文档[设置高防 IP](https://www.alibabacloud.com/help/doc-detail/63559.htm)。
+
+-   方案二：配置 ECS 反向代理并配置高防 IP
+
+    基于安全考虑，Bucket 默认域名解析的 IP 是随机变化的，若您期望使用固定 IP 方式访问，推荐使用 ECS 搭建反向代理的方式进行访问 OSS。ECS 上的 EIP 可以绑定高防 IP 以抵御 DDoS 攻击和 CC 攻击。具体可以按照如下方式进行配置：
+
+    1.  创建一个 CentOS 或 Ubuntu 的 ECS 实例，详情请参考[创建 ECS 实例](../../../../intl.zh-CN/实例/创建实例/使用向导创建实例.md#)。
+
+        **说明：** 若 Bucket 有很大的网络流量或访问请求，请提高 ECS 硬件配置或者搭建 ECS 集群。
+
+    2.  配置 ECS 反向代理方式访问 OSS，详细配置可参考[配置 OSS 反向代理](https://www.alibabacloud.com/help/faq-detail/39544.htm)。
+    3.  根据业务情况，购买合适的[高防 IP](https://common-buy.aliyun.com/?spm=5176.10695662.958511.2.5f267a64VdiI7O&commodityCode=ddosBag#/buy)。
+    4.  参考方案一的[步骤3](#)。其中， **防护网站**填写您 ECS 绑定的域名，**源站 IP/域名**填写 ECS 的外网 IP。
+
+方案优劣势分析
+
+|方案名称|优势|劣势|
+|:---|:-|:-|
+|方案一：绑定域名并配置高防 IP|配置简单：支持控制台图形化设置。|应用场景有局限性：只能对未进入沙箱的 Bucket 提供防护。|
+|方案2：配置 ECS 反向代理并配置高防 IP| -   解决方案具有通用性：能够为已进入沙箱和未进入沙箱的 Bucket 提供防护。
+-   适合通过固定 IP 访问 OSS 的场景。
+
+ | -   配置复杂:需要用户自定搭建 Nginx 反向代理。
+-   成本高：需要额外购买 ECS 搭建反向代理。
+
+ |
+
+## 针对违法内容的预防措施 {#section_xhp_nz1_fhb .section}
+
+为防止您的 Bucket 因分享涉黄、涉政、涉恐等违法内容被切入沙箱，建议您开通[内容安全](https://common-buy-intl.aliyun.com/?spm=a2796.11216674.994222.1.684e76506vP942&commodityCode=cdi_intl#/open)服务。阿里云内容安全服务将定期针对您选中的 Bucket 进行检测，有效降低涉黄、涉政、涉恐的风险。
+
+使用内容安全服务检测 Bucket 内违规内容的详细步骤请参考[开通 OSS 违规检测](../../../../intl.zh-CN/用户指南/OSS违规检测.md#)。
+
+## Bucket 已进入沙箱如何处理 {#section_fj2_5wl_cgb .section}
+
+针对已经进入沙箱的 Bucket，阿里云不提供迁出服务。若您的 Bucket 被切入沙箱，请按照以下操作执行。
+
+-   因攻击原因导致Bucket被切入沙箱
+    -   针对已经进入沙箱的 Bucket，请按照[方案二](#)配置安全防护措施。
+
+        **说明：** 请在 Bucket 所在的 Region 搭建 ECS，并且 proxy\_pass 填写 Bucket 内网域名地址。
+
+    -   若您的账号下的 Bucket 曾多次遭受攻击。那么，您后续新建的 Bucket 默认也会进入沙箱。此时，针对新建 Bucket 的安全访问措施如下：
+        1.  购买高防 IP。
+        2.  通过工单系统提交“新建 Bucket 默认不进入沙箱申请”。
+        3.  申请通过后，参照[方案一](#)进行配置。
+-   因发布违法内容导致 Bucket 被切入沙箱
+    -   针对已经入沙箱的 Bucket，请按照如下操作执行：
+        1.  开通[内容安全](https://common-buy-intl.aliyun.com/?spm=a2796.11216674.994222.1.684e7650RNHNGW&commodityCode=cdi_intl&accounttraceid=88f905ca-7714-4dd6-b3e7-99b552094dbe#/open)服务，定期检测您的 Bucket，保证不再发布违规内容。
+        2.  请按照[方案二](#)配置 ECS 反向代理，通过代理服务器进行访问。
+
+            **说明：** 请在 Bucket 所在的 Region 搭建 ECS，并且 proxy\_pass 填写 Bucket 内网域名地址。
+
+    -   若您多个 Bucket 同时发布违法内容，或单个 Bucket 多次发布违法内容。那么，您后续新建的 Bucket 默认也会进入沙箱。此时，您需按如下操作执行：
+        1.  购买内容安全产品。
+        2.  通过工单系统提交“新建 Bucket 默认不进入沙箱申请”。
+        3.  申请通过后，配置内容安全检测，定期检测您新建的 Bucket。
+

@@ -2,7 +2,7 @@
 
 RAM （Resource Access Management）是阿里云提供的资源访问控制服务。RAM Policy是基于用户的授权策略。通过设置RAM Policy，您可以集中管理您的用户（比如员工、系统或应用程序），以及控制用户可以访问您名下哪些资源的权限。比如能够限制您的用户只拥有对某一个 Bucket 的读权限。子账号是从属于主账号的，并且这些账号下不能拥有实际的任何资源，所有资源都属于主账号。
 
-**说明：** 您可以使用[RAM策略编辑器](../../../../../intl.zh-CN/常用工具/RAM策略编辑器.md#)快速生成RAM Policy。
+**说明：** 您可以使用[RAM策略编辑器](../../../../intl.zh-CN/常用工具/RAM策略编辑器.md#)快速生成RAM Policy。
 
 ## 常见Policy示例 {#section_rgn_pvx_5db .section}
 
@@ -340,7 +340,7 @@ Action 分为三大类：
     |UploadPart|oss:PutObject|
     |CompleteMultipart|oss:PutObject|
     |DeleteObject|oss:DeleteObject|
-    |DeleteMultipartObjects|oss:DeleteObject|
+    |DeleteMultipleObjects|oss:DeleteObject|
     |AbortMultipartUpload|oss:AbortMultipartUpload|
     |ListParts|oss:ListParts|
     |CopyObject|oss:GetObject,oss:PutObject|
@@ -403,7 +403,7 @@ OSS 支持的 Condition 如下：
 
 ## 最佳实践 {#section_twm_zsm_2gb .section}
 
-OSS提供了[RAM策略编辑器](../../../../../intl.zh-CN/常用工具/RAM策略编辑器.md#)帮助您快速生成RAM Policy。您也可以使用图形化管理工具 ossbrowser 的[简化 Policy 授权](../../../../../intl.zh-CN/常用工具/图形化管理工具ossbrowser/权限管理.md#section_zyx_1k3_wdb)，一键完成对子账号授予特定 Bucket 或特定目录的权限 。
+OSS提供了[RAM策略编辑器](../../../../intl.zh-CN/常用工具/RAM策略编辑器.md#)帮助您快速生成RAM Policy。您也可以使用图形化管理工具 ossbrowser 的[简化 Policy 授权](../../../../intl.zh-CN/常用工具/图形化管理工具ossbrowser/权限管理.md#section_zyx_1k3_wdb)，一键完成对子账号授予特定 Bucket 或特定目录的权限 。
 
 针对具体场景更多的授权策略配置示例，可以参考[教程示例：控制存储空间和文件夹的访问权限](intl.zh-CN/开发指南/权限控制/基于RAM Policy的权限控制/教程示例：使用RAM Policy控制存储空间和文件夹的访问权限.md#)和[OSS 授权常见问题](https://www.alibabacloud.com/help/faq-detail/58905.htm)。
 

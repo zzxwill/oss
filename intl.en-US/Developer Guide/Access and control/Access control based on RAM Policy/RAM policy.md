@@ -338,7 +338,7 @@ To authorize a type of actions on objects, you can select one or more of the pre
     |UploadPart|oss:PutObject|
     |CompleteMultipart|oss:PutObject|
     |DeleteObject|oss:DeleteObject|
-    |DeleteMultipartObjects|oss:DeleteObject|
+    |DeleteMultipleObjects|oss:DeleteObject|
     |AbortMultipartUpload|oss:AbortMultipartUpload|
     |ListParts|oss:ListParts|
     |CopyObject|oss:GetObject,oss:PutObject|
@@ -401,7 +401,7 @@ OSS supports the following conditions
 
 ## Best practice {#section_twm_zsm_2gb .section}
 
-OSS provides [Ram Policy Editor](../../../../../reseller.en-US/Tools/RAM Policy Editor.md#) that can help you generate a RAM policy quickly. You can also [Grant permissions with a simple policy](../../../../../reseller.en-US/Tools/ossbrowser/Permission management.md#section_zyx_1k3_wdb) by using ossbrowser, a graphical management tool to authorize a RAM user so that it can access specified buckets or directories.
+OSS provides [Ram Policy Editor](../../../../reseller.en-US/Tools/RAM Policy Editor.md#) that can help you generate a RAM policy quickly. You can also [Grant permissions with a simple policy](../../../../reseller.en-US/Tools/ossbrowser/Permission management.md#section_zyx_1k3_wdb) by using ossbrowser, a graphical management tool to authorize a RAM user so that it can access specified buckets or directories.
 
 For more examples of configuring authorization policies in different scenarios, see [Tutorial: control access to buckets and objects](reseller.en-US/Developer Guide/Access and control/Access control based on RAM Policy/Tutorial: Use RAM Policy to control access to buckets and folders.md#) and [Authorization for OSS](https://partners-intl.aliyun.com/help/doc-detail/58905.htm).
 

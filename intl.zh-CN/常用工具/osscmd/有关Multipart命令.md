@@ -10,7 +10,7 @@
 
 使用示范：
 
--   `python osscmd init oss://mybucket/myobject`
+ `python osscmd init oss://mybucket/myobject`
 
 ## listpart {#section_z2y_rhc_wdb .section}
 
@@ -18,15 +18,14 @@
 
 `listpart oss://bucket/object --upload_id=xxx`
 
-显示指定object的Upload ID下已经上传的Parts。相关概念见OSS API文档。必须要指定Upload ID。
+显示指定object的Upload ID下已经上传的Parts。相关概念见[OSS API文档](../../../../intl.zh-CN/API 参考/简介.md#)。必须要指定Upload ID。
 
 使用示范：
 
--   ```
+```
 python osscmd listpart oss://mybucket/myobject --upload_id=
           75835E389EA648C0B93571B6A46023F3
 ```
-
 
 ## listparts {#section_bfy_rhc_wdb .section}
 
@@ -34,11 +33,11 @@ python osscmd listpart oss://mybucket/myobject --upload_id=
 
 `listparts oss://bucket`
 
-显示bucket中未完成的multipart Upload ID和object。一般在删除bucket提示bucket非空的情况下可以用这个命令查看是否有multipart相关的内容。
+显示bucket中未完成的multipart Upload ID和object。一般在删除bucket提示bucket非空的情况下，可以用这个命令查看是否有multipart相关的内容。
 
 使用示范：
 
--   `python osscmd listparts oss://mybucket`
+ `python osscmd listparts oss://mybucket`
 
 ## getallpartsize {#section_dfy_rhc_wdb .section}
 
@@ -46,11 +45,11 @@ python osscmd listpart oss://mybucket/myobject --upload_id=
 
 `getallpartsize oss://bucket`
 
-显示bucket中还存在的Upload ID已经上传的Parts的总大小。
+显示bucket中还存在的Upload ID下已经上传的Parts的总大小。
 
 使用示范：
 
--   `python osscmd getallpartsize oss://mybucket`
+ `python osscmd getallpartsize oss://mybucket`
 
 ## cancel {#section_ffy_rhc_wdb .section}
 
@@ -62,11 +61,10 @@ python osscmd listpart oss://mybucket/myobject --upload_id=
 
 使用示范：
 
--   ```
+```
 python osscmd cancel oss://mybucket/myobject --upload_id=
           D9D278DB6F8845E9AFE797DD235DC576
 ```
-
 
 ## multiupload\(multi\_upload,mp\) {#section_hfy_rhc_wdb .section}
 
@@ -92,7 +90,7 @@ multiupload(multi_upload,mp) localfile oss://bucket/object --upload_id=xxx --thr
         --max_part_num=1000 --check_md5=false
 ```
 
-将本地文件以multipart的方式上传到OSS。本地文件划分的块数由max\_part\_num来指定。这个命令在实现的时候，会先去判断Upload ID对应的Parts的ETag是否和本地文件的MD5值是否相等，相等则跳过上传。所以如果在使用之前生成一个Upload ID，作为参数传进来。即使上传没有成功，重复执行相同的multiupload命令可以达到一个断点续传的效果。`--check_md5=false`表示上传文件时，不会做携带Content-MD5请求头校验。true则会做校验。
+将本地文件以multipart的方式上传到OSS。本地文件划分的块数由max\_part\_num来指定。这个命令在实现的时候，会先去判断Upload ID对应的Parts的ETag是否和本地文件的MD5值是否相等，相等则跳过上传。所以在使用之前生成一个Upload ID，作为参数传进来。即使上传没有成功，重复执行相同的multiupload命令可以达到一个断点续传的效果。`--check_md5=false`表示上传文件时，不会做携带Content-MD5请求头校验。true则会做校验。
 
 使用示范：
 
@@ -106,7 +104,9 @@ python osscmd multiup_load /tmp/localfile.txt oss://mybucket/object
         --thread_num=5
 ```
 
--   `python osscmd mp /tmp/localfile.txt oss://mybucket/object --max_part_num=100`**copylargefile**
+-   `python osscmd mp /tmp/localfile.txt oss://mybucket/object --max_part_num=100`
+
+## copylargefile {#section_ph2_12y_32b .section}
 
 命令说明：
 
@@ -115,15 +115,14 @@ copylargefile oss://source_bucket/source_object oss://target_bucket/target_objec
         --part_size=10*1024*1024 --upload_id=xxx
 ```
 
-对于超过1G的大文件进行复制时，采用multipart的方式将object复制到指定位置，（源bucket必须与目标bucket处于同一region）。其中upload\_id为可选参数，如果当需要对某一次multipart copy事件进行续传的时候，可以传入该事件的upload\_id。part\_size用来设定分块大小，分块最小需要大于100KB，最多支持10000块分块。如果part\_size设定值导致与OSS限制冲突，程序会帮你自动调节分块大小。
+对于超过1G的大文件进行复制时，采用multipart的方式将object复制到指定位置（源bucket必须与目标bucket处于同一region）。其中upload\_id为可选参数，当需要对某一次multipart copy事件进行续传的时候，可以传入该事件的upload\_id。part\_size用来设定分块大小，分块最小需要大于100KB，最多支持10000块分块。如果part\_size设定值导致与OSS限制冲突，程序会帮你自动调节分块大小。
 
 使用示范：
 
--   ```
+```
 python osscmd copylargefile oss://source_bucket/source_object
           oss://target_bucket/target_object --part_size=10*1024*1024
 ```
-
 
 ## uploadpartfromfile \(upff\) {#section_lfy_rhc_wdb .section}
 

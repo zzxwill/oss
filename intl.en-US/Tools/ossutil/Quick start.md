@@ -4,20 +4,20 @@ Ossutil allows you to manage OSS data easily by using command lines and provides
 
 ## Download {#section_sqg_hrh_2nw .section}
 
--   The latest version of ossutil is 1.5.2.
+-   The latest version of ossutil is 1.6.0.
 -   Operating environment:
     -   Windows/Linux/Mac
     -   Supported architecture: x86 \(32bit, 64bit\)
 -   Download ossutil from the following URLs according to your operating system:
-    -   [Linux x86 32bit](http://gosspublic.alicdn.com/ossutil/1.5.2/ossutil32)
-    -   [Linux x86 64bit](http://gosspublic.alicdn.com/ossutil/1.5.2/ossutil64) 
+    -   [Linux x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil32)
+    -   [Linux x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64) 
 
         **Note:** When copying the preceding URLs into the `wget` command to download data, delete the ?spm=xxxx part in the URLs.
 
-    -   [Windows x86 32bit](http://gosspublic.alicdn.com/ossutil/1.5.2/ossutil32.zip)
-    -   [Windows x86 64bit](http://gosspublic.alicdn.com/ossutil/1.5.2/ossutil64.zip)
-    -   [mac x86 32bit](http://gosspublic.alicdn.com/ossutil/1.5.2/ossutilmac32)
-    -   [mac x86 64bit](http://gosspublic.alicdn.com/ossutil/1.5.2/ossutilmac64)
+    -   [Windows x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil32.zip)
+    -   [Windows x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64.zip)
+    -   [mac x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac32)
+    -   [mac x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64)
 
 ## Installation {#section_f1t_c1h_v4z .section}
 
@@ -27,7 +27,7 @@ Download a package according to your operating system and run the corresponding 
     1.  Download the ossutil installation file:
 
         ```
-        wget http://gosspublic.alicdn.com/ossutil/1.5.2/ossutil64
+        wget http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64
         								
         ```
 
@@ -55,7 +55,7 @@ Download a package according to your operating system and run the corresponding 
         -   **accessKeySecret**: For more information about how to view the AccessKeySecret, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
         -   **stsToken**: This is option is required only when you use a temporary STS token to access the OSS bucket. Otherwise, you can leave the value unspecified. For more information about how to generate an STS token, see [Temporary access credentials](../../../../reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#section_dvv_hkb_5db).
 
-            **Note:** For more information about the configuration file, see [Modify the configuration file](#config)
+            **Note:** For more information about the configuration file, see [Modify the configuration file](#config).
 
 -   Install ossutil in Windows \(Windows 64-bit system is used as an example\).
     1.  Download the ossutil installation package.
@@ -70,7 +70,7 @@ Download a package according to your operating system and run the corresponding 
     1.  Download the ossutil installation file:
 
         ```
-        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.5.2/ossutilmac64
+        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64
         ```
 
     2.  Modify the permission of the file:
@@ -94,7 +94,7 @@ Download a package according to your operating system and run the corresponding 
     1.  Download the ossutil installation file:
 
         ```
-        wget http://gosspublic.alicdn.com/ossutil/1.5.2/ossutil64
+        wget http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64
         								
         ```
 
@@ -137,7 +137,7 @@ Download a package according to your operating system and run the corresponding 
     1.  Download the ossutil installation file:
 
         ```
-        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.5.2/ossutilmac64
+        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64
         ```
 
     2.  Modify the permission of the file:

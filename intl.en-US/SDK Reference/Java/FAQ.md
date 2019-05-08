@@ -1,12 +1,10 @@
-# 常见问题 {#concept_32024_zh .concept}
+# FAQ {#concept_32024_zh .concept}
 
-本文介绍使用OSS Java SDK的常见问题及解决方法。
+## Jar conflicts {#section_u5d_qgd_kfb .section}
 
-## 包冲突 {#section_u5d_qgd_kfb .section}
+-   Cause analysis
 
--   错误原因
-
-    使用OSS Java SDK时，报类似如下错误，说明您的工程里可能有包冲突。
+    If the following errors occur when you use OSS Java SDK, jar conflicts may exist in your project.
 
     ```
     Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
@@ -25,7 +23,7 @@
     					
     ```
 
-    或
+    Or
 
     ```
     Exception in thread "main" java.lang.NoSuchFieldError: INSTANCE
@@ -50,24 +48,24 @@
     					
     ```
 
-    错误原因是OSS Java SDK使用了Apache httpclient 4.4.1，而您的工程使用了与Apache httpclient 4.4.1冲突的Apache httpclient或commons-httpclient jar包。要查看工程使用的jar包及版本，请在您的工程目录下执行`mvn dependency:tree`。如下图所示，您的工程里使用了Apache httpclient 4.3：
+    The cause is that OSS Java SDK uses Apache httpclient 4.4.1, while your project uses Apache httpclient or commons-httpclient jar that conflicts with Apache httpclient 4.4.1. To view the jar file and its version used for a project, open OSS Java SDK and run the `mvn dependency:tree` command. The following figure shows that a project that uses Apache httpclient 4.3.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410513397_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728411413397_en-US.png)
 
--   包冲突有以下两种解决方法：
+-   There are two solutions to jar conflicts.
 
-    -   使用统一版本。如果您的工程使用与Apache httpclient 4.4.1冲突的版本，请您使用4.4.1版本，并在pom.xml删除其它版本的Apache httpclient依赖。如果您的工程使用了commons-httpclient，也可能存在冲突，请删除commons-httpclient。
-    -   解除依赖冲突。如果您的工程依赖多个第三方包，而第三方包又依赖不同版本的Apache httpclient，您的工程里会有依赖冲突，请使用exclusion解除。详细请参见[Maven Guides](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
-    OSS Java SDK依赖以下版本的包，冲突解决办法与httpclient类似。
+    -   Use a unified version. If your project uses the version that conflicts with Apache httpclient 4.4.1, use Apache httpclient 4.4.1 and delete Apache httpclient dependencies of other versions in the pom.xml file. If your project uses commons-httpclient, jar conflicts may also exist. In this case, delete commons-httpclient.
+    -   Resolve dependency conflicts. If your project uses multiple third-party dependencies that have various Apache httpclient versions, dependency conflicts may exist in your project. Use exclusion to resolve the conflicts. For more information, see [Maven Guides](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
+    OSS Java SDK is dependent on the following jar versions. Conflict solutions are similar to the httpclien method.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410513398_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728411413398_en-US.png)
 
 
-## 缺少包 { .section}
+## Missing files { .section}
 
--   错误原因
+-   Cause analysis
 
-    使用OSS Java SDK时，报类似如下错误，说明您的工程中可能缺少编译或运行OSS Java SDK所必需的包。
+    If the following errors occur when you use OSS Java SDK, your project may lack the necessary files for OSS Java SDK compilation and execution.
 
     ```
     Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/http/auth/Credentials
@@ -86,7 +84,7 @@
     					
     ```
 
-    或
+    Or
 
     ```
     Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/http/protocol/HttpContext
@@ -105,7 +103,7 @@
     					
     ```
 
-    或
+    Or
 
     ```
     Exception in thread "main" java.lang.NoClassDefFoundError: org/jdom/input/SAXBuilder
@@ -126,7 +124,7 @@
     					
     ```
 
-    OSS Java SDK依赖下列包：
+    Dependencies of OSS Java SDK are as follows:
 
     -   aliyun-sdk-oss-2.2.1.jar
     -   hamcrest-core-1.1.jar
@@ -136,21 +134,21 @@
     -   commons-logging-1.2.jar
     -   httpcore-4.4.1.jar
     -   log4j-1.2.15.jar
-    其中log4j-1.2.15.jar是可选的，需要日志功能的时候加入该包，其它包都是必需的。
+    In the preceding dependencies, all files except the log4j-1.2.15.jar file are required. You need to add this file to enable access logging.
 
--   解决方法
+-   Solutions
 
-    在您的工程中加入OSS Java SDK依赖的包。加入方法如下：
+    Add OSS Java SDK dependencies to your project. Methods:
 
-    -   如果您的工程在Eclipse中，请参见[Java SDK使用手册](intl.zh-CN/SDK 参考/Java/安装.md#section_dqn_fpm_1z)中的安装方式二：在Eclipse项目中导入工程依赖的包。
-    -   如果您的工程在Ant中，请把OSS Java SDK依赖的包放入工程的lib目录中。
-    -   如果您直接使用.javac或.java文件，请使用`-classpath`或`-cp`命令指定OSS Java SDK依赖的包路径，或把OSS Java SDK依赖的包放入classpath路经下。
+    -   If your project is in Eclipse, see [Method 2: Import a JAR package](reseller.en-US/SDK Reference/Java/Installation.md#section_dqn_fpm_1z) to your Eclipse project in Java SDK.
+    -   If your project is in Ant, add OSS Java SDK dependencies to the lib directory.
+    -   If you directly use the .javac or .java files, run the `-classpath` command or the `-cp` command to specify the path where OSS Java SDK dependencies are stored or save the Java SDK dependencies to classpath.
 
-## 连接超时 { .section}
+## Connection timeout { .section}
 
--   错误原因
+-   Cause analysis
 
-    运行OSS Java SDK程序时，报类似如下错误，可能的原因是Endpoint错误或者网络不通。
+    If the following errors occur when the OSS Java SDK program is run, possible causes are endpoint errors or unavailable networks:
 
     ```
     com.aliyun.oss.ClientException: SocketException
@@ -179,31 +177,31 @@
     					
     ```
 
--   解决方法
+-   Solution
 
-    您可以使用[ossutil](../../../../intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_njd_yzz_zgb)工具快速定位错误原因，从而解决问题。
+    You can use [ossutil](../../../../reseller.en-US/Tools/ossutil/Bucket-related commands.md#section_njd_yzz_zgb) for fast troubleshooting.
 
 
 ## org.apache.http.NoHttpResponseException: The target server failed to respond {#section_wgy_2kd_kfb .section}
 
--   错误原因
+-   Cause analysis
 
-    运行OSS Java SDK程序时，报类似如下错误：
+    The following error occurs when the OSS Java SDK program is run:
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410513399_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728411413399_en-US.png)
 
-    使用过期的连接会导致上述错误。该错误仅在Java SDK 2.1.2前的版本出现。
+    The preceding error may occur if expired connections are used. This error occurs only when an earlier version of Java SDK 2.1.2 is used.
 
--   解决方法
+-   Solutions
 
-    请升级OSS Java SDK到2.1.2及以后版本。
+    Upgrade OSS Java SDK to 2.1.2 or a later version.
 
 
-## 调用OSS Java SDK夯住 { .section}
+## OSS Java SDK stops responding when the Java program is called { .section}
 
--   错误原因
+-   Cause analysis
 
-    调用OSS Java SDK夯住（hang）。通过`jstack -l pid`命令查看堆栈，夯在如下的位置：
+    OSS Java SDK stops responding when the Java program is called. Run the `jstack -l pid` command to view the stacks. The exception is as follows:
 
     ```
     "main" prio=6 tid=0x000000000291e000 nid=0xc40 waiting on condition [0x0000000002dae000]
@@ -238,27 +236,27 @@
     					
     ```
 
-    原因是连接池中连接泄漏，可能是使用ossObject后没有关闭。
+    The cause is due to the connection leak in the connection pool \(possibly because ossObject is left unclosed after it is used\).
 
--   解决方法
+-   Solutions
 
-    请检查您的程序，确保没有连接泄漏。关闭方法如下：
+    Check your program and ensure that no connection leak occurs. Use the following code to close ossObject:
 
     ```
-    // 读取文件
+    // Read an object.
     OSSObject ossObject = ossClient.getObject(bucketName, objectName);
-    // OSS操作
-    // 关闭ossObject
+    // Perform operations on OSS.
+    // Close your ossObject.
     ossObject.close();
     					
     ```
 
 
-## 连接关闭 { .section}
+## Connection closure { .section}
 
--   错误原因
+-   Cause analysis
 
-    如果您在使用ossClient.getObject时，报类似如下错误：
+    If the following errors occur when you use ossClient.getObject:
 
     ```
     Exception in thread "main" org.apache.http.ConnectionClosedException: Premature end of Content-Length delimited message body (expected: 11990526; received: 202880
@@ -276,33 +274,33 @@
     					
     ```
 
-    原因是两次读取数据间隔时间超过1分钟。OSS会关闭超过1分钟没有发送或接收数据的连接。
+    The cause is that the time between two consecutive data reading exceeds one minute. OSS will close the connections if the time between two consecutive data reading exceeds one minute.
 
--   解决方法
+-   Solution
 
-    如果您每次读取部分数据进行处理，且处理数据的时间不固定，建议使用[指定范围读取](intl.zh-CN/SDK 参考/Java/下载文件/范围下载.md#)，避免数据读取时连接关闭。
-
-
-## 内存泄露 { .section}
-
--   错误原因
-
-    调用OSS Java SDK的程序，运行一段时间（根据业务量，几小时到几天不等）后内存泄露。 推荐使用[Eclipse Memory Analyzer \(MAT\)](http://www.eclipse.org/mat/downloads.php?)分析内存使用情况， 使用方法请参见[使用MAT进行堆转储文件分析](https://www.ibm.com/developerworks/cn/opensource/os-cn-ecl-ma/)。
-
-    如果分析结果类似下图所示（PoolingHttpClientConnectionManager占96%的内存），原因是程序中可能多次执行new OSSClient，但是没有调用ossClient.shutdown，造成内存泄漏。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410613400_zh-CN.png)
-
--   解决方法
-
-    new OSSClient一定要和ossClient.shutdown成对使用。
+    If you only need to read part of the data during unfixed periods of time, use [Range download](reseller.en-US/SDK Reference/Java/Download objects/Range download.md#) to avoid connection closure during data reading.
 
 
-## 调用ossClient.shutdown抛异常InterruptedException { .section}
+## Memory leaks { .section}
 
--   错误原因
+-   Cause analysis
 
-    调用ossClient.shutdown抛如下异常：
+    Memory leaks occur when the OSS Java SDK program is run for a period of time \(from several hours to several days based on access traffic\). We recommend that you use [Eclipse Memory Analyzer \(MAT](http://www.eclipse.org/mat/downloads.php?)\) to analyze memory usage. For more information about usage methods, see [Use MAT for Head Dump File Analysis](https://www.ibm.com/developerworks/cn/opensource/os-cn-ecl-ma/).
+
+    If the analysis result is similar to the following figure \(PoolingHttpClientConnectionManager occupies 96 percent of memory\), the cause may be that new OSSClient is run multiple times while ossClient.shutdown is not called. Consequently, memory leaks occur.
+
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728411413400_en-US.png)
+
+-   a
+
+    Ensure that ossClient.shutdown is enabled after OSSClient is enabled.
+
+
+## InterruptedException occurs when ossClient.shutdown is called { .section}
+
+-   Error Cause
+
+    The following exception is thrown when OSSClient.shutdown is called:
 
     ```
     java.lang.InterruptedException: sleep interrupted
@@ -311,13 +309,13 @@
     					
     ```
 
-    原因是ossClient后台线程IdleConnectionReaper会定时关闭闲置连接。IdleConnectionReaper在Sleep时，调用ossClient.shutdown，就会抛出上面的异常。
+    The cause is that the backend thread \(IdleConnectionReaper\) of ossClient will close connections periodically. If ossClient.shutdown is called when IdleConnectionReaper is in the Sleep mode, the preceding exception occurs.
 
--   解决方法
+-   Solution
 
-    OSS Java SDK 2.3.0已经修复该问题。
+    OSS Java SDK 2.3.0 has rectified this error.
 
-    OSS Java SDK 2.3.0之前的版本，请使用如下代码，忽略该异常：
+    For versions earlier than OSS Java SDK 2.3.0, use the following code to ignore the error:
 
     ```
     try {
@@ -328,75 +326,7 @@
     ```
 
 
-## 请求出现异常“SDK.ServerUnreachable : Speicified endpoint or uri is not valid” {#section_n5x_zqk_5gb .section}
+## Other errors { .section}
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638848_zh-CN.png)
-
--   错误原因
-
-    出现此类报错是因为用户端并发请求STS过高、网络到server端超时、所使用的STS SDK以及SDK core不是最新版本，导致用户无法连接到阿里云网关。
-
--   解决方法
-    -   用户端并发请求STS过高，而用户端的ECS或者本地PC不足以承载当时的并发，降低OSS并发。
-    -   用户的网络到server端有超时现象可以进行抓包验证。
-    -   建议将STS SDK及SDK core升级至最新版本。
-
-## NoSuchKey {#section_tgs_bsk_5gb .section}
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638849_zh-CN.jpg)
-
--   错误原因
-
-    出现此类报错原因是源文件不存在。
-
--   解决方法
-
-    参考[404问题排查](https://yq.aliyun.com/articles/657166)。
-
-
-## socketException {#section_kts_3tk_5gb .section}
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638851_zh-CN.png)
-
--   错误原因
-
-    可能是socket在init阶段就失败了，导致请求没有到达OSS。
-
--   解决方法
-
-    建议从以下几个方面进行排查：
-
-    -   当时是否出现网络抖动。
-    -   主机的socket连接数是否占满。
-    -   SDK中设置的maxconnection是多大。如果当时连接数超过maxconnection设置，也会出现socket异常。
-    -   如果以上都没有问题，建议用户部署tcpdump或者wireshark抓包，复现问题后分析下数据包。
-
-## 使用OSS PostObject的callback没有触发回调，但是通过PutObject用同样的callback触发了回调？ {#section_r1s_h5k_5gb .section}
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638913_zh-CN.png)
-
-一般情况下，如果JSON格式有误或者回调失败，都会返回相应的msg，这里需要分别测试下Put和Post回调效果：
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638868_zh-CN.png)
-
--   错误原因
-
-    发送请求时callback参数在file下面。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638909_zh-CN.png)
-
--   解决方法
-
-    调整callback参数与file的位置。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638910_zh-CN.png)
-
-    此时测试结果显示业务服务器成功抓取请求。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/22308/155728410638911_zh-CN.png)
-
-
-## 其它错误 { .section}
-
-OSS返回的其它错误排查，请参见[常见错误及排查](../../../../intl.zh-CN/常见错误排除/OSS 403错误及排查.md#)。
+For more information about how to rectify other errors returned by OSS, see [Errors and troubleshooting](../../../../reseller.en-US/Errors and Troubleshooting/OSS 403.md#).
 

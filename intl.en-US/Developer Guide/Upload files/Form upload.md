@@ -1,59 +1,60 @@
 # Form upload {#concept_uln_lcb_5db .concept}
 
-Form upload refers to the upload of an object by using the Post Object method in the OSS API. The object to be uploaded cannot be larger than 5 GB. This method can be used in HTML web pages to upload objects. A typical scenario is web applications.
+By using form upload, you can use the PostObject API of OSS to upload objects with a maximum size of 5 GB.
 
-Take a job-search website as an example. The comparison between the process with and without using form upload is as follows:
+**Note:** For more information about the PostObject API, see [PostObject](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#).
 
-|Process without using form upload|Process using form upload|
-|:--------------------------------|:------------------------|
-| 1.  A website user uploads a resume.
-2.  The website server responds to the upload page.
-3.  The resume is uploaded to the server.
-4.  The server uploads the resume to OSS.
+## Scenarios {#section_gdr_mcb_5db .section}
 
- | 1.  A website user uploads a resume.
-2.  The website server responds to the upload page.
+This method can be used on HTML Webpages to upload objects. A typical scenario is Web applications. For example, the following table compares the form upload process with other upload processes on a job-search website.
+
+| |Other upload methods|Form upload|
+|:-|:-------------------|:----------|
+|Access process| 1.  A website user sends a request to upload a resume.
+2.  The website server responds with a resume upload page.
+3.  The resume is uploaded to the website server.
+4.  The website server uploads the resume to OSS.
+
+ | 1.  A website user sends a request to upload a resume.
+2.  The website server responds with a resume upload page.
 3.  The resume is uploaded to OSS.
 
  |
 
-## Upload restrictions {#section_r4t_zdb_5db .section}
+-   The form upload process is easier, because data is directly uploaded to OSS without being forwarded by the website server.
+-   In other upload processes, objects are uploaded to the website server first. When a large number of objects are uploaded, the website server must be scaled out. In the form upload process, objects are directly uploaded from the client to OSS. When a large number of objects are uploaded, OSS bears the upload pressure and ensures the service quality.
 
--   The maximum size of a single object is 5 GB.
--   The naming conventions of objects are as follows:
-    -   Object names must use UTF-8 encoding.
-    -   Object names must be at least 1 byte and no more than 1,023 bytes in length.
-    -   Object names cannot start with a backslash \( \\ \) or a forward slash \( / \).
+## SDK demo {#section_nsz_hlk_lgb .section}
 
-## Advantages of form upload {#section_g4q_c2b_5db .section}
+For more information, see [Java SDK](../../../../reseller.en-US/SDK Reference/Java/Upload objects/Form upload.md#).
 
-If the form upload is not used, files are uploaded to the web server first, and then the web server forwards the files to OSS. In case of huge uploads, the web server becomes the bottleneck and needs to be scaled up. If the form upload is used, files are uploaded directly from the client to OSS without the forwarding of the web server. OSS handles all upload requests and guarantees the service quality.
+## Upload limits {#section_r4t_zdb_5db .section}
 
-## Security and authorization {#section_bxs_d2b_5db .section}
+-   Size: The maximum size of an object is 5 GB in this mode.
+-   Naming rules:
+    -   Object names must be UTF-8 encoded.
+    -   Object names must be one byte to 1,023 bytes in length.
+    -   Object names cannot start with a forward slash \(/\) or a backslash \(\\\).
 
-To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level.
+## Process analysis {#section_bzp_22b_5db .section}
 
-To grant upload permissions to a third party, you can use the PostObject interface. For more information, see [PostObject](../../../../intl.en-US/API Reference/Object operations/PostObject.md#).
+1.  Create a POST policy.
 
-## Procedures for form upload {#section_bzp_22b_5db .section}
+    The policy form field of a POST request is used to verify the validity of the request. For example, you can set a policy to specify the size and name of the object to be uploaded, and the URL that the client jumps to and the HTTP status code that the client receives after a successful upload. For more information, see [POST policy](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#section_d5z_1ww_wdb).
 
-1.  Construct a Post policy.
-
-    The policy form field of the Post request is used to verify the validity of the request. For example, the policy can specify the size and name of objects to be uploaded, the redirect URL of the client, and the status code the client receives after a successful upload.  For more information, see [Post Policy](../../../../intl.en-US/API Reference/Object operations/PostObject.md#section_d5z_1ww_wdb).
-
-    In the following example of policy, the expiration time for uploads by website users is 2115-01-27T10:56:19Z \(a long expiration period is set for tests only and is not recommended in actual use\) and the maximum file size is 104857600 bytes.
+    For example, in the following policy, you set the expiration time before which website users can upload data to 2115-01-27T10:56:19Z and the maximum size of the object to be uploaded to 104,857,600 bytes. \(To ensure successful testing, a long expiration period is set, which is not recommended in actual use.\)
 
     ```
-     This example uses the Python code and the policy is a string in JSON format.
+    This example uses the Python code. The policy is a JSON-formatted string.
      policy="{\"expiration\":\"2115-01-27T10:56:19Z\",\"conditions\":[[\"content-length-range\", 0, 104857600]]}"
     ```
 
-2.  Encode the policy string using Base64.
-3.  Use the OSS AccessKeySecret to sign the Base64-encoded policy.
-4.  Construct an HTML page for uploads.
-5.  Open the HTML page and select and upload files.
+2.  Use Base64 to encode the policy string.
+3.  Use the AccessKey Secret of OSS to add a signature to the Base64-encoded policy.
+4.  Create an HTML page for upload.
+5.  Open the HTML page and select the object to be uploaded.
 
-A complete Python code example is as follows:
+The following example shows the complete Python sample code.
 
 ```
 #coding=utf8
@@ -67,30 +68,30 @@ def convert_base64(input):
 def get_sign_policy(key, policy):
     return base64.b64encode(hmac.new(key, policy, hashlib.sha1).digest())
 def get_form(bucket, endpoint, access_key_id, access_key_secret, out):
-    #1. Construct a Post policy
+    #1 Create a POST policy.
     policy="{\"expiration\":\"2115-01-27T10:56:19Z\",\"conditions\":[[\"content-length-range\", 0, 1048576]]}"
     print("policy: %s" % policy)
-    #2. Encode the policy string using Base64
+    #2 Use Base64 to encode the policy string.
     base64policy = convert_base64(policy)
     print("base64_encode_policy: %s" % base64policy)
-    #3. Use the OSS AccessKeySecret to sign the Base64-encoded policy
+    #3 Use the AccessKey Secret of OSS to add a signature to the encoded policy.
     signature = get_sign_policy(access_key_secret, base64policy)
-    #4. Construct an HTML page for uploads
+    #4 Create an HTML page for upload.
     form = '''
-    <html>
-        <meta http-equiv=content-type content="text/html; charset=UTF-8">
-        <head><title>OSS form upload (PostObject)</title></head>
+    <html> 
+        <meta http-equiv=content-type content="text/html; charset=UTF-8"> 
+        <head><title>OSS form upload (through the PostObject API)</title></head>
         <body>
-            <form  action="http://%s.%s" method="post" enctype="multipart/form-data">
-                <input type="text" name="OSSAccessKeyId" value="%s">
-                <input type="text" name="policy" value="%s">
+            <form  action="http://%s.%s" method="post" enctype="multipart/form-data"> 
+                <input type="text" name="OSSAccessKeyId" value="%s"> 
+                <input type="text" name="policy" value="%s"> 
                 <input type="text" name="Signature" value="%s">
-                <input type="text" name="key" value="upload/${filename}">
-                <input type="text" name="success_action_redirect" value="http://oss.aliyun.com">
-                <input type="text" name="success_action_status" value="201">
-                <input name="file" type="file" id="file">
-                <input name="submit" value="Upload" type="submit">
-            </form>
+                <input type="text" name="key" value="upload/${filename}"> 
+                <input type="text" name="success_action_redirect" value="http://oss.aliyun.com"> 
+                <input type="text" name="success_action_status" value="201"> 
+                <input name="file" type="file" id="file"> 
+                <input name="submit" value="Upload" type="submit"> 
+            </form> 
         </body>
     </html>
     ''' % (bucket, endpoint, access_key_id, base64policy, signature)
@@ -112,29 +113,24 @@ if __name__ == '__main__':
         print "python %s --bucket=your-bucket --endpoint=oss-cn-hangzhou.aliyuncs.com --id=your-access-key-id --key=your-access-key-secret --out=out-put-form-name" % __file__
 ```
 
-Save this code example as post\_object.py and run it by using python post\_object.py.
+Save this sample code as post\_object.py and run it by using python post\_object.py.
 
 ```
 Usage:
-python post_object.py --bucket=Your bucket --endpoint=The bucket's OSS domain name --id=Your AccessKeyId --key=Your AccessKeySecret --out=Output file name
+python post_object.py --bucket=Your bucket name --endpoint=Bucket endpoint --id=Your AccessKey ID --key=Your AccessKey Secret --out=Output object name
 Example:
 python post_object.py --bucket=oss-sample --endpoint=oss-cn-hangzhou.aliyuncs.com --id=tphpxp --key=ZQNJzf4QJRkrH4 --out=post.html
 ```
 
-**Note:** In the constructed form,
+**Note:** 
 
--   `success_action_redirect value=http://oss.aliyun.com` indicates the redirect URL after a successful upload.  You can replace it with your own page.
--   `success_action_status value=201` indicates that Status Code 201 is returned after a successful upload. This value can be replaced.
+-   In the created form, `success_action_redirect value=http://oss.aliyun.com` indicates the Webpage that appears after the upload succeeds. You can replace it with your own Webpage.
+-   In the created form, `success_action_status value=201` indicates that HTTP status code 201 is returned after the upload succeeds. You can change it to another HTTP status code.
+-   If the generated HTML page is post.html, open post.html and select the object to be uploaded. In this example, OSS product page \(http://oss.aliyun.com\) appears after the upload succeeds.
 
-If the specified HTML file is post.html, open post.html and select the file to be uploaded. In this example, the client redirects to the OSS homepage \`http://oss.aliyun.com\` after a successful upload.
+## Upload security and authorization {#section_arr_vbb_5db .section}
 
-## Usage {#section_txy_hfb_5db .section}
+To prevent unauthorized third-party users from uploading data to your bucket, OSS provides bucket- and object-level access control. For more information, see [Access control](reseller.en-US/Developer Guide/Access and control/Overview.md#).
 
--   API: [PostObject](../../../../intl.en-US/API Reference/Object operations/PostObject.md#)
--   Java SDK: [Form upload](https://www.alibabacloud.com/help/doc-detail/84788.htm)
-
-## Best practices {#section_wgy_3fb_5db .section}
-
--   [Web client direct upload](../../../../intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
--   [Cross-origin Resource Sharing \(CORS\)](../../../../intl.en-US/Best Practices/Bucket management/Cross-origin resource sharing (CORS).md#)
+To authorize third-party users to upload objects, OSS also provides account authorization. For more information, see [Authorized third-party upload](reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
 

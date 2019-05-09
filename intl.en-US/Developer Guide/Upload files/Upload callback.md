@@ -1,32 +1,40 @@
 # Upload callback {#concept_ywd_dlb_5db .concept}
 
-## Use cases {#section_rrw_2lb_5db .section}
-
-When an object upload is completed, the OSS can provide a callback to the application server.  To implement the callback, you only need to attach the relevant Callback parameter to the request sent to the OSS. APIs that currently support callbacks include PutObject, PostObject, and CompleteMultipartUpload.
-
-A typical use case for upload callback is to work with the upload by an authorized third-party. The client specifies the callback of the server when it uploads objects to the OSS. After the upload task of the client is completed in the OSS, the OSS automatically initiates an HTTP request for the callback to the application server. This promptly notifies the server that the upload is completed, so the server can complete operations such as database modifications. When the callback request receives a response from the server, the OSS returns the status to the client.
-
-When the OSS sends a POST callback request to the application server, the POST request’s body contains some parameters that carry certain information. Such parameters are divided into two types: system-defined parameters \(such as bucket name and object name\) and user-defined parameters. You can specify user-defined parameters based on the application logic when sending a request including callback to the OSS.  You can use user-defined parameters to carry information relevant to the application logic, such as the user ID of the request initiator. For information on user-defined parameter usage, see [Callback](../../../../intl.en-US/API Reference/Object operations/Callback.md#).
-
-Appropriate use of the upload callback can decrease the complexity of the client’s logic and reduce the consumption of network resources. The process is as follows:
-
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4366/15433865111064_en-US.jpg)
+After an object is uploaded, OSS can start a callback process for the application server. To request callback, you only need to send a request that contains relevant callback parameters to OSS.
 
 **Note:** 
 
--   Supported regions include Mainland China regions, Hong Kong region, Asia Pacific South 1, Asia Pacific SE 2, US East, US West, Asia Pacific Northeast 1, Middle Europe 1 and Middle East 1.
--   Currently only simple uploads \(PutObject\), form uploads \(PostObject\) and multipart uploads \(Complete Multipart  Upload\) operations support upload callback.
+-   For more information about how to use OSS APIs to implement callbacks, see [Callback](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+-   APIs that support callbacks include [PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#), [PostObject](../../../../reseller.en-US/API Reference/Object operations/PostObject.md#), and [CompleteMultipartUpload](../../../../reseller.en-US/API Reference/Multipart upload operations/CompleteMultipartUpload.md#).
+
+## Scenarios {#section_rrw_2lb_5db .section}
+
+Upload callback is typically used together with authorized third-party uploads. When uploading an object to OSS, the client requests a callback to the server. After completing the upload task of the client, OSS automatically sends an HTTP request for the callback to the application server to notify the server that the upload is completed. Then, the server performs operations such as modifying the database and responds to the callback request. After receiving the response, OSS returns the upload status to the client.
+
+When sending a POST callback request to the application server, OSS includes parameters in the POST request body to carry specific information. Such parameters are divided into two types: system-defined parameters such as the bucket name and the object name, and user-defined parameters. You can specify user-defined parameters based on the application logic when sending a request that contains callback parameters to OSS. You can use user-defined parameters to carry information relevant to the application logic, such as the ID of the user who sends the request. For more information about how to use user-defined parameters, see [Callback](../../../../reseller.en-US/API Reference/Object operations/Callback.md#).
+
+You can properly use upload callback to simplify the client logic and save network resources. The following figure shows the process.
+
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4366/15573939831064_en-US.jpg)
+
+**Note:** 
+
+-   The following regions support upload callback: regions in Mainland China, Hong Kong, Singapore, Australia \(Sydney\), US \(Virginia\), US \(Silicon Valley\), Japan \(Tokyo\), Germany \(Frankfurt\), and UAE \(Dubai\).
+-   Currently, only simple upload \(through the PutObject API\), form upload \(through the PostObject API\), and multipart upload \(through the CompleteMultipartUpload API\) support upload callback.
+
+## Operating methods {#section_bdy_cv3_kgb .section}
+
+|Operating method|Description|
+|----------------|-----------|
+|[Java SDK](../../../../reseller.en-US/SDK Reference/Java/Upload objects/Upload callback.md#)|SDK demos in various languages|
+|[Python SDK](../../../../reseller.en-US/SDK Reference/Python/Upload objects/Upload callback.md#)|
+|[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Upload objects/Upload callback.md#)|
+|[C SDK](../../../../reseller.en-US/SDK Reference/C/Upload objects/Upload callback.md#)|
+|[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Upload objects/Upload callback.md#)|
 
 ## Reference {#section_mb4_llb_5db .section}
 
--   API: [Callback](../../../../intl.en-US/API Reference/Object operations/Callback.md#)
--   SDK: iOS [Callback notification after upload](https://www.alibabacloud.com/help/doc-detail/32060.htm)
--   [Upload callback](../../../../intl.en-US/Errors and Troubleshooting/Upload callback.md#)
-
-## Best practices {#section_g1q_mlb_5db .section}
-
--   [Direct data transfer practices on web clients and upload callback](../../../../intl.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
-
--   [How to build a callback application server \(sample code is available for download\)](../../../../intl.en-US/Best Practices/Application server/Set up data callback for mobile apps.md#)
-
+-   [Upload callback errors and troubleshooting](../../../../reseller.en-US/Errors and Troubleshooting/Upload callback.md#)
+-   [Direct data transfer on Web clients and upload callback](../../../../reseller.en-US//Overview of direct transfer on Web client.md#)
+-   [Set up upload callback for mobile applications](../../../../reseller.en-US/Best Practices/Application server/Set up data callback for mobile apps.md#)
 

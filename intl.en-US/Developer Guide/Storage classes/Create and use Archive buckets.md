@@ -57,11 +57,11 @@ You can restore an Archive object in any of the following ways:
 
 -   Console
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4342/15573857421024_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4342/15573860451024_en-US.png)
 
     Click Preview in the Actions column corresponding to the destination object. On the Preview page, click Restore. The restore operation takes about 1 minute. During this process, the object is in the restoring state.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4342/15573857421025_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4342/15573860451025_en-US.png)
 
 -   APIs or SDKs
 

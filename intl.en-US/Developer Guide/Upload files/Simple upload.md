@@ -1,41 +1,52 @@
 # Simple upload {#concept_bws_3bb_5db .concept}
 
-Simple upload refers to the upload of a single object by using the Put Object method in the OSS API. Simple upload is applicable to the scenario where a single HTTP request interaction completes an upload, for example, the upload of a small object.
+By using simple upload, you can use the PutObject API of OSS to upload single objects. Simple upload is applicable to scenarios where you can send an HTTP request to complete an upload, for example, to upload an object that is smaller than 5 GB.
 
-## Set object metadata when uploading an object {#section_mr2_nbb_5db .section}
+**Note:** 
 
-When using the simple upload, you can set object metadata that describes the object, for example, Content-Type and other standard HTTP headers. You can also set user-defined information. For more information, see [Object metadata](reseller.en-US/Developer Guide/Manage files/Object Meta.md#).
+-   For more information about the PutObject API, see [PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#).
+-   To upload an object that is larger than 5 GB, you can use [Resumable upload](reseller.en-US/Developer Guide/Upload files/Multipart upload.md#).
 
-## Upload restrictions {#section_ngq_qbb_5db .section}
+## Operating methods {#section_bdy_cv3_kgb .section}
 
--   The maximum size of a single object is 5 GB.
--   The naming conventions of objects are as follows:
-    -   Object names must use UTF-8 encoding.
-    -   Object names must be at least 1 byte and no more than 1,023 bytes in length.
-    -   Object names cannot start with a backslash \( \\ \) or a forward slash \( / \).
+|Operating method|Description|
+|----------------|-----------|
+|[Console](../../../../reseller.en-US/Console User Guide/Upload、download and manage objects/Upload objects.md#)|Web application, which is intuitive and easy to use|
+|[ossbrowser](../../../../reseller.en-US/Tools/ossbrowser/Quick start.md#)|Graphical tool, which is easy to operate|
+|[ossutil](../../../../reseller.en-US/Tools/ossutil/Object-related commands.md#)|Command-line tool, which delivers good performance|
+|[Java SDK](../../../../reseller.en-US/SDK Reference/Java/Upload objects/Simple upload.md#)|SDK demos in various languages|
+|[Python SDK](../../../../reseller.en-US/SDK Reference/Python/Upload objects/Simple upload.md#)|
+|[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Upload objects/Simple upload.md#)|
+|[Go SDK](../../../../reseller.en-US/SDK Reference/PHP/Upload objects/Simple upload.md#)|
+|[C SDK](../../../../reseller.en-US/SDK Reference/C/Upload objects/Simple upload.md#)|
+|[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Upload objects/Simple upload.md#)|
+|[Android SDK](../../../../reseller.en-US/SDK Reference/Android/Upload objects/Overview.md#)|
+|[iOS SDK](../../../../reseller.en-US/SDK Reference/iOS/Upload objects/Overview.md#)|
+|[Node.js SDK](../../../../reseller.en-US//Upload objects.md#)|
+|[Browser.js SDK](../../../../reseller.en-US/SDK Reference/Browser.js/Upload objects.md#)|
+|[Ruby SDK](../../../../reseller.en-US/SDK Reference/Ruby/Upload objects.md#)|
 
-## Upload large objects {#section_irn_5bb_5db .section}
+## Upload limits {#section_ngq_qbb_5db .section}
 
-In the single upload, objects are uploaded through a single HTTP request. Therefore, it may take a long time for you to upload large objects. If you experience bad network connection, the upload has a high failure rate. For objects larger than 5 GB, we recommend that you use [multipart upload](reseller.en-US/Developer Guide/Upload files/Multipart upload.md#).
+-   Size: The maximum size of an object is 5 GB in this mode.
+-   Naming rules:
+    -   Object names must be UTF-8 encoded.
+    -   Object names must be one byte to 1,023 bytes in length.
+    -   Object names cannot start with a forward slash \(/\) or a backslash \(\\\).
 
-## Security and authorization {#section_arr_vbb_5db .section}
+## Object Meta setting {#section_mr2_nbb_5db .section}
 
-To prevent unauthorized third parties from uploading objects to your bucket, OSS provides access control both on the bucket level and on the object level. For more information, see [Access control](reseller.en-US/Developer Guide/Access and control/Access control.md#). OSS also provides account-level authorization for third-party uploads. For more information, see [Authorized third-party uploads](reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
+When using simple upload, you can set Object Meta to describe an object, for example, Content-Type and other standard HTTP header fields. You can also set user-defined information. For more information, see [Manage Object Meta](reseller.en-US/Developer Guide/Manage files/Object Meta.md#).
 
-## Further operations {#section_emr_xbb_5db .section}
+## Upload security and authorization {#section_arr_vbb_5db .section}
 
-After uploading objects to OSS, you may want to:
+To prevent unauthorized third-party users from uploading data to your bucket, OSS provides bucket- and object-level access control. For more information, see [Access control](reseller.en-US/Developer Guide/Access and control/Overview.md#).
 
--   Initiate a callback request to a specified application server. For more information, see [Upload callback](reseller.en-US/Developer Guide/Upload files/Upload callback.md#).
--   Process the uploaded images. For more information, see [Image processing](../../../../reseller.en-US/Image Processing Guide/Image processing.md#).
+To authorize third-party users to upload objects, OSS also provides account authorization. For more information, see [Authorized third-party upload](reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#).
 
-## Reference {#section_nvr_ybb_5db .section}
+## Subsequent operations {#section_emr_xbb_5db .section}
 
--   API: [PutObject](../../../../reseller.en-US/API Reference/Object operations/PutObject.md#)
--   Console: [Upload objects](../../../../reseller.en-US/Console User Guide/Manage objects/Upload objects.md#)
-
-## Best practices {#section_fsv_zbb_5db .section}
-
--   [RAM and STS User Guide](../../../../reseller.en-US/Best Practices/Access control/Overview.md#)
--   [Web client direct data transfer and upload callback](../../../../reseller.en-US/Best Practices/Direct upload to OSS from Web/Overview of direct transfer on Web client.md#)
+-   After uploading objects to OSS, you can use [upload callback](reseller.en-US/Developer Guide/Upload files/Upload callback.md#) to submit a callback request to the specified application server and perform subsequent operations.
+-   After uploading images, you can use [Image Processing](../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#).
+-   After uploading audio or video objects, you can use [ApsaraVideo for Media Processing](reseller.en-US/Developer Guide/Cloud data processing.md#).
 

@@ -16,7 +16,7 @@ Before uploading objects to OSS, you must use the PutBucket API of OSS to create
 |[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Bucket.md#section_ond_15p_kfb)|
 |[Go SDK](../../../../reseller.en-US/SDK Reference/Go/Bucket.md#section_zgm_l1b_kfb)|
 |[C SDK](../../../../reseller.en-US/SDK Reference/C/Bucket.md#section_ogg_55x_kfb)|
-|[\[DO NOT TRANSLATE\] .NET SDK](../../../../dita-oss-bucket/SP_21/DNOSS11814329/EN-US_TP_22476.md#section_s5m_v12_lfb)|
+|[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Manage a bucket.md#section_s5m_v12_lfb)|
 |[Android SDK](../../../../reseller.en-US/SDK Reference/Android/Manage buckets.md#section_lwh_f2j_lfb)|
 |[iOS SDK](../../../../reseller.en-US/SDK Reference/iOS/Manage a bucket.md#section_lwh_f2j_lfb)|
 |[Node.js SDK](../../../../reseller.en-US/SDK Reference/Node. js/Manage a bucket.md#)|

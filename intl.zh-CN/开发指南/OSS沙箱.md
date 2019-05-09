@@ -16,7 +16,7 @@
     2.  根据业务情况，购买合适的[高防 IP](https://common-buy-intl.alibabacloud.com/?spm=a2c6e.8050873.0.0.FzcZOW&commodityCode=ddosDip_intl#/buy)。
     3.  将高防 IP 绑定到您已设置好的自定义域名上。
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/155624892534179_zh-CN.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/79825/155738500034179_zh-CN.png)
 
         -   防护网站：填写您绑定的 OSS 自定义域名。
         -   协议类型：按照您的实际访问方式选择。

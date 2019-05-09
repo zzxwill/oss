@@ -6,12 +6,12 @@ The following table describes the three types of ACLs for buckets.
 
 |ACL|Description|Access control|
 |:--|:----------|:-------------|
-|public-read-write|The public-read-write permission.|Anyone \(including anonymous users\) can perform read and write operations on the objects in the bucket.**Warning:** All users on the Internet can have access to the objects in the bucket and write data to the bucket. This may leak your bucket data and sharply increase your fees. If anyone maliciously writes illegal information, they may also infringe on your legitimate interests and rights. Therefore, we do recommend that you do not set your bucket ACL to public-read-write except for special needs.
+|public-read-write|The public-read-write permission.|Anyone \(including anonymous users\) can perform read and write operations on the objects in the bucket. **Warning:** All users on the Internet can have access to the objects in the bucket and write data to the bucket. This may leak your bucket data and sharply increase your fees. If anyone maliciously writes illegal information, they may also infringe on your legitimate interests and rights. Therefore, we do recommend that you do not set your bucket ACL to public-read-write except for special needs.
 
-|
-|public-read|The public-read permission.|Only the bucket owner can perform write operations on the objects in the bucket. Other users \(including anonymous users\) can perform only read operations on the objects in the bucket.**Warning:** All users on the Internet can have access to the objects in the bucket. This may leak your bucket data and sharply increase your fees. Therefore, we recommend that you set your bucket ACL to public-read with caution.
+ |
+|public-read|The public-read permission.|Only the bucket owner can perform write operations on the objects in the bucket. Other users \(including anonymous users\) can perform only read operations on the objects in the bucket. **Warning:** All users on the Internet can have access to the objects in the bucket. This may leak your bucket data and sharply increase your fees. Therefore, we recommend that you set your bucket ACL to public-read with caution.
 
-|
+ |
 |private|The private permission.|Only the bucket owner can perform read and write operations on the objects in the bucket. Other users have no access to the objects in the bucket.|
 
 ## Operating methods {#section_bdy_cv3_kgb .section}
@@ -26,7 +26,7 @@ The following table describes the three types of ACLs for buckets.
 |[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Bucket.md#section_ond_15p_kfb)|
 |[Go SDK](../../../../reseller.en-US/SDK Reference/Go/Bucket.md#)|
 |[C SDK](../../../../reseller.en-US/SDK Reference/C/Bucket.md#)|
-|[\[DO NOT TRANSLATE\] .NET SDK](../../../../dita-oss-bucket/SP_21/DNOSS11814329/EN-US_TP_22476.md#)|
+|[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Manage a bucket.md#)|
 |[Node.js SDK](../../../../reseller.en-US/SDK Reference/Node. js/Manage a bucket.md#ul_ict_gqk_lfb)|
 |[Ruby SDK](../../../../reseller.en-US/SDK Reference/Ruby/Manage buckets.md#ul_px3_pnn_lfb)|
 

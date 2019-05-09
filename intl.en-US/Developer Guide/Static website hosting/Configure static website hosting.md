@@ -1,52 +1,65 @@
 # Configure static website hosting {#concept_ynd_phc_5db .concept}
 
-In the [OSS console](https://oss.console.aliyun.com/), you can set up your buckets to work in static website hosting mode.
+You can use the PutBucketWebsite API of OSS to set your bucket to the static website hosting mode and access the static website from the bucket endpoint.
 
-If your selected bucket is located in Hangzhou, after the configuration takes effect, the endpoint of the static website is as follows:
+**Note:** For more information about the PutBucketWebsite API, see [PutBucketWebsite](../../../../reseller.en-US/API Reference/Bucket operations/PutBucketWebsite.md#).
+
+If your selected bucket is located in China \(Hangzhou\), after the configuration takes effect, the domain of the static website is as follows:
 
 ```
 http://<Bucket>.oss-cn-hangzhou.aliyuncs.com/
 ```
 
-**Note:** When you use an OSS endpoint in Mainland China regions or the Hongkong region to access a web file through the Internet , the Content-Disposition: 'attachment=filename;' is automatically added to the Response Header, and the web file is downloaded as an attachment. If you access OSS with a user domain, the Content-Disposition: 'attachment=filename;' will not be added to the Response Header. For more information about using the user domain to access OSS, see [Bind a custom domain name](intl.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
+**Note:** When you use the default endpoint to access a Webpage object in OSS in Mainland China or Hong Kong through the Internet, `Content-Disposition:'attachment=filename;'` is automatically added to the response header. That is, when you use a browser to access a Webpage object, the object is downloaded as an attachment. If you use a custom domain to access OSS, the information is not added to the response header. For more information about how to use a custom domain to access OSS, see [Bind a custom domain](reseller.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
 
-For users to manage static websites hosted on the OSS more easily, the OSS provides two functions:
+OSS provides the following features to help you manage static websites hosted in OSS more easily:
 
--   Index Document Support
+-   Index document support
 
-    The index document refers to the default index document \(such as index.html\) that is returned by the OSS when a user directly accesses the root domain name of the static website. If static website hosting mode is set for a bucket, you must specify the index document as an object in that bucket. This setting is required.
+    The index document is the default index page \(such as index.html\) that OSS returns when a user directly accesses the root domain of a static website. If you set a bucket to the static website hosting mode, you must specify the index document.
 
--   Error Document Support
+-   Error document support
 
-    The error document refers to the error page the OSS returns to a user if the HTTP 4XX error \(such as 404 "NOT FOUND"\) occurs when the user attempts to access the static website but fails. If static website hosting mode is set for a bucket, you must specify the error document as an object in that bucket. This setting is optional.
+    The error document is an error page that OSS returns if an HTTP 4XX error \(such as 404 NOT FOUND\) occurs when a user accesses a static website. By specifying the error document, you can provide your users with appropriate error messages.
 
 
-For example, if a user sets:
+For example, you set the index document to index.html, the error document to error.html, the bucket name to oss-sample, and the endpoint to oss-cn-hangzhou.aliyuncs.com.
 
--   The index document support as index.html
--   The error document support as error.html
--   The bucket as oss-sample
--   The endpoint as `oss-cn-hangzhou.aliyuncs.com`
+-   When a user accesses `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/` and `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/directory/`, the user actually accesses `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/index.html`.
 
-Then:
+-   If the object does not exist when a user accesses `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/object`, OSS returns `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/error.html`.
 
--   When a user accesses `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/` and `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/directory/`, it is the same as accessing `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/index.html`.
--   When a user accesses `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/object`, and the object does not exist, OSS returns `http://oss-sample.oss-cn-hangzhou.aliyuncs.com/error.html`.
+
+## Operating methods {#section_bdy_cv3_kgb .section}
+
+|Operating method|Description|
+|----------------|-----------|
+|[Console](../../../../reseller.en-US/Console User Guide/Manage buckets/Host a static website.md#)|Web application, which is intuitive and easy to use|
+|[Java SDK](../../../../reseller.en-US/SDK Reference/Java/Static website hosting.md#)|SDK demos in various languages|
+|[Python SDK](../../../../reseller.en-US/SDK Reference/Python/Static website hosting.md#)|
+|[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Static website hosting.md#)|
+|[Go SDK](../../../../reseller.en-US/SDK Reference/Go/Static website hosting.md#)|
+|[C SDK](../../../../reseller.en-US/SDK Reference/C/Static website hosting.md#)|
+|[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Static website hosting.md#)|
+|[Node.js SDK](../../../../reseller.en-US/SDK Reference/Node. js/Static website hosting.md#)|
+|[Ruby SDK](../../../../reseller.en-US/SDK Reference/Ruby/Static website hosting.md#)|
 
 ## Detail analysis {#section_ond_vhc_5db .section}
 
--   Static websites are websites with web pages composed of static content, including scripts such as JavaScript executed on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and ASP.NET content.
--   For access to a bucket-based static website through a user-defined domain name, see [Bind custom domain names](intl.en-US/Developer Guide/Access and control/Bind a custom domain name.md#).
--   When you set a bucket to static website hosting mode, you must specify an index page, the error page is optional.
--   When you set a bucket to static website hosting mode, the specified index page and error page must be an object in the bucket.
--   After a bucket is set to static website hosting mode, the OSS returns the index page for anonymous access to the root domain name of the static website, and returns Get Bucket results for signed access to the root domain name of the static website.
--   After a bucket is set to static website hosting mode, and the user accesses the root domain name of a static website or a nonexistent object, the OSS returns a specified object to the user and bills the return traffic and requests to the bucket owner.
+-   On a static website, all Webpages are composed of static content, including scripts such as JavaScript that are run on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and ASP.NET content.
+-   To access a bucket-based static website by using a custom domain, you can [bind a custom domain](reseller.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
+-   When you set a bucket to the static website hosting mode:
 
-## Reference {#section_ksm_xhc_5db .section}
+    -   The index document is required and the error document is optional.
+    -   The specified index document and error document must be objects in the bucket.
+    **Note:** If you use an Archive bucket, you must specify Standard objects or restored Archive objects as the index document and error document. Otherwise, the static website cannot be accessed.
 
--   API: [PutBucketWebsite](../../../../intl.en-US/API Reference/Bucket operations/PutBucketWebsite.md#)
+-   After you set a bucket to the static website hosting mode:
+    -   OSS returns the index document for anonymous access to the root domain of the static website, and returns the result of the GetBucket operation for authorized access to the root domain of the static website.
+    -   OSS returns a specified object to users who access the root domain of a static website or an object that does not exist in OSS. OSS also charges a fee for such requests and the generated traffic.
 
--   Console: [Static website hosting](../../../../intl.en-US/Console User Guide/Manage buckets/Host a static website.md#)
+## Reference {#section_z21_d2j_wgb .section}
 
--   Java SDK: [Static website hosting](https://www.alibabacloud.com/help/doc-detail/32020.htm)
+-   [Tutorial: Host a static website using a custom domain name](reseller.en-US/Developer Guide/Static website hosting/Tutorial: Host a static website using a custom domain name.md#)
+-   [Tutorial: Configure static website hosting](../../../../reseller.en-US/Best Practices/Bucket management/Static website hosting.md#)
 

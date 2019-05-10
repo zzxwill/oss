@@ -13,7 +13,7 @@ OSS alert rules are developed based on OSS metrics. Therefore, OSS alert rules a
 
 The CloudMonitor console provides an [Alarm Rules](https://cloudmonitor.console.aliyun.com/#/cloud/alarmrules/oss//-----all-----/) tab for OSS monitoring and alerting. On this tab, you can view, modify, enable, disable, and delete alert rules. You can also view the historical alert information of a specific alert rule.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574546581216_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548601216_en-US.png)
 
 -   Click **View** in the Actions column corresponding to an alert rule to view its content.
 -   Click **Modify** in the Actions column corresponding to an alert rule to modify it.
@@ -22,7 +22,7 @@ The CloudMonitor console provides an [Alarm Rules](https://cloudmonitor.console.
 -   If an alert rule is in the Disabled state, click **Enable** in the Actions column corresponding to the alert rule to enable it. The alert rule takes effect again to detect exceptions and send alert information. You can also select multiple alert rules and click **Enable** below the alert rule list to enable multiple alert rules at a time.
 -   Click **Alarm Logs** in the Actions column corresponding to an alert rule. You can view the information about historical alerts corresponding to this rule.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574546596384_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606384_en-US.png)
 
 
 Relevant concepts:
@@ -33,7 +33,7 @@ Relevant concepts:
 
 You can click **View** in the Notification Contact column corresponding to an alert rule to view the members of notification contacts \(in alert contact groups\) and the methods that they use to receive alert information \(such as SMS message, email, or TradeManager\), as shown in the following figure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574546596385_en-US.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606385_en-US.jpg)
 
 ## View alert rules {#section_h25_xrt_q2b .section}
 
@@ -43,11 +43,11 @@ You can click **View** in the Notification Contact column corresponding to an al
 
     -   Alert dimension drop-down list: You can select All or BucketLevel. If you select All, all user-level and bucket-level alert rules appear in the alert rule list.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574546596386_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606386_en-US.png)
 
     -   Bucket drop-down list: If you select BucketLevel from the alert dimension drop-down list, the bucket drop-down list displays all buckets of the current Alibaba Cloud account. You can select a bucket to view all alert rules for this bucket.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574546596387_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606387_en-US.png)
 
     -   Metrics drop-down list: It displays all OSS metrics, including user-level and bucket-level metrics. If you select All, user-level or bucket-level alert rules for all metrics appear in the alert rule list.
     -   Status drop-down list: You can select a status to view all alert rules in this state, such as OK, Alarm, Insufficient Data, Enable, or Disable. If you select All, alert rules in all statuses appear in the alert rule list.
@@ -93,7 +93,7 @@ You can click **View** in the Notification Contact column corresponding to an al
         -   Effective Period: Select the time the alert rule takes effect.
     -   **Notification Method** 
         -   **Notification Contact**: If you have set an alert contact group by following the procedure in [Manage alert contacts and alert contact groups](../../../../reseller.en-US/User Guide/Alarm service/Alarm contacts/Manage alarm contacts and alarm contact groups.md#), select the group. If you have not set any alert contact groups, click **Quickly create a contact group** to create a group by following the instructions.
-        -   Notification Methods: Select notification methods for the alert rule.****[https://common-buy.aliyun.com/?commodityCode=cms\_call\_num\#/buy](https://common-buy.aliyun.com/?commodityCode=cms_call_num#/buy)
+        -   Notification Methods: Select notification methods for the alert rule.
         -   Email Subject: Enter the subject of the notification email.
         -   Email Remark: optional. Enter the remarks of the email.
         -   HTTP CallBack: Enter a URL that can be accessed from the Internet. CloudMonitor sends a POST request to push the alert notification to this URL. Currently, only HTTP is supported.

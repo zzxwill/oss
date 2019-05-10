@@ -4,10 +4,10 @@ OSS 为权限控制提供访问控制列表（ACL）。ACL 是授予 Bucket 和 
 
 **说明：** 基于读写权限 ACL 的 OSS API 接口详细信息请参考：
 
--   设置 Bucket ACL：[PutBucketACL](../../../../../intl.zh-CN/API 参考/关于Bucket的操作/PutBucketACL.md#)
--   获取 Bucket ACL：[GetBucketACL](../../../../../intl.zh-CN/API 参考/关于Bucket的操作/GetBucketAcl.md#)
--   设置 Object ACL：[PutObjectACL](../../../../../intl.zh-CN/API 参考/关于Object操作/PutObjectACL.md#)
--   获取 Object ACL：[GetObjectACL](../../../../../intl.zh-CN/API 参考/关于Object操作/GetObjectACL.md#)
+-   设置 Bucket ACL：[PutBucketACL](../../../../intl.zh-CN/API 参考/关于Bucket的操作/PutBucketACL.md#)
+-   获取 Bucket ACL：[GetBucketACL](../../../../intl.zh-CN/API 参考/关于Bucket的操作/GetBucketAcl.md#)
+-   设置 Object ACL：[PutObjectACL](../../../../intl.zh-CN/API 参考/关于Object操作/PutObjectACL.md#)
+-   获取 Object ACL：[GetObjectACL](../../../../intl.zh-CN/API 参考/关于Object操作/GetObjectACL.md#)
 
 ## Bucket ACL {#section_dr5_nvm_2gb .section}
 
@@ -25,17 +25,17 @@ OSS 为权限控制提供访问控制列表（ACL）。ACL 是授予 Bucket 和 
 
     |操作方式|说明|
     |----|--|
-    |[控制台](../../../../../intl.zh-CN/控制台用户指南/管理存储空间/修改存储空间读写权限.md#)|Web应用程序，直观易用|
-    |[图形化工具ossbrowser](../../../../../intl.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化工具，易操作|
-    |[命令行工具ossutil](../../../../../intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#ul_imw_f5s_vdb)|命令行工具，性能好|
-    |[Java SDK](../../../../../intl.zh-CN/SDK 参考/Java/存储空间.md#table_grn_jjf_2gb)|丰富、完整的各类语言SDK demo|
-    |[Python SDK](../../../../../intl.zh-CN/SDK 参考/Python/存储空间.md#section_rvh_l1j_kfb)|
-    |[PHP SDK](../../../../../intl.zh-CN/SDK 参考/PHP/存储空间.md#section_ond_15p_kfb)|
-    |[Go SDK](../../../../../intl.zh-CN/SDK 参考/Go/存储空间.md#)|
-    |[C SDK](../../../../../intl.zh-CN/SDK 参考/C/存储空间.md#)|
-    |[.NET SDK](../../../../../intl.zh-CN/SDK 参考/.NET/存储空间.md#)|
-    |[Node.js SDK](../../../../../intl.zh-CN/SDK 参考/Node.js/存储空间.md#ul_ict_gqk_lfb)|
-    |[Ruby SDK](../../../../../intl.zh-CN/SDK 参考/Ruby/存储空间.md#ul_px3_pnn_lfb)|
+    |[控制台](../../../../intl.zh-CN/控制台用户指南/管理存储空间/修改存储空间读写权限.md#)|Web应用程序，直观易用|
+    |[图形化工具ossbrowser](../../../../intl.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化工具，易操作|
+    |[命令行工具ossutil](../../../../intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#ul_imw_f5s_vdb)|命令行工具，性能好|
+    |[Java SDK](../../../../intl.zh-CN/SDK 示例/Java/存储空间.md#table_grn_jjf_2gb)|丰富、完整的各类语言SDK demo|
+    |[Python SDK](../../../../intl.zh-CN/SDK 示例/Python/存储空间.md#section_rvh_l1j_kfb)|
+    |[PHP SDK](../../../../intl.zh-CN/SDK 示例/PHP/存储空间.md#section_ond_15p_kfb)|
+    |[Go SDK](../../../../intl.zh-CN/SDK 示例/Go/存储空间.md#)|
+    |[C SDK](../../../../intl.zh-CN/SDK 示例/C/存储空间.md#)|
+    |[.NET SDK](../../../../intl.zh-CN/SDK 示例/.NET/存储空间.md#)|
+    |[Node.js SDK](../../../../intl.zh-CN/SDK 示例/Node.js/存储空间.md#ul_ict_gqk_lfb)|
+    |[Ruby SDK](../../../../intl.zh-CN/SDK 示例/Ruby/存储空间.md#ul_px3_pnn_lfb)|
 
 
 ## Object ACL {#section_yft_rvm_2gb .section}
@@ -61,15 +61,15 @@ OSS 为权限控制提供访问控制列表（ACL）。ACL 是授予 Bucket 和 
 
     |操作方式|说明|
     |----|--|
-    |[控制台](../../../../../intl.zh-CN/控制台用户指南/管理文件/设置文件读写权限ACL.md#)|Web应用程序，直观易用|
-    |[图形化工具ossbrowser](../../../../../intl.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化工具，易操作|
-    |[命令行工具ossutil](../../../../../intl.zh-CN/常用工具/命令行工具ossutil/有关Object的命令.md#section_zbv_mfy_bgb)|命令行工具，性能好|
-    |[Java SDK](../../../../../intl.zh-CN/SDK 参考/Java/管理文件/管理文件访问权限.md#)|丰富、完整的各类语言SDK demo|
-    |[Python SDK](../../../../../intl.zh-CN/SDK 参考/Python/管理文件/管理文件访问权限.md#)|
-    |[PHP SDK](../../../../../intl.zh-CN/SDK 参考/PHP/管理文件/管理文件访问权限.md#)|
-    |[Go SDK](../../../../../intl.zh-CN/SDK 参考/Go/管理文件/管理文件访问权限.md#)|
-    |[C SDK](../../../../../intl.zh-CN/SDK 参考/C/管理文件/管理文件访问权限.md#)|
-    |[.NET SDK](../../../../../intl.zh-CN/SDK 参考/.NET/管理文件/管理文件访问权限.md#)|
+    |[控制台](../../../../intl.zh-CN/控制台用户指南/上传、下载和管理文件/设置文件读写权限ACL.md#)|Web应用程序，直观易用|
+    |[图形化工具ossbrowser](../../../../intl.zh-CN/常用工具/图形化管理工具ossbrowser/快速开始.md#)|图形化工具，易操作|
+    |[命令行工具ossutil](../../../../intl.zh-CN/常用工具/命令行工具ossutil/有关Object的命令.md#section_zbv_mfy_bgb)|命令行工具，性能好|
+    |[Java SDK](../../../../intl.zh-CN/SDK 示例/Java/管理文件/管理文件访问权限.md#)|丰富、完整的各类语言SDK demo|
+    |[Python SDK](../../../../intl.zh-CN/SDK 示例/Python/管理文件/管理文件访问权限.md#)|
+    |[PHP SDK](../../../../intl.zh-CN/SDK 示例/PHP/管理文件/管理文件访问权限.md#)|
+    |[Go SDK](../../../../intl.zh-CN/SDK 示例/Go/管理文件/管理文件访问权限.md#)|
+    |[C SDK](../../../../intl.zh-CN/SDK 示例/C/管理文件/管理文件访问权限.md#)|
+    |[.NET SDK](../../../../intl.zh-CN/SDK 示例/.NET/管理文件/管理文件访问权限.md#)|
 
 
 ## 更多参考 {#section_jj1_j33_wgb .section}

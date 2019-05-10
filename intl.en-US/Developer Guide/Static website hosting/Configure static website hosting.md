@@ -10,7 +10,7 @@ If your selected bucket is located in China \(Hangzhou\), after the configuratio
 http://<Bucket>.oss-cn-hangzhou.aliyuncs.com/
 ```
 
-**Note:** When you use the default endpoint to access a Webpage object in OSS in Mainland China or Hong Kong through the Internet, `Content-Disposition:'attachment=filename;'` is automatically added to the response header. That is, when you use a browser to access a Webpage object, the object is downloaded as an attachment. If you use a custom domain to access OSS, the information is not added to the response header. For more information about how to use a custom domain to access OSS, see [Bind a custom domain](reseller.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
+**Note:** When you use the default endpoint to access a Webpage object in OSS in Mainland China or Hong Kong through the Internet, `Content-Disposition:'attachment=filename;'` is automatically added to the response header. That is, when you use a browser to access a Webpage object, the object is downloaded as an attachment. If you use a custom domain to access OSS, the information is not added to the response header. For more information about how to use a custom domain to access OSS, see [Bind a custom domain](reseller.en-US/Developer Guide/Buckets/Bind a custom domain.md#).
 
 OSS provides the following features to help you manage static websites hosted in OSS more easily:
 
@@ -47,7 +47,7 @@ For example, you set the index document to index.html, the error document to err
 ## Detail analysis {#section_ond_vhc_5db .section}
 
 -   On a static website, all Webpages are composed of static content, including scripts such as JavaScript that are run on the client. OSS does not support content that needs to be processed by the server, such as PHP, JSP, and ASP.NET content.
--   To access a bucket-based static website by using a custom domain, you can [bind a custom domain](reseller.en-US/Developer Guide/Buckets/Attach a custom domain name.md#).
+-   To access a bucket-based static website by using a custom domain, you can [bind a custom domain](reseller.en-US/Developer Guide/Buckets/Bind a custom domain.md#).
 -   When you set a bucket to the static website hosting mode:
 
     -   The index document is required and the error document is optional.

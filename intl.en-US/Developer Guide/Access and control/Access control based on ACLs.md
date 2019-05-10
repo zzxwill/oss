@@ -4,10 +4,10 @@ OSS provides access control lists \(ACLs\) for you to control access permissions
 
 **Note:** For more information about ACL-based OSS APIs, see the following topics:
 
--   Set the ACL for a bucket: [PutBucketACL](../../../../reseller.en-US/API Reference/Bucket operations/PutBucketACL.md#)
--   Obtain the ACL of a bucket: [GetBucketACL](../../../../reseller.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
--   Set the ACL for an object: [PutObjectACL](../../../../reseller.en-US/API Reference/Object operations/PutObjectACL.md#)
--   Obtain the ACL of an object: [GetObjectACL](../../../../reseller.en-US/API Reference/Object operations/GetObjectACL.md#)
+-   Set the ACL for a bucket: [PutBucketACL](../../../../intl.en-US/API Reference/Bucket operations/PutBucketACL.md#)
+-   Obtain the ACL of a bucket: [GetBucketACL](../../../../intl.en-US/API Reference/Bucket operations/GetBucketAcl.md#)
+-   Set the ACL for an object: [PutObjectACL](../../../../intl.en-US/API Reference/Object operations/PutObjectACL.md#)
+-   Obtain the ACL of an object: [GetObjectACL](../../../../intl.en-US/API Reference/Object operations/GetObjectACL.md#)
 
 ## Bucket ACL {#section_dr5_nvm_2gb .section}
 
@@ -25,17 +25,17 @@ OSS provides access control lists \(ACLs\) for you to control access permissions
 
     |Operating method|Description|
     |----------------|-----------|
-    |[Console](../../../../reseller.en-US/Console User Guide/Manage buckets/Change bucket ACL.md#)|Web application, which is intuitive and easy to use|
-    |[ossbrowser](../../../../reseller.en-US/Tools/ossbrowser/Quick start.md#)|Graphical tool, which is easy to operate|
-    |[ossutil](../../../../reseller.en-US/Tools/ossutil/Bucket-related commands.md#ul_imw_f5s_vdb)|Command-line tool, which delivers good performance|
-    |[Java SDK](../../../../reseller.en-US/SDK Reference/Java/Manage a bucket.md#table_grn_jjf_2gb)|SDK demos in various languages|
-    |[Python SDK](../../../../reseller.en-US/SDK Reference/Python/Bucket.md#section_rvh_l1j_kfb)|
-    |[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Bucket.md#section_ond_15p_kfb)|
-    |[Go SDK](../../../../reseller.en-US/SDK Reference/Go/Bucket.md#)|
-    |[C SDK](../../../../reseller.en-US/SDK Reference/C/Bucket.md#)|
-    |[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Manage a bucket.md#)|
-    |[Node.js SDK](../../../../reseller.en-US/SDK Reference/Node. js/Manage a bucket.md#ul_ict_gqk_lfb)|
-    |[Ruby SDK](../../../../reseller.en-US/SDK Reference/Ruby/Manage buckets.md#ul_px3_pnn_lfb)|
+    |[Console](../../../../intl.en-US/Console User Guide/Manage buckets/Change bucket ACL.md#)|Web application, which is intuitive and easy to use|
+    |[ossbrowser](../../../../intl.en-US/Tools/ossbrowser/Quick start.md#)|Graphical tool, which is easy to operate|
+    |[ossutil](../../../../intl.en-US/Tools/ossutil/Bucket-related commands.md#ul_imw_f5s_vdb)|Command-line tool, which delivers good performance|
+    |[Java SDK](../../../../intl.en-US/SDK Reference/Java/Manage a bucket.md#table_grn_jjf_2gb)|SDK demos in various languages|
+    |[Python SDK](../../../../intl.en-US/SDK Reference/Python/Bucket.md#section_rvh_l1j_kfb)|
+    |[PHP SDK](../../../../intl.en-US/SDK Reference/PHP/Bucket.md#section_ond_15p_kfb)|
+    |[Go SDK](../../../../intl.en-US/SDK Reference/Go/Bucket.md#)|
+    |[C SDK](../../../../intl.en-US/SDK Reference/C/Bucket.md#)|
+    |[.NET SDK](../../../../intl.en-US/SDK Reference/. NET/Manage a bucket.md#)|
+    |[Node.js SDK](../../../../intl.en-US/SDK Reference/Node. js/Manage a bucket.md#ul_ict_gqk_lfb)|
+    |[Ruby SDK](../../../../intl.en-US/SDK Reference/Ruby/Manage buckets.md#ul_px3_pnn_lfb)|
 
 
 ## Object ACL {#section_yft_rvm_2gb .section}
@@ -61,20 +61,21 @@ OSS provides access control lists \(ACLs\) for you to control access permissions
 
     |Operating method|Description|
     |----------------|-----------|
-    |[Console](../../../../reseller.en-US/Console User Guide/Upload、download and manage objects/Change object ACL.md#)|Web application, which is intuitive and easy to use|
-    |[ossbrowser](../../../../reseller.en-US/Tools/ossbrowser/Quick start.md#)|Graphical tool, which is easy to operate|
-    |[ossutil](../../../../reseller.en-US/Tools/ossutil/Object-related commands.md#section_zbv_mfy_bgb)|Command-line tool, which delivers good performance|
-    |[Java SDK](../../../../reseller.en-US/SDK Reference/Java/Manage objects/Manage ACL for an object.md#)|SDK demos in various languages|
-    |[Python SDK](../../../../reseller.en-US/SDK Reference/Python/Manage objects/Manage ACL for an object.md#)|
-    |[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Manage objects/Manage ACL for an object.md#)|
-    |[Go SDK](../../../../reseller.en-US/SDK Reference/Go/Manage objects/Manage ACL for an object.md#)|
-    |[C SDK](../../../../reseller.en-US/SDK Reference/C/Manage objects/Manage ACL for an object.md#)|
-    |[.NET SDK](../../../../reseller.en-US/SDK Reference/. NET/Manage objects/Manage ACL for an object.md#)|
+    |[Console](../../../../intl.en-US/Console User Guide/Upload、download and manage objects/Change object ACL.md#)|Web application, which is intuitive and easy to use|
+    |[ossbrowser](../../../../intl.en-US/Tools/ossbrowser/Quick start.md#)|Graphical tool, which is easy to operate|
+    |[ossutil](../../../../intl.en-US/Tools/ossutil/Object-related commands.md#section_zbv_mfy_bgb)|Command-line tool, which delivers good performance|
+    |[Java SDK](../../../../intl.en-US/SDK Reference/Java/Manage objects/Manage ACL for an object.md#)|SDK demos in various languages|
+    |[Python SDK](../../../../intl.en-US/SDK Reference/Python/Manage objects/Manage ACL for an object.md#)|
+    |[PHP SDK](../../../../intl.en-US/SDK Reference/PHP/Manage objects/Manage ACL for an object.md#)|
+    |[Go SDK](../../../../intl.en-US/SDK Reference/Go/Manage objects/Manage ACL for an object.md#)|
+    |[C SDK](../../../../intl.en-US/SDK Reference/C/Manage objects/Manage ACL for an object.md#)|
+    |[.NET SDK](../../../../intl.en-US/SDK Reference/. NET/Manage objects/Manage ACL for an object.md#)|
 
 
 ## Reference {#section_jj1_j33_wgb .section}
 
 For more information about how to allow only specified users to access your objects, see the following topics:
 
--   -   [Tutorial:Authorize a RAM user under another Alibaba Cloud account by adding a bucket policy](reseller.en-US/Developer Guide/Access and control/Cross-account authorization/Tutorial:Authorize a RAM user under another Alibaba Cloud account by adding a bucket policy.md#)
--   -   
+-   [Tutorial:Authorize a RAM user under another Alibaba Cloud account by adding a bucket policy](intl.en-US/Developer Guide/Access and control/Cross-account authorization/Tutorial:Authorize a RAM user under another Alibaba Cloud account by adding a bucket policy.md#)
+-   [Authorize another Alibaba Cloud account to access OSS resources](https://www.alibabacloud.com/help/doc-detail/69011.htm)
+

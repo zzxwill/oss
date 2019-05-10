@@ -13,7 +13,7 @@ OSS alert rules are developed based on OSS metrics. Therefore, OSS alert rules a
 
 The CloudMonitor console provides an [Alarm Rules](https://cloudmonitor.console.aliyun.com/#/cloud/alarmrules/oss//-----all-----/) tab for OSS monitoring and alerting. On this tab, you can view, modify, enable, disable, and delete alert rules. You can also view the historical alert information of a specific alert rule.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548601216_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574550611216_en-US.png)
 
 -   Click **View** in the Actions column corresponding to an alert rule to view its content.
 -   Click **Modify** in the Actions column corresponding to an alert rule to modify it.
@@ -22,7 +22,7 @@ The CloudMonitor console provides an [Alarm Rules](https://cloudmonitor.console.
 -   If an alert rule is in the Disabled state, click **Enable** in the Actions column corresponding to the alert rule to enable it. The alert rule takes effect again to detect exceptions and send alert information. You can also select multiple alert rules and click **Enable** below the alert rule list to enable multiple alert rules at a time.
 -   Click **Alarm Logs** in the Actions column corresponding to an alert rule. You can view the information about historical alerts corresponding to this rule.
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606384_en-US.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574550616384_en-US.png)
 
 
 Relevant concepts:
@@ -33,7 +33,7 @@ Relevant concepts:
 
 You can click **View** in the Notification Contact column corresponding to an alert rule to view the members of notification contacts \(in alert contact groups\) and the methods that they use to receive alert information \(such as SMS message, email, or TradeManager\), as shown in the following figure.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606385_en-US.jpg)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574550616385_en-US.jpg)
 
 ## View alert rules {#section_h25_xrt_q2b .section}
 
@@ -43,15 +43,14 @@ You can click **View** in the Notification Contact column corresponding to an al
 
     -   Alert dimension drop-down list: You can select All or BucketLevel. If you select All, all user-level and bucket-level alert rules appear in the alert rule list.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606386_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574550616386_en-US.png)
 
     -   Bucket drop-down list: If you select BucketLevel from the alert dimension drop-down list, the bucket drop-down list displays all buckets of the current Alibaba Cloud account. You can select a bucket to view all alert rules for this bucket.
 
-        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574548606387_en-US.png)
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4393/15574550616387_en-US.png)
 
     -   Metrics drop-down list: It displays all OSS metrics, including user-level and bucket-level metrics. If you select All, user-level or bucket-level alert rules for all metrics appear in the alert rule list.
     -   Status drop-down list: You can select a status to view all alert rules in this state, such as OK, Alarm, Insufficient Data, Enable, or Disable. If you select All, alert rules in all statuses appear in the alert rule list.
-    -   \[DO NOT TRANSLATE\] \[DO NOT TRANSLATE\]
 -   View all alert rules
 
     If you click the **Alarm Rules** tab, all alert rules automatically appear in the alert rule list. You can also select All from the alert dimension drop-down list to view all alert rules. Then, you can use the Metrics and Status drop-down lists to set filtering conditions and accurately locate alert rules in this alert dimension.
@@ -67,10 +66,6 @@ You can click **View** in the Notification Contact column corresponding to an al
 -   View alert rules in a certain alert state
 
     You can select an alert status from the Status drop-down list, such as Alarm, to view all alert rules that are in this status.
-
--   \[DO NOT TRANSLATE\]
-
-    \[DO NOT TRANSLATE\]
 
 
 ## Add an alert rule {#section_os1_yrt_q2b .section}

@@ -14,7 +14,6 @@ This topic records the released functions of OSS and lists the documentation rel
 
  |
 |Bucket policy|Bucket policies are used for resource-based authorization and can be directly configured by the bucket owner on the graphical console for access authorization.|2019-01-21|All regions|[Use bucket policies to authorize other users to access OSS resources](../../../../reseller.en-US/Console User Guide/Upload、download and manage objects/Use bucket policies to authorize other users to access OSS resources.md#)|
-|Real-time log query|By integrating OSS and Log Service \(SLS\), the real-time log query function allows you to query OSS access logs in the OSS console so that you can monitor OSS operations, measure OSS access statistics, trace exceptions, and locate problems with ease.|2018-12-26|Regions in Mainland China|[Real-time log query](../../../../reseller.en-US/Developer Guide/Manage logs/Real-time log query.md#)|
 |Set or modify the storage class of an object|When uploading an object, you can set the storage class of the object to Standard, IA, or Archive. The setting takes effect immediately after the object is uploaded. You can convert the storage class of an object among Standard, IA, and Archive by performing a CopyObject operation. The time period that is required for the conversion to take effect reduces from days to seconds.
 
  |2018-11-10|All regions| -   [Overview](../../../../reseller.en-US/Developer Guide/Storage classes/Overview.md#)
@@ -27,7 +26,7 @@ This topic records the released functions of OSS and lists the documentation rel
 
  |
 |Server-side encryption based on CMKs|You can encrypt objects at the server side by using KMS.|2018-10-20|All regions|[Protect data by performing server-side encryption](../../../../reseller.en-US/Best Practices/Data security/Protect data by performing server-side encryption.md#)|
-|OSS Select|The OSS Select function allows you to use SQL statements to select required data from an object, reducing the data that needs to be transferred and improving the efficiency that you obtains data from OSS.|2018-09-28|All regions| -   [SelectObject](../../../../reseller.en-US/API Reference/Object operations/SelectObject.md#)
+|OSS Select|The OSS Select function allows you to use SQL statements to select required data from an object, reducing the data that needs to be transferred and improving the efficiency that you obtains data from OSS.|2018-09-28|All regions| [SelectObject](../../../../reseller.en-US/API Reference/Object operations/SelectObject.md#)
 
  |
 |Compliant retention strategy|OSS supports compliant retention strategies for buckets, which protect yoor data from being deleted or modified.|2018-09-28|China South 1 \(Shenzhen\)| -   [Set a retention policy](../../../../reseller.en-US/Developer Guide/Compliant retention strategy/Introduction.md#)
@@ -37,16 +36,16 @@ This topic records the released functions of OSS and lists the documentation rel
 |Redundant storage across zones|Data in OSS is separately stored in three zones within the same region. Users can access the data even if one of the three zones is unavailable.|2018-09-28|China South 1 \(Shenzhen\) and China North 2 \(Beijing\)|[Redundant storage across zones](../../../../reseller.en-US/Developer Guide/Disaster recovery/Redundant storage across zones.md#)|
 |Pay-by-requester mode|After the pay-by-requester mode is enabled for a bucket in OSS, the requester instead of the bucket owner pays the cost of the request and traffic. The bucket owner always pays the cost of storing data.|2018-09-27|China South 1 \(Shenzhen\)|[Enable the pay-by-requester mode](../../../../reseller.en-US/Developer Guide/Buckets/Enable the pay-by-requester mode.md#)|
 |Use CMKs managed by KMS to decrypt data \(SSE-KMS\)|You can encrypt OSS data on the server side by using CMKs managed by KMS. You can specify the key for one CMK ID to achieve the BYOK function.|2018-08-14|All regions|[Server-side encryption](../../../../reseller.en-US/Developer Guide/Data encryption/Server-side encryption.md#)|
-|OSS Python SDK supports client-side encryption|You can use the client-side encryption SDK to encrypt local data and upload the data to OSS. To use this function, you must manage the encryption process and the encryption key.|2018-06-05|All regions| -   [Client-side encryption](../../../../reseller.en-US/SDK Reference/Python/Client-side encryption.md#)
+|OSS Python SDK supports client-side encryption|You can use the client-side encryption SDK to encrypt local data and upload the data to OSS. To use this function, you must manage the encryption process and the encryption key.|2018-06-05|All regions| [Client-side encryption](../../../../reseller.en-US//Client-side encryption.md#)
 
  |
-|The unit price for the Standard storage class is reduced|The unit price for the Standard storage class in Mainland China reduces to US$0.0173/GB/Month, which is a 18.9% drop.|2018-06-02|Regions in Mainland China| -   [OSS pricing page](https://www.alibabacloud.com/product/oss/pricing?spm=a2c63.p38356.879954.7.3e2e3a54CJZuMt)
+|The unit price for the Standard storage class is reduced|The unit price for the Standard storage class in Mainland China reduces to US$0.0173/GB/Month, which is a 18.9% drop.|2018-06-02|Regions in Mainland China| [OSS pricing page](https://www.alibabacloud.com/product/oss/pricing?spm=a2c63.p38356.879954.7.3e2e3a54CJZuMt)
 
  |
-|Combination of OSS and DataLakeAnalytics|You can query and analyze OSS data in the DataLakeAnalytics console in a serverless and interactive method.|2018-05-31|All regions| -   [Quickly analyze data in OSS](https://partners-intl.aliyun.com/help/doc-detail/70387.htm)
+|Combination of OSS and DataLakeAnalytics|You can query and analyze OSS data in the DataLakeAnalytics console in a serverless and interactive method.|2018-05-31|All regions| [Quickly analyze data in OSS](https://partners-intl.aliyun.com/help/doc-detail/70387.htm)
 
  |
-|OSS Browser.js and Node.js SDKs support resumable upload|In resumable uploads, objects to be uploaded are divided into parts. All parts are combined into the complete object after they are uploaded.|2018-03-07|All regions| -   Node.js SDK: [Resumable upload](../../../../reseller.en-US/.md#)
+|OSS Browser.js and Node.js SDKs support resumable upload|In resumable uploads, objects to be uploaded are divided into parts. All parts are combined into the complete object after they are uploaded.|2018-03-07|All regions| -   Node.js SDK: [Resumable upload](../../../../reseller.en-US/SDK Reference/Node. js/Upload objects/Resumable upload.md#)
 -   Browser.js SDK: [Resumable upload](../../../../reseller.en-US/SDK Reference/Browser.js/Upload objects.md#section_snl_fxt_4fb)
 
  |
@@ -55,7 +54,7 @@ This topic records the released functions of OSS and lists the documentation rel
 
  |
 |OSS iOS SDK can be called by SWIFT|Mobile application developers using SWIFT can call OSS iOS SDK.|2018-01-18|All regions|[OSSSwiftDemo](https://github.com/aliyun/aliyun-oss-ios-sdk/tree/master/OSSSwiftDemo)|
-|OSS iOS SDK 2.8 and Android SDK 2.5 support CRC64 data verification|After the CRC64 verification is enabled, the CRC64 value of the uploaded or downloaded data is compared with the CRC64 value of the original data to ensure the data integrity.|2017-12-21|All regions| -   iOS SDK: [Data security](../../../../reseller.en-US/SDK Reference/iOS/Data security.md#)
+|OSS iOS SDK 2.8 and Android SDK 2.5 support CRC64 data verification|After the CRC64 verification is enabled, the CRC64 value of the uploaded or downloaded data is compared with the CRC64 value of the original data to ensure the data integrity.|2017-12-21|All regions| iOS SDK: [Data security](../../../../reseller.en-US/SDK Reference/iOS/Data security.md#)
 
  |
 |Data migration tool ossimport|Ossimport is a tool used to migrate data from other cloud storage to OSS buckets.|2017-10-23|All regions| -   [Standalone deployment](../../../../reseller.en-US/Tools/ossimport/Standalone deployment.md#)
@@ -89,12 +88,12 @@ This topic records the released functions of OSS and lists the documentation rel
 |Cross-Origin Resource Sharing \(CORS\)|CORS is a standard cross-origin solution provided by HTML5. OSS supports CORS for cross-region access.|2014-03-15|All regions|[Cross-origin resource sharing \(CORS\)](../../../../reseller.en-US/Best Practices/Bucket management/Cross-origin resource sharing (CORS).md#)|
 |Form upload|By using form upload, you can use the PostObject API of OSS to upload objects with a maximum size of 5 GB.|2014-02-12|All regions|[Form upload](../../../../reseller.en-US/Developer Guide/Upload files/Form upload.md#)|
 |Server-side encryption|OSS supports server-side encryption for uploaded data. This means that when user data is uploaded, OSS encrypts the data and permanently stores the data. Then, when the data is downloaded by a user, OSS automatically decrypts the data, returns the original data to the user, and declares in the header of the returned HTTP request that the data has been encrypted on the server.|2012-11-4|All regions|[Server-side encryption](../../../../reseller.en-US/Developer Guide/Data encryption/Server-side encryption.md#)|
-|CNAME|To access an uploaded object by using a custom domain name, you must attach the custom domain name to the bucket where the object is stored and add a CNAME record that directs to the Internet domain name of the bucket.|2012-09-04|All regions|[Bind a custom domain](../../../../reseller.en-US/Developer Guide/Buckets/Bind a custom domain.md#)|
+|CNAME|To access an uploaded object by using a custom domain name, you must attach the custom domain name to the bucket where the object is stored and add a CNAME record that directs to the Internet domain name of the bucket.|2012-09-04|All regions|[Attach a custom domain name](../../../../reseller.en-US/Developer Guide/Buckets/Bind a custom domain.md#)|
 |Access logging|A large number of access logs are generated when an object is accessed. After the access logging function is enabled for a bucket, OSS automatically generates an object in the specified bucket \(target bucket\) to store the access logs on an hourly basis.|2012-08-09|All regions|[Access logging](../../../../reseller.en-US/Developer Guide/Manage logs/访问日志存储.md#)|
 |Static website hosting|You can call the PutBucketWebsite API to set your bucket to the static website hosting mode and access the static website through the URL of the bucket.|2012-06-20|All regions|[Configure static website hosting](../../../../reseller.en-US/Developer Guide/Static website hosting/Configure static website hosting.md#)|
 |Multipart upload|By using multipart upload and resumable upload provided by Alibaba Cloud OSS, you can split an object into multiple data blocks \(parts\) and upload them separately. After uploading all the object parts, you can call an API to combine them into an object.|2012-03-29|All regions|[Multipart upload and resumable upload](../../../../reseller.en-US/Developer Guide/Upload files/Multipart upload and resumable upload.md#)|
 |Copy objects|You can copy objects from a bucket to another bucket without modifying the object content.|2011-12-16|All regions|[Copy objects](../../../../reseller.en-US/Developer Guide/Manage files/Copy objects.md#)|
-|Anti-leech|By using the anti-leech function, you can set referers by calling the PutBucketReferer API to prevent your OSS data from being used by unauthorized users.|2011-12-16|All regions|[Configure hotlinking protection](../../../../reseller.en-US/Developer Guide/Buckets/Configure hotlinking protection.md#)|
+|Anti-leech|By using the anti-leech function, you can set referers by calling the PutBucketReferer API to prevent your OSS data from being used by unauthorized users.|2011-12-16|All regions|[Anti-leech settings](../../../../reseller.en-US/Developer Guide/Buckets/Configure hotlinking protection.md#)|
 |HTTP header|HTTP header is used to define the policy of HTTP requests, such as cache policy or download policy.|2011-12-16|All regions|[Set an HTTP header](../../../../reseller.en-US/Console User Guide/Upload、download and manage objects/Set an HTTP header.md#)|
 |OSS is released|Alibaba Cloud OSS is released for commercial use.|2011-10-22|All regions|[What is OSS?](../../../../reseller.en-US/Product Introduction/What is OSS?.md#)|
 

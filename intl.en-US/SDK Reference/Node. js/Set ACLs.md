@@ -77,5 +77,5 @@ async function bucketACL () {
     ```
 
 
-For more information about ACL, see [Access Control](../../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
+For more information about ACL, see [Access Control](../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
 

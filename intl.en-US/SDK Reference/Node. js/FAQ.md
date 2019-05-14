@@ -8,7 +8,7 @@ To enable HTTPS access, specify the value of the secure parameter to true when i
 
 ## How to obtain the upload progress { .section}
 
-You can specify the progress parameter to obtain the upload progress when performing [multipart upload](reseller.en-US//Upload objects.md#) operations.
+You can specify the progress parameter to obtain the upload progress when performing [multipart upload](reseller.en-US/SDK Reference/Node. js/Upload objects/Overview.md#) operations.
 
 ## How to obtain the download progress { .section}
 
@@ -40,7 +40,7 @@ Convert the images to File objects and upload them to the OSS server by calling 
 
 ## How to upload a file to a specified directory { .section}
 
-You only need to add the prefix of the directory to the name of the object that you want to upload. For more information, see: [Comparison of OSS and file system](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
+You only need to add the prefix of the directory to the name of the object that you want to upload. For more information, see: [Comparison of OSS and file system](../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
 
 ```
 let OSS = require('ali-oss')
@@ -73,5 +73,5 @@ You can call the `signatureUrl` method to obtain the signed URL used to download
 ## Common errors { .section}
 
 -    [Exception handling](reseller.en-US/SDK Reference/Node. js/Exception handling.md#) 
--    [OSS error response](../../../../../reseller.en-US/Errors and Troubleshooting/OSS error response.md#) 
+-    [OSS error response](../../../../reseller.en-US/Errors and Troubleshooting/OSS error response.md#) 
 

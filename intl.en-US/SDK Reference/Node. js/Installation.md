@@ -10,7 +10,7 @@ This topic describes how to install Node.js. Demos in the official documents are
 
 -   Prerequisites
     -   Activate OSS service. If you haven’t activated or do not know about Alibaba Cloud OSS, log on to the OSS product page for more information.
-    -   The Alibaba Cloud account AccessKey gives you permission to access all APIs, thus, we recommend that you follow Alibaba Cloud Best Practices for creating an AccessKeyId and an AccessKeySecret. If you deploy the service on the server, you can use an RAM sub-account or STS for API access or daily O&M management and control. If you deploy the service on the client, we recommend that you use STS for API access. For more information, see [Access control](../../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
+    -   The Alibaba Cloud account AccessKey gives you permission to access all APIs, thus, we recommend that you follow Alibaba Cloud Best Practices for creating an AccessKeyId and an AccessKeySecret. If you deploy the service on the server, you can use an RAM sub-account or STS for API access or daily O&M management and control. If you deploy the service on the client, we recommend that you use STS for API access. For more information, see [Access control](../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
 -   Environment requirements
 
     The OSS JavaScript SDK is built on the [Node.js](https://nodejs.org/) environment.

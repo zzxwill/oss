@@ -9,7 +9,7 @@ containing the following information:
 -   message: OSS error message
 -   requestId: the UUID that uniquely identifies the request. Seek help from OSS development engineers by providing this RequestId if necessary.
 
-For more information about common error messages in OSS, see [OSS Error Response](../../../../../reseller.en-US/Errors and Troubleshooting/OSS error response.md#).
+For more information about common error messages in OSS, see [OSS Error Response](../../../../reseller.en-US/Errors and Troubleshooting/OSS error response.md#).
 
 ## Debugging {#section_bhh_3yk_lfb .section}
 

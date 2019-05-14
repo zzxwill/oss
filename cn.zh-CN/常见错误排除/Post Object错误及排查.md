@@ -2,7 +2,7 @@
 
 ## Post Object简介 {#section_mcj_kfj_wdb .section}
 
-Post Object使用表单上传文件到OSS。Post Object的消息实体通过 多重表单格式multipart/form-data 编码，详细说明请参看[RFC 2388](https://tools.ietf.org/html/rfc2388)。PutObject中参数通过HTTP请求头传递，Post Object参数则作为消息体的表单域传递。
+Post Object使用表单上传文件到OSS。Post Object的消息实体通过多重表单格式multipart/form-data编码，详细说明请参看[RFC 2388](https://tools.ietf.org/html/rfc2388)。PutObject中参数通过HTTP请求头传递，Post Object参数则作为消息体的表单域传递。
 
 Post Object消息包括消息头（Header）和消息体（Body）。Header和Body之间，由`\r\n--{boundary}`分割。Body由一系列的表单域构成，表单域格式如下：
 
@@ -49,7 +49,7 @@ Post Object常见错误见下表：
 
         **说明：** 表单域`file`必须为最后一个表单域。
 
-    -   Bucket为`public-read-write`时，可以不指定表单域OSSAccessKeyId、policy、Signature；一旦指定OSSAccessKeyId、policy、 Signature中的任意一个，无论bucket是否为public-read-write，则另两个必须指定。
+    -   Bucket为`public-read-write`时，可以不指定表单域OSSAccessKeyId、policy、Signature，一旦指定OSSAccessKeyId、policy、 Signature中的任意一个，无论bucket是否为public-read-write，则另两个必须指定。
     下面是Post Object请求的示例：
 
     ```
@@ -75,11 +75,11 @@ Post Object常见错误见下表：
 
     -   上面示例请求中`\r\n`显示为新行，即换行，后面的示例请求类似。
     -   上面的示例为请求的部分内容，完整的请求请参看[Post Object](../../../../intl.zh-CN/API 参考/关于Object操作/PostObject.md#)。
-    如果您还有疑问，请参考示例代码： 
+    如果您还有疑问，请参考示例代码：
 
-    -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)  
-    -   [Java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)  
-    -   [JS](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#) 
+    -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)
+    -   [Java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)
+    -   [JS](../../../../intl.zh-CN/最佳实践/Web端上传数据至OSS/Web端PostObject直传实践/JavaScript客户端签名直传.md#)
 -   Post Object的Policy格式
 
     Post Object请求的`policy`表单域用于验证请求的合法性，声明了Post Object请求必须满足的条件。限定条件为：
@@ -104,10 +104,10 @@ Post Object常见错误见下表：
     |名称|描述|示例|
     |:-|:-|:-|
     |bucket|上传文件的Bucket名称。支持精确匹配方式。|\{“bucket”: “johnsmith” \} 或 \[“eq”, “$bucket”, “johnsmith”\]|
-    |key|上传文件的名称。支持精确匹配和前缀匹配方式。|\[“starts-with”, “$key”, “user/etc/“\]|
+    |key|上传文件的名称。支持精确匹配和前缀匹配方式。|\[“starts-with”, “$key”, “user/etc/\]”|
     |content-length-range|上传文件允许的最小、最大长度。|\[“content-length-range”, 0, 104857600\]|
     |x-oss-meta-\*|指定的object meta。支持精确匹配和前缀匹配方式。|\[“starts-with”, “$x-oss-meta-prop”, “prop-“\]|
-    |success\_action\_redirect|上传成功后的跳转URL地址。支持精确匹配和前缀匹配方式。|\[“starts-with”, “$success\_action\_redirect”, “[http://www.aliyun.com](http://www.aliyun.com/)“\]|
+    |success\_action\_redirect|上传成功后的跳转URL地址。支持精确匹配和前缀匹配方式。|\[“starts-with”, “$success\_action\_redirect”, “[http://www.aliyun.com](http://www.aliyun.com/)”\]|
     |success\_action\_status|未指定success\_action\_redirect时，上传成功后的返回状态码。支持精确匹配和前缀匹配方式。|\[“eq”, “$success\_action\_status”, “204”\]|
     |Cache-Control, Content-Type, Content-Disposition, Content-Encoding, Expires等|HTTP请求头，作为表单域传递。支持精确匹配和前缀匹配方式。|\[“eq”, “$Content-Encoding”, “ZLIB”\]|
 
@@ -133,7 +133,7 @@ Post Object常见错误见下表：
     对于验证的Post请求，请求中必须包含AccessKeyID、policy、Signature表单域。计算签名的流程如下：
 
     1.  创建一个`UTF-8`编码的policy。
-    2.  将policy进行`base64`编码，其值即为policy表单域该填入的值，将该值作为将要签名的字符串。
+    2.  将policy进行`base64`编码，其值即为policy表单域该填入的值，并将该值作为将要签名的字符串。
     3.  使用`AccessKeySecret`对要签名的字符串进行签名，先用hmac-sha1哈希，再base64编码；签名方法与[Header签名](../../../../intl.zh-CN/API 参考/访问控制/在Header中包含签名.md#)的方法相同。
     即：
 
@@ -149,11 +149,11 @@ Post Object常见错误见下表：
     --9431149156168
     ```
 
-    如果您还有疑问，请参考示例代码： 
+    如果您还有疑问，请参考示例代码：
 
-    -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)  
-    -   [Java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)  
-    -   [JS](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#) 
+    -   [C\#](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs)
+    -   [Java](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java)
+    -   [JS](../../../../intl.zh-CN/最佳实践/Web端上传数据至OSS/Web端PostObject直传实践/JavaScript客户端签名直传.md#)
 
 ## 常见问题 {#section_w3h_jgj_wdb .section}
 
@@ -213,7 +213,7 @@ Post Object常见错误见下表：
 
     签名的计算方法请参看`PostObject中的签名` ， 签名通过表单域`Signature`携带。
 
--   怎么使用临时用户STS Token执行Post Oject？
+-   怎么使用临时用户STS Token执行Post Object？
 
     临时用户密钥的AccessKeyID、AccessKeySecret用法跟主用户、子用户相同，Token放在表单域`x-oss-security-token`中携带。示例如下：
 
@@ -226,7 +226,7 @@ Post Object常见错误见下表：
     --9431149156168
     ```
 
-    **说明：** 如果您想更多了解更多访问控制的信息，请参看[阿里云访问控制](https://yq.aliyun.com/articles/58413?spm=a2c4g.11186623.2.17.ogoRhr)。
+    **说明：** 如果您想了解更多访问控制的信息，请参看[阿里云访问控制](https://yq.aliyun.com/articles/58413?spm=a2c4g.11186623.2.17.ogoRhr)。
 
 -   怎么指定上传回调（callback）？
 
@@ -262,7 +262,7 @@ Post Object常见错误见下表：
 
 -   怎么指定用户自定义元信息Object User Meta？
 
-    用户自定义元信息，可以表单域指定，示例如下：
+    用户自定义元信息，可以通过表单域指定，示例如下：
 
     ```
     Content-Disposition: form-data; name="x-oss-meta-uuid"
@@ -273,7 +273,7 @@ Post Object常见错误见下表：
     --9431149156168
     ```
 
-    **说明：** 文件元信息更详细的说明，请参看[文件元信息Object Meta](../../../../intl.zh-CN/开发指南/管理文件/设置文件元信息.md#)。
+    **说明：** 文件元信息更详细的说明，请参看[文件元信息Object Meta](../../../../intl.zh-CN/开发指南/管理文件/管理文件元信息.md#)。
 
 -   怎么指定限定条件expiration、Key、Bucket、size、header等?
 
@@ -290,22 +290,22 @@ Post Object常见错误见下表：
     }
     ```
 
-    上面的policy，用户的Post Object操作的限定条件如下：
+    上面的policy实例中，用户的Post Object操作的限定条件如下：
 
     -   `bucket`必须是`md-hz`。
     -   `key`必须以`md/conf/`开头。
-    -   是上传的文件长度必须在100M以下。
+    -   上传的文件长度必须在100M以下。
     -   请求时间在`2018-01-01T12:00:00.000Z`之前。
--   怎么指定Cache-Control、Content-Type、Content-Disposition、 Content-Encoding、Expires等HTTP Header？
+-   怎么指定Cache-Control、Content-Type、Content-Disposition、Content-Encoding、Expires等HTTP Header？
 
-    `Cache-Control`, `Content-Type`, `Content-Disposition`, `Content-Encoding`, `Expires`等HTTP Header需要在表单域中指定，这些HTTP Header的含义请参看[RFC2616](https://tools.ietf.org/html/rfc2616?spm=a2c4g.11186623.2.20.ogoRhr) 。但是`Content-MD5`需要在Post Header中指定。
+    `Cache-Control``Content-Type`、`Content-Disposition、``Content-Encoding``Expires`等HTTP Header需要在表单域中指定，这些HTTP Header的含义请参看[RFC2616](https://tools.ietf.org/html/rfc2616?spm=a2c4g.11186623.2.20.ogoRhr) 。但是`Content-MD5`需要在Post Header中指定。
 
 
 ## Post Object示例 {#section_o31_5hj_wdb .section}
 
 -   [C\# Post Demo](https://github.com/aliyun/aliyun-oss-csharp-sdk/blob/master/samples/Samples/PostPolicySample.cs?spm=a2c4g.11186623.2.21.ogoRhr&file=PostPolicySample.cs)
 -   [Java Post Demo](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/PostObjectSample.java?spm=a2c4g.11186623.2.22.ogoRhr&file=PostObjectSample.java)
--   [JavaScript Post Demo](../../../../intl.zh-CN/最佳实践/Web端直传实践/JavaScript客户端签名直传.md#)
+-   [JavaScript Post Demo](../../../../intl.zh-CN/最佳实践/Web端上传数据至OSS/Web端PostObject直传实践/JavaScript客户端签名直传.md#)
 
 ## 常用链接 {#section_tfy_5hj_wdb .section}
 

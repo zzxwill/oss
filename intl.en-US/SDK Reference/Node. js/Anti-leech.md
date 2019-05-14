@@ -7,7 +7,7 @@ To prevent your data on OSS from being leeched, OSS supports anti-leeching throu
 -   Referer whitelist: Used to allow access only for specified domains to OSS data.
 -   Empty referer: Determines whether the referer can be empty. If it is not allowed, only requests with the referer filed in their HTTP or HTTPS headers can access OSS data.
 
-For more information about anti-leach, see [Anti-leech settings](../../../../reseller.en-US/Developer Guide/Buckets/Anti-leech settings.md#).
+For more information about anti-leach, see [Anti-leech settings](../../../../reseller.en-US/Developer Guide/Buckets/Configure hotlinking protection.md#).
 
 ## Configure a referer whitelist {#section_tt5_5wk_lfb .section}
 

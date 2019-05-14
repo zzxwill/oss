@@ -61,7 +61,7 @@ putBucket();
 
 **Note:** 
 
--   For bucket naming conventions, see [OSS Basic Concepts](../../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
+-   For bucket naming conventions, see [OSS Basic Concepts](../../../../reseller.en-US/Developer Guide/Basic concepts.md#).
 -   This is because the name of a bucket is globally unique, make sure your bucket name does not match with the other users’.
 
 ## Delete a bucket { .section}
@@ -97,7 +97,7 @@ deleteBucket();
 
 ## Bucket access permissions { .section}
 
-You can set the ACL policy of a bucket to allow or prohibit anonymous reads/writes to the bucket. For more information on ACL, see [ACL](../../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
+You can set the ACL policy of a bucket to allow or prohibit anonymous reads/writes to the bucket. For more information on ACL, see [ACL](../../../../reseller.en-US/Developer Guide/Access and control/Overview.md#).
 
 -   Obtain the ACL of a bucket
 

@@ -1,12 +1,12 @@
 # Set logging {#concept_lgv_phz_5db .concept}
 
-A large number of access logs are generated when you access OSS. After you enable the logging function for a bucket, OSS automatically records the access logs for the bucket on the hour, write the logs into an object that follows the specified naming convention, and store the object in the target bucket that you specify. For more information, see [Access logging](../../../../intl.en-US/Developer Guide/Manage logs/访问日志存储.md#) in the OSS developer guide.
+A large number of access logs are generated when you access OSS. After you enable the logging function for a bucket, OSS automatically records the access logs for the bucket on the hour, write the logs into an object that follows the specified naming convention, and store the object in the target bucket that you specify. For more information, see [Access logging](../../../../reseller.en-US/Developer Guide/Manage logs/访问日志存储.md#) in the OSS developer guide.
 
-**Note:** To ensure that this function works properly, make sure that at least a pair of enabled [AccessKey](https://www.alibabacloud.com/help/zh/doc-detail/53045.html) is available under your account.
+**Note:** To ensure that this function works properly, make sure that at least a pair of enabled is available under your account.
 
 ## Procedure {#section_nsz_xhz_5db .section}
 
-1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
+1.  Log on to the [OSS console](https://partners-intl.console.aliyun.com/#/oss).
 2.  In the left-side bucket list, click the name of the bucket that you want to set the logging unction.
 3.  Click the **Basic Settings** tab and find the **Log** area.
 4.  Click **Configure** and then set **Destination Bucket** and **Log Prefix**.

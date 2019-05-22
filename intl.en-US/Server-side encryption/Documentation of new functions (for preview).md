@@ -33,7 +33,7 @@
         -   [Upload objects](https://www.alibabacloud.com/help/doc-detail/119322.htm)
         -   [List objects](https://www.alibabacloud.com/help/doc-detail/119323.htm)
         -   [Download objects](https://www.alibabacloud.com/help/doc-detail/119324.htm)
-        -   [Delete objects](https://www.alibabacloud.com/help/doc-detail/119425.htm)
+        -   [Delete objects](https://www.alibabacloud.com/help/doc-detail/119325.htm)
         -   [Restore objects](https://www.alibabacloud.com/help/doc-detail/119326.htm)
     -   Suspend versioning
         -   [Overview](https://www.alibabacloud.com/help/doc-detail/119358.htm)

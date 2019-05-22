@@ -14,7 +14,6 @@ The following server-side encryption methods are available for different applica
 
     **Note:** 
 
-    -   Fees for API calls are incurred if you use a CMK to encrypt an object.
 -   Server-side encryption fully managed by OSS \(SSE-OSS\)
 
     This encryption method is a property of an object. When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encrpytion` header in the request and specify its value as AES256. In this method, OSS uses AES256 to encrypt each object with an individual key. Furthermore, the individual keys are encrypted by a customer master key \(CMK\) that is updated periodically for higher security. This method applies to encrypt or decrypt bulk data.
@@ -24,7 +23,7 @@ The following server-side encryption methods are available for different applica
 
 ## Configuration {#section_lr4_cbm_vgb .section}
 
-For detailed information about server-side encryption configuration, see [Protect data by performing server-side encryption](../../../../intl.en-US/Best Practices/Data security/Protect data by performing server-side encryption.md#).
+For detailed information about server-side encryption configuration, see [Protect data by performing server-side encryption](../../../../reseller.en-US/Best Practices/Data security/Protect data by performing server-side encryption.md#).
 
 ## Server-side encryption that uses CMKs managed by KMS for encryption and decryption {#section_c24_wbd_5gb .section}
 
@@ -36,7 +35,7 @@ In addition to the usage of AES256 encryption algorithm, KMS stores the customer
 
 The following table shows the logic of SSE-KMS.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4384/155850803738833_en-US.png)
+![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4384/155852587838833_en-US.png)
 
 A CMK can be generated in the following methods:
 
@@ -54,14 +53,14 @@ A CMK can be generated in the following methods:
 
     1.  Create a CMK without key material.
     2.  Import the key material from an external source.
-    For more information about how to import key material, see [Import key material](../../../../intl.en-US/User Guide/Import key material.md#).
+    For more information about how to import key material, see [Import key material](../../../../reseller.en-US/User Guide/Import key material.md#).
 
 
 **Note:** 
 
 -   If you use a CMK to encrypt an object, the data key used in the encryption is also encrypted and is stored as the metadata of the object.
 -   In server-side encryption that uses the default CMK managed by KMS, only the data in the object is encrypted. The metadata of the object is not encrypted.
--   To use a RAM user to encrypt objects with a specified CMK, you must grant the relevant permissions to the RAM user. For more information, see [Use RAM for KMS resource authorization](../../../../intl.en-US/User Guide/Use RAM for KMS resource authorization.md#).
+-   To use a RAM user to encrypt objects with a specified CMK, you must grant the relevant permissions to the RAM user. For more information, see [Use RAM for KMS resource authorization](../../../../reseller.en-US/User Guide/Use RAM for KMS resource authorization.md#).
 
 ## Server-side encryption fully managed by OSS {#section_x5x_cmd_5db .section}
 

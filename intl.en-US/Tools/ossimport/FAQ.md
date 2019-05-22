@@ -201,7 +201,7 @@
         This log, if the `recentLatency=30000`, is generally normal. List, beat list is slow, usually run up to 30 seconds of timeout, 30 seconds to list out a few files to return a few files, such as the case slowly list tasks It is normal to come out;
 
     -   The `recentLatency` is very small, and the general case is that the account password is wrong, and so on, because another error in the SDK returns only null \), Does not return the error result, so you can only get another error code that is returned by catching the package.
--   24. What do `srcAccessKey`和`srcSecretKey` and fig fill in again during the migration
+-   24. What do `srcAccessKey`,`srcSecretKey` and fig fill in again during the migration
 
     Fill in the operator's account number and password. .
 

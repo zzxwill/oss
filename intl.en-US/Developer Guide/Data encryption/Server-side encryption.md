@@ -16,93 +16,60 @@ The following server-side encryption methods are available for different applica
 
 -   Server-side encryption fully managed by OSS \(SSE-OSS\)
 
-    This encryption method is a property of an object. When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encrpytion` header in the request and specify its value as AES256. In this method, OSS uses AES256 to encrypt each object with an individual key. Furthermore, the individual keys are encrypted by a customer master key \(CMK\) that is updated periodically for higher security. This method applies to encrypt or decrypt bulk data.
+    This encryption method is a property of an object. When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encryption` header in the request and specify its value as AES256. In this method, OSS uses AES256 to encrypt each object with an individual key. Furthermore, the individual keys are encrypted by a customer master key \(CMK\) that is updated periodically for higher security. This method applies to encrypt or decrypt bulk data.
 
 
 **Note:** Only one server-side encryption method can be used for an object at one time.
 
-## Configuration {#section_lr4_cbm_vgb .section}
+## Operation method {#section_lr4_cbm_vgb .section}
 
-For detailed information about server-side encryption configuration, see [Protect data by performing server-side encryption](../../../../../reseller.en-US/Best Practices/Data security/Protect data by performing server-side encryption.md#).
+-   For detailed information about how to use server-side encryption, see [Protect data by performing server-side encryption](../../../../reseller.en-US/Best Practices/Data security/Protect data by performing server-side encryption.md#).
+-   For SDK demos of server-side encryption, see:
+    -   [Java SDK](https://help.aliyun.com/document_detail/119227.html)
+    -   [Python SDK](https://help.aliyun.com/document_detail/119225.html)
+    -   [Go SDK](https://help.aliyun.com/document_detail/119226.html)
 
-## Server-side encryption that uses CMKs managed by KMS for encryption and decryption {#section_c24_wbd_5gb .section}
+## Principle {#section_c24_wbd_5gb .section}
 
-Key Management Service \(KMS\) is a secure and easy-to-use key protection and management service provided by Alibaba Cloud. KMS allows you to use keys in a secure manner, at minimal cost. You can view and manage keys in the KMS console.
+-   Server-side encryption that uses CMKs managed by KMS for encryption and decryption
 
-To encrypt an object when creating it, you can include the `x-oss-server-side-encryption` header in the request and specify its value to `KMS` \(which indicates that KMS is used for key management\).
+    Key Management Service \(KMS\) is a secure and easy-to-use key protection and management service provided by Alibaba Cloud. KMS allows you to use keys in a secure manner, at minimal cost. You can view and manage keys in the KMS console.
 
-In addition to the usage of AES256 encryption algorithm, KMS stores the customer master key \(CMK\) used to encrypt data keys, generate data keys, and uses the envelope encryption mechanism to protect data from unauthorized access.
+    To encrypt an object when creating it, you can include the `x-oss-server-side-encryption` header in the request and specify its value to `KMS` \(which indicates that KMS is used for key management\).
 
-The following table shows the logic of SSE-KMS.
+    In addition to the usage of AES256 encryption algorithm, KMS stores the customer master key \(CMK\) used to encrypt data keys, generate data keys, and uses the envelope encryption mechanism to protect data from unauthorized access.
 
-![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4384/155134082038833_en-US.png)
+    The following figure shows the logic of SSE-KMS.
 
-A CMK can be generated in the following methods:
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4384/155850710838833_en-US.png)
 
--   Use the default CMK managed by KMS.
+    A CMK can be generated in the following methods:
 
-    When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encrpytion` header in the request and specify its value as KMS without a specified CMK ID. In this method, OSS generates an individual key to encrypt each object by using the default managed CMK, and automatically decrypts the object when it is downloaded.
+    -   Use the default CMK managed by KMS.
 
--   Use a CMK specified by the user.
+        When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encryption` header in the request and specify its value as KMS without a specified CMK ID. In this method, OSS generates an individual key to encrypt each object by using the default managed CMK, and automatically decrypts the object when it is downloaded.
 
-    When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encrpytion` header in the request, specify its value as KMS, and specify the value of `X-oss-server-side-encrpytion-key-id` to a specified CMK ID. In this method. OSS generates an individual key to encrypt each object by using the specified CMK, and adds the CMK ID used to encrypt an object into the metadata of the object so that the object is automatically decrypted when it is downloaded by an authorized user.
+    -   Use a CMK specified by the user.
 
--   Use the BYOK material of the user as the CMK.
+        When sending a request to upload an object or modify the metadata of an object, you can include the `X-OSS-server-side-encryption` header in the request, specify its value as KMS, and specify the value of `X-oss-server-side-encryption-key-id` to a specified CMK ID. In this method. OSS generates an individual key to encrypt each object by using the specified CMK, and adds the CMK ID used to encrypt an object into the metadata of the object so that the object is automatically decrypted when it is downloaded by an authorized user.
 
-    You can import your BYOK material into KMS as the CMK as follows:
+    -   Use the BYOK material of the user as the CMK.
 
-    1.  Create a CMK without key material.
-    2.  Import the key material from an external source.
-    For more information about how to import key material, see [Import key material](../../../../../reseller.en-US/User Guide/Import key material.md#).
+        You can import your BYOK material into KMS as the CMK as follows:
 
-
-**Note:** 
-
--   If you use a CMK to encrypt an object, the data key used in the encryption is also encrypted and is stored as the metadata of the object.
--   In server-side encryption that uses the default CMK managed by KMS, only the data in the object is encrypted. The metadata of the object is not encrypted.
--   To use a RAM user to encrypt objects with a specified CMK, you must grant the relevant permissions to the RAM user. For more information, see [Use RAM for KMS resource authorization](../../../../../reseller.en-US/User Guide/Use RAM for KMS resource authorization.md#).
-
-## Server-side encryption fully managed by OSS {#section_x5x_cmd_5db .section}
-
-In this server-side encryption method, OSS generates and manages the keys used for data encryption, and provides strong multi-factor security measures to protect data. AES256 \(256-bit advanced encryption standard\), a strong encryption algorithm, is used to encrypt data.
-
-In this way, the encryption method becomes a property of an object. To perform server-side encryption on an object, you can include the `X-OSS-server-side-encrpytion` header in the PutObject request and specify its value as `AES256`.
-
-## APIs that support server-side encryption {#section_mbf_hmd_5db .section}
-
-**Note:** This function is in the beta testing phase. To join the testing group, contact Alibaba Cloud technical support or open a ticket.
-
--   APIs that support server-side encryption in requests
-
-    The `x-oss-server-side-encryption` header is supported in requests initiated by the following APIs:
-
-    -   PutObject
-    -   CopyObject
-    -   InitiateMultipartUpload
-    The following table describes the HTTP headers that can be included in requests.
-
-    |Header|Description|Example|
-    |:-----|:----------|:------|
-    |x-oss-server-side-encryption|Specifies the server-side encryption method.Valid values: AES256 and KMS
-
-|`x-oss-server-side-encryption:KMS` indicates that the server-side encryption uses CMKs managed by KMS.|
-    |x-oss-server-side-encryption-key-id|Specifies the ID of the CMK used to encrypt the object.This header must be specified when you use a specified CMK ID for encryption.
-
-|`x-oss-server-side-encryption-key-id: 72779642-7d88-4a0f-8d1f-1081a9cc7afb`|
+        1.  Create a CMK without key material.
+        2.  Import the key material from an external source.
+        For more information about how to import key material, see [Import key material](../../../../reseller.en-US/User Guide/Import key material.md#).
 
     **Note:** 
 
-    -   If the `x-oss-server-side-encryption` header is included in requests initiated by APIs except for PutObject, CopyObject, and InitiateMultipartUpload, OSS returns HTTP status code 400 and includes `InvalidArgument` in the error message.
-    -   If an invalid value is specified for the `x-oss-server-side-encryption` header, OSS returns HTTP status code 400 and includes `InvalidEncryptionAlgorithmError` in the error message.
--   APIs that support server-side encryption in responses
+    -   If you use a CMK to encrypt an object, the data key used in the encryption is also encrypted and is stored as the metadata of the object.
+    -   In server-side encryption that uses the default CMK managed by KMS, only the data in the object is encrypted. The metadata of the object is not encrypted.
+    -   To use a RAM user to encrypt objects with a specified CMK, you must grant the relevant permissions to the RAM user. For more information, see [Use RAM for KMS resource authorization](../../../../reseller.en-US/User Guide/Use RAM for KMS resource authorization.md#).
+-   Server-side encryption fully managed by OSS
 
-    OSS includes the `x-oss-server-side-encryption` header in responses to requests initiated by the following APIs to access objects encrypted at the server side.
+    In this server-side encryption method, OSS generates and manages the keys used for data encryption, and provides strong multi-factor security measures to protect data. AES256 \(256-bit advanced encryption standard\), a strong encryption algorithm, is used to encrypt data.
 
-    -   PutObject
-    -   CopyObject
-    -   InitiateMultipartUpload
-    -   UploadPart
-    -   CompleteMultipartUpload
-    -   GetObject
-    -   HeadObject
+    In this way, the encryption method becomes a property of an object. To perform server-side encryption on an object, you can include the `X-OSS-server-side-encryption` header in the PutObject request and specify its value as `AES256`.
+
 

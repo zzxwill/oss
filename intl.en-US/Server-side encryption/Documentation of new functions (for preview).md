@@ -15,7 +15,7 @@
 
 ## Bucket tagging {#section_moa_k4i_wet .section}
 
--   [Introduction](https://www.alibabacloud.com/help/zh/doc-detail119637.html)
+-   [Introduction](https://www.alibabacloud.com/help/zh/doc-detail/119637.html)
 -   SDK Demo
     -   [Java SDK](https://www.alibabacloud.com/help/doc-detail/119254.html)
     -   [Python SDK](https://www.alibabacloud.com/help/doc-detail/119256.html)

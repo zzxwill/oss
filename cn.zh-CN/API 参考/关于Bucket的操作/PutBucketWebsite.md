@@ -219,11 +219,11 @@ Authorization: SignatureValue
  父节点：Redirect
 
  |否|
-|MirrorCheckMd5|bool型|是否要检查回源body的md5。
+|MirrorCheckMd5|bool型| 是否要检查回源body的md5。
 
-当此项为true且源站返回的response中含有Content-Md5头时，OSS检查拉取的数据md5是否与此header匹配，如果不匹配，则不保存在oss上。只有在RedirectType为Mirror时生效。
+ 当此项为true且源站返回的response中含有Content-Md5头时，OSS检查拉取的数据md5是否与此header匹配，如果不匹配，则不保存在oss上。只有在RedirectType为Mirror时生效。
 
-默认值：false
+ 默认值：false
 
  父节点：Redirect|否|
 |MirrorHeaders|容器| 用于指定镜像回源时携带的header。只有在RedirectType为Mirror时生效。
@@ -267,36 +267,36 @@ Authorization: SignatureValue
 
  父节点：Redirect
 
- |有条件，当RedirectType不为External或者AliCDN时需要指定。|
+ |有条件，当RedirectType 为External或者AliCDN时需要指定。|
 |HostName|字符串| 跳转时的域名，需要符合域名规范。比如访问的object为test，Protocol为https，Hostname指定为`www.test.com`，那么Location头为`https://www.test.com/test`。只有在RedirectType为External或者AliCDN时生效。
 
  父节点：Redirect
 
- |有条件，当RedirectType不为External或者AliCDN时需要指定|
+ |有条件，当RedirectType 为External或者AliCDN时需要指定。|
 |HttpRedirectCode|HTTP状态码| 跳转时返回的状态码，取值为301、302或307。只有在RedirectType为External或者AliCDN时生效。
 
  父节点：Redirect
 
- |有条件，当RedirectType不为External或者AliCDN时需要指定。|
+ |有条件，当RedirectType 为External或者AliCDN时需要指定。|
 |ReplaceKeyPrefixWith|字符串| Redirect的时候object name的前缀将替换成这个值。如果前缀为空则将这个字符串插入在object namde的最前面。ReplaceKeyWith和ReplaceKeyPrefixWith这两个节点只能共存一个。
 
  比如指定了KeyPrefixEquals为abc/，指定了ReplaceKeyPrefixWith为def/，那么如果访问的object为abc/test.txt那么Location头则为`http://www.test.com/def/test.txt`。只有在RedirectType为External或者AliCDN时生效。
 
  父节点：Redirect
 
- |有条件，当RedirectType不为External或者AliCDN时需要指定。|
+ |有条件，当RedirectType 为External或者AliCDN时需要指定。|
 |ReplaceKeyWith|字符串| Redirect的时候object name将替换成这个值，可以支持变量（目前支持的变量是$\{key\}，代表着该请求中的object name）。ReplaceKeyWith和ReplaceKeyPrefixWith这两个节点只能共存一个。
 
  比如设置ReplaceKeyWith为prefix/$\{key\}.suffix，访问的object为test，那么Location头则为`http://www.test.com/prefix/test.suffix`。只有在RedirectType为External或者AliCDN时生效。
 
  父节点：Redirect
 
- |有条件，当rectType不为External或者AliCDN时需要指定。|
+ |有条件，当RedirectType 为External或者AliCDN时需要指定。|
 
 ## 细节分析 {#section_hms_f42_xdb .section}
 
 -   所谓静态网站是指所有的网页都由静态内容构成，包括客户端执行的脚本，例如JavaScript；OSS不支持涉及到需要服务器端处理的内容，例如PHP，JSP，APS.NET等。
--   如果你想使用自己的域名来访问基于bucket的静态网站，可以通过域名CNAME来实现。具体配置方法请参见[绑定自定义域名](../../../../../intl.zh-CN/开发指南/存储空间（Bucket）/绑定自定义域名.md#)。
+-   如果你想使用自己的域名来访问基于bucket的静态网站，可以通过域名CNAME来实现。具体配置方法请参见[绑定自定义域名](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/绑定自定义域名.md#)。
 -   用户将一个bucket设置成静态网站托管模式时，必须指定索引页面，错误页面则是可选的。
 -   用户将一个bucket设置成静态网站托管模式时，指定的索引页面和错误页面是该bucket内的一个object。
 -   在将一个bucket设置成静态网站托管模式后，对静态网站根域名的匿名访问，OSS将返回索引页面；对静态网站根域名的签名访问，OSS将返回Get Bucket结果。

@@ -85,7 +85,7 @@
 
 -   10. How do I handle the failed tasks shown by stat?
 
-    Generally, you can use the retry  command to try again.
+    Generally, you can use the retry command to try again.
 
 -   11. After some failed tasks, repeated retry won't succeed.
 
@@ -93,7 +93,7 @@
 
 -   12. How do I upload a file with a bad file name to OSS?
 
-    Need to first use `export LANG="<your file name encode>"`, `ls`  use encode\>", ls  after checking the file name. Command to clear the original job and resubmit the job again with the submit command.
+    Need to first use `export LANG="<your file name encode>"`, `ls` use encode\>", ls after checking the file name. Command to clear the original job and resubmit the job again with the submit command.
 
 -   13. java.nio.file.AccessDeniedException
 
@@ -133,7 +133,7 @@
     </Error>
     ```
 
-    Reason: `srcDomain` of Bucket Or `destDomain`  fill in the error, please follow the list of domain names Fill in the correct domain name.
+    Reason: `srcDomain` of Bucket Or `destDomain` fill in the error, please follow the list of domain names Fill in the correct domain name.
 
 -   16. The request signature we calculated does not match the signature you provided
 
@@ -146,7 +146,7 @@
     [HostId]: xxx.oss-cn-shanghai.aliyuncs.com
     ```
 
-    Reason: Check whether the `destAccessKey`和`destSecretKey` and the scanner are wrong. Please refer [Access control](../../../../../reseller.en-US/Developer Guide/Access and control/Access control.md#).
+    Reason: Check whether the `destAccessKey`,`destSecretKey` and the scanner are wrong. Please refer [Access control](../../../../intl.en-US/Developer Guide/Access and control/Overview.md#).
 
 -   17. InvocationTargetException
 
@@ -167,15 +167,15 @@
             ... 6 more
     ```
 
-    Reason: Check Configuration item workingdir in `conf/sys.properties`  Whether to configure, configure correctly, and verify that the configuration file path is the correct path.
+    Reason: Check Configuration item workingdir in `conf/sys.properties` Whether to configure, configure correctly, and verify that the configuration file path is the correct path.
 
 -   18. Do you support setting up agents?
 
-    This feature is not supported. 
+    This feature is not supported.
 
 -   19. Why is it expensive for OSS to migrate to OSS?
 
-    Refer to  [endpoint](../../../../../reseller.en-US/Developer Guide/Endpoint/Endpoints.md#) The domain name in the help, After configuring the internal network domain name, will not charge the traffic fee, but the cost of the number of visits is still charging.
+    Refer to [endpoint](../../../../intl.en-US/Developer Guide/Endpoint/Endpoints.md#) The domain name in the help, After configuring the internal network domain name, will not charge the traffic fee, but the cost of the number of visits is still charging.
 
 -   20. The synchronization process shows that the source file does not exist
 
@@ -237,7 +237,7 @@
     [RequestId]: Cannot retry request with a non-repeatable request entity.  The cause lists the reason the original request failed.
     ```
 
-    As well as, usually when the network is full, ossimport will try again, if you still fail after retrying, you can call after the task is complete The retry command retries again.
+    As well as, usually when the network is full, ossimport will try again, if you still fail after retrying, you can call after the task is complete The retry command retries again.
 
 -   30. Connect to xxx.oss-cn-beijing-internal.aliyuncs.com:80 timed out
 
@@ -303,5 +303,5 @@
     Reason:
 
     -   Checks whether the `srcPrefix` is as a directory but does not end in;
-    -   Check that the  `destPrefix`  starts with/or.
+    -   Check that the `destPrefix` starts with/or.
 

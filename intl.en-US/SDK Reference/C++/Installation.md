@@ -14,7 +14,7 @@ Install a compiler that supports C++ V11 and later.
 
 [Download the SDK directly](https://github.com/aliyun/aliyun-oss-cpp-sdk/archive/master.zip)
 
-[Download from GitHub](https://github.com/aliyun/aliyun-oss-cpp-sdk.git) 
+[Download from GitHub](https://github.com/aliyun/aliyun-oss-cpp-sdk.git)
 
 ## Install the SDK {#section_vlq_f44_4gb .section}
 
@@ -62,9 +62,14 @@ You can install the SDK in Linux, Windows, Android, and Mac.
     ```
 
 -   Windows:
-    1.  Install CMake. Open cmd to go to the directory that stores the SDK files, create a folder named build, and run cmake .. -DBUILD\_TESTS=ON to generate the required files, as shown in the following figure.
 
-        ![](images/38252_en-US.png)
+    **Note:** The alibabacloud-oss-cpp-sdk.sln project file is not included in the downloaded SDK package. You must run the cmake command to generate the required project file.
+
+    1.  Install CMake. Open cmd to go to the directory that stores the SDK files, create a folder named build, and run cmake to generate the required files, as shown in the following figure.
+
+        ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/120374/155851078938252_en-US.png)
+
+        **Note:** To construct project files in the x64 architecture, run the cmake -A x64 .. command.
 
     2.  Run VS developer command prompt as an administrator. Go to the build folder and run the following command to compile and install the SDK:
 

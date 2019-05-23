@@ -18,8 +18,8 @@ The following server-side encryption methods are available for different applica
 **Note:** 
 
 -   Only one server-side encryption method can be used for an object at one time.
--   If you configure server-side encryption for a bucket, you can still configure the encryption method for a single object when uploading or copying it. In this case, the encryption method configured for the object takes precedence. For more information, see [PutObject](../../../../intl.en-US/API Reference/Object operations/PutObject.md#).
--   For more information about server-side encryption, see [Server-side encryption](../../../../intl.en-US/Developer Guide/Data encryption/Server-side encryption.md#).
+-   If you configure server-side encryption for a bucket, you can still configure the encryption method for a single object when uploading or copying it. In this case, the encryption method configured for the object takes precedence. For more information, see [PutObject](../../../../intl.en-US/API Reference/Object operations/PutObject.md#table_im4_mkw_bz).
+-   For more information about server-side encryption, see [Server-side encryption](https://www.alibabacloud.com/help/doc-detail/119320.html).
 
 ## Configure server-side encryption for a bucket {#section_uri_y0t_bml .section}
 

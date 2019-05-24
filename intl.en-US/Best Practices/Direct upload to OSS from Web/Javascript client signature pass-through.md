@@ -2,7 +2,7 @@
 
 ## Backdrop {#section_gj5_pgy_5db .section}
 
-The client is signed directly with JavaScript and then uploaded to OSS. Please refer to the background introduction in the Web-side direct transmission practice.
+The client is signed directly with JavaScript and then uploaded to OSS. Please see the background introduction in the Web-side direct transmission practice.
 
 Example
 
@@ -12,7 +12,7 @@ Use your phone to test if the upload is valid. Two-dimensional code: can use mob
 
 File Upload is a public upload to a test. Bucket is cleaned up regularly, so don't pass on sensitive and important data.
 
-5\) code download
+code download
 
 Click here: oss-h5-upload-js-direct.zip
 
@@ -20,7 +20,7 @@ Principle
 
 -   The functionality of this example
 
-    -   Direct submission of form data \(that is, postobject\) to OSSS using procopad.
+    -   Direct submission of form data \(that is, postobject\) to OSS using procopad.
     -   Support HTML5, Flash, Silverlight, html4 and other protocols upload.
     -   Can run in PC browser, mobile phone browser, WeChat, etc.
     -   You can choose to upload multiple files.

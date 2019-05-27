@@ -19,73 +19,6 @@ Ossutil allows you to manage OSS data easily by using command lines and provides
     -   [mac x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac32)
     -   [mac x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64)
 
-## Installation {#section_f1t_c1h_v4z .section}
-
-Download a package according to your operating system and run the corresponding binary file.
-
--   Install ossutil in Linux \(Linux 64-bit system is used as an example\).
-    1.  Download the ossutil installation file:
-
-        ```
-        wget http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64
-        								
-        ```
-
-    2.  Modify the permission of the file:
-
-        ```
-        chmod 755 ossutil64
-        ```
-
-    3.  Generate a configuration file by inputting information in interactive command lines:
-
-        ```
-        ./ossutil64 config
-        This command generates a configuration file which stores the configuration information. Input the path of the configuration file. (The default path is /home/user/.ossutilconfig. If you press Enter, the file is generated in the default path. If you want to generate the file in another path, set the --config-file option to the path.) 
-        The path is not specified, the following default configuration file is used: /home/user/.ossutilconfig
-        The following parameters are ignored if you press Enter when configuring them. For more information about the parameters, run "help config". 
-        Input the endpoint：http://oss-cn-shenzhen.aliyuncs.com 
-        Input the accessKeyID：yourAccessKeyID 
-        Input the accessKeySecret：yourAccessKeySecret
-        Input the stsToken： 
-        ```
-
-        -   **endpoint**: Indicates the endpoint of the region where the bucket belongs to. For more information, see [Regions and endpoints](../../../../reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
-        -   **accessKeyID**: For more information about how to view the AccessKeyID, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
-        -   **accessKeySecret**: For more information about how to view the AccessKeySecret, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
-        -   **stsToken**: This is option is required only when you use a temporary STS token to access the OSS bucket. Otherwise, you can leave the value unspecified. For more information about how to generate an STS token, see [Temporary access credentials](../../../../reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#section_dvv_hkb_5db).
-
-            **Note:** For more information about the configuration file, see [Modify the configuration file](#config).
-
--   Install ossutil in Windows \(Windows 64-bit system is used as an example\).
-    1.  Download the ossutil installation package.
-    2.  Decompress the package to the specified folder, and then double-click the ossutil.bat file.
-    3.  Generate the configuration file. For more information about the parameters, see the description in the installation process of Linux.
-
-        ```
-        D:\ossutil>ossutil64.exe config
-        ```
-
--   Install ossutil in Mac \(Mac 64-bit system is used as an example\).
-    1.  Download the ossutil installation file:
-
-        ```
-        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64
-        ```
-
-    2.  Modify the permission of the file:
-
-        ```
-        chmod 755 ossutilmac64
-        ```
-
-    3.  Generate the configuration file. For more information about the parameters, see the description in the installation process of Linux.
-
-        ```
-        ./ossutilmac64 config
-        ```
-
-
 ## Installation {#section_hr8_ke0_xym .section}
 
 Download a package according to your operating system and run the corresponding binary file.
@@ -120,7 +53,7 @@ Download a package according to your operating system and run the corresponding 
         -   **endpoint**: Indicates the endpoint of the region where the bucket belongs to. For more information, see [Regions and endpoints](../../../../reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
         -   **accessKeyID**: For more information about how to view the AccessKeyID, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
         -   **accessKeySecret**: For more information about how to view the AccessKeySecret, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
-        -   **stsToken**: This is option is required only when you use a temporary STS token to access the OSS bucket. Otherwise, you can leave the value unspecified. For more information about how to generate an STS token, see [Temporary access credentials](../../../../reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#section_dvv_hkb_5db).
+        -   **stsToken**: This is option is required only when you use a temporary STS token to access the OSS bucket. Otherwise, you can leave the value unspecified. For more information about how to generate an STS token, see [Temporary access credential](../../../../reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#section_dvv_hkb_5db).
 
             **Note:** For more information about the configuration file, see [Modify the configuration file](#config)
 

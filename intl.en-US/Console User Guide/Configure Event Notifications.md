@@ -7,24 +7,17 @@ The Event Notification features supported by OSS, the ability to notify you of r
 -   The important files on the OSS are deleted.
 -   The synchronization of data on OSS has been completed.
 
-The OSS Event Notification is asynchronous and does not affect normal OSS operations. The configuration of Event Notification consists of two parts: **Rules** and **Message notification**.
+The OSS Event Notification is asynchronous and does not affect normal OSS operations. The configuration of Event Notification consists of two parts: **Rules** and **Message notification**.
 
 -   Rules: used to describe when OSS is required for Message notification.
 -   Message notification: Based on the implementation of the Ali cloud messaging service MnS, various notification methods are provided.
-
-The OSS Event Notification overall architecture is shown in the following figure:
-
-![](images/1523_en-US.png)
 
 ## Create method {#section_jyx_dpy_5db .section}
 
 1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
 2.  In the list of left storage spaces, click the target storage space name to open the storage space overview page.
 3.  Click the **Event Notification** tab, and then click **Create rule** to locate the Create rule page.
-
-    ![](images/1525_en-US.png)
-
-4.   In the **Rule name** box, enter the rule name.
+4.  In the **Rule name** box, enter the rule name.
 
     **Note:** 
 
@@ -39,7 +32,7 @@ The OSS Event Notification overall architecture is shown in the following figure
         -   Pre-Suffix: sets the pre-Suffix of the object to focus on all or part of the object in a bucket. For example, for a bucket named`nightbucket`:
             -   Pay attention to all of these files, the prefix and suffix are not filled in.
             -   Note that all the files in the directory movie, fill in the prefix with movie/, but with no suffix.
-            -   Note that all of the .jpg images, leave the prefix empty and fill in the suffix with .jpg.
+            -   Note that all of the .jpg images, leave the prefix empty and fill in the suffix with .jpg.
             -   Note that mp3 format video under the movie directory, prefix the movie/ with the suffix .mp3.
     -   The OSS resource includes the bucket and the object, which are connected by “/”. Take bucket \(movie\) and object \(hello. avi\) for example.
         -   Full name: movie/hello.avi;
@@ -55,7 +48,7 @@ The OSS Event Notification overall architecture is shown in the following figure
     **Note:** 
 
     -   The OSS Event Notification function generates a Message description after an action rule matches, and publish the message to the topic of the MNS, and then according to the subscription on that topic, push messages to a specific receive terminal.
-    -   For how to handle HTTP push messages for MnS and consume messages from queues, see [Message Service Product Overview](https://help.aliyun.com/document_detail/27414.html).
+    -   For how to handle HTTP push messages for MnS and consume messages from queues, see [Message Service](https://www.alibabacloud.com/help/doc-detail/51500.htm).
 
 ## List of event types {#section_ols_yvy_5db .section}
 

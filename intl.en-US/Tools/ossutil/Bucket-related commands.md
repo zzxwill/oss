@@ -23,7 +23,7 @@ This topic describes how to use the Alibaba Cloud OSS open-source tool ossutil t
 
     You can use the `--acl` parameter to set the ACL for a bucket. The default ACL is private. The following are available ACLs:
 
-    -   private: Anonymous users are not allowed to to read from or write to objects in the bucket. A signature is required for access.
+    -   private: Anonymous users are not allowed to read from or write to objects in the bucket. A signature is required for access.
     -   public-read: Anonymous users are allowed only to read from objects in the bucket.
     -   public-read-write: Anonymous users are allowed to read from and write to objects in the bucket.
     **Note:** For more information on access control, see [Access control based on ACLs](../../../../reseller.en-US/Developer Guide/Access and control/Access control based on ACLs.md#).
@@ -292,9 +292,81 @@ For example, run the following command to change the ACL for a bucket to private
 
 **Note:** For more information about multipart upload, see [Multipart-related commands](reseller.en-US/Tools/ossutil/Multipart-related commands.md#).
 
+## Configure bucket tagging {#section_yiy_ekr_e2o .section}
+
+By setting the value of method to put, get, or delete when running the bucket-tagging command, you can add tags to a bucket or modify, query, or delete the tags added to a bucket. For more information about bucket tagging, see .
+
+**Note:** 
+
+-   Only the bucket owner and authorized RAM users can add tags to a bucket. Otherwise, the 403 Forbidden error is returned with the error code `AccessDenied`.
+-   The key and value of a tag must be separated by a number sign \(\#\).
+-   You can add a maximum of 20 tags \(key-value pairs\) to a bucket. Tags must be separated by spaces.
+-   A tag can contain letters, numbers, spaces, and the following symbols:
+
+    + - = . \_ : /
+
+-   The maximum length of a key is 64 bytes. The key of a tag cannot be null or be prefixed with `http://`, `https://`, or `Aliyun`.
+-   The maximum length of a tag value is 128 bytes. The value of a tag can be null.
+-   The key and value of a tag must be UTF-8 encoded.
+-   We recommend that you run the ossutil help bucket-tagging command for more information before running the bucket-tagging command.
+
+-   You can run the following command to add tags to a bucket or modify the tags added to a bucket:
+
+    ``` {#codeblock_yej_eq6_q31}
+    ./ossutil bucket-tagging --method put oss://bucket  tagkey1#tagvalue1 tagkey2#tagvalue2
+    ```
+
+    The preceding command adds specified tags to the bucket if no tag is added to the bucket and overwrites the existing tags if the bucket already has tags.
+
+-   You can run the following command to query the tags added to a bucket:
+
+    ``` {#codeblock_7hy_7h4_f15}
+    ./ossutil bucket-tagging --method get oss://bucket
+    ```
+
+-   You can run the following command to delete the tags added to a bucket:
+
+    ``` {#codeblock_87z_xz0_vcu}
+    ./ossutil bucket-tagging --method delete oss://bucket
+    ```
+
+
+## Configure bucket encryption {#section_p5b_4p7_k9d .section}
+
+You can set the method parameter to put, get, or delete in the bucket-encryption command to add, modify, query, or delete the encryption settings of a bucket. For more information about bucket encryption, see .
+
+-   You can run the following command to add the encryption settings for a bucket:
+
+    ``` {#codeblock_011_ob1_4n6}
+    ./ossutil bucket-encryption --method put oss://bucket --sse-algorithm algorithmName [--kms-masterkey-id  keyid]
+    ```
+
+    -   `--sse-algorithm`: Specifies the encryption method for the bucket, which can be set to KMS or AES256.
+    -   `--kms-masterkey-id`: Specifies the CMK ID used for encryption. Set this parameter as required if the value of `--sse-algorithm` is KMS. This parameter cannot be set if the value of `--sse-algorithm` is AES256.
+    The preceding command sets an encryption method for a bucket if the encryption method is not set for the bucket and modifies the encryption settings for the bucket if the encryption method is set for the bucket.
+
+    Example:
+
+    ``` {#codeblock_7ww_1t5_600}
+    ./ossutil bucket-encryption --method put oss://bucket --sse-algorithm KMS --kms-masterkey-id 9468da86-3509-4f8d-a61e-6eab1eac****
+    ```
+
+-   You can run the following code to obtain the encryption settings for a bucket:
+
+    ``` {#codeblock_lbh_pnn_ql5}
+    ./ossutil bucket-encryption --method get oss://bucket
+    ```
+
+-   You can run the following code to delete the encryption settings for a bucket:
+
+    ``` {#codeblock_ynd_ive_soo}
+    ./ossuitl bucket-encryption --method delete oss://bucket
+    ```
+
+
 ## Manage Cross-Origin Resource Sharing rules {#section_edx_l2n_hhb .section}
 
-You can set the `method` parameter in the cors command to PUT, GET, or DELETE to add, change, query, or delete the CORS rule of a bucket. For more information, see [Set CORS rules](../../../../reseller.en-US/Developer Guide/Buckets/Set CORS rules.md#).
+You can set the method parameter in the cors command to put, get, or delete to add, change, query, or delete the CORS rule of a bucket. For more information, see [Set CORS rules](../../../../reseller.en-US/Developer Guide/Buckets/Set CORS rules.md#).
 
 **Note:** For information about how to use the cors command, run the ossutil help cors command.
 
@@ -336,7 +408,7 @@ You can set the `method` parameter in the cors command to PUT, GET, or DELETE to
 
 ## Manage log rules {#section_rzd_3yn_hhb .section}
 
-You can set the `method` parameter in the logging command to PUT, GET, or DELETE to add, change, query, or delete the log rule of a bucket. For more information, see [Set access logging](../../../../reseller.en-US/Developer Guide/Manage logs/访问日志存储.md#).
+You can set the method parameter in the logging command to put, get, or delete to add, change, query, or delete the log rule of a bucket. For more information, see [Set access logging](../../../../reseller.en-US/Developer Guide/Manage logs/访问日志存储.md#).
 
 **Note:** For information about how to use the cors command, run the ossutil help logging command.
 
@@ -367,7 +439,7 @@ You can set the `method` parameter in the logging command to PUT, GET, or DELETE
 
 ## Manage anti-leech rules {#section_zyj_dqg_jhb .section}
 
-You can set the `method` parameter in the referer command to PUT, GET, or DELETE to add, change, query, or delete the anti-leech rule of a bucket. For more information, see [Configure hotlinking protection](../../../../reseller.en-US/Developer Guide/Buckets/Configure hotlinking protection.md#).
+You can set the method parameter in the referer command to put, get, or delete to add, change, query, or delete the anti-leech rule of a bucket. For more information, see [Anti-leech settings](../../../../reseller.en-US/Developer Guide/Buckets/Configure hotlinking protection.md#).
 
 **Note:** For information about how to use the referer command, run the ossutil help referer command.
 

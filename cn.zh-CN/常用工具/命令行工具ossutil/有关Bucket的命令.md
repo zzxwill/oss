@@ -286,11 +286,84 @@
 
     `uploadid`：填写未完成分片上传的Object的UploadID。
 
--   更多有关分片上传操作命令，详见[有关Multipart的命令](cn.zh-CN/常用工具/命令行工具ossutil/有关Multipart的命令.md#)。
+
+**说明：** 更多有关分片上传操作命令，详见[有关Multipart的命令](cn.zh-CN/常用工具/命令行工具ossutil/有关Multipart的命令.md#)。
+
+## 设置Bucket标签 {#section_mzh_dhf_2rb .section}
+
+bucket-tagging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的标签配置。Bucket标签介绍请参见[存储空间标签](https://help.aliyun.com/document_detail/119637.html)。
+
+**说明：** 
+
+-   只有Bucket的拥有者及授权子账户才能为Bucket设置用户标签，否则返回403 Forbidden错误，错误码：AccessDenied。
+-   每对标签的key和value必须以井号（\#）分隔。
+-   最多可以配置20对标签，多对标签以空格隔开。
+-   标签合法字符集包括大小写字母、数字、空格和以下符号：
+
+    +‑=.\_:/
+
+-   Key最大长度为64字节，不能以`http ://`、`https://`、`Aliyun`为前缀，且不能为空。
+-   Value最大长度为128字节，可以为空。
+-   Key和Value必须为UTF-8编码。
+-   使用该命令前，建议先使用帮助命令ossutil help bucket-tagging查看命令详情。
+
+-   添加/修改Bucket标签
+
+    ``` {#codeblock_w7m_g2m_xg5}
+    ./ossutil bucket-tagging --method put oss://bucket  tagkey1#tagvalue1 tagkey2#tagvalue2
+    ```
+
+    若Bucket未设置标签，此命令将为Bucket添加指定的标签；若Bucket已配置标签，此命令将覆盖Bucket原有标签。
+
+-   查询Bucket标签
+
+    ``` {#codeblock_omy_wa5_3bs}
+    ./ossutil bucket-tagging --method get oss://bucket
+    ```
+
+-   删除Bucket标签
+
+    ``` {#codeblock_x63_u22_24c}
+    ./ossutil bucket-tagging --method delete oss://bucket
+    ```
+
+
+## 设置Bucket加密 {#section_0a3_jwe_t8c .section}
+
+bucket-encryption命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的加密配置。Bucket加密介绍请参见[服务端加密](https://help.aliyun.com/document_detail/119320.html)。
+
+-   添加/修改Bucket加密配置
+
+    ``` {#codeblock_h63_fn2_9fm}
+    ./ossutil bucket-encryption --method put oss://bucket --sse-algorithm algorithmName [--kms-masterkey-id  keyid]
+    ```
+
+    -   `--sse-algorithm`：选择Bucket的加密方式，可选值为KMS和AES256。
+    -   `--kms-masterkey-id`：设置指定的CMK ID进行加密。当`--sse-algorithm`值为AES256时，不可附加此项；值为KMS时，根据您的需求选择是否添加。
+    若Bucket未设置加密，此命令将为Bucket添加指定的加密方式；若Bucket已配置加密，此命令将更改Bucket加密配置。
+
+    配置示例：
+
+    ``` {#codeblock_bbv_wze_fr0}
+    ./ossutil bucket-encryption --method put oss://bucket --sse-algorithm KMS --kms-masterkey-id 9468da86-3509-4f8d-a61e-6eab1eac****
+    ```
+
+-   获取Bucket加密配置
+
+    ``` {#codeblock_6vi_1gf_jah}
+    ./ossutil bucket-encryption --method get oss://bucket
+    ```
+
+-   删除Bucket加密配置
+
+    ``` {#codeblock_37j_edb_t18}
+    ./ossuitl bucket-encryption --method delete oss://bucket
+    ```
+
 
 ## 管理跨域资源共享（CORS） {#section_edx_l2n_hhb .section}
 
- cors命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的CORS配置。CORS介绍请参见[设置跨域资源共享](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置跨域资源共享.md#)。
+cors命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的CORS配置。CORS介绍请参见[设置跨域资源共享](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置跨域资源共享.md#)。
 
 **说明：** 使用该命令前，建议先使用帮助命令ossutil help cors查看命令详情。
 
@@ -332,7 +405,7 @@
 
 ## 管理日志 {#section_rzd_3yn_hhb .section}
 
- logging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志管理配置。日志管理详情请参见[访问日志存储](../../../../cn.zh-CN/开发指南/日志管理/访问日志存储.md#)。
+logging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志管理配置。日志管理详情请参见[访问日志存储](../../../../cn.zh-CN/开发指南/日志管理/访问日志存储.md#)。
 
 **说明：** 使用该命令前，建议先使用帮助命令ossutil help logging查看命令详情。
 
@@ -363,7 +436,7 @@
 
 ## 设置防盗链 {#section_zyj_dqg_jhb .section}
 
- referer命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志防盗链配置。防盗链详情请参见[设置防盗链](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置防盗链.md#)。
+referer命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志防盗链配置。防盗链详情请参见[设置防盗链](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置防盗链.md#)。
 
 **说明：** 使用该命令前，建议先使用帮助命令ossutil help referer查看命令详情。
 
@@ -452,7 +525,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
     -   执行步骤后出现×表示没有通过，否则表示通过。
     -   结果显示整个上传下载成功还是失败。当成功时，会给出文件的大小和上传下载时间；失败时，会给出导致错误的原因，或直接给出修改建议。
 
-        **说明：** 并不是每次错误的检测都能提示出修改建议，对于没有提示修改建议的检测，请根据错误码提示，并结合[oss错误码ErrorCode](../../../../cn.zh-CN/SDK 参考/Java/异常处理.md#section_gn4_55c_bhb)进行问题排查。
+        **说明：** 并不是每次错误的检测都能提示出修改建议，对于没有提示修改建议的检测，请根据错误码提示，并结合[oss错误码ErrorCode](../../../../cn.zh-CN/SDK 示例/Java/异常处理.md#section_gn4_55c_bhb)进行问题排查。
 
     probe命令执行完毕后，ossutil会在当前目录下生成一个以logOssProbe开头的文件，里面包含此次探测命令执行的详细信息。
 

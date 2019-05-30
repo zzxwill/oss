@@ -4,8 +4,8 @@
 
 **说明：** 
 
--   使用以下命令前，请先将您的ossutil升级到最新版本，并使用config命令配置访问 AK。详情请参见[快速开始](intl.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)。
--   关于Bucket其他更多的管理功能暂不支持，如有需要，请使用[osscmd](intl.zh-CN/常用工具/osscmd/快速安装.md#)。
+-   使用以下命令前，请先将您的ossutil升级到最新版本，并使用config命令配置访问 AK。详情请参见[快速开始](cn.zh-CN/常用工具/命令行工具ossutil/快速开始.md#)。
+-   关于Bucket其他更多的管理功能暂不支持，如有需要，请使用[osscmd](cn.zh-CN/常用工具/osscmd/快速安装.md#)。
 
 ## 创建Bucket {#section_qk1_v2l_xgb .section}
 
@@ -26,7 +26,7 @@
     -   private：私有
     -   public-read：公共读
     -   public-read-write：公共读写
-    **说明：** 访问权限详情请参见[基于读写权限ACL的权限控制](../../../../intl.zh-CN/开发指南/权限控制/基于读写权限ACL的权限控制.md#)。
+    **说明：** 访问权限详情请参见[基于读写权限ACL的权限控制](../../../../cn.zh-CN/开发指南/权限控制/基于读写权限ACL的权限控制.md#)。
 
     示例：创建一个公共读写的Bucket：
 
@@ -41,7 +41,7 @@
     -   Standard：标准存储
     -   IA：低频访问
     -   Archive：归档存储
-    **说明：** 存储类型详情请参见[存储类型介绍](../../../../intl.zh-CN/开发指南/存储类型/存储类型介绍.md#)。
+    **说明：** 存储类型详情请参见[存储类型介绍](../../../../cn.zh-CN/开发指南/存储类型/存储类型介绍.md#)。
 
     示例：创建一个低频访问存储类型（IA）的Bucket:
 
@@ -196,7 +196,7 @@
     ./ossutil ls oss://bucket --limited-num=${num} --marker=${obj}
     ```
 
-    与[分页列举 Bucket](intl.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_gjb_g3l_xgb) 类似，可以使用`--limited-num`与`--marker`选项来分页列举Object。示例：
+    与[分页列举 Bucket](cn.zh-CN/常用工具/命令行工具ossutil/有关Bucket的命令.md#section_gjb_g3l_xgb) 类似，可以使用`--limited-num`与`--marker`选项来分页列举Object。示例：
 
     ```
     ./ossutil ls oss://ossutil-test --limited-num=1
@@ -249,7 +249,7 @@
 
 -   请求者付费模式下列举
 
-    详情请参考[请求者付费模式相关命令](intl.zh-CN/常用工具/命令行工具ossutil/有关Object的命令.md#)。
+    详情请参考[请求者付费模式相关命令](cn.zh-CN/常用工具/命令行工具ossutil/有关Object的命令.md#)。
 
 
 ## 列举未上传完成的分片上传任务 {#section_pmq_tlt_xgb .section}
@@ -286,11 +286,84 @@
 
     `uploadid`：填写未完成分片上传的Object的UploadID。
 
--   更多有关分片上传操作命令，详见[有关Multipart的命令](intl.zh-CN/常用工具/命令行工具ossutil/有关Multipart的命令.md#)。
+
+**说明：** 更多有关分片上传操作命令，详见[有关Multipart的命令](cn.zh-CN/常用工具/命令行工具ossutil/有关Multipart的命令.md#)。
+
+## 设置Bucket标签 {#section_mzh_dhf_2rb .section}
+
+bucket-tagging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的标签配置。Bucket标签介绍请参见[存储空间标签](https://help.aliyun.com/document_detail/119637.html)。
+
+**说明：** 
+
+-   只有Bucket的拥有者及授权子账户才能为Bucket设置用户标签，否则返回403 Forbidden错误，错误码：AccessDenied。
+-   每对标签的key和value必须以井号（\#）分隔。
+-   最多可以配置20对标签，多对标签以空格隔开。
+-   标签合法字符集包括大小写字母、数字、空格和以下符号：
+
+    +‑=.\_:/
+
+-   Key最大长度为64字节，不能以`http ://`、`https://`、`Aliyun`为前缀，且不能为空。
+-   Value最大长度为128字节，可以为空。
+-   Key和Value必须为UTF-8编码。
+-   使用该命令前，建议先使用帮助命令ossutil help bucket-tagging查看命令详情。
+
+-   添加/修改Bucket标签
+
+    ``` {#codeblock_w7m_g2m_xg5}
+    ./ossutil bucket-tagging --method put oss://bucket  tagkey1#tagvalue1 tagkey2#tagvalue2
+    ```
+
+    若Bucket未设置标签，此命令将为Bucket添加指定的标签；若Bucket已配置标签，此命令将覆盖Bucket原有标签。
+
+-   查询Bucket标签
+
+    ``` {#codeblock_omy_wa5_3bs}
+    ./ossutil bucket-tagging --method get oss://bucket
+    ```
+
+-   删除Bucket标签
+
+    ``` {#codeblock_x63_u22_24c}
+    ./ossutil bucket-tagging --method delete oss://bucket
+    ```
+
+
+## 设置Bucket加密 {#section_0a3_jwe_t8c .section}
+
+bucket-encryption命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的加密配置。Bucket加密介绍请参见[服务端加密](https://help.aliyun.com/document_detail/119320.html)。
+
+-   添加/修改Bucket加密配置
+
+    ``` {#codeblock_h63_fn2_9fm}
+    ./ossutil bucket-encryption --method put oss://bucket --sse-algorithm algorithmName [--kms-masterkey-id  keyid]
+    ```
+
+    -   `--sse-algorithm`：选择Bucket的加密方式，可选值为KMS和AES256。
+    -   `--kms-masterkey-id`：设置指定的CMK ID进行加密。当`--sse-algorithm`值为AES256时，不可附加此项；值为KMS时，根据您的需求选择是否添加。
+    若Bucket未设置加密，此命令将为Bucket添加指定的加密方式；若Bucket已配置加密，此命令将更改Bucket加密配置。
+
+    配置示例：
+
+    ``` {#codeblock_bbv_wze_fr0}
+    ./ossutil bucket-encryption --method put oss://bucket --sse-algorithm KMS --kms-masterkey-id 9468da86-3509-4f8d-a61e-6eab1eac****
+    ```
+
+-   获取Bucket加密配置
+
+    ``` {#codeblock_6vi_1gf_jah}
+    ./ossutil bucket-encryption --method get oss://bucket
+    ```
+
+-   删除Bucket加密配置
+
+    ``` {#codeblock_37j_edb_t18}
+    ./ossuitl bucket-encryption --method delete oss://bucket
+    ```
+
 
 ## 管理跨域资源共享（CORS） {#section_edx_l2n_hhb .section}
 
- cors命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的CORS配置。CORS介绍请参见[设置跨域资源共享](../../../../intl.zh-CN/开发指南/存储空间（Bucket）/设置跨域资源共享.md#)。
+cors命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的CORS配置。CORS介绍请参见[设置跨域资源共享](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置跨域资源共享.md#)。
 
 **说明：** 使用该命令前，建议先使用帮助命令ossutil help cors查看命令详情。
 
@@ -332,7 +405,7 @@
 
 ## 管理日志 {#section_rzd_3yn_hhb .section}
 
- logging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志管理配置。日志管理详情请参见[访问日志存储](../../../../intl.zh-CN/开发指南/日志管理/访问日志存储.md#)。
+logging命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志管理配置。日志管理详情请参见[访问日志存储](../../../../cn.zh-CN/开发指南/日志管理/访问日志存储.md#)。
 
 **说明：** 使用该命令前，建议先使用帮助命令ossutil help logging查看命令详情。
 
@@ -344,7 +417,7 @@
 
     若Bucket未开启日志管理，此命令将Bucket的访问日志以Object的形式保存到target-bucket中；若Bucket已开启日志管理，此命令可修改日志记录的存储位置。
 
-    prefix参数可指定日志记录存储的目录和前缀。若填写，日志将被记录到target-bucket的指定目录下；若不填写，则保存到target-bucket的根目录下。日志文件命名规则请参见[日志记录命名规则](../../../../intl.zh-CN/控制台用户指南/日志管理/设置日志存储.md#section_n4b_q3z_5db)。
+    prefix参数可指定日志记录存储的目录和前缀。若填写，日志将被记录到target-bucket的指定目录下；若不填写，则保存到target-bucket的根目录下。日志文件命名规则请参见[日志记录命名规则](../../../../cn.zh-CN/控制台用户指南/日志管理/设置日志存储.md#section_n4b_q3z_5db)。
 
 -   查看日志管理配置
 
@@ -363,7 +436,7 @@
 
 ## 设置防盗链 {#section_zyj_dqg_jhb .section}
 
- referer命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志防盗链配置。防盗链详情请参见[设置防盗链](../../../../intl.zh-CN/开发指南/存储空间（Bucket）/设置防盗链.md#)。
+referer命令通过设置`method`选项值为put、get、delete，可以添加、修改、查询、删除Bucket的日志防盗链配置。防盗链详情请参见[设置防盗链](../../../../cn.zh-CN/开发指南/存储空间（Bucket）/设置防盗链.md#)。
 
 **说明：** 使用该命令前，建议先使用帮助命令ossutil help referer查看命令详情。
 
@@ -416,7 +489,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
 
         -   公共读文件：直接输入文件URL，例如：`https://bucketname.oss-cn-beijing.aliyuncs.com/myphoto.jpg`。
         -   私有文件：输入带签名的文件URL，并且在URL前后需加双引号（“”）。例如：`“https://bucketname.oss-cn-beijing.aliyuncs.com/myphoto.jpg?Expires=1552015472&OSSAccessKeyId=TMP.xxxxxxxx5r9f1FV12y8_Qis6LUVmvoSCUSs7aboCCHtydQ0axN32Sn-UvyY3AAAwLAIUarYNLcO87AKMEcE5O3AxxxxxxoCFAQuRdZYyVFyqOW8QkGAN-bamUiQ&Signature=bIa4llbMbldrl7rwckr%2FXXvTtxw%3D”`。
-        **说明：** 如何获取文件URL请参考[获取URL](https://www.alibabacloud.com/help/zh/faq-detail/39607.htm)。
+        **说明：** 如何文件URL请参考[获取URL](https://help.aliyun.com/knowledge_detail/39607.html)。
 
     -   `--addr=domain_name`（可选）：可在下载文件时同时向一个指定的域名或IP地址发起ping操作。不添加该选项，ossutil不进行额外的探测操作。
         -   增加`--addr=`选项，但是缺省值的话，默认向`www.aliyun.com`发起ping操作。
@@ -452,7 +525,7 @@ probe命令是针对OSS访问的检测命令，可用于排查上传下载过程
     -   执行步骤后出现×表示没有通过，否则表示通过。
     -   结果显示整个上传下载成功还是失败。当成功时，会给出文件的大小和上传下载时间；失败时，会给出导致错误的原因，或直接给出修改建议。
 
-        **说明：** 并不是每次错误的检测都能提示出修改建议，对于没有提示修改建议的检测，请根据错误码提示，并结合[oss错误码ErrorCode](../../../../intl.zh-CN/SDK 示例/Java/异常处理.md#section_gn4_55c_bhb)进行问题排查。
+        **说明：** 并不是每次错误的检测都能提示出修改建议，对于没有提示修改建议的检测，请根据错误码提示，并结合[oss错误码ErrorCode](../../../../cn.zh-CN/SDK 示例/Java/异常处理.md#section_gn4_55c_bhb)进行问题排查。
 
     probe命令执行完毕后，ossutil会在当前目录下生成一个以logOssProbe开头的文件，里面包含此次探测命令执行的详细信息。
 

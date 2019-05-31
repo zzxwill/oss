@@ -4,20 +4,20 @@ Ossutil allows you to manage OSS data easily by using command lines and provides
 
 ## Download {#section_sqg_hrh_2nw .section}
 
--   The latest version of ossutil is 1.6.0.
+-   The latest version of ossutil is 1.6.1.
 -   Operating environment:
     -   Windows/Linux/Mac
     -   Supported architecture: x86 \(32bit, 64bit\)
 -   Download ossutil from the following URLs according to your operating system:
-    -   [Linux x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil32)
-    -   [Linux x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64) 
+    -   [Linux x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.1/ossutil32)
+    -   [Linux x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.1/ossutil64) 
 
         **Note:** When copying the preceding URLs into the `wget` command to download data, delete the ?spm=xxxx part in the URLs.
 
-    -   [Windows x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil32.zip)
-    -   [Windows x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64.zip)
-    -   [mac x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac32)
-    -   [mac x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64)
+    -   [Windows x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.1/ossutil32.zip)
+    -   [Windows x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.1/ossutil64.zip)
+    -   [mac x86 32bit](http://gosspublic.alicdn.com/ossutil/1.6.1/ossutilmac32)
+    -   [mac x86 64bit](http://gosspublic.alicdn.com/ossutil/1.6.1/ossutilmac64)
 
 ## Installation {#section_hr8_ke0_xym .section}
 
@@ -27,7 +27,7 @@ Download a package according to your operating system and run the corresponding 
     1.  Download the ossutil installation file:
 
         ```
-        wget http://gosspublic.alicdn.com/ossutil/1.6.0/ossutil64
+        wget http://gosspublic.alicdn.com/ossutil/1.6.1/ossutil64
         								
         ```
 
@@ -50,12 +50,12 @@ Download a package according to your operating system and run the corresponding 
         Input the stsToken： 
         ```
 
-        -   **endpoint**: Indicates the endpoint of the region where the bucket belongs to. For more information, see [Regions and endpoints](../../../../reseller.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
-        -   **accessKeyID**: For more information about how to view the AccessKeyID, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
-        -   **accessKeySecret**: For more information about how to view the AccessKeySecret, see [Create an AccessKey](../../../../reseller.en-US/General Reference/Create an AccessKey.md#).
-        -   **stsToken**: This is option is required only when you use a temporary STS token to access the OSS bucket. Otherwise, you can leave the value unspecified. For more information about how to generate an STS token, see [Temporary access credential](../../../../reseller.en-US/Developer Guide/Upload files/Authorized third-party upload.md#section_dvv_hkb_5db).
+        -   **endpoint**: Indicates the endpoint of the region where the bucket belongs to. For more information, see [Regions and endpoints](../../../../intl.en-US/Developer Guide/Endpoint/Regions and endpoints.md#).
+        -   **accessKeyID**: For more information about how to view the AccessKeyID, see [Create an AccessKey](../../../../intl.en-US/General Reference/Create an AccessKey.md#).
+        -   **accessKeySecret**: For more information about how to view the AccessKeySecret, see [Create an AccessKey](../../../../intl.en-US/General Reference/Create an AccessKey.md#).
+        -   **stsToken**: This is option is required only when you use a temporary STS token to access the OSS bucket. Otherwise, you can leave the value unspecified. For more information about how to generate an STS token, see [Temporary access credential](../../../../intl.en-US/Developer Guide/Upload files/Authorized third-party upload.md#section_dvv_hkb_5db).
 
-            **Note:** For more information about the configuration file, see [Modify the configuration file](#config)
+            **Note:** For more information about the configuration file, see [Modify the configuration file](#config).
 
 -   Install ossutil in Windows \(Windows 64-bit system is used as an example\).
     1.  Download the ossutil installation package.
@@ -70,7 +70,7 @@ Download a package according to your operating system and run the corresponding 
     1.  Download the ossutil installation file:
 
         ```
-        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.6.0/ossutilmac64
+        curl -o ossutilmac64 http://gosspublic.alicdn.com/ossutil/1.6.1/ossutilmac64
         ```
 
     2.  Modify the permission of the file:
@@ -197,7 +197,7 @@ You can run commands to perform the following operations in ossutil:
 
             -   If you specify an endpoint in the `oss-cn-xxx.aliyuncs.com` or `http://oss-cn-xxx.aliyuncs.com` format for a bucket, ossutil accesses the bucket through the HTTP protocol.
             -   If you specify an endpoint in the `https://oss-cn-xxx.aliyuncs.com` format for a bucket, ossutil accesses the bucket through the HTTPS protocol.
-        -   Bucket-Cname: Specify an individual CDN acceleration domain name for each specified bucket. If you configure the Bucket-Cname option, ossutil searches for the CDN acceleration domain name specified for a bucket when you perform operations on the bucket. If the CDN acceleration domain name specified for the bucket exists, ossutil replaces the endpoint specified in the Bucket-Endpoint option and basic configuration. For more information about CDN acceleration domain names, see [../../../../dita-oss-bucket/SP\_21/DNOSS11827291/EN-US\_TP\_4408.md\#](../../../../reseller.en-US/Developer Guide/Hide/CDN-based OSS acceleration.md#).
+        -   Bucket-Cname: Specify an individual CDN acceleration domain name for each specified bucket. If you configure the Bucket-Cname option, ossutil searches for the CDN acceleration domain name specified for a bucket when you perform operations on the bucket. If the CDN acceleration domain name specified for the bucket exists, ossutil replaces the endpoint specified in the Bucket-Endpoint option and basic configuration. For more information about CDN acceleration domain names, see [../../../../dita-oss-bucket/SP\_21/DNOSS11827291/EN-US\_TP\_4408.md\#](../../../../intl.en-US/Developer Guide/Hide/CDN-based OSS acceleration.md#).
         -   Priority of endpoint configurations: endpoint specified by the `--endpoint` parameter in commands \> endpoint specified in Bucket-Cname \> endpoint specified in Bucket-Endpoint \> endpoint specified in the basic configuration \> default endpoint.
     -   Generate a configuration file by inputting information in interactive command lines as follows:
 
@@ -251,7 +251,7 @@ You can run commands to perform the following operations in ossutil:
 
 For more information about the commands in ossutil, see the following topics:
 
--   [Bucket-related commands](reseller.en-US/Tools/ossutil/Bucket-related commands.md#)
--   [Object-related commands](reseller.en-US/Tools/ossutil/Object-related commands.md#)
--   [Multipart-related commands](reseller.en-US/Tools/ossutil/Multipart-related commands.md#)
+-   [Bucket-related commands](intl.en-US/Tools/ossutil/Bucket-related commands.md#)
+-   [Object-related commands](intl.en-US/Tools/ossutil/Object-related commands.md#)
+-   [Multipart-related commands](intl.en-US/Tools/ossutil/Multipart-related commands.md#)
 

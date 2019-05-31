@@ -57,14 +57,14 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
             $ bash start.sh
             ```
 
-        3.  使用一台可以访问这台服务器的，有图形化界面的电脑，通过浏览器访问FTP服务器操作界面。访问域名：`http://ServerIP:8192`
+        3.  使用一台可以访问这台服务器的，有图形化界面的电脑，通过浏览器访问FTP服务器操作界面。访问域名：`http://ServerIP:8192`。
     -   Mac系统
 
         解压后双击start.command，或者在终端运行`$ bash start.command`。
 
 3.  上述步骤会启动一个FTP server，默认监听在127.0.0.1的2048端口。同时，为了方便您对FTP server的状态进行管控，还会启动一个web服务器，监听在127.0.0.1的8192端口。
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15592943522519_zh-CN.jpg)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15592952692519_zh-CN.jpg)
 
     -   **ossftp监听地址**：填写需要使用FTP服务的客户端IP。如果是在本机上运行客户端，保持默认即可。
     -   **ossftp监听端口**：ossftp的监听端口，默认即可。
@@ -78,17 +78,17 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 4.  下载[FileZilla客户端](https://filezilla-project.org/?spm=a2c4g.11186623.2.6.bqHidZ)并安装。
 5.  配置OSS访问信息后单击**快速连接**：
 
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15592943522520_zh-CN.png)
+    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15592952692520_zh-CN.png)
 
     -   **主机**：配置服务器IP地址，若服务器和客户端在一台设备上，使用默认地址：127.0.0.1。
-    -   **用户名**：填写拥有Bucket访问权限的AccessKeyID和Bucket名称，格式为AccessKeyID/bucket\_name，例如`tSxyi******wPMEp/test-hz-jh-002`
+    -   **用户名**：填写拥有Bucket访问权限的AccessKeyID和Bucket名称，格式为AccessKeyID/bucket\_name，例如`tSxyi******wPMEp/test-hz-jh-002`。
     -   **密码**：填写拥有Bucket访问权限的AccessKeySecret。
     -   **端口**：填写服务器配置的监听端口，默认填写2048。
 
-        **说明：** AccessKeyID和AccessKeySecret的获取，请参见[创建RAM用户](../../../../cn.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AK部分。
+        **说明：** AccessKeyID和AccessKeySecret的获取，请参见[创建RAM用户](../../../../cn.zh-CN/快速入门/创建 RAM 用户.md#section_zt4_dcf_xdb)中的创建AccessKey部分。
 
 
-## 高级使用 {#section_xdq_krt_vdb .section}
+## 高级应用 {#section_xdq_krt_vdb .section}
 
 -   通过控制页面管理FTP Server
 
@@ -120,51 +120,10 @@ OSS FTP工具是一个特殊的FTP server。它接收普通FTP请求后，将对
 
     可以直接启动ossftp目录下的ftpserver.py，免去web\_server的开销。
 
-    ``` {#codeblock_m7m_30j_131}
+    ``` {#codeblock_cf1_mac_d7v}
     $ python ossftp/ftpserver.py &
     ```
 
     配置修改方式同上。
-
-
-## 可能遇到的问题 {#section_g3r_zrt_vdb .section}
-
--   如果连接FTP Server时，遇到无法连接到服务器的错误。
-
-    ![](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/4864/15592943522521_zh-CN.png)
-
-    有两种可能：
-
-    -   输入的AccessKeyID和AccessKeySecret有误。
-
-        解决：请输入正确的信息后再重试。
-
-    -   所用的AccessKey信息为RAM子账户的AccessKey，而子账户不具有List Buckets权限。
-
-        解决：当使用子账户访问时，请在控制页面中指定Bucket endpoints， 即告诉FTP Server某个Bucket应该用哪个Endpoint来访问。同时，子账户也需要一些必须的权限。关于使用RAM访问OSS时的访问控制，请参考文档[访问控制](../../../../cn.zh-CN/开发指南/权限控制/权限控制概述.md#)。具体如下：
-
-        -   只读访问
-
-            OSS FTP工具需要的权限为 ListObjects、GetObject、HeadObject。关于如何创建一个具有只读访问的RAM子账户，请参考图文教程[如何结合ram实现文件共享](cn.zh-CN/常用工具/ossftp/如何结合RAM实现文件共享.md#)。
-
-        -   上传文件
-
-            如果允许RAM子账户上传文件，还需要PutObject权限。
-
-        -   删除文件
-
-            如果允许RAM子账户删除文件，还需要DeleteObject权限。
-
--   如果您在Linux下运行FTP Server，然后用FileZilla连接时遇到如下错误：
-
-    ``` {#codeblock_rpm_5f1_6px}
-    501 can't decode path (server filesystem encoding is ANSI_X3.4-1968)
-    ```
-
-    此类错误通常是因为本地的中文编码有问题。在将要运行start.sh的终端中输入下面的命令，然后再重新启动即可。
-
-    ``` {#codeblock_ywc_nf5_2a6}
-    $ export LC_ALL=en_US.UTF-8; export LANG="en_US.UTF-8"; locale
-    ```
 
 

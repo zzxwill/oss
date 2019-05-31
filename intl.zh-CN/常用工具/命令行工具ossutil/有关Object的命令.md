@@ -130,7 +130,7 @@ ossutil提供了上传/下载/拷贝文件（Object）和文件夹、设置文�
 
         **说明：** 
 
-        -   `--snapshot-path` 选项用于在某些场景下加速增量上传批量文件\(目前，下载和拷贝不支持该选项\)。例如，文件数较多且两次上传期间没有其他用户更改 OSS 上对应的 Object。
+        -   `--snapshot-path` 选项用于在某些场景下加速增量上传或增量下载批量文件\(拷贝不支持该选项\)。例如，文件数较多且两次上传期间没有其他用户更改 OSS 上对应的 Object。
         -   `--snapshot-path` 命令通过在本地记录成功上传的文件的本地 lastModifiedTime，从而在下次上传时通过比较 lastModifiedTime 来决定是否跳过相同文件的上传，所以在使用该选项时，请确保两次上传期间没有其他用户更改了 OSS 上的对应 Object。当不满足该场景时，如果想要增量上传批量文件，请使用 `--update` 选项。
         -   ossutil 不会主动删除 snapshot-path 下的快照信息，为了避免快照信息过多，当用户确定快照信息无用时，请用户自行清理 snapshot-path。
         -   由于读写 snapshot 信息需要额外开销，当要批量上传的文件数比较少或网络状况比较好或有其他用户操作相同 Object 时，并不建议使用该选项。可以使用 `--update` 选项来增量上传。
@@ -559,7 +559,7 @@ ossutil 从 1.4.2 版本开始，支持对开通了请求者付费模式的Bucke
         -   下载所有文件格式不为 jpg 的文件：
 
             ```
-            $./ossutil cp dir/ oss://my-bucket/path --exclude "*.jpg" -r
+            $./ossutil cp oss://my-bucket/path dir/ --exclude "*.jpg" -r
             ```
 
         -   拷贝所有文件名包含 abc 且不是 jpg 和 txt 格式的文件：

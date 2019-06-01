@@ -37,14 +37,14 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 
 # Configures the encryption method for the bucket. In this example, AE256 is specified as an example.
 rule = ServerSideEncryptionRule()
-rule.ssealgorithm = oss2.SERVER_SIDE_ENCRYPTION_AES256
+rule.sse_algorithm = oss2.SERVER_SIDE_ENCRYPTION_AES256
 # Configures the CMK ID when the encryption method is set to KMS. To encrypt data by using a specified CMK, input the specified CMK ID. If you use the CMK managed by OSS to encrypt data, set this parameter to null. If you use the AES256 method to encrypt data, this parameter must be set to null.
-rule.kmsmasterkeyid = ""
+rule.kms_master_keyid = ""
 
 # Configures server-side encryption for the bucket.
 result = bucket.put_bucket_encryption(rule)
 # Checks the returned HTTP status code.
-print('http status:', result.status)              
+print('http response code:', result.status)             
 ```
 
 ## Obtain the server-side encryption settings of a bucket {#section_3vl_t28_29d .section}
@@ -63,8 +63,8 @@ bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', '<yourBucketNa
 # Obtains the server-side encryption settings of the bucket.
 result = bucket.get_bucket_encryption()
 # Prints the obtained server-side encryption settings.
-print('ssealgorithm:', result.ssealgorithm)
-print('kmsmasterkeyid:', result.kmsmasterkeyid)
+print('sse_algorithm:', result.sse_algorithm)
+print('kms_master_keyid:', result.kms_master_keyid) # If the bucket encryption method is set to AES256, the value of kms_master_keyid is None.
 ```
 
 ## Delete the server-side encryption settings of a bucket {#section_cjv_goy_8pp .section}

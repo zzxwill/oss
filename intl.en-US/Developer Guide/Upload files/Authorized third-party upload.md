@@ -18,7 +18,6 @@ In this method, you can use a request URL that contains the OSSAccessKeyId and S
 
     |Operating method|Description|
     |----------------|-----------|
-    |[Console](../../../../reseller.en-US/Console User Guide/Upload、download and manage objects/Download an object.md#)|Web application, which is intuitive and easy to use|
     |[Java SDK](../../../../reseller.en-US/SDK Reference/Java/Authorized access.md#ul_nh5_wbd_kfb)|SDK demos in various languages|
     |[Python SDK](../../../../reseller.en-US/SDK Reference/Python/Authorized access.md#section_zx1_55k_kfb)|
     |[PHP SDK](../../../../reseller.en-US/SDK Reference/PHP/Authorized access.md#section_m2g_jwr_kfb)|

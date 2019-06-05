@@ -109,7 +109,7 @@ If the ACL for an image is private read and write, only authorized users are all
       accessKeyId: '<accessKeyId>',
       accessKeySecret: '<accessKeySecret>',
       bucket: '<bucketName>',
-      endpoint: '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>'
+      endpoint: '<endpoint, for example, http://oss-cn-hangzhou.aliyuncs.com>'
     });
     // Expired for 10 minutes. The image processing style is: "image/resize,w_300".
     let signUrl = client.signatureUrl('example.jpg', {expires: 600, 'process' : 'image/resize,w_300'});
@@ -208,7 +208,7 @@ If the ACL for an image is private read and write, only authorized users are all
           accessKeyId: '<accessKeyId>',
           accessKeySecret: '<accessKeySecret>',
           bucket: '<bucketName>',
-          endpoint: '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>'
+          endpoint: '<endpoint, for example, http://oss-cn-hangzhou.aliyuncs.com>'
         });
         // Custom styles
         async function style () {

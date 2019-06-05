@@ -2,21 +2,21 @@
 
 OSS Image Service \(IMG\) is an image processing service that features massive capacity, high security, low costs, and high reliability. By uploading and storing original images in OSS, you can process images anytime, anywhere, on any Internet device through a simple RESTful API.IMG offers image processing APIs.
 
-For more information, see [Image processing](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#).
+For more information, see [Image processing](../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#).
 
 ## Basic features of Image Service {#section_brj_5wg_kfb .section}
 
 OSS IMG provides the following features:
 
--   [Obtain image information](../../../../../reseller.en-US/Data Processing/Image Processing/Obtain image information/Retrieve dominant image tones.md#)
--   [Image format conversion](../../../../../reseller.en-US/Data Processing/Image Processing/Convert formats/Format conversion.md#)
--   [Resize images](../../../../../reseller.en-US/Data Processing/Image Processing/Resize images.md#)
--   [Incircle](../../../../../reseller.en-US/Data Processing/Image Processing/Crop images/Incircle.md#)
--   [Adaptive orientation](../../../../../reseller.en-US/Data Processing/Image Processing/Rotate images/Adaptive orientation.md#)
--   [Brightness](../../../../../reseller.en-US/Data Processing/Image Processing/Apply effects/Brightness.md#)
--   [Add watermarks](../../../../../reseller.en-US/Data Processing/Image Processing/Add watermarks.md#): allows you to add images, texts, or image-text watermarks to another image.
--   [Customize image processing styles](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#)
--   Calling multiple image processing features through [Cascading Processing](../../../../../reseller.en-US/Data Processing/Image Processing/Image processing access rules.md#)
+-   [Obtain image information](../../../../reseller.en-US/Data Processing/Image Processing/Obtain image information/Retrieve dominant image tones.md#)
+-   [Image format conversion](../../../../reseller.en-US/Data Processing/Image Processing/Convert formats/Format conversion.md#)
+-   [Resize images](../../../../reseller.en-US/Data Processing/Image Processing/Resize images.md#)
+-   [Incircle](../../../../reseller.en-US/Data Processing/Image Processing/Crop images/Incircle.md#)
+-   [Adaptive orientation](../../../../reseller.en-US/Data Processing/Image Processing/Rotate images/Adaptive orientation.md#)
+-   [Brightness](../../../../reseller.en-US/Data Processing/Image Processing/Apply effects/Brightness.md#)
+-   [Add watermarks](../../../../reseller.en-US/Data Processing/Image Processing/Add watermarks.md#): allows you to add images, texts, or image-text watermarks to another image.
+-   [Customize image processing styles](../../../../reseller.en-US/Data Processing/Image Processing/Image processing.md#)
+-   Calling multiple image processing features through [Cascading Processing](../../../../reseller.en-US/Data Processing/Image Processing/Image processing access rules.md#)
 
 ## Usage of Image Service {#section_gc5_swg_kfb .section}
 
@@ -111,7 +111,7 @@ If the ACL for an image is private read and write, only authorized users are all
       accessKeyId: '<accessKeyId>',
       accessKeySecret: '<accessKeySecret>',
       bucket: '<bucketName>',
-      endpoint: '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>'
+      endpoint: '<endpoint, for exmaple, http://oss-cn-hangzhou.aliyuncs.com>'
     });
     // Expire after 10 minutes. The image processing style is: "image/resize,w_300".
     let signUrl = client.signatureUrl('example.jpg', {expires: 600, 'process' : 'image/resize,w_300'});
@@ -139,7 +139,7 @@ If the ACL for an image is private read and write, only authorized users are all
           accessKeyId: '<accessKeyId>',
           accessKeySecret: '<accessKeySecret>',
           bucket: '<bucketName>',
-          endpoint: '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>'
+          endpoint: '<endpoint, for example, http://oss-cn-hangzhou.aliyuncs.com>'
         });
         
         // Scale the image.
@@ -218,7 +218,7 @@ If the ACL for an image is private read and write, only authorized users are all
         }
         
         info();
-        
+        							
         ```
 
     -   Customize image styles
@@ -232,7 +232,7 @@ If the ACL for an image is private read and write, only authorized users are all
           accessKeyId: '<accessKeyId>',
           accessKeySecret: '<accessKeySecret>',
           bucket: '<bucketName>',
-          endpoint: '<endpoint, 例如http://oss-cn-hangzhou.aliyuncs.com>'
+          endpoint: '<endpoint, for example, http://oss-cn-hangzhou.aliyuncs.com>'
         });
         
         // Custom styles
@@ -245,7 +245,7 @@ If the ACL for an image is private read and write, only authorized users are all
         }
         
         style();
-        
+        							
         ```
 
         **Note:** You must first log on to the OSS console to add the custom style 'example-style'.
@@ -274,7 +274,7 @@ If the ACL for an image is private read and write, only authorized users are all
         }
         
         resize();
-        
+        							
         ```
 
 

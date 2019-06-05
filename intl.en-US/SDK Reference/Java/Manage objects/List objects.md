@@ -2,7 +2,7 @@
 
 This topic describes how to list objects.
 
-Objects are listed alphabetically. You can use ossClient.listObjects to list objects in a bucket. The following parameters can be used for listObjects:
+Objects are listed alphabetically. You can use ossClient.listObjects to list objects in a bucket. The following parameters can be used for ListObjects:
 
 -   ObjectListing listObjects\(String bucketName\): lists objects in a bucket. A maximum of 100 objects can be listed.
 -   ObjectListing listObjects\(String bucketName, String prefix\): lists objects with the specified prefix in a bucket. A maximum of 100 objects can be listed.
@@ -18,10 +18,10 @@ The following table describes parameters for ObjectListing.
 |marker|Specifies the initial object in the list.|String getMarker\(\)|
 |maxKeys|Specifies the maximum number of objects that can be listed.|int getMaxKeys\(\)|
 |nextMarker|Specifies the initial position for the next object.|String getNextMarker\(\)|
-|isTruncated|Specifies whether the listed objects are truncated.-   If the objects are all listed without truncation, a false value is returned.
+|isTruncated|Specifies whether the listed objects are truncated. -   If the objects are all listed without truncation, a false value is returned.
 -   If the listed objects are truncated, a true value is returned.
 
-|boolean isTruncated\(\)|
+ |boolean isTruncated\(\)|
 |commonPrefixes|Specifies a set of objects whose names share a prefix and end with a forward slash \(/\) delimiter.|List<String\> getCommonPrefixes\(\)|
 |encodingType|Specifies the encoding type used in the response.|String getEncodingType\(\)|
 
@@ -50,7 +50,7 @@ for (OSSObjectSummary s : sums) {
 
 // Close your OSSClient.
 ossClient.shutdown();
-
+			
 ```
 
 ## List objects with ListObjectsRequest { .section}
@@ -91,7 +91,7 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
 -   List objects by a specified prefix
@@ -121,7 +121,7 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
 -   List objects by marker
@@ -149,7 +149,7 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
 -   List all objects on one or more pages
@@ -173,19 +173,19 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
     
     do {
         objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).withMarker(nextMarker).withMaxKeys(maxKeys));
-        
+    
         List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
         for (OSSObjectSummary s : sums) {
             System.out.println("\t" + s.getKey());
         }
-        
+    
         nextMarker = objectListing.getNextMarker();
-        
+    
     } while (objectListing.isTruncated());
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
 -   List objects by a specified prefix on one or more pages
@@ -212,19 +212,19 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
     do {
         objectListing = ossClient.listObjects(new ListObjectsRequest(bucketName).
                 withPrefix(keyPrefix).withMarker(nextMarker).withMaxKeys(maxKeys));
-        
+    
         List<OSSObjectSummary> sums = objectListing.getObjectSummaries();
         for (OSSObjectSummary s : sums) {
             System.out.println("\t" + s.getKey());
         }
-        
+    
         nextMarker = objectListing.getNextMarker();
-        
+    
     } while (objectListing.isTruncated());
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
 -   Specify the name of an object for encoding.
@@ -260,22 +260,22 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
         listObjectsRequest.setPrefix(keyPrefix);
         listObjectsRequest.setMaxKeys(maxKeys);
         listObjectsRequest.setMarker(nextMarker);
-        
+    
         // Specify the name of an object for encoding.
         listObjectsRequest.setEncodingType("url");
-        
+    
         objectListing = ossClient.listObjects(listObjectsRequest);
-        
+    
         // Decode the object.
         for (OSSObjectSummary objectSummary: objectListing.getObjectSummaries()) {
             System.out.println("Key:" + URLDecoder.decode(objectSummary.getKey(), "UTF-8"));
         }
-        
+    
         // Decode the commonPrefixes parameter.
         for (String commonPrefixes: objectListing.getCommonPrefixes()) {
             System.out.println("CommonPrefixes:" + URLDecoder.decode(commonPrefixes, "UTF-8"));
         }
-        
+    
         // Decode the nextMarker parameter.
         if (objectListing.getNextMarker() ! = null) {
             nextMarker = URLDecoder.decode(objectListing.getNextMarker(), "UTF-8");
@@ -284,7 +284,7 @@ You can configure parameters for ListObjectsRequest to flexibly query objects. T
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
 
@@ -297,7 +297,7 @@ The delimiter and prefix parameters can be used to simulate folder functions.
 -   Prefix: specifies the prefix as the name of a folder. The folder is used to list all files \(in the folder\) and subfolders \(directories in the folder\) that start with this prefix. These files and subfolders are included in the Objects list.
 -   Delimiter: If the delimiter is specified as a forward slash \(/\), only the files and subfolders \(directories\) are displayed. Subfolders \(directories\) are included in the CommonPrefixes list, while the files and folders in subfolders are not displayed.
 
-For more information about folders, see [Folder simulation](../../../../../reseller.en-US/Developer Guide/Manage files/View the object list.md#). For the complete code of creating an object, see [GitHub](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/CreateFolderSample.java).
+For more information about folders, see [Folder simulation](../../../../reseller.en-US/Developer Guide/Manage files/View the object list.md#). For the complete code of creating an object, see [GitHub](https://github.com/aliyun/aliyun-oss-java-sdk/blob/master/src/samples/CreateFolderSample.java).
 
 Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg, fun/movie/001.avi, and fun/movie/007.avi. Forward slashes \(/\) are used as delimiters for folders. The subsequent examples show how to simulate folder functions.
 
@@ -336,7 +336,7 @@ Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg,
     
     // Disable the OSSClient.
     // Close your OSSClient.
-    
+    					
     ```
 
     The returned results are as follows:
@@ -349,7 +349,7 @@ Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg,
     oss.jpg
     
     CommonPrefixes:
-    
+    					
     ```
 
 -   List all objects in a specified folder
@@ -389,7 +389,7 @@ Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg,
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
     The returned results are as follows:
@@ -401,7 +401,7 @@ Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg,
     fun/test.jpg
     
     CommonPrefixes:
-    
+    					
     ```
 
 -   List objects and subfolders in a folder
@@ -446,7 +446,7 @@ Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg,
     
     // Close your OSSClient.
     ossClient.shutdown();
-    
+    					
     ```
 
     The returned results are as follows:
@@ -457,7 +457,7 @@ Assume that the following objects are stored in a bucket: oss.jpg, fun/test.jpg,
     
     CommonPrefixes:
     fun/movie/
-    
+    					
     ```
 
 
